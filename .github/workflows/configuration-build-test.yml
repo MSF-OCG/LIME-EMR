@@ -1,12 +1,7 @@
 name: Build, validate configuration and deploy
 
 on:
-  push:
-    branches: [ main, dev ]
-  pull_request:
-    branches: [main, dev]
-  release:
-    types: [published]
+  workflow_dispatch:
 
 jobs:
   build:
