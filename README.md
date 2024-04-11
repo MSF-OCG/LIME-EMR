@@ -1,5 +1,14 @@
 # Ozone MSF
-
+```
+── pom.xml - Aggredator / Orchestrator  
+      └── /distro/pom.xml - Organizational-wide Config  
+      └── /countries - Country-specific Config  
+            └── /iraq/pom.xl
+                  - dependencies: msf-ozone
+      └── /sites - Site-specific Config  
+            └── /mosul/pom.xl
+                  - dependencies: msf-ozone-iraq
+```
 ### 1. Configure
 - [ ] Configure the Organization level - MSF  
 - [ ] Configure the Country level - Iraq  
