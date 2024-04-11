@@ -1,14 +1,30 @@
 # Ozone MSF
+
+#### Hierarchy overview
 ```
 ── pom.xml - Aggredator / Orchestrator  
       └── /distro/pom.xml - Organizational-wide Config  
       └── /countries - Country-specific Config  
             └── /iraq/pom.xl
-                  - dependencies: msf-ozone
       └── /sites - Site-specific Config  
             └── /mosul/pom.xl
-                  - dependencies: msf-ozone-iraq
 ```
+#### How to configure the pom files 
+- GroupId
+- ArtifactID
+- Version
+
+- Dependencies
+
+- Build
+- Plugins
+
+- Execution
+- Configuration
+- Exclude
+
+- DistributionManagement
+
 ### 1. Configure
 - [ ] Configure the Organization level - MSF  
 - [ ] Configure the Country level - Iraq  
@@ -16,7 +32,7 @@
 ### 2. Build
 - [ ] Successfully build the Mosul site distro + above dependencies (Country and Organization levels inherited)
 - [ ] Optional: Separate the builds (Org, Country, Site) and make it generic if possible
-### 3. Run
+### 3. Execution
 - [ ] Run the OpenMRS Docker Compose with the Mosul distro locally using the updated Shell script (Tooling procedures)
 - [ ] Next: Plan for testing on MSF instance 
 - [ ] Optional: Run E2E testing
