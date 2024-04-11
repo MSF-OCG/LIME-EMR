@@ -1,4 +1,11 @@
 # Ozone MSF
+### Workflow diagram
+```mermaid
+%%{init: {'theme':'forest'}}%%
+flowchart LR
+      A[Configuration] -->|used upon| B[Build]
+      B -->|pulled upon| C[Execution]
+```
 
 #### Hierarchy overview
 ```
