@@ -39,7 +39,7 @@ jobs:
         run: mvn --batch-mode --update-snapshots --activate-profiles validator clean package
 
   release:
-    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/dev') || github.event_name == 'release' }}    
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'release' }}    
     runs-on: ubuntu-latest 
     needs: build
     permissions: 
