@@ -1,13 +1,13 @@
 # Ozone MSF
 
-1. Configure
+### 1. Configure
 - [ ] Configure the Organization level - MSF  
 - [ ] Configure the Country level - Iraq  
 - [ ] Configure the Site level - Mosul  
-3. Build
+### 2. Build
 - [ ] Successfully build the Mosul site distro + above dependencies (Country and Organization levels inherited)
 - [ ] Optional: Separate the builds (Org, Country, Site) and make it generic if possible
-4. Run
+### 3. Run
 - [ ] Run the OpenMRS Docker Compose with the Mosul distro locally using the updated Shell script (Tooling procedures)
 - [ ] Optional: Run E2E testing
 
