@@ -3,8 +3,8 @@
 ```mermaid
 %%{init: {'theme':'forest'}}%%
 flowchart LR
-      A[Configuration] -->|used upon| B[Build]
-      B -->|pulled upon| C[Execution]
+      A[Configuration in Github repository] -->|used upon| B[Build in Github Actions]
+      B -->|pulled upon| C[Execution on local server]
 ```
 
 #### Hierarchy overview
