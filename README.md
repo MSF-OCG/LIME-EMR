@@ -9,6 +9,7 @@
 - [ ] Optional: Separate the builds (Org, Country, Site) and make it generic if possible
 ### 3. Run
 - [ ] Run the OpenMRS Docker Compose with the Mosul distro locally using the updated Shell script (Tooling procedures)
+- [ ] Next: Plan for testing on MSF instance 
 - [ ] Optional: Run E2E testing
 
 ## Config hierarchy
