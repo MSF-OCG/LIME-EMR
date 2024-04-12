@@ -33,15 +33,15 @@ flowchart LR
 - DistributionManagement
 
 ### 1. Configure
-- [ ] Configure the Organization level - MSF  
-- [ ] Configure the Country level - Iraq  
-- [ ] Configure the Site level - Mosul  
+- [x] Configure the Organization level - MSF  
+- [x] Configure the Country level - Iraq  
+- [x] Configure the Site level - Mosul  
 ### 2. Build
-- [ ] Successfully build the Mosul site distro + above dependencies (Country and Organization levels inherited)
+- [x] Successfully build the Mosul site distro + above dependencies (Country and Organization levels inherited)
 - [ ] Optional: Separate the builds (Org, Country, Site) and make it generic if possible
 ### 3. Execution
 - [ ] Run the OpenMRS Docker Compose with the Mosul distro locally using the updated Shell script (Tooling procedures)
-- [ ] Next: Plan for testing on MSF instance 
+- [x] Next: Plan for testing on MSF instance 
 - [ ] Optional: Run E2E testing
 
 ## Config hierarchy
@@ -57,19 +57,19 @@ flowchart LR
 
 ## Example for configs for hierarchy demo of v1 - Week of April 8
 ### Ozone Level **OpenMRS RefApp**   
-- [ ] Refapp stable version of [modules for frontend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/frontend/spa-assemble-config.json)  
-- [ ] Refapp stable version of [modules for backend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/distro/pom.xml)  
+- [x] Refapp stable version of [modules for frontend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/frontend/spa-assemble-config.json)  
+- [x] Refapp stable version of [modules for backend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/distro/pom.xml)  
 ### MSF Distro **LIME EMR** repository  
-- [ ] MSF [branding in frontend config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/frontend/custom-config.json)   
-- [ ] MSF [logo and assets](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/frontend/assets)
-- [ ] [Env specific logos](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/dev/frontend/qa/assets/logo.png) for users to easily identify their environment 
+- [x] MSF [branding in frontend config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/frontend/custom-config.json)   
+- [x] MSF [logo and assets](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/frontend/assets)
+- [x] [Env specific logos](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/dev/frontend/qa/assets/logo.png) for users to easily identify their environment 
 ### Country level: **Iraq**   
-- [ ] [Roles config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/roles/roles_core-demo.csv) for Initializer  
+- [x] [Roles config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/roles/roles_core-demo.csv) for Initializer  
 ### Site level: **Mosul**  
-- [ ] [Address hierarchy](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/distro/configuration/addresshierarchy) for Initializer  
-- [ ] [Locations](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/locations/locations.csv) for Initializer  
-- [ ] [Person attributes](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/personattributetypes/personattributetypes_core-demo.csv) for Initializer
-- [ ] [Initial consultation form](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/ampathforms/initial_consultation-lime_demo.json)
+- [x] [Address hierarchy](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/distro/configuration/addresshierarchy) for Initializer  
+- [x] [Locations](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/locations/locations.csv) for Initializer  
+- [x] [Person attributes](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/personattributetypes/personattributetypes_core-demo.csv) for Initializer
+- [x] [Initial consultation form](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/ampathforms/initial_consultation-lime_demo.json)
 
 
 ## Ozone documentation
