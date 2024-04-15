@@ -1,12 +1,28 @@
 # Ozone MSF
 ### Workflow diagram
+
 ```mermaid
 %%{init: {'theme':'forest'}}%%
-flowchart LR
-      A[Configuration in Github repository] -->|used upon| B[Build in Github Actions]
-      B -->|pulled upon| C[Execution on local server]
-```
+flowchart TD
 
+subgraph Z["Github Repository 'LIME EMR'"]
+direction LR
+  A[Configuration in Github repository] -->|Release of Distro config| B[Build in Github Actions]
+      A -->|Release of a Country config| B
+      A -->|Release of a Site config| B
+      A -->|Release of an Environment config| B
+  B --> |Generate a Distro artefact| C[Artefact Repository in Github]
+      B --> |Generate a Country artefact| C
+      B --> |Generate a Site artefact| C
+end
+
+subgraph ZA["Execution Server"]
+direction LR
+      D[Running the LIME EMR]
+end
+
+Z --> |Pulling the artefacts| ZA
+```
 #### Hierarchy overview
 ```
 ── pom.xml - Aggredator / Orchestrator  
