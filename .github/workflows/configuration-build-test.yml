@@ -87,7 +87,11 @@ jobs:
 
   release-iraq:
     needs: [release, release-distro]
-    if: contains(needs.release.outputs.directories, 'iraq')
+    if: |
+      always() &&
+      (needs.release.result == 'success') &&
+      (needs.release-distro.result == 'success' || needs.release-distro.result == 'skipped') &&
+      contains(needs.release.outputs.directories, 'iraq')
     runs-on: ubuntu-latest
     permissions: 
       contents: read
@@ -104,7 +108,11 @@ jobs:
 
   release-mosul:
     needs: [release, release-iraq]
-    if: contains(needs.release.outputs.directories, 'mosul')
+    if: |
+      always() &&
+      (needs.release.result == 'success') &&
+      (needs.release-iraq.result == 'success' || needs.release-iraq.result == 'skipped') &&
+      contains(needs.release.outputs.directories, 'mosul')
     runs-on: ubuntu-latest
     permissions: 
       contents: read
