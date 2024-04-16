@@ -51,18 +51,18 @@ jobs:
         if [[ $(git diff --name-only ${{ github.event.before }} ${{ github.sha }}) == *"distro"* ]]; then
           echo "Triggering the 'release-distro' job and its children"
           DIRECTORIES=["distro", "iraq", "mosul"]
-          echo "::set-output name=directories::${DIRECTORIES}"
+          echo "directories=${DIRECTORIES}" >> $GITHUB_OUTPUT
         elif [[ $(git diff --name-only ${{ github.event.before }} ${{ github.sha }}) == *"iraq"* ]]; then
           echo "Triggering the 'release-iraq' job and its children"
           DIRECTORIES=["iraq", "mosul"]
-          echo "::set-output name=directories::${DIRECTORIES}"
+          echo "directories=${DIRECTORIES}" >> $GITHUB_OUTPUT
         elif [[ $(git diff --name-only ${{ github.event.before }} ${{ github.sha }}) == *"mosul"* ]]; then
           echo "Triggering the 'release-mosul' job"
           DIRECTORIES=["mosul"]
-          echo "::set-output name=directories::${DIRECTORIES}"
+          echo "directories=${DIRECTORIES}" >> $GITHUB_OUTPUT
         else
           echo "No relevant directory changes, skipping build job"
-          echo "::set-output name=directories::[]"
+          echo "directories=[]" >> $GITHUB_OUTPUT
         fi
 
   release-distro:
