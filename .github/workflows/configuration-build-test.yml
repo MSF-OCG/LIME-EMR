@@ -81,7 +81,6 @@ jobs:
         artifact-path: "${{ github.workspace }}/distro"
         maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
         maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
-
   release-iraq:
     needs: [release, release-distro]
     if: |
