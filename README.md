@@ -135,7 +135,7 @@ cd sites/mosul/target/ozone-msf-mosul-<version>/run/docker/scripts
    INSTALL_DIR="**.**/home/lime/$APP_NAME"
    ```
 5. Disable logging in lime_emr.sh (success and error)
-# Function to log success messages
+Function to log success messages
 ```bash
 log_success() {
     echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')] Success: $1" # >> "$SUCCESS_LOG"
