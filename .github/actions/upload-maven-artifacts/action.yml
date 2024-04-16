@@ -11,6 +11,14 @@ inputs:
     description: 'Name of the artifact(s) to upload'
     required: false
     default: 'distro'
+  maven-server-username:
+    description: 'username of the server for maven settings.xml file'
+    required: true
+    default: ''
+  maven-server-token:
+    description: 'token of the server for maven settings.xml file'
+    required: true
+    default: ''
 
 runs:
   using: "composite"
@@ -28,8 +36,8 @@ runs:
         servers: |
           [{
             "id": "msf-ocg-github-lime-emr",
-            "username": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}",
-            "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
+            "username": "${{ inputs.maven-server-username }}",
+            "password": "${{ inputs.maven-server-token }}"
           }]
 
     - name: Publish ${{ inputs.artifact-name }} maven artifacts
