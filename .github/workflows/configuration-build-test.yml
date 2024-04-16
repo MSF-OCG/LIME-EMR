@@ -45,6 +45,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+       fetch-depth: 0
     - name: Trigger build job based on directory
       id: check_dir
       run: |
