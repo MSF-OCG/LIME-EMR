@@ -82,6 +82,8 @@ jobs:
       with:
         artifact-name: "distro"
         artifact-path: "${{ github.workspace }}/distro"
+        maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
+        maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
 
   release-iraq:
     needs: release
@@ -97,6 +99,8 @@ jobs:
       with:
         artifact-name: "Mosul"
         artifact-path: "${{ github.workspace }}/sites/mosul"
+        maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
+        maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
 
   release-mosul:
     needs: release
@@ -112,3 +116,5 @@ jobs:
       with:
         artifact-name: "Iraq"
         artifact-path: "${{ github.workspace }}/countries/iraq"
+        maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
+        maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
