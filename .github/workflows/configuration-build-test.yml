@@ -86,7 +86,7 @@ jobs:
         maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
 
   release-iraq:
-    needs: release
+    needs: [release, release-distro]
     if: contains(needs.release.outputs.directories, 'iraq')
     runs-on: ubuntu-latest
     permissions: 
@@ -103,7 +103,7 @@ jobs:
         maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
 
   release-mosul:
-    needs: release
+    needs: [release, release-iraq]
     if: contains(needs.release.outputs.directories, 'mosul')
     runs-on: ubuntu-latest
     permissions: 
