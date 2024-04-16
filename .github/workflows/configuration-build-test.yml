@@ -108,8 +108,7 @@ jobs:
   release-mosul:
     needs: [release, release-iraq]
     if: |
-      always() &&
-      !failure() &&
+      ( always() && !failure() ) ||
       contains(needs.release.outputs.directories, 'mosul')
     runs-on: ubuntu-latest
     permissions: 
