@@ -62,6 +62,7 @@ runs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ env.ARTIFACTID }}-${{ env.VERSION }}
-        path: ${{ inputs.artifact-path }}/target/${{ env.ARTIFACTID }}-${{ env.VERSION }}
+        path: ${{ inputs.artifact-path }}/target/${{ env.ARTIFACTID }}-${{ env.VERSION }}.zip
+        compression-level: 0
         overwrite: true
         if-no-files-found: error
