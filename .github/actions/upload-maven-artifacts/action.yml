@@ -33,6 +33,21 @@ runs:
     - name: Set settings.xml
       uses: s4u/maven-settings-action@v3.0.0
       with:
+        repositories: |
+          [{
+            "id":"mks-nexus-public",
+            "name":"mks-nexus-public",
+            "url":"https://nexus.mekomsolutions.net/repository/maven-public/",
+            "snapshots":
+              {"enabled":true}
+          },
+          {
+            "id":"msf-ocg-github-lime-emr",
+            "name":"MSF maven repository",
+            "url":"https://maven.pkg.github.com/MSF-OCG/LIME-EMR/",
+            "snapshots":
+              {"enabled":true}
+          }]
         servers: |
           [{
             "id": "msf-ocg-github-lime-emr",
