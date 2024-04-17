@@ -152,7 +152,7 @@
               <target>
                 <echo message="Adding msf frontend config"/>
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
-                              match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/ozone/msf-frontend-config.json" />
+                              match="ozone-frontend-config.json" replace="msf-frontend-config.json" />
               </target>
             </configuration>
           </execution>

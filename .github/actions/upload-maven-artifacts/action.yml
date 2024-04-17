@@ -11,18 +11,39 @@ inputs:
     description: 'Name of the artifact(s) to upload'
     required: false
     default: 'distro'
+  maven-server-username:
+    description: 'username of the server for maven settings.xml file'
+    required: true
+    default: ''
+  maven-server-token:
+    description: 'token of the server for maven settings.xml file'
+    required: true
+    default: ''
 
 runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v4
-      with:
-        clean: false
 
     - uses: actions/setup-java@v4
       with:
           java-version: '8'
           distribution: 'adopt'
+  
+    - name: Set settings.xml
+      uses: s4u/maven-settings-action@v3.0.0
+      with:
+        servers: |
+          [{
+            "id": "msf-ocg-github-lime-emr",
+            "username": "${{ inputs.maven-server-username }}",
+            "password": "${{ inputs.maven-server-token }}"
+          }]
+
+    - name: Publish ${{ inputs.artifact-name }} maven artifacts
+      working-directory: ${{ inputs.artifact-path }}
+      run: 'mvn --batch-mode clean deploy'
+      shell: bash
 
     - name: Get MSF ${{ inputs.artifact-name }} version
       working-directory: ${{ inputs.artifact-path }}
