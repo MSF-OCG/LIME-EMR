@@ -23,20 +23,12 @@ jobs:
       - name: Set settings.xml
         uses: s4u/maven-settings-action@v3.0.0
         with:
-          repositories: |
+          mirrors: |
             [{
-              "id":"mks-nexus-public",
-              "name":"mks-nexus-public",
-              "url":"https://nexus.mekomsolutions.net/repository/maven-public/",
-              "snapshots":
-                {"enabled":true}
-            },
-            {
-              "id":"msf-ocg-github-lime-emr",
-              "name":"msf-ocg-github-lime-emr",
-              "url":"https://maven.pkg.github.com/MSF-OCG/LIME-EMR/",
-              "snapshots":
-                {"enabled":true}
+              "id": "mks-nexus-public"
+              "name": "ozone-mirror",
+              "mirrorOf": "com.ozonehis*",
+              "url": "https://nexus.mekomsolutions.net/repository/maven-public/"
             }]
           servers: |
             [{
