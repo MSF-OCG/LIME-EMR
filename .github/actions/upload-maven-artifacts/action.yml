@@ -33,13 +33,6 @@ runs:
     - name: Set settings.xml
       uses: s4u/maven-settings-action@v3.0.0
       with:
-        mirrors: |
-          [{
-            "id": "mks-nexus-public",
-            "name": "ozone-mirror",
-            "mirrorOf": "com.ozonehis*",
-            "url": "https://nexus.mekomsolutions.net/repository/maven-public/"
-          }]
         servers: |
           [{
             "id": "msf-ocg-github-lime-emr",
