@@ -120,6 +120,13 @@ log_error() {
    chmod +x ./Procedures/lime_emr.sh
    sh ./Procedures/lime_emr.sh install mosul
 
+## Roadmap
+
+- [ ] In pom files, implement a **merge logic for frontend config JSONs** at the site level. It will merge frontend configs from the Distro, Country, and Site level together. The lower level will always overwrite the above level in case of conflicts. Example: [externalRefLinks for the esm-primary-navigation-app](https://github.com/MSF-OCG/LIME-EMR/blob/main/sites/mosul/configs/openmrs/frontend_config/msf-frontend-config.json)
+- [ ] In pom files, replicate a similar logic for **initializer configuration files** - assumung that the lower level also always overwrite the above one.
+- [ ] Simplify the **results of the build** currently generating muliple targets for all levels, rather than a single one for the execution level, being the Site level. Example: [ozone-msf-mosul-1.0.0-SNAPSHOT](https://github.com/MSF-OCG/LIME-EMR/packages/2120035)
+- [ ] Ensure that the **Github Action build** is running the right level of configs upon release or manual trigger
+
 ## Release Notes
 
 ### 1.0.0-SNAPSHOT (in progress)
