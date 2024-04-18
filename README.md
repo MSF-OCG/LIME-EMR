@@ -1,4 +1,24 @@
-# Ozone MSF
+# MSF LIME EMR
+Using Ozone Approach
+
+## Configuration hierarchy and inheritance 
+
+### Assumptions
+- There are **3 levels** of configurations: Distro < Country < Site
+- The default **ineritance logic** is for lower levels to overwrite above ones
+- **Configurations** includes backend and frontend binaries, frontend configs, initializer metadata, and assets like logos.
+- It **primarly support OpenMRS**, but aims to be flexible and also support Senaite, Superset, OpenFN, FHIR, etc.
+
+#### Hierarchy overview - example
+```
+── pom.xml - Aggredator / Orchestrator  
+      └── /distro/pom.xml - Organizational-wide Config  
+      └── /countries - Country-specific Config  
+            └── /iraq/pom.xl
+      └── /sites - Site-specific Config  
+            └── /mosul/pom.xl
+```
+
 ### Workflow diagram
 
 ```mermaid
@@ -23,53 +43,7 @@ end
 
 Z --> |Pulling the artefacts| ZA
 ```
-#### Hierarchy overview
-```
-── pom.xml - Aggredator / Orchestrator  
-      └── /distro/pom.xml - Organizational-wide Config  
-      └── /countries - Country-specific Config  
-            └── /iraq/pom.xl
-      └── /sites - Site-specific Config  
-            └── /mosul/pom.xl
-```
-#### How to configure the pom files 
-- GroupId
-- ArtifactID
-- Version
 
-- Dependencies
-
-- Build
-- Plugins
-
-- Execution
-- Configuration
-- Exclude
-
-- DistributionManagement
-
-### 1. Configure
-- [x] Configure the Organization level - MSF  
-- [x] Configure the Country level - Iraq  
-- [x] Configure the Site level - Mosul  
-### 2. Build
-- [x] Successfully build the Mosul site distro + above dependencies (Country and Organization levels inherited)
-- [ ] Optional: Separate the builds (Org, Country, Site) and make it generic if possible
-### 3. Execution
-- [ ] Run the OpenMRS Docker Compose with the Mosul distro locally using the updated Shell script (Tooling procedures)
-- [x] Next: Plan for testing on MSF instance 
-- [ ] Optional: Run E2E testing
-
-## Config hierarchy
-```
-── OpenMRS RefApp level - Ozone (ex. base modules, docker images, etc.). 
-      └── Org level - MSF Distro - config across MSF implementations _(ex. branding, modules versions, etc. )  
-            └── Country level - MSF Iraq specific config (ex. languages)  
-                └── Site level - MSF Mosul specific config (ex. address hierarchy, roles, etc.)  
-                └── Site level - MSF Baghdad specific config (ex. address hierarchy, roles, etc.)  
-            └── Country level - MSF DRC specific config (ex. languages)   
-                └── Site level - MSF Goma specific config (ex. modules, locations, etc)  
-```
 
 ## Example for configs for hierarchy demo of v1 - Week of April 8
 ### Ozone Level **OpenMRS RefApp**   
@@ -87,17 +61,6 @@ Z --> |Pulling the artefacts| ZA
 - [x] [Person attributes](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/personattributetypes/personattributetypes_core-demo.csv) for Initializer
 - [x] [Initial consultation form](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/ampathforms/initial_consultation-lime_demo.json)
 
-
-## Ozone documentation
-**Ozone MSF** is a distribution of [Ozone HIS](https://www.ozone-his.com).
-
-Please refer to the online Ozone documentation for instructions how to run the project: https://docs.ozone-his.com/create-distro/#available-commands
-
-
-```
-$ git clone https://github.com/mekomsolutions/ozone-msf
-$ cd ozone-msf
-```
 
 ## Quick Start
 
@@ -156,6 +119,15 @@ log_error() {
 8. Run installation script
    chmod +x ./Procedures/lime_emr.sh
    sh ./Procedures/lime_emr.sh install mosul
+
+## Roadmap
+
+- [ ] In pom files, implement a **merge logic for frontend config JSONs** at the site level. It will merge frontend configs from the Distro, Country, and Site level together. The lower level will always overwrite the above level in case of conflicts. Example: [externalRefLinks for the esm-primary-navigation-app](https://github.com/MSF-OCG/LIME-EMR/blob/main/sites/mosul/configs/openmrs/frontend_config/msf-frontend-config.json)
+- [ ] In pom files, replicate a similar logic for **initializer configuration files** - assumung that the lower level also always overwrite the above one.
+- [ ] Simplify the **results of the build** currently generating muliple targets for all levels, rather than a single one for the execution level, being the Site level. Example: [ozone-msf-mosul-1.0.0-SNAPSHOT](https://github.com/MSF-OCG/LIME-EMR/packages/2120035)
+- [ ] Ensure that the **Github Action build** is running the right level of configs upon release or manual trigger - not triggering all of them aspecially for performance savings pursposes:
+      <img width="689" alt="Screenshot 2024-04-18 at 1 30 07 PM" src="https://github.com/MSF-OCG/LIME-EMR/assets/9321036/763551d3-a2d4-4476-8aac-334a6f6e611b">
+
 
 ## Release Notes
 
