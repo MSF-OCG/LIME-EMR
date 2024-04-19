@@ -129,6 +129,167 @@ log_error() {
       <img width="689" alt="Screenshot 2024-04-18 at 1 30 07 PM" src="https://github.com/MSF-OCG/LIME-EMR/assets/9321036/763551d3-a2d4-4476-8aac-334a6f6e611b">
 
 
+## [Configuration](#configuration)
+
+### [Inheritance hierarchy in configuration](#inheritance-hierarchy-in-configuration)
+
+Configurations are pulled from parent level, modified as necessary in the current level and then applied. Modifiication of configuration at the cuurent level involves either the ie exclusion of non-needed configuration and/or inclusion of configuration that are specific at the current level. This process maintains inheritance from parent level to child level while facilitating easy customization and maintains consistency across levels.
+
+### [Backend configuration](#backend-configuration)
+We use the maven's `pom.xml` file at the root of each level to define what configuration should be applied. 
+We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/maven-resources-plugin) to exclude/filter and include configs as different execution processes using the `copy-resources` goal.  This allows us to add or remove files while copying them form the parent level to the current level's build directory after the parent's download.
+
+- #### [How to use the maven resources plugin](#how-to-use-the-maven-resources-plugin)
+    ```xml
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+            <!-- add executions to filter or add a file -->
+        </executions>
+    </plugin> 
+    ```
+
+- #### [Excluding/Filtering files from parent level](#excluding-files-from-parent-level)
+    ```xml
+    <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        ...
+        <execution>
+            <id>Exclude unneeded Ozone files</id>
+            <phase>process-resources</phase>
+            <goals>
+                <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+                <outputDirectory>
+                    <!-- destination of the file to copy-->
+                    ${project.build.directory}/${project.artifactId}-${project.version}
+                </outputDirectory> 
+                <overwrite>true</overwrite>
+                <resources>
+                <resource>
+                    <directory>${project.build.directory}/ozone</directory> <!-- source of the file to copy -->
+                    <excludes>
+                    <!-- exclude unneeded files here like: <exclude>distro/configs/**/ampathforms/*.*</exclude> -->
+                    </excludes>
+                </resource>
+                </resources>
+            </configuration>
+        </execution>
+        ...
+    </plugin> 
+    ```
+
+- #### [Including files to current level](#including-files-to-current-level)
+    ```xml
+    <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        ...
+        <execution>
+            <id>Copy MSF Disto docker compose .txt file</id>
+            <phase>prepare-package</phase>
+            <goals>
+                <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+                <outputDirectory>
+                    <!-- destination of the file to copy-->
+                    ${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts
+                </outputDirectory> 
+                <overwrite>true</overwrite>
+                <resources>
+                <resource>
+                    <directory>${project.basedir}/../scripts</directory> <!-- source of the file to copy-->
+                    <includes>
+                    <!-- add more needed files here like: <include> docker-compose-files.txt</include> -->
+                    </includes>
+                </resource>
+                </resources>
+            </configuration>
+        </execution>
+        ...
+    </plugin> 
+    ```
+
+    #### [Initializer Data](#initializer-data)
+    At the current level, metadata is loaded through the Initializer module. A CSV file is added to the `configs/openmrs/initializer_config` folder at the current level and if the parent level defines the same `.csv` file, the corresponding file is excluded like showed below. Read more about the initializer configuration [here](https://github.com/mekomsolutions/openmrs-module-initializer/blob/master/README.md#introduction).
+
+    <strong>Example</strong>
+
+  <img width="689" alt="Screenshot 2024-04-18 at 1 30 07 PM" src="https://github.com/MSF-OCG/LIME-EMR/assets/58003327/12012490-7b42-4812-a0e5-3e79f77fd746">
+
+### [Frontend Configuration](#frontend-configuration)
+MSF configuration are loaded using the [msf-frontend-config.json](https://github.com/MSF-OCG/LIME-EMR/blob/main/distro/configs/openmrs/frontend_config/msf-frontend-config.json)
+We use the [Apache Maven AntRun Plugin](https://maven.apache.org/plugins/maven-antrun-plugin/) to execute a task that replaces the ozone configuration file in the `.env` file that docker compose uses while building the frontend. The `.env` file is located in the `target/run/docker/.env` at the current level.
+
+Below is how its done 
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-antrun-plugin</artifactId>
+    <executions>
+        <execution>
+        <id>Add MSF-OCG LIME Frontend Configuration to ozone</id>
+        <phase>process-resources</phase>
+        <goals>
+            <goal>run</goal>
+        </goals>
+        <configuration>
+            <target>
+            <echo message="Adding msf frontend config"/>
+            <replaceregexp 
+                file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
+                match="ozone-frontend-config.json"
+                replace="msf-frontend-config.json"
+            />
+            </target>
+        </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+This task replaces all the occurrences of the sting `ozone-frontend-config.json` with `ozone-frontend-config.json`
+After building the project using maven, the  `SPA_CONFIG_URLS` variable (it specifies the location of the frontend config file inside docker) in the `.env` file will have a value of `/openmrs/spa/ozone/msf-frontend-config.json`
+
+> Note: Docker compose will only load the file passed to the `SPA_CONFIG_URLS` in the `.env` file.  This means that any other file present in the `target` but not added to the `SPA_CONFIG_URLS` will be ignored.
+
+### [Inheritance in Frontend Configuration](#inheritance-in-frontend-configuration)
+The OpenMRS frontend tooling supports loading a frontend configuration on top of the currently loaded configuration.  This means that we can use one file to load general frontend configuration like at `Organization level` branding and logos, and at site level, an `obs-table` on top of the patient chart.   Both these configuration will be loaded successfully.
+
+We can also use the child frontend configuration file to override the inherited frontend configuration. This implies that each level should have its own frontend configuration file in case it needs to load new frontend configuration.
+
+<strong>Examples</strong>
+- At organization level
+    in pom.xml file
+    ```xml
+    <replaceregexp
+        file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
+        match="ozone-frontend-config.json" 
+        replace="msf-frontend-config.json"
+    />
+    ```
+    result to the `.env` file after build
+    ```properties
+    SPA_CONFIG_URLS=/openmrs/spa/ozone/msf-frontend-config.json
+    ```
+
+- Site frontend configuration inheriting from Organization level
+    in pom.xml file
+    ```xml
+    <replaceregexp 
+        file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
+        match="(SPA_CONFIG_URLS=.+)"
+        replace="\1,/openmrs/spa/ozone/msf-mosul-frontend-config.json"
+    />
+    ```
+    result to the `.env` file after build
+    ```properties
+    SPA_CONFIG_URLS=/openmrs/spa/ozone/msf-frontend-config.json, /openmrs/spa/ozone/msf-mosul-frontend-config-json
+    ```
+
+## [FAQ](#faq)
+
 ## Release Notes
 
 ### 1.0.0-SNAPSHOT (in progress)
