@@ -133,7 +133,7 @@ log_error() {
 
 ### [Inheritance hierarchy in configuration](#inheritance-hierarchy-in-configuration)
 
-Configurations are pulled from parent level, modified as necessary in the current level and then applied. Modifiication of configuration at the cuurent level involves either the ie exclusion of non-needed configuration and/or inclusion of configuration that are specific at the current level. This process maintains inheritance from parent level to child level while facilitating easy customization and maintains consistency across levels.
+Configurations are pulled from parent level, modified as necessary in the current level and then applied. Modifiication of configuration at the cuurent level involves either the exclusion of non-needed configuration and/or inclusion of configuration that are specific at the current level. This process maintains inheritance from parent level to child level while facilitating easy customization and maintains consistency across levels.
 
 ### [Backend configuration](#backend-configuration)
 We use the maven's `pom.xml` file at the root of each level to define what configuration should be applied. 
@@ -249,7 +249,7 @@ Below is how its done
     </executions>
 </plugin>
 ```
-This task replaces all the occurrences of the sting `ozone-frontend-config.json` with `ozone-frontend-config.json`
+This task replaces all the occurrences of the sting `ozone-frontend-config.json` with `msf-frontend-config.json`
 After building the project using maven, the  `SPA_CONFIG_URLS` variable (it specifies the location of the frontend config file inside docker) in the `.env` file will have a value of `/openmrs/spa/ozone/msf-frontend-config.json`
 
 > Note: Docker compose will only load the file passed to the `SPA_CONFIG_URLS` in the `.env` file.  This means that any other file present in the `target` but not added to the `SPA_CONFIG_URLS` will be ignored.
