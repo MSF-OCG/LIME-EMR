@@ -16,10 +16,16 @@
       <requiredInHierarchy>true</requiredInHierarchy>
     </addressComponent>
     <addressComponent>
+      <field>COUNTY_DISTRICT</field>
+      <nameMapping>Location.district</nameMapping>
+      <sizeMapping>40</sizeMapping>
+      <elementDefault>Mosul</elementDefault>
+      <requiredInHierarchy>true</requiredInHierarchy>
+    </addressComponent>
+    <addressComponent>
       <field>CITY_VILLAGE</field>
       <nameMapping>Location.village</nameMapping>
       <sizeMapping>80</sizeMapping>
-      <elementDefault>West Mosul</elementDefault>
       <requiredInHierarchy>true</requiredInHierarchy>
     </addressComponent>
     <addressComponent>
@@ -28,18 +34,10 @@
       <sizeMapping>40</sizeMapping>
       <requiredInHierarchy>true</requiredInHierarchy>
     </addressComponent>
-    <addressComponent>
-      <field>ADDRESS_2</field>
-      <nameMapping>Location.address2</nameMapping>
-      <sizeMapping>80</sizeMapping>
-      <requiredInHierarchy>true</requiredInHierarchy>
-    </addressComponent>
   </addressComponents>
   <lineByLineFormat>
-      <string>address1, cityVillage</string>
-      <string>address2</string>
-      <string>stateProvince</string>
-      <string>country</string>
+            <string>cityVillage countyDistrict stateProvince country</string>
+            <string>address1</string>
   </lineByLineFormat>
   <addressHierarchyFile>
     <filename>addresshierarchy_iraq.csv</filename>
