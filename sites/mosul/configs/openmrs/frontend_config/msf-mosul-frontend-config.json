@@ -6,5 +6,135 @@
         "redirect": "#"
       }
     ]
+  },
+  "@openmrs/esm-patient-registration-app": {
+    "sections": [
+      "demographics",
+      "contact",
+      "additionalInformation",
+      "relationships"
+    ],
+    "fieldDefinitions": [
+      {
+        "id": "maritalStatus",
+        "type": "person attribute",
+        "uuid": "8d871f2a-c2cc-11de-8d13-0010c6dffd0f",
+        "label": "Marital status",
+        "validation": {
+          "required": true
+        },
+        "customConceptAnswers": [
+          {
+            "uuid": "1058AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "label": "Divorced"
+          },
+          {
+            "uuid": "1059AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "label": "Widowed"
+          },
+          {
+            "uuid": "1060AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "label": "Cohabiting"
+          },
+          {
+            "uuid": "1057AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            "label": "Single"
+          }
+        ]
+      },
+      {
+        "id": "phone",
+        "type": "person attribute",
+        "uuid": "bc851ec1-9fb7-49da-acd7-1a61168002fe",
+        "label": "Telephone Number",
+        "validation": {
+          "required": false,
+          "matches": "^0([0-9](?:(?:[0-9][0-9])|(?:0[0-8])|(4[0-1]))[0-9]{6})$"
+        }
+      },
+      {
+        "id": "email",
+        "type": "person attribute",
+        "uuid": "9b59653f-035c-11ef-b976-0242ac160002",
+        "label": "Individual Email Address",
+        "validation": {
+          "required": false,
+          "matches": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+        }
+      }
+    ],
+    "sectionDefinitions": [
+      {
+        "id": "additionalInformation",
+        "name": "Additional Information",
+        "fields": [
+          "maritalStatus"
+        ]
+      },
+      {
+        "id": "contact",
+        "name": "Contact Details",
+        "fields": [
+          "address",
+          "phone",
+          "email"
+        ]
+      }
+    ],
+    "fieldConfigurations": {
+      "name": {
+        "displayCapturePhoto": false,
+        "allowUnidentifiedPatients": true
+      },
+      "dateOfBirth": {
+        "useEstimatedDateOfBirth": {
+          "enabled": true,
+          "dayOfMonth": 15,
+          "month": 5
+        }
+      },
+      "gender": [
+        {
+          "id": "male",
+          "value": "male",
+          "label": "Male"
+        },
+        {
+          "id": "female",
+          "value": "Female",
+          "label": "Female"
+        },
+        {
+          "id": "trangender_male",
+          "value": "Trangender Male",
+          "label": "Transgender Male"
+        },
+        {
+          "id": "trangender_female",
+          "value": "Trangender Female",
+          "label": "Transgender Female"
+        },
+        {
+          "id": "gender_varian",
+          "value": "Gender Variant - Non conforming",
+          "label": "Gender Variant - Non conforming"
+        },
+        {
+          "id": "prefer_not_to_say",
+          "value": "Prefer Not To Say",
+          "label": "Prefer Not To Say"
+        },
+        {
+          "id": "unknown",
+          "value": "Unknown",
+          "label": "Unknown"
+        }
+      ],
+      "address": {
+        "useAddressHierarchy": {
+          "searchAddressByLevel": true
+        }
+      }
+    }
   }
 }
