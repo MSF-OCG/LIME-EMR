@@ -19,10 +19,16 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
+    <PatientIdentifierGeneratorVersion>0.1.0</PatientIdentifierGeneratorVersion>
   </properties>
 
   <dependencies>
     <!-- TODO: Add any implementation-specific dependencies -->
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>patientidentifiergenerator-omod</artifactId>
+      <version>${PatientIdentifierGeneratorVersion}</version>
+    </dependency>
   </dependencies>
 
   <scm>
