@@ -2,6 +2,9 @@ name: Build, validate configuration and deploy
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
   
 jobs:
   build:
