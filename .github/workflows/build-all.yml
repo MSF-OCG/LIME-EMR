@@ -67,8 +67,6 @@ jobs:
         fi
 
   release-distro:
-    needs: release
-    if: contains(needs.release.outputs.directories, 'distro')
     runs-on: ubuntu-latest
     permissions: 
       contents: read
