@@ -228,6 +228,7 @@ Below is how its done
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-antrun-plugin</artifactId>
+    <version>3.1.0</version>
     <executions>
         <execution>
         <id>Add MSF-OCG LIME Frontend Configuration to ozone</id>
