@@ -1,7 +1,7 @@
 # MSF LIME EMR
 Using Ozone Approach
 
-## Configuration hierarchy and inheritance 
+## Configuration hierarchy and inheritance
 
 ### Assumptions
 - There are **3 levels** of configurations: Distro < Country < Site
@@ -11,11 +11,11 @@ Using Ozone Approach
 
 #### Hierarchy overview - example
 ```
-── pom.xml - Aggredator / Orchestrator  
-      └── /distro/pom.xml - Organizational-wide Config  
-      └── /countries - Country-specific Config  
+── pom.xml - Aggredator / Orchestrator
+      └── /distro/pom.xml - Organizational-wide Config
+      └── /countries - Country-specific Config
             └── /iraq/pom.xl
-      └── /sites - Site-specific Config  
+      └── /sites - Site-specific Config
             └── /mosul/pom.xl
 ```
 
@@ -46,18 +46,18 @@ Z --> |Pulling the artefacts| ZA
 
 
 ## Example for configs for hierarchy demo of v1 - Week of April 8
-### Ozone Level **OpenMRS RefApp**   
-- [x] Refapp stable version of [modules for frontend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/frontend/spa-assemble-config.json)  
-- [x] Refapp stable version of [modules for backend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/distro/pom.xml)  
-### MSF Distro **LIME EMR** repository  
-- [x] MSF [branding in frontend config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/frontend/custom-config.json)   
+### Ozone Level **OpenMRS RefApp**
+- [x] Refapp stable version of [modules for frontend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/frontend/spa-assemble-config.json)
+- [x] Refapp stable version of [modules for backend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/distro/pom.xml)
+### MSF Distro **LIME EMR** repository
+- [x] MSF [branding in frontend config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/frontend/custom-config.json)
 - [x] MSF [logo and assets](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/frontend/assets)
-- [x] [Env specific logos](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/dev/frontend/qa/assets/logo.png) for users to easily identify their environment 
-### Country level: **Iraq**   
-- [x] [Roles config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/roles/roles_core-demo.csv) for Initializer  
-### Site level: **Mosul**  
-- [x] [Address hierarchy](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/distro/configuration/addresshierarchy) for Initializer  
-- [x] [Locations](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/locations/locations.csv) for Initializer  
+- [x] [Env specific logos](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/dev/frontend/qa/assets/logo.png) for users to easily identify their environment
+### Country level: **Iraq**
+- [x] [Roles config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/roles/roles_core-demo.csv) for Initializer
+### Site level: **Mosul**
+- [x] [Address hierarchy](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/distro/configuration/addresshierarchy) for Initializer
+- [x] [Locations](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/locations/locations.csv) for Initializer
 - [x] [Person attributes](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/personattributetypes/personattributetypes_core-demo.csv) for Initializer
 - [x] [Initial consultation form](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/ampathforms/initial_consultation-lime_demo.json)
 
@@ -90,9 +90,9 @@ cd sites/mosul/target/ozone-msf-mosul-<version>/run/docker/scripts
 ## Testing
 
 1. Install prerequisites
-   brew install jq 
+   brew install jq
 3. Clone EMR Tooling
-   
+
 4. Update install directory
    ```bash
    INSTALL_DIR="**.**/home/lime/$APP_NAME"
@@ -136,7 +136,7 @@ log_error() {
 Configurations are pulled from parent level, modified as necessary in the current level and then applied. Modifiication of configuration at the cuurent level involves either the exclusion of non-needed configuration and/or inclusion of configuration that are specific at the current level. This process maintains inheritance from parent level to child level while facilitating easy customization and maintains consistency across levels.
 
 ### [Backend configuration](#backend-configuration)
-We use the maven's `pom.xml` file at the root of each level to define what configuration should be applied. 
+We use the maven's `pom.xml` file at the root of each level to define what configuration should be applied.
 We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/maven-resources-plugin) to exclude/filter and include configs as different execution processes using the `copy-resources` goal.  This allows us to add or remove files while copying them form the parent level to the current level's build directory after the parent's download.
 
 - #### [How to use the maven resources plugin](#how-to-use-the-maven-resources-plugin)
@@ -147,7 +147,7 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
         <executions>
             <!-- add executions to filter or add a file -->
         </executions>
-    </plugin> 
+    </plugin>
     ```
 
 - #### [Excluding/Filtering files from parent level](#excluding-files-from-parent-level)
@@ -165,7 +165,7 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
                 <outputDirectory>
                     <!-- destination of the file to copy-->
                     ${project.build.directory}/${project.artifactId}-${project.version}
-                </outputDirectory> 
+                </outputDirectory>
                 <overwrite>true</overwrite>
                 <resources>
                 <resource>
@@ -178,7 +178,7 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
             </configuration>
         </execution>
         ...
-    </plugin> 
+    </plugin>
     ```
 
 - #### [Including files to current level](#including-files-to-current-level)
@@ -196,7 +196,7 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
                 <outputDirectory>
                     <!-- destination of the file to copy-->
                     ${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts
-                </outputDirectory> 
+                </outputDirectory>
                 <overwrite>true</overwrite>
                 <resources>
                 <resource>
@@ -209,7 +209,7 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
             </configuration>
         </execution>
         ...
-    </plugin> 
+    </plugin>
     ```
 
     #### [Initializer Data](#initializer-data)
@@ -223,7 +223,7 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
 MSF configuration are loaded using the [msf-frontend-config.json](https://github.com/MSF-OCG/LIME-EMR/blob/main/distro/configs/openmrs/frontend_config/msf-frontend-config.json)
 We use the [Apache Maven AntRun Plugin](https://maven.apache.org/plugins/maven-antrun-plugin/) to execute a task that replaces the ozone configuration file in the `.env` file that docker compose uses while building the frontend. The `.env` file is located in the `target/run/docker/.env` at the current level.
 
-Below is how its done 
+Below is how its done
 ```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
@@ -239,7 +239,7 @@ Below is how its done
         <configuration>
             <target>
             <echo message="Adding msf frontend config"/>
-            <replaceregexp 
+            <replaceregexp
                 file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
                 match="ozone-frontend-config.json"
                 replace="msf-frontend-config.json"
@@ -266,7 +266,7 @@ We can also use the child frontend configuration file to override the inherited 
     ```xml
     <replaceregexp
         file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
-        match="ozone-frontend-config.json" 
+        match="ozone-frontend-config.json"
         replace="msf-frontend-config.json"
     />
     ```
@@ -278,7 +278,7 @@ We can also use the child frontend configuration file to override the inherited 
 - Site frontend configuration inheriting from Organization level
     in pom.xml file
     ```xml
-    <replaceregexp 
+    <replaceregexp
         file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
         match="(SPA_CONFIG_URLS=.+)"
         replace="\1,/openmrs/spa/ozone/msf-mosul-frontend-config.json"
