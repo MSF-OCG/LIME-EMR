@@ -61,9 +61,40 @@
           "required": false,
           "matches": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
         }
+      },
+      {
+        "id": "faimilyName1",
+        "type": "person attribute",
+        "uuid": "ec705ed9-2274-483c-bc92-1f120232161f",
+        "label": "Family Name 1",
+        "placeholder": "placeholder",
+        "validation": {
+          "required": false
+        }
+      },
+      {
+        "id": "faimilyName2",
+        "type": "person attribute",
+        "uuid": "33829173-d444-4d1d-a407-869d322c27d4",
+        "label": "Family Name 2",
+        "placeholder": "placeholder",
+        "validation": {
+          "required": false
+        }
       }
     ],
     "sectionDefinitions": [
+      {
+        "id": "demographics",
+        "fields": [
+          "name",
+          "faimilyName1",
+          "faimilyName2",
+          "gender",
+          "dob",
+          "id"
+        ]
+      },
       {
         "id": "additionalInformation",
         "name": "Additional Information",
