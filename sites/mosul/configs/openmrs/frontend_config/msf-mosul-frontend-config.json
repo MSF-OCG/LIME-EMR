@@ -12,6 +12,7 @@
       "demographics",
       "contact",
       "additionalInformation",
+      "emergencyContacts",
       "relationships"
     ],
     "fieldDefinitions": [
@@ -53,31 +54,134 @@
         }
       },
       {
-        "id": "individualEmailAddress",
+        "id": "emailAddress",
         "type": "person attribute",
         "uuid": "14d4f066-15f5-102d-96e4-000c29c2a5d7",
-        "label": "individual Email Address",
+        "label": "Email Address",
         "validation": {
           "required": false,
           "matches": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
         }
       },
       {
-        "id": "faimilyName1",
+        "id": "familyName2",
         "type": "person attribute",
         "uuid": "ec705ed9-2274-483c-bc92-1f120232161f",
-        "label": "Family Name 1",
+        "label": "Family Name 2",
         "placeholder": "placeholder",
         "validation": {
           "required": false
         }
       },
       {
-        "id": "faimilyName2",
+        "id": "familyName3",
         "type": "person attribute",
         "uuid": "33829173-d444-4d1d-a407-869d322c27d4",
-        "label": "Family Name 2",
+        "label": "Family Name 3",
         "placeholder": "placeholder",
+        "validation": {
+          "required": false
+        }
+      },
+      {
+        "id": "currentStatus",
+        "type": "obs",
+        "uuid": "b3767edc-78f5-4d0f-a2d8-564ae58d00cf",
+        "label": "Current Status",
+        "validation": {
+          "required": true
+        },
+        "customConceptAnswers": [
+          {
+            "uuid": "MSF-AAAAAA000000000000001329",
+            "label": "Unknown"
+          },
+          {
+            "uuid": "fc49acaa-ece2-4365-9dfb-70c2105de8b1",
+            "label": "Returnee"
+          },
+          {
+            "uuid": "bbdb287c-4ba1-4944-bd87-eb126c5f9d92",
+            "label": "Resident"
+          },
+          {
+            "uuid": "515c5abe-4172-4d0c-a991-0de2888228d7",
+            "label": "Internationally displaced person"
+          },
+          {
+            "uuid": "MSF-AAAAAA000000000000001930",
+            "label": "Internally displaced person"
+          }
+        ]
+      },
+      {
+        "id": "relationship1firstName",
+        "type": "obs",
+        "uuid": "ab962200-f378-4d25-8c82-60e2394ed582",
+        "label": "Relationship 1 First Name",
+        "validation": {
+          "required": false
+        }
+      },
+      {
+        "id": "relationship1lastName",
+        "type": "obs",
+        "uuid": "2d2e4391-452a-4d9f-94a4-6accbde8e613",
+        "label": "Relationship 1 Last Name",
+        "validation": {
+          "required": false
+        }
+      },
+      {
+        "id": "relationship1relationshipToPatient",
+        "type": "obs",
+        "uuid": "610e573a-157f-475b-93d3-6afbcf74e71b",
+        "label": "Relationship 1 Relationship To Patient",
+        "validation": {
+          "required": false
+        }
+      },
+      {
+        "id": "relationship1phoneNumber",
+        "type": "obs",
+        "uuid": "610cefa9-f84f-4b2d-aef7-906f17f61869",
+        "label": "Relationship 1 Phone Number",
+        "validation": {
+          "required": false
+        }
+      },
+      {
+        "id": "relationship2firstName",
+        "type": "obs",
+        "uuid": "468aa4ac-10c1-4189-944b-6d4b134838c9",
+        "label": "Relationship 2 First Name",
+        "validation": {
+          "required": false
+        }
+      },
+      {
+        "id": "relationship2lastName",
+        "type": "obs",
+        "uuid": "b81e2108-a22e-4fc5-83e2-4d59a48e6769",
+        "label": "Relationship 2 Last Name",
+        "validation": {
+          "required": false
+        }
+      },
+      {
+        "id": "relationship2relationshipToPatient",
+        "type": "obs",
+        "uuid": "1cc30f31-cb1d-440c-9ea5-826bd71e2b29",
+        "label": "Relationship 2 Relationship To Patient",
+        "validation": {
+          "required": false
+        }
+      },
+      {
+        "id": "relationship2phoneNumber",
+        "type": "obs",
+        "uuid": "66f66a8b-7517-4603-895f-ef93831dcbd4",
+        "label": "Relationship 2 Phone Number",
         "validation": {
           "required": false
         }
@@ -88,8 +192,8 @@
         "id": "demographics",
         "fields": [
           "name",
-          "faimilyName1",
-          "faimilyName2",
+          "familyName2",
+          "familyName3",
           "gender",
           "dob",
           "id"
@@ -98,17 +202,25 @@
       {
         "id": "additionalInformation",
         "name": "Additional Information",
-        "fields": [
-          "maritalStatus"
-        ]
+        "fields": ["maritalStatus", "currentStatus"]
       },
       {
         "id": "contact",
         "name": "Contact Details",
+        "fields": ["address", "telephoneNumber", "emailAddress"]
+      },
+      {
+        "id": "emergencyContacts",
+        "name": "Emergency Contacts",
         "fields": [
-          "address",
-          "telephoneNumber",
-          "individualEmailAddress"
+          "relationship1firstName",
+          "relationship1lastName",
+          "relationship1relationshipToPatient",
+          "relationship1phoneNumber",
+          "relationship2firstName",
+          "relationship2lastName",
+          "relationship2relationshipToPatient",
+          "relationship2phoneNumber"
         ]
       }
     ],
@@ -166,6 +278,9 @@
           "searchAddressByLevel": true
         }
       }
+    },
+    "registrationObs": {
+      "encounterTypeUuid": "10d061d8-0677-47f2-8061-f302244dc48b"
     }
   }
 }
