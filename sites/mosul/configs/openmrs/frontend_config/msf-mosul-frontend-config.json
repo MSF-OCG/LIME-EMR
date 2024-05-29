@@ -85,34 +85,13 @@
       },
       {
         "id": "currentStatus",
-        "type": "obs",
-        "uuid": "b3767edc-78f5-4d0f-a2d8-564ae58d00cf",
+        "type": "person attribute",
+        "uuid": "e0b6ed99-72c4-4847-a442-e9929eac4a0f",
         "label": "Current Status",
         "validation": {
           "required": true
         },
-        "customConceptAnswers": [
-          {
-            "uuid": "MSF-AAAAAA000000000000001329",
-            "label": "Unknown"
-          },
-          {
-            "uuid": "fc49acaa-ece2-4365-9dfb-70c2105de8b1",
-            "label": "Returnee"
-          },
-          {
-            "uuid": "bbdb287c-4ba1-4944-bd87-eb126c5f9d92",
-            "label": "Resident"
-          },
-          {
-            "uuid": "515c5abe-4172-4d0c-a991-0de2888228d7",
-            "label": "Internationally displaced person"
-          },
-          {
-            "uuid": "MSF-AAAAAA000000000000001930",
-            "label": "Internally displaced person"
-          }
-        ]
+        "answerConceptSetUuid": "b3767edc-78f5-4d0f-a2d8-564ae58d00cf"
       },
       {
         "id": "relationship1firstName",
@@ -190,14 +169,7 @@
     "sectionDefinitions": [
       {
         "id": "demographics",
-        "fields": [
-          "name",
-          "familyName2",
-          "familyName3",
-          "gender",
-          "dob",
-          "id"
-        ]
+        "fields": ["name", "familyName2", "familyName3", "gender", "dob", "id"]
       },
       {
         "id": "additionalInformation",
@@ -280,7 +252,8 @@
       }
     },
     "registrationObs": {
-      "encounterTypeUuid": "10d061d8-0677-47f2-8061-f302244dc48b"
+      "encounterTypeUuid": "10d061d8-0677-47f2-8061-f302244dc48b",
+      "encounterProviderRoleUuid": "240b26f9-dd88-4172-823d-4a8bfeb7841f"
     }
   }
 }
