@@ -84,19 +84,9 @@
         }
       },
       {
-        "id": "currentStatus",
-        "type": "person attribute",
-        "uuid": "e0b6ed99-72c4-4847-a442-e9929eac4a0f",
-        "label": "Current Status",
-        "validation": {
-          "required": true
-        },
-        "answerConceptSetUuid": "b3767edc-78f5-4d0f-a2d8-564ae58d00cf"
-      },
-      {
         "id": "relationship1firstName",
-        "type": "obs",
-        "uuid": "ab962200-f378-4d25-8c82-60e2394ed582",
+        "type": "person attribute",
+        "uuid": "b0f6124c-7645-420e-a82b-058799209e33",
         "label": "Relationship 1 First Name",
         "validation": {
           "required": false
@@ -104,8 +94,8 @@
       },
       {
         "id": "relationship1lastName",
-        "type": "obs",
-        "uuid": "2d2e4391-452a-4d9f-94a4-6accbde8e613",
+        "type": "person attribute",
+        "uuid": "f1512c64-4529-42c3-a795-14e30d4a157b",
         "label": "Relationship 1 Last Name",
         "validation": {
           "required": false
@@ -113,8 +103,8 @@
       },
       {
         "id": "relationship1relationshipToPatient",
-        "type": "obs",
-        "uuid": "610e573a-157f-475b-93d3-6afbcf74e71b",
+        "type": "person attribute",
+        "uuid": "057e07a8-2170-4422-b257-26e401e3c151",
         "label": "Relationship 1 Relationship To Patient",
         "validation": {
           "required": false
@@ -122,8 +112,8 @@
       },
       {
         "id": "relationship1phoneNumber",
-        "type": "obs",
-        "uuid": "610cefa9-f84f-4b2d-aef7-906f17f61869",
+        "type": "person attribute",
+        "uuid": "f173f4ac-6ba2-44a4-870c-a6dab973bf3a",
         "label": "Relationship 1 Phone Number",
         "validation": {
           "required": false
@@ -131,8 +121,8 @@
       },
       {
         "id": "relationship2firstName",
-        "type": "obs",
-        "uuid": "468aa4ac-10c1-4189-944b-6d4b134838c9",
+        "type": "person attribute",
+        "uuid": "0d84be8a-7cfe-4af9-bf9a-9ed42e3822f2",
         "label": "Relationship 2 First Name",
         "validation": {
           "required": false
@@ -140,8 +130,8 @@
       },
       {
         "id": "relationship2lastName",
-        "type": "obs",
-        "uuid": "b81e2108-a22e-4fc5-83e2-4d59a48e6769",
+        "type": "person attribute",
+        "uuid": "63b1be4d-5bd8-4e76-902c-276c56666047",
         "label": "Relationship 2 Last Name",
         "validation": {
           "required": false
@@ -149,8 +139,8 @@
       },
       {
         "id": "relationship2relationshipToPatient",
-        "type": "obs",
-        "uuid": "1cc30f31-cb1d-440c-9ea5-826bd71e2b29",
+        "type": "person attribute",
+        "uuid": "486da62c-12a8-463c-ada9-4e8f6488075e",
         "label": "Relationship 2 Relationship To Patient",
         "validation": {
           "required": false
@@ -158,12 +148,32 @@
       },
       {
         "id": "relationship2phoneNumber",
-        "type": "obs",
-        "uuid": "66f66a8b-7517-4603-895f-ef93831dcbd4",
+        "type": "person attribute",
+        "uuid": "7109ae0c-60b3-4362-9a5d-39a7b078e5dc",
         "label": "Relationship 2 Phone Number",
         "validation": {
           "required": false
         }
+      },
+      {
+        "id": "currentStatus",
+        "type": "person attribute",
+        "uuid": "e0b6ed99-72c4-4847-a442-e9929eac4a0f",
+        "label": "Current Status",
+        "validation": {
+          "required": false
+        },
+        "answerConceptSetUuid": "b3767edc-78f5-4d0f-a2d8-564ae58d00cf"
+      },
+      {
+        "id": "nationality",
+        "type": "person attribute",
+        "uuid": "24d1fa23-9778-4a8e-9f7b-93f694fc25e2",
+        "label": "Nationality",
+        "validation": {
+          "required": false
+        },
+        "answerConceptSetUuid": "3dc96ee4-daea-4460-b141-6b31f7b7ae93"
       }
     ],
     "sectionDefinitions": [
@@ -174,7 +184,7 @@
       {
         "id": "additionalInformation",
         "name": "Additional Information",
-        "fields": ["maritalStatus", "currentStatus"]
+        "fields": ["maritalStatus", "currentStatus", "nationality"]
       },
       {
         "id": "contact",
