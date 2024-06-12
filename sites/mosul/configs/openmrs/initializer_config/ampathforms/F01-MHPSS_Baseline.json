@@ -1673,7 +1673,7 @@
               "label": "Patient presentation: How do they look or speak / motor activity / mood / thoughts / perceptions? Is the patient oriented in time / space / person / recent events?",
               "type": "obs",
               "required": false,
-              "id": "patient_presentation_how_do_they_look_or_speak_motor_activity_mood_thoughts_perceptions_is_the_patient_oriented_in_time_space_person_recent_events_",
+              "id": "patient_presentation",
               "questionOptions": {
                 "rendering": "text",
                 "concept": "Patient presentation",
@@ -1692,7 +1692,7 @@
               "label": "Did you have problems performing daily activities, such as cooking, bathing, or chores outside the household?",
               "type": "obs",
               "required": false,
-              "id": "did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_",
+              "id": "did_you_have_problems_performing_daily_activities",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "Did you have problems performing daily activities, such as cooking, bathing, or chores outside the household?",
@@ -1726,7 +1726,7 @@
               "label": "Did you have problems getting along with family or friends?",
               "type": "obs",
               "required": false,
-              "id": "did_you_have_problems_getting_along_with_family_or_friends_",
+              "id": "did_you_have_problems_getting_along_with_family_or_friends",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "Did you have problems getting along with family or friends?",
@@ -1757,10 +1757,10 @@
               "validators": []
             },
             {
-              "label": " Did you have any problems sleeping, such as sleeping too much or not enough?",
+              "label": "Did you have any problems sleeping, such as sleeping too much or not enough?",
               "type": "obs",
               "required": false,
-              "id": "_did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_",
+              "id": "did_you_have_any_problems_sleeping",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": " Did you have any problems sleeping, such as sleeping too much or not enough?",
@@ -1794,7 +1794,7 @@
               "label": "Have you been bothered by unpleasant thoughts, worries or ideas?",
               "type": "obs",
               "required": false,
-              "id": "have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_",
+              "id": "have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "Have you been bothered by unpleasant thoughts, worries or ideas?",
@@ -1828,7 +1828,7 @@
               "label": "Have you felt sad or nervous?",
               "type": "obs",
               "required": false,
-              "id": "have_you_felt_sad_or_nervous_",
+              "id": "have_you_felt_sad_or_nervous",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "Have you felt sad or nervous?",
@@ -1862,7 +1862,7 @@
               "label": "Have you been suffering?",
               "type": "obs",
               "required": false,
-              "id": "have_you_been_suffering_",
+              "id": "have_you_been_suffering",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "Have you been suffering?",
@@ -1900,7 +1900,7 @@
                 "rendering": "text",
                 "concept": "MHOS score",
                 "calculate": {
-                  "calculateExpression": "(did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (did_you_have_problems_getting_along_with_family_or_friends_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : did_you_have_problems_getting_along_with_family_or_friends_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : did_you_have_problems_getting_along_with_family_or_friends_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : did_you_have_problems_getting_along_with_family_or_friends_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : did_you_have_problems_getting_along_with_family_or_friends_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (_did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : _did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : _did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : _did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : _did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (have_you_felt_sad_or_nervous_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : have_you_felt_sad_or_nervous_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : have_you_felt_sad_or_nervous_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : have_you_felt_sad_or_nervous_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : have_you_felt_sad_or_nervous_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (have_you_been_suffering_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : have_you_been_suffering_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : have_you_been_suffering_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : have_you_been_suffering_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : have_you_been_suffering_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0)"
+                  "calculateExpression": "(!isEmpty(did_you_have_problems_performing_daily_activities) || !isEmpty(did_you_have_problems_getting_along_with_family_or_friends) || !isEmpty(did_you_have_any_problems_sleeping) || !isEmpty(have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas) || !isEmpty(have_you_felt_sad_or_nervous) || !isEmpty(have_you_been_suffering)) && (did_you_have_problems_performing_daily_activities === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : (did_you_have_problems_performing_daily_activities === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : (did_you_have_problems_performing_daily_activities === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : (did_you_have_problems_performing_daily_activities === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : (did_you_have_problems_performing_daily_activities === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0))))) + (did_you_have_problems_performing_daily_activities === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : (did_you_have_problems_getting_along_with_family_or_friends === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : (did_you_have_problems_getting_along_with_family_or_friends === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : (did_you_have_problems_getting_along_with_family_or_friends === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : (did_you_have_problems_getting_along_with_family_or_friends === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0))))) + (did_you_have_any_problems_sleeping === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : (did_you_have_any_problems_sleeping === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : (did_you_have_any_problems_sleeping === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : (did_you_have_any_problems_sleeping === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : (did_you_have_any_problems_sleeping === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0))))) + (have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : (have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : (have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : (have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : (have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0))))) + (have_you_felt_sad_or_nervous === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : (have_you_felt_sad_or_nervous === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : (have_you_felt_sad_or_nervous === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : (have_you_felt_sad_or_nervous === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : (have_you_felt_sad_or_nervous === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (have_you_been_suffering === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : (have_you_been_suffering === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : (have_you_been_suffering === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : (have_you_been_suffering === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : (have_you_been_suffering === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0)))))))))"
                 }
               },
               "validators": []
@@ -1912,9 +1912,9 @@
           "isExpanded": false,
           "questions": [
             {
-              "label": "1. Little interest or pleasure in doing things",
+              "label": "Little interest or pleasure in doing things",
               "type": "control",
-              "id": "no_interest",
+              "id": "little_interest_in_doing_things",
               "questionOptions": {
                 "concept": "",
                 "rendering": "radio",
@@ -1939,9 +1939,9 @@
               }
             },
             {
-              "label": "2. Feeling down, depressed, or hopeless",
+              "label": "Feeling down, depressed, or hopeless",
               "type": "control",
-              "id": "depressed",
+              "id": "feeling_down_depressed",
               "questionOptions": {
                 "concept": "",
                 "rendering": "radio",
@@ -1966,9 +1966,9 @@
               }
             },
             {
-              "label": "3. Trouble falling or staying asleep, or sleeping too much ",
+              "label": "Trouble falling or staying asleep, or sleeping too much ",
               "type": "control",
-              "id": "sleep",
+              "id": "trouble_with_sleep",
               "questionOptions": {
                 "concept": "",
                 "rendering": "radio",
@@ -1993,7 +1993,7 @@
               }
             },
             {
-              "label": "4. Feeling tired or having little energy",
+              "label": "Feeling tired or having little energy",
               "type": "control",
               "id": "feelingTired",
               "questionOptions": {
@@ -2020,7 +2020,7 @@
               }
             },
             {
-              "label": "5. Poor appetite or overeating",
+              "label": "Poor appetite or overeating",
               "type": "control",
               "id": "poorAppetite",
               "questionOptions": {
@@ -2047,7 +2047,7 @@
               }
             },
             {
-              "label": "6. Feeling bad about yourself, or that you are a failure,or that you have let yourself or your family down",
+              "label": "Feeling bad about yourself, or that you are a failure,or that you have let yourself or your family down",
               "type": "control",
               "id": "feelingBad",
               "questionOptions": {
@@ -2074,7 +2074,7 @@
               }
             },
             {
-              "label": "7. Trouble concentrating on things (linked with patient usual activities,such as reading the newspaper or listening to a radio programme)",
+              "label": "Trouble concentrating on things (linked with patient usual activities,such as reading the newspaper or listening to a radio programme)",
               "type": "control",
               "id": "troubled",
               "questionOptions": {
@@ -2101,7 +2101,7 @@
               }
             },
             {
-              "label": "8. Moving or speaking so slowly that other people could have noticed.Or the opposite, being so fidgety or restless that you have been moving around a lot more than usual",
+              "label": "Moving or speaking so slowly that other people could have noticed.Or the opposite, being so fidgety or restless that you have been moving around a lot more than usual",
               "type": "control",
               "id": "speakingSlowly",
               "questionOptions": {
@@ -2128,7 +2128,7 @@
               }
             },
             {
-              "label": "9. Thoughts that you would be better off dead or of hurting yourself in some way",
+              "label": "Thoughts that you would be better off dead or of hurting yourself in some way",
               "type": "control",
               "id": "betterDead",
               "questionOptions": {
@@ -2161,7 +2161,7 @@
                 "concept": "Anxiety score rating",
                 "rendering": "text",
                 "calculate": {
-                  "calculateExpression": "(no_interest === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : no_interest === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : no_interest === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (depressed === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : depressed === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 :  depressed==='163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (sleep === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : sleep === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : sleep === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (feelingTired === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : feelingTired === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : feelingTired === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) +(poorAppetite === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : poorAppetite === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : poorAppetite === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (troubled === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : troubled === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : troubled === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (feelingBad === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : feelingBad === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : feelingBad === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (speakingSlowly === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : speakingSlowly === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : speakingSlowly === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (betterDead === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : betterDead === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : betterDead === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0)"
+                  "calculateExpression": "(!isEmpty(little_interest_in_doing_things) || !isEmpty(feeling_down_depressed) || !isEmpty(trouble_with_sleep) || !isEmpty(feelingTired) || !isEmpty(poorAppetite) || !isEmpty(troubled) || !isEmpty(feelingBad)|| !isEmpty(speakingSlowly)|| !isEmpty(betterDead)) && (little_interest_in_doing_things === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : little_interest_in_doing_things === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : little_interest_in_doing_things === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (feeling_down_depressed === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : feeling_down_depressed === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 :  feeling_down_depressed==='163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (trouble_with_sleep === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : trouble_with_sleep === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : trouble_with_sleep === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (feelingTired === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : feelingTired === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : feelingTired === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) +(poorAppetite === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : poorAppetite === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : poorAppetite === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (troubled === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : troubled === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : troubled === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (feelingBad === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : feelingBad === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : feelingBad === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (speakingSlowly === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : speakingSlowly === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : speakingSlowly === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (betterDead === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : betterDead === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : betterDead === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0)"
                 }
               }
             }
@@ -2318,10 +2318,10 @@
           "isExpanded": false,
           "questions": [
             {
-              "label": "1. Has the patient had thoughts of death or suicide?",
+              "label": "Has the patient had thoughts of death or suicide?",
               "type": "obs",
               "required": false,
-              "id": "1_has_the_patient_had_thoughts_of_death_or_suicide_",
+              "id": "has_the_patient_had_thoughts_of_death_or_suicide",
               "questionOptions": {
                 "rendering": "boolean",
                 "concept": "Has the patient had thoughts of death or suicide?",
@@ -2353,10 +2353,10 @@
               "validators": []
             },
             {
-              "label": "2. Has the patient hurt themselves / caused self-harm?",
+              "label": "Has the patient hurt themselves / caused self-harm?",
               "type": "obs",
               "required": false,
-              "id": "2_has_the_patient_hurt_themselves_caused_self_harm_",
+              "id": "has_the_patient_hurt_themselves_caused_self_harm",
               "questionOptions": {
                 "rendering": "boolean",
                 "concept": "Has the patient hurt themselves / caused self-harm?",
@@ -2388,10 +2388,10 @@
               "validators": []
             },
             {
-              "label": "3. Has the patient attempted suicide or tried to kill themselves?",
+              "label": "Has the patient attempted suicide or tried to kill themselves?",
               "type": "obs",
               "required": false,
-              "id": "3_has_the_patient_attempted_suicide_or_tried_to_kill_themselves_",
+              "id": "has_the_patient_attempted_suicide_or_tried_to_kill_themselves",
               "questionOptions": {
                 "rendering": "boolean",
                 "concept": "Has the patient attempted suicide or tried to kill themselves?",
@@ -2423,10 +2423,10 @@
               "validators": []
             },
             {
-              "label": "4. Is the patient currently at risk of hurting himself/herself or attempting suicide?",
+              "label": "Is the patient currently at risk of hurting himself/herself or attempting suicide?",
               "type": "obs",
               "required": false,
-              "id": "4_is_the_patient_currently_at_risk_of_hurting_himself_herself_or_attempting_suicide_",
+              "id": "is_the_patient_currently_at_risk_of_hurting_himself_herself_or_attempting_suicide",
               "questionOptions": {
                 "rendering": "boolean",
                 "concept": "Is the patient currently at risk of hurting himself/herself or attempting suicide?",
@@ -2448,7 +2448,7 @@
               "label": "Action taken to reduce risk ",
               "type": "obs",
               "required": false,
-              "id": "action_taken_to_reduce_risk_",
+              "id": "action_taken_to_reduce_risk",
               "questionOptions": {
                 "rendering": "text",
                 "concept": "Patient currently at risk of hurting himself/herself or attempting suicide - Action taken to reduce risk ",
@@ -2458,10 +2458,10 @@
               "validators": []
             },
             {
-              "label": "5. Is the patient currently at risk of hurting others?",
+              "label": "Is the patient currently at risk of hurting others?",
               "type": "obs",
               "required": false,
-              "id": "5_is_the_patient_currently_at_risk_of_hurting_others_",
+              "id": "is_the_patient_currently_at_risk_of_hurting_others",
               "questionOptions": {
                 "rendering": "boolean",
                 "concept": "Is the patient currently at risk of hurting others?",
@@ -2480,10 +2480,10 @@
               "validators": []
             },
             {
-              "label": "6. Does the patient regularly use alcohol / substances to become intoxicated?",
+              "label": "Does the patient regularly use alcohol / substances to become intoxicated?",
               "type": "obs",
               "required": false,
-              "id": "6_does_the_patient_regularly_use_alcohol_substances_to_become_intoxicated_",
+              "id": "does_the_patient_regularly_use_alcohol_substances_to_become_intoxicated",
               "questionOptions": {
                 "rendering": "boolean",
                 "concept": "Does the patient regularly use alcohol / substances to become intoxicated?",
@@ -2515,10 +2515,10 @@
               "validators": []
             },
             {
-              "label": "7. Is the patient currently on psychotropic / psychiatric medication?",
+              "label": "Is the patient currently on psychotropic / psychiatric medication?",
               "type": "obs",
               "required": false,
-              "id": "7_is_the_patient_currently_on_psychotropic_psychiatric_medication_",
+              "id": "is_the_patient_currently_on_psychotropic_psychiatric_medication",
               "questionOptions": {
                 "rendering": "boolean",
                 "concept": "Is the patient currently on psychotropic / psychiatric medication?",
@@ -2559,7 +2559,7 @@
               "validators": []
             },
             {
-              "label": "8. Has the patient experienced an act of aggression or violence?",
+              "label": "Has the patient experienced an act of aggression or violence?",
               "type": "obs",
               "required": false,
               "id": "has_the_patient_experienced_an_act_of_aggression_or_violence",
@@ -2584,7 +2584,7 @@
               "label": "What type(s) of violence?",
               "type": "obs",
               "required": false,
-              "id": "what_type_s_of_violence_",
+              "id": "what_types_of_violence",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "Patient experienced an act of aggression or violence - What type(s) of violence?",
@@ -2651,10 +2651,10 @@
               }
             },
             {
-              "label": "9. If yes, would the patient like a referral to the medical department for treatment (or midwife/maternity for sexual violence)?",
+              "label": "If yes, would the patient like a referral to the medical department for treatment (or midwife/maternity for sexual violence)?",
               "type": "obs",
               "required": false,
-              "id": "9_if_yes_would_the_patient_like_a_referral_to_the_medical_department_for_treatment_or_midwife_maternity_for_sexual_violence_",
+              "id": "would_the_patient_like_a_referral_to_the_medical_department_for_treatment",
               "questionOptions": {
                 "rendering": "boolean",
                 "concept": "Would the patient like a referral to the medical department for treatment?",
@@ -2672,7 +2672,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "if_yes_what_type_s_of_violence_ !== 'Sexual'"
+                "hideWhenExpression": "would_the_patient_like_a_referral_to_the_medical_department_for_treatment !== 'Sexual'"
               }
             },
             {
@@ -2688,7 +2688,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "if_yes_what_type_s_of_violence_ !== 'Sexual'"
+                "hideWhenExpression": "would_the_patient_like_a_referral_to_the_medical_department_for_treatment !== 'Sexual'"
               }
             }
           ]
@@ -2698,10 +2698,10 @@
           "isExpanded": false,
           "questions": [
             {
-              "label": "1. Medical conditions",
+              "label": "Medical conditions",
               "type": "obs",
               "required": false,
-              "id": "1_medical_conditions",
+              "id": "medical_conditions",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "Past / Precipitating Events - Medical conditions",
@@ -2736,10 +2736,10 @@
               "validators": []
             },
             {
-              "label": "2. Violence",
+              "label": "Violence",
               "type": "obs",
               "required": false,
-              "id": "2_violence",
+              "id": "violence",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "Past / Precipitating Events - Violence",
@@ -2826,10 +2826,10 @@
               "validators": []
             },
             {
-              "label": "3. Separation or loss",
+              "label": "Separation or loss",
               "type": "obs",
               "required": false,
-              "id": "3_separation_or_loss",
+              "id": "separation_or_loss",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "Past / Precipitating Events - Separation or loss",
@@ -2876,10 +2876,10 @@
               "validators": []
             },
             {
-              "label": "4. Disaster",
+              "label": "Disaster",
               "type": "obs",
               "required": false,
-              "id": "4_disaster",
+              "id": "disaster",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "Past / Precipitating Events - Disaster",
@@ -3541,7 +3541,7 @@
               "label": "Follow up session required? (If no, fill the Exit form)",
               "type": "obs",
               "required": false,
-              "id": "follow_up_session_required_if_no_fill_the_exit_form_",
+              "id": "follow_up_session_required",
               "questionOptions": {
                 "rendering": "boolean",
                 "concept": "Follow up session required?",
