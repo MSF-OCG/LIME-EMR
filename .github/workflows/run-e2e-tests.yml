@@ -61,6 +61,9 @@ jobs:
         id: refs
         run: bash e2e_test_support_files/extract_tag_numbers.sh ${{ inputs.frontend-config-file-path }}
 
+      - name: show exisiting files 
+        run: ls -a
+
       - name: Build and Run Containers
         run: ${{ inputs.start-server-command }}
 
