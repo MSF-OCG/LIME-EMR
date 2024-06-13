@@ -53,6 +53,9 @@ jobs:
           clean: ${{ inputs.should-delete-artifacts }}
           path: 'some-path'
 
+      - name: show exisiting files 
+        run:  ls -a && ls -a ./sites/mosul
+        
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//-/g')" >> $GITHUB_ENV
@@ -60,9 +63,6 @@ jobs:
       - name: Extract version numbers from the spa-build-config.json file
         id: refs
         run: bash e2e_test_support_files/extract_tag_numbers.sh ${{ inputs.frontend-config-file-path }}
-
-      - name: show exisiting files 
-        run:  ls -a && ls -a ./sites/mosul
 
       - name: Build and Run Containers
         run: ${{ inputs.start-server-command }}
