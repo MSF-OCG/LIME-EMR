@@ -41,6 +41,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CHECKOUT_PATH: ${{ inputs.should-delete-artifacts == 'true' && 'temp-dir' || '' }}
     outputs:
       patient_management_ref: ${{steps.refs.outputs.patient_management}}
       patient_chart_ref: ${{steps.refs.outputs.patient_chart}}
@@ -51,7 +53,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           clean: ${{ inputs.should-delete-artifacts }}
-          path: ${{ inputs.should-delete-artifacts && 'temp-dir' || '' }}
+          path: ${{ env.CHECKOUT_PATH }}
 
       - name: Extract contents of the temporaly directory if necessary
         if: ${{ inputs.should-delete-artifacts == 'true' }}
