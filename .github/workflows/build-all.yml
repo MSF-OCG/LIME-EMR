@@ -33,6 +33,7 @@ jobs:
 
       - name: Set settings.xml
         uses: s4u/maven-settings-action@v3.0.0
+        if: github.event_name == 'push'
         with:
           servers: |
             [{
@@ -68,14 +69,8 @@ jobs:
     needs: build-and-publish
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set start server command for push events
-        if: github.event_name == 'push'
-        run: echo "START_SERVER_COMMAND=some-other-command" >> $GITHUB_ENV
-
-      - name: Set start server command for other events
-        if: github.event_name != 'push'
-        run: echo "START_SERVER_COMMAND=some-other-command" >> $GITHUB_ENV
+        with:
+          clean: github.event_name == 'push'
 
       - name: Run e2e on release tests
         uses: ./.github/workflows/run-e2e-tests.yml
