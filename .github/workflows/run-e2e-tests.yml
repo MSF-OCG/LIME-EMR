@@ -50,7 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          clean: ${{ inputs.should-delete-artifacts }}
+          clean: false
 
       - name: Extract branch name
         shell: bash
