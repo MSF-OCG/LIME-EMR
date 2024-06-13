@@ -51,11 +51,19 @@ jobs:
       - uses: actions/checkout@v4
         with:
           clean: ${{ inputs.should-delete-artifacts }}
-          path: 'some-path'
+          path: ${{ inputs.should-delete-artifacts && 'temp-dir' || '' }}
 
+      - name: Extract contents of the temporaly directory if necessary
+        if: ${{ inputs.should-delete-artifacts == 'true' }}
+        run: |
+          mv temp-dir/* .
+          rmdir temp-dir
+          
       - name: show exisiting files 
-        run:  ls -a && ls -a ./sites/mosul
-        
+        run:  |
+          ls -a
+          ls -a ./sites/mosul
+
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//-/g')" >> $GITHUB_ENV
