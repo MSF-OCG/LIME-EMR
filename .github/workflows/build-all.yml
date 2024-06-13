@@ -5,7 +5,10 @@ on:
   push:
     branches:
       - main
-  
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build-and-publish:
     permissions: 
@@ -15,7 +18,9 @@ jobs:
     strategy:
         matrix:
           java: [ '8' ]
-
+    outputs:
+      msf_mosul_artifact_id: ${{steps.get_artifactId.outputs.msf_mosul_artifact_id}}
+      msf_mosul_artifact_version: ${{steps.get_version.outputs.msf_mosul_artifact_version}}
     steps:
       - uses: actions/checkout@v4
       
@@ -36,29 +41,61 @@ jobs:
               "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
             }]
   
+      - name: Get MSF Mosul version
+        working-directory: "${{ github.workspace }}/sites/mosul"
+        id: get_version
+        run: echo "msf_mosul_artifact_version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+    
+      - name: Get MSF Mosul artifactId
+        working-directory: "${{ github.workspace }}/sites/mosul"
+        id: get_artifactId
+        run: echo "msf_mosul_artifact_id=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)" >> $GITHUB_ENV
+        
       - name: Build and Test
         run: mvn --batch-mode --update-snapshots --activate-profiles validator clean package
 
-      - name: Publish MSF distro artifacts to GitHub
+      - name: Publish MSF Mosul artifacts to GitHub
         uses: ./.github/actions/upload-maven-artifacts
-        with:
-          artifact-name: "distro"
-          artifact-path: "${{ github.workspace }}/distro"
-          maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
-          maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
-          
-      - name: Publish MSF Mosul to artifacts GitHub
-        uses: ./.github/actions/upload-maven-artifacts
-        with:
-          artifact-name: "Iraq"
-          artifact-path: "${{ github.workspace }}/countries/iraq"
-          maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
-          maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
-
-      - name: Publish MSF Iraq artifacts to GitHub
-        uses: ./.github/actions/upload-maven-artifacts
+        if: github.event_name == 'push'
         with:
           artifact-name: "Mosul"
           artifact-path: "${{ github.workspace }}/sites/mosul"
           maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
           maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
+
+  run-e2e:
+    runs-on: ubuntu-latest
+    needs: build-and-publish
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set start server command for push events
+        if: github.event_name == 'push'
+        run: echo "START_SERVER_COMMAND=some-other-command" >> $GITHUB_ENV
+
+      - name: Set start server command for other events
+        if: github.event_name != 'push'
+        run: echo "START_SERVER_COMMAND=some-other-command" >> $GITHUB_ENV
+
+      - name: Run e2e on release tests
+        uses: ./.github/workflows/run-e2e-tests.yml
+        if: github.event_name == 'push'
+        with:
+          frontend-container-name: "ozone-frontend-1"
+          backend-container-name: "ozone-openmrs-1"
+          gateway-container-name: "ozone-proxy-1"
+          database-container-name: "ozone-mysql-1"
+          frontend-config-file-path: "./emr/mosul/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/binaries/openmrs/frontend/spa-assemble-config.json"
+          start-server-command: "curl -sSL -H 'Cache-Control: no-cache, no-store' -H 'Authorization: token ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}' https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-Tooling/dev/Procedures/local_lime_emr.sh | bash -s -- install mosul"
+
+      - name: Run e2e on pull-request tests
+        uses: ./.github/workflows/run-e2e-tests.yml
+        if: github.event_name == 'pull-request'
+        with:
+          frontend-container-name: "ozone-frontend-1"
+          backend-container-name: "ozone-openmrs-1"
+          gateway-container-name: "ozone-proxy-1"
+          database-container-name: "ozone-mysql-1"
+          frontend-config-file-path: "./emr/mosul/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/binaries/openmrs/frontend/spa-assemble-config.json"
+          start-server-command: "cd ./sites/mosul/target/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/run/docker/scripts"
+          should-delete-artifacts: false

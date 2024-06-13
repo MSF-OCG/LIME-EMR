@@ -1,0 +1,326 @@
+name: Run E2E Tests on PRs
+
+on:
+  workflow_call:
+    inputs:
+      frontend-container-name:
+        description: 'OpenMRS docker container frontend container name'
+        default: 'ozone-frontend-1'
+        required: true
+        type: string
+      backend-container-name:
+        description: 'OpenMRS docker container backend container name'
+        default: 'ozone-openmrs-1'
+        required: true
+        type: string
+      gateway-container-name:
+        description: 'OpenMRS docker container gateway container name'
+        default: 'ozone-proxy-1'
+        required: true
+        type: string
+      database-container-name:
+        description: 'OpenMRS docker container database container name'
+        default: 'ozone-mysql-1'
+        required: true
+        type: string
+      frontend-config-file-path:
+        description: 'Location of the spa-assemble-config.json frontend config file'
+        default: './spa-assemble-config.json'
+        required: true
+        type: string
+      start-server-command:
+          description: 'command to spin up the openmrs server'
+          default: 'docker compose up'
+          required: true
+          type: string
+      should-delete-artifacts:
+        description: 'whether actions/checkout@v4 should delete reuslts of the previous build or not'
+        default: true
+        required: false
+        type: boolean
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      patient_management_ref: ${{steps.refs.outputs.patient_management}}
+      patient_chart_ref: ${{steps.refs.outputs.patient_chart}}
+      form_builder_ref: ${{steps.refs.outputs.form_builder}}
+      esm_core_ref: ${{steps.refs.outputs.esm_core}}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          clean: ${{ inputs.should-delete-artifacts }}
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//-/g')" >> $GITHUB_ENV
+
+      - name: Extract version numbers from the spa-build-config.json file
+        id: refs
+        run: bash e2e_test_support_files/extract_tag_numbers.sh ${{ inputs.frontend-config-file-path }}
+
+      - name: Build and Run Containers
+        run: ${{ inputs.start-server-command }}
+
+      - name: Wait for the backend to start
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost/openmrs/login.htm)" != "200" ]]; do sleep 10; done
+
+      - name: Commit and export Containers
+        run: sh e2e_test_support_files/commit_and_export_images.sh ${{ inputs.backend-container-name }} ${{ inputs.database-container-name }} ${{ inputs.frontend-container-name }} ${{ inputs.gateway-container-name }}
+
+      - name: cache docker images
+        uses: actions/cache@v4
+        with:
+          path: e2e_release_env_images.tar.gz
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+
+  run-patient-management-e2e-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create Temporary Directory to Download Docker Images
+        id: tempdir
+        run: echo "tmpdir=$(mktemp -d)" >> "$GITHUB_OUTPUT"
+
+      - name: Get cached Docker Images
+        uses: actions/cache/restore@v3
+        with:
+          path: e2e_release_env_images.tar.gz
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+
+      - name: Load Docker Images
+        run: |
+          cp e2e_release_env_images.tar.gz ${{ steps.tempdir.outputs.tmpdir }}
+          gzip -d ${{ steps.tempdir.outputs.tmpdir }}/e2e_release_env_images.tar.gz
+          docker load --input ${{ steps.tempdir.outputs.tmpdir }}/e2e_release_env_images.tar
+          docker image ls -a
+
+      - name: Spin up an OpenMRS Instance
+        run: docker-compose up -d
+        working-directory: e2e_test_support_files
+
+      - name: Checkout to the Repo's Tag
+        uses: actions/checkout@v4
+        with:
+          repository: openmrs/openmrs-esm-patient-management
+          ref: ${{ needs.build.outputs.patient_management_ref }}
+          path: e2e_repo
+
+      - name: Copy test environment variables
+        run: cp example.env .env
+        working-directory: e2e_repo
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+        working-directory: e2e_repo
+
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium --with-deps
+        working-directory: e2e_repo
+
+      - name: Wait for the OpenMRS instance to start
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/openmrs/login.htm)" != "200" ]]; do sleep 10; done
+
+      - name: Run E2E tests
+        run: yarn playwright test
+        working-directory: e2e_repo
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: report-patient-management
+          path: e2e_repo/playwright-report/
+          retention-days: 14
+
+  run-patient-chart-e2e-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create Temporary Directory to Download Docker Images
+        id: tempdir
+        run: echo "tmpdir=$(mktemp -d)" >> "$GITHUB_OUTPUT"
+
+      - name: Get cached Docker Images
+        uses: actions/cache/restore@v3
+        with:
+          path: e2e_release_env_images.tar.gz
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+
+      - name: Load Docker Images
+        run: |
+          cp e2e_release_env_images.tar.gz ${{ steps.tempdir.outputs.tmpdir }}
+          gzip -d ${{ steps.tempdir.outputs.tmpdir }}/e2e_release_env_images.tar.gz
+          docker load --input ${{ steps.tempdir.outputs.tmpdir }}/e2e_release_env_images.tar
+          docker image ls -a
+
+      - name: Spin up an OpenMRS Instance
+        run: docker-compose up -d
+        working-directory: e2e_test_support_files
+
+      - name: Checkout to the Repo's Tag
+        uses: actions/checkout@v4
+        with:
+          repository: openmrs/openmrs-esm-patient-chart
+          ref: ${{ needs.build.outputs.patient_chart_ref }}
+          path: e2e_repo
+
+      - name: Copy test environment variables
+        run: cp example.env .env
+        working-directory: e2e_repo
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+        working-directory: e2e_repo
+
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium --with-deps
+        working-directory: e2e_repo
+
+      - name: Wait for the OpenMRS instance to start
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/openmrs/login.htm)" != "200" ]]; do sleep 10; done
+
+      - name: Run E2E tests
+        run: yarn playwright test
+        working-directory: e2e_repo
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: report-patient-chart
+          path: e2e_repo/playwright-report/
+          retention-days: 14
+
+  run-esm-core-e2e-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create Temporary Directory to Download Docker Images
+        id: tempdir
+        run: echo "tmpdir=$(mktemp -d)" >> "$GITHUB_OUTPUT"
+
+      - name: Get cached Docker Images
+        uses: actions/cache/restore@v3
+        with:
+          path: e2e_release_env_images.tar.gz
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+
+      - name: Load Docker Images
+        run: |
+          cp e2e_release_env_images.tar.gz ${{ steps.tempdir.outputs.tmpdir }}
+          gzip -d ${{ steps.tempdir.outputs.tmpdir }}/e2e_release_env_images.tar.gz
+          docker load --input ${{ steps.tempdir.outputs.tmpdir }}/e2e_release_env_images.tar
+          docker image ls -a
+
+      - name: Spin up an OpenMRS Instance
+        run: docker-compose up -d
+        working-directory: e2e_test_support_files
+
+      - name: Checkout to the Repo's Tag
+        uses: actions/checkout@v4
+        with:
+          repository: openmrs/openmrs-esm-core
+          ref: ${{ needs.build.outputs.esm_core_ref }}
+          path: e2e_repo
+
+      - name: Copy test environment variables
+        run: cp example.env .env
+        working-directory: e2e_repo
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+        working-directory: e2e_repo
+
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium --with-deps
+        working-directory: e2e_repo
+
+      - name: Wait for the OpenMRS instance to start
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/openmrs/login.htm)" != "200" ]]; do sleep 10; done
+
+      - name: Run E2E tests
+        run: yarn playwright test
+        working-directory: e2e_repo
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: report-esm-core
+          path: e2e_repo/playwright-report/
+          retention-days: 14
+
+  run-form-builder-e2e-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create Temporary Directory to Download Docker Images
+        id: tempdir
+        run: echo "tmpdir=$(mktemp -d)" >> "$GITHUB_OUTPUT"
+
+      - name: Get cached Docker Images
+        uses: actions/cache/restore@v3
+        with:
+          path: e2e_release_env_images.tar.gz
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+
+      - name: Load Docker Images
+        run: |
+          cp e2e_release_env_images.tar.gz ${{ steps.tempdir.outputs.tmpdir }}
+          gzip -d ${{ steps.tempdir.outputs.tmpdir }}/e2e_release_env_images.tar.gz
+          docker load --input ${{ steps.tempdir.outputs.tmpdir }}/e2e_release_env_images.tar
+          docker image ls -a
+
+      - name: Spin up an OpenMRS Instance
+        run: docker-compose up -d
+        working-directory: e2e_test_support_files
+
+      - name: Checkout to the Repo's Tag
+        uses: actions/checkout@v4
+        with:
+          repository: openmrs/openmrs-esm-form-builder
+          ref: ${{ needs.build.outputs.form_builder_ref }}
+          path: e2e_repo
+
+      - name: Copy test environment variables
+        run: cp example.env .env
+        working-directory: e2e_repo
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+        working-directory: e2e_repo
+
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium --with-deps
+        working-directory: e2e_repo
+
+      - name: Wait for the OpenMRS instance to start
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/openmrs/login.htm)" != "200" ]]; do sleep 10; done
+
+      - name: Run E2E tests
+        run: yarn playwright test
+        working-directory: e2e_repo
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: report-esm-core
+          path: e2e_repo/playwright-report/
+          retention-days: 14
+    
