@@ -1,13 +1,13 @@
 {
   "name": "F01-MHPSS_Baseline",
   "description": "F01-MHPSS_Baseline",
-  "version": "1",
+  "version": "3",
   "published": false,
   "retired": false,
   "encounter": "Consultation",
   "processor": "EncounterFormProcessor",
   "referencedForms": [],
-  "uuid": "126ae5c0-b343-4ac2-916d-c80aa807a720",
+  "uuid": "50a87753-f941-4c9f-9da2-7e768a21b91c",
   "pages": [
     {
       "label": "MHPSS Baseline Consultation",
@@ -153,13 +153,7 @@
                 ]
               },
               "validators": []
-            }
-          ]
-        },
-        {
-          "label": "Intervention",
-          "isExpanded": false,
-          "questions": [
+            },
             {
               "label": "Specify Health Facility",
               "type": "obs",
@@ -223,7 +217,13 @@
               "hide": {
                 "hideWhenExpression": "location_of_intervention !== 'Other'"
               }
-            },
+            }
+          ]
+        },
+        {
+          "label": "Intervention",
+          "isExpanded": false,
+          "questions": [
             {
               "label": "Type of intervention",
               "type": "obs",
@@ -349,7 +349,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "label": "Main problem or reason for referral (Why is the patient coming to the MH department? Write in patient\u2019s words)",
+              "label": "Main problem or reason for referral (Why is the patient coming to the MH department? Write in patient’s words)",
               "type": "obs",
               "required": false,
               "id": "main_problem_or_reason_for_referral_why_is_the_patient_coming_to_the_mh_department_write_in_patient_s_words_",
@@ -645,10 +645,10 @@
               "label": "8. Other symptoms",
               "type": "obs",
               "required": false,
-              "id": "8_other_symptoms",
+              "id": "current_symptoms_or_complaints_1_other",
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "Current symptoms or complaints - 8. Other symptoms",
+                "concept": "Other symptoms",
                 "conceptMappings": [],
                 "answers": [
                   {
@@ -658,6 +658,22 @@
                 ]
               },
               "validators": []
+            },
+            {
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "id": "current_symptoms_or_complaints_1_other_answer",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "Other Current symptoms or complaints",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "current_symptoms_or_complaints_1_other !== 'Other'"
+              }
             }
           ]
         },
@@ -669,7 +685,7 @@
               "label": "Clinical diagnosis (To be established only by psychologist)",
               "type": "obs",
               "required": false,
-              "id": "clinical_diagnosis_to_be_established_only_by_psychologist_",
+              "id": "clinical_diagnosis_to_be_established_only_by_psychologist",
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "Clinical diagnosis",
@@ -742,14 +758,6 @@
                   {
                     "concept": "Epilepsy / seizures",
                     "label": "Epilepsy / seizures"
-                  },
-                  {
-                    "concept": "Other disorder",
-                    "label": "Other disorder"
-                  },
-                  {
-                    "concept": "No diagnosis",
-                    "label": "No diagnosis"
                   },
                   {
                     "concept": "Abnormal behaviour",
@@ -876,20 +884,12 @@
                     "label": "Mental or behavioural disorders due to psychoactive substances"
                   },
                   {
-                    "concept": "None",
-                    "label": "None"
-                  },
-                  {
                     "concept": "Nonorganic enuresis",
                     "label": "Nonorganic enuresis"
                   },
                   {
                     "concept": "Obsessive-compulsive disorder",
                     "label": "Obsessive-compulsive disorder"
-                  },
-                  {
-                    "concept": "Other",
-                    "label": "Other"
                   },
                   {
                     "concept": "Panic disorder",
@@ -970,12 +970,36 @@
                   {
                     "concept": "Somatoform disorders",
                     "label": "Somatoform disorders"
+                  },
+                  {
+                    "concept": "Other disorder",
+                    "label": "Other disorder"
+                  },
+                  {
+                    "concept": "No diagnosis",
+                    "label": "No diagnosis"
                   }
                 ]
               },
               "validators": [],
               "hide": {
                 "hideWhenExpression": "consultation_done_by !== 'Psychologist'"
+              }
+            },
+            {
+              "label": "If other disorder, specify",
+              "type": "obs",
+              "required": false,
+              "id": "other_disorder_answer",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "Other disorder",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "clinical_diagnosis_to_be_established_only_by_psychologist !== 'Other disorder'"
               }
             }
           ]
@@ -1179,6 +1203,22 @@
               "validators": []
             },
             {
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "id": "other_symptoms_1_answer",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "Other Symptoms 1",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "current_symptoms_or_complaints_1 !== 'Other'"
+              }
+            },
+            {
               "label": "Current symptoms or complaints 2",
               "type": "obs",
               "required": false,
@@ -1373,6 +1413,22 @@
               "validators": []
             },
             {
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "id": "other_symptoms_2_answer",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "Other Symptoms 2",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "current_symptoms_or_complaints_2 !== 'Other'"
+              }
+            },
+            {
               "label": "Current symptoms or complaints 3",
               "type": "obs",
               "required": false,
@@ -1565,6 +1621,22 @@
                 ]
               },
               "validators": []
+            },
+            {
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "id": "other_symptoms_3_answer",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "Other Symptoms 3",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "current_symptoms_or_complaints_3 !== 'Other'"
+              }
             }
           ]
         },
@@ -2229,7 +2301,7 @@
               "required": false,
               "id": "positive_functionality_is_the_patient_capable_of_being_independent_caring_for_themselves_bathing_eating_going_to_work_school_etc_",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Positive Functionality",
                 "conceptMappings": [],
                 "answers": [
@@ -2251,7 +2323,7 @@
               "required": false,
               "id": "internal_resources_does_the_patient_believe_that_they_have_the_abilities_needed_to_overcome_the_current_problem_do_they_have_hope_for_their_future_",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Internal Resources",
                 "conceptMappings": [],
                 "answers": [
@@ -2273,7 +2345,7 @@
               "required": false,
               "id": "external_resources_does_the_patient_believe_that_they_have_someone_who_they_can_rely_on_for_help_in_their_lives_",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "External Resources",
                 "conceptMappings": [],
                 "answers": [
@@ -2290,12 +2362,12 @@
               "validators": []
             },
             {
-              "label": "Spiritual / Moral Resources: Are the patient\u2019s beliefs a source of strength for them when dealing with problems?",
+              "label": "Spiritual / Moral Resources: Are the patient’s beliefs a source of strength for them when dealing with problems?",
               "type": "obs",
               "required": false,
               "id": "spiritual_moral_resources_are_the_patient_s_beliefs_a_source_of_strength_for_them_when_dealing_with_problems_",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Spiritual / Moral Resources",
                 "conceptMappings": [],
                 "answers": [
@@ -2323,7 +2395,7 @@
               "required": false,
               "id": "has_the_patient_had_thoughts_of_death_or_suicide",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Has the patient had thoughts of death or suicide?",
                 "conceptMappings": [],
                 "answers": [
@@ -2350,7 +2422,10 @@
                 "conceptMappings": [],
                 "answers": []
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "has_the_patient_had_thoughts_of_death_or_suicide !== 'Yes'"
+              }
             },
             {
               "label": "Has the patient hurt themselves / caused self-harm?",
@@ -2358,7 +2433,7 @@
               "required": false,
               "id": "has_the_patient_hurt_themselves_caused_self_harm",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Has the patient hurt themselves / caused self-harm?",
                 "conceptMappings": [],
                 "answers": [
@@ -2385,7 +2460,10 @@
                 "conceptMappings": [],
                 "answers": []
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "has_the_patient_hurt_themselves_caused_self_harm !== 'Yes'"
+              }
             },
             {
               "label": "Has the patient attempted suicide or tried to kill themselves?",
@@ -2393,7 +2471,7 @@
               "required": false,
               "id": "has_the_patient_attempted_suicide_or_tried_to_kill_themselves",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Has the patient attempted suicide or tried to kill themselves?",
                 "conceptMappings": [],
                 "answers": [
@@ -2420,7 +2498,10 @@
                 "conceptMappings": [],
                 "answers": []
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "has_the_patient_attempted_suicide_or_tried_to_kill_themselves !== 'Yes'"
+              }
             },
             {
               "label": "Is the patient currently at risk of hurting himself/herself or attempting suicide?",
@@ -2428,7 +2509,7 @@
               "required": false,
               "id": "is_the_patient_currently_at_risk_of_hurting_himself_herself_or_attempting_suicide",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Is the patient currently at risk of hurting himself/herself or attempting suicide?",
                 "conceptMappings": [],
                 "answers": [
@@ -2455,7 +2536,10 @@
                 "conceptMappings": [],
                 "answers": []
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "is_the_patient_currently_at_risk_of_hurting_himself_herself_or_attempting_suicide !== 'Yes'"
+              }
             },
             {
               "label": "Is the patient currently at risk of hurting others?",
@@ -2463,7 +2547,7 @@
               "required": false,
               "id": "is_the_patient_currently_at_risk_of_hurting_others",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Is the patient currently at risk of hurting others?",
                 "conceptMappings": [],
                 "answers": [
@@ -2480,12 +2564,28 @@
               "validators": []
             },
             {
+              "label": "Action taken to reduce risk ",
+              "type": "obs",
+              "required": false,
+              "id": "action_taken_to_reduce_risk_of_hurting_others",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "Patient currently at risk of hurting others - Action taken to reduce risk ",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "is_the_patient_currently_at_risk_of_hurting_others !== 'Yes'"
+              }
+            },
+            {
               "label": "Does the patient regularly use alcohol / substances to become intoxicated?",
               "type": "obs",
               "required": false,
               "id": "does_the_patient_regularly_use_alcohol_substances_to_become_intoxicated",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Does the patient regularly use alcohol / substances to become intoxicated?",
                 "conceptMappings": [],
                 "answers": [
@@ -2512,7 +2612,10 @@
                 "conceptMappings": [],
                 "answers": []
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "does_the_patient_regularly_use_alcohol_substances_to_become_intoxicated !== 'Yes'"
+              }
             },
             {
               "label": "Is the patient currently on psychotropic / psychiatric medication?",
@@ -2520,7 +2623,7 @@
               "required": false,
               "id": "is_the_patient_currently_on_psychotropic_psychiatric_medication",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Is the patient currently on psychotropic / psychiatric medication?",
                 "conceptMappings": [],
                 "answers": [
@@ -2556,7 +2659,10 @@
                   }
                 ]
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "is_the_patient_currently_on_psychotropic_psychiatric_medication !== 'Yes'"
+              }
             },
             {
               "label": "Has the patient experienced an act of aggression or violence?",
@@ -2564,7 +2670,7 @@
               "required": false,
               "id": "has_the_patient_experienced_an_act_of_aggression_or_violence",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Has the patient experienced an act of aggression or violence?",
                 "conceptMappings": [],
                 "answers": [
@@ -2656,7 +2762,7 @@
               "required": false,
               "id": "would_the_patient_like_a_referral_to_the_medical_department_for_treatment",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Would the patient like a referral to the medical department for treatment?",
                 "conceptMappings": [],
                 "answers": [
@@ -2672,7 +2778,7 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "would_the_patient_like_a_referral_to_the_medical_department_for_treatment !== 'Sexual'"
+                "hideWhenExpression": "what_types_of_violence !== 'Sexual'"
               }
             },
             {
@@ -2688,7 +2794,23 @@
               },
               "validators": [],
               "hide": {
-                "hideWhenExpression": "would_the_patient_like_a_referral_to_the_medical_department_for_treatment !== 'Sexual'"
+                "hideWhenExpression": "what_types_of_violence !== 'Sexual'"
+              }
+            },
+            {
+              "label": "Other type of violence",
+              "type": "obs",
+              "required": false,
+              "id": "other_type_of_violence",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "Other type of violence",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "what_types_of_violence !== 'Other'"
               }
             }
           ]
@@ -2922,6 +3044,22 @@
                 ]
               },
               "validators": []
+            },
+            {
+              "label": "Other Past or Precipitating Events",
+              "type": "obs",
+              "required": false,
+              "id": "other_past_event_answer",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "Other Past or Precipitating Events",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "5_other !== 'Other'"
+              }
             }
           ]
         },
@@ -3506,13 +3644,13 @@
               "validators": []
             },
             {
-              "label": "Today\u2019s Session (what did you do today in session?)",
+              "label": "Today’s Session (what did you do today in session?)",
               "type": "obs",
               "required": false,
               "id": "today_s_session_what_did_you_do_today_in_session_",
               "questionOptions": {
                 "rendering": "text",
-                "concept": "Today\u2019s session",
+                "concept": "Today’s session",
                 "conceptMappings": [],
                 "answers": []
               },
@@ -3543,7 +3681,7 @@
               "required": false,
               "id": "follow_up_session_required",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Follow up session required?",
                 "conceptMappings": [],
                 "answers": [
@@ -3581,7 +3719,7 @@
               "required": false,
               "id": "referral_done",
               "questionOptions": {
-                "rendering": "boolean",
+                "rendering": "radio",
                 "concept": "Referral done",
                 "conceptMappings": [],
                 "answers": [
@@ -3645,7 +3783,26 @@
                   }
                 ]
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "referral_done !== 'Yes'"
+              }
+            },
+            {
+              "label": "Other type of referral",
+              "type": "obs",
+              "required": false,
+              "id": "other_type_of_referral",
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "Other type of referral",
+                "conceptMappings": [],
+                "answers": []
+              },
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "type_of_referral !== 'Other'"
+              }
             },
             {
               "label": "Reason for referral",
@@ -3658,11 +3815,15 @@
                 "conceptMappings": [],
                 "answers": []
               },
-              "validators": []
+              "validators": [],
+              "hide": {
+                "hideWhenExpression": "referral_done !== 'Yes'"
+              }
             }
           ]
         }
       ]
     }
-  ]
+  ],
+  "encounterType": "dd528487-82a5-4082-9c72-ed246bd49591"
 }
