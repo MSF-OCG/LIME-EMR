@@ -50,7 +50,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           clean: ${{ inputs.should-delete-artifacts }}
 
       - name: Extract branch name
