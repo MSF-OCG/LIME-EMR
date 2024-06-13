@@ -8,6 +8,8 @@ on:
   pull_request:
     branches:
       - main
+env:
+  MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
 
 jobs:
   build-and-publish:
@@ -64,33 +66,27 @@ jobs:
           maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
           maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
 
-  run-e2e:
-    runs-on: ubuntu-latest
+  run-e2e-on-push:    
+    uses: ./.github/workflows/run-e2e-tests.yml
+    with:
+      frontend-container-name: "ozone-frontend-1"
+      backend-container-name: "ozone-openmrs-1"
+      gateway-container-name: "ozone-proxy-1"
+      database-container-name: "ozone-mysql-1"
+      frontend-config-file-path: "./emr/mosul/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/binaries/openmrs/frontend/spa-assemble-config.json"
+      start-server-command: "curl -sSL -H 'Cache-Control: no-cache, no-store' -H 'Authorization: token $MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN' https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-Tooling/dev/Procedures/local_lime_emr.sh | bash -s -- install mosul"
     needs: build-and-publish
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          clean: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name == 'push' }}
 
-      - name: Run e2e on release tests
-        uses: ./.github/workflows/run-e2e-tests
-        if: ${{ github.event_name == 'push' }}
-        with:
-          frontend-container-name: "ozone-frontend-1"
-          backend-container-name: "ozone-openmrs-1"
-          gateway-container-name: "ozone-proxy-1"
-          database-container-name: "ozone-mysql-1"
-          frontend-config-file-path: "./emr/mosul/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/binaries/openmrs/frontend/spa-assemble-config.json"
-          start-server-command: "curl -sSL -H 'Cache-Control: no-cache, no-store' -H 'Authorization: token ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}' https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-Tooling/dev/Procedures/local_lime_emr.sh | bash -s -- install mosul"
-
-      - name: Run e2e on pull-request tests
-        uses: ./.github/workflows/run-e2e-tests
-        if: ${{ github.event_name != 'push' }}
-        with:
-          frontend-container-name: "ozone-frontend-1"
-          backend-container-name: "ozone-openmrs-1"
-          gateway-container-name: "ozone-proxy-1"
-          database-container-name: "ozone-mysql-1"
-          frontend-config-file-path: "./emr/mosul/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/binaries/openmrs/frontend/spa-assemble-config.json"
-          start-server-command: "cd ./sites/mosul/target/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/run/docker/scripts"
-          should-delete-artifacts: false
+  run-e2e-on-pull-request:
+    uses: ./.github/workflows/run-e2e-tests.yml
+    with:
+      frontend-container-name: "ozone-frontend-1"
+      backend-container-name: "ozone-openmrs-1"
+      gateway-container-name: "ozone-proxy-1"
+      database-container-name: "ozone-mysql-1"
+      frontend-config-file-path: "./emr/mosul/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/binaries/openmrs/frontend/spa-assemble-config.json"
+      start-server-command: "cd ./sites/mosul/target/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/run/docker/scripts"
+      should-delete-artifacts: false
+    needs: build-and-publish
+    if: ${{ github.event_name != 'push' }}
