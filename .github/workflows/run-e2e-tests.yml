@@ -51,7 +51,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           clean: ${{ inputs.should-delete-artifacts }}
-          path: './'
+          path: 'some-path'
 
       - name: Extract branch name
         shell: bash
@@ -62,7 +62,7 @@ jobs:
         run: bash e2e_test_support_files/extract_tag_numbers.sh ${{ inputs.frontend-config-file-path }}
 
       - name: show exisiting files 
-        run: ls -a ./sites/mosul
+        run:  ls -a && ls -a ./sites/mosul
 
       - name: Build and Run Containers
         run: ${{ inputs.start-server-command }}
