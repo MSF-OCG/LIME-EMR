@@ -73,7 +73,7 @@ jobs:
           clean: ${{ github.event_name == 'push' }}
 
       - name: Run e2e on release tests
-        uses: ./.github/workflows/run-e2e-tests.yml
+        uses: ./.github/workflows/run-e2e-tests
         if: ${{ github.event_name == 'push' }}
         with:
           frontend-container-name: "ozone-frontend-1"
@@ -84,7 +84,7 @@ jobs:
           start-server-command: "curl -sSL -H 'Cache-Control: no-cache, no-store' -H 'Authorization: token ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}' https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-Tooling/dev/Procedures/local_lime_emr.sh | bash -s -- install mosul"
 
       - name: Run e2e on pull-request tests
-        uses: ./.github/workflows/run-e2e-tests.yml
+        uses: ./.github/workflows/run-e2e-tests
         if: ${{ github.event_name != 'push' }}
         with:
           frontend-container-name: "ozone-frontend-1"
