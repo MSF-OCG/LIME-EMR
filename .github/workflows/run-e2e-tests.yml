@@ -66,7 +66,7 @@ jobs:
       - name: Extract mosul artifact
         if: ${{ inputs.is-artifact-cached }}
         run: |
-          unzip ${{ inputs.test-artifact-cache-path }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target
           rm ${{ inputs.test-artifact-cache-path }}
       
       - name: show exisiting files 
