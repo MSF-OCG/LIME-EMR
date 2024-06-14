@@ -21,8 +21,8 @@ jobs:
         matrix:
           java: [ '8' ]
     outputs:
-      msf_mosul_artifact_id: ${{steps.get_artifactId.outputs.mosul_artifact_id}}
       msf_mosul_artifact_version: ${{steps.get_version.outputs.mosul_artifact_version}}
+      msf_mosul_artifact_id: ${{steps.get_artifactId.outputs.mosul_artifact_id}}
     steps:
       - uses: actions/checkout@v4
       
@@ -43,19 +43,25 @@ jobs:
               "username": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}",
               "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
             }]
-  
+        
+      - name: Build and Test
+        run: mvn --batch-mode --update-snapshots --activate-profiles validator clean package
+
       - name: Get MSF Mosul version
         working-directory: "${{ github.workspace }}/sites/mosul"
         id: get_version
-        run: echo "mosul_artifact_version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+        run: |
+          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo $VERSION
+          echo ::set-output name=mosul_artifact_version::$VERSION
     
       - name: Get MSF Mosul artifactId
         working-directory: "${{ github.workspace }}/sites/mosul"
         id: get_artifactId
-        run: echo "mosul_artifact_id=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)" >> $GITHUB_ENV
-        
-      - name: Build and Test
-        run: mvn --batch-mode --update-snapshots --activate-profiles validator clean package
+        run: |
+          ARTIFACT_ID=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
+          echo $ARTIFACT_ID
+          echo ::set-output name=mosul_artifact_id::$ARTIFACT_ID
 
       - name: Publish MSF Mosul artifacts to GitHub
         uses: ./.github/actions/upload-maven-artifacts
@@ -65,6 +71,13 @@ jobs:
           artifact-path: "${{ github.workspace }}/sites/mosul"
           maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
           maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
+
+      - name: cache Mosul artifact for future use
+        if: ${{ github.event_name != 'push' }}
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/sites/mosul/target/${{ steps.get_artifactId.outputs.mosul_artifact_id }}-${{ steps.get_version.outputs.mosul_artifact_version }}.zip
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
   run-e2e-on-push:    
     uses: ./.github/workflows/run-e2e-tests.yml
@@ -87,6 +100,7 @@ jobs:
       database-container-name: "ozone-mysql-1"
       frontend-config-file-path: "./sites/mosul/target/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}-${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/binaries/openmrs/frontend/spa-assemble-config.json"
       start-server-command: "cd ./sites/mosul/target/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}-${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/run/docker/scripts"
-      should-delete-artifacts: false
+      test-artifact-cache-path: ${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}-${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}
+      is-artifact-cached: true
     needs: build-and-publish
     if: ${{ github.event_name != 'push' }}

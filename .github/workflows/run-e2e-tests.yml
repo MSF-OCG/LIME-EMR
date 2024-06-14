@@ -33,16 +33,19 @@ on:
           default: 'docker compose up'
           required: true
           type: string
-      should-delete-artifacts:
-        description: 'whether actions/checkout@v4 should delete reuslts of the previous build or not'
-        default: true
+      test-artifact-cache-path:
+        description: 'The artifact directory on which to run e2e against'
+        default: ''
+        required: false
+        type: string
+      is-artifact-cached:
+        description: 'whether the Mosul Artifact is cached for sharing between jobs'
+        default: false
         required: false
         type: boolean
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      CHECKOUT_PATH: ${{ inputs.should-delete-artifacts == false && 'temp-dir' || '' }}
     outputs:
       patient_management_ref: ${{steps.refs.outputs.patient_management}}
       patient_chart_ref: ${{steps.refs.outputs.patient_chart}}
@@ -50,16 +53,15 @@ jobs:
       esm_core_ref: ${{steps.refs.outputs.esm_core}}
 
     steps:
-      - uses: actions/checkout@v2
-        with:
-          clean: ${{ inputs.should-delete-artifacts }}
-          path: ${{ env.CHECKOUT_PATH }}
+      - uses: actions/checkout@v4
 
-      - name: Extract contents of the temporaly directory if necessary
-        if: ${{ inputs.should-delete-artifacts == false }}
-        run: |
-          mv temp-dir/* .
-          
+      - name: Get cached Mosul Artifacts
+        if: ${{ inputs.is-artifact-cached }}
+        uses: actions/cache/restore@v3
+        with:
+          path: ${{ inputs.test-artifact-cache-path }}
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+
       - name: show exisiting files 
         run:  |
           ls -a
