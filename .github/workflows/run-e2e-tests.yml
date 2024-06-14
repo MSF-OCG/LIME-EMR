@@ -74,11 +74,6 @@ jobs:
           mkdir ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
           unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
           rm ${{ inputs.test-artifact-cache-path }}
-      
-      - name: show exisiting files 
-        run:  |
-          ls -a
-          ls -a ./sites/mosul/target
 
       - name: Extract branch name
         shell: bash
