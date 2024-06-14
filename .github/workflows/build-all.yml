@@ -52,16 +52,14 @@ jobs:
         id: get_version
         run: |
           VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-          echo $VERSION
-          echo ::set-output name=mosul_artifact_version::$VERSION
+          echo "mosul_artifact_version=$VERSION" >> $GITHUB_OUTPUT
     
       - name: Get MSF Mosul artifactId
         working-directory: "${{ github.workspace }}/sites/mosul"
         id: get_artifactId
         run: |
           ARTIFACT_ID=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
-          echo $ARTIFACT_ID
-          echo ::set-output name=mosul_artifact_id::$ARTIFACT_ID
+          echo "mosul_artifact_id=$ARTIFACT_ID" >> $GITHUB_OUTPUT
 
       - name: Publish MSF Mosul artifacts to GitHub
         uses: ./.github/actions/upload-maven-artifacts
@@ -77,7 +75,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ github.workspace }}/sites/mosul/target/${{ steps.get_artifactId.outputs.mosul_artifact_id }}-${{ steps.get_version.outputs.mosul_artifact_version }}.zip
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+          key: ${{ github.sha }}
 
   run-e2e-on-push:    
     uses: ./.github/workflows/run-e2e-tests.yml

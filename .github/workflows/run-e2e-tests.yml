@@ -60,7 +60,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: ${{ inputs.test-artifact-cache-path }}
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+          key: ${{ github.sha }}
 
       - name: show exisiting files 
         run:  |
@@ -88,7 +88,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: e2e_release_env_images.tar.gz
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+          key: ${{ github.sha }}
 
   run-patient-management-e2e-tests:
     runs-on: ubuntu-latest
@@ -104,7 +104,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: e2e_release_env_images.tar.gz
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+          key: ${{ github.sha }}
 
       - name: Load Docker Images
         run: |
@@ -166,7 +166,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: e2e_release_env_images.tar.gz
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+          key: ${{ github.sha }}
 
       - name: Load Docker Images
         run: |
@@ -228,7 +228,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: e2e_release_env_images.tar.gz
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+          key: ${{ github.sha }}
 
       - name: Load Docker Images
         run: |
@@ -290,7 +290,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: e2e_release_env_images.tar.gz
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+          key: ${{ github.sha }}
 
       - name: Load Docker Images
         run: |
