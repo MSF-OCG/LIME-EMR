@@ -74,7 +74,7 @@ jobs:
         if: ${{ github.event_name != 'push' }}
         uses: actions/cache@v4
         with:
-          path: ${{ github.workspace }}/sites/mosul/target/${{ steps.get_artifactId.outputs.mosul_artifact_id }}-${{ steps.get_version.outputs.mosul_artifact_version }}.zip
+          path: ./sites/mosul/target/${{ steps.get_artifactId.outputs.mosul_artifact_id }}-${{ steps.get_version.outputs.mosul_artifact_version }}.zip
           key: ${{ github.sha }}
 
   run-e2e-on-push:    
