@@ -63,17 +63,17 @@ jobs:
           key: ${{ github.sha }}
           fail-on-cache-miss: true
       
-      - name: show exisiting files 
-        run:  |
-          ls -a
-          ls -a ./sites/mosul
-
       - name: Extract mosul artifact
         if: ${{ inputs.is-artifact-cached }}
         run: |
-          unzip ${{ inputs.test-artifact-cache-path }}.zip
-          rm ${{ inputs.test-artifact-cache-path }}.zip
-          
+          unzip ${{ inputs.test-artifact-cache-path }}
+          rm ${{ inputs.test-artifact-cache-path }}
+      
+      - name: show exisiting files 
+        run:  |
+          ls -a
+          ls -a ./sites/mosul/target
+
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//-/g')" >> $GITHUB_ENV
