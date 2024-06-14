@@ -38,11 +38,12 @@ on:
         default: ''
         required: false
         type: string
-      is-artifact-cached:
-        description: 'whether the Mosul Artifact is cached for sharing between jobs'
-        default: false
+      test-artifact-cache-name:
+        description: 'artifact name to test'
+        default: ''
         required: false
-        type: boolean
+        type: string
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -52,11 +53,15 @@ jobs:
       form_builder_ref: ${{steps.refs.outputs.form_builder}}
       esm_core_ref: ${{steps.refs.outputs.esm_core}}
 
+
+    env:
+      IS_ARCHITYPE_CACHED: ${{ inputs.test-artifact-cache-name != '' }}
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Get cached Mosul Artifacts
-        if: ${{ inputs.is-artifact-cached }}
+        if: ${{ env.IS_ARCHITYPE_CACHED }}
         uses: actions/cache/restore@v3
         with:
           path: ${{ inputs.test-artifact-cache-path }}
@@ -64,9 +69,10 @@ jobs:
           fail-on-cache-miss: true
       
       - name: Extract mosul artifact
-        if: ${{ inputs.is-artifact-cached }}
+        if: ${{ env.IS_ARCHITYPE_CACHED }}
         run: |
-          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target
+          mkdir ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
           rm ${{ inputs.test-artifact-cache-path }}
       
       - name: show exisiting files 
