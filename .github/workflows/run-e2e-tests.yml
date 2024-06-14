@@ -50,7 +50,7 @@ jobs:
       esm_core_ref: ${{steps.refs.outputs.esm_core}}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
         with:
           clean: ${{ inputs.should-delete-artifacts }}
           path: ${{ env.CHECKOUT_PATH }}
