@@ -26,4 +26,4 @@ sed -e "s/frontend/$frontend_container_name/g" \
     -e "s/backend/$backend_container_name/g" \
     -e "s/db/$db_container_name/g" \
     -e "s/gateway/$gateway_container_name/g" \
-    docker-compose.template.yml > docker-compose.yml
+    e2e_test_support_files/docker-compose.template.yml > e2e_test_support_files/docker-compose.yml
