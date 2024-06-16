@@ -96,7 +96,7 @@ jobs:
       backend-container-name: "ozone-openmrs-1"
       gateway-container-name: "ozone-proxy-1"
       database-container-name: "ozone-mysql-1"
-      frontend-config-file-path: "./sites/mosul/target/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}-${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/binaries/openmrs/frontend/spa-assemble-config.json"
+      frontend-config-file-path: "./sites/mosul/target/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}-${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/distro/binaries/openmrs/frontend/spa-assemble-config.json"
       start-server-command: "cd ./sites/mosul/target/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}-${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}/run/docker/scripts && ./start-demo.sh"
       test-artifact-cache-path: ./sites/mosul/target/${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}-${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}.zip
       test-artifact-cache-name: "${{ needs.build-and-publish.outputs.msf_mosul_artifact_id }}-${{ needs.build-and-publish.outputs.msf_mosul_artifact_version }}"
