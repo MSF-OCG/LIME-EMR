@@ -6,7 +6,18 @@ get_repository_tag() {
   local repo_name="$2"
   local app="$3"
 
-  local version=$(awk -F'"' -v app="$app" '$0 ~ app {print $4}' "$file")
+  local version=$(awk -v app="$app" '
+    BEGIN { FS = "\"" }
+    {
+      for (i = 1; i <= NF; i++) {
+        if ($i == app) {
+          print $(i+2)
+          exit
+        }
+      }
+    }
+  ' "$file")
+  
   local ref="refs/tags/v$version"
 
   # Check if the version number contains "pre" and modify the ref to main branch
