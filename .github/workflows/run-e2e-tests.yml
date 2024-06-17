@@ -62,7 +62,7 @@ jobs:
       - name: Get cached Mosul Artifacts
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         timeout-minutes: 10
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: ${{ inputs.test-artifact-cache-path }}
           key: ${{ github.sha }}
@@ -116,7 +116,7 @@ jobs:
         run: echo "tmpdir=$(mktemp -d)" >> "$GITHUB_OUTPUT"
 
       - name: Get cached Docker Images
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: e2e_release_env_images.tar.gz
           key: ${{ github.sha }}
@@ -129,7 +129,7 @@ jobs:
           docker image ls -a
 
       - name: Get cached Docker compose file
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         with:
           path: e2e_test_support_files/docker-compose.yml
@@ -186,7 +186,7 @@ jobs:
         run: echo "tmpdir=$(mktemp -d)" >> "$GITHUB_OUTPUT"
 
       - name: Get cached Docker Images
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: e2e_release_env_images.tar.gz
           key: ${{ github.sha }}
@@ -199,7 +199,7 @@ jobs:
           docker image ls -a
 
       - name: Get cached Docker compose file
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         with:
           path: e2e_test_support_files/docker-compose.yml
@@ -256,7 +256,7 @@ jobs:
         run: echo "tmpdir=$(mktemp -d)" >> "$GITHUB_OUTPUT"
 
       - name: Get cached Docker Images
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: e2e_release_env_images.tar.gz
           key: ${{ github.sha }}
@@ -269,7 +269,7 @@ jobs:
           docker image ls -a
 
       - name: Get cached Docker compose file
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         timeout-minutes: 10
         with:
@@ -327,7 +327,7 @@ jobs:
         run: echo "tmpdir=$(mktemp -d)" >> "$GITHUB_OUTPUT"
 
       - name: Get cached Docker Images
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         timeout-minutes: 10
         with:
           path: e2e_release_env_images.tar.gz
@@ -341,7 +341,7 @@ jobs:
           docker image ls -a
 
       - name: Get cached Docker compose file
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         timeout-minutes: 10
         with:
