@@ -19,7 +19,7 @@ jobs:
     runs-on: self-hosted
     strategy:
         matrix:
-          java: [ '8' ]
+          java: [ '11' ]
     outputs:
       msf_mosul_artifact_version: ${{steps.get_version.outputs.mosul_artifact_version}}
       msf_mosul_artifact_id: ${{steps.get_artifactId.outputs.mosul_artifact_id}}
