@@ -10,7 +10,7 @@ get_repository_tag() {
   local ref="refs/tags/v$version"
 
   # Check if the version number contains "pre" and modify the ref to main branch
-  if [[ $version == *"pre"* || $version == *"next"* ]]; then
+  if [[ $version == *"pre"* ]]; then
     ref="main"
   fi
 
