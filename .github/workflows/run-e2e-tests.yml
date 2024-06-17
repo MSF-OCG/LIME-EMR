@@ -61,6 +61,7 @@ jobs:
 
       - name: Get cached Mosul Artifacts
         if: ${{ env.IS_ARCHITYPE_CACHED }}
+        timeout-minutes: 10
         uses: actions/cache/restore@v3
         with:
           path: ${{ inputs.test-artifact-cache-path }}
@@ -159,7 +160,7 @@ jobs:
         working-directory: e2e_repo
 
       - name: Wait for the OpenMRS instance to start
-        timeout-minutes: 4
+        timeout-minutes: 10
         run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/openmrs/login.htm)" != "200" ]]; do sleep 10; done
 
       - name: Run E2E tests
@@ -229,7 +230,7 @@ jobs:
         working-directory: e2e_repo
 
       - name: Wait for the OpenMRS instance to start
-        timeout-minutes: 4
+        timeout-minutes: 10
         run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/openmrs/login.htm)" != "200" ]]; do sleep 10; done
 
       - name: Run E2E tests
@@ -270,6 +271,7 @@ jobs:
       - name: Get cached Docker compose file
         uses: actions/cache/restore@v3
         if: ${{ env.IS_ARCHITYPE_CACHED }}
+        timeout-minutes: 10
         with:
           path: e2e_test_support_files/docker-compose.yml
           key: ${{ github.sha }}
@@ -299,7 +301,7 @@ jobs:
         working-directory: e2e_repo
 
       - name: Wait for the OpenMRS instance to start
-        timeout-minutes: 4
+        timeout-minutes: 10
         run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/openmrs/login.htm)" != "200" ]]; do sleep 10; done
 
       - name: Run E2E tests
@@ -326,6 +328,7 @@ jobs:
 
       - name: Get cached Docker Images
         uses: actions/cache/restore@v3
+        timeout-minutes: 10
         with:
           path: e2e_release_env_images.tar.gz
           key: ${{ github.sha }}
@@ -340,6 +343,7 @@ jobs:
       - name: Get cached Docker compose file
         uses: actions/cache/restore@v3
         if: ${{ env.IS_ARCHITYPE_CACHED }}
+        timeout-minutes: 10
         with:
           path: e2e_test_support_files/docker-compose.yml
           key: ${{ github.sha }}
@@ -369,7 +373,7 @@ jobs:
         working-directory: e2e_repo
 
       - name: Wait for the OpenMRS instance to start
-        timeout-minutes: 4
+        timeout-minutes: 10
         run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/openmrs/login.htm)" != "200" ]]; do sleep 10; done
 
       - name: Run E2E tests

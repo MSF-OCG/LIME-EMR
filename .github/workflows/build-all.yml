@@ -73,6 +73,7 @@ jobs:
       - name: cache Mosul artifact for future use
         if: ${{ github.event_name != 'push' }}
         uses: actions/cache@v4
+        timeout-minutes: 10
         with:
           path: ./sites/mosul/target/${{ steps.get_artifactId.outputs.mosul_artifact_id }}-${{ steps.get_version.outputs.mosul_artifact_version }}.zip
           key: ${{ github.sha }}
