@@ -49,7 +49,7 @@ env:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     outputs:
       patient_management_ref: ${{steps.refs.outputs.patient_management}}
       patient_chart_ref: ${{steps.refs.outputs.patient_chart}}
@@ -61,7 +61,6 @@ jobs:
 
       - name: Get cached Mosul Artifacts
         if: ${{ env.IS_ARCHITYPE_CACHED }}
-        timeout-minutes: 10
         uses: actions/cache/restore@v4
         with:
           path: ${{ inputs.test-artifact-cache-path }}
@@ -106,7 +105,7 @@ jobs:
           key: ${{ github.sha }}
 
   run-patient-management-e2e-tests:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - uses: actions/checkout@v4
@@ -160,7 +159,7 @@ jobs:
         working-directory: e2e_repo
 
       - name: Wait for the OpenMRS instance to start
-        timeout-minutes: 10
+        timeout-minutes: 4
         run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/openmrs/login.htm)" != "200" ]]; do sleep 10; done
 
       - name: Run E2E tests
@@ -176,7 +175,7 @@ jobs:
           retention-days: 14
 
   run-patient-chart-e2e-tests:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - uses: actions/checkout@v4
@@ -230,7 +229,7 @@ jobs:
         working-directory: e2e_repo
 
       - name: Wait for the OpenMRS instance to start
-        timeout-minutes: 10
+        timeout-minutes: 4
         run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/openmrs/login.htm)" != "200" ]]; do sleep 10; done
 
       - name: Run E2E tests
@@ -246,7 +245,7 @@ jobs:
           retention-days: 14
 
   run-esm-core-e2e-tests:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - uses: actions/checkout@v4
@@ -271,7 +270,6 @@ jobs:
       - name: Get cached Docker compose file
         uses: actions/cache/restore@v4
         if: ${{ env.IS_ARCHITYPE_CACHED }}
-        timeout-minutes: 10
         with:
           path: e2e_test_support_files/docker-compose.yml
           key: ${{ github.sha }}
@@ -301,7 +299,7 @@ jobs:
         working-directory: e2e_repo
 
       - name: Wait for the OpenMRS instance to start
-        timeout-minutes: 10
+        timeout-minutes: 4
         run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/openmrs/login.htm)" != "200" ]]; do sleep 10; done
 
       - name: Run E2E tests
@@ -317,7 +315,7 @@ jobs:
           retention-days: 14
 
   run-form-builder-e2e-tests:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - uses: actions/checkout@v4
@@ -328,7 +326,6 @@ jobs:
 
       - name: Get cached Docker Images
         uses: actions/cache/restore@v4
-        timeout-minutes: 10
         with:
           path: e2e_release_env_images.tar.gz
           key: ${{ github.sha }}
@@ -343,7 +340,6 @@ jobs:
       - name: Get cached Docker compose file
         uses: actions/cache/restore@v4
         if: ${{ env.IS_ARCHITYPE_CACHED }}
-        timeout-minutes: 10
         with:
           path: e2e_test_support_files/docker-compose.yml
           key: ${{ github.sha }}
@@ -373,7 +369,7 @@ jobs:
         working-directory: e2e_repo
 
       - name: Wait for the OpenMRS instance to start
-        timeout-minutes: 10
+        timeout-minutes: 4
         run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8080/openmrs/login.htm)" != "200" ]]; do sleep 10; done
 
       - name: Run E2E tests
