@@ -1,0 +1,285 @@
+name: Run E2E Tests on PRs
+
+on:
+  workflow_call:
+    inputs:
+      start-server-command:
+          description: 'command to spin up the openmrs server'
+          default: 'docker compose up'
+          required: true
+          type: string
+      frontend-config-file-path:
+        description: 'Location of the spa-assemble-config.json frontend config file'
+        default: './spa-assemble-config.json'
+        required: true
+        type: string
+      test-artifact-cache-path:
+        description: 'The artifact directory on which to run e2e against'
+        default: ''
+        required: false
+        type: string
+      test-artifact-cache-name:
+        description: 'artifact name to test'
+        default: ''
+        required: false
+        type: string
+
+env:
+  IS_ARCHITYPE_CACHED: ${{ inputs.test-artifact-cache-name != '' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      patient_management_ref: ${{steps.refs.outputs.patient_management}}
+      patient_chart_ref: ${{steps.refs.outputs.patient_chart}}
+      form_builder_ref: ${{steps.refs.outputs.form_builder}}
+      esm_core_ref: ${{steps.refs.outputs.esm_core}}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract version numbers from the spa-build-config.json file
+        id: refs
+        run: bash e2e_test_support_files/extract_tag_numbers.sh ${{ inputs.frontend-config-file-path }}
+
+  run-patient-management-e2e-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get cached Mosul Artifacts
+        if: ${{ env.IS_ARCHITYPE_CACHED }}
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ inputs.test-artifact-cache-path }}
+          key: ${{ github.sha }}
+          fail-on-cache-miss: true
+      
+      - name: Extract mosul artifact
+        if: ${{ env.IS_ARCHITYPE_CACHED }}
+        run: |
+          mkdir ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          rm ${{ inputs.test-artifact-cache-path }}
+
+      - name: Build and Run Containers
+        run: ${{ inputs.start-server-command }}
+
+      - name: Checkout to the Repo's Tag
+        uses: actions/checkout@v4
+        with:
+          repository: openmrs/openmrs-esm-patient-management
+          ref: ${{ needs.build.outputs.patient_management_ref }}
+          path: e2e_repo
+
+      - name: Copy test environment variables
+        run: sed -e "s/localhost:8080/localhost/g" example.env > .env
+        working-directory: e2e_repo
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+        working-directory: e2e_repo
+
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium --with-deps
+        working-directory: e2e_repo
+
+      - name: Wait for the OpenMRS instance to start
+        timeout-minutes: 4
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost/openmrs/login.htm)" != "200" ]]; do sleep 10; done
+
+      - name: Run E2E tests
+        run: yarn playwright test
+        working-directory: e2e_repo
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: report-patient-management
+          path: e2e_repo/playwright-report/
+          retention-days: 14
+
+  run-patient-chart-e2e-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get cached Mosul Artifacts
+        if: ${{ env.IS_ARCHITYPE_CACHED }}
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ inputs.test-artifact-cache-path }}
+          key: ${{ github.sha }}
+          fail-on-cache-miss: true
+      
+      - name: Extract mosul artifact
+        if: ${{ env.IS_ARCHITYPE_CACHED }}
+        run: |
+          mkdir ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          rm ${{ inputs.test-artifact-cache-path }}
+
+      - name: Build and Run Containers
+        run: ${{ inputs.start-server-command }}
+
+      - name: Checkout to the Repo's Tag
+        uses: actions/checkout@v4
+        with:
+          repository: openmrs/openmrs-esm-patient-chart
+          ref: ${{ needs.build.outputs.patient_chart_ref }}
+          path: e2e_repo
+
+      - name: Copy test environment variables
+        run: sed -e "s/localhost:8080/localhost/g" example.env > .env
+        working-directory: e2e_repo
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+        working-directory: e2e_repo
+
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium --with-deps
+        working-directory: e2e_repo
+
+      - name: Wait for the OpenMRS instance to start
+        timeout-minutes: 4
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost/openmrs/login.htm)" != "200" ]]; do sleep 10; done
+
+      - name: Run E2E tests
+        run: yarn playwright test
+        working-directory: e2e_repo
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: report-patient-chart
+          path: e2e_repo/playwright-report/
+          retention-days: 14
+
+  run-esm-core-e2e-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get cached Mosul Artifacts
+        if: ${{ env.IS_ARCHITYPE_CACHED }}
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ inputs.test-artifact-cache-path }}
+          key: ${{ github.sha }}
+          fail-on-cache-miss: true
+      
+      - name: Extract mosul artifact
+        if: ${{ env.IS_ARCHITYPE_CACHED }}
+        run: |
+          mkdir ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          rm ${{ inputs.test-artifact-cache-path }}
+
+      - name: Build and Run Containers
+        run: ${{ inputs.start-server-command }}
+
+      - name: Checkout to the Repo's Tag
+        uses: actions/checkout@v4
+        with:
+          repository: openmrs/openmrs-esm-core
+          ref: ${{ needs.build.outputs.esm_core_ref }}
+          path: e2e_repo
+
+      - name: Copy test environment variables
+        run: sed -e "s/localhost:8080/localhost/g" example.env > .env
+        working-directory: e2e_repo
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+        working-directory: e2e_repo
+
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium --with-deps
+        working-directory: e2e_repo
+
+      - name: Wait for the OpenMRS instance to start
+        timeout-minutes: 4
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost/openmrs/login.htm)" != "200" ]]; do sleep 10; done
+
+      - name: Run E2E tests
+        run: yarn playwright test
+        working-directory: e2e_repo
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: report-esm-core
+          path: e2e_repo/playwright-report/
+          retention-days: 14
+
+  run-form-builder-e2e-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get cached Mosul Artifacts
+        if: ${{ env.IS_ARCHITYPE_CACHED }}
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ inputs.test-artifact-cache-path }}
+          key: ${{ github.sha }}
+          fail-on-cache-miss: true
+      
+      - name: Extract mosul artifact
+        if: ${{ env.IS_ARCHITYPE_CACHED }}
+        run: |
+          mkdir ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          rm ${{ inputs.test-artifact-cache-path }}
+
+      - name: Build and Run Containers
+        run: ${{ inputs.start-server-command }}
+
+      - name: Checkout to the Repo's Tag
+        uses: actions/checkout@v4
+        with:
+          repository: openmrs/openmrs-esm-form-builder
+          ref: ${{ needs.build.outputs.form_builder_ref }}
+          path: e2e_repo
+
+      - name: Copy test environment variables
+        run: sed -e "s/localhost:8080/localhost/g" example.env > .env
+        working-directory: e2e_repo
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+        working-directory: e2e_repo
+
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium --with-deps
+        working-directory: e2e_repo
+
+      - name: Wait for the OpenMRS instance to start
+        timeout-minutes: 4
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost/openmrs/login.htm)" != "200" ]]; do sleep 10; done
+
+      - name: Run E2E tests
+        run: yarn playwright test
+        working-directory: e2e_repo
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: report-esm-core
+          path: e2e_repo/playwright-report/
+          retention-days: 14
+    
