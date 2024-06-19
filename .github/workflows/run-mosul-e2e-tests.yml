@@ -39,6 +39,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Get cached Mosul Artifacts
+        if: ${{ env.IS_ARCHITYPE_CACHED }}
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ inputs.test-artifact-cache-path }}
+          key: ${{ github.sha }}
+          fail-on-cache-miss: true
+      
+      - name: Extract mosul artifact
+        if: ${{ env.IS_ARCHITYPE_CACHED }}
+        run: |
+          mkdir ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          rm ${{ inputs.test-artifact-cache-path }}
+
       - name: Extract version numbers from the spa-build-config.json file
         id: refs
         run: bash e2e_test_support_files/extract_tag_numbers.sh ${{ inputs.frontend-config-file-path }}
