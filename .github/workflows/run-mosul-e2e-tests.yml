@@ -90,8 +90,7 @@ jobs:
           path: e2e_repo
 
       - name: Copy test environment variables
-        run: sed -e "s/localhost:8080/localhost/g" example.env > .env
-        working-directory: e2e_repo
+        run: cp e2e_test_support_files/mosul.example.env e2e_repo/.env
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
@@ -150,8 +149,7 @@ jobs:
           path: e2e_repo
 
       - name: Copy test environment variables
-        run: sed -e "s/localhost:8080/localhost/g" example.env > .env
-        working-directory: e2e_repo
+        run: cp e2e_test_support_files/mosul.example.env e2e_repo/.env
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
@@ -210,8 +208,7 @@ jobs:
           path: e2e_repo
 
       - name: Copy test environment variables
-        run: sed -e "s/localhost:8080/localhost/g" example.env > .env
-        working-directory: e2e_repo
+        run: cp e2e_test_support_files/mosul.example.env e2e_repo/.env
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
@@ -270,8 +267,7 @@ jobs:
           path: e2e_repo
 
       - name: Copy test environment variables
-        run: sed -e "s/localhost:8080/localhost/g" example.env > .env
-        working-directory: e2e_repo
+        run: cp e2e_test_support_files/mosul.example.env e2e_repo/.env
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
@@ -294,7 +290,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: report-esm-core
+          name: report-esm-form-builder
           path: e2e_repo/playwright-report/
           retention-days: 14
     
