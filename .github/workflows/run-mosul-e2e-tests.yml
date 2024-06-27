@@ -50,8 +50,8 @@ jobs:
       - name: Extract ${{ inputs.test-artifact-cache-name }} artifact
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         run: |
-          mkdir ./target/${{ inputs.test-artifact-cache-name }}
-          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./target/${{ inputs.test-artifact-cache-name }}
+          mkdir target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d target/${{ inputs.test-artifact-cache-name }}
           rm ${{ inputs.test-artifact-cache-path }}
 
       - name: Extract version numbers from the spa-build-config.json file
@@ -75,8 +75,8 @@ jobs:
       - name: Extract ${{ inputs.test-artifact-cache-name }} artifact
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         run: |
-          mkdir ./target/${{ inputs.test-artifact-cache-name }}
-          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./target/${{ inputs.test-artifact-cache-name }}
+          mkdir target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d target/${{ inputs.test-artifact-cache-name }}
           rm ${{ inputs.test-artifact-cache-path }}
 
       - name: Build and Run Containers
@@ -134,8 +134,8 @@ jobs:
       - name: Extract ${{ inputs.test-artifact-cache-name }} artifact
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         run: |
-          mkdir ./target/${{ inputs.test-artifact-cache-name }}
-          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./target/${{ inputs.test-artifact-cache-name }}
+          mkdir target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d target/${{ inputs.test-artifact-cache-name }}
           rm ${{ inputs.test-artifact-cache-path }}
 
       - name: Build and Run Containers
@@ -199,8 +199,8 @@ jobs:
       - name: Extract ${{ inputs.test-artifact-cache-name }} artifact
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         run: |
-          mkdir ./target/${{ inputs.test-artifact-cache-name }}
-          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./target/${{ inputs.test-artifact-cache-name }}
+          mkdir target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d target/${{ inputs.test-artifact-cache-name }}
           rm ${{ inputs.test-artifact-cache-path }}
 
       - name: Build and Run Containers
@@ -258,8 +258,8 @@ jobs:
       - name: Extract ${{ inputs.test-artifact-cache-name }} artifact
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         run: |
-          mkdir ./target/${{ inputs.test-artifact-cache-name }}
-          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./target/${{ inputs.test-artifact-cache-name }}
+          mkdir target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d target/${{ inputs.test-artifact-cache-name }}
           rm ${{ inputs.test-artifact-cache-path }}
 
       - name: Build and Run Containers
