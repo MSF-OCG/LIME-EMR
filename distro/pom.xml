@@ -20,6 +20,7 @@
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
     <PatientIdentifierGeneratorVersion>0.1.0</PatientIdentifierGeneratorVersion>
+    <mosulmetadataVersion>0.0.1</mosulmetadataVersion>
     <MSFReferenceapplicationDockerVersion>qa</MSFReferenceapplicationDockerVersion>
   </properties>
 
@@ -29,6 +30,11 @@
       <groupId>org.openmrs.module</groupId>
       <artifactId>patientidentifiergenerator-omod</artifactId>
       <version>${PatientIdentifierGeneratorVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>mosulmetadata-omod</artifactId>
+      <version>${mosulmetadataVersion}</version>
     </dependency>
   </dependencies>
 
@@ -231,7 +237,7 @@
                 </configuration>
               </execution>
             </executions>
-          </plugin>     
+          </plugin>
         </plugins>
       </build>
     </profile>
@@ -247,7 +253,7 @@
       <url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR/</url>
     </repository>
   </repositories>
-  
+
   <distributionManagement>
     <repository>
       <name>MSF repo for releases</name>
@@ -260,5 +266,5 @@
       <url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR</url>
     </snapshotRepository>
   </distributionManagement>
-  
+
 </project>
