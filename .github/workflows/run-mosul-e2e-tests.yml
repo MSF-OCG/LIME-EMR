@@ -39,7 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get cached Mosul Artifacts
+      - name: Get cached ${{ inputs.test-artifact-cache-name }} Artifacts
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         uses: actions/cache/restore@v4
         with:
@@ -47,11 +47,11 @@ jobs:
           key: ${{ github.sha }}
           fail-on-cache-miss: true
       
-      - name: Extract mosul artifact
+      - name: Extract ${{ inputs.test-artifact-cache-name }} artifact
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         run: |
-          mkdir ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
-          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          mkdir ./target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./target/${{ inputs.test-artifact-cache-name }}
           rm ${{ inputs.test-artifact-cache-path }}
 
       - name: Extract version numbers from the spa-build-config.json file
@@ -64,7 +64,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get cached Mosul Artifacts
+      - name: Get cached ${{ inputs.test-artifact-cache-name }} Artifacts
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         uses: actions/cache/restore@v4
         with:
@@ -72,11 +72,11 @@ jobs:
           key: ${{ github.sha }}
           fail-on-cache-miss: true
       
-      - name: Extract mosul artifact
+      - name: Extract ${{ inputs.test-artifact-cache-name }} artifact
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         run: |
-          mkdir ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
-          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          mkdir ./target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./target/${{ inputs.test-artifact-cache-name }}
           rm ${{ inputs.test-artifact-cache-path }}
 
       - name: Build and Run Containers
@@ -123,7 +123,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get cached Mosul Artifacts
+      - name: Get cached ${{ inputs.test-artifact-cache-name }} Artifacts
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         uses: actions/cache/restore@v4
         with:
@@ -131,11 +131,11 @@ jobs:
           key: ${{ github.sha }}
           fail-on-cache-miss: true
       
-      - name: Extract mosul artifact
+      - name: Extract ${{ inputs.test-artifact-cache-name }} artifact
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         run: |
-          mkdir ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
-          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          mkdir ./target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./target/${{ inputs.test-artifact-cache-name }}
           rm ${{ inputs.test-artifact-cache-path }}
 
       - name: Build and Run Containers
@@ -188,7 +188,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get cached Mosul Artifacts
+      - name: Get cached ${{ inputs.test-artifact-cache-name }} Artifacts
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         uses: actions/cache/restore@v4
         with:
@@ -196,11 +196,11 @@ jobs:
           key: ${{ github.sha }}
           fail-on-cache-miss: true
       
-      - name: Extract mosul artifact
+      - name: Extract ${{ inputs.test-artifact-cache-name }} artifact
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         run: |
-          mkdir ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
-          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          mkdir ./target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./target/${{ inputs.test-artifact-cache-name }}
           rm ${{ inputs.test-artifact-cache-path }}
 
       - name: Build and Run Containers
@@ -247,7 +247,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get cached Mosul Artifacts
+      - name: Get cached ${{ inputs.test-artifact-cache-name }} Artifacts
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         uses: actions/cache/restore@v4
         with:
@@ -255,11 +255,11 @@ jobs:
           key: ${{ github.sha }}
           fail-on-cache-miss: true
       
-      - name: Extract mosul artifact
+      - name: Extract ${{ inputs.test-artifact-cache-name }} artifact
         if: ${{ env.IS_ARCHITYPE_CACHED }}
         run: |
-          mkdir ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
-          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./sites/mosul/target/${{ inputs.test-artifact-cache-name }}
+          mkdir ./target/${{ inputs.test-artifact-cache-name }}
+          unzip -o -q ${{ inputs.test-artifact-cache-path }} -d ./target/${{ inputs.test-artifact-cache-name }}
           rm ${{ inputs.test-artifact-cache-path }}
 
       - name: Build and Run Containers
