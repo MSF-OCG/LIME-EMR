@@ -164,6 +164,12 @@ jobs:
         timeout-minutes: 4
         run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost/openmrs/login.htm)" != "200" ]]; do sleep 10; done
 
+      - name: configure patient chart example.env
+        #Todo:  Remove this on new chart release 
+        run: |
+          sed -e "s/localhost:8080/localhost/g" \
+            e2e_repo/example.env
+
       - name: Run E2E tests
         run: yarn playwright test
         working-directory: e2e_repo
