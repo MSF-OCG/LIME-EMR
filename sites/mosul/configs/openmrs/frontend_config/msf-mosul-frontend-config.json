@@ -1,9 +1,152 @@
 {
+  "@openmrs/esm-patient-home-app": {
+    "extensionSlots": {
+      "homepage-widgets-slot": {
+        "configure": {
+          "active-visits-widget": {
+            "Display conditions": {
+              "privileges": [
+                "Configure Visits"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
   "@openmrs/esm-patient-chart-app": {
     "Display conditions": {
       "privileges": [
         "Patient Dashboard - View Patient Summary"
       ]
+    },
+    "extensionSlots": {
+      "patient-chart-dashboard-slot": {
+        "configure": {
+          "charts-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Patient Dashboard - View Patient Summary"
+              ]
+            }
+          },
+          "medications-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Patient Medication"
+              ]
+            }
+          },
+          "encounters-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Configure Visits"
+              ]
+            }
+          },
+          "allergies-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Patient Overview - View Allergies"
+              ]
+            }
+          },
+          "conditions-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Patient Dashboard - View Conditions"
+              ]
+            }
+          },
+          "results-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Patient Dashboard - View Encounters Section"
+              ]
+            }
+          },
+          "programs-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Patient Overview - View Programs"
+              ]
+            }
+          },
+          "test-results-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "View Concepts"
+              ]
+            }
+          },
+          "immunization-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Immunization Summary"
+              ]
+            }
+          },
+          "patient-appointments-summary-dashboard": {
+            "configure": {
+              "Display conditions": {
+                "privileges": [
+                  "Manage Appointments"
+                ]
+              }
+            }
+          },
+          "visit-header-right-slot": {
+            "configure": {
+              "Display conditions": {
+                "privileges": [
+                  "Configure Visits"
+                ]
+              }
+            }
+          },
+          "attachments-results-summary-dashboard": {
+            "configure": {
+              "Display conditions": {
+                "privileges": [
+                  "Manage Patient Attachments"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "action-menu-chart-items-slot": {
+        "configure": {
+          "order-basket-action-menu": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Order Basket"
+              ]
+            }
+          },
+          "visit-note-nav-button": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Visit Note"
+              ]
+            }
+          },
+          "clinical-form-action-menu": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Clinical Forms"
+              ]
+            }
+          },
+          "patient-orders-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Patient Orders"
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "@openmrs/esm-primary-navigation-app": {
