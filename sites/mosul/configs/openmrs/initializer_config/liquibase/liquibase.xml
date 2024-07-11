@@ -184,4 +184,63 @@
             DELETE FROM person_attribute WHERE value = 'test';
         </sql>
     </changeSet>
+
+    <!-- Add admin as provider -->
+    <changeSet id="add_admin_provider-202407101630" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM provider WHERE person_id = 1;
+            </sqlCheck>
+        </preConditions>
+        <insert tableName="provider">
+            <column name="provider_id" value="1" />
+            <column name="person_id" value="1" />
+            <column name="name" value="Super User" />
+            <column name="identifier" value="admin" />
+            <column name="uuid" value="361ebccc-0992-46c5-a99f-ac523bed386e" />
+            <column name="creator" value="1" />
+            <column name="date_created" value="2024-08-11 11:30:00" />
+        </insert>
+    </changeSet>
+
+    <!-- Mosul providers -->
+    <changeSet id="add_mosul_providers-202407081130" author="Joshua">
+        <insert tableName="provider">
+            <column name="provider_id" value="31" />
+            <column name="person_id" value="31" />
+            <column name="name" value="Mental Health Nurse" />
+            <column name="identifier" value="MH_nurse" />
+            <column name="uuid" value="00daec3f-122e-485c-8828-efb1949acf47" />
+            <column name="creator" value="1" />
+            <column name="date_created" value="2024-08-11 11:30:00" />
+        </insert>
+        <insert tableName="provider">
+            <column name="provider_id" value="32" />
+            <column name="person_id" value="32" />
+            <column name="name" value="Mental Health Counselor" />
+            <column name="identifier" value="MH_counselor" />
+            <column name="uuid" value="257c4d86-c30e-48db-b513-27a4b935a9df" />
+            <column name="creator" value="1" />
+            <column name="date_created" value="2024-08-11 11:30:00" />
+        </insert>
+        <insert tableName="provider">
+            <column name="provider_id" value="33" />
+            <column name="person_id" value="33" />
+            <column name="name" value="Mental Health Doctor" />
+            <column name="identifier" value="MH_doctor" />
+            <column name="uuid" value="7c6c5781-dfbf-4f99-928a-45696e2ae37c" />
+            <column name="creator" value="1" />
+            <column name="date_created" value="2024-08-11 11:30:00" />
+        </insert>
+        <insert tableName="provider">
+            <column name="provider_id" value="34" />
+            <column name="person_id" value="34" />
+            <column name="name" value="Maternity Nurse" />
+            <column name="identifier" value="MAT_nurse" />
+            <column name="uuid" value="f89b80a6-a2c3-4a98-8beb-3b2138303124" />
+            <column name="creator" value="1" />
+            <column name="date_created" value="2024-08-11 11:30:00" />
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>
