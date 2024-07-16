@@ -1,6 +1,6 @@
 {
-    "name": "F04-mhGAP Follow-up",
-    "description": "MSF Form - F04-mhGAP Follow-up",
+    "name": "mhGAP Follow-up",
+    "description": "MSF Form - mhGAP Follow-up",
     "version": "1",
     "published": true,
     "uuid": "",
@@ -17,13 +17,13 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 1.0,
+                            "id": "sessionNumber",
                             "label": "Session number",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "numeric",
-                                "concept": 1.0
+                                "concept": "sessionNumber"
                             },
                             "validators": null,
                             "questionInfo": "Session number"
@@ -35,55 +35,75 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 2.0,
+                            "id": "thePatientDidNotCome",
                             "label": "The patient did not come",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 2.0
+                                "concept": "thePatientDidNotCome",
+                                "answers": [
+                                    {
+                                        "label": "Yes",
+                                        "concept": "yes"
+                                    },
+                                    {
+                                        "label": "No",
+                                        "concept": "no"
+                                    }
+                                ]
                             },
                             "validators": null,
                             "questionInfo": "The patient did not come"
                         },
                         {
-                            "id": 3.0,
+                            "id": "numberOfAppointmentsMissed",
                             "label": "Number of appointments missed",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "numeric",
-                                "concept": 3.0
+                                "concept": "numberOfAppointmentsMissed"
                             },
                             "validators": null,
                             "questionInfo": "Number of appointments missed",
                             "hide": {
-                                "hideWhenExpression": "Invalid expression format"
+                                "hideWhenExpression": "thePatientDidNotCome !== 'yes'"
                             }
                         },
                         {
-                            "id": 4.0,
+                            "id": "patientRescheduledFillTheExitForm",
                             "label": "Patient rescheduled (if Yes fill the Follow-up section at the end of this form. If No (closing file or patient no longer wants services) fill the Exit form.)",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 4.0
+                                "concept": "patientRescheduledFillTheExitForm",
+                                "answers": [
+                                    {
+                                        "label": "Yes",
+                                        "concept": "yes"
+                                    },
+                                    {
+                                        "label": "No",
+                                        "concept": "no"
+                                    }
+                                ]
                             },
                             "validators": null,
                             "questionInfo": "Patient rescheduled (if Yes fill the Follow-up section at the end of this form. If No (closing file or patient no longer wants services) fill the Exit form.)",
                             "hide": {
-                                "hideWhenExpression": "Invalid expression format"
+                                "hideWhenExpression": "thePatientDidNotCome !== 'yes'"
                             }
                         },
                         {
-                            "id": 5.0,
+                            "id": "reasonForMissedAppointment",
                             "label": "Reason for missed appointment",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 5.0,
+                                "concept": "reasonForMissedAppointment",
                                 "answers": [
                                     {
                                         "label": "Patient forgot about session",
@@ -107,29 +127,29 @@
                                     },
                                     {
                                         "label": "Other",
-                                        "concept": "5.0Other"
+                                        "concept": "reasonForMissedAppointmentOther"
                                     }
                                 ]
                             },
                             "validators": null,
                             "questionInfo": "Reason for missed appointment",
                             "hide": {
-                                "hideWhenExpression": "Invalid expression format"
+                                "hideWhenExpression": "thePatientDidNotCome !== 'yes'"
                             }
                         },
                         {
-                            "id": 6.0,
+                            "id": "ifOtherSpecify",
                             "label": "If other specify",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "text",
-                                "concept": 6.0
+                                "concept": "ifOtherSpecify"
                             },
                             "validators": null,
                             "questionInfo": "If other specify",
                             "hide": {
-                                "hideWhenExpression": "reasonForMissedAppointment !== 'other'"
+                                "hideWhenExpression": "reasonForMissedAppointment !== 'reasonForMissedAppointmentOther'"
                             }
                         }
                     ]
@@ -144,37 +164,37 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 7.0,
+                            "id": "evolutionOfSymptoms",
                             "label": "Evolution of symptoms (current symptoms onset duration course intensity triggers associated symptoms)",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "text",
-                                "concept": 7.0
+                                "concept": "evolutionOfSymptoms"
                             },
                             "validators": null,
                             "questionInfo": "Evolution of symptoms (current symptoms onset duration course intensity triggers associated symptoms)"
                         },
                         {
-                            "id": 8.0,
+                            "id": "sideEffectsFromCurrentTreatment",
                             "label": "Side effects from current treatment",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "text",
-                                "concept": 8.0
+                                "concept": "sideEffectsFromCurrentTreatment"
                             },
                             "validators": null,
                             "questionInfo": "Side effects from current treatment"
                         },
                         {
-                            "id": 9.0,
+                            "id": "basicMentalStatusExamination",
                             "label": "Basic mental status examination (appearance orientation speech / motor activity mood / affect thought / perception cognitive)",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "text",
-                                "concept": 9.0
+                                "concept": "basicMentalStatusExamination"
                             },
                             "validators": null,
                             "questionInfo": "Basic mental status examination (appearance orientation speech / motor activity mood / affect thought / perception cognitive)"
@@ -186,13 +206,13 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 10.0,
+                            "id": "clinicalDiagnosis",
                             "label": "Clinical diagnosis (only to be established by mhGAP clinician)",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 10.0,
+                                "concept": "clinicalDiagnosis",
                                 "answers": [
                                     {
                                         "label": "Acute stress reaction",
@@ -276,13 +296,13 @@
                             "questionInfo": "Clinical diagnosis (only to be established by mhGAP clinician)"
                         },
                         {
-                            "id": 11.0,
+                            "id": "clinicalDiagnosisIfOtherSpecify",
                             "label": "Clinical diagnosis - If other specify",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "text",
-                                "concept": 11.0
+                                "concept": "clinicalDiagnosisIfOtherSpecify"
                             },
                             "validators": null,
                             "questionInfo": "Clinical diagnosis - If other specify",
@@ -302,13 +322,13 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 12.0,
+                            "id": "littleInterestOrPleasureInDoingThings",
                             "label": "Little interest or pleasure in doing things",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 12.0,
+                                "concept": "littleInterestOrPleasureInDoingThings",
                                 "answers": [
                                     {
                                         "label": "Not at all",
@@ -332,13 +352,13 @@
                             "questionInfo": "Little interest or pleasure in doing things"
                         },
                         {
-                            "id": 13.0,
+                            "id": "feelingDownDepressedOrHopeless",
                             "label": "Feeling down depressed or hopeless",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 13.0,
+                                "concept": "feelingDownDepressedOrHopeless",
                                 "answers": [
                                     {
                                         "label": "Not at all",
@@ -362,13 +382,13 @@
                             "questionInfo": "Feeling down depressed or hopeless"
                         },
                         {
-                            "id": 14.0,
+                            "id": "troubleFallingOrStayingAsleepOrSleepingTooMuch",
                             "label": "Trouble falling or staying asleep or sleeping too much",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 14.0,
+                                "concept": "troubleFallingOrStayingAsleepOrSleepingTooMuch",
                                 "answers": [
                                     {
                                         "label": "Not at all",
@@ -392,13 +412,13 @@
                             "questionInfo": "Trouble falling or staying asleep or sleeping too much"
                         },
                         {
-                            "id": 15.0,
+                            "id": "feelingTiredOrHavingLittleEnergy",
                             "label": "Feeling tired or having little energy",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 15.0,
+                                "concept": "feelingTiredOrHavingLittleEnergy",
                                 "answers": [
                                     {
                                         "label": "Not at all",
@@ -422,13 +442,13 @@
                             "questionInfo": "Feeling tired or having little energy"
                         },
                         {
-                            "id": 16.0,
+                            "id": "poorAppetiteOrOvereating",
                             "label": "Poor appetite or overeating",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 16.0,
+                                "concept": "poorAppetiteOrOvereating",
                                 "answers": [
                                     {
                                         "label": "Not at all",
@@ -452,13 +472,13 @@
                             "questionInfo": "Poor appetite or overeating"
                         },
                         {
-                            "id": 17.0,
+                            "id": "feelingBadAboutYourselfOrThatYouAreAFailureOrHaveLetYourselfOrYourFamilyDown",
                             "label": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 17.0,
+                                "concept": "feelingBadAboutYourselfOrThatYouAreAFailureOrHaveLetYourselfOrYourFamilyDown",
                                 "answers": [
                                     {
                                         "label": "Not at all",
@@ -482,13 +502,13 @@
                             "questionInfo": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down"
                         },
                         {
-                            "id": 18.0,
+                            "id": "troubleConcentratingOnThingsSuchAsReadingTheNewspaperOrWatchingTelevision",
                             "label": "Trouble concentrating on things such as reading the newspaper or watching television",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 18.0,
+                                "concept": "troubleConcentratingOnThingsSuchAsReadingTheNewspaperOrWatchingTelevision",
                                 "answers": [
                                     {
                                         "label": "Not at all",
@@ -512,13 +532,13 @@
                             "questionInfo": "Trouble concentrating on things such as reading the newspaper or watching television"
                         },
                         {
-                            "id": 19.0,
+                            "id": "movingOrSpeakingSoSlowlyThatOtherPeopleCouldHaveNoticedOrTheOppositeBeingSoFidgetyOrRestlessThatYouHaveBeenMovingAroundALotMoreThanUsual",
                             "label": "Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 19.0,
+                                "concept": "movingOrSpeakingSoSlowlyThatOtherPeopleCouldHaveNoticedOrTheOppositeBeingSoFidgetyOrRestlessThatYouHaveBeenMovingAroundALotMoreThanUsual",
                                 "answers": [
                                     {
                                         "label": "Not at all",
@@ -542,13 +562,13 @@
                             "questionInfo": "Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual"
                         },
                         {
-                            "id": 20.0,
+                            "id": "thoughtsThatYouWouldBeBetterOffDeadOrOfHurtingYourselfInSomeWay",
                             "label": "Thoughts that you would be better off dead or of hurting yourself in some way",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 20.0,
+                                "concept": "thoughtsThatYouWouldBeBetterOffDeadOrOfHurtingYourselfInSomeWay",
                                 "answers": [
                                     {
                                         "label": "Not at all",
@@ -572,25 +592,25 @@
                             "questionInfo": "Thoughts that you would be better off dead or of hurting yourself in some way"
                         },
                         {
-                            "id": 21.0,
+                            "id": "phq9Score",
                             "label": "PHQ-9 score",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "numeric",
-                                "concept": 21.0
+                                "concept": "phq9Score"
                             },
                             "validators": null,
                             "questionInfo": "PHQ-9 score"
                         },
                         {
-                            "id": 22.0,
+                            "id": "depressionSeverityScale",
                             "label": "Depression severity scale",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 22.0,
+                                "concept": "depressionSeverityScale",
                                 "answers": [
                                     {
                                         "label": "No depression",
@@ -624,13 +644,13 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 23.0,
+                            "id": "cgiS",
                             "label": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time)",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 23.0,
+                                "concept": "cgiS",
                                 "answers": [
                                     {
                                         "label": "- Not assessed",
@@ -670,13 +690,13 @@
                             "questionInfo": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time)"
                         },
                         {
-                            "id": 24.0,
+                            "id": "cgiI",
                             "label": "CGI-I (rating of  improvement CGI-I how much has the patient improved at this time)",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 24.0,
+                                "concept": "cgiI",
                                 "answers": [
                                     {
                                         "label": "- Not assessed",
@@ -727,13 +747,13 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 25.0,
+                            "id": "msfPharmacologicalTreamentAdditionalInformationOrNotes",
                             "label": "MSF Pharmacological treament - Additional information/notes",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "text",
-                                "concept": 25.0
+                                "concept": "msfPharmacologicalTreamentAdditionalInformationOrNotes"
                             },
                             "validators": null,
                             "questionInfo": "MSF Pharmacological treament - Additional information/notes"
@@ -750,25 +770,35 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 26.0,
+                            "id": "isThePatientTakingTheMedicationAsPrescribed",
                             "label": "Is the patient taking the medication as prescribed   ",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 26.0
+                                "concept": "isThePatientTakingTheMedicationAsPrescribed",
+                                "answers": [
+                                    {
+                                        "label": "Yes",
+                                        "concept": "yes"
+                                    },
+                                    {
+                                        "label": "No",
+                                        "concept": "no"
+                                    }
+                                ]
                             },
                             "validators": null,
                             "questionInfo": "Is the patient taking the medication as prescribed   "
                         },
                         {
-                            "id": 27.0,
+                            "id": "detailsIfNeeded",
                             "label": "Details if needed",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "text",
-                                "concept": 27.0
+                                "concept": "detailsIfNeeded"
                             },
                             "validators": null,
                             "questionInfo": "Details if needed"
@@ -780,25 +810,35 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 28.0,
+                            "id": "followUpRequired",
                             "label": "Follow-up required  ",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 28.0
+                                "concept": "followUpRequired",
+                                "answers": [
+                                    {
+                                        "label": "Yes",
+                                        "concept": "yes"
+                                    },
+                                    {
+                                        "label": "No",
+                                        "concept": "no"
+                                    }
+                                ]
                             },
                             "validators": null,
                             "questionInfo": "Follow-up required  "
                         },
                         {
-                            "id": 29.0,
+                            "id": "nextAppointmentDate",
                             "label": "Next appointment date (required if Follow-up required is Yes)",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "date",
-                                "concept": 29.0
+                                "concept": "nextAppointmentDate"
                             },
                             "validators": null,
                             "questionInfo": "Next appointment date (required if Follow-up required is Yes)",
@@ -809,10 +849,6 @@
                     ]
                 }
             ]
-        },
-        {
-            "label": "nan",
-            "sections": []
         }
     ]
 }

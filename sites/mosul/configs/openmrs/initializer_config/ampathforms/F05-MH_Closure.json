@@ -1,6 +1,6 @@
 {
-    "name": "F05-MH Closure",
-    "description": "MSF Form - F05-MH Closure",
+    "name": "MH Closure",
+    "description": "MSF Form - MH Closure",
     "version": "1",
     "published": true,
     "uuid": "",
@@ -17,38 +17,38 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 1.0,
+                            "id": "openingDate",
                             "label": "Opening date",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "date",
-                                "concept": 1.0
+                                "concept": "openingDate"
                             },
                             "validators": null,
                             "default": "Date of the first Mental Health consultation (after the last closure if any)",
                             "questionInfo": "Opening date"
                         },
                         {
-                            "id": 2.0,
+                            "id": "closureDate",
                             "label": "Closure date",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "date",
-                                "concept": 2.0
+                                "concept": "closureDate"
                             },
                             "validators": null,
                             "questionInfo": "Closure date"
                         },
                         {
-                            "id": 3.0,
+                            "id": "totalNumberOfSessions",
                             "label": "Total number of sessions ",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "numeric",
-                                "concept": 3.0
+                                "concept": "totalNumberOfSessions"
                             },
                             "validators": null,
                             "default": "Total number of Mental Health consultation forms (closure not included) with [The patient did not come] <> 'Yes'",
@@ -61,13 +61,13 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 4.0,
+                            "id": "mainTypeOfIntervention",
                             "label": "Main type of intervention",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 4.0,
+                                "concept": "mainTypeOfIntervention",
                                 "answers": [
                                     {
                                         "label": "Counselling",
@@ -83,13 +83,13 @@
                             "questionInfo": "Main type of intervention"
                         },
                         {
-                            "id": 5.0,
+                            "id": "mainTypeOfConsultation",
                             "label": "Main type of consultation",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 5.0,
+                                "concept": "mainTypeOfConsultation",
                                 "answers": [
                                     {
                                         "label": "Individual",
@@ -109,13 +109,13 @@
                             "questionInfo": "Main type of consultation"
                         },
                         {
-                            "id": 6.0,
+                            "id": "typeOfClosure",
                             "label": "Type of closure",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 6.0,
+                                "concept": "typeOfClosure",
                                 "answers": [
                                     {
                                         "label": "Discharge with the patients agreement end of care",
@@ -163,13 +163,13 @@
                             "questionInfo": "Type of closure"
                         },
                         {
-                            "id": 7.0,
+                            "id": "patientReferredTo",
                             "label": "Patient referred to",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "text",
-                                "concept": 7.0
+                                "concept": "patientReferredTo"
                             },
                             "validators": null,
                             "questionInfo": "Patient referred to",
@@ -178,13 +178,13 @@
                             }
                         },
                         {
-                            "id": 8.0,
+                            "id": "explainTheClosureAndThePatientsFinalCondition",
                             "label": "Explain the closure and the patients final condition",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "text",
-                                "concept": 8.0
+                                "concept": "explainTheClosureAndThePatientsFinalCondition"
                             },
                             "validators": null,
                             "questionInfo": "Explain the closure and the patients final condition"
@@ -196,13 +196,13 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 9.0,
+                            "id": "goal1",
                             "label": "Goal 1",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 9.0,
+                                "concept": "goal1",
                                 "answers": [
                                     {
                                         "label": "Achieved",
@@ -222,13 +222,13 @@
                             "questionInfo": "Goal 1"
                         },
                         {
-                            "id": 10.0,
+                            "id": "goal2",
                             "label": "Goal 2",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 10.0,
+                                "concept": "goal2",
                                 "answers": [
                                     {
                                         "label": "Achieved",
@@ -248,13 +248,13 @@
                             "questionInfo": "Goal 2"
                         },
                         {
-                            "id": 11.0,
+                            "id": "goal3",
                             "label": "Goal 3",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 11.0,
+                                "concept": "goal3",
                                 "answers": [
                                     {
                                         "label": "Achieved",
@@ -274,13 +274,13 @@
                             "questionInfo": "Goal 3"
                         },
                         {
-                            "id": 12.0,
+                            "id": "comments",
                             "label": "Comments",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "text",
-                                "concept": 12.0
+                                "concept": "comments"
                             },
                             "validators": null,
                             "questionInfo": "Comments"
@@ -292,39 +292,39 @@
                     "isExpanded": false,
                     "questions": [
                         {
-                            "id": 13.0,
+                            "id": "mhos",
                             "label": "MHOS",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "numeric",
-                                "concept": 13.0
+                                "concept": "mhos"
                             },
                             "validators": null,
                             "default": "Value of last MHOS score measured",
                             "questionInfo": "MHOS"
                         },
                         {
-                            "id": 14.0,
+                            "id": "phq9",
                             "label": "PHQ-9",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "numeric",
-                                "concept": 14.0
+                                "concept": "phq9"
                             },
                             "validators": null,
                             "default": "Value of last PHQ-9 score measured",
                             "questionInfo": "PHQ-9"
                         },
                         {
-                            "id": 15.0,
+                            "id": "cgiI",
                             "label": "CGI-I",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 15.0,
+                                "concept": "cgiI",
                                 "answers": [
                                     {
                                         "label": "- Not assessed",
@@ -365,13 +365,13 @@
                             "questionInfo": "CGI-I"
                         },
                         {
-                            "id": 16.0,
+                            "id": "cgiS",
                             "label": "CGI-S",
                             "type": "obs",
                             "required": false,
                             "questionOptions": {
                                 "rendering": "radio",
-                                "concept": 16.0,
+                                "concept": "cgiS",
                                 "answers": [
                                     {
                                         "label": "- Not assessed",
@@ -414,10 +414,6 @@
                     ]
                 }
             ]
-        },
-        {
-            "label": "nan",
-            "sections": []
         }
     ]
 }
