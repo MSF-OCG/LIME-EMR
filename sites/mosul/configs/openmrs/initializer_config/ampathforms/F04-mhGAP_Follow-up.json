@@ -1,0 +1,818 @@
+{
+    "name": "F04-mhGAP Follow-up",
+    "description": "MSF Form - F04-mhGAP Follow-up",
+    "version": "1",
+    "published": true,
+    "uuid": "",
+    "processor": "EncounterFormProcessor",
+    "encounter": "Consultation",
+    "retired": false,
+    "referencedForms": [],
+    "pages": [
+        {
+            "label": "Consultation",
+            "sections": [
+                {
+                    "label": "Consultation information",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": 1.0,
+                            "label": "Session number",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "numeric",
+                                "concept": 1.0
+                            },
+                            "validators": null,
+                            "questionInfo": "Session number"
+                        }
+                    ]
+                },
+                {
+                    "label": "Missed session",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": 2.0,
+                            "label": "The patient did not come",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 2.0
+                            },
+                            "validators": null,
+                            "questionInfo": "The patient did not come"
+                        },
+                        {
+                            "id": 3.0,
+                            "label": "Number of appointments missed",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "numeric",
+                                "concept": 3.0
+                            },
+                            "validators": null,
+                            "questionInfo": "Number of appointments missed",
+                            "hide": {
+                                "hideWhenExpression": "Invalid expression format"
+                            }
+                        },
+                        {
+                            "id": 4.0,
+                            "label": "Patient rescheduled (if Yes fill the Follow-up section at the end of this form. If No (closing file or patient no longer wants services) fill the Exit form.)",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 4.0
+                            },
+                            "validators": null,
+                            "questionInfo": "Patient rescheduled (if Yes fill the Follow-up section at the end of this form. If No (closing file or patient no longer wants services) fill the Exit form.)",
+                            "hide": {
+                                "hideWhenExpression": "Invalid expression format"
+                            }
+                        },
+                        {
+                            "id": 5.0,
+                            "label": "Reason for missed appointment",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 5.0,
+                                "answers": [
+                                    {
+                                        "label": "Patient forgot about session",
+                                        "concept": "patientForgotAboutSession"
+                                    },
+                                    {
+                                        "label": "No transportation / unable to attend",
+                                        "concept": "noTransportationOrUnableToAttend"
+                                    },
+                                    {
+                                        "label": "Patient unreachable",
+                                        "concept": "patientUnreachable"
+                                    },
+                                    {
+                                        "label": "Patient no longer wants services",
+                                        "concept": "patientNoLongerWantsServices"
+                                    },
+                                    {
+                                        "label": "Patient was busy",
+                                        "concept": "patientWasBusy"
+                                    },
+                                    {
+                                        "label": "Other",
+                                        "concept": "5.0Other"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "Reason for missed appointment",
+                            "hide": {
+                                "hideWhenExpression": "Invalid expression format"
+                            }
+                        },
+                        {
+                            "id": 6.0,
+                            "label": "If other specify",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": 6.0
+                            },
+                            "validators": null,
+                            "questionInfo": "If other specify",
+                            "hide": {
+                                "hideWhenExpression": "reasonForMissedAppointment !== 'other'"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Examination & diagnosis",
+            "sections": [
+                {
+                    "label": "mhGAP file information",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": 7.0,
+                            "label": "Evolution of symptoms (current symptoms onset duration course intensity triggers associated symptoms)",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": 7.0
+                            },
+                            "validators": null,
+                            "questionInfo": "Evolution of symptoms (current symptoms onset duration course intensity triggers associated symptoms)"
+                        },
+                        {
+                            "id": 8.0,
+                            "label": "Side effects from current treatment",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": 8.0
+                            },
+                            "validators": null,
+                            "questionInfo": "Side effects from current treatment"
+                        },
+                        {
+                            "id": 9.0,
+                            "label": "Basic mental status examination (appearance orientation speech / motor activity mood / affect thought / perception cognitive)",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": 9.0
+                            },
+                            "validators": null,
+                            "questionInfo": "Basic mental status examination (appearance orientation speech / motor activity mood / affect thought / perception cognitive)"
+                        }
+                    ]
+                },
+                {
+                    "label": "Clinical diagnosis",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": 10.0,
+                            "label": "Clinical diagnosis (only to be established by mhGAP clinician)",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 10.0,
+                                "answers": [
+                                    {
+                                        "label": "Acute stress reaction",
+                                        "concept": "acuteStressReaction"
+                                    },
+                                    {
+                                        "label": "Bereavement/grief",
+                                        "concept": "bereavementOrGrief"
+                                    },
+                                    {
+                                        "label": "Post-Traumatic Stress Disorder",
+                                        "concept": "postTraumaticStressDisorder"
+                                    },
+                                    {
+                                        "label": "Conversion/Dissociative reaction",
+                                        "concept": "conversionOrDissociativeReaction"
+                                    },
+                                    {
+                                        "label": "Anxiety Disorder",
+                                        "concept": "anxietyDisorder"
+                                    },
+                                    {
+                                        "label": "Medically Unexplained Physical Symptoms (MUPS)",
+                                        "concept": "medicallyUnexplainedPhysicalSymptoms"
+                                    },
+                                    {
+                                        "label": "Depression",
+                                        "concept": "depression"
+                                    },
+                                    {
+                                        "label": "Self-harming behavior/suicide attempt",
+                                        "concept": "selfHarmingBehaviorOrSuicideAttempt"
+                                    },
+                                    {
+                                        "label": "Acute psychosis (incl. post-partum psychosis)",
+                                        "concept": "acutePsychosis"
+                                    },
+                                    {
+                                        "label": "Chronic psychosis (incl. schizophrenia)",
+                                        "concept": "chronicPsychosis"
+                                    },
+                                    {
+                                        "label": "Bipolar disorder (incl. mania)",
+                                        "concept": "bipolarDisorder"
+                                    },
+                                    {
+                                        "label": "Enuresis / Encopresis",
+                                        "concept": "enuresisOrEncopresis"
+                                    },
+                                    {
+                                        "label": "Developmental disorder (incl. intellectual disability autism)",
+                                        "concept": "developmentalDisorder"
+                                    },
+                                    {
+                                        "label": "Childhood behavioral disorder (incl. ADHD conduct disorder)",
+                                        "concept": "childhoodBehavioralDisorder"
+                                    },
+                                    {
+                                        "label": "Childhood emotional disorder",
+                                        "concept": "childhoodEmotionalDisorder"
+                                    },
+                                    {
+                                        "label": "Substance-related disorder",
+                                        "concept": "substanceRelatedDisorder"
+                                    },
+                                    {
+                                        "label": "Epilepsy / seizures",
+                                        "concept": "epilepsyOrSeizures"
+                                    },
+                                    {
+                                        "label": "Other disorder",
+                                        "concept": "otherDisorder"
+                                    },
+                                    {
+                                        "label": "No diagnosis",
+                                        "concept": "noDiagnosis"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "Clinical diagnosis (only to be established by mhGAP clinician)"
+                        },
+                        {
+                            "id": 11.0,
+                            "label": "Clinical diagnosis - If other specify",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": 11.0
+                            },
+                            "validators": null,
+                            "questionInfo": "Clinical diagnosis - If other specify",
+                            "hide": {
+                                "hideWhenExpression": "clinicalDiagnosis !== 'otherDisorder'"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Scores",
+            "sections": [
+                {
+                    "label": "PHQ-9 (only for depression) - Over the last two weeks, how often have you been bothered by any of the following problems?",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": 12.0,
+                            "label": "Little interest or pleasure in doing things",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 12.0,
+                                "answers": [
+                                    {
+                                        "label": "Not at all",
+                                        "concept": "notAtAll"
+                                    },
+                                    {
+                                        "label": "Several days",
+                                        "concept": "severalDays"
+                                    },
+                                    {
+                                        "label": "More than half the days",
+                                        "concept": "moreThanHalfTheDays"
+                                    },
+                                    {
+                                        "label": "Nearly every day",
+                                        "concept": "nearlyEveryDay"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "Little interest or pleasure in doing things"
+                        },
+                        {
+                            "id": 13.0,
+                            "label": "Feeling down depressed or hopeless",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 13.0,
+                                "answers": [
+                                    {
+                                        "label": "Not at all",
+                                        "concept": "notAtAll"
+                                    },
+                                    {
+                                        "label": "Several days",
+                                        "concept": "severalDays"
+                                    },
+                                    {
+                                        "label": "More than half the days",
+                                        "concept": "moreThanHalfTheDays"
+                                    },
+                                    {
+                                        "label": "Nearly every day",
+                                        "concept": "nearlyEveryDay"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "Feeling down depressed or hopeless"
+                        },
+                        {
+                            "id": 14.0,
+                            "label": "Trouble falling or staying asleep or sleeping too much",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 14.0,
+                                "answers": [
+                                    {
+                                        "label": "Not at all",
+                                        "concept": "notAtAll"
+                                    },
+                                    {
+                                        "label": "Several days",
+                                        "concept": "severalDays"
+                                    },
+                                    {
+                                        "label": "More than half the days",
+                                        "concept": "moreThanHalfTheDays"
+                                    },
+                                    {
+                                        "label": "Nearly every day",
+                                        "concept": "nearlyEveryDay"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "Trouble falling or staying asleep or sleeping too much"
+                        },
+                        {
+                            "id": 15.0,
+                            "label": "Feeling tired or having little energy",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 15.0,
+                                "answers": [
+                                    {
+                                        "label": "Not at all",
+                                        "concept": "notAtAll"
+                                    },
+                                    {
+                                        "label": "Several days",
+                                        "concept": "severalDays"
+                                    },
+                                    {
+                                        "label": "More than half the days",
+                                        "concept": "moreThanHalfTheDays"
+                                    },
+                                    {
+                                        "label": "Nearly every day",
+                                        "concept": "nearlyEveryDay"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "Feeling tired or having little energy"
+                        },
+                        {
+                            "id": 16.0,
+                            "label": "Poor appetite or overeating",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 16.0,
+                                "answers": [
+                                    {
+                                        "label": "Not at all",
+                                        "concept": "notAtAll"
+                                    },
+                                    {
+                                        "label": "Several days",
+                                        "concept": "severalDays"
+                                    },
+                                    {
+                                        "label": "More than half the days",
+                                        "concept": "moreThanHalfTheDays"
+                                    },
+                                    {
+                                        "label": "Nearly every day",
+                                        "concept": "nearlyEveryDay"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "Poor appetite or overeating"
+                        },
+                        {
+                            "id": 17.0,
+                            "label": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 17.0,
+                                "answers": [
+                                    {
+                                        "label": "Not at all",
+                                        "concept": "notAtAll"
+                                    },
+                                    {
+                                        "label": "Several days",
+                                        "concept": "severalDays"
+                                    },
+                                    {
+                                        "label": "More than half the days",
+                                        "concept": "moreThanHalfTheDays"
+                                    },
+                                    {
+                                        "label": "Nearly every day",
+                                        "concept": "nearlyEveryDay"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down"
+                        },
+                        {
+                            "id": 18.0,
+                            "label": "Trouble concentrating on things such as reading the newspaper or watching television",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 18.0,
+                                "answers": [
+                                    {
+                                        "label": "Not at all",
+                                        "concept": "notAtAll"
+                                    },
+                                    {
+                                        "label": "Several days",
+                                        "concept": "severalDays"
+                                    },
+                                    {
+                                        "label": "More than half the days",
+                                        "concept": "moreThanHalfTheDays"
+                                    },
+                                    {
+                                        "label": "Nearly every day",
+                                        "concept": "nearlyEveryDay"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "Trouble concentrating on things such as reading the newspaper or watching television"
+                        },
+                        {
+                            "id": 19.0,
+                            "label": "Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 19.0,
+                                "answers": [
+                                    {
+                                        "label": "Not at all",
+                                        "concept": "notAtAll"
+                                    },
+                                    {
+                                        "label": "Several days",
+                                        "concept": "severalDays"
+                                    },
+                                    {
+                                        "label": "More than half the days",
+                                        "concept": "moreThanHalfTheDays"
+                                    },
+                                    {
+                                        "label": "Nearly every day",
+                                        "concept": "nearlyEveryDay"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual"
+                        },
+                        {
+                            "id": 20.0,
+                            "label": "Thoughts that you would be better off dead or of hurting yourself in some way",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 20.0,
+                                "answers": [
+                                    {
+                                        "label": "Not at all",
+                                        "concept": "notAtAll"
+                                    },
+                                    {
+                                        "label": "Several days",
+                                        "concept": "severalDays"
+                                    },
+                                    {
+                                        "label": "More than half the days",
+                                        "concept": "moreThanHalfTheDays"
+                                    },
+                                    {
+                                        "label": "Nearly every day",
+                                        "concept": "nearlyEveryDay"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "Thoughts that you would be better off dead or of hurting yourself in some way"
+                        },
+                        {
+                            "id": 21.0,
+                            "label": "PHQ-9 score",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "numeric",
+                                "concept": 21.0
+                            },
+                            "validators": null,
+                            "questionInfo": "PHQ-9 score"
+                        },
+                        {
+                            "id": 22.0,
+                            "label": "Depression severity scale",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 22.0,
+                                "answers": [
+                                    {
+                                        "label": "No depression",
+                                        "concept": "noDepression"
+                                    },
+                                    {
+                                        "label": "Minimal symptoms",
+                                        "concept": "minimalSymptoms"
+                                    },
+                                    {
+                                        "label": "Minor to mild depression (or dysthymia)",
+                                        "concept": "minorToMildDepression"
+                                    },
+                                    {
+                                        "label": "Major depression",
+                                        "concept": "majorDepression"
+                                    },
+                                    {
+                                        "label": "Severe depression",
+                                        "concept": "severeDepression"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "Depression severity scale"
+                        }
+                    ]
+                },
+                {
+                    "label": "CGI - Clinical Global Impression",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": 23.0,
+                            "label": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time)",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 23.0,
+                                "answers": [
+                                    {
+                                        "label": "- Not assessed",
+                                        "concept": "notAssessed"
+                                    },
+                                    {
+                                        "label": "- Normal/not ill",
+                                        "concept": "normalOrNotIll"
+                                    },
+                                    {
+                                        "label": "- Suspected mentally ill",
+                                        "concept": "suspectedMentallyIll"
+                                    },
+                                    {
+                                        "label": "- Mildly ill",
+                                        "concept": "mildlyIll"
+                                    },
+                                    {
+                                        "label": "- Moderately ill",
+                                        "concept": "moderatelyIll"
+                                    },
+                                    {
+                                        "label": "- Markedly ill",
+                                        "concept": "markedlyIll"
+                                    },
+                                    {
+                                        "label": "- Severely ill",
+                                        "concept": "severelyIll"
+                                    },
+                                    {
+                                        "label": "- Extremely ill patient",
+                                        "concept": "extremelyIllPatient"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time)"
+                        },
+                        {
+                            "id": 24.0,
+                            "label": "CGI-I (rating of  improvement CGI-I how much has the patient improved at this time)",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 24.0,
+                                "answers": [
+                                    {
+                                        "label": "- Not assessed",
+                                        "concept": "notAssessed"
+                                    },
+                                    {
+                                        "label": "- Very much improved",
+                                        "concept": "veryMuchImproved"
+                                    },
+                                    {
+                                        "label": "- Much improved",
+                                        "concept": "muchImproved"
+                                    },
+                                    {
+                                        "label": "- Minimally improved",
+                                        "concept": "minimallyImproved"
+                                    },
+                                    {
+                                        "label": "- No change",
+                                        "concept": "noChange"
+                                    },
+                                    {
+                                        "label": "- Minimally worse",
+                                        "concept": "minimallyWorse"
+                                    },
+                                    {
+                                        "label": "- Much worse",
+                                        "concept": "muchWorse"
+                                    },
+                                    {
+                                        "label": "- Very much worse",
+                                        "concept": "veryMuchWorse"
+                                    }
+                                ]
+                            },
+                            "validators": null,
+                            "questionInfo": "CGI-I (rating of  improvement CGI-I how much has the patient improved at this time)"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Medication",
+            "sections": [
+                {
+                    "label": "MSF Pharmacological treament",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": 25.0,
+                            "label": "MSF Pharmacological treament - Additional information/notes",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": 25.0
+                            },
+                            "validators": null,
+                            "questionInfo": "MSF Pharmacological treament - Additional information/notes"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "Follow-up",
+            "sections": [
+                {
+                    "label": "Adherence to treatment",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": 26.0,
+                            "label": "Is the patient taking the medication as prescribed   ",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 26.0
+                            },
+                            "validators": null,
+                            "questionInfo": "Is the patient taking the medication as prescribed   "
+                        },
+                        {
+                            "id": 27.0,
+                            "label": "Details if needed",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": 27.0
+                            },
+                            "validators": null,
+                            "questionInfo": "Details if needed"
+                        }
+                    ]
+                },
+                {
+                    "label": "Follow-up",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": 28.0,
+                            "label": "Follow-up required  ",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": 28.0
+                            },
+                            "validators": null,
+                            "questionInfo": "Follow-up required  "
+                        },
+                        {
+                            "id": 29.0,
+                            "label": "Next appointment date (required if Follow-up required is Yes)",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "date",
+                                "concept": 29.0
+                            },
+                            "validators": null,
+                            "questionInfo": "Next appointment date (required if Follow-up required is Yes)",
+                            "hide": {
+                                "hideWhenExpression": "followUpRequired !== 'yes'"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "nan",
+            "sections": []
+        }
+    ]
+}
