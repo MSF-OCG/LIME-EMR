@@ -1,6 +1,6 @@
 {
-    "name": "F02-MHPSS Follow-up",
-    "description": "MSF Form - F02-MHPSS Follow-up",
+    "name": "MHPSS Follow-up",
+    "description": "MSF Form - MHPSS Follow-up",
     "version": "1",
     "published": true,
     "uuid": "",
@@ -1029,9 +1029,6 @@
                 "questionOptions": {
                   "rendering": "radio",
                   "concept": "cgiS",
-                  "calculate": {
-                    "calculateExpression": "(did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (did_you_have_problems_getting_along_with_family_or_friends_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : did_you_have_problems_getting_along_with_family_or_friends_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : did_you_have_problems_getting_along_with_family_or_friends_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : did_you_have_problems_getting_along_with_family_or_friends_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : did_you_have_problems_getting_along_with_family_or_friends_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (_did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : _did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : _did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : _did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : _did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (have_you_felt_sad_or_nervous_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : have_you_felt_sad_or_nervous_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : have_you_felt_sad_or_nervous_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : have_you_felt_sad_or_nervous_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : have_you_felt_sad_or_nervous_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (have_you_been_suffering_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : have_you_been_suffering_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : have_you_been_suffering_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : have_you_been_suffering_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : have_you_been_suffering_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0)"
-                  },
                   "answers": [
                     {
                       "label": "- Not assessed",
@@ -1146,7 +1143,7 @@
             "isExpanded": false,
             "questions": [
               {
-                "id": "clinicalDiagnosisID",
+                "id": "clinicalDiagnosis",
                 "label": "Clinical diagnosis (only to be established by a psychologist)",
                 "type": "obs",
                 "required": false,
@@ -1644,7 +1641,7 @@
                 "validators": null,
                 "questionInfo": "If other specify",
                 "hide": {
-                  "hideWhenExpression": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence !== 'other'"
+                  "hideWhenExpression": "whatTypeOfViolence !== 'whatTypeOfViolenceOther'"
                 }
               },
               {
@@ -1710,7 +1707,7 @@
                 "validators": null,
                 "questionInfo": "If yes would the patient like a referral to the medical department for treatment (or midwife/maternity for sexual violence)",
                 "hide": {
-                  "hideWhenExpression": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence !== 'sexual'"
+                  "hideWhenExpression": "whatTypeOfViolence !== 'sexual'"
                 }
               },
               {
@@ -1725,7 +1722,7 @@
                 "validators": null,
                 "questionInfo": "Action taken",
                 "hide": {
-                  "hideWhenExpression": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence !== 'sexual'"
+                  "hideWhenExpression": "whatTypeOfViolence !== 'sexual'"
                 }
               }
             ]
