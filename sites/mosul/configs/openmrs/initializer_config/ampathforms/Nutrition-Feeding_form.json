@@ -1,0 +1,865 @@
+{
+    "name": "Nutrition - Feeding Form",
+    "description": "Nutrition - Feeding Form",
+    "version": "1",
+    "published": true,
+    "uuid": "8219691d-271d-4077-b342-05402699de0e",
+    "processor": "EncounterFormProcessor",
+    "encounter": "Consultation",
+    "retired": false,
+    "referencedForms": [],
+    "pages": [
+      {
+        "label": "ITFC Feeding Form",
+        "sections": [
+          {
+            "label": "Feeding ",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "phase",
+                "label": "Phase",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "phase",
+                  "answers": [
+                    {
+                      "label": "1",
+                      "concept": "b0c268d8-7e15-47fd-b79d-44a75d42c1e7"
+                    },
+                    {
+                      "label": "Transition",
+                      "concept": "transition"
+                    },
+                    {
+                      "label": "2",
+                      "concept": "959a1b6b-0a8d-4438-935b-b94f06abbef8"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Phase"
+              },
+              {
+                "id": "product",
+                "label": "Product",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "product",
+                  "answers": [
+                    {
+                      "label": "F75",
+                      "concept": "f75"
+                    },
+                    {
+                      "label": "F100",
+                      "concept": "f100"
+                    },
+                    {
+                      "label": "Infant formula",
+                      "concept": "infantFormula"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Product"
+              },
+              {
+                "id": "quantityMlOrMeal",
+                "label": "Quantity - ml / meal",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "numeric",
+                  "concept": "quantityMlOrMeal"
+                },
+                "validators": null,
+                "questionInfo": "Quantity - ml / meal"
+              },
+              {
+                "id": "quantitySachetOrMeal",
+                "label": "Quantity - sachet / meal",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "numeric",
+                  "concept": "quantitySachetOrMeal"
+                },
+                "validators": null,
+                "questionInfo": "Quantity - sachet / meal"
+              },
+              {
+                "id": "quantityBp100OrMeal",
+                "label": "Quantity - BP100 / meal",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "numeric",
+                  "concept": "quantityBp100OrMeal"
+                },
+                "validators": null,
+                "questionInfo": "Quantity - BP100 / meal"
+              },
+              {
+                "id": "numberOfMealsOrDay",
+                "label": "Number of meals / day",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "numeric",
+                  "concept": "numberOfMealsOrDay"
+                },
+                "validators": null,
+                "questionInfo": "Number of meals / day"
+              }
+            ]
+          },
+          {
+            "label": "Feeding monitoring - meal 1",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "amountTaken",
+                "label": "Amount taken",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "amountTaken",
+                  "answers": [
+                    {
+                      "label": "0%",
+                      "concept": "6a88f7ea-fc91-417a-8a26-e8c826b9b2f5"
+                    },
+                    {
+                      "label": "25%",
+                      "concept": "54580920-7242-4196-a93e-1e9536d739b6"
+                    },
+                    {
+                      "label": "50%",
+                      "concept": "404aa58d-ec4a-43e1-aa74-24924c784422"
+                    },
+                    {
+                      "label": "75%",
+                      "concept": "d0203d65-5d10-4d8f-a27d-588b6cf0b866"
+                    },
+                    {
+                      "label": "100%",
+                      "concept": "58b7338d-9f4f-4f28-9ed2-47f0f38684cd"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Amount taken"
+              },
+              {
+                "id": "remark",
+                "label": "Remark",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "remark",
+                  "answers": [
+                    {
+                      "label": "Absent",
+                      "concept": "absent"
+                    },
+                    {
+                      "label": "Vomiting",
+                      "concept": "vomiting"
+                    },
+                    {
+                      "label": "Refusal",
+                      "concept": "refusal"
+                    },
+                    {
+                      "label": "Nasogastric tube",
+                      "concept": "nasogastricTube"
+                    },
+                    {
+                      "label": "IV fluid",
+                      "concept": "ivFluid"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Remark"
+              }
+            ]
+          },
+          {
+            "label": "Feeding monitoring - meal 2",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "amountTaken",
+                "label": "Amount taken",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "amountTaken",
+                  "answers": [
+                    {
+                      "label": "0%",
+                      "concept": "6a88f7ea-fc91-417a-8a26-e8c826b9b2f5"
+                    },
+                    {
+                      "label": "25%",
+                      "concept": "54580920-7242-4196-a93e-1e9536d739b6"
+                    },
+                    {
+                      "label": "50%",
+                      "concept": "404aa58d-ec4a-43e1-aa74-24924c784422"
+                    },
+                    {
+                      "label": "75%",
+                      "concept": "d0203d65-5d10-4d8f-a27d-588b6cf0b866"
+                    },
+                    {
+                      "label": "100%",
+                      "concept": "58b7338d-9f4f-4f28-9ed2-47f0f38684cd"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Amount taken"
+              },
+              {
+                "id": "remark",
+                "label": "Remark",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "remark",
+                  "answers": [
+                    {
+                      "label": "Absent",
+                      "concept": "absent"
+                    },
+                    {
+                      "label": "Vomiting",
+                      "concept": "vomiting"
+                    },
+                    {
+                      "label": "Refusal",
+                      "concept": "refusal"
+                    },
+                    {
+                      "label": "Nasogastric tube",
+                      "concept": "nasogastricTube"
+                    },
+                    {
+                      "label": "IV fluid",
+                      "concept": "ivFluid"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Remark"
+              }
+            ]
+          },
+          {
+            "label": "Feeding monitoring - meal 3",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "amountTaken",
+                "label": "Amount taken",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "amountTaken",
+                  "answers": [
+                    {
+                      "label": "0%",
+                      "concept": "6a88f7ea-fc91-417a-8a26-e8c826b9b2f5"
+                    },
+                    {
+                      "label": "25%",
+                      "concept": "54580920-7242-4196-a93e-1e9536d739b6"
+                    },
+                    {
+                      "label": "50%",
+                      "concept": "404aa58d-ec4a-43e1-aa74-24924c784422"
+                    },
+                    {
+                      "label": "75%",
+                      "concept": "d0203d65-5d10-4d8f-a27d-588b6cf0b866"
+                    },
+                    {
+                      "label": "100%",
+                      "concept": "58b7338d-9f4f-4f28-9ed2-47f0f38684cd"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Amount taken"
+              },
+              {
+                "id": "remark",
+                "label": "Remark",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "remark",
+                  "answers": [
+                    {
+                      "label": "Absent",
+                      "concept": "absent"
+                    },
+                    {
+                      "label": "Vomiting",
+                      "concept": "vomiting"
+                    },
+                    {
+                      "label": "Refusal",
+                      "concept": "refusal"
+                    },
+                    {
+                      "label": "Nasogastric tube",
+                      "concept": "nasogastricTube"
+                    },
+                    {
+                      "label": "IV fluid",
+                      "concept": "ivFluid"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Remark"
+              }
+            ]
+          },
+          {
+            "label": "Feeding monitoring - meal 4",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "amountTaken",
+                "label": "Amount taken",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "amountTaken",
+                  "answers": [
+                    {
+                      "label": "0%",
+                      "concept": "6a88f7ea-fc91-417a-8a26-e8c826b9b2f5"
+                    },
+                    {
+                      "label": "25%",
+                      "concept": "54580920-7242-4196-a93e-1e9536d739b6"
+                    },
+                    {
+                      "label": "50%",
+                      "concept": "404aa58d-ec4a-43e1-aa74-24924c784422"
+                    },
+                    {
+                      "label": "75%",
+                      "concept": "d0203d65-5d10-4d8f-a27d-588b6cf0b866"
+                    },
+                    {
+                      "label": "100%",
+                      "concept": "58b7338d-9f4f-4f28-9ed2-47f0f38684cd"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Amount taken"
+              },
+              {
+                "id": "remark",
+                "label": "Remark",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "remark",
+                  "answers": [
+                    {
+                      "label": "Absent",
+                      "concept": "absent"
+                    },
+                    {
+                      "label": "Vomiting",
+                      "concept": "vomiting"
+                    },
+                    {
+                      "label": "Refusal",
+                      "concept": "refusal"
+                    },
+                    {
+                      "label": "Nasogastric tube",
+                      "concept": "nasogastricTube"
+                    },
+                    {
+                      "label": "IV fluid",
+                      "concept": "ivFluid"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Remark"
+              }
+            ]
+          },
+          {
+            "label": "Feeding monitoring - meal 5",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "amountTaken",
+                "label": "Amount taken",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "amountTaken",
+                  "answers": [
+                    {
+                      "label": "0%",
+                      "concept": "6a88f7ea-fc91-417a-8a26-e8c826b9b2f5"
+                    },
+                    {
+                      "label": "25%",
+                      "concept": "54580920-7242-4196-a93e-1e9536d739b6"
+                    },
+                    {
+                      "label": "50%",
+                      "concept": "404aa58d-ec4a-43e1-aa74-24924c784422"
+                    },
+                    {
+                      "label": "75%",
+                      "concept": "d0203d65-5d10-4d8f-a27d-588b6cf0b866"
+                    },
+                    {
+                      "label": "100%",
+                      "concept": "58b7338d-9f4f-4f28-9ed2-47f0f38684cd"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Amount taken"
+              },
+              {
+                "id": "remark",
+                "label": "Remark",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "remark",
+                  "answers": [
+                    {
+                      "label": "Absent",
+                      "concept": "absent"
+                    },
+                    {
+                      "label": "Vomiting",
+                      "concept": "vomiting"
+                    },
+                    {
+                      "label": "Refusal",
+                      "concept": "refusal"
+                    },
+                    {
+                      "label": "Nasogastric tube",
+                      "concept": "nasogastricTube"
+                    },
+                    {
+                      "label": "IV fluid",
+                      "concept": "ivFluid"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Remark"
+              }
+            ]
+          },
+          {
+            "label": "Feeding monitoring - meal 6",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "amountTaken",
+                "label": "Amount taken",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "amountTaken",
+                  "answers": [
+                    {
+                      "label": "0%",
+                      "concept": "6a88f7ea-fc91-417a-8a26-e8c826b9b2f5"
+                    },
+                    {
+                      "label": "25%",
+                      "concept": "54580920-7242-4196-a93e-1e9536d739b6"
+                    },
+                    {
+                      "label": "50%",
+                      "concept": "404aa58d-ec4a-43e1-aa74-24924c784422"
+                    },
+                    {
+                      "label": "75%",
+                      "concept": "d0203d65-5d10-4d8f-a27d-588b6cf0b866"
+                    },
+                    {
+                      "label": "100%",
+                      "concept": "58b7338d-9f4f-4f28-9ed2-47f0f38684cd"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Amount taken"
+              },
+              {
+                "id": "remark",
+                "label": "Remark",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "remark",
+                  "answers": [
+                    {
+                      "label": "Absent",
+                      "concept": "absent"
+                    },
+                    {
+                      "label": "Vomiting",
+                      "concept": "vomiting"
+                    },
+                    {
+                      "label": "Refusal",
+                      "concept": "refusal"
+                    },
+                    {
+                      "label": "Nasogastric tube",
+                      "concept": "nasogastricTube"
+                    },
+                    {
+                      "label": "IV fluid",
+                      "concept": "ivFluid"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Remark"
+              }
+            ]
+          },
+          {
+            "label": "Feeding monitoring - meal 7",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "amountTaken",
+                "label": "Amount taken",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "amountTaken",
+                  "answers": [
+                    {
+                      "label": "0%",
+                      "concept": "6a88f7ea-fc91-417a-8a26-e8c826b9b2f5"
+                    },
+                    {
+                      "label": "25%",
+                      "concept": "54580920-7242-4196-a93e-1e9536d739b6"
+                    },
+                    {
+                      "label": "50%",
+                      "concept": "404aa58d-ec4a-43e1-aa74-24924c784422"
+                    },
+                    {
+                      "label": "75%",
+                      "concept": "d0203d65-5d10-4d8f-a27d-588b6cf0b866"
+                    },
+                    {
+                      "label": "100%",
+                      "concept": "58b7338d-9f4f-4f28-9ed2-47f0f38684cd"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Amount taken"
+              },
+              {
+                "id": "remark",
+                "label": "Remark",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "remark",
+                  "answers": [
+                    {
+                      "label": "Absent",
+                      "concept": "absent"
+                    },
+                    {
+                      "label": "Vomiting",
+                      "concept": "vomiting"
+                    },
+                    {
+                      "label": "Refusal",
+                      "concept": "refusal"
+                    },
+                    {
+                      "label": "Nasogastric tube",
+                      "concept": "nasogastricTube"
+                    },
+                    {
+                      "label": "IV fluid",
+                      "concept": "ivFluid"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Remark"
+              }
+            ]
+          },
+          {
+            "label": "Feeding monitoring - meal 8",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "amountTaken",
+                "label": "Amount taken",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "amountTaken",
+                  "answers": [
+                    {
+                      "label": "0%",
+                      "concept": "6a88f7ea-fc91-417a-8a26-e8c826b9b2f5"
+                    },
+                    {
+                      "label": "25%",
+                      "concept": "54580920-7242-4196-a93e-1e9536d739b6"
+                    },
+                    {
+                      "label": "50%",
+                      "concept": "404aa58d-ec4a-43e1-aa74-24924c784422"
+                    },
+                    {
+                      "label": "75%",
+                      "concept": "d0203d65-5d10-4d8f-a27d-588b6cf0b866"
+                    },
+                    {
+                      "label": "100%",
+                      "concept": "58b7338d-9f4f-4f28-9ed2-47f0f38684cd"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Amount taken"
+              },
+              {
+                "id": "remark",
+                "label": "Remark",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "remark",
+                  "answers": [
+                    {
+                      "label": "Absent",
+                      "concept": "absent"
+                    },
+                    {
+                      "label": "Vomiting",
+                      "concept": "vomiting"
+                    },
+                    {
+                      "label": "Refusal",
+                      "concept": "refusal"
+                    },
+                    {
+                      "label": "Nasogastric tube",
+                      "concept": "nasogastricTube"
+                    },
+                    {
+                      "label": "IV fluid",
+                      "concept": "ivFluid"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Remark"
+              }
+            ]
+          },
+          {
+            "label": "Feeding monitoring - meal 9",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "amountTaken",
+                "label": "Amount taken",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "amountTaken",
+                  "answers": [
+                    {
+                      "label": "0%",
+                      "concept": "6a88f7ea-fc91-417a-8a26-e8c826b9b2f5"
+                    },
+                    {
+                      "label": "25%",
+                      "concept": "54580920-7242-4196-a93e-1e9536d739b6"
+                    },
+                    {
+                      "label": "50%",
+                      "concept": "404aa58d-ec4a-43e1-aa74-24924c784422"
+                    },
+                    {
+                      "label": "75%",
+                      "concept": "d0203d65-5d10-4d8f-a27d-588b6cf0b866"
+                    },
+                    {
+                      "label": "100%",
+                      "concept": "58b7338d-9f4f-4f28-9ed2-47f0f38684cd"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Amount taken"
+              },
+              {
+                "id": "remark",
+                "label": "Remark",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "remark",
+                  "answers": [
+                    {
+                      "label": "Absent",
+                      "concept": "absent"
+                    },
+                    {
+                      "label": "Vomiting",
+                      "concept": "vomiting"
+                    },
+                    {
+                      "label": "Refusal",
+                      "concept": "refusal"
+                    },
+                    {
+                      "label": "Nasogastric tube",
+                      "concept": "nasogastricTube"
+                    },
+                    {
+                      "label": "IV fluid",
+                      "concept": "ivFluid"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Remark"
+              }
+            ]
+          },
+          {
+            "label": "Feeding monitoring - meal 10",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "amountTaken",
+                "label": "Amount taken",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "amountTaken",
+                  "answers": [
+                    {
+                      "label": "0%",
+                      "concept": "6a88f7ea-fc91-417a-8a26-e8c826b9b2f5"
+                    },
+                    {
+                      "label": "25%",
+                      "concept": "54580920-7242-4196-a93e-1e9536d739b6"
+                    },
+                    {
+                      "label": "50%",
+                      "concept": "404aa58d-ec4a-43e1-aa74-24924c784422"
+                    },
+                    {
+                      "label": "75%",
+                      "concept": "d0203d65-5d10-4d8f-a27d-588b6cf0b866"
+                    },
+                    {
+                      "label": "100%",
+                      "concept": "58b7338d-9f4f-4f28-9ed2-47f0f38684cd"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Amount taken"
+              },
+              {
+                "id": "remark",
+                "label": "Remark",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "remark",
+                  "answers": [
+                    {
+                      "label": "Absent",
+                      "concept": "absent"
+                    },
+                    {
+                      "label": "Vomiting",
+                      "concept": "vomiting"
+                    },
+                    {
+                      "label": "Refusal",
+                      "concept": "refusal"
+                    },
+                    {
+                      "label": "Nasogastric tube",
+                      "concept": "nasogastricTube"
+                    },
+                    {
+                      "label": "IV fluid",
+                      "concept": "ivFluid"
+                    }
+                  ]
+                },
+                "validators": null,
+                "questionInfo": "Remark"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "encounterType": "dd528487-82a5-4082-9c72-ed246bd49591"
+  }
