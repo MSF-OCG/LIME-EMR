@@ -13,6 +13,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
+    <gmavenplusPluginVersion>3.0.2</gmavenplusPluginVersion>
   </properties>
 
   <dependencies>
@@ -70,6 +71,7 @@
                     <exclude>distro/configs/**/locations/*.*</exclude>
                     <exclude>distro/configs/**/personattributetypes/*.*</exclude>
                     <exclude>distro/configs/**/idgen/*.*</exclude>
+                    <exclude>distro/configs/openfn/openfn-project.yaml</exclude>
                   </excludes>
                 </resource>
               </resources>
@@ -140,6 +142,33 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.gmavenplus</groupId>
+        <artifactId>gmavenplus-plugin</artifactId>
+        <version>${gmavenplusPluginVersion}</version>
+        <executions>
+          <execution>
+            <id>combine openfn project.yaml files in Mosul</id>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <phase>process-resources</phase>
+            <configuration>
+              <scripts>
+                <script>file://${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/merge-openfn-yaml.groovy</script>
+              </scripts>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>4.0.15</version>
+            <scope>runtime</scope>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
   </build>
