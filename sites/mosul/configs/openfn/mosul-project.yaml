@@ -1,0 +1,765 @@
+name: msf-lime
+globals:
+workflows:
+  Workflow-WF2-1.-Get-patients-from-OpenMRS:
+    name: Workflow WF2-1. Get patients from OpenMRS
+    jobs:
+      WF2-1.-Get-patients-from-OpenMRS:
+        name: WF2-1 Get patients from OpenMRS
+        adaptor: '@openfn/openmrs@v1.1.1'
+        enabled: true
+        globals:
+        body: |
+          // here we define the date cursor
+          fn(state => {
+            //manualCursor at beggining of the project 2023-05-20T06:01:24.000+0000
+            const manualCursor = '2023-07-27T07:16:24.544Z';
+          
+            const cursor =
+              state.lastRunDateTime != null && state.lastRunDateTime != ''
+                ? state.lastRunDateTime
+                : manualCursor;
+          
+            console.log(
+              'Date cursor to filter & get only recent OMRS records ::',
+              cursor
+            );
+          
+            return { ...state, cursor };
+          });
+          
+          searchPatient({ q: 'Patient', v: 'full', limit: '100' });
+          //Query all patients (q=all) not supported on demo OpenMRS; needs to be configured
+          //...so we query all Patients with name "Patient" instead
+          
+          fn(state => {
+            const { body } = state.data;
+            
+            const getPatientByUuid = (uuid) => {
+              return body.results.find(patient=> patient.uuid === uuid)
+            } 
+            // console.log('dateCreated for patient uuid ...2c6dbfc5acc8',getPatientByUuid("31b4d9c8-f7cc-4c26-ae61-2c6dbfc5acc8").auditInfo.dateCreated)
+            
+            //console.log(JSON.stringify(state.data, null, 2));
+            
+           
+            console.log('Filtering patients to only sync most recent records...');
+          
+            const patients = body.results.filter(
+              patient =>
+                (patient.auditInfo.dateChanged === null
+                  ? patient.auditInfo.dateCreated
+                  : patient.auditInfo.dateChanged) > state.cursor
+            );
+            console.log('# of new patients to sync to dhis2 ::', patients.length);
+            // console.log(JSON.stringify(patients, null, 2));
+          
+            const lastRunDateTime = new Date().toISOString();
+            console.log('Updating cursor; next sync start date:', lastRunDateTime);
+          
+            return { ...state, data: {}, references: [], patients, lastRunDateTime };
+          });
+          
+      WF2-2.-Upsert-TEIs-in-DHIS2:
+        name: WF2-2 Upsert TEIs in DHIS2
+        adaptor: '@openfn/dhis2@v3.2.11'
+        enabled: true
+        globals:
+        body: |
+          fn(state => {
+            const genderOptions = {
+              M: 'male',
+              F: 'female',
+              U: 'unknown',
+              O: 'prefer_not_to_answer',
+            };
+          
+            const DHIS2_PATIENT_NUMBER = '8d79403a-c2cc-11de-8d13-0010c6dffd0f';
+            const OPENMRS_AUTO_ID = '05a29f94-c0ed-11e2-94be-8c13b969e334';
+            const patientsUpsert = [];
+          
+            const buildPatientsUpsert = (patient, isNewPatient) => {
+              const dateCreated = patient.auditInfo.dateCreated.substring(0, 10);
+          
+              const { identifier } =
+                patient.identifiers.find(
+                  i => i.identifierType.uuid === DHIS2_PATIENT_NUMBER
+                ) ||
+                patient.identifiers.find(i => i.identifierType.uuid === OPENMRS_AUTO_ID);
+          
+              const enrollments = [
+                {
+                  orgUnit: 'l22DQq4iV3G',
+                  program: 'uGHvY5HFoLG',
+                  programStage: 'hfKSeo6nZK0',
+                  enrollmentDate: dateCreated,
+                },
+              ];
+          
+              const payload = {
+                query: {
+                  ou: 'l22DQq4iV3G',
+                  filter: [`jGNhqEeXy2L:Eq:${patient.uuid}`],
+                },
+                data: {
+                  program: 'uGHvY5HFoLG',
+                  orgUnit: 'l22DQq4iV3G',
+                  trackedEntityType: 'cHlzCA2MuEF',
+                  attributes: [
+                    {
+                      attribute: 'P4wdYGkldeG',
+                      value: identifier,
+                    },
+                    {
+                      attribute: 'jGNhqEeXy2L',
+                      value: patient.uuid,
+                    },
+                    {
+                      attribute: 'qptKDiv9uPl',
+                      value: genderOptions[patient.person.gender],
+                    },
+                    {
+                      attribute: 'T1iX2NuPyqS',
+                      value: patient.person.age,
+                    },
+                  ],
+                },
+              };
+          
+              if (isNewPatient) {
+                console.log('create enrollmenet');
+                payload.data.enrollments = enrollments;
+              }
+          
+              return patientsUpsert.push(payload);
+            };
+          
+            return {
+              ...state,
+              genderOptions,
+              patientsUpsert,
+              buildPatientsUpsert,
+            };
+          });
+          
+          fn(async state => {
+            const { buildPatientsUpsert, patients } = state;
+          
+            const getPatient = async patient => {
+              await new Promise(resolve => setTimeout(resolve, 2000));
+              await get(
+                'trackedEntityInstances',
+                {
+                  ou: 'l22DQq4iV3G',
+                  filter: [`jGNhqEeXy2L:Eq:${patient.uuid}`],
+                },
+                {},
+                state => {
+                  const { trackedEntityInstances } = state.data;
+                  const isNewPatient = trackedEntityInstances.length === 0;
+          
+                  buildPatientsUpsert(patient, isNewPatient);
+                  return state;
+                }
+              )(state);
+            };
+          
+            for (const patient of patients) {
+              console.log(patient.uuid, 'patient uuid');
+              await getPatient(patient);
+            }
+            return state;
+          });
+          
+          // Prepare DHIS2 data model for patients
+          // each(
+          //   'patients[*]',
+          //   get(
+          //     'trackedEntityInstances',
+          //     state => ({
+          //       ou: 'l22DQq4iV3G',
+          //       filter: [`jGNhqEeXy2L:Eq:${state.data.uuid}`],
+          //     }),
+          //     {},
+          //     state => {
+          //       const { buildPatientsUpsert, references, data } = state;
+          //       const { trackedEntityInstances } = data;
+          //       const patient = references[0];
+          
+          //       console.log(patient.uuid);
+          
+          //       const isNewPatient = trackedEntityInstances.length === 0;
+          
+          //       buildPatientsUpsert(patient, isNewPatient);
+          //       return state;
+          //     }
+          //   )
+          // );
+          
+          // Upsert TEIs to DHIS2
+          each(
+            'patientsUpsert[*]',
+            upsert(
+              'trackedEntityInstances',
+              state => state.data.query,
+              state => state.data.data
+            )
+          );
+          
+          // Clean up state
+          fn(state => ({ ...state, data: {} }));
+          
+      WF2-3.-Get-new-Encounters-from-OMRS:
+        name: WF2-3 Get new Encounters from OMRS
+        adaptor: '@openfn/openmrs@v1.1.1'
+        enabled: true
+        globals:
+        body: |
+          // Fetch encounters from the date of cursor
+          // OpenMRS demo instance does not support querying ALL records (q=all)
+          getEncounters({ q: 'Patient', v: 'full', limit: 100 });
+          
+          // Update cursor and return encounters
+          fn(state => {
+            const { cursor, data } = state;
+            console.log("cursor datetime::", cursor);
+          
+            console.log('Filtering encounters to only get recent records...');
+            console.log(
+              'Encounters returned before we filter for most recent ::',
+              JSON.stringify(data, null, 2)
+            );
+            const encounters = data.body.results.filter(
+              encounter => encounter.encounterDatetime >= cursor
+            );
+            console.log('# of new encounters to sync to dhis2 ::', encounters.length);
+          
+            return { ...state, data: {}, references: [], encounters };
+          });
+          
+      WF2-4.-Get-OCL-Mapping:
+        name: WF2-4 Get OCL Mapping
+        adaptor: '@openfn/ocl@v1.1.0'
+        enabled: true
+        globals:
+        body: |
+          // Fetch OCL mappings using ocl get()
+          get(
+            'orgs/MSFOCG/collections/lime-demo/HEAD/expansions/autoexpand-HEAD/mappings/',
+            {
+              page: 1,
+              limit: 1000,
+              verbose: false,
+              fromConceptOwner: 'MSFOCG',
+              toConceptOwner: 'MSFOCG',
+              toConceptSource: 'DHIS2DataElements',
+              sortDesc: '_score',
+              lookupToConcept: true,
+              verbose: true,
+            },
+            state => {
+              // Add state oclMappings
+              const oclMappings = state.data;
+              console.log(JSON.stringify(oclMappings, null, 2), 'OCL Mappings');
+              return { ...state, data: {}, references: [], response: {}, oclMappings };
+            }
+          );
+          // Job versions if using different adaptor functions
+          // Fetch mappings using ocl getMappings() function
+          // getMappings(
+          //   'MSFOCG',
+          //   'lime-demo',
+          //   {
+          //     page: 1,
+          //     limit: 1000,
+          //     verbose: false,
+          //     fromConceptOwner: 'MSFOCG',
+          //     toConceptOwner: 'MSFOCG',
+          //     toConceptSource: 'DHIS2DataElements',
+          //     sortDesc: '_score',
+          //   },
+          //   state => {
+          //     // Add state oclMappings
+          //     const oclMappings = state.data;
+          //     return { ...state, data: {}, references: [], response: {}, oclMappings };
+          //   }
+          // );
+          
+          /*
+           * Fetching mappings using http get()
+           **/
+          // get(
+          //   'orgs/MSFOCG/collections/lime-demo/HEAD/expansions/autoexpand-HEAD/mappings/',
+          //   {
+          //     query: {
+          //       page: 1,
+          //       exact_match: 'off',
+          //       limit: 1000,
+          //       verbose: false,
+          //       sortDesc: '_score',
+          //       fromConceptOwner: 'MSFOCG',
+          //       toConceptOwner: 'MSFOCG',
+          //       toConceptSource: 'DHIS2DataElements',
+          //     },
+          //   },
+          //   state => {
+          //     // Add state oclMappings
+          //     const oclMappings = state.data;
+          //     return { ...state, data: {}, references: [], response: {}, oclMappings };
+          //   }
+          // );
+          
+      WF2-5.-Create-Events-in-DHIS2:
+        name: WF2-5 Create Events in DHIS2
+        adaptor: '@openfn/dhis2@v3.2.11'
+        enabled: true
+        globals:
+        body: |
+          fn(state => {
+            const TEIs = {};
+            return { ...state, TEIs };
+          });
+          
+          // Fetch TEI's for each patient
+          // each(
+          //   'encounters[*]',
+          //   get(
+          //     'trackedEntityInstances',
+          //     state => ({
+          //       ou: 'l22DQq4iV3G',
+          //       filter: [`jGNhqEeXy2L:Eq:${state.data.patient.uuid}`],
+          //     }),
+          //     {},
+          //     state => {
+          
+          //       const encounter = state.references[0];
+          
+          //       console.log(encounter.patient.uuid, 'patient uuid')
+          //       console.log(state.data.trackedEntityInstances)
+          //       state.TEIs[encounter.patient.uuid] =
+          //         state.data.trackedEntityInstances[0].trackedEntityInstance;
+          
+          //       return state;
+          //     }
+          //   )
+          // );
+          
+          fn(async state => {
+            const { encounters } = state;
+          
+            const getTEI = async encounter => {
+              await new Promise(resolve => setTimeout(resolve, 2000), 'OCL Mappings');
+              await get(
+                'trackedEntityInstances',
+                {
+                  ou: 'l22DQq4iV3G',
+                  filter: [`jGNhqEeXy2L:Eq:${encounter.patient.uuid}`],
+                },
+                {},
+                state => {
+                  console.log(encounter.patient.uuid, 'Encounter patient uuid');
+                  state.TEIs[encounter.patient.uuid] =
+                    state.data.trackedEntityInstances[0].trackedEntityInstance;
+          
+                  return state;
+                }
+              )(state);
+            };
+          
+            for (const encounter of encounters) {
+              await getTEI(encounter);
+            }
+            return state;
+          });
+          
+          // Prepare DHIS2 data model for create events
+          fn(state => {
+            const { oclMappings, TEIs } = state;
+          
+            //console.log(JSON.stringify(oclMappings, null, 2));
+          
+            const encountersMapping = state.encounters.map(data => {
+              const encounterDate = data.encounterDatetime.replace('+0000', '');
+          
+              const pluckObs = arg => data.obs.find(ob => ob.concept.uuid === arg);
+              //console.log('Observation ::', pluckObs);
+              // const pluckOcl = arg =>
+              //   oclMappings.find(ocl => ocl.from_concept_name_resolved === arg); //TODO: map using concept uid, not name
+              const pluckOcl = arg =>
+                oclMappings.find(ocl => ocl.from_concept_code === arg);
+              //console.log('OCL code match ::', pluckOcl);
+          
+              const obs1 = pluckObs('da33d74e-33b3-495a-9d7c-aa00a-aa0160');
+              const obs2 = pluckObs('da33d74e-33b3-495a-9d7c-aa00a-aa0177');
+          
+              // const oclMap1 = obs1 && pluckOcl(obs1.value.display);
+              // const oclMap2 = obs2 && pluckOcl(obs2.value.display);
+              const cleanedObs1 = obs1.value.uuid.split('-').pop().toUpperCase();
+              const cleanedObs2 = obs2.value.uuid.split('-').pop().toUpperCase();
+              console.log('cleanedObs1 ', cleanedObs1);
+              console.log('cleanedObs2 ', cleanedObs2);
+          
+              const oclMap1 = obs1 && pluckOcl(cleanedObs1);
+              const oclMap2 = obs2 && pluckOcl(cleanedObs2);
+              console.log('oclMapping for Obs1 ', JSON.stringify(oclMap1, null, 2));
+              console.log('oclMapping for Obs2 ', JSON.stringify(oclMap2, null, 2));
+          
+              // const valueForEncounter1 = oclMap1 ? oclMap1.to_concept_name_resolved : '';
+              // const valueForEncounter2 = oclMap2 ? oclMap2.to_concept_name_resolved : '';
+              const valueForEncounter1 = oclMap1
+                ? oclMap1.to_concept.extras.dhis2_option_code
+                : '';
+              const valueForEncounter2 = oclMap2
+                ? oclMap2.to_concept.extras.dhis2_option_code
+                : '';
+              console.log('valueForEncounter1', valueForEncounter1);
+              console.log('valueForEncounter2', valueForEncounter2);
+          
+              return {
+                program: 'uGHvY5HFoLG',
+                orgUnit: 'l22DQq4iV3G',
+                programStage: 'hfKSeo6nZK0',
+                trackedEntityInstance: TEIs[data.patient.uuid],
+                eventDate: encounterDate,
+                dataValues: [
+                  {
+                    dataElement: 'ZTSBtZKc8Ff', //diagnosis
+                    value: valueForEncounter1,
+                  },
+                  {
+                    dataElement: 'vqGFXhDM1XG', //entry triage color
+                    value: valueForEncounter2,
+                  },
+                ],
+              };
+            });
+            return { ...state, encountersMapping };
+          });
+          
+          // Create events fore each encounter
+          each(
+            'encountersMapping[*]',
+            create('events', state => state.data)
+          );
+          
+          // Clean up state
+          fn(state => ({ ...state, data: {}, references: [] }));
+          
+    triggers:
+      Daily-@-6:00AM:
+        type: cron
+        cron_expression: '0 6 * * *'
+    edges:
+      Daily-@-6:00AM->WF2-1.-Get-patients-from-OpenMRS:
+        source_trigger: Daily-@-6:00AM
+        target_job: WF2-1.-Get-patients-from-OpenMRS
+        condition: always
+        condition_type: always
+      WF2-1.-Get-patients-from-OpenMRS->WF2-2.-Upsert-TEIs-in-DHIS2:
+        source_job: WF2-1.-Get-patients-from-OpenMRS
+        target_job: WF2-2.-Upsert-TEIs-in-DHIS2
+        condition: on_job_success
+        condition_type: always
+      WF2-2.-Upsert-TEIs-in-DHIS2->WF2-3.-Get-new-Encounters-from-OMRS:
+        source_job: WF2-2.-Upsert-TEIs-in-DHIS2
+        target_job: WF2-3.-Get-new-Encounters-from-OMRS
+        condition: on_job_success
+        condition_type: always
+      WF2-3.-Get-new-Encounters-from-OMRS->WF2-4.-Get-OCL-Mapping:
+        source_job: WF2-3.-Get-new-Encounters-from-OMRS
+        target_job: WF2-4.-Get-OCL-Mapping
+        condition: on_job_success
+        condition_type: always
+      WF2-4.-Get-OCL-Mapping->WF2-5.-Create-Events-in-DHIS2:
+        source_job: WF2-4.-Get-OCL-Mapping
+        target_job: WF2-5.-Create-Events-in-DHIS2
+        condition: on_job_success
+        condition_type: always
+  Workflow-WF1-1.-Get-active-TEIs-from-DHIS2:
+    name: Workflow WF1-1. Get active TEIs from DHIS2
+    jobs:
+      WF1-1.-Get-active-TEIs-from-DHIS2:
+        name: WF1-1 Get active TEIs from DHIS2
+        adaptor: '@openfn/dhis2@v3.2.11'
+        enabled: true
+        globals:
+        body: |
+          fn(state => {
+            const manualCursor = '2023-06-20T17:00:00.00';
+          
+            const cursor =
+              state.lastRunDateTime != null && state.lastRunDateTime != ''
+                ? state.lastRunDateTime
+                : manualCursor;
+          
+            console.log('Date cursor to filter TEI extract ::', cursor);
+          
+            return { ...state, cursor };
+          });
+          
+          // Get trackedEntityInstances that are "active" in the target program
+          get(
+            'trackedEntityInstances',
+            {
+              ou: 'l22DQq4iV3G',
+              program: 'uGHvY5HFoLG',
+              programStatus: 'ACTIVE',
+            },
+            {},
+            state => {
+              const trackedEntityInstances = state.data.trackedEntityInstances.filter(
+                tei => tei.created > state.cursor
+              );
+              const offset = 2; // GMT+2 (Geneva time)
+              const currentDateTime = new Date();
+              currentDateTime.setHours(currentDateTime.getHours() + offset);
+          
+              const lastRunDateTime = currentDateTime.toISOString().replace('Z', '');
+          
+              console.log('# of TEIs extracted ::', trackedEntityInstances.length);
+              console.log(
+                'trackedEntityInstance IDs ::',
+                trackedEntityInstances.map(tei => tei.trackedEntityInstance)
+              );
+          
+              console.log('Next sync start date:', lastRunDateTime);
+              return {
+                ...state,
+                data: {},
+                references: [],
+                trackedEntityInstances,
+                lastRunDateTime,
+              };
+            }
+          );
+          
+      WF1-2.-Create-Patients-in-OpenMRS:
+        name: WF1-2 Create Patients in OpenMRS
+        adaptor: '@openfn/openmrs@v1.0.1'
+        enabled: true
+        globals:
+        body: |
+          //Define gender options and prepare newPatientUuid and identifiers
+          fn(state => {
+            const genderOptions = {
+              male: 'M',
+              female: 'F',
+              unknown: 'U',
+              //TODO: Ask MSF for updated category option values
+              transgender_female: 'O',
+              transgender_male: 'O',
+              Prefer_not_to_answer: 'O',
+              gender_variant_non_conforming: 'O',
+            };
+          
+            const identifiers = [];
+            const newPatientUuid = [];
+          
+            const { trackedEntityInstances } = state;
+            if (trackedEntityInstances.length > 0)
+              console.log(
+                '# of TEIs to send to OpenMRS: ',
+                trackedEntityInstances.length
+              );
+            if (trackedEntityInstances.length === 0)
+              console.log('No data fetched in step prior to sync.');
+          
+            return {
+              ...state,
+              genderOptions,
+              newPatientUuid,
+              identifiers,
+            };
+          });
+          
+          //First we generate a unique OpenMRS ID for each patient
+          each('trackedEntityInstances[*]', state => {
+            return post(
+              'idgen/identifiersource/8549f706-7e85-4c1d-9424-217d50a2988b/identifier',
+              {}
+            )(state).then(state => {
+              state.identifiers.push(state.data.body.identifier);
+              return state;
+            });
+          });
+          
+          // Then we map trackedEntityInstances to openMRS data model
+          fn(state => {
+            const { trackedEntityInstances, identifiers, genderOptions } = state;
+          
+            const getValueForCode = (attributes, code) => {
+              const result = attributes.find(attribute => attribute.code === code);
+              return result ? result.value : undefined;
+            };
+          
+            const calculateDOB = age => {
+              const currentDate = new Date();
+              const currentYear = currentDate.getFullYear();
+              const birthYear = currentYear - age;
+          
+              const birthday = new Date(
+                birthYear,
+                currentDate.getMonth(),
+                currentDate.getDay()
+              );
+          
+              return birthday.toISOString().replace(/\.\d+Z$/, '+0000');
+            };
+          
+            const patients = trackedEntityInstances.map((d, i) => {
+              const patientNumber = getValueForCode(d.attributes, 'patient_number'); // Add random number for testing + Math.random()
+          
+              return {
+                patientNumber: patientNumber,
+                identifiers: [
+                  {
+                    identifier: identifiers[i], //map ID value from DHIS2 attribute
+                    identifierType: '05a29f94-c0ed-11e2-94be-8c13b969e334',
+                    location: '44c3efb0-2583-4c80-a79e-1f756a03c0a1', //default location
+                    preferred: true,
+                  },
+                  {
+                    identifier: patientNumber,
+                    identifierType: '8d79403a-c2cc-11de-8d13-0010c6dffd0f', //Old Identification number
+                    location: '44c3efb0-2583-4c80-a79e-1f756a03c0a1', //default location
+                    preferred: false, //default value for this identifiertype
+                  },
+                ],
+                person: {
+                  gender: genderOptions[getValueForCode(d.attributes, 'sex')],
+                  age: getValueForCode(d.attributes, 'age'),
+                  birthdate: calculateDOB(getValueForCode(d.attributes, 'age')),
+                  birthdateEstimated: true,
+                  names: [
+                    {
+                      familyName: patientNumber,
+                      givenName: 'Patient',
+                    },
+                  ],
+                },
+              };
+            });
+          
+            return { ...state, patients };
+          });
+          
+          // Creating patients in openMRS
+          each('patients[*]', state => {
+            const { patientNumber, ...patient } = state.data;
+          
+            console.log('Creating patient record\n', JSON.stringify(patient, null, 2));
+          
+            return createPatient(patient)(state).then(state => {
+              state.newPatientUuid.push({
+                patient_number: patientNumber,
+                uuid: state.data.body.uuid,
+              });
+              return state;
+            });
+          });
+          
+          // Clean up state
+          fn(state => ({ ...state, data: {}, references: [] }));
+          
+      WF1-3.-Update-DHIS2-TEIs-with-uuid:
+        name: WF1-3 Update DHIS2 TEIs with uuid
+        adaptor: '@openfn/dhis2@v3.2.11'
+        enabled: true
+        globals:
+        body: |
+          fn(state => {
+            if (state.newPatientUuid.length === 0)
+              console.log('No data fetched in step prior to sync.');
+            return state;
+          });
+          
+          console.log('newPatientUuid ::', JSON.stringify(state.newPatientUuid, null, 2));
+          
+          // Update TEI on DHIS2
+          each(
+            'newPatientUuid[*]',
+            upsert(
+              'trackedEntityInstances',
+              state => ({
+                ou: 'l22DQq4iV3G',
+                filter: [`P4wdYGkldeG:Eq:${state.data.patient_number}`],
+              }),
+              {
+                orgUnit: 'l22DQq4iV3G',
+                program: 'uGHvY5HFoLG',
+                trackedEntityType: 'cHlzCA2MuEF',
+                attributes: [
+                  {
+                    attribute: 'P4wdYGkldeG',
+                    value: dataValue('patient_number')
+                    //value: `${state.data.patient_number}`,
+                  },
+                  {
+                    attribute: 'jGNhqEeXy2L',
+                    value: dataValue('uuid')
+                    //value: `${state.data.uuid}`,
+                  },
+                ],
+              }
+            )
+          );
+          
+    triggers:
+      Yearly-on-Jan-1:
+        type: cron
+        cron_expression: '0 0 1 1 *'
+    edges:
+      Yearly-on-Jan-1->WF1-1.-Get-active-TEIs-from-DHIS2:
+        source_trigger: Yearly-on-Jan-1
+        target_job: WF1-1.-Get-active-TEIs-from-DHIS2
+        condition: always
+        condition_type: always
+      WF1-1.-Get-active-TEIs-from-DHIS2->WF1-2.-Create-Patients-in-OpenMRS:
+        source_job: WF1-1.-Get-active-TEIs-from-DHIS2
+        target_job: WF1-2.-Create-Patients-in-OpenMRS
+        condition: on_job_success
+        condition_type: always
+      WF1-2.-Create-Patients-in-OpenMRS->WF1-3.-Update-DHIS2-TEIs-with-uuid:
+        source_job: WF1-2.-Create-Patients-in-OpenMRS
+        target_job: WF1-3.-Update-DHIS2-TEIs-with-uuid
+        condition: on_job_success
+        condition_type: always
+  Workflow-test-http-get:
+    name: Workflow test http get
+    jobs:
+      test-http-get:
+        name: test http get
+        adaptor: '@openfn/dhis2@v3.2.11'
+        enabled: false
+        globals:
+        body: |
+          //get('programs', { orgUnit: 'l22DQq4iV3G', fields: '*' });
+          get('https://api.openconceptlab.org/orgs/MSFOCG/collections/lime-demo/HEAD/expansions/autoexpand-HEAD/mappings', {
+            query: { 
+              page: 1, 
+              limit: 500,
+              verbose: false, 
+              fromConceptOwner: 'MSFOCG', 
+              toConceptOwner: 'MSFOCG',
+              toConceptSource: 'DHIS2DataElements',
+              sortDesc: '_score'
+            },
+            headers: {'content-type': 'application/json'},
+          }); 
+           
+          fn(state => {
+            console.log('ocl response', JSON.stringify(state.data,null,2)); 
+            return state;
+             
+          // })
+                     
+    triggers:
+      Daily-@-6:00AM:
+        type: cron
+        cron_expression: '0 6 * * *'
+    edges:
+      Daily-@-6:00AM->test-http-get:
+        source_trigger: Daily-@-6:00AM
+        target_job: test-http-get
+        condition: always
+        condition_type: always

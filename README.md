@@ -289,6 +289,145 @@ We can also use the child frontend configuration file to override the inherited 
     SPA_CONFIG_URLS=/openmrs/spa/ozone/msf-frontend-config.json, /openmrs/spa/ozone/msf-mosul-frontend-config-json
     ```
 
+## OpenFn Configuration and Deployment Documentation
+
+This configuration is designed to ensure compatibility and streamline workflow automation.
+> **Note:** This configuration is a work in progress. Expect further changes to enhance and streamline the workflow.
+
+### Docker Compose Configuration
+
+#### Step 1: Use Linux Images
+To ensure compatibility, we forced Docker Compose to use Linux images for OpenFn and updated our `docker-compose-openfn.yml` file as follows:
+```yaml
+services:
+  ws-worker:
+    image: openfn/ws-worker:latest
+    platform: linux/x86_64/v8
+  lightening:
+    image: openfn/lightening:latest
+    platform: linux/x86_64/v8
+```
+
+#### Step 2: Add `ERL_FLAGS` Environment Variable
+To solve the [`ArgumentError`](https://community.openfn.org/t/lightning-prebuilt-images-throw-no-matching-manifest-for-linux-arm64-v8-in-the-manifest-list-entries/465/15?u=jnsereko), add the `ERL_FLAGS` environment variable to our `openFn.env` file: like `ERL_FLAGS="+JPperf true"`.  
+You can also do the same inside docker compose.
+```yaml
+services:
+  ws-worker:
+    environment:
+      - ERL_FLAGS="+JPperf true"
+```
+
+#### Step 3: Running the Server
+OpenFn will be running on `localhost:4000`.
+On first installation, you will see a create account screen and your API key to interact with OpenFn.
+
+### OpenFn on Azure
+
+#### Step 1: Update Origins
+Add the Azure domain to the `ORIGINS` variable in the `openFn.env` file:
+```env
+ORIGINS="http://your-azure-domain.com"
+```
+
+### Deploying Workflows and Projects to OpenFn
+
+#### Step 1: Install OpenFn CLI
+To deploy workflows and projects, first, install the OpenFn CLI. Instructions for installation can be found in the [OpenFn documentation](https://docs.openfn.org/documentation/deploy/portability#using-the-cli-to-deploy-or-describe-projects-projects-as-code).
+
+#### Step 2: Configure Deployment Files
+Navigate to the directory containing the `openfn-project.yaml` and the `config.json` file. Update the `endpoint` in `config.json` to point to your running server and add your API key:
+```json
+{
+  "endpoint": "http://localhost:4000",
+  "apikey": "your-api-key"
+}
+```
+
+#### Step 3: Deploy
+Use the OpenFn CLI to deploy your workflows and projects as per the [CLI instructions](https://docs.openfn.org/documentation/deploy/portability#using-the-cli-to-deploy-or-describe-projects-projects-as-code).
+```
+cd directory_with_config_jsonFile
+openfn deploy -c config.json --no-confirm
+```
+
+#### Future Enhancements
+- Automate project and workflow deployment at startup.
+- Create an MSF user automatically at startup.
+- Generate and mount an API key to OpenFn automatically at startup.
+
+### OpenFn Configuration Inheritance
+
+We use a simple Groovy script to merge all `.yaml` files in the `./config/openfn` directory on each level (distro, iraq or mosul) at compile time to generate the `openfn-project.yaml` file containing all OpenFn projects and corresponding workflows.
+**Assumptions:**
+- config file name can be anything except `openfn-project.yaml`
+- config should have a `.yaml` extension
+- config should be in `./config/openfn` at compile time.
+
+#### Adding OpenFn workflows on a specific level 
+- Exclude the parent compiled `openfn-project.yaml` workflow file
+For example at Mosul Level 
+    ```xml
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+            <execution>
+                <id>Copy Ozone MSF files</id>
+                <phase>process-resources</phase>
+                <goals>
+                    <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                    <outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}</outputDirectory>
+                    <overwrite>true</overwrite>
+                    <resources>
+                        <resource>
+                            <directory>${project.build.directory}/ozone-msf-iraq</directory>
+                            <excludes>
+                                <exclude>distro/configs/openfn/openfn-project.yaml</exclude> // add this line
+                            </excludes>
+                        </resource>
+                    </resources>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+    ```
+- execute the yaml merging script
+    ```xml
+    <plugin>
+        <groupId>org.codehaus.gmavenplus</groupId>
+        <artifactId>gmavenplus-plugin</artifactId>
+        <version>${gmavenplusPluginVersion}</version>
+        <executions>
+            <execution>
+                <id>combine openfn project.yaml files in Mosul</id>
+                <goals>
+                    <goal>execute</goal>
+                </goals>
+                <phase>process-resources</phase>
+                <configuration>
+                    <scripts>
+                        // add the line below
+                        <script>file://${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/merge-openfn-yaml.groovy</script>
+                    </scripts>
+                </configuration>
+            </execution>
+        </executions>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.groovy</groupId>
+                <artifactId>groovy</artifactId>
+                <version>4.0.15</version>
+                <scope>runtime</scope>
+            </dependency>
+        </dependencies>
+    </plugin>
+    ```
+- add your workflow file to `./config/openfn`
+
 ## [FAQ](#faq)
 
 ## Release Notes
