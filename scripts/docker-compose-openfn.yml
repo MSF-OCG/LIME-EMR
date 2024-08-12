@@ -42,7 +42,7 @@ services:
       start_period: '5s'
       retries: 3
     ports:
-      - '${LIGHTNING_EXTERNAL_PORT:-127.0.0.1:${PORT:-4000}}:${URL_PORT:-4000}'
+      - '${LIGHTNING_EXTERNAL_PORT:-${PORT:-4000}}:${URL_PORT:-4000}'
     networks:
       - ozone
 
