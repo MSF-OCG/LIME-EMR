@@ -37,7 +37,7 @@ jobs:
             }]
   
       - name: Build and Test
-        run: mvn --batch-mode --update-snapshots --activate-profiles validator clean package
+        run: mvn --batch-mode --update-snapshots --activate-profiles validator -Pazure clean package
 
       - name: Publish MSF distro artifacts to GitHub
         uses: ./.github/actions/upload-maven-artifacts

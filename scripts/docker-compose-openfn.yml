@@ -1,7 +1,7 @@
 services:
   postgresql:
     env_file:
-      - '../../distro/configs/openfn/openfn.env'
+      - '${OPENFN_CONFIG_PATHs}/${MSF_SERVER_TYPE}.openfn.env'
     stop_grace_period: '3s'
     volumes:
       - "${SQL_SCRIPTS_PATH}/postgresql/create_openfn_db.sh:/docker-entrypoint-initdb.d/create_openfn_db.sh"
@@ -11,7 +11,7 @@ services:
     image: 'openfn/lightning:latest'
     command: ["/app/bin/lightning", "eval", "Lightning.Release.migrate"]
     env_file:
-      - '../../distro/configs/openfn/openfn.env'
+      - '${OPENFN_CONFIG_PATHs}/${MSF_SERVER_TYPE}.openfn.env'
     depends_on:
       postgresql:
         condition: service_healthy
@@ -28,7 +28,7 @@ services:
           cpus: '${DOCKER_WEB_CPUS:-0}'
           memory: '${DOCKER_WEB_MEMORY:-0}'
     env_file:
-      - '../../distro/configs/openfn/openfn.env'
+      - '${OPENFN_CONFIG_PATHs}/${MSF_SERVER_TYPE}.openfn.env'
     depends_on:
       migrations:
         condition: service_completed_successfully
@@ -59,7 +59,7 @@ services:
         condition: service_healthy
         restart: true
     env_file:
-      - '../../distro/configs/openfn/openfn.env'
+      - '${OPENFN_CONFIG_PATHs}/${MSF_SERVER_TYPE}.openfn.env'
     command:
       ['pnpm', 'start:prod', '-l', 'ws://web:${URL_PORT:-4000}/worker']
     restart: '${DOCKER_RESTART_POLICY:-unless-stopped}'
