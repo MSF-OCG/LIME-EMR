@@ -245,6 +245,25 @@
               </target>
             </configuration>
           </execution>
+          <execution>
+            <id>Add OpenFn Environment variables</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo message="Adding OpenFn environment versions" />
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
+                  token="exportPaths">
+                  <replacevalue>
+                    exportPaths&#10;export OPENFN_CONFIG_PATH=$DISTRO_PATH/configs/openfn&#10;echo "→ OPENFN_CONFIG_PATH=$OPENFN_CONFIG_PATH"
+                  </replacevalue>
+                </replace>
+              </target>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
       <plugin>
@@ -294,6 +313,133 @@
                 <configuration>
                   <sourceDir>
                     ${project.build.directory}/${project.artifactId}-${project.version}/distro/configs/openmrs/initializer_config</sourceDir>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>local</id>
+      <properties>
+        <envFileToExclude>azure.openfn.env</envFileToExclude>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <executions>
+              <execution>
+                <!-- Override with local config files-->
+                <id>Copy local resources</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>
+                    ${project.build.directory}/${project.artifactId}-${project.version}/distro/configs/openfn</outputDirectory>
+                  <overwrite>true</overwrite>
+                  <resources>
+                    <resource>
+                      <directory>${project.basedir}/configs/openfn</directory>
+                      <excludes>
+                        <exclude>${envFileToExclude}</exclude>
+                      </excludes>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <!-- <version>3.1.0</version> -->
+            <executions>
+              <execution>
+                <id>Add OpenFn server type Environment variables</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <echo message="Adding OpenFn environment versions" />
+                    <replace
+                      file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
+                      token="exportPaths">
+                      <replacevalue>
+                        exportPaths&#10;export MSF_SERVER_TYPE="local"&#10;echo "→ MSF_SERVER_TYPE=$MSF_SERVER_TYPE"
+                      </replacevalue>
+                    </replace>
+                  </target>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>azure</id>
+      <properties>
+        <envFileToExclude>local.openfn.env</envFileToExclude>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>Copy local resources</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>
+                    ${project.build.directory}/${project.artifactId}-${project.version}/distro/configs/openfn</outputDirectory>
+                  <overwrite>true</overwrite>
+                  <resources>
+                    <resource>
+                      <directory>${project.basedir}/configs/openfn</directory>
+                      <excludes>
+                        <exclude>${envFileToExclude}</exclude>
+                      </excludes>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>Add OpenFn server type Environment variables</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <echo message="Adding OpenFn environment versions" />
+                    <replace
+                      file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
+                      token="exportPaths">
+                      <replacevalue>
+                        exportPaths&#10;export MSF_SERVER_TYPE="azure"&#10;echo "→ MSF_SERVER_TYPE=$MSF_SERVER_TYPE"
+                      </replacevalue>
+                    </replace>
+                  </target>
                 </configuration>
               </execution>
             </executions>
