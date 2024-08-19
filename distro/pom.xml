@@ -275,10 +275,10 @@
               <target>
                 <echo message="Adding OpenFn environment versions" />
                 <replace
-                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
-                  token="exportPaths">
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
+                  token='echo "$INFO Exporting distro paths..."'>
                   <replacevalue>
-                    exportPaths&#10;export OPENFN_CONFIG_PATH=$DISTRO_PATH/configs/openfn&#10;export MSF_SERVER_TYPE="${MSFServerType}"&#10;echo "→ OPENFN_CONFIG_PATH=$OPENFN_CONFIG_PATH"&#10;echo "→ MSF_SERVER_TYPE=$MSF_SERVER_TYPE"
+                    echo "$INFO Exporting distro paths..."&#10;&#9;export OPENFN_CONFIG_PATH=$DISTRO_PATH/configs/openfn&#10;&#9;export MSF_SERVER_TYPE="${MSFServerType}"&#10;&#9;echo "→ OPENFN_CONFIG_PATH=$OPENFN_CONFIG_PATH"&#10;&#9;echo "→ MSF_SERVER_TYPE=$MSF_SERVER_TYPE"
                   </replacevalue>
                 </replace>
               </target>
