@@ -19,15 +19,23 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
-    <PatientIdentifierGeneratorVersion>0.1.0</PatientIdentifierGeneratorVersion>
+    <limeEmrVersion>0.1.0</limeEmrVersion>
+    <MSFReferenceapplicationDockerVersion>qa</MSFReferenceapplicationDockerVersion>
+    <datafilterVersion>2.3.0-SNAPSHOT</datafilterVersion>
+    <yamlCombinePluginVersion>2.0.6</yamlCombinePluginVersion>
   </properties>
 
   <dependencies>
-    <!-- TODO: Add any implementation-specific dependencies -->
     <dependency>
       <groupId>org.openmrs.module</groupId>
-      <artifactId>patientidentifiergenerator-omod</artifactId>
-      <version>${PatientIdentifierGeneratorVersion}</version>
+      <artifactId>lime-emr-omod</artifactId>
+      <version>${limeEmrVersion}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>datafilter-omod</artifactId>
+      <version>${datafilterVersion}</version>
     </dependency>
   </dependencies>
 
@@ -65,6 +73,24 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
         <executions>
+          <execution>
+            <!-- Copy MSF reference-application-spa-assemble-config.json to frontend working directory -->
+            <id>Copy MSF reference-application-spa-assemble-config.json to local working directory</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/openmrs_frontend</outputDirectory>
+              <overwrite>true</overwrite>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/configs/openmrs/frontend_assembly</directory>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
           <execution>
             <!-- Override the Ozone files exclusion execution so to inherit all O3 Ref App files -->
             <id>Exclude unneeded Ozone files</id>
@@ -135,9 +161,50 @@
                 <resource>
                   <directory>${project.basedir}/../scripts</directory>
                   <includes>
-                    <include>
-                      docker-compose-files.txt
-                    </include>
+                    <include>docker-compose-files.txt </include>
+                    <include>merge-openfn-yaml.groovy</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <!-- Copy MSF OpenFn docker compose .yml file -->
+            <id>Copy MSF OpenFn docker compose .yml file</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>
+                ${project.build.directory}/${project.artifactId}-${project.version}/run/docker</outputDirectory>
+              <overwrite>true</overwrite>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/../scripts</directory>
+                  <includes>
+                    <include>docker-compose-openfn.yml </include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <!-- Copy MSF OpenFn database script files -->
+            <id>Copy MSF OpenFn database script files</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>
+                ${project.build.directory}/${project.artifactId}-${project.version}/distro/data</outputDirectory>
+              <overwrite>true</overwrite>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/../scripts/data</directory>
+                  <includes>
+                    <include>**/*.sh</include>
                   </includes>
                 </resource>
               </resources>
@@ -148,6 +215,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.1.0</version>
         <executions>
           <execution>
             <id>Add MSF-OCG LIME Frontend Configuration to ozone</id>
@@ -161,6 +229,57 @@
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
                               match="ozone-frontend-config.json" replace="msf-frontend-config.json" />
               </target>
+            </configuration>
+          </execution>
+          <execution>
+            <id>Add MSF-OCG LIME docker image Configuration to ozone</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo message="Adding msf docker image version"/>
+                <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
+                              match="O3_DOCKER_IMAGE_TAG=.*" replace="O3_DOCKER_IMAGE_TAG=${MSFReferenceapplicationDockerVersion}" />
+              </target>
+            </configuration>
+          </execution>
+          <execution>
+            <id>Add OpenFn Environment variables</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo message="Adding OpenFn environment versions" />
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
+                  token="exportPaths">
+                  <replacevalue>
+                    exportPaths&#10;export OPENFN_CONFIG_PATH=$DISTRO_PATH/configs/openfn&#10;echo "→ OPENFN_CONFIG_PATH=$OPENFN_CONFIG_PATH"
+                  </replacevalue>
+                </replace>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.gmavenplus</groupId>
+        <artifactId>gmavenplus-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>combine openfn project.yaml files</id>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <phase>process-resources</phase>
+            <configuration>
+              <scripts>
+                <script>file://${project.basedir}/../scripts/merge-openfn-yaml.groovy</script>
+              </scripts>
             </configuration>
           </execution>
         </executions>
@@ -197,7 +316,134 @@
                 </configuration>
               </execution>
             </executions>
-          </plugin>     
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>local</id>
+      <properties>
+        <envFileToExclude>azure.openfn.env</envFileToExclude>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <executions>
+              <execution>
+                <!-- Override with local config files-->
+                <id>Copy local resources</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>
+                    ${project.build.directory}/${project.artifactId}-${project.version}/distro/configs/openfn</outputDirectory>
+                  <overwrite>true</overwrite>
+                  <resources>
+                    <resource>
+                      <directory>${project.basedir}/configs/openfn</directory>
+                      <excludes>
+                        <exclude>${envFileToExclude}</exclude>
+                      </excludes>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <!-- <version>3.1.0</version> -->
+            <executions>
+              <execution>
+                <id>Add OpenFn server type Environment variables</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <echo message="Adding OpenFn environment versions" />
+                    <replace
+                      file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
+                      token="exportPaths">
+                      <replacevalue>
+                        exportPaths&#10;export MSF_SERVER_TYPE="local"&#10;echo "→ MSF_SERVER_TYPE=$MSF_SERVER_TYPE"
+                      </replacevalue>
+                    </replace>
+                  </target>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>azure</id>
+      <properties>
+        <envFileToExclude>local.openfn.env</envFileToExclude>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>Copy local resources</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>
+                    ${project.build.directory}/${project.artifactId}-${project.version}/distro/configs/openfn</outputDirectory>
+                  <overwrite>true</overwrite>
+                  <resources>
+                    <resource>
+                      <directory>${project.basedir}/configs/openfn</directory>
+                      <excludes>
+                        <exclude>${envFileToExclude}</exclude>
+                      </excludes>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>Add OpenFn server type Environment variables</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <echo message="Adding OpenFn environment versions" />
+                    <replace
+                      file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
+                      token="exportPaths">
+                      <replacevalue>
+                        exportPaths&#10;export MSF_SERVER_TYPE="azure"&#10;echo "→ MSF_SERVER_TYPE=$MSF_SERVER_TYPE"
+                      </replacevalue>
+                    </replace>
+                  </target>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
         </plugins>
       </build>
     </profile>
@@ -212,8 +458,13 @@
       <id>msf-ocg-github-lime-emr</id>
       <url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR/</url>
     </repository>
+    <repository>
+      <id>Sonatype-public</id>
+      <name>SnakeYAML repository</name>
+      <url>https://oss.sonatype.org/content/groups/public/</url>
+    </repository>
   </repositories>
-  
+
   <distributionManagement>
     <repository>
       <name>MSF repo for releases</name>
@@ -226,5 +477,5 @@
       <url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR</url>
     </snapshotRepository>
   </distributionManagement>
-  
+
 </project>

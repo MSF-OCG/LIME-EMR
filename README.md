@@ -1,7 +1,7 @@
 # MSF LIME EMR
 Using Ozone Approach
 
-## Configuration hierarchy and inheritance 
+## Configuration hierarchy and inheritance
 
 ### Assumptions
 - There are **3 levels** of configurations: Distro < Country < Site
@@ -11,11 +11,11 @@ Using Ozone Approach
 
 #### Hierarchy overview - example
 ```
-── pom.xml - Aggredator / Orchestrator  
-      └── /distro/pom.xml - Organizational-wide Config  
-      └── /countries - Country-specific Config  
+── pom.xml - Aggredator / Orchestrator
+      └── /distro/pom.xml - Organizational-wide Config
+      └── /countries - Country-specific Config
             └── /iraq/pom.xl
-      └── /sites - Site-specific Config  
+      └── /sites - Site-specific Config
             └── /mosul/pom.xl
 ```
 
@@ -46,18 +46,18 @@ Z --> |Pulling the artefacts| ZA
 
 
 ## Example for configs for hierarchy demo of v1 - Week of April 8
-### Ozone Level **OpenMRS RefApp**   
-- [x] Refapp stable version of [modules for frontend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/frontend/spa-assemble-config.json)  
-- [x] Refapp stable version of [modules for backend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/distro/pom.xml)  
-### MSF Distro **LIME EMR** repository  
-- [x] MSF [branding in frontend config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/frontend/custom-config.json)   
+### Ozone Level **OpenMRS RefApp**
+- [x] Refapp stable version of [modules for frontend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/frontend/spa-assemble-config.json)
+- [x] Refapp stable version of [modules for backend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/distro/pom.xml)
+### MSF Distro **LIME EMR** repository
+- [x] MSF [branding in frontend config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/frontend/custom-config.json)
 - [x] MSF [logo and assets](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/frontend/assets)
-- [x] [Env specific logos](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/dev/frontend/qa/assets/logo.png) for users to easily identify their environment 
-### Country level: **Iraq**   
-- [x] [Roles config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/roles/roles_core-demo.csv) for Initializer  
-### Site level: **Mosul**  
-- [x] [Address hierarchy](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/distro/configuration/addresshierarchy) for Initializer  
-- [x] [Locations](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/locations/locations.csv) for Initializer  
+- [x] [Env specific logos](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/dev/frontend/qa/assets/logo.png) for users to easily identify their environment
+### Country level: **Iraq**
+- [x] [Roles config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/roles/roles_core-demo.csv) for Initializer
+### Site level: **Mosul**
+- [x] [Address hierarchy](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/distro/configuration/addresshierarchy) for Initializer
+- [x] [Locations](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/locations/locations.csv) for Initializer
 - [x] [Person attributes](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/personattributetypes/personattributetypes_core-demo.csv) for Initializer
 - [x] [Initial consultation form](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/ampathforms/initial_consultation-lime_demo.json)
 
@@ -90,9 +90,9 @@ cd sites/mosul/target/ozone-msf-mosul-<version>/run/docker/scripts
 ## Testing
 
 1. Install prerequisites
-   brew install jq 
+   brew install jq
 3. Clone EMR Tooling
-   
+
 4. Update install directory
    ```bash
    INSTALL_DIR="**.**/home/lime/$APP_NAME"
@@ -136,7 +136,7 @@ log_error() {
 Configurations are pulled from parent level, modified as necessary in the current level and then applied. Modifiication of configuration at the cuurent level involves either the exclusion of non-needed configuration and/or inclusion of configuration that are specific at the current level. This process maintains inheritance from parent level to child level while facilitating easy customization and maintains consistency across levels.
 
 ### [Backend configuration](#backend-configuration)
-We use the maven's `pom.xml` file at the root of each level to define what configuration should be applied. 
+We use the maven's `pom.xml` file at the root of each level to define what configuration should be applied.
 We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/maven-resources-plugin) to exclude/filter and include configs as different execution processes using the `copy-resources` goal.  This allows us to add or remove files while copying them form the parent level to the current level's build directory after the parent's download.
 
 - #### [How to use the maven resources plugin](#how-to-use-the-maven-resources-plugin)
@@ -147,7 +147,7 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
         <executions>
             <!-- add executions to filter or add a file -->
         </executions>
-    </plugin> 
+    </plugin>
     ```
 
 - #### [Excluding/Filtering files from parent level](#excluding-files-from-parent-level)
@@ -165,7 +165,7 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
                 <outputDirectory>
                     <!-- destination of the file to copy-->
                     ${project.build.directory}/${project.artifactId}-${project.version}
-                </outputDirectory> 
+                </outputDirectory>
                 <overwrite>true</overwrite>
                 <resources>
                 <resource>
@@ -178,7 +178,7 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
             </configuration>
         </execution>
         ...
-    </plugin> 
+    </plugin>
     ```
 
 - #### [Including files to current level](#including-files-to-current-level)
@@ -196,7 +196,7 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
                 <outputDirectory>
                     <!-- destination of the file to copy-->
                     ${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts
-                </outputDirectory> 
+                </outputDirectory>
                 <overwrite>true</overwrite>
                 <resources>
                 <resource>
@@ -209,7 +209,7 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
             </configuration>
         </execution>
         ...
-    </plugin> 
+    </plugin>
     ```
 
     #### [Initializer Data](#initializer-data)
@@ -223,11 +223,12 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
 MSF configuration are loaded using the [msf-frontend-config.json](https://github.com/MSF-OCG/LIME-EMR/blob/main/distro/configs/openmrs/frontend_config/msf-frontend-config.json)
 We use the [Apache Maven AntRun Plugin](https://maven.apache.org/plugins/maven-antrun-plugin/) to execute a task that replaces the ozone configuration file in the `.env` file that docker compose uses while building the frontend. The `.env` file is located in the `target/run/docker/.env` at the current level.
 
-Below is how its done 
+Below is how its done
 ```xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-antrun-plugin</artifactId>
+    <version>3.1.0</version>
     <executions>
         <execution>
         <id>Add MSF-OCG LIME Frontend Configuration to ozone</id>
@@ -238,7 +239,7 @@ Below is how its done
         <configuration>
             <target>
             <echo message="Adding msf frontend config"/>
-            <replaceregexp 
+            <replaceregexp
                 file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
                 match="ozone-frontend-config.json"
                 replace="msf-frontend-config.json"
@@ -265,7 +266,7 @@ We can also use the child frontend configuration file to override the inherited 
     ```xml
     <replaceregexp
         file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
-        match="ozone-frontend-config.json" 
+        match="ozone-frontend-config.json"
         replace="msf-frontend-config.json"
     />
     ```
@@ -277,7 +278,7 @@ We can also use the child frontend configuration file to override the inherited 
 - Site frontend configuration inheriting from Organization level
     in pom.xml file
     ```xml
-    <replaceregexp 
+    <replaceregexp
         file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
         match="(SPA_CONFIG_URLS=.+)"
         replace="\1,/openmrs/spa/ozone/msf-mosul-frontend-config.json"
@@ -287,6 +288,145 @@ We can also use the child frontend configuration file to override the inherited 
     ```properties
     SPA_CONFIG_URLS=/openmrs/spa/ozone/msf-frontend-config.json, /openmrs/spa/ozone/msf-mosul-frontend-config-json
     ```
+
+## OpenFn Configuration and Deployment Documentation
+
+This configuration is designed to ensure compatibility and streamline workflow automation.
+> **Note:** This configuration is a work in progress. Expect further changes to enhance and streamline the workflow.
+
+### Docker Compose Configuration
+
+#### Step 1: Use Linux Images
+To ensure compatibility, we forced Docker Compose to use Linux images for OpenFn and updated our `docker-compose-openfn.yml` file as follows:
+```yaml
+services:
+  ws-worker:
+    image: openfn/ws-worker:latest
+    platform: linux/x86_64/v8
+  lightening:
+    image: openfn/lightening:latest
+    platform: linux/x86_64/v8
+```
+
+#### Step 2: Add `ERL_FLAGS` Environment Variable
+To solve the [`ArgumentError`](https://community.openfn.org/t/lightning-prebuilt-images-throw-no-matching-manifest-for-linux-arm64-v8-in-the-manifest-list-entries/465/15?u=jnsereko), add the `ERL_FLAGS` environment variable to our `openFn.env` file: like `ERL_FLAGS="+JPperf true"`.  
+You can also do the same inside docker compose.
+```yaml
+services:
+  ws-worker:
+    environment:
+      - ERL_FLAGS="+JPperf true"
+```
+
+#### Step 3: Running the Server
+OpenFn will be running on `localhost:4000`.
+On first installation, you will see a create account screen and your API key to interact with OpenFn.
+
+### OpenFn on Azure
+
+#### Step 1: Update Origins
+Add the Azure domain to the `ORIGINS` variable in the `openFn.env` file:
+```env
+ORIGINS="http://your-azure-domain.com"
+```
+
+### Deploying Workflows and Projects to OpenFn
+
+#### Step 1: Install OpenFn CLI
+To deploy workflows and projects, first, install the OpenFn CLI. Instructions for installation can be found in the [OpenFn documentation](https://docs.openfn.org/documentation/deploy/portability#using-the-cli-to-deploy-or-describe-projects-projects-as-code).
+
+#### Step 2: Configure Deployment Files
+Navigate to the directory containing the `openfn-project.yaml` and the `config.json` file. Update the `endpoint` in `config.json` to point to your running server and add your API key:
+```json
+{
+  "endpoint": "http://localhost:4000",
+  "apikey": "your-api-key"
+}
+```
+
+#### Step 3: Deploy
+Use the OpenFn CLI to deploy your workflows and projects as per the [CLI instructions](https://docs.openfn.org/documentation/deploy/portability#using-the-cli-to-deploy-or-describe-projects-projects-as-code).
+```
+cd directory_with_config_jsonFile
+openfn deploy -c config.json --no-confirm
+```
+
+#### Future Enhancements
+- Automate project and workflow deployment at startup.
+- Create an MSF user automatically at startup.
+- Generate and mount an API key to OpenFn automatically at startup.
+
+### OpenFn Configuration Inheritance
+
+We use a simple Groovy script to merge all `.yaml` files in the `./config/openfn` directory on each level (distro, iraq or mosul) at compile time to generate the `openfn-project.yaml` file containing all OpenFn projects and corresponding workflows.
+**Assumptions:**
+- config file name can be anything except `openfn-project.yaml`
+- config should have a `.yaml` extension
+- config should be in `./config/openfn` at compile time.
+
+#### Adding OpenFn workflows on a specific level 
+- Exclude the parent compiled `openfn-project.yaml` workflow file
+For example at Mosul Level 
+    ```xml
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+            <execution>
+                <id>Copy Ozone MSF files</id>
+                <phase>process-resources</phase>
+                <goals>
+                    <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                    <outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}</outputDirectory>
+                    <overwrite>true</overwrite>
+                    <resources>
+                        <resource>
+                            <directory>${project.build.directory}/ozone-msf-iraq</directory>
+                            <excludes>
+                                <exclude>distro/configs/openfn/openfn-project.yaml</exclude> // add this line
+                            </excludes>
+                        </resource>
+                    </resources>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+    ```
+- execute the yaml merging script
+    ```xml
+    <plugin>
+        <groupId>org.codehaus.gmavenplus</groupId>
+        <artifactId>gmavenplus-plugin</artifactId>
+        <version>${gmavenplusPluginVersion}</version>
+        <executions>
+            <execution>
+                <id>combine openfn project.yaml files in Mosul</id>
+                <goals>
+                    <goal>execute</goal>
+                </goals>
+                <phase>process-resources</phase>
+                <configuration>
+                    <scripts>
+                        // add the line below
+                        <script>file://${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/merge-openfn-yaml.groovy</script>
+                    </scripts>
+                </configuration>
+            </execution>
+        </executions>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.groovy</groupId>
+                <artifactId>groovy</artifactId>
+                <version>4.0.15</version>
+                <scope>runtime</scope>
+            </dependency>
+        </dependencies>
+    </plugin>
+    ```
+- add your workflow file to `./config/openfn`
 
 ## [FAQ](#faq)
 

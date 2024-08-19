@@ -1,0 +1,829 @@
+{
+  "name": "mhGAP Baseline",
+  "description": "MSF Form - mhGAP Baseline",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Mental Health",
+  "encounterType": "95d68645-1b72-4290-be0b-ec1fb64bc067",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Consultation",
+      "sections": [
+        {
+          "label": "Consultation information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "admissionType",
+              "label": "Admission type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "admissionType",
+                "answers": [
+                  {
+                    "label": "New admission",
+                    "concept": "newAdmission"
+                  },
+                  {
+                    "label": "Readmission",
+                    "concept": "readmission"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Admission type"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "History",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "presentingHistoryOrEvolutionOfSymptoms",
+              "label": "Presenting history / evolution of symptoms (current symptoms onset duration course intensity triggers associated symptoms)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "presentingHistoryOrEvolutionOfSymptoms"
+              },
+              "validators": null,
+              "questionInfo": "Presenting history / evolution of symptoms (current symptoms onset duration course intensity triggers associated symptoms)"
+            },
+            {
+              "id": "pastPsychiatricHistory",
+              "label": "Past psychiatric history (past diagnoses past substance use number of episodes duration treatment side-effects)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "pastPsychiatricHistory"
+              },
+              "validators": null,
+              "questionInfo": "Past psychiatric history (past diagnoses past substance use number of episodes duration treatment side-effects)"
+            },
+            {
+              "id": "familyHistory",
+              "label": "Family history (psychological/psychiatric/neurological/medical conditions or disorders)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "familyHistory"
+              },
+              "validators": null,
+              "questionInfo": "Family history (psychological/psychiatric/neurological/medical conditions or disorders)"
+            },
+            {
+              "id": "patientMedicalOrSurgicalHistory",
+              "label": "Patient medical / surgical history",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "patientMedicalOrSurgicalHistory"
+              },
+              "validators": null,
+              "questionInfo": "Patient medical / surgical history"
+            },
+            {
+              "id": "allergiesOrContraIndications",
+              "label": "Allergies / Contra-indications",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "allergiesOrContraIndications"
+              },
+              "validators": null,
+              "questionInfo": "Allergies / Contra-indications"
+            }
+          ]
+        },
+        {
+          "label": "Special Populations",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pregnantOrBreastfeeding",
+              "label": "Pregnant / breastfeeding ",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "pregnantOrBreastfeeding",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "yes"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "no"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Pregnant / breastfeeding "
+            },
+            {
+              "id": "childOrAdolescent",
+              "label": "Child / adolescent (under 18 years)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "childOrAdolescent",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "yes"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "no"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Child / adolescent (under 18 years)"
+            },
+            {
+              "id": "olderAdult",
+              "label": "Older adult (over 60 years)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "olderAdult",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "yes"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "no"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Older adult (over 60 years)"
+            }
+          ]
+        },
+        {
+          "label": "mhGAP file information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "patientAlreadyOnPsychotropicOrPsychiatricMedication",
+              "label": "Patient already on psychotropic / psychiatric medication (not prescribed by MSF)  ",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "patientAlreadyOnPsychotropicOrPsychiatricMedication",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "yes"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "no"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Patient already on psychotropic / psychiatric medication (not prescribed by MSF)  "
+            },
+            {
+              "id": "medicationAndDosagePleaseCheckInmedications",
+              "label": "Medication and dosage - Please check in Medications (update it if necessary)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "medicationAndDosagePleaseCheckInmedications"
+              },
+              "validators": null,
+              "questionInfo": "Medication and dosage - Please check in Medications (update it if necessary)",
+              "hide": {
+                "hideWhenExpression": "patientAlreadyOnPsychotropicOrPsychiatricMedication !== 'yes'"
+              }
+            },
+            {
+              "id": "additionalInformationAboutPreviousTreatment",
+              "label": "Additional information about previous treatment (including side effects)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "additionalInformationAboutPreviousTreatment"
+              },
+              "validators": null,
+              "questionInfo": "Additional information about previous treatment (including side effects)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Examination & diagnosis",
+      "sections": [
+        {
+          "label": "Examination",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "basicMentalStatusExamination",
+              "label": "Basic mental status examination (appearance orientation speech / motor activity mood / affect thought / perception cognitive)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "basicMentalStatusExamination"
+              },
+              "validators": null,
+              "questionInfo": "Basic mental status examination (appearance orientation speech / motor activity mood / affect thought / perception cognitive)"
+            }
+          ]
+        },
+        {
+          "label": "Clinical diagnosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "clinicalDiagnosis",
+              "label": "Clinical diagnosis (only to be established by mhGAP clinician)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "clinicalDiagnosis",
+                "answers": [
+                  {
+                    "label": "Acute stress reaction",
+                    "concept": "acuteStressReaction"
+                  },
+                  {
+                    "label": "Bereavement/grief",
+                    "concept": "bereavementOrGrief"
+                  },
+                  {
+                    "label": "Post-Traumatic Stress Disorder",
+                    "concept": "postTraumaticStressDisorder"
+                  },
+                  {
+                    "label": "Conversion/Dissociative reaction",
+                    "concept": "conversionOrDissociativeReaction"
+                  },
+                  {
+                    "label": "Anxiety Disorder",
+                    "concept": "anxietyDisorder"
+                  },
+                  {
+                    "label": "Medically Unexplained Physical Symptoms (MUPS)",
+                    "concept": "medicallyUnexplainedPhysicalSymptoms"
+                  },
+                  {
+                    "label": "Depression",
+                    "concept": "depression"
+                  },
+                  {
+                    "label": "Self-harming behavior/suicide attempt",
+                    "concept": "selfHarmingBehaviorOrSuicideAttempt"
+                  },
+                  {
+                    "label": "Acute psychosis (incl. post-partum psychosis)",
+                    "concept": "acutePsychosis"
+                  },
+                  {
+                    "label": "Chronic psychosis (incl. schizophrenia)",
+                    "concept": "chronicPsychosis"
+                  },
+                  {
+                    "label": "Bipolar disorder (incl. mania)",
+                    "concept": "bipolarDisorder"
+                  },
+                  {
+                    "label": "Enuresis / Encopresis",
+                    "concept": "enuresisOrEncopresis"
+                  },
+                  {
+                    "label": "Developmental disorder (incl. intellectual disability autism)",
+                    "concept": "developmentalDisorder"
+                  },
+                  {
+                    "label": "Childhood behavioral disorder (incl. ADHD conduct disorder)",
+                    "concept": "childhoodBehavioralDisorder"
+                  },
+                  {
+                    "label": "Childhood emotional disorder",
+                    "concept": "childhoodEmotionalDisorder"
+                  },
+                  {
+                    "label": "Substance-related disorder",
+                    "concept": "substanceRelatedDisorder"
+                  },
+                  {
+                    "label": "Epilepsy / seizures",
+                    "concept": "epilepsyOrSeizures"
+                  },
+                  {
+                    "label": "Other disorder",
+                    "concept": "otherDisorder"
+                  },
+                  {
+                    "label": "No diagnosis",
+                    "concept": "noDiagnosis"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Clinical diagnosis (only to be established by mhGAP clinician)"
+            },
+            {
+              "id": "clinicalDiagnosisIfOtherSpecify",
+              "label": "Clinical diagnosis - If other specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "clinicalDiagnosisIfOtherSpecify"
+              },
+              "validators": null,
+              "questionInfo": "Clinical diagnosis - If other specify",
+              "hide": {
+                "hideWhenExpression": "clinicalDiagnosis !== 'otherDisorder'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Scores",
+      "sections": [
+        {
+          "label": "PHQ-9 (only for depression) - Over the last two weeks, how often have you been bothered by any of the following problems?",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "littleInterestOrPleasureInDoingThings",
+              "label": "Little interest or pleasure in doing things",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "littleInterestOrPleasureInDoingThings",
+                "answers": [
+                  {
+                    "label": "Not at all",
+                    "concept": "notAtAll"
+                  },
+                  {
+                    "label": "Several days",
+                    "concept": "severalDays"
+                  },
+                  {
+                    "label": "More than half the days",
+                    "concept": "moreThanHalfTheDays"
+                  },
+                  {
+                    "label": "Nearly every day",
+                    "concept": "nearlyEveryDay"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Little interest or pleasure in doing things"
+            },
+            {
+              "id": "feelingDownDepressedOrHopeless",
+              "label": "Feeling down depressed or hopeless",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "feelingDownDepressedOrHopeless",
+                "answers": [
+                  {
+                    "label": "Not at all",
+                    "concept": "notAtAll"
+                  },
+                  {
+                    "label": "Several days",
+                    "concept": "severalDays"
+                  },
+                  {
+                    "label": "More than half the days",
+                    "concept": "moreThanHalfTheDays"
+                  },
+                  {
+                    "label": "Nearly every day",
+                    "concept": "nearlyEveryDay"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Feeling down depressed or hopeless"
+            },
+            {
+              "id": "troubleFallingOrStayingAsleepOrSleepingTooMuch",
+              "label": "Trouble falling or staying asleep or sleeping too much",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "troubleFallingOrStayingAsleepOrSleepingTooMuch",
+                "answers": [
+                  {
+                    "label": "Not at all",
+                    "concept": "notAtAll"
+                  },
+                  {
+                    "label": "Several days",
+                    "concept": "severalDays"
+                  },
+                  {
+                    "label": "More than half the days",
+                    "concept": "moreThanHalfTheDays"
+                  },
+                  {
+                    "label": "Nearly every day",
+                    "concept": "nearlyEveryDay"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Trouble falling or staying asleep or sleeping too much"
+            },
+            {
+              "id": "feelingTiredOrHavingLittleEnergy",
+              "label": "Feeling tired or having little energy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "feelingTiredOrHavingLittleEnergy",
+                "answers": [
+                  {
+                    "label": "Not at all",
+                    "concept": "notAtAll"
+                  },
+                  {
+                    "label": "Several days",
+                    "concept": "severalDays"
+                  },
+                  {
+                    "label": "More than half the days",
+                    "concept": "moreThanHalfTheDays"
+                  },
+                  {
+                    "label": "Nearly every day",
+                    "concept": "nearlyEveryDay"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Feeling tired or having little energy"
+            },
+            {
+              "id": "poorAppetiteOrOvereating",
+              "label": "Poor appetite or overeating",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "poorAppetiteOrOvereating",
+                "answers": [
+                  {
+                    "label": "Not at all",
+                    "concept": "notAtAll"
+                  },
+                  {
+                    "label": "Several days",
+                    "concept": "severalDays"
+                  },
+                  {
+                    "label": "More than half the days",
+                    "concept": "moreThanHalfTheDays"
+                  },
+                  {
+                    "label": "Nearly every day",
+                    "concept": "nearlyEveryDay"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Poor appetite or overeating"
+            },
+            {
+              "id": "feelingBadAboutYourselfOrThatYouAreAFailureOrHaveLetYourselfOrYourFamilyDown",
+              "label": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "feelingBadAboutYourselfOrThatYouAreAFailureOrHaveLetYourselfOrYourFamilyDown",
+                "answers": [
+                  {
+                    "label": "Not at all",
+                    "concept": "notAtAll"
+                  },
+                  {
+                    "label": "Several days",
+                    "concept": "severalDays"
+                  },
+                  {
+                    "label": "More than half the days",
+                    "concept": "moreThanHalfTheDays"
+                  },
+                  {
+                    "label": "Nearly every day",
+                    "concept": "nearlyEveryDay"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down"
+            },
+            {
+              "id": "troubleConcentratingOnThingsSuchAsReadingTheNewspaperOrWatchingTelevision",
+              "label": "Trouble concentrating on things such as reading the newspaper or watching television",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "troubleConcentratingOnThingsSuchAsReadingTheNewspaperOrWatchingTelevision",
+                "answers": [
+                  {
+                    "label": "Not at all",
+                    "concept": "notAtAll"
+                  },
+                  {
+                    "label": "Several days",
+                    "concept": "severalDays"
+                  },
+                  {
+                    "label": "More than half the days",
+                    "concept": "moreThanHalfTheDays"
+                  },
+                  {
+                    "label": "Nearly every day",
+                    "concept": "nearlyEveryDay"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Trouble concentrating on things such as reading the newspaper or watching television"
+            },
+            {
+              "id": "movingOrSpeakingSoSlowlyThatOtherPeopleCouldHaveNoticedOrTheOppositeBeingSoFidgetyOrRestlessThatYouHaveBeenMovingAroundALotMoreThanUsual",
+              "label": "Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "movingOrSpeakingSoSlowlyThatOtherPeopleCouldHaveNoticedOrTheOppositeBeingSoFidgetyOrRestlessThatYouHaveBeenMovingAroundALotMoreThanUsual",
+                "answers": [
+                  {
+                    "label": "Not at all",
+                    "concept": "notAtAll"
+                  },
+                  {
+                    "label": "Several days",
+                    "concept": "severalDays"
+                  },
+                  {
+                    "label": "More than half the days",
+                    "concept": "moreThanHalfTheDays"
+                  },
+                  {
+                    "label": "Nearly every day",
+                    "concept": "nearlyEveryDay"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual"
+            },
+            {
+              "id": "thoughtsThatYouWouldBeBetterOffDeadOrOfHurtingYourselfInSomeWay",
+              "label": "Thoughts that you would be better off dead or of hurting yourself in some way",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "thoughtsThatYouWouldBeBetterOffDeadOrOfHurtingYourselfInSomeWay",
+                "answers": [
+                  {
+                    "label": "Not at all",
+                    "concept": "notAtAll"
+                  },
+                  {
+                    "label": "Several days",
+                    "concept": "severalDays"
+                  },
+                  {
+                    "label": "More than half the days",
+                    "concept": "moreThanHalfTheDays"
+                  },
+                  {
+                    "label": "Nearly every day",
+                    "concept": "nearlyEveryDay"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Thoughts that you would be better off dead or of hurting yourself in some way"
+            },
+            {
+              "id": "phq9Score",
+              "label": "PHQ-9 score",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "numeric",
+                "concept": "phq9Score"
+              },
+              "validators": null,
+              "questionInfo": "PHQ-9 score"
+            },
+            {
+              "id": "depressionSeverityScale",
+              "label": "Depression severity scale",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "depressionSeverityScale",
+                "answers": [
+                  {
+                    "label": "No depression",
+                    "concept": "noDepression"
+                  },
+                  {
+                    "label": "Minimal symptoms",
+                    "concept": "minimalSymptoms"
+                  },
+                  {
+                    "label": "Minor to mild depression (or dysthymia)",
+                    "concept": "minorToMildDepression"
+                  },
+                  {
+                    "label": "Major depression",
+                    "concept": "majorDepression"
+                  },
+                  {
+                    "label": "Severe depression",
+                    "concept": "severeDepression"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Depression severity scale"
+            }
+          ]
+        },
+        {
+          "label": "CGI - Clinical Global Impression",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "cgiS",
+              "label": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "cgiS",
+                "answers": [
+                  {
+                    "label": "- Not assessed",
+                    "concept": "notAssessed"
+                  },
+                  {
+                    "label": "- Normal/not ill",
+                    "concept": "normalOrNotIll"
+                  },
+                  {
+                    "label": "- Suspected mentally ill",
+                    "concept": "suspectedMentallyIll"
+                  },
+                  {
+                    "label": "- Mildly ill",
+                    "concept": "mildlyIll"
+                  },
+                  {
+                    "label": "- Moderately ill",
+                    "concept": "moderatelyIll"
+                  },
+                  {
+                    "label": "- Markedly ill",
+                    "concept": "markedlyIll"
+                  },
+                  {
+                    "label": "- Severely ill",
+                    "concept": "severelyIll"
+                  },
+                  {
+                    "label": "- Extremely ill patient",
+                    "concept": "extremelyIllPatient"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Medication",
+      "sections": [
+        {
+          "label": "MSF Pharmacological treament",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "msfPharmacologicalTreamentAdditionalInformationOrNotes",
+              "label": "MSF Pharmacological treament - Additional information/notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "msfPharmacologicalTreamentAdditionalInformationOrNotes"
+              },
+              "validators": null,
+              "questionInfo": "MSF Pharmacological treament - Additional information/notes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow-up",
+      "sections": [
+        {
+          "label": "Follow-up",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "followUpRequired",
+              "label": "Follow-up required",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "followUpRequired",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "yes"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "no"
+                  }
+                ]
+              },
+              "validators": null,
+              "questionInfo": "Follow-up required"
+            },
+            {
+              "id": "nextAppointmentDate",
+              "label": "Next appointment date (required if Follow-up required is Yes)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "nextAppointmentDate"
+              },
+              "validators": null,
+              "questionInfo": "Next appointment date (required if Follow-up required is Yes)",
+              "hide": {
+                "hideWhenExpression": "followUpRequired !== 'yes'"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

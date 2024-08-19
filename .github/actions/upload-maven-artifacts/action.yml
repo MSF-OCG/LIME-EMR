@@ -24,6 +24,8 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v4
+      with:
+        clean: false
 
     - uses: actions/setup-java@v4
       with:
@@ -40,10 +42,10 @@ runs:
             "password": "${{ inputs.maven-server-token }}"
           }]
 
-    - name: Publish ${{ inputs.artifact-name }} maven artifacts
-      working-directory: ${{ inputs.artifact-path }}
-      run: 'mvn --batch-mode clean deploy'
-      shell: bash
+    # - name: Publish ${{ inputs.artifact-name }} maven artifacts
+    #   working-directory: ${{ inputs.artifact-path }}
+    #   run: 'mvn --batch-mode clean deploy'
+    #   shell: bash
 
     - name: Get MSF ${{ inputs.artifact-name }} version
       working-directory: ${{ inputs.artifact-path }}
