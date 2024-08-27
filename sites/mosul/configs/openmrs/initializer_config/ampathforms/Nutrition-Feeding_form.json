@@ -1,7 +1,7 @@
 {
   "name": "Nutrition - Feeding Form",
   "description": "Nutrition - Feeding Form",
-  "version": "2",
+  "version": "1",
   "published": true,
   "uuid": "9ed6d34e-1415-47a6-82e8-30070f859f38",
   "processor": "EncounterFormProcessor",
@@ -22,12 +22,16 @@
               "type": "encounterDatetime",
               "required": true,
               "id": "encounterDate",
-              "datePickerFormat": "both",
               "questionOptions": {
                 "rendering": "date",
                 "concept": "583b6ade-118f-4582-8e4b-da340d358f9b"
               },
-              "validators": []
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
             },
             {
               "id": "phase",
