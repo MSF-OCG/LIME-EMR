@@ -1,12 +1,11 @@
 {
-  "name": "MHPSS Baseline",
-  "description": "MSF Form - MHPSS Baseline",
+  "name": "F01-MHPSS Baseline 4",
+  "description": "MSF Form - F01-MHPSS Baseline",
   "version": "4",
   "published": true,
-  "uuid": "",
+  "uuid": "2bb66092-3a1f-4752-9b9d-3a8e3c84d467",
   "processor": "EncounterFormProcessor",
-  "encounter": "Mental Health",
-  "encounterType": "95d68645-1b72-4290-be0b-ec1fb64bc067",
+  "encounter": "Consultation",
   "retired": false,
   "referencedForms": [],
   "pages": [
@@ -35,8 +34,7 @@
                     "concept": "e4e42ecd-196b-4aa8-a265-bfbed09d77cf"
                   }
                 ]
-              },
-              "questionInfo": "Admission type"
+              }
             },
             {
               "id": "sex",
@@ -76,8 +74,7 @@
                     "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
                   }
                 ]
-              },
-              "questionInfo": "Sex"
+              }
             },
             {
               "id": "howManyPeopleLiveWithThePatient",
@@ -87,8 +84,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "58dec757-38d5-4c7b-9bd3-713d965f4883"
-              },
-              "questionInfo": "How many people live with the patient"
+              }
             }
           ]
         },
@@ -122,8 +118,7 @@
                     "concept": "c39eaa06-6506-49f0-9c4f-c96fa957f9cd"
                   }
                 ]
-              },
-              "questionInfo": "Type of consultation"
+              }
             },
             {
               "id": "totalNumberOfBeneficiariesInFamilyConsultation",
@@ -134,7 +129,6 @@
                 "rendering": "number",
                 "concept": "b87a93ff-a4a1-4601-b35d-1e42bfa7e194"
               },
-              "questionInfo": "Total number of beneficiaries in family consultation",
               "hide": {
                 "hideWhenExpression": "typeOfConsultation !== 'f16d5d76-155b-453d-bd60-ea8ee4d344e9'"
               }
@@ -157,8 +151,7 @@
                     "concept": "fda1cdd0-745e-4ff7-a3d0-b8f8ddb99331"
                   }
                 ]
-              },
-              "questionInfo": "Consultation done by"
+              }
             },
             {
               "id": "locationOfIntervention",
@@ -198,8 +191,7 @@
                     "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
-              },
-              "questionInfo": "Location of intervention"
+              }
             },
             {
               "id": "specifyHealthFacility",
@@ -1709,7 +1701,6 @@
               "label": "MHOS score",
               "type": "obs",
               "required": false,
-              "readonly": true,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df",
@@ -1991,7 +1982,6 @@
               "label": "PHQ-9 score",
               "type": "obs",
               "required": false,
-              "readonly": true,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23",

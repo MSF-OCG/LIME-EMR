@@ -1,420 +1,407 @@
 {
-  "name": "MH Closure",
-  "description": "MSF Form - MH Closure",
-  "version": "1",
-  "published": true,
-  "uuid": "",
-  "processor": "EncounterFormProcessor",
-  "encounter": "Mental Health",
-  "encounterType": "95d68645-1b72-4290-be0b-ec1fb64bc067",
-  "retired": false,
-  "referencedForms": [],
-  "pages": [
-    {
-      "label": "MH closure form",
-      "sections": [
+    "name": "F05-MH Closure",
+    "description": "MSF Form - F05-MH Closure",
+    "version": "1",
+    "published": true,
+    "uuid": "",
+    "processor": "EncounterFormProcessor",
+    "encounter": "Consultation",
+    "retired": false,
+    "referencedForms": [],
+    "pages": [
         {
-          "label": "File information",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "openingDate",
-              "label": "Opening date",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "date",
-                "concept": "openingDate"
-              },
-              "validators": null,
-              "default": "Date of the first Mental Health consultation (after the last closure if any)",
-              "questionInfo": "Opening date"
-            },
-            {
-              "id": "closureDate",
-              "label": "Closure date",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "date",
-                "concept": "closureDate"
-              },
-              "validators": null,
-              "questionInfo": "Closure date"
-            },
-            {
-              "id": "totalNumberOfSessions",
-              "label": "Total number of sessions ",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "numeric",
-                "concept": "totalNumberOfSessions"
-              },
-              "validators": null,
-              "default": "Total number of Mental Health consultation forms (closure not included) with [The patient did not come] <> 'Yes'",
-              "questionInfo": "Total number of sessions "
-            }
-          ]
+            "label": "MH closure form",
+            "sections": [
+                {
+                    "label": "File information",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": "openingDate",
+                            "label": "Opening date",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "date",
+                                "concept": "40108bf5-0bbd-42e8-8102-bcbd0550a943"
+                            },
+                            "default": "Date of the first Mental Health consultation (after the last closure if any)",
+                            "questionInfo": "Opening date"
+                        },
+                        {
+                            "id": "closureDate",
+                            "label": "Closure date",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "date",
+                                "concept": "8a9d2ace-372f-4413-a1c4-8999f55e2de2"
+                            },
+                            "questionInfo": "Closure date"
+                        },
+                        {
+                            "id": "totalNumberOfSessions",
+                            "label": "Total number of sessions ",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "1bf47398-7786-4f3e-8cae-b84a21f53eba"
+                            },
+                            "default": "Total number of Mental Health consultation forms (closure not included) with [The patient did not come] <> 'Yes'",
+                            "questionInfo": "Total number of sessions "
+                        }
+                    ]
+                },
+                {
+                    "label": "Closure",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": "mainTypeOfIntervention",
+                            "label": "Main type of intervention",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": "2470a73b-697f-414a-8c0f-fff66c6ec895",
+                                "answers": [
+                                    {
+                                        "label": "Counselling",
+                                        "concept": "08c534b7-c901-46fb-9831-50ecfcd74d1b"
+                                    },
+                                    {
+                                        "label": "Psychotherapy",
+                                        "concept": "aa9c5d82-1ebf-43c7-9218-6766c4affbc4"
+                                    }
+                                ]
+                            },
+                            "questionInfo": "Main type of intervention"
+                        },
+                        {
+                            "id": "mainTypeOfConsultation",
+                            "label": "Main type of consultation",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": "401b2df0-e26f-4f49-9165-6e20a1b8865a",
+                                "answers": [
+                                    {
+                                        "label": "Individual",
+                                        "concept": "96223dc7-6959-4ea5-a362-c0246d858c87"
+                                    },
+                                    {
+                                        "label": "Couple",
+                                        "concept": "61b32a22-acef-4141-9faa-9c236cdfa978"
+                                    },
+                                    {
+                                        "label": "Family",
+                                        "concept": "f16d5d76-155b-453d-bd60-ea8ee4d344e9"
+                                    }
+                                ]
+                            },
+                            "questionInfo": "Main type of consultation"
+                        },
+                        {
+                            "id": "typeOfClosure",
+                            "label": "Type of closure",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": "9e861ef1-e07c-4955-9650-2ebac3138fc3",
+                                "answers": [
+                                    {
+                                        "label": "Discharge with the patients agreement end of care",
+                                        "concept": "76a8d333-9cdd-4375-b1a2-a2487365d8f3"
+                                    },
+                                    {
+                                        "label": "Discharge with the patients agreement single consultation",
+                                        "concept": "193d1bc8-5b68-4beb-a319-5278dea965bb"
+                                    },
+                                    {
+                                        "label": "Discharge with the patients agreement patient moved",
+                                        "concept": "6df81c5c-1b71-4df2-90b4-7ce57b34f32a"
+                                    },
+                                    {
+                                        "label": "Discharge with the patients agreement patient referred",
+                                        "concept": "8e67e45a-82de-4a3a-896f-2ef326375fa5"
+                                    },
+                                    {
+                                        "label": "Patient cannot access the service MSF is no longer",
+                                        "concept": "1cb43f9e-16f1-41d9-af61-ff0ca1bdda6b"
+                                    },
+                                    {
+                                        "label": "Patient cannot access the service transport issues",
+                                        "concept": "c6c45e52-4226-45de-989e-010ecc8c5a52"
+                                    },
+                                    {
+                                        "label": "Patient cannot access the service arrested/kidnaped",
+                                        "concept": "032e96fe-26f1-48e9-ad8f-115c40bd05d7"
+                                    },
+                                    {
+                                        "label": "Lost to follow up unable to trace",
+                                        "concept": "e6e89670-8072-4362-a8d3-20ccf58df7d3"
+                                    },
+                                    {
+                                        "label": "Lost to follow up dissatisfied/different expectations",
+                                        "concept": "e813870b-c8db-488a-82ab-49b1446d1854"
+                                    },
+                                    {
+                                        "label": "Deceased/missing",
+                                        "concept": "380f61cd-b510-4830-97d8-7010b160c322"
+                                    }
+                                ]
+                            },
+                            "questionInfo": "Type of closure"
+                        },
+                        {
+                            "id": "patientReferredTo",
+                            "label": "Patient referred to",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "text",
+                                "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11"
+                            },
+                            "questionInfo": "Patient referred to",
+                            "hide": {
+                                "hideWhenExpression": "typeOfClosure !== 'dischargeWithThePatientsAgreementPatientReferred'"
+                            }
+                        },
+                        {
+                            "id": "explainTheClosureAndThePatientsFinalCondition",
+                            "label": "Explain the closure and the patients final condition",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "textarea",
+                                "concept": "218d09c8-76b2-4e1c-8503-0db58f62ea52"
+                            },
+                            "questionInfo": "Explain the closure and the patients final condition"
+                        }
+                    ]
+                },
+                {
+                    "label": "Goals final status",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": "goal1",
+                            "label": "Goal 1",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": "3d081f71-7b90-4fb2-a8bc-961263ab6cec",
+                                "answers": [
+                                    {
+                                        "label": "Achieved",
+                                        "concept": "fa2f265a-3fa5-4d93-b750-c84d5e659113"
+                                    },
+                                    {
+                                        "label": "No change ",
+                                        "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                                    },
+                                    {
+                                        "label": "Challenges",
+                                        "concept": "e3920288-c60e-453f-810c-e707924c37e3"
+                                    }
+                                ]
+                            },
+                            "questionInfo": "Goal 1"
+                        },
+                        {
+                            "id": "goal2",
+                            "label": "Goal 2",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": "e6461d60-052f-450a-96aa-9523e807b560",
+                                "answers": [
+                                    {
+                                        "label": "Achieved",
+                                        "concept": "fa2f265a-3fa5-4d93-b750-c84d5e659113"
+                                    },
+                                    {
+                                        "label": "No change ",
+                                        "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                                    },
+                                    {
+                                        "label": "Challenges",
+                                        "concept": "e3920288-c60e-453f-810c-e707924c37e3"
+                                    }
+                                ]
+                            },
+                            "questionInfo": "Goal 2"
+                        },
+                        {
+                            "id": "goal3",
+                            "label": "Goal 3",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": "d8e794bc-efd6-447b-8079-d8f84a267e36",
+                                "answers": [
+                                    {
+                                        "label": "Achieved",
+                                        "concept": "fa2f265a-3fa5-4d93-b750-c84d5e659113"
+                                    },
+                                    {
+                                        "label": "No change ",
+                                        "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                                    },
+                                    {
+                                        "label": "Challenges",
+                                        "concept": "e3920288-c60e-453f-810c-e707924c37e3"
+                                    }
+                                ]
+                            },
+                            "questionInfo": "Goal 3"
+                        },
+                        {
+                            "id": "comments",
+                            "label": "Comments",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "textarea",
+                                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+                            },
+                            "questionInfo": "Comments"
+                        }
+                    ]
+                },
+                {
+                    "label": "Last available scores",
+                    "isExpanded": false,
+                    "questions": [
+                        {
+                            "id": "mhos",
+                            "label": "MHOS",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "90b3d09c-d296-44d2-8292-8e04377fe027"
+                            },
+                            "default": "Value of last MHOS score measured",
+                            "questionInfo": "MHOS"
+                        },
+                        {
+                            "id": "phq9",
+                            "label": "PHQ-9",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "number",
+                                "concept": "6545b874-f44d-4d18-9ab1-7a8bb21c0a15"
+                            },
+                            "default": "Value of last PHQ-9 score measured",
+                            "questionInfo": "PHQ-9"
+                        },
+                        {
+                            "id": "cgiI",
+                            "label": "CGI-I",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": "c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3",
+                                "answers": [
+                                    {
+                                        "label": "- Not assessed",
+                                        "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                                    },
+                                    {
+                                        "label": "- Normal/not ill",
+                                        "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                                    },
+                                    {
+                                        "label": "- Suspected mentally ill",
+                                        "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
+                                    },
+                                    {
+                                        "label": "- Mildly ill",
+                                        "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
+                                    },
+                                    {
+                                        "label": "- Moderately ill",
+                                        "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
+                                    },
+                                    {
+                                        "label": "- Markedly ill",
+                                        "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
+                                    },
+                                    {
+                                        "label": "- Severely ill",
+                                        "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
+                                    },
+                                    {
+                                        "label": "- Extremely ill patient",
+                                        "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                                    }
+                                ]
+                            },
+                            "default": "Value of last CGI-I score measured",
+                            "questionInfo": "CGI-I"
+                        },
+                        {
+                            "id": "cgiS",
+                            "label": "CGI-S",
+                            "type": "obs",
+                            "required": false,
+                            "questionOptions": {
+                                "rendering": "radio",
+                                "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40",
+                                "answers": [
+                                    {
+                                        "label": "- Not assessed",
+                                        "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                                    },
+                                    {
+                                        "label": "- Very much improved",
+                                        "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                                    },
+                                    {
+                                        "label": "- Much improved",
+                                        "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                                    },
+                                    {
+                                        "label": "- Minimally improved",
+                                        "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                                    },
+                                    {
+                                        "label": "- No change",
+                                        "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                                    },
+                                    {
+                                        "label": "- Minimally worse",
+                                        "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                                    },
+                                    {
+                                        "label": "- Much worse",
+                                        "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                                    },
+                                    {
+                                        "label": "- Very much worse",
+                                        "concept": "ece17856-b110-4453-9bc5-a92891f86846"
+                                    }
+                                ]
+                            },
+                            "default": "Value of last CGI-S score measured",
+                            "questionInfo": "CGI-S"
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "label": "Closure",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "mainTypeOfIntervention",
-              "label": "Main type of intervention",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "mainTypeOfIntervention",
-                "answers": [
-                  {
-                    "label": "Counselling",
-                    "concept": "counselling"
-                  },
-                  {
-                    "label": "Psychotherapy",
-                    "concept": "psychotherapy"
-                  }
-                ]
-              },
-              "validators": null,
-              "questionInfo": "Main type of intervention"
-            },
-            {
-              "id": "mainTypeOfConsultation",
-              "label": "Main type of consultation",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "mainTypeOfConsultation",
-                "answers": [
-                  {
-                    "label": "Individual",
-                    "concept": "individual"
-                  },
-                  {
-                    "label": "Couple",
-                    "concept": "couple"
-                  },
-                  {
-                    "label": "Family",
-                    "concept": "family"
-                  }
-                ]
-              },
-              "validators": null,
-              "questionInfo": "Main type of consultation"
-            },
-            {
-              "id": "typeOfClosure",
-              "label": "Type of closure",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "typeOfClosure",
-                "answers": [
-                  {
-                    "label": "Discharge with the patients agreement end of care",
-                    "concept": "dischargeWithThePatientsAgreementEndOfCare"
-                  },
-                  {
-                    "label": "Discharge with the patients agreement single consultation",
-                    "concept": "dischargeWithThePatientsAgreementSingleConsultation"
-                  },
-                  {
-                    "label": "Discharge with the patients agreement patient moved",
-                    "concept": "dischargeWithThePatientsAgreementPatientMoved"
-                  },
-                  {
-                    "label": "Discharge with the patients agreement patient referred",
-                    "concept": "dischargeWithThePatientsAgreementPatientReferred"
-                  },
-                  {
-                    "label": "Patient cannot access the service MSF is no longer",
-                    "concept": "patientCannotAccessTheServiceMsfIsNoLonger"
-                  },
-                  {
-                    "label": "Patient cannot access the service transport issues",
-                    "concept": "patientCannotAccessTheServiceTransportIssues"
-                  },
-                  {
-                    "label": "Patient cannot access the service arrested/kidnaped",
-                    "concept": "patientCannotAccessTheServiceArrestedOrKidnaped"
-                  },
-                  {
-                    "label": "Lost to follow up unable to trace",
-                    "concept": "lostToFollowUpUnableToTrace"
-                  },
-                  {
-                    "label": "Lost to follow up dissatisfied/different expectations",
-                    "concept": "lostToFollowUpDissatisfiedOrDifferentExpectations"
-                  },
-                  {
-                    "label": "Deceased/missing",
-                    "concept": "deceasedOrMissing"
-                  }
-                ]
-              },
-              "validators": null,
-              "questionInfo": "Type of closure"
-            },
-            {
-              "id": "patientReferredTo",
-              "label": "Patient referred to",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "patientReferredTo"
-              },
-              "validators": null,
-              "questionInfo": "Patient referred to",
-              "hide": {
-                "hideWhenExpression": "typeOfClosure !== 'dischargeWithThePatientsAgreementPatientReferred'"
-              }
-            },
-            {
-              "id": "explainTheClosureAndThePatientsFinalCondition",
-              "label": "Explain the closure and the patients final condition",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "explainTheClosureAndThePatientsFinalCondition"
-              },
-              "validators": null,
-              "questionInfo": "Explain the closure and the patients final condition"
-            }
-          ]
-        },
-        {
-          "label": "Goals final status",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "goal1",
-              "label": "Goal 1",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "goal1",
-                "answers": [
-                  {
-                    "label": "Achieved",
-                    "concept": "achieved"
-                  },
-                  {
-                    "label": "No change ",
-                    "concept": "noChange"
-                  },
-                  {
-                    "label": "Challenges",
-                    "concept": "challenges"
-                  }
-                ]
-              },
-              "validators": null,
-              "questionInfo": "Goal 1"
-            },
-            {
-              "id": "goal2",
-              "label": "Goal 2",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "goal2",
-                "answers": [
-                  {
-                    "label": "Achieved",
-                    "concept": "achieved"
-                  },
-                  {
-                    "label": "No change ",
-                    "concept": "noChange"
-                  },
-                  {
-                    "label": "Challenges",
-                    "concept": "challenges"
-                  }
-                ]
-              },
-              "validators": null,
-              "questionInfo": "Goal 2"
-            },
-            {
-              "id": "goal3",
-              "label": "Goal 3",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "goal3",
-                "answers": [
-                  {
-                    "label": "Achieved",
-                    "concept": "achieved"
-                  },
-                  {
-                    "label": "No change ",
-                    "concept": "noChange"
-                  },
-                  {
-                    "label": "Challenges",
-                    "concept": "challenges"
-                  }
-                ]
-              },
-              "validators": null,
-              "questionInfo": "Goal 3"
-            },
-            {
-              "id": "comments",
-              "label": "Comments",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "comments"
-              },
-              "validators": null,
-              "questionInfo": "Comments"
-            }
-          ]
-        },
-        {
-          "label": "Last available scores",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "mhos",
-              "label": "MHOS",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "numeric",
-                "concept": "mhos"
-              },
-              "validators": null,
-              "default": "Value of last MHOS score measured",
-              "questionInfo": "MHOS"
-            },
-            {
-              "id": "phq9",
-              "label": "PHQ-9",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "numeric",
-                "concept": "phq9"
-              },
-              "validators": null,
-              "default": "Value of last PHQ-9 score measured",
-              "questionInfo": "PHQ-9"
-            },
-            {
-              "id": "cgiI",
-              "label": "CGI-I",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "cgiI",
-                "answers": [
-                  {
-                    "label": "- Not assessed",
-                    "concept": "notAssessed"
-                  },
-                  {
-                    "label": "- Normal/not ill",
-                    "concept": "normalOrNotIll"
-                  },
-                  {
-                    "label": "- Suspected mentally ill",
-                    "concept": "suspectedMentallyIll"
-                  },
-                  {
-                    "label": "- Mildly ill",
-                    "concept": "mildlyIll"
-                  },
-                  {
-                    "label": "- Moderately ill",
-                    "concept": "moderatelyIll"
-                  },
-                  {
-                    "label": "- Markedly ill",
-                    "concept": "markedlyIll"
-                  },
-                  {
-                    "label": "- Severely ill",
-                    "concept": "severelyIll"
-                  },
-                  {
-                    "label": "- Extremely ill patient",
-                    "concept": "extremelyIllPatient"
-                  }
-                ]
-              },
-              "validators": null,
-              "default": "Value of last CGI-I score measured",
-              "questionInfo": "CGI-I"
-            },
-            {
-              "id": "cgiS",
-              "label": "CGI-S",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "cgiS",
-                "answers": [
-                  {
-                    "label": "- Not assessed",
-                    "concept": "notAssessed"
-                  },
-                  {
-                    "label": "- Very much improved",
-                    "concept": "veryMuchImproved"
-                  },
-                  {
-                    "label": "- Much improved",
-                    "concept": "muchImproved"
-                  },
-                  {
-                    "label": "- Minimally improved",
-                    "concept": "minimallyImproved"
-                  },
-                  {
-                    "label": "- No change",
-                    "concept": "noChange"
-                  },
-                  {
-                    "label": "- Minimally worse",
-                    "concept": "minimallyWorse"
-                  },
-                  {
-                    "label": "- Much worse",
-                    "concept": "muchWorse"
-                  },
-                  {
-                    "label": "- Very much worse",
-                    "concept": "veryMuchWorse"
-                  }
-                ]
-              },
-              "validators": null,
-              "default": "Value of last CGI-S score measured",
-              "questionInfo": "CGI-S"
-            }
-          ]
+            "label": "nan",
+            "sections": []
         }
-      ]
-    }
-  ]
+    ]
 }
