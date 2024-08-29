@@ -1,7 +1,7 @@
 {
   "name": "MSF Mental Health - MHPSS Baseline",
   "description": "MSF Form - MHPSS Baseline",
-  "version": "7",
+  "version": "8",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
@@ -379,7 +379,8 @@
               "questionOptions": {
                 "rendering": "textarea",
                 "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
-              }
+              },
+              "questionInfo": "Why is the patient coming to the MH department? Write in patient’s words"
             }
           ]
         },
@@ -983,7 +984,8 @@
                   }
                 ]
               },
-              "inlineMultiCheckbox": true
+              "inlineMultiCheckbox": true,
+              "questionInfo": "If current suicidal thoughts, recent suicide attempt, or current psychotic symptoms consider referral to psychologist - mhGAP clinician."
             },
             {
               "id": "currentSymptomsOrComplaints2",
@@ -1176,7 +1178,8 @@
                   }
                 ]
               },
-              "inlineMultiCheckbox": true
+              "inlineMultiCheckbox": true,
+              "questionInfo": "If current suicidal thoughts, recent suicide attempt, or current psychotic symptoms consider referral to psychologist /  mhGAP clinician."
             },
             {
               "id": "currentSymptomsOrComplaints3",
@@ -1369,7 +1372,8 @@
                   }
                 ]
               },
-              "inlineMultiCheckbox": true
+              "inlineMultiCheckbox": true,
+              "questionInfo": "If current suicidal thoughts, recent suicide attempt, or current psychotic symptoms consider referral to psychologist /  mhGAP clinician."
             },
             {
               "id": "ifOtherSpecify",
@@ -1488,7 +1492,8 @@
               "questionOptions": {
                 "rendering": "textarea",
                 "concept": "ddf9cb24-f51a-485f-b059-76f307bf468f"
-              }
+              },
+              "questionInfo": "How do they look or speak / motor activity / mood / thoughts / perceptions? Is the patient oriented in time / space / person / recent events?"
             }
           ]
         }
@@ -1977,7 +1982,8 @@
                 "calculate": {
                   "calculateExpression": "(no_interest === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : no_interest === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : no_interest === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (depressed === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : depressed === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 :  depressed==='163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (sleep === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : sleep === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : sleep === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (feelingTired === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : feelingTired === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : feelingTired === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) +(poorAppetite === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : poorAppetite === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : poorAppetite === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (troubled === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : troubled === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : troubled === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (feelingBad === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : feelingBad === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : feelingBad === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (speakingSlowly === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : speakingSlowly === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : speakingSlowly === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (betterDead === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : betterDead === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : betterDead === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0)"
                 }
-              }
+              },
+              "questionInfo": "Sum of all points from answers above"
             },
             {
               "id": "depressionSeverityScale",
@@ -2009,7 +2015,8 @@
                     "concept": "0ff3a7dc-1a6e-4453-91d5-29cf6a9f790c"
                   }
                 ]
-              }
+              },
+              "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult"
             }
           ]
         },
@@ -3361,7 +3368,8 @@
               "questionOptions": {
                 "rendering": "textarea",
                 "concept": "8bea5a61-73e6-40c1-af04-43dec63749a4"
-              }
+              },
+              "questionInfo": "What are you trying to accomplish over several sessions with the patient? Try to be specific & define these with the patient."
             },
             {
               "id": "todaysSession",

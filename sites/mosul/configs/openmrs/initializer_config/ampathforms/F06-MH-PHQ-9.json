@@ -1,7 +1,7 @@
 {
-    "name": "Mental Health - PHQ-9",
+    "name": "MSF Mental Health - PHQ-9",
     "description": "MSF Mental Health Form - PHQ-9",
-    "version": "3",
+    "version": "4",
     "published": true,
     "uuid": "f6125ef3-da5f-4c58-85ae-f7c5c507d952",
     "processor": "EncounterFormProcessor",
@@ -282,9 +282,7 @@
                   }
                 },
                 "validators": [],
-                "hide": {
-                  "hideWhenExpression": "isEmpty(myValue) || !isEmpty(myValue)"
-                }
+                "questionInfo": "Sum of all points from answers above"
               }
             ]
           },
@@ -325,7 +323,8 @@
                   "calculate": {
                     "calculateExpression": "(!isEmpty(noInterest) || !isEmpty(depressed) || !isEmpty(speakingSlowly) || !isEmpty(betterDead) || !isEmpty(sleep) || !isEmpty(feelingTired) || !isEmpty(poorAppetite)|| !isEmpty(troubled)|| !isEmpty(feelingBad) ) && parseInt(anxietyScore) < 5 ? '1115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' : ( parseInt(anxietyScore) > 4 && parseInt(anxietyScore) < 10 ) ? '157790AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' : ( parseInt(anxietyScore) > 9 && parseInt(anxietyScore) < 15 ) ? '134011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': ( parseInt(anxietyScore) > 14 && parseInt(anxietyScore) < 20 ) ? '134017AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA': parseInt(anxietyScore) >= 19 ?  '126627AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' : ''"
                   }
-                }
+                },
+                "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult”"
               }
             ]
           }
