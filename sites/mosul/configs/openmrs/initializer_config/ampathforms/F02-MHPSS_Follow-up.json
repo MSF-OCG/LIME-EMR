@@ -1,7 +1,7 @@
 {
     "name": "MSF Mental Health - MHPSS Follow-up",
     "description": "MSF Form - F02-MHPSS Follow-up",
-    "version": "3",
+    "version": "4",
     "published": true,
     "uuid": "",
     "processor": "EncounterFormProcessor",
@@ -25,8 +25,7 @@
                   "rendering": "number",
                   "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11"
                 },
-                "default": "(calculated - # of session)",
-                "questionInfo": "Session number"
+                "default": "(calculated - # of session)"
               },
               {
                 "id": "typeOfConsultation",
@@ -54,8 +53,7 @@
                       "concept": "1528AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Type of consultation"
+                }
               },
               {
                 "id": "totalNumberOfBeneficiariesInFamilyConsultation",
@@ -66,7 +64,6 @@
                   "rendering": "number",
                   "concept": "b87a93ff-a4a1-4601-b35d-1e42bfa7e194"
                 },
-                "questionInfo": "Total number of beneficiaries in family consultation",
                 "hide": {
                   "hideWhenExpression": "typeOfConsultation !== 'f16d5d76-155b-453d-bd60-ea8ee4d344e9'"
                 }
@@ -89,8 +86,7 @@
                       "concept": "fda1cdd0-745e-4ff7-a3d0-b8f8ddb99331"
                     }
                   ]
-                },
-                "questionInfo": "Consultation done by"
+                }
               },
               {
                 "id": "locationOfIntervention",
@@ -130,8 +126,7 @@
                       "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Location of intervention"
+                }
               },
               {
                 "id": "specifyHealthFacility",
@@ -142,7 +137,6 @@
                   "rendering": "text",
                   "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0166"
                 },
-                "questionInfo": "Specify Health Facility",
                 "hide": {
                   "hideWhenExpression": "locationOfIntervention !== 'da33d74e-33b3-495a-9d7c-aa00a-aa0166'"
                 }
@@ -156,7 +150,6 @@
                   "rendering": "text",
                   "concept": "41e68dee-a2a3-4e6c-9d96-53def5caff52"
                 },
-                "questionInfo": "Specify MSF Health Facility",
                 "hide": {
                   "hideWhenExpression": "locationOfIntervention !== '41e68dee-a2a3-4e6c-9d96-53def5caff52'"
                 }
@@ -170,7 +163,6 @@
                   "rendering": "text",
                   "concept": "08cd4b4a-4b0b-4391-987b-b5b3d770d30f"
                 },
-                "questionInfo": "Specify Mobile Clinic",
                 "hide": {
                   "hideWhenExpression": "locationOfIntervention !== '08cd4b4a-4b0b-4391-987b-b5b3d770d30f'"
                 }
@@ -184,7 +176,6 @@
                   "rendering": "text",
                   "concept": "e08d532b-e56c-43dc-b831-af705654d2dc"
                 },
-                "questionInfo": "If other specify",
                 "hide": {
                   "hideWhenExpression": "locationOfIntervention !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -207,8 +198,7 @@
                       "concept": "aa9c5d82-1ebf-43c7-9218-6766c4affbc4"
                     }
                   ]
-                },
-                "questionInfo": "Type of intervention"
+                }
               }
             ]
           },
@@ -234,8 +224,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "The patient did not come"
+                }
               },
               {
                 "id": "numberOfAppointmentsMissed",
@@ -246,7 +235,6 @@
                   "rendering": "number",
                   "concept": "d7410cd3-29be-4f8b-93d6-eb4de005db29"
                 },
-                "questionInfo": "Number of appointments missed",
                 "hide": {
                   "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -270,7 +258,6 @@
                     }
                   ]
                 },
-                "questionInfo": "Patient rescheduled (if Yes fill the Follow-up section at the end of this form. If No (closing file or patient no longer wants services) fill the Exit form.)",
                 "hide": {
                   "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -310,7 +297,6 @@
                     }
                   ]
                 },
-                "questionInfo": "Reason for missed appointment",
                 "hide": {
                   "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -324,7 +310,6 @@
                   "rendering": "text",
                   "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                 },
-                "questionInfo": "If other specify",
                 "hide": {
                   "hideWhenExpression": "reasonForMissedAppointment !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -348,8 +333,7 @@
                 "questionOptions": {
                   "rendering": "textarea",
                   "concept": "f186c7ec-7028-4841-b669-78ee192af4c9"
-                },
-                "questionInfo": "Patients progress since the last session how has the patient been feeling/how have things been going in the patients life"
+                }
               }
             ]
           }
@@ -380,8 +364,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Positive functionality Is the patient capable of being independent caring for themselves (bathing/eating) going to work/school etc."
+                }
               },
               {
                 "id": "internalResourcesDoesThePatientBelieveThatTheyHaveTheAbilitiesNeededToOvercomeTheCurrentProblemOrDoTheyHaveHopeForTheirFuture",
@@ -401,8 +384,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Internal resources Does the patient believe that they have the abilities needed to overcome the current problem / do they have hope for their future"
+                }
               },
               {
                 "id": "externalResourcesDoesThePatientBelieveThatTheyHaveSomeoneWhoTheyCanRelyOnForHelpInTheirLives",
@@ -422,8 +404,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "External resources Does the patient believe that they have someone who they can rely on for help in their lives"
+                }
               },
               {
                 "id": "spiritualOrMoralResourcesAreThePatientsBeliefsASourceOfStrengthForThemWhenDealingWithProblems",
@@ -443,8 +424,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Spiritual / moral resources Are the patients beliefs a source of strength for them when dealing with problems"
+                }
               }
             ]
           }
@@ -487,8 +467,7 @@
                       "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
                     }
                   ]
-                },
-                "questionInfo": "Did you have problems performing daily activities such as cooking bathing or chores outside the household"
+                }
               },
               {
                 "id": "didYouHaveProblemsGettingAlongWithFamilyOrFriends",
@@ -520,8 +499,7 @@
                       "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
                     }
                   ]
-                },
-                "questionInfo": "Did you have problems getting along with family or friends"
+                }
               },
               {
                 "id": "didYouHaveAnyProblemsSleepingSuchAsSleepingTooMuchOrNotEnough",
@@ -553,8 +531,7 @@
                       "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
                     }
                   ]
-                },
-                "questionInfo": "Did you have any problems sleeping such as sleeping too much or not enough"
+                }
               },
               {
                 "id": "haveYouBeenBotheredByUnpleasantThoughtsWorriesOrIdeas",
@@ -586,8 +563,7 @@
                       "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
                     }
                   ]
-                },
-                "questionInfo": "Have you been bothered by unpleasant thoughts worries or ideas"
+                }
               },
               {
                 "id": "haveYouFeltSadOrNervous",
@@ -619,8 +595,7 @@
                       "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
                     }
                   ]
-                },
-                "questionInfo": "Have you felt sad or nervous"
+                }
               },
               {
                 "id": "haveYouBeenSuffering",
@@ -652,8 +627,7 @@
                       "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
                     }
                   ]
-                },
-                "questionInfo": "Have you been suffering"
+                }
               },
               {
                 "id": "mhosScore",
@@ -663,8 +637,7 @@
                 "questionOptions": {
                   "rendering": "number",
                   "concept": "b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df"
-                },
-                "questionInfo": "MHOS score"
+                }
               }
             ]
           },
@@ -698,8 +671,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Little interest or pleasure in doing things"
+                }
               },
               {
                 "id": "feelingDownDepressedOrHopeless",
@@ -727,8 +699,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Feeling down depressed or hopeless"
+                }
               },
               {
                 "id": "troubleFallingOrStayingAsleepOrSleepingTooMuch",
@@ -756,8 +727,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Trouble falling or staying asleep or sleeping too much"
+                }
               },
               {
                 "id": "feelingTiredOrHavingLittleEnergy",
@@ -785,8 +755,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Feeling tired or having little energy"
+                }
               },
               {
                 "id": "poorAppetiteOrOvereating",
@@ -814,8 +783,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Poor appetite or overeating"
+                }
               },
               {
                 "id": "feelingBadAboutYourselfOrThatYouAreAFailureOrHaveLetYourselfOrYourFamilyDown",
@@ -843,8 +811,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down"
+                }
               },
               {
                 "id": "troubleConcentratingOnThingsSuchAsReadingTheNewspaperOrWatchingTelevision",
@@ -872,8 +839,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Trouble concentrating on things such as reading the newspaper or watching television"
+                }
               },
               {
                 "id": "movingOrSpeakingSoSlowlyThatOtherPeopleCouldHaveNoticedOrTheOppositeBeingSoFidgetyOrRestlessThatYouHaveBeenMovingAroundALotMoreThanUsual",
@@ -901,8 +867,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual"
+                }
               },
               {
                 "id": "thoughtsThatYouWouldBeBetterOffDeadOrOfHurtingYourselfInSomeWay",
@@ -930,8 +895,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Thoughts that you would be better off dead or of hurting yourself in some way"
+                }
               },
               {
                 "id": "phq9Score",
@@ -941,8 +905,7 @@
                 "questionOptions": {
                   "rendering": "number",
                   "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23"
-                },
-                "questionInfo": "PHQ-9 score"
+                }
               },
               {
                 "id": "depressionSeverityScale",
@@ -974,8 +937,7 @@
                       "concept": "0ff3a7dc-1a6e-4453-91d5-29cf6a9f790c"
                     }
                   ]
-                },
-                "questionInfo": "Depression severity scale"
+                }
               }
             ]
           },
@@ -1028,8 +990,7 @@
                       "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
                     }
                   ]
-                },
-                "questionInfo": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time)"
+                }
               },
               {
                 "id": "cgiI",
@@ -1073,8 +1034,7 @@
                       "concept": "ece17856-b110-4453-9bc5-a92891f86846"
                     }
                   ]
-                },
-                "questionInfo": "CGI-I (rating of  improvement CGI-I how much has the patient improved at this time)"
+                }
               }
             ]
           }
@@ -1095,8 +1055,7 @@
                 "questionOptions": {
                   "rendering": "textarea",
                   "concept": "4c9228b2-4ba2-4edb-8daf-31a824e5fa9a"
-                },
-                "questionInfo": "Evolution of symptoms/complaints"
+                }
               }
             ]
           },
@@ -1190,8 +1149,7 @@
                       "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
                     }
                   ]
-                },
-                "questionInfo": "Clinical diagnosis (only to be established by a psychologist using the last at the baseline)"
+                }
               },
               {
                 "id": "ifOtherSpecify",
@@ -1202,7 +1160,6 @@
                   "rendering": "text",
                   "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
                 },
-                "questionInfo": "If other specify",
                 "hide": {
                   "hideWhenExpression": "clinicalDiagnosis !== 'otherDisorder'"
                 }
@@ -1221,8 +1178,7 @@
                 "questionOptions": {
                   "rendering": "textarea",
                   "concept": "d0169612-3ce9-4e38-b495-d1a4b0ccb76b"
-                },
-                "questionInfo": "Homework / action plan"
+                }
               },
               {
                 "id": "patientCompletedHomework",
@@ -1242,8 +1198,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Patient completed homework "
+                }
               }
             ]
           }
@@ -1274,8 +1229,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Has the patient had thoughts of death or suicide"
+                }
               },
               {
                 "id": "frequency",
@@ -1286,7 +1240,6 @@
                   "rendering": "text",
                   "concept": "a590d345-65d1-4534-bfe4-375ef780e424"
                 },
-                "questionInfo": "Frequency",
                 "hide": {
                   "hideWhenExpression": "hasThePatientHadThoughtsOfDeathOrSuicide !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1309,8 +1262,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Has the patient hurt themselves / caused self-harm"
+                }
               },
               {
                 "id": "typeOfBehaviorAndFrequency",
@@ -1321,7 +1273,6 @@
                   "rendering": "text",
                   "concept": "8ab1ff08-c32d-4832-bc9d-5542be594d12"
                 },
-                "questionInfo": "Type of behavior and frequency",
                 "hide": {
                   "hideWhenExpression": "hasThePatientHurtThemselvesOrCausedSelfHarm !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1344,8 +1295,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Has the patient attempted suicide or tried to kill themselves"
+                }
               },
               {
                 "id": "numberOfAttemptsAndMethod",
@@ -1356,7 +1306,6 @@
                   "rendering": "text",
                   "concept": "667ebdfe-e989-4b56-8511-bb7a3165b327"
                 },
-                "questionInfo": "Number of attempts and method",
                 "hide": {
                   "hideWhenExpression": "hasThePatientAttemptedSuicideOrTriedToKillThemselves !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1379,8 +1328,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Is the patient currently at risk of hurting himself/herself or attempting suicide"
+                }
               },
               {
                 "id": "actionTakenToReduceRisk",
@@ -1391,7 +1339,6 @@
                   "rendering": "text",
                   "concept": "58187804-7c6c-47bf-b9d4-d45effbb3665"
                 },
-                "questionInfo": "Action taken to reduce risk ",
                 "hide": {
                   "hideWhenExpression": "isThePatientCurrentlyAtRiskOfHurtingHimselfOrHerselfOrAttemptingSuicide !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1414,8 +1361,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Is the patient currently at risk of hurting others"
+                }
               },
               {
                 "id": "actionTakenToReduceRisk",
@@ -1426,7 +1372,6 @@
                   "rendering": "text",
                   "concept": "517ff456-6aa7-4deb-8526-c0773423632f"
                 },
-                "questionInfo": "Action taken to reduce risk ",
                 "hide": {
                   "hideWhenExpression": "isThePatientCurrentlyAtRiskOfHurtingOthers !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1449,8 +1394,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Does the patient regularly use alcohol / substances to become intoxicated"
+                }
               },
               {
                 "id": "typeOfSubstanceAndFrequency",
@@ -1461,7 +1405,6 @@
                   "rendering": "text",
                   "concept": "7a62e58e-4f0f-4669-8d7c-51b5e21c5c4c"
                 },
-                "questionInfo": "Type of substance and frequency ",
                 "hide": {
                   "hideWhenExpression": "doesThePatientRegularlyUseAlcoholOrSubstancesToBecomeIntoxicated !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1484,8 +1427,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Is the patient currently on psychotropic / psychiatric medication"
+                }
               },
               {
                 "id": "prescribedBy",
@@ -1506,7 +1448,6 @@
                     }
                   ]
                 },
-                "questionInfo": "Prescribed by",
                 "hide": {
                   "hideWhenExpression": "isThePatientCurrentlyOnPsychotropicOrPsychiatricMedication !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1529,8 +1470,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Has the patient experienced an act of aggression or violence"
+                }
               },
               {
                 "id": "whatTypeOfViolence",
@@ -1563,7 +1503,6 @@
                     }
                   ]
                 },
-                "questionInfo": "What type(s) of violence",
                 "hide": {
                   "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1577,7 +1516,6 @@
                   "rendering": "text",
                   "concept": "d9b92c93-5017-4229-be19-2a0ebf9e9169"
                 },
-                "questionInfo": "If other specify",
                 "hide": {
                   "hideWhenExpression": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence !== 'other'"
                 }
@@ -1617,7 +1555,6 @@
                     }
                   ]
                 },
-                "questionInfo": "Time between violence event and consultation",
                 "hide": {
                   "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1641,7 +1578,6 @@
                     }
                   ]
                 },
-                "questionInfo": "If yes would the patient like a referral to the medical department for treatment (or midwife/maternity for sexual violence)",
                 "hide": {
                   "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1655,7 +1591,6 @@
                   "rendering": "text",
                   "concept": "30b0ac06-848f-4a86-93d7-c91debb8f2ad"
                 },
-                "questionInfo": "Action taken",
                 "hide": {
                   "hideWhenExpression": "wouldThePatientLikeAReferralToTheMedicalDepartmentForTreatment !== 'yes'"
                 }
@@ -1679,8 +1614,7 @@
                 "questionOptions": {
                   "rendering": "textarea",
                   "concept": "8bea5a61-73e6-40c1-af04-43dec63749a4"
-                },
-                "questionInfo": "Overall goals for therapy"
+                }
               },
               {
                 "id": "todaysSession",
@@ -1690,8 +1624,7 @@
                 "questionOptions": {
                   "rendering": "textarea",
                   "concept": "c0744459-b715-4a66-8d65-4bdaef3f90b7"
-                },
-                "questionInfo": "Todays session (what did you do today in session)"
+                }
               },
               {
                 "id": "homework",
@@ -1701,8 +1634,7 @@
                 "questionOptions": {
                   "rendering": "textarea",
                   "concept": "8e7e0064-59c3-4440-b687-a253d7880c29"
-                },
-                "questionInfo": "Homework (what will the patient do before next session)"
+                }
               }
             ]
           },
@@ -1728,8 +1660,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Follow up session required (If no fill the Exit form)"
+                }
               },
               {
                 "label": "Appointments",
@@ -1740,7 +1671,6 @@
                   "buttonLabel": "Set the next appointment date",
                   "workspaceName": "appointments-form-workspace"
                 },
-                "questionInfo": "Set the next appointment date in Appointments module",
                 "hide": {
                   "hideWhenExpression": "followUpSessionRequired !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1763,8 +1693,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Referral done"
+                }
               },
               {
                 "id": "typeOfReferral",
@@ -1813,7 +1742,6 @@
                     }
                   ]
                 },
-                "questionInfo": "Type of referral",
                 "hide": {
                   "hideWhenExpression": "referralDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1827,7 +1755,6 @@
                   "rendering": "text",
                   "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                 },
-                "questionInfo": "If other specify",
                 "hide": {
                   "hideWhenExpression": "typeOfReferral !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -1841,7 +1768,6 @@
                   "rendering": "text",
                   "concept": "b7fdcd18-fc30-4b5d-82b2-bb0eec31f0e4"
                 },
-                "questionInfo": "Reason for referral",
                 "hide": {
                   "hideWhenExpression": "referralDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }

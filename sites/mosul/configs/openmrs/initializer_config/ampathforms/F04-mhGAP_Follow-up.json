@@ -1,7 +1,7 @@
 {
     "name": "MSF Mental Health - mhGAP Follow-up",
     "description": "MSF Form - F04-mhGAP Follow-up",
-    "version": "3",
+    "version": "4",
     "published": true,
     "uuid": "",
     "processor": "EncounterFormProcessor",
@@ -24,8 +24,7 @@
                 "questionOptions": {
                   "rendering": "number",
                   "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11"
-                },
-                "questionInfo": "Session number"
+                }
               }
             ]
           },
@@ -51,8 +50,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "The patient did not come"
+                }
               },
               {
                 "id": "numberOfAppointmentsMissed",
@@ -63,7 +61,6 @@
                   "rendering": "number",
                   "concept": "d7410cd3-29be-4f8b-93d6-eb4de005db29"
                 },
-                "questionInfo": "Number of appointments missed",
                 "hide": {
                   "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -87,7 +84,6 @@
                     }
                   ]
                 },
-                "questionInfo": "Patient rescheduled (if Yes fill the Follow-up section at the end of this form. If No (closing file or patient no longer wants services) fill the Exit form.)",
                 "hide": {
                   "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -127,7 +123,6 @@
                     }
                   ]
                 },
-                "questionInfo": "Reason for missed appointment",
                 "hide": {
                   "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -141,7 +136,6 @@
                   "rendering": "text",
                   "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                 },
-                "questionInfo": "If other specify",
                 "hide": {
                   "hideWhenExpression": "reasonForMissedAppointment !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
@@ -181,8 +175,7 @@
                 "questionOptions": {
                   "rendering": "textarea",
                   "concept": "4c9228b2-4ba2-4edb-8daf-31a824e5fa9a"
-                },
-                "questionInfo": "Evolution of symptoms"
+                }
               },
               {
                 "id": "sideEffectsFromCurrentTreatment",
@@ -192,8 +185,7 @@
                 "questionOptions": {
                   "rendering": "textarea",
                   "concept": "0da21d2e-e464-4871-8ff8-f950808fbd85"
-                },
-                "questionInfo": "Side effects from current treatment"
+                }
               },
               {
                 "id": "basicMentalStatusExamination",
@@ -203,8 +195,7 @@
                 "questionOptions": {
                   "rendering": "textarea",
                   "concept": "cb4974ca-ddac-4662-8b0a-2861f1e50569"
-                },
-                "questionInfo": "Basic mental status examination "
+                }
               }
             ]
           },
@@ -298,8 +289,7 @@
                       "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
                     }
                   ]
-                },
-                "questionInfo": "Clinical diagnosis (only to be established by mhGAP clinician)"
+                }
               },
               {
                 "id": "clinicalDiagnosisIfOtherSpecify",
@@ -310,7 +300,6 @@
                   "rendering": "text",
                   "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
                 },
-                "questionInfo": "Clinical diagnosis - If other specify",
                 "hide": {
                   "hideWhenExpression": "clinicalDiagnosis !== 'otherDisorder'"
                 }
@@ -352,8 +341,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Little interest or pleasure in doing things"
+                }
               },
               {
                 "id": "feelingDownDepressedOrHopeless",
@@ -381,8 +369,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Feeling down depressed or hopeless"
+                }
               },
               {
                 "id": "troubleFallingOrStayingAsleepOrSleepingTooMuch",
@@ -410,8 +397,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Trouble falling or staying asleep or sleeping too much"
+                }
               },
               {
                 "id": "feelingTiredOrHavingLittleEnergy",
@@ -439,8 +425,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Feeling tired or having little energy"
+                }
               },
               {
                 "id": "poorAppetiteOrOvereating",
@@ -468,8 +453,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Poor appetite or overeating"
+                }
               },
               {
                 "id": "feelingBadAboutYourselfOrThatYouAreAFailureOrHaveLetYourselfOrYourFamilyDown",
@@ -497,8 +481,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down"
+                }
               },
               {
                 "id": "troubleConcentratingOnThingsSuchAsReadingTheNewspaperOrWatchingTelevision",
@@ -526,8 +509,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Trouble concentrating on things such as reading the newspaper or watching television"
+                }
               },
               {
                 "id": "movingOrSpeakingSoSlowlyThatOtherPeopleCouldHaveNoticedOrTheOppositeBeingSoFidgetyOrRestlessThatYouHaveBeenMovingAroundALotMoreThanUsual",
@@ -555,8 +537,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual"
+                }
               },
               {
                 "id": "thoughtsThatYouWouldBeBetterOffDeadOrOfHurtingYourselfInSomeWay",
@@ -584,8 +565,7 @@
                       "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
                     }
                   ]
-                },
-                "questionInfo": "Thoughts that you would be better off dead or of hurting yourself in some way"
+                }
               },
               {
                 "id": "phq9Score",
@@ -595,8 +575,7 @@
                 "questionOptions": {
                   "rendering": "number",
                   "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23"
-                },
-                "questionInfo": "PHQ-9 score"
+                }
               },
               {
                 "id": "depressionSeverityScale",
@@ -628,8 +607,7 @@
                       "concept": "0ff3a7dc-1a6e-4453-91d5-29cf6a9f790c"
                     }
                   ]
-                },
-                "questionInfo": "Depression severity scale"
+                }
               }
             ]
           },
@@ -679,8 +657,7 @@
                       "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
                     }
                   ]
-                },
-                "questionInfo": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time)"
+                }
               },
               {
                 "id": "cgiI",
@@ -724,8 +701,7 @@
                       "concept": "ece17856-b110-4453-9bc5-a92891f86846"
                     }
                   ]
-                },
-                "questionInfo": "CGI-I (rating of  improvement CGI-I how much has the patient improved at this time)"
+                }
               }
             ]
           }
@@ -767,8 +743,7 @@
                 "questionOptions": {
                   "rendering": "textarea",
                   "concept": "c13f9fb3-6890-4e13-b13c-8c09fef6ba93"
-                },
-                "questionInfo": "Additional information/notes"
+                }
               }
             ]
           }
@@ -799,8 +774,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Is the patient taking the medication as prescribed   "
+                }
               },
               {
                 "id": "detailsIfNeeded",
@@ -810,8 +784,7 @@
                 "questionOptions": {
                   "rendering": "textarea",
                   "concept": "dc072a1a-20d8-4512-9e57-3585a07cb074"
-                },
-                "questionInfo": "Details if needed"
+                }
               }
             ]
           },
@@ -837,8 +810,7 @@
                       "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     }
                   ]
-                },
-                "questionInfo": "Follow-up required  "
+                }
               },
               {
                 "label": "Appointments",
@@ -849,7 +821,6 @@
                   "buttonLabel": "Set the next appointment date",
                   "workspaceName": "appointments-form-workspace"
                 },
-                "questionInfo": "Set the next appointment date in Appointments module",
                 "hide": {
                   "hideWhenExpression": "followUpRequired !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
