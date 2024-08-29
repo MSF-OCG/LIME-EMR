@@ -1,7 +1,7 @@
 {
-  "name": "MHPSS Baseline",
+  "name": "MSF Mental Health - MHPSS Baseline",
   "description": "MSF Form - MHPSS Baseline",
-  "version": "4",
+  "version": "6",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
@@ -791,7 +791,10 @@
                   }
                 ]
               },
-              "questionInfo": "Clinical diagnosis (only to be established by a psychologist)"
+              "questionInfo": "Clinical diagnosis (only to be established by a psychologist)",
+              "hide": {
+                "hideWhenExpression": "consultationDoneBy !== '278401ee-3d6f-4c65-9455-f1c16d0a7a98'"
+              }
             },
             {
               "id": "ifOtherSpecify",
@@ -3497,12 +3500,12 @@
               "questionInfo": "Follow up session required (If no fill the Exit form)"
             },
             {
-              "label": "appointments",
+              "label": "Appointments",
               "required": false,
               "id": "appointmentsWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
-                "buttonLabel": "+ appointments",
+                "buttonLabel": "Set the next appointment date",
                 "workspaceName": "appointments-form-workspace"
               },
               "questionInfo": "Set the next appointment date in Appointments module",
