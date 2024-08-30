@@ -1,7 +1,7 @@
 {
   "name": "MSF Mental Health - MHPSS Baseline",
   "description": "MSF Form - MHPSS Baseline",
-  "version": "8",
+  "version": "15",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
@@ -234,6 +234,19 @@
               }
             },
             {
+              "id": "typeOfIntervention_ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e08d532b-e56c-43dc-b831-af705654d2dc"
+              },
+              "hide": {
+                "hideWhenExpression": "locationOfIntervention !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
               "id": "typeOfIntervention",
               "label": "Type of intervention",
               "type": "obs",
@@ -251,19 +264,6 @@
                     "concept": "aa9c5d82-1ebf-43c7-9218-6766c4affbc4"
                   }
                 ]
-              }
-            },
-            {
-              "id": "ifOtherSpecify",
-              "label": "If other specify",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "e08d532b-e56c-43dc-b831-af705654d2dc"
-              },
-              "hide": {
-                "hideWhenExpression": "locationOfIntervention !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               }
             }
           ]
@@ -615,7 +615,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "multiCheckbox",
-                "concept": "5b271a75-d44b-466a-8baf-71153dc1895c",
+                "concept": "30e23be8-03b8-43ec-8bcb-0f80eb95e585",
                 "answers": [
                   {
                     "label": "Alcohol / substance abuse",
@@ -665,8 +665,8 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "id": "currentSymptomsOrComplaints_ifOtherSpecify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -675,116 +675,6 @@
               },
               "hide": {
                 "hideWhenExpression": "currentSymptomsOrComplaints !== 'other'"
-              }
-            }
-          ]
-        },
-        {
-          "label": "Clinical diagnosis",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "clinicalDiagnosis",
-              "label": "Clinical diagnosis (only to be established by a psychologist)",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "multiCheckbox",
-                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
-                "answers": [
-                  {
-                    "label": "Acute stress reaction",
-                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
-                  },
-                  {
-                    "label": "Bereavement/grief",
-                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
-                  },
-                  {
-                    "label": "Post-Traumatic Stress Disorder",
-                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
-                  },
-                  {
-                    "label": "Conversion/Dissociative reaction",
-                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
-                  },
-                  {
-                    "label": "Anxiety Disorder",
-                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
-                  },
-                  {
-                    "label": "Medically Unexplained Physical Symptoms (MUPS)",
-                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
-                  },
-                  {
-                    "label": "Depression",
-                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
-                  },
-                  {
-                    "label": "Self-harming behavior/suicide attempt",
-                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
-                  },
-                  {
-                    "label": "Acute psychosis (incl. post-partum psychosis)",
-                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
-                  },
-                  {
-                    "label": "Chronic psychosis (incl. schizophrenia)",
-                    "concept": "1197f1f41-b0c7-407d-b95f-b1e26c3fd23c"
-                  },
-                  {
-                    "label": "Bipolar disorder (incl. mania)",
-                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
-                  },
-                  {
-                    "label": "Enuresis / Encopresis",
-                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
-                  },
-                  {
-                    "label": "Developmental disorder (incl. intellectual disability autism)",
-                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
-                  },
-                  {
-                    "label": "Childhood behavioral disorder (incl. ADHD conduct disorder)",
-                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
-                  },
-                  {
-                    "label": "Childhood emotional disorder",
-                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
-                  },
-                  {
-                    "label": "Substance-related disorder",
-                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
-                  },
-                  {
-                    "label": "Epilepsy / seizures",
-                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
-                  },
-                  {
-                    "label": "Other disorder",
-                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                  },
-                  {
-                    "label": "No diagnosis",
-                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "consultationDoneBy !== '278401ee-3d6f-4c65-9455-f1c16d0a7a98'"
-              }
-            },
-            {
-              "id": "ifOtherSpecify",
-              "label": "If other specify",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
-              },
-              "hide": {
-                "hideWhenExpression": "clinicalDiagnosis !== 'otherDisorder'"
               }
             }
           ]
@@ -799,7 +689,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "multiCheckbox",
+                "rendering": "radio",
                 "concept": "45b39cbf-0fb2-4682-8544-8aaf3e07a744",
                 "answers": [
                   {
@@ -993,7 +883,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "multiCheckbox",
+                "rendering": "radio",
                 "concept": "ee1b7973-e931-494e-a9cb-22b814b4d8ed",
                 "answers": [
                   {
@@ -1187,7 +1077,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "multiCheckbox",
+                "rendering": "radio",
                 "concept": "92a92f62-3ff6-4944-9ea9-a7af23949bad",
                 "answers": [
                   {
@@ -1376,8 +1266,8 @@
               "questionInfo": "If current suicidal thoughts, recent suicide attempt, or current psychotic symptoms consider referral to psychologist /  mhGAP clinician."
             },
             {
-              "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "id": "currentSymptomsOrComplaints1_ifOtherSpecify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1476,7 +1366,7 @@
             },
             {
               "id": "importantDetailsOfTheMainProblemHowLongHaveTheyHadTheProblem",
-              "label": "Important details of the main problem How long have they had the problem (significant events etc.)",
+              "label": "Important details of the main problem. How long have they had the problem? (significant events etc.)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1496,6 +1386,116 @@
               "questionInfo": "How do they look or speak / motor activity / mood / thoughts / perceptions? Is the patient oriented in time / space / person / recent events?"
             }
           ]
+        },
+        {
+          "label": "Clinical diagnosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "clinicalDiagnosis",
+              "label": "Clinical diagnosis (only to be established by a psychologist)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
+                "answers": [
+                  {
+                    "label": "Acute stress reaction",
+                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
+                  },
+                  {
+                    "label": "Bereavement/grief",
+                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
+                  },
+                  {
+                    "label": "Post-Traumatic Stress Disorder",
+                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
+                  },
+                  {
+                    "label": "Conversion/Dissociative reaction",
+                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
+                  },
+                  {
+                    "label": "Anxiety Disorder",
+                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
+                  },
+                  {
+                    "label": "Medically Unexplained Physical Symptoms (MUPS)",
+                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
+                  },
+                  {
+                    "label": "Depression",
+                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
+                  },
+                  {
+                    "label": "Self-harming behavior/suicide attempt",
+                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
+                  },
+                  {
+                    "label": "Acute psychosis (incl. post-partum psychosis)",
+                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
+                  },
+                  {
+                    "label": "Chronic psychosis (incl. schizophrenia)",
+                    "concept": "1197f1f41-b0c7-407d-b95f-b1e26c3fd23c"
+                  },
+                  {
+                    "label": "Bipolar disorder (incl. mania)",
+                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
+                  },
+                  {
+                    "label": "Enuresis / Encopresis",
+                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
+                  },
+                  {
+                    "label": "Developmental disorder (incl. intellectual disability autism)",
+                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
+                  },
+                  {
+                    "label": "Childhood behavioral disorder (incl. ADHD conduct disorder)",
+                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
+                  },
+                  {
+                    "label": "Childhood emotional disorder",
+                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
+                  },
+                  {
+                    "label": "Substance-related disorder",
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                  },
+                  {
+                    "label": "Epilepsy / seizures",
+                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                  },
+                  {
+                    "label": "Other disorder",
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No diagnosis",
+                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "consultationDoneBy !== '278401ee-3d6f-4c65-9455-f1c16d0a7a98'"
+              }
+            },
+            {
+              "id": "clinicalDiagnosis_ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
+              },
+              "hide": {
+                "hideWhenExpression": "clinicalDiagnosis !== 'otherDisorder'"
+              }
+            }
+          ]
         }
       ]
     },
@@ -1508,7 +1508,7 @@
           "questions": [
             {
               "id": "didYouHaveProblemsPerformingDailyActivitiesSuchAsCookingBathingOrChoresOutsideTheHousehold",
-              "label": "Did you have problems performing daily activities such as cooking bathing or chores outside the household",
+              "label": "Did you have problems performing daily activities such as cooking bathing or chores outside the household?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1540,7 +1540,7 @@
             },
             {
               "id": "didYouHaveProblemsGettingAlongWithFamilyOrFriends",
-              "label": "Did you have problems getting along with family or friends",
+              "label": "Did you have problems getting along with family or friends?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1572,7 +1572,7 @@
             },
             {
               "id": "didYouHaveAnyProblemsSleepingSuchAsSleepingTooMuchOrNotEnough",
-              "label": "Did you have any problems sleeping such as sleeping too much or not enough",
+              "label": "Did you have any problems sleeping such as sleeping too much or not enough?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1604,12 +1604,12 @@
             },
             {
               "id": "haveYouBeenBotheredByUnpleasantThoughtsWorriesOrIdeas",
-              "label": "Have you been bothered by unpleasant thoughts worries or ideas",
+              "label": "Have you been bothered by unpleasant thoughts worries or ideas?",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "009ba3837-cc74-4fe5-8be4-e439b02a1d62",
+                "concept": "09ba3837-cc74-4fe5-8be4-e439b02a1d62",
                 "answers": [
                   {
                     "label": "Not at all",
@@ -1636,7 +1636,7 @@
             },
             {
               "id": "haveYouFeltSadOrNervous",
-              "label": "Have you felt sad or nervous",
+              "label": "Have you felt sad or nervous?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1668,7 +1668,7 @@
             },
             {
               "id": "haveYouBeenSuffering",
-              "label": "Have you been suffering",
+              "label": "Have you been suffering?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1710,7 +1710,8 @@
                 "calculate": {
                   "calculateExpression": "(did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : did_you_have_problems_performing_daily_activities_such_as_cooking_bathing_or_chores_outside_the_household_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (did_you_have_problems_getting_along_with_family_or_friends_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : did_you_have_problems_getting_along_with_family_or_friends_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : did_you_have_problems_getting_along_with_family_or_friends_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : did_you_have_problems_getting_along_with_family_or_friends_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : did_you_have_problems_getting_along_with_family_or_friends_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (_did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : _did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : _did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : _did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : _did_you_have_any_problems_sleeping_such_as_sleeping_too_much_or_not_enough_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : have_you_been_bothered_by_unpleasant_thoughts_worries_or_ideas_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (have_you_felt_sad_or_nervous_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : have_you_felt_sad_or_nervous_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : have_you_felt_sad_or_nervous_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : have_you_felt_sad_or_nervous_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : have_you_felt_sad_or_nervous_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (have_you_been_suffering_ === '160215AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : have_you_been_suffering_ === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : have_you_been_suffering_ === '164493AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : have_you_been_suffering_ === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : have_you_been_suffering_ === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0)"
                 }
-              }
+              },
+              "questionInfo": "Sum of all points from answers above"
             }
           ]
         },
@@ -2034,35 +2035,35 @@
                 "concept": "a1a75011-0fef-460a-b666-dda2d171f39b",
                 "answers": [
                   {
-                    "label": "- Not assessed",
+                    "label": "0 - Not assessed",
                     "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
                   },
                   {
-                    "label": "- Normal/not ill",
+                    "label": "1 - Normal/not ill",
                     "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
                   },
                   {
-                    "label": "- Suspected mentally ill",
+                    "label": "2 - Suspected mentally ill",
                     "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
                   },
                   {
-                    "label": "- Mildly ill",
+                    "label": "3 - Mildly ill",
                     "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
                   },
                   {
-                    "label": "- Moderately ill",
+                    "label": "4 - Moderately ill",
                     "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
                   },
                   {
-                    "label": "- Markedly ill",
+                    "label": "5 - Markedly ill",
                     "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
                   },
                   {
-                    "label": "- Severely ill",
+                    "label": "6 - Severely ill",
                     "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
                   },
                   {
-                    "label": "- Extremely ill patient",
+                    "label": "7 - Extremely ill patient",
                     "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
                   }
                 ]
@@ -2467,8 +2468,8 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "id": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence_ifOtherSpecify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2758,7 +2759,7 @@
               }
             },
             {
-              "id": "other",
+              "id": "pastOrPrecipitatingEvents_other",
               "label": "Other",
               "type": "obs",
               "required": false,
@@ -2782,8 +2783,8 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "id": "pastOrPrecipitatingEvents_ifOtherSpecify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2791,7 +2792,7 @@
                 "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
               },
               "hide": {
-                "hideWhenExpression": "pastOrPrecipitatingEvents !== 'other'"
+                "hideWhenExpression": "pastOrPrecipitatingEvents_other !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
               }
             }
           ]
@@ -2806,7 +2807,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "multiCheckbox",
+                "rendering": "radio",
                 "concept": "d5e3d927-f7ce-4fdd-ac4e-6ad0b510b608",
                 "answers": [
                   {
@@ -2975,7 +2976,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "multiCheckbox",
+                "rendering": "radio",
                 "concept": "54a9b20e-bce5-4d4a-8c9c-e0248a182586",
                 "answers": [
                   {
@@ -3144,7 +3145,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "multiCheckbox",
+                "rendering": "radio",
                 "concept": "e0d4e006-85b5-41cb-8a21-e013b1978b8b",
                 "answers": [
                   {
@@ -3502,8 +3503,8 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "id": "typeOfReferral_ifOtherSpecify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {

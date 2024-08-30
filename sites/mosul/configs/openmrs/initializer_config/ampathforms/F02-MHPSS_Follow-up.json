@@ -1,7 +1,7 @@
 {
     "name": "MSF Mental Health - MHPSS Follow-up",
     "description": "MSF Form - F02-MHPSS Follow-up",
-    "version": "5",
+    "version": "7",
     "published": true,
     "uuid": "",
     "processor": "EncounterFormProcessor",
@@ -168,8 +168,8 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
-                "label": "If other specify",
+                "id": "locationOfIntervention_ifOtherSpecify",
+                "label": "If other, specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
@@ -302,8 +302,8 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
-                "label": "If other specify",
+                "id": "reasonForMissedAppointment_ifOtherSpecify",
+                "label": "If other, specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
@@ -439,7 +439,7 @@
             "questions": [
               {
                 "id": "didYouHaveProblemsPerformingDailyActivitiesSuchAsCookingBathingOrChoresOutsideTheHousehold",
-                "label": "Did you have problems performing daily activities such as cooking bathing or chores outside the household",
+                "label": "Did you have problems performing daily activities such as cooking bathing or chores outside the household?",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
@@ -471,7 +471,7 @@
               },
               {
                 "id": "didYouHaveProblemsGettingAlongWithFamilyOrFriends",
-                "label": "Did you have problems getting along with family or friends",
+                "label": "Did you have problems getting along with family or friends?",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
@@ -503,7 +503,7 @@
               },
               {
                 "id": "didYouHaveAnyProblemsSleepingSuchAsSleepingTooMuchOrNotEnough",
-                "label": "Did you have any problems sleeping such as sleeping too much or not enough",
+                "label": "Did you have any problems sleeping such as sleeping too much or not enough?",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
@@ -535,12 +535,12 @@
               },
               {
                 "id": "haveYouBeenBotheredByUnpleasantThoughtsWorriesOrIdeas",
-                "label": "Have you been bothered by unpleasant thoughts worries or ideas",
+                "label": "Have you been bothered by unpleasant thoughts worries or ideas?",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "radio",
-                  "concept": "009ba3837-cc74-4fe5-8be4-e439b02a1d62",
+                  "concept": "09ba3837-cc74-4fe5-8be4-e439b02a1d62",
                   "answers": [
                     {
                       "label": "Not at all",
@@ -567,7 +567,7 @@
               },
               {
                 "id": "haveYouFeltSadOrNervous",
-                "label": "Have you felt sad or nervous",
+                "label": "Have you felt sad or nervous?",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
@@ -599,7 +599,7 @@
               },
               {
                 "id": "haveYouBeenSuffering",
-                "label": "Have you been suffering",
+                "label": "Have you been suffering?",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
@@ -634,6 +634,7 @@
                 "label": "MHOS score",
                 "type": "obs",
                 "required": false,
+                "readonly": true,
                 "questionOptions": {
                   "rendering": "number",
                   "concept": "b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df"
@@ -902,6 +903,7 @@
                 "label": "PHQ-9 score",
                 "type": "obs",
                 "required": false,
+                "readonly": true,
                 "questionOptions": {
                   "rendering": "number",
                   "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23"
@@ -960,35 +962,35 @@
                   },
                   "answers": [
                     {
-                      "label": "- Not assessed",
+                      "label": "0 - Not assessed",
                       "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
                     },
                     {
-                      "label": "- Normal/not ill",
+                      "label": "1 - Normal/not ill",
                       "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
                     },
                     {
-                      "label": "- Suspected mentally ill",
+                      "label": "2 - Suspected mentally ill",
                       "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
                     },
                     {
-                      "label": "- Mildly ill",
+                      "label": "3 - Mildly ill",
                       "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
                     },
                     {
-                      "label": "- Moderately ill",
+                      "label": "4 - Moderately ill",
                       "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
                     },
                     {
-                      "label": "- Markedly ill",
+                      "label": "5 - Markedly ill",
                       "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
                     },
                     {
-                      "label": "- Severely ill",
+                      "label": "6 - Severely ill",
                       "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
                     },
                     {
-                      "label": "- Extremely ill patient",
+                      "label": "7 - Extremely ill patient",
                       "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
                     }
                   ]
@@ -1004,35 +1006,35 @@
                   "concept": "f94de17e-9771-4711-aabb-c5bb0c022be2",
                   "answers": [
                     {
-                      "label": "- Not assessed",
+                      "label": "0 - Not assessed",
                       "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
                     },
                     {
-                      "label": "- Very much improved",
+                      "label": "1 - Very much improved",
                       "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
                     },
                     {
-                      "label": "- Much improved",
+                      "label": "2 - Much improved",
                       "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
                     },
                     {
-                      "label": "- Minimally improved",
+                      "label": "3 - Minimally improved",
                       "concept": "e19f352f-b693-434a-af4d-2813487de15c"
                     },
                     {
-                      "label": "- No change",
+                      "label": "4 - No change",
                       "concept": "162679AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                     },
                     {
-                      "label": "- Minimally worse",
+                      "label": "5 - Minimally worse",
                       "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
                     },
                     {
-                      "label": "- Much worse",
+                      "label": "6 - Much worse",
                       "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
                     },
                     {
-                      "label": "- Very much worse",
+                      "label": "7 - Very much worse",
                       "concept": "ece17856-b110-4453-9bc5-a92891f86846"
                     }
                   ]
@@ -1155,8 +1157,8 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
-                "label": "If other specify",
+                "id": "clinicalDiagnosis_ifOtherSpecify",
+                "label": "If other, specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
@@ -1512,8 +1514,8 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
-                "label": "If other specify",
+                "id": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence_ifOtherSpecify",
+                "label": "If other, specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
@@ -1752,8 +1754,8 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
-                "label": "If other specify",
+                "id": "typeOfReferral_ifOtherSpecify",
+                "label": "If other, specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
