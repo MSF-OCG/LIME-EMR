@@ -144,7 +144,8 @@
                 "questionOptions": {
                   "rendering": "textarea",
                   "concept": "f8883168-4a8d-432b-8812-6dcdfbf5b13a"
-                }
+                },
+                "questionInfo": "Check also in 'Conditions' and update it there if necessary."
               },
               {
                 "id": "allergiesOrContraIndications",
@@ -154,7 +155,8 @@
                 "questionOptions": {
                   "rendering": "text",
                   "concept": "6fcf69eb-244a-4756-84b7-1da5b8fa7025"
-                }
+                },
+                "questionInfo": "Check also in 'Allergies' and update it there if necessary."
               }
             ]
           },
@@ -408,7 +410,7 @@
                   "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
                 },
                 "hide": {
-                  "hideWhenExpression": "clinicalDiagnosis !== 'otherDisorder'"
+                  "hideWhenExpression": "clinicalDiagnosis !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
               }
             ]
@@ -700,19 +702,19 @@
                       "concept": "5aa4edf5-b218-4470-b5da-ad1d88007954"
                     },
                     {
-                      "label": "Minimal symptoms",
+                      "label": "Minimal symptoms (5-9)",
                       "concept": "9d7d154f-e7a1-4490-b93a-85f5c2157f92"
                     },
                     {
-                      "label": "Minor to mild depression (or dysthymia)",
+                      "label": "Minor to mild depression (or dysthymia). (10-14)",
                       "concept": "ed7484ef-a3ea-4c95-bf59-58987c7f6d7c"
                     },
                     {
-                      "label": "Major depression",
+                      "label": "Major depression (15-19)",
                       "concept": "d163711c-9fcf-4050-b015-d3463b4602fa"
                     },
                     {
-                      "label": "Severe depression",
+                      "label": "Severe depression (> 20)",
                       "concept": "0ff3a7dc-1a6e-4453-91d5-29cf6a9f790c"
                     }
                   ]
@@ -727,7 +729,7 @@
             "questions": [
               {
                 "id": "cgiS",
-                "label": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time)",
+                "label": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time?)",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
