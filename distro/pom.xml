@@ -19,16 +19,23 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
-    <PatientIdentifierGeneratorVersion>0.1.0</PatientIdentifierGeneratorVersion>
+    <limeEmrVersion>0.1.0</limeEmrVersion>
     <MSFReferenceapplicationDockerVersion>qa</MSFReferenceapplicationDockerVersion>
+    <datafilterVersion>2.3.0-SNAPSHOT</datafilterVersion>
+    <yamlCombinePluginVersion>2.0.6</yamlCombinePluginVersion>
   </properties>
 
   <dependencies>
-    <!-- TODO: Add any implementation-specific dependencies -->
     <dependency>
       <groupId>org.openmrs.module</groupId>
-      <artifactId>patientidentifiergenerator-omod</artifactId>
-      <version>${PatientIdentifierGeneratorVersion}</version>
+      <artifactId>lime-emr-omod</artifactId>
+      <version>${limeEmrVersion}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.openmrs.module</groupId>
+      <artifactId>datafilter-omod</artifactId>
+      <version>${datafilterVersion}</version>
     </dependency>
   </dependencies>
 
@@ -154,10 +161,71 @@
                 <resource>
                   <directory>${project.basedir}/../scripts</directory>
                   <includes>
-                    <include>
-                      docker-compose-files.txt
-                    </include>
+                    <include>docker-compose-files.txt </include>
+                    <include>merge-openfn-yaml.groovy</include>
                   </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <!-- Copy MSF OpenFn docker compose .yml file -->
+            <id>Copy MSF OpenFn docker compose .yml file</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>
+                ${project.build.directory}/${project.artifactId}-${project.version}/run/docker</outputDirectory>
+              <overwrite>true</overwrite>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/../scripts</directory>
+                  <includes>
+                    <include>docker-compose-openfn.yml </include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <!-- Copy MSF OpenFn database script files -->
+            <id>Copy MSF OpenFn database script files</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>
+                ${project.build.directory}/${project.artifactId}-${project.version}/distro/data</outputDirectory>
+              <overwrite>true</overwrite>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/../scripts/data</directory>
+                  <includes>
+                    <include>**/*.sh</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>Copy local resources</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>
+                ${project.build.directory}/${project.artifactId}-${project.version}/distro/configs</outputDirectory>
+              <overwrite>true</overwrite>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/configs</directory>
+                  <excludes>
+                    <exclude>*/**/${envFileToExclude}</exclude>
+                  </excludes>
                 </resource>
               </resources>
             </configuration>
@@ -197,6 +265,43 @@
               </target>
             </configuration>
           </execution>
+          <execution>
+            <id>Add OpenFn Environment variables</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo message="Adding OpenFn environment versions" />
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
+                  token='echo "$INFO Exporting distro paths..."'>
+                  <replacevalue>
+                    echo "$INFO Exporting distro paths..."&#10;&#9;export OPENFN_CONFIG_PATH=$DISTRO_PATH/configs/openfn&#10;&#9;export MSF_SERVER_TYPE="${msfServerType}"&#10;&#9;echo "→ OPENFN_CONFIG_PATH=$OPENFN_CONFIG_PATH"&#10;&#9;echo "→ MSF_SERVER_TYPE=$MSF_SERVER_TYPE"
+                  </replacevalue>
+                </replace>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.gmavenplus</groupId>
+        <artifactId>gmavenplus-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>combine openfn project.yaml files</id>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <phase>process-resources</phase>
+            <configuration>
+              <scripts>
+                <script>file://${project.basedir}/../scripts/merge-openfn-yaml.groovy</script>
+              </scripts>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
@@ -231,9 +336,26 @@
                 </configuration>
               </execution>
             </executions>
-          </plugin>     
+          </plugin>
         </plugins>
       </build>
+    </profile>
+    <profile>
+      <id>local</id>
+      <properties>
+        <envFileToExclude>azure.openfn.env</envFileToExclude>
+        <msfServerType>local</msfServerType>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <profile>
+      <id>azure</id>
+      <properties>
+        <envFileToExclude>local.openfn.env</envFileToExclude>
+        <msfServerType>azure</msfServerType>
+      </properties>
     </profile>
   </profiles>
 
@@ -246,8 +368,13 @@
       <id>msf-ocg-github-lime-emr</id>
       <url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR/</url>
     </repository>
+    <repository>
+      <id>Sonatype-public</id>
+      <name>SnakeYAML repository</name>
+      <url>https://oss.sonatype.org/content/groups/public/</url>
+    </repository>
   </repositories>
-  
+
   <distributionManagement>
     <repository>
       <name>MSF repo for releases</name>
@@ -260,5 +387,5 @@
       <url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR</url>
     </snapshotRepository>
   </distributionManagement>
-  
+
 </project>

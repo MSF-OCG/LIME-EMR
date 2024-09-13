@@ -1,4 +1,198 @@
 {
+  "@openmrs/esm-patient-home-app": {
+    "extensionSlots": {
+      "homepage-widgets-slot": {
+        "configure": {
+          "active-visits-widget": {
+            "Display conditions": {
+              "privileges": [
+                "Configure Visits"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "@openmrs/esm-patient-chart-app": {
+    "Display conditions": {
+      "privileges": [
+        "Patient Dashboard - View Patient Summary"
+      ]
+    },
+    "extensionSlots": {
+      "patient-chart-dashboard-slot": {
+        "configure": {
+          "charts-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Patient Dashboard - View Patient Summary"
+              ]
+            }
+          },
+          "medications-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Patient Medication"
+              ]
+            }
+          },
+          "encounters-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Configure Visits"
+              ]
+            }
+          },
+          "allergies-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Patient Overview - View Allergies"
+              ]
+            }
+          },
+          "laboratory-patient-chart-link": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Patient Investigation"
+              ]
+            }
+          },
+          "results-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Patient Dashboard - View Encounters Section"
+              ]
+            }
+          },
+          "programs-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Patient Overview - View Programs"
+              ]
+            }
+          },
+          "test-results-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "View Concepts"
+              ]
+            }
+          },
+          "immunization-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Immunization Summary"
+              ]
+            }
+          },
+          "patient-appointments-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Appointments"
+              ]
+            }
+          },
+          "visit-header-right-slot": {
+            "Display conditions": {
+              "privileges": [
+                "Configure Visits"
+              ]
+            }
+          },
+          "patient-orders-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Patient Orders"
+              ]
+            }
+          },
+          "conditions-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Patient Dashboard - View Conditions"
+              ]
+            }
+          },
+          "attachments-results-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Patient Orders"
+              ]
+            }
+          },
+          "patient-mental-health-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Mental Health"
+              ]
+            }
+          },
+          "patient-nutrition-summary-dashboard": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Nutrition"
+              ]
+            }
+          }
+        }
+      },
+      "laboratory-orders-dashboard-slot": {
+        "configure": {
+          "laboratory-orders-summary": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Patient Lab Orders"
+              ]
+            }
+          }
+        }
+      },
+      "patient-chart-immunizations-dashboard-slot": {
+        "configure": {
+          "immunization-details-widget": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Patient Immunization Orders"
+              ]
+            }
+          }
+        }
+      },
+      "action-menu-patient-chart-items-slot": {
+        "configure": {
+          "order-basket-action-menu": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Order Basket"
+              ]
+            }
+          },
+          "visit-note-nav-button": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Visit Note"
+              ]
+            }
+          },
+          "clinical-form-action-menu": {
+            "Display conditions": {
+              "privileges": [
+                "Manage Clinical Forms"
+              ]
+            }
+          },
+          "patient-lists-action-menu": {
+            "Display conditions": {
+              "privileges": [
+                "View Patients"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
   "@openmrs/esm-primary-navigation-app": {
     "externalRefLinks": [
       {
@@ -6,6 +200,20 @@
         "redirect": "#"
       }
     ]
+  },
+  "@openmrs/esm-patient-attachments-app": {
+    "Display conditions": {
+      "privileges": [
+        "Add Attachments"
+      ]
+    }
+  },
+  "@openmrs/esm-patient-orders-app": {
+    "Display conditions": {
+      "privileges": [
+        "Manage Patient Orders"
+      ]
+    }
   },
   "@openmrs/esm-patient-registration-app": {
     "sections": [

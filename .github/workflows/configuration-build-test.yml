@@ -31,7 +31,7 @@ jobs:
             }]
   
       - name: Build and Test
-        run: mvn --batch-mode --update-snapshots --activate-profiles validator clean package
+        run: mvn --batch-mode --update-snapshots --activate-profiles validator -Pazure clean package
 
   release:
     if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'release' }}    
