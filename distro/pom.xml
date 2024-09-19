@@ -163,6 +163,7 @@
                   <includes>
                     <include>docker-compose-files.txt </include>
                     <include>merge-openfn-yaml.groovy</include>
+                    <include>*.sh</include>
                   </includes>
                 </resource>
               </resources>
@@ -279,6 +280,32 @@
                   token='echo "$INFO Exporting distro paths..."'>
                   <replacevalue>
                     echo "$INFO Exporting distro paths..."&#10;&#9;export OPENFN_CONFIG_PATH=$DISTRO_PATH/configs/openfn&#10;&#9;export MSF_SERVER_TYPE="${msfServerType}"&#10;&#9;echo "→ OPENFN_CONFIG_PATH=$OPENFN_CONFIG_PATH"&#10;&#9;echo "→ MSF_SERVER_TYPE=$MSF_SERVER_TYPE"
+                  </replacevalue>
+                </replace>
+              </target>
+            </configuration>
+          </execution>
+          <execution>
+            <id>Add MSF addons to ozone</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo message="Add openFn admin user" />
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
+                  token="displayAccessURLsWithCredentials">
+                  <replacevalue>
+                    source run_msf_addons.sh&#10;displayAccessURLsWithCredentials
+                  </replacevalue>
+                </replace>
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/ozone-urls-template.csv"
+                  token="OpenMRS 3,${O3_HOSTNAME}/openmrs/spa,admin,Admin123,openmrs">
+                  <replacevalue>
+                    OpenFn,localhost:4000,admin@openfn.org,Admin123,openfn&#10;OpenMRS 3,${O3_HOSTNAME}/openmrs/spa,admin,Admin123,openmrs
                   </replacevalue>
                 </replace>
               </target>
