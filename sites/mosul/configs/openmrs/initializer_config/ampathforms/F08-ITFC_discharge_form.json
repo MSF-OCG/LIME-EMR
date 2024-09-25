@@ -25,6 +25,9 @@
                   "rendering": "datetime",
                   "concept": "admissionDateAndTime"
                 },
+                "calculate": {
+                  "calculateExpression": "new Date()"
+                },
                 "default": "encounter dateTime from ITFC admission form"
               },
               {
@@ -2864,7 +2867,7 @@
                   "concept": "secondary1IfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "secondary1 !== 'other'"
+                  "hideWhenExpression": "secondary1 !== 'secondary1Other'"
                 }
               },
               {
@@ -4170,16 +4173,16 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
+                "id": "referralPlaceIfOtherSpecify",
                 "label": "If other specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "ifOtherSpecify"
+                  "concept": "referralPlaceIfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "referralPlace !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                  "hideWhenExpression": "isEmpty(referralPlace) || referralPlace !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
                 }
               },
               {
@@ -4424,16 +4427,16 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
+                "id": "deathCauseIfOtherSpecify",
                 "label": "If other specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "ifOtherSpecify"
+                  "concept": "deathCauseIfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "deathCause !== 'deathCauseOther'"
+                  "hideWhenExpression": "isEmpty(deathCause) || deathCause !== 'deathCauseOther'"
                 }
               },
               {
@@ -4477,7 +4480,7 @@
                   "concept": "ifOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "deathCause !== 'ifTransferSpecifyTheUnit'"
+                  "hideWhenExpression": "isEmpty(deathCause) || deathCause !== 'ifTransferSpecifyTheUnit'"
                 }
               }
             ]
@@ -4512,6 +4515,17 @@
             "label": "Prescription",
             "isExpanded": false,
             "questions": [
+              {
+                "id": "pleaseStartTheFeedingForm",
+                "label": "Please start the Feeding form",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "workspace-launcher",
+                  "buttonLabel": "Start the Feeding form",
+                  "workspaceName": "nutrition-feeding-form-workspace"
+                }
+              },
               {
                 "id": "pleaseCheckInimmunizationsTheVaccinationStatusOfTheMotherAndAccompanyingChildren",
                 "label": "Please check in immunizations (update if necessary) the vaccination status of the mother (tetanus) and accompanying children",

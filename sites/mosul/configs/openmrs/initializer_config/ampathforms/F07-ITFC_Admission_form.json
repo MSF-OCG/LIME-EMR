@@ -1775,7 +1775,7 @@
                   "concept": "secondary1IfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "secondary1 !== 'other'"
+                  "hideWhenExpression": "secondary1 !== 'secondary1Other'"
                 }
               },
               {
@@ -2304,7 +2304,7 @@
                   "concept": "secondary2IfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "secondary2 !== 'other'"
+                  "hideWhenExpression": "secondary2 !== 'secondary2Other'"
                 }
               },
               {
@@ -2833,7 +2833,7 @@
                   "concept": "secondary3IfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "secondary3 !== 'other'"
+                  "hideWhenExpression": "secondary3 !== 'secondary3Other'"
                 }
               }
             ]
@@ -2848,13 +2848,14 @@
             "isExpanded": false,
             "questions": [
               {
-                "id": "pleaseStartThefeedingForm",
+                "id": "pleaseStartTheFeedingForm",
                 "label": "Please start the Feeding form",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "markdown",
-                  "concept": "pleaseStartThefeedingForm"
+                  "rendering": "workspace-launcher",
+                  "buttonLabel": "Start the Feeding form",
+                  "workspaceName": "nutrition-feeding-form-workspace"
                 }
               },
               {
