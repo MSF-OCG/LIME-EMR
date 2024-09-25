@@ -28,26 +28,6 @@
                 "default": "encounter dateTime from ITFC admission form"
               },
               {
-                "id": "spontaneousAdmission",
-                "label": "Spontaneous admission",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "spontaneousAdmission",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                    }
-                  ]
-                }
-              },
-              {
                 "id": "admissionType",
                 "label": "Admission type",
                 "type": "obs",
@@ -65,16 +45,32 @@
                       "concept": "9f2fe30f-a8f0-49ba-82e4-71c232259130"
                     },
                     {
-                      "label": "Patient referred",
-                      "concept": "patientReferred"
-                    },
-                    {
                       "label": "Readmission",
                       "concept": "e4e42ecd-196b-4aa8-a265-bfbed09d77cf"
                     },
                     {
                       "label": "Relapse",
                       "concept": "relapse"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "spontaneousAdmission",
+                "label": "Spontaneous admission",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "spontaneousAdmission",
+                  "answers": [
+                    {
+                      "label": "Yes",
+                      "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                    },
+                    {
+                      "label": "No",
+                      "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
                 }
@@ -119,7 +115,7 @@
                   ]
                 },
                 "hide": {
-                  "hideWhenExpression": "admissionType !== 'patientReferred'"
+                  "hideWhenExpression": "spontaneousAdmission !== 'a5c5563e-df0e-4742-a335-b24fb63664ee'"
                 }
               },
               {
@@ -132,7 +128,7 @@
                   "concept": "ifOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "admissionTypeReferredByWhomOrFromWhere !== 'other'"
+                  "hideWhenExpression": "isEmpty(byWhomOrFromWhere) || byWhomOrFromWhere !== 'byWhomOrFromWhereOther'"
                 }
               }
             ]
@@ -152,13 +148,13 @@
                 }
               },
               {
-                "id": "weight",
-                "label": "Weight (kg)",
+                "id": "weightAtAdmission",
+                "label": "Weight at admission (in Kg)",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "number",
-                  "concept": "weight"
+                  "concept": "weightAtAdmission"
                 },
                 "disallowDecimals": true
               },
@@ -168,7 +164,7 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
+                  "rendering": "number",
                   "concept": "height"
                 }
               },
@@ -197,13 +193,13 @@
                 }
               },
               {
-                "id": "muac",
-                "label": "MUAC (mm)",
+                "id": "admissionMUAC",
+                "label": "Admission MUAC (mm)",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "number",
-                  "concept": "muac"
+                  "concept": "admissionMUAC"
                 },
                 "disallowDecimals": true
               },
@@ -312,32 +308,35 @@
                 "required": false,
                 "questionOptions": {
                   "rendering": "date",
-                  "concept": "dischargeDate"
+                  "concept": "dischargeDate",
+                  "calculate": {
+                    "calculateExpression": "new Date()"
+                  }
                 }
               },
               {
-                "id": "weight",
-                "label": "Weight (kg)",
+                "id": "weightAtDischarge",
+                "label": "Weight at discharge (in Kg)",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
-                  "concept": "weight"
+                  "rendering": "number",
+                  "concept": "weightAtDischarge"
                 }
               },
               {
-                "id": "height",
-                "label": "Height (in cm)",
+                "id": "dischargeHeight",
+                "label": "Discharge height (in cm)",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
-                  "concept": "height"
+                  "rendering": "number",
+                  "concept": "dischargeHeight"
                 }
               },
               {
                 "id": "weightOrHeight",
-                "label": "Weight / height",
+                "label": "Weight for Height (last measurement)",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
@@ -360,13 +359,13 @@
                 }
               },
               {
-                "id": "muac",
-                "label": "MUAC (mm)",
+                "id": "dischargeMUAC",
+                "label": "Discharge MUAC (mm)",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
-                  "concept": "muac"
+                  "rendering": "number",
+                  "concept": "dischargeMUAC"
                 }
               }
             ]
@@ -443,13 +442,13 @@
             "isExpanded": false,
             "questions": [
               {
-                "id": "st",
-                "label": "st",
+                "id": "1st",
+                "label": "1st",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "radio",
-                  "concept": "st",
+                  "concept": "1st",
                   "answers": [
                     {
                       "label": "Yes",
@@ -463,13 +462,13 @@
                 }
               },
               {
-                "id": "nd",
-                "label": "nd",
+                "id": "2nd",
+                "label": "2nd",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "radio",
-                  "concept": "nd",
+                  "concept": "2nd",
                   "answers": [
                     {
                       "label": "Yes",
@@ -483,13 +482,13 @@
                 }
               },
               {
-                "id": "rd",
-                "label": "rd",
+                "id": "3rd",
+                "label": "3rd",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "radio",
-                  "concept": "rd",
+                  "concept": "3rd",
                   "answers": [
                     {
                       "label": "Yes",
@@ -503,13 +502,13 @@
                 }
               },
               {
-                "id": "th",
-                "label": "th",
+                "id": "4th",
+                "label": "4th",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "radio",
-                  "concept": "th",
+                  "concept": "4th",
                   "answers": [
                     {
                       "label": "Yes",
@@ -579,8 +578,9 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "immunization-form-workspace",
-                  "concept": "checkimmunizationAndUpdatePossibleMissingVaccines"
+                  "rendering": "workspace-launcher",
+                  "buttonLabel": "Capture patient immunizations",
+                  "workspaceName": "immunization-form-workspace"
                 }
               },
               {
@@ -645,6 +645,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "bcg !== 'unknown' && bcg !== 'noVaccinated'"
                 }
               },
               {
@@ -689,6 +692,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "hepatitisB0 !== 'unknown' && hepatitisB0 !== 'noVaccinated'"
                 }
               },
               {
@@ -745,6 +751,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "pentavalent !== 'unknown' && pentavalent !== 'noVaccinated'"
                 }
               },
               {
@@ -805,6 +814,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "afp !== 'unknown' && afp !== 'noVaccinated'"
                 }
               },
               {
@@ -853,6 +865,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "measles !== 'unknown' && measles !== 'noVaccinated'"
                 }
               },
               {
@@ -909,6 +924,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "pcv !== 'unknown' && pcv !== 'noVaccinated'"
                 }
               },
               {
@@ -961,6 +979,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "rotavirus !== 'unknown' && rotavirus !== 'noVaccinated'"
                 }
               },
               {
@@ -1005,6 +1026,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "yellowFever !== 'unknown' && yellowFever !== 'noVaccinated'"
                 }
               },
               {
@@ -1057,6 +1081,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "ipv !== 'unknown' && ipv !== 'noVaccinated'"
                 }
               },
               {
@@ -1105,6 +1132,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "meningitisA !== 'unknown' && meningitisA !== 'noVaccinated'"
                 }
               },
               {
@@ -1149,6 +1179,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "ppv23 !== 'unknown' && ppv23 !== 'noVaccinated'"
                 }
               },
               {
@@ -1197,6 +1230,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "hpv !== 'unknown' && hpv !== 'noVaccinated'"
                 }
               },
               {
@@ -1257,6 +1293,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "antitetanusVaccinationOfTheMother !== 'unknown' && antitetanusVaccinationOfTheMother !== 'noVaccinated'"
                 }
               },
               {
@@ -1301,6 +1340,9 @@
                       "concept": "nan"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "accompanyingChildrenStatusChecked !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
                 }
               }
             ]
@@ -1330,7 +1372,7 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
+                  "rendering": "number",
                   "concept": "weightAtThisDate"
                 }
               }
@@ -1366,13 +1408,13 @@
                 }
               },
               {
-                "id": "numberOfDays",
-                "label": "Number of days",
+                "id": "stayInIntensiveCareNumberOfDays",
+                "label": "number of days",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
-                  "concept": "numberOfDays"
+                  "rendering": "number",
+                  "concept": "stayInIntensiveCareNumberOfDays"
                 },
                 "hide": {
                   "hideWhenExpression": "stayInIntensiveCare !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -1399,13 +1441,13 @@
                 }
               },
               {
-                "id": "numberOfDays",
-                "label": "Number of days",
+                "id": "stayInIsolationUnitNumberOfDays",
+                "label": "number of days",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
-                  "concept": "numberOfDays"
+                  "rendering": "number",
+                  "concept": "stayInIsolationUnitNumberOfDays"
                 },
                 "hide": {
                   "hideWhenExpression": "stayInIsolationUnit !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -1437,7 +1479,7 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
+                  "rendering": "number",
                   "concept": "durationInHours"
                 },
                 "hide": {
@@ -1470,7 +1512,7 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
+                  "rendering": "number",
                   "concept": "durationInDays"
                 },
                 "hide": {
@@ -1611,8 +1653,11 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
+                  "rendering": "number",
                   "concept": "hb"
+                },
+                "hide": {
+                  "hideWhenExpression": "bloodTransfusion !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
                 }
               },
               {
@@ -2277,16 +2322,16 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
+                "id": "mostSeriousIfOtherSpecify",
                 "label": "If other specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "ifOtherSpecify"
+                  "concept": "mostSeriousIfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "diseasesTreatedDuringTheStayMostSerious !== 'other'"
+                  "hideWhenExpression": "mostSerious !== 'mostSeriousOther'"
                 }
               },
               {
@@ -2810,16 +2855,16 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
+                "id": "secondary1IfOtherSpecify",
                 "label": "If other specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "ifOtherSpecify"
+                  "concept": "secondary1IfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "diseasesTreatedDuringTheStaySecondary1 !== 'other'"
+                  "hideWhenExpression": "secondary1 !== 'other'"
                 }
               },
               {
@@ -3343,16 +3388,16 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
+                "id": "secondary2IfOtherSpecify",
                 "label": "If other specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "ifOtherSpecify"
+                  "concept": "secondary2IfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "diseasesTreatedDuringTheStaySecondary2 !== 'other'"
+                  "hideWhenExpression": "secondary2 !== 'secondary2Other'"
                 }
               },
               {
@@ -3872,16 +3917,16 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
+                "id": "secondary3IfOtherSpecify",
                 "label": "If other specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "ifOtherSpecify"
+                  "concept": "secondary3IfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "diseasesTreatedDuringTheStaySecondary3 !== 'other'"
+                  "hideWhenExpression": "secondary3 !== 'secondary3Other'"
                 }
               }
             ]
@@ -4030,7 +4075,7 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
+                  "rendering": "number",
                   "concept": "hb"
                 }
               }
@@ -4151,13 +4196,13 @@
                 }
               },
               {
-                "id": "timeOfDeath",
-                "label": "Time of death (hhmm)",
+                "id": "dateOfDeath",
+                "label": "Date of death",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "datetime",
-                  "concept": "timeOfDeath"
+                  "rendering": "date",
+                  "concept": "dateOfDeath"
                 },
                 "hide": {
                   "hideWhenExpression": "outcomeOfTheStayInItfc !== 'deceased'"
@@ -4473,8 +4518,9 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "immunization-form-workspace",
-                  "concept": "pleaseCheckInimmunizationsTheVaccinationStatusOfTheMotherAndAccompanyingChildren"
+                  "rendering": "workspace-launcher",
+                  "buttonLabel": "Capture patient immunizations",
+                  "workspaceName": "immunization-form-workspace"
                 }
               },
               {
@@ -4483,8 +4529,9 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "order-basket",
-                  "concept": "prescribeNewExamsAndMedicationWithTheOrderBasketWheneverNecessary"
+                  "rendering": "workspace-launcher",
+                  "buttonLabel": "Order medications",
+                  "workspaceName": "order-basket"
                 }
               },
               {
@@ -4493,8 +4540,9 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "appointments-form-workspace",
-                  "concept": "inappointmentsSetTheNextDateForFollowUpWheneverNecessary"
+                  "rendering": "workspace-launcher",
+                  "buttonLabel": "Set the next appointment date",
+                  "workspaceName": "appointments-form-workspace"
                 }
               }
             ]

@@ -33,29 +33,12 @@
                 "required": false,
                 "questionOptions": {
                   "rendering": "datetime",
-                  "concept": "admissionDateAndTime"
+                  "concept": "admissionDateAndTime",
+                  "calculate": {
+                    "calculateExpression": "new Date()"
+                  }
                 },
                 "default": "encounter dateTime"
-              },
-              {
-                "id": "spontaneousAdmission",
-                "label": "Spontaneous admission",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "spontaneousAdmission",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                    }
-                  ]
-                }
               },
               {
                 "id": "admissionType",
@@ -75,16 +58,32 @@
                       "concept": "9f2fe30f-a8f0-49ba-82e4-71c232259130"
                     },
                     {
-                      "label": "Patient referred",
-                      "concept": "patientReferred"
-                    },
-                    {
                       "label": "Readmission",
                       "concept": "e4e42ecd-196b-4aa8-a265-bfbed09d77cf"
                     },
                     {
                       "label": "Relapse",
                       "concept": "relapse"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "spontaneousAdmission",
+                "label": "Spontaneous admission",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "spontaneousAdmission",
+                  "answers": [
+                    {
+                      "label": "Yes",
+                      "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                    },
+                    {
+                      "label": "No",
+                      "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
                 }
@@ -142,7 +141,7 @@
                   "concept": "ifOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "Invalid expression format"
+                  "hideWhenExpression": "isEmpty(ifReferredByWhomOrFromWhere) || ifReferredByWhomOrFromWhere !== 'ifReferredByWhomOrFromWhereOther'"
                 }
               }
             ]
@@ -230,13 +229,13 @@
                 }
               },
               {
-                "id": "specifyWho",
+                "id": "isThereSomeoneTreatedForTbSinceTheBirthOfTheChildSpecifyWho",
                 "label": "Specify who",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "specifyWho"
+                  "concept": "isThereSomeoneTreatedForTbSinceTheBirthOfTheChildSpecifyWho"
                 },
                 "hide": {
                   "hideWhenExpression": "isThereSomeoneTreatedForTbSinceTheBirthOfTheChild !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -317,7 +316,7 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
+                  "rendering": "number",
                   "concept": "numberOfMealsPerDayBeforeIllness"
                 }
               },
@@ -327,7 +326,7 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
+                  "rendering": "number",
                   "concept": "numberOfMealsDuringTheLast24Hours"
                 }
               }
@@ -362,13 +361,13 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
+                "id": "whoIsTheHeadOfFamilyIfOtherSpecify",
                 "label": "If other specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "ifOtherSpecify"
+                  "concept": "whoIsTheHeadOfFamilyIfOtherSpecify"
                 },
                 "hide": {
                   "hideWhenExpression": "whoIsTheHeadOfFamily !== 'whoIsTheHeadOfFamilyOther'"
@@ -411,7 +410,9 @@
                 "required": false,
                 "questionOptions": {
                   "rendering": "number",
-                  "concept": "numberOfBirthsForTheMother"
+                  "concept": "numberOfBirthsForTheMother",
+                  "max": "20",
+                  "min": "1"
                 }
               },
               {
@@ -421,8 +422,16 @@
                 "required": false,
                 "questionOptions": {
                   "rendering": "number",
-                  "concept": "numberOfMothersChildrenAlive"
-                }
+                  "concept": "numberOfMothersChildrenAlive",
+                  "min": "1"
+                },
+                "validators": [
+                  {
+                    "type": "js_expression",
+                    "failsWhenExpression": "numberOfBirthsForTheMother < numberOfMothersChildrenAlive",
+                    "message": "Value should be less than Number of births for the mother"
+                  }
+                ]
               },
               {
                 "id": "rankInTheBirthOrder",
@@ -431,8 +440,16 @@
                 "required": false,
                 "questionOptions": {
                   "rendering": "number",
-                  "concept": "rankInTheBirthOrder"
-                }
+                  "concept": "rankInTheBirthOrder",
+                  "min": "1"
+                },
+                "validators": [
+                  {
+                    "type": "js_expression",
+                    "failsWhenExpression": "numberOfBirthsForTheMother < rankInTheBirthOrder",
+                    "message": "Value should be less than Number of births for the mother"
+                  }
+                ]
               },
               {
                 "id": "theChildIs",
@@ -464,7 +481,7 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "decimalnumber",
+                  "rendering": "number",
                   "concept": "nbOfPersonsSharingTheFamilyMeal"
                 }
               }
@@ -552,6 +569,9 @@
                       "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                     }
                   ]
+                },
+                "hide": {
+                  "hideWhenExpression": "antitetanusVaccinationOfTheMother !== 'unknown' && antitetanusVaccinationOfTheMother !== 'notVaccinated'"
                 }
               }
             ]
@@ -663,8 +683,9 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "patient-vitals-biometrics-form-workspace",
-                  "concept": "pleaseCheckInvitalsBiometricsFortemperaturerRateweightheightAndmuacAndAddTodaysMeasurements"
+                  "rendering": "workspace-launcher",
+                  "buttonLabel": "Capture patient vitals",
+                  "workspaceName": "patient-vitals-biometrics-form-workspace"
                 }
               }
             ]
@@ -705,7 +726,7 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "radio",
+                  "rendering": "select",
                   "concept": "mainDiagnosisAtAdmission",
                   "answers": [
                     {
@@ -1216,16 +1237,16 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
+                "id": "mainDiagnosisAtAdmissionIfOtherSpecify",
                 "label": "If other specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "ifOtherSpecify"
+                  "concept": "mainDiagnosisAtAdmissionIfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "diagnosisAtAdmissionMain !== 'other'"
+                  "hideWhenExpression": "mainDiagnosisAtAdmission !== 'mainDiagnosisAtAdmissionOther'"
                 }
               },
               {
@@ -1745,16 +1766,16 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
+                "id": "secondary1IfOtherSpecify",
                 "label": "If other specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "ifOtherSpecify"
+                  "concept": "secondary1IfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "diagnosisAtAdmissionSecondary1 !== 'other'"
+                  "hideWhenExpression": "secondary1 !== 'other'"
                 }
               },
               {
@@ -2274,16 +2295,16 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
+                "id": "secondary2IfOtherSpecify",
                 "label": "If other specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "ifOtherSpecify"
+                  "concept": "secondary2IfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "diagnosisAtAdmissionSecondary2 !== 'other'"
+                  "hideWhenExpression": "secondary2 !== 'other'"
                 }
               },
               {
@@ -2803,16 +2824,16 @@
                 }
               },
               {
-                "id": "ifOtherSpecify",
+                "id": "secondary3IfOtherSpecify",
                 "label": "If other specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "ifOtherSpecify"
+                  "concept": "secondary3IfOtherSpecify"
                 },
                 "hide": {
-                  "hideWhenExpression": "diagnosisAtAdmissionSecondary3 !== 'other'"
+                  "hideWhenExpression": "secondary3 !== 'other'"
                 }
               }
             ]
@@ -2842,8 +2863,9 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "immunization-form-workspace",
-                  "concept": "pleaseCheckInimmunizations"
+                  "rendering": "workspace-launcher",
+                  "buttonLabel": "Capture patient immunizations",
+                  "workspaceName": "immunization-form-workspace"
                 }
               },
               {
@@ -2852,8 +2874,9 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "medications-form-workspace",
-                  "concept": "pleaseCheckInmedications"
+                  "rendering": "workspace-launcher",
+                  "buttonLabel": "Capture patient medications",
+                  "workspaceName": "medications-form-workspace"
                 }
               },
               {
@@ -2862,8 +2885,9 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "order-basket",
-                  "concept": "prescribeNewExamsAndMedicationWithTheOrderBasketIfNecessary"
+                  "rendering": "workspace-launcher",
+                  "buttonLabel": "Order medications",
+                  "workspaceName": "order-basket"
                 }
               }
             ]
