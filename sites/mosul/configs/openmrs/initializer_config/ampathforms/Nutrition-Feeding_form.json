@@ -25,7 +25,7 @@
                 "concept": "",
                 "rendering": "fixed-value",
                 "calculate": {
-                  "calculateExpression": "customGetEncounterDates(patient.id, 'efb1ee49-ed60-40f4-aa2e-c45143dc4d49')"
+                  "calculateExpression": "resolve(customGetEncounterDates(patient.id, 'efb1ee49-ed60-40f4-aa2e-c45143dc4d49'))"
                 }
               },
               "hide": {
@@ -48,7 +48,43 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "includes('previousEncounterDates', 'encounterDate')",
+                  "failsWhenExpression": "includes('previousEncounterDates', 'currentEncounterDate')",
+                  "message": "Date entered already exists, please update the existing entry or enter another date"
+                }
+              ]
+            },
+            {
+              "label": "Formatted encounter date",
+              "type": "obs",
+              "id": "currentEncounterDate",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "fixed-value",
+                "calculate": {
+                  "calculateExpression": "formatDate(encounterDate,'YYYY-MM-DD')"
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "true"
+              }
+            },
+            {
+              "label": "Date",
+              "type": "encounterDatetime",
+              "required": true,
+              "id": "encounterDate",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "583b6ade-118f-4582-8e4b-da340d358f9b"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "includes('previousEncounterDates', (new dayjs('encounterDate').format('YYYY-MM-DD')))",
                   "message": "Date entered already exists, please update the existing entry or enter another date"
                 }
               ]
