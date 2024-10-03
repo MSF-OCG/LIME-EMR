@@ -1076,7 +1076,7 @@
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "multiCheckbox",
+                  "rendering": "select",
                   "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
                   "answers": [
                     {
@@ -1481,12 +1481,82 @@
                 }
               },
               {
-                "id": "whatTypeOfViolence",
-                "label": "What type(s) of violence",
+                "id": "whatTypeOfViolence1",
+                "label": "What type(s) of violence? - 1",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "multiCheckbox",
+                  "rendering": "radio",
+                  "concept": "d8c84af2-bd9b-4bf3-a815-81652cb0b0bc",
+                  "answers": [
+                    {
+                      "label": "Sexual",
+                      "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
+                    },
+                    {
+                      "label": "Physical",
+                      "concept": "6473ad84-53e1-4bb0-bb25-32ac424aaa97"
+                    },
+                    {
+                      "label": "Verbal",
+                      "concept": "58bdf548-26ee-42da-8837-8ecaf82fce1d"
+                    },
+                    {
+                      "label": "Psychological",
+                      "concept": "5d595702-1991-47fa-bea1-8682e23c62bd"
+                    },
+                    {
+                      "label": "Other",
+                      "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    }
+                  ]
+                },
+                "hide": {
+                  "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                }
+              },
+              {
+                "id": "whatTypeOfViolence2",
+                "label": "What type(s) of violence? - 2",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "d8c84af2-bd9b-4bf3-a815-81652cb0b0bc",
+                  "answers": [
+                    {
+                      "label": "Sexual",
+                      "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
+                    },
+                    {
+                      "label": "Physical",
+                      "concept": "6473ad84-53e1-4bb0-bb25-32ac424aaa97"
+                    },
+                    {
+                      "label": "Verbal",
+                      "concept": "58bdf548-26ee-42da-8837-8ecaf82fce1d"
+                    },
+                    {
+                      "label": "Psychological",
+                      "concept": "5d595702-1991-47fa-bea1-8682e23c62bd"
+                    },
+                    {
+                      "label": "Other",
+                      "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    }
+                  ]
+                },
+                "hide": {
+                  "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                }
+              },
+              {
+                "id": "whatTypeOfViolence3",
+                "label": "What type(s) of violence? - 3",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
                   "concept": "d8c84af2-bd9b-4bf3-a815-81652cb0b0bc",
                   "answers": [
                     {
