@@ -50,6 +50,9 @@
                 "questionOptions": {
                   "rendering": "radio",
                   "concept": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7",
+                  "calculate": {
+                    "calculateExpression": "resolve(api.getLatestObs(patient.id, 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7'))?.valueCodeableConcept?.coding[0]?.code"
+                  },
                   "answers": [
                     {
                       "label": "Male",
