@@ -1808,6 +1808,9 @@
               "questionOptions": {
                 "rendering": "select",
                 "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
+                "calculate": {
+                  "calculateExpression": "resolve(api.getLatestObs(patient.id, '22809b19-54ca-4d88-8d26-9577637c184e'))?.valueCodeableConcept?.coding[0]?.code"
+                },
                 "answers": [
                   {
                     "label": "Acute stress reaction",
