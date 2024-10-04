@@ -5,7 +5,13 @@ on:
   push:
     branches:
       - main
-  
+  pull_request:
+    branches:
+      - main
+env:
+  MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
+  MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}
+
 jobs:
   build-and-publish:
     permissions: 
@@ -15,7 +21,9 @@ jobs:
     strategy:
         matrix:
           java: [ '8' ]
-
+    outputs:
+      msf_artifact_version: ${{steps.get_version.outputs.built_artifact_version}}
+      msf_artifact_id: ${{steps.get_artifactId.outputs.built_artifact_id}}
     steps:
       - uses: actions/checkout@v4
       
@@ -28,37 +36,71 @@ jobs:
 
       - name: Set settings.xml
         uses: s4u/maven-settings-action@v3.0.0
+        if: ${{ github.event_name == 'push' }}
         with:
           servers: |
             [{
               "id": "msf-ocg-github-lime-emr",
-              "username": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}",
-              "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
+              "username": "${{ env.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}",
+              "password": "${{ env.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
             }]
-  
+        
       - name: Build and Test
         run: mvn --batch-mode --update-snapshots --activate-profiles validator -Pazure clean package
 
+      - name: Get MSF MSF version
+        working-directory: "${{ github.workspace }}/distro"
+        id: get_version
+        run: |
+          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo "built_artifact_version=$VERSION" >> $GITHUB_OUTPUT
+    
+      - name: Get MSF MSF artifactId
+        working-directory: "${{ github.workspace }}/distro"
+        id: get_artifactId
+        run: |
+          ARTIFACT_ID=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
+          echo "built_artifact_id=$ARTIFACT_ID" >> $GITHUB_OUTPUT
+
       - name: Publish MSF distro artifacts to GitHub
         uses: ./.github/actions/upload-maven-artifacts
+        if: ${{ github.event_name == 'push' }}
         with:
           artifact-name: "distro"
           artifact-path: "${{ github.workspace }}/distro"
           maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
           maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
-          
-      - name: Publish MSF Mosul to artifacts GitHub
-        uses: ./.github/actions/upload-maven-artifacts
-        with:
-          artifact-name: "Iraq"
-          artifact-path: "${{ github.workspace }}/countries/iraq"
-          maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
-          maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
 
-      - name: Publish MSF Iraq artifacts to GitHub
+      - name: Publish MSF Distro artifacts to GitHub
         uses: ./.github/actions/upload-maven-artifacts
+        if: ${{ github.event_name == 'push' }}
         with:
-          artifact-name: "Mosul"
-          artifact-path: "${{ github.workspace }}/sites/mosul"
-          maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
-          maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
+          artifact-name: "distro"
+          artifact-path: "${{ github.workspace }}/distro"
+          maven-server-username: "${{ env.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
+          maven-server-token: "${{ env.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
+
+      - name: cache Distro artifact for future use
+        if: ${{ github.event_name != 'push' }}
+        uses: actions/cache@v4
+        with:
+          path: ./distro/target/${{ steps.get_artifactId.outputs.built_artifact_id }}-${{ steps.get_version.outputs.built_artifact_version }}.zip
+          key: ${{ github.sha }}
+
+  run-e2e-on-push:    
+    uses: ./.github/workflows/run-mosul-e2e-tests.yml
+    with:
+      frontend-config-file-path: "./emr/distro/${{ needs.build-and-publish.outputs.msf_artifact_id }}-${{ needs.build-and-publish.outputs.msf_artifact_version }}/binaries/openmrs/frontend/spa-assemble-config.json"
+      start-server-command: "curl -sSL -H 'Cache-Control: no-cache, no-store' -H 'Authorization: token $MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN' https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-Tooling/dev/Procedures/local_lime_emr.sh | bash -s -- install distro"
+    needs: build-and-publish
+    if: ${{ github.event_name == 'push' }}
+
+  run-e2e-on-pull-request:
+    uses: ./.github/workflows/run-mosul-e2e-tests.yml
+    with:
+      frontend-config-file-path: "./target/${{ needs.build-and-publish.outputs.msf_artifact_id }}-${{ needs.build-and-publish.outputs.msf_artifact_version }}/distro/binaries/openmrs/frontend/spa-assemble-config.json"
+      start-server-command: "cd ./target/${{ needs.build-and-publish.outputs.msf_artifact_id }}-${{ needs.build-and-publish.outputs.msf_artifact_version }}/run/docker/scripts && ./start-demo.sh"
+      test-artifact-cache-path: ./distro/target/${{ needs.build-and-publish.outputs.msf_artifact_id }}-${{ needs.build-and-publish.outputs.msf_artifact_version }}.zip
+      test-artifact-cache-name: "${{ needs.build-and-publish.outputs.msf_artifact_id }}-${{ needs.build-and-publish.outputs.msf_artifact_version }}"
+    needs: build-and-publish
+    if: ${{ github.event_name != 'push' }}
