@@ -18,6 +18,21 @@
           "isExpanded": false,
           "questions": [
             {
+              "label": "Previous encounter dates",
+              "type": "obs",
+              "id": "previousEncounterDates",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "fixed-value",
+                "calculate": {
+                  "calculateExpression": "resolve(customGetEncounterDates(patient.id, 'efb1ee49-ed60-40f4-aa2e-c45143dc4d49'))"
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "true"
+              }
+            },
+            {
               "label": "Date",
               "type": "encounterDatetime",
               "required": true,
@@ -30,6 +45,11 @@
                 {
                   "type": "date",
                   "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "includes('previousEncounterDates', formatDate(myValue, 'YYYY-MM-DD')))",
+                  "message": "Date entered already exists, please update the existing entry or enter another date"
                 }
               ]
             },
