@@ -48,43 +48,7 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "includes('previousEncounterDates', 'currentEncounterDate')",
-                  "message": "Date entered already exists, please update the existing entry or enter another date"
-                }
-              ]
-            },
-            {
-              "label": "Formatted encounter date",
-              "type": "obs",
-              "id": "currentEncounterDate",
-              "questionOptions": {
-                "concept": "",
-                "rendering": "fixed-value",
-                "calculate": {
-                  "calculateExpression": "formatDate(encounterDate,'YYYY-MM-DD')"
-                }
-              },
-              "hide": {
-                "hideWhenExpression": "true"
-              }
-            },
-            {
-              "label": "Date",
-              "type": "encounterDatetime",
-              "required": true,
-              "id": "encounterDate",
-              "questionOptions": {
-                "rendering": "date",
-                "concept": "583b6ade-118f-4582-8e4b-da340d358f9b"
-              },
-              "validators": [
-                {
-                  "type": "date",
-                  "allowFutureDates": "false"
-                },
-                {
-                  "type": "js_expression",
-                  "failsWhenExpression": "includes('previousEncounterDates', (new dayjs('encounterDate').format('YYYY-MM-DD')))",
+                  "failsWhenExpression": "includes('previousEncounterDates', formatDate(myValue, 'YYYY-MM-DD')))",
                   "message": "Date entered already exists, please update the existing entry or enter another date"
                 }
               ]
