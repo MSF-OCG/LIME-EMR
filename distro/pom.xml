@@ -20,7 +20,7 @@
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
     <limeEmrVersion>0.1.0</limeEmrVersion>
-    <MSFReferenceapplicationDockerVersion>qa</MSFReferenceapplicationDockerVersion>
+    <referenceApplicationDockerVersion>qa</referenceApplicationDockerVersion>
     <datafilterVersion>2.3.0-SNAPSHOT</datafilterVersion>
     <yamlCombinePluginVersion>2.0.6</yamlCombinePluginVersion>
   </properties>
@@ -262,7 +262,7 @@
               <target>
                 <echo message="Adding msf docker image version"/>
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
-                              match="O3_DOCKER_IMAGE_TAG=.*" replace="O3_DOCKER_IMAGE_TAG=${MSFReferenceapplicationDockerVersion}" />
+                              match="O3_DOCKER_IMAGE_TAG=.*" replace="O3_DOCKER_IMAGE_TAG=${referenceApplicationDockerVersion}" />
               </target>
             </configuration>
           </execution>

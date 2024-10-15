@@ -6,7 +6,7 @@ echo "$INFO Creating OpenFn admin user..."
 # Adding MSF admin account in a subshell to prevent stopping execution on error
 (
     # create OpenFn user by default
-    docker exec -it ozone-web-1 /app/bin/lightning eval \
+    docker exec -it ozone-msf-distro-web-1 /app/bin/lightning eval \
         'Lightning.Setup.setup_user(
             %{
                 role: :superuser,
@@ -22,13 +22,13 @@ echo "$INFO Creating OpenFn admin user..."
                     schema: "raw",
                     body: %{"username" => System.get_env("MSF_OPENMRS_USERNAME"), "password" => System.get_env("MSF_OPENMRS_PASSWORD")}
                 },
-                %{ 
+                %{
                     name: "dhis2",
-                    schema: "raw", 
+                    schema: "raw",
                     body: %{"username" => System.get_env("MSF_DHIS2_USERNAME"), "password" => System.get_env("MSF_DHIS2_PASSWORD")}
                 }
             ]
-        )'  && echo "$INFO Creating OpenFn admin user completed successfully." 
+        )'  && echo "$INFO Creating OpenFn admin user completed successfully."
 
 ) || echo "$ERROR Creating OpenFn admin user failed. Skipping"
 echo ""
