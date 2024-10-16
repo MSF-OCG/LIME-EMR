@@ -6,7 +6,7 @@ echo "$INFO Creating OpenFn admin user..."
 # Adding MSF admin account in a subshell to prevent stopping execution on error
 (
     # create OpenFn user by default
-    docker exec -it ozone-msf-distro-web-1 /app/bin/lightning eval \
+    docker exec -it $PROJECT_NAME-web-1 /app/bin/lightning eval \
         'Lightning.Setup.setup_user(
             %{
                 role: :superuser,

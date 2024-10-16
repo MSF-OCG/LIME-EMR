@@ -1,0 +1,43 @@
+networks:
+  web:
+    external: true
+
+services:
+  traefik:
+    image: traefik:v2.6
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - web
+    env_file:
+      - '${MSF_ENV_CONFIG_PATH}/${MSF_SERVER_TYPE}.msf.env'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - '${TRAEFIK_CONFIG_PATH}/config/traefik.yml:/etc/traefik/traefik.yml'
+      - '${TRAEFIK_CONFIG_PATH}/config/tls.yml:/etc/traefik/tls.yml'
+      - '${TRAEFIK_CONFIG_PATH}/letsencrypt:/letsencrypt'
+      - certs:/etc/ssl/traefik
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.traefik.rule: "Host(`${TRAEFIK_API_URL}`)"
+      traefik.http.routers.traefik.entrypoints: "websecure"
+      traefik.http.routers.traefik.service: "api@internal"
+      traefik.http.routers.traefik.middlewares: "auth"
+      traefik.http.middlewares.auth.basicauth.users: "${TRAEFIK_ADMIN_USER}:${TRAEFIK_ADMIN_PASSWORD}"
+
+    depends_on:
+      reverse-proxy-https-helper:
+        condition: service_completed_successfully
+  reverse-proxy-https-helper:
+    image: alpine
+    env_file:
+      - '${MSF_ENV_CONFIG_PATH}/${MSF_SERVER_TYPE}.msf.env'
+    command: sh -c "cd /etc/ssl/traefik
+      && wget traefik.me/fullchain.pem -O cert.pem
+      && wget traefik.me/privkey.pem -O privkey.pem"
+    volumes:
+      - certs:/etc/ssl/traefik
+volumes:
+  certs:

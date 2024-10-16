@@ -164,6 +164,7 @@
                     <include>docker-compose-files.txt </include>
                     <include>merge-openfn-yaml.groovy</include>
                     <include>*.sh</include>
+                    <include>*.csv</include>
                   </includes>
                 </resource>
               </resources>
@@ -171,7 +172,7 @@
           </execution>
           <execution>
             <!-- Copy MSF OpenFn docker compose .yml file -->
-            <id>Copy MSF OpenFn docker compose .yml file</id>
+            <id>Copy MSF docker compose .yml file</id>
             <phase>prepare-package</phase>
             <goals>
               <goal>copy-resources</goal>
@@ -184,7 +185,8 @@
                 <resource>
                   <directory>${project.basedir}/../scripts</directory>
                   <includes>
-                    <include>docker-compose-openfn.yml </include>
+                    <include>docker-compose*.yml</include>
+                    <include>docker-compose*.yaml</include>
                   </includes>
                 </resource>
               </resources>
@@ -212,21 +214,21 @@
             </configuration>
           </execution>
           <execution>
-            <id>Copy local resources</id>
+            <id>Copy MSF environment variables</id>
             <phase>process-resources</phase>
             <goals>
               <goal>copy-resources</goal>
             </goals>
             <configuration>
               <outputDirectory>
-                ${project.build.directory}/${project.artifactId}-${project.version}/distro/configs</outputDirectory>
+                ${project.build.directory}/${project.artifactId}-${project.version}/run/docker</outputDirectory>
               <overwrite>true</overwrite>
               <resources>
                 <resource>
-                  <directory>${project.basedir}/configs</directory>
-                  <excludes>
-                    <exclude>*/**/${envFileToExclude}</exclude>
-                  </excludes>
+                  <directory>${project.basedir}/../scripts/secrets</directory>
+                  <includes>
+                    <include>${envFileToInclude}</include>
+                  </includes>
                 </resource>
               </resources>
             </configuration>
@@ -246,7 +248,7 @@
             </goals>
             <configuration>
               <target>
-                <echo message="Adding msf frontend config"/>
+                <echo level="info" message="Adding msf frontend config"/>
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
                               match="ozone-frontend-config.json" replace="msf-frontend-config.json" />
               </target>
@@ -260,28 +262,24 @@
             </goals>
             <configuration>
               <target>
-                <echo message="Adding msf docker image version"/>
+                <echo level="info" message="Adding msf docker image version"/>
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
                               match="O3_DOCKER_IMAGE_TAG=.*" replace="O3_DOCKER_IMAGE_TAG=${referenceApplicationDockerVersion}" />
               </target>
             </configuration>
           </execution>
           <execution>
-            <id>Add OpenFn Environment variables</id>
+            <id>Add MSF-OCG enviroment Configuration to ozone</id>
             <phase>process-resources</phase>
             <goals>
               <goal>run</goal>
             </goals>
             <configuration>
               <target>
-                <echo message="Adding OpenFn environment versions" />
-                <replace
-                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
-                  token='echo "$INFO Exporting distro paths..."'>
-                  <replacevalue>
-                    echo "$INFO Exporting distro paths..."&#10;&#9;export OPENFN_CONFIG_PATH=$DISTRO_PATH/configs/openfn&#10;&#9;export MSF_SERVER_TYPE="${msfServerType}"&#10;&#9;echo "→ OPENFN_CONFIG_PATH=$OPENFN_CONFIG_PATH"&#10;&#9;echo "→ MSF_SERVER_TYPE=$MSF_SERVER_TYPE"
-                  </replacevalue>
-                </replace>
+                <echo level="info" message="Adding msf docker image version"/>
+                <concat destfile="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env" append="true">
+                  <filelist dir="${project.build.directory}/${project.artifactId}-${project.version}/run/docker" files="${envFileToInclude}"/>
+                </concat>
               </target>
             </configuration>
           </execution>
@@ -293,7 +291,7 @@
             </goals>
             <configuration>
               <target>
-                <echo message="Add openFn admin user" />
+                <echo level="info" message="Adding openFn admin user" />
                 <replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
                   token="displayAccessURLsWithCredentials">
@@ -301,11 +299,79 @@
                     source run_msf_addons.sh&#10;displayAccessURLsWithCredentials
                   </replacevalue>
                 </replace>
+
+                <echo level="info" message="Adding openFn server to ozone csv template" />
                 <replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/ozone-urls-template.csv"
-                  token="OpenMRS 3,${O3_HOSTNAME}/openmrs/spa,admin,Admin123,openmrs">
+                  token="OpenMRS 3,${SERVER_SCHEME}://${O3_HOSTNAME}/openmrs/spa,admin,Admin123,openmrs">
                   <replacevalue>
-                    OpenFn,localhost:4000,admin@openfn.org,Admin123,openfn&#10;OpenMRS 3,${O3_HOSTNAME}/openmrs/spa,admin,Admin123,openmrs
+                    OpenFn,${SERVER_SCHEME}://${OPENFN_HOSTNAME},admin@openfn.org,Admin1234567,openfn&#10;OpenMRS 3,${SERVER_SCHEME}://${O3_HOSTNAME}/openmrs/spa,admin,Admin123,openmrs
+                  </replacevalue>
+                </replace>
+
+                <echo level="info" message="Adding MSF utils to start script" />
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
+                  token='source utils.sh'>
+                  <replacevalue>
+                    source utils.sh&#10;&#10;source msf_utils.sh
+                  </replacevalue>
+                </replace>
+
+                <echo level="info" message="Adding MSF environment variables to Ozone" />
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
+                  token='echo "→ ERPNEXT_SCRIPTS_PATH=$ERPNEXT_SCRIPTS_PATH"'>
+                  <replacevalue>
+                    echo "→ ERPNEXT_SCRIPTS_PATH=$ERPNEXT_SCRIPTS_PATH"&#10;&#9;setMSFEnvironment
+                  </replacevalue>
+                </replace>
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
+                  token='echo "→ DISTRO_PATH=$DISTRO_PATH"'>
+                  <replacevalue>
+                    echo "→ DISTRO_PATH=$DISTRO_PATH"
+                    export MSF_ENV_CONFIG_PATH=${project.build.directory}/${project.artifactId}-${project.version}/run/docker
+                    export MSF_SERVER_TYPE="${msfServerType}"
+                    echo "→ MSF_SERVER_TYPE=$MSF_SERVER_TYPE"
+                  </replacevalue>
+                </replace>
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
+                  token='echo "$INFO Exporting Traefik hostnames..."'>
+                  <replacevalue>
+                    echo "$INFO Exporting Traefik hostnames..."
+                    export OPENFN_HOSTNAME=openfn-"${IP_WITH_DASHES}.traefik.me"
+                    echo "→ OPENFN_HOSTNAME=$OPENFN_HOSTNAME"
+                  </replacevalue>
+                </replace>
+
+                <echo level="info" message="Adding traefik to Ozone start script" />
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
+                  token='echo "$INFO Skipping running Nginx proxy... (\$TRAEFIK=true)"'>
+                  <replacevalue>
+                    runMSFServerTraefikAndNginxProxy
+                  </replacevalue>
+                </replace>proxy_pass http://fhir-odoo:8080;
+
+                <!-- Todo: Remove this when fhir-odoo nolonger breaks nginx-proxy -->
+                <echo level="info" message="Fixing nginx proxy not starting" />
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/proxy/default.conf.template"
+                  token='proxy_pass http://fhir-odoo:8080;'>
+                  <replacevalue>
+                    set $fhirOdd fhir-odoo:8080;
+                    proxy_pass http://$fhirOdd;
+                  </replacevalue>
+                </replace>
+
+                <echo level="info" message="Adding traefik host access details Ozone start script" />
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
+                  token='displayAccessURLsWithCredentials'>
+                  <replacevalue>
+                    displayAccessURLsWithCredentials&#10;&#10;displayMSFAccessURLsWithCredentials
                   </replacevalue>
                 </replace>
               </target>
@@ -370,7 +436,7 @@
     <profile>
       <id>local</id>
       <properties>
-        <envFileToExclude>azure.openfn.env</envFileToExclude>
+        <envFileToInclude>local.msf.env</envFileToInclude>
         <msfServerType>local</msfServerType>
       </properties>
       <activation>
@@ -380,7 +446,7 @@
     <profile>
       <id>azure</id>
       <properties>
-        <envFileToExclude>local.openfn.env</envFileToExclude>
+        <envFileToInclude>azure.msf.env</envFileToInclude>
         <msfServerType>azure</msfServerType>
       </properties>
     </profile>
