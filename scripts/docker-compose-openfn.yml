@@ -1,7 +1,11 @@
+networks:
+  web:
+    external: true
+
 services:
   postgresql:
     env_file:
-      - '${OPENFN_CONFIG_PATH}/${MSF_SERVER_TYPE}.openfn.env'
+      - '${MSF_ENV_CONFIG_PATH}/.env'
     stop_grace_period: '3s'
     volumes:
       - "${SQL_SCRIPTS_PATH}/postgresql/create_openfn_db.sh:/docker-entrypoint-initdb.d/create_openfn_db.sh"
@@ -11,12 +15,13 @@ services:
     image: 'openfn/lightning:latest'
     command: ["/app/bin/lightning", "eval", "Lightning.Release.migrate"]
     env_file:
-      - '${OPENFN_CONFIG_PATH}/${MSF_SERVER_TYPE}.openfn.env'
+      - '${MSF_ENV_CONFIG_PATH}/.env'
     depends_on:
       postgresql:
         condition: service_healthy
     networks:
       - ozone
+      - web
 
   web:
     platform: linux/x86_64/v8
@@ -28,13 +33,18 @@ services:
           cpus: '${DOCKER_WEB_CPUS:-0}'
           memory: '${DOCKER_WEB_MEMORY:-0}'
     env_file:
-      - '${OPENFN_CONFIG_PATH}/${MSF_SERVER_TYPE}.openfn.env'
+      - '${MSF_ENV_CONFIG_PATH}/.env'
     depends_on:
       migrations:
         condition: service_completed_successfully
       postgresql: 
         condition: service_started
-
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.web.rule: "Host(`${OPENFN_HOSTNAME}`)"
+      traefik.http.routers.web.entrypoints: "websecure"
+      traefik.http.routers.web.tls: "true"
+      traefik.http.services.web.loadbalancer.server.port: "${URL_PORT:-4000}"
     healthcheck:
       test: '${DOCKER_WEB_HEALTHCHECK_TEST:-curl localhost:4000/health_check}'
       interval: '10s'
@@ -45,6 +55,7 @@ services:
       - '${LIGHTNING_EXTERNAL_PORT:-${PORT:-4000}}:${URL_PORT:-4000}'
     networks:
       - ozone
+      - web
 
   worker:
     platform: linux/x86_64/v8
@@ -59,7 +70,7 @@ services:
         condition: service_healthy
         restart: true
     env_file:
-      - '${OPENFN_CONFIG_PATH}/${MSF_SERVER_TYPE}.openfn.env'
+      - '${MSF_ENV_CONFIG_PATH}/.env'
     command:
       ['pnpm', 'start:prod', '-l', 'ws://web:${URL_PORT:-4000}/worker']
     restart: '${DOCKER_RESTART_POLICY:-unless-stopped}'
@@ -68,3 +79,5 @@ services:
       - '2222'
     networks:
       - ozone
+      - web
+
