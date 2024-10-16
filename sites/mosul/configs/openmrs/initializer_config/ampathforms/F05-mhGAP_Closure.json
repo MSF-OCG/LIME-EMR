@@ -280,7 +280,10 @@
                 "required": false,
                 "questionOptions": {
                   "rendering": "number",
-                  "concept": "90b3d09c-d296-44d2-8292-8e04377fe027"
+                  "concept": "90b3d09c-d296-44d2-8292-8e04377fe027",
+                  "calculate": {
+                    "calculateExpression": "api.getLatestObs(patient.id, 'b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df')"
+                  }
                 },
                 "default": "Value of last MHOS score measured"
               },
@@ -291,7 +294,10 @@
                 "required": false,
                 "questionOptions": {
                   "rendering": "number",
-                  "concept": "6545b874-f44d-4d18-9ab1-7a8bb21c0a15"
+                  "concept": "6545b874-f44d-4d18-9ab1-7a8bb21c0a15",
+                  "calculate": {
+                    "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23')"
+                  }
                 },
                 "default": "Value of last PHQ-9 score measured"
               },
@@ -303,6 +309,9 @@
                 "questionOptions": {
                   "rendering": "radio",
                   "concept": "c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3",
+                  "calculate": {
+                    "calculateExpression": "api.getLatestObs(patient.id, 'c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3')"
+                  },
                   "answers": [
                     {
                       "label": "0 - Not assessed",
@@ -348,6 +357,9 @@
                 "questionOptions": {
                   "rendering": "radio",
                   "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40",
+                  "calculate": {
+                    "calculateExpression": "api.getLatestObs(patient.id, '77f1a782-24af-40ba-bac1-b97d9a080f40')"
+                  },
                   "answers": [
                     {
                       "label": "0 - Not assessed",
