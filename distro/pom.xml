@@ -359,13 +359,20 @@
                 <echo level="info" message="Fixing nginx proxy not starting" />
                 <replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/proxy/default.conf.template"
-                  token='proxy_pass http://fhir-odoo:8080;'>
+                  token='set $fhir-odoo fhir-odoo:8080;'>
                   <replacevalue>
                     set $fhirOdd fhir-odoo:8080;
                     proxy_pass http://$fhirOdd;
                   </replacevalue>
                 </replace>
 
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/proxy/default.conf.template"
+                  token='proxy_pass http://$fhir-odoo;'>
+                  <replacevalue>
+                  </replacevalue>
+                </replace>
+                
                 <echo level="info" message="Adding traefik host access details Ozone start script" />
                 <replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
