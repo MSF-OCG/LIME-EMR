@@ -362,7 +362,6 @@
                   token='set $fhir-odoo fhir-odoo:8080;'>
                   <replacevalue>
                     set $fhirOdd fhir-odoo:8080;
-                    proxy_pass http://$fhirOdd;
                   </replacevalue>
                 </replace>
 
@@ -370,6 +369,7 @@
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/proxy/default.conf.template"
                   token='proxy_pass http://$fhir-odoo;'>
                   <replacevalue>
+                     proxy_pass http://$fhirOdd;
                   </replacevalue>
                 </replace>
                 
