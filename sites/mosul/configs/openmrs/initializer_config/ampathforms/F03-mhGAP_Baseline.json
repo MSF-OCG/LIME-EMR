@@ -52,7 +52,7 @@
                   "rendering": "radio",
                   "concept": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7",
                   "calculate": {
-                    "calculateExpression": "resolve(api.getLatestObs(patient.id, 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7'))?.valueCodeableConcept?.coding[0]?.code"
+                    "calculateExpression": "resolve(api.getLatestObs(patient.id, 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7')).then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
                   },
                   "answers": [
                     {
@@ -325,7 +325,7 @@
                   "rendering": "select",
                   "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
                   "calculate": {
-                    "calculateExpression": "resolve(api.getLatestObs(patient.id, '22809b19-54ca-4d88-8d26-9577637c184e'))?.valueCodeableConcept?.coding[0]?.code"
+                    "calculateExpression": "resolve(api.getLatestObs(patient.id, '22809b19-54ca-4d88-8d26-9577637c184e')).then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
                   },
                   "answers": [
                     {

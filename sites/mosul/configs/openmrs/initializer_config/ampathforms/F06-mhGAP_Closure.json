@@ -284,7 +284,7 @@
                 "min": "0",
                 "max": "65",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, 'b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df')"
+                  "calculateExpression": "api.getLatestObs(patient.id, 'b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df').then(value => value)"
                 }
               },
               "default": "Value of last MHOS score measured"
@@ -300,7 +300,7 @@
                 "min": "0",
                 "max": "27",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23')"
+                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(value => value)"
                 }
               },
               "default": "Value of last PHQ-9 score measured"
@@ -314,7 +314,7 @@
                 "rendering": "radio",
                 "concept": "c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, 'c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3')"
+                  "calculateExpression": "api.getLatestObs(patient.id, 'c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3').then(value => value)"
                 },
                 "answers": [
                   {
@@ -362,7 +362,7 @@
                 "rendering": "radio",
                 "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, '77f1a782-24af-40ba-bac1-b97d9a080f40')"
+                  "calculateExpression": "api.getLatestObs(patient.id, '77f1a782-24af-40ba-bac1-b97d9a080f40').then(value => value)"
                 },
                 "answers": [
                   {

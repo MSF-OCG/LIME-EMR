@@ -25,7 +25,7 @@
                 "concept": "",
                 "rendering": "fixed-value",
                 "calculate": {
-                  "calculateExpression": "resolve(customGetEncounterDates(patient.id, 'efb1ee49-ed60-40f4-aa2e-c45143dc4d49'))"
+                  "calculateExpression": "resolve(customGetEncounterDates(patient.id, 'efb1ee49-ed60-40f4-aa2e-c45143dc4d49')).then(value => value)"
                 }
               },
               "hide": {
@@ -48,7 +48,7 @@
                 },
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "includes('previousEncounterDates', formatDate(myValue, 'YYYY-MM-DD')))",
+                  "failsWhenExpression": "includes(previousEncounterDates, formatDate(myValue, 'YYYY-MM-DD')))",
                   "message": "Date entered already exists, please update the existing entry or enter another date"
                 }
               ]
