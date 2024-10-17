@@ -374,6 +374,9 @@
                     displayAccessURLsWithCredentials&#10;&#10;displayMSFAccessURLsWithCredentials
                   </replacevalue>
                 </replace>
+
+                <echo level="info" message="Setting executable permissions for the Ozone start.sh script" />
+                <chmod file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh" perm="700"/>
               </target>
             </configuration>
           </execution>
