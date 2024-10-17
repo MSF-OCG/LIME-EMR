@@ -44,7 +44,10 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "1bf47398-7786-4f3e-8cae-b84a21f53eba"
+                "concept": "1bf47398-7786-4f3e-8cae-b84a21f53eba",
+                "calculate": {
+                  "calculateExpression": "resolve.customGetTotalPatientEncounters(patient.id, '95d68645-1b72-4290-be0b-ec1fb64bc067', 'MSF Mental Health - mhGAP Baseline').then(value => value)"
+                }
               },
               "default": "Total number of Mental Health consultation forms (closure not included) with [The patient did not come] <> 'Yes'"
             }
