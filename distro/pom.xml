@@ -355,24 +355,6 @@
                   </replacevalue>
                 </replace>proxy_pass http://fhir-odoo:8080;
 
-                <!-- Todo: Remove this when fhir-odoo nolonger breaks nginx-proxy -->
-                <echo level="info" message="Fixing nginx proxy not starting" />
-                <replace
-                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/proxy/default.conf.template"
-                  token='set $fhir-odoo fhir-odoo:8080;'>
-                  <replacevalue>
-                    set $fhirOdd fhir-odoo:8080;
-                  </replacevalue>
-                </replace>
-
-                <replace
-                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/proxy/default.conf.template"
-                  token='proxy_pass http://$fhir-odoo;'>
-                  <replacevalue>
-                     proxy_pass http://$fhirOdd;
-                  </replacevalue>
-                </replace>
-                
                 <echo level="info" message="Adding traefik host access details Ozone start script" />
                 <replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
