@@ -215,7 +215,7 @@
                   "rendering": "select",
                   "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
                   "calculate": {
-                    "calculateExpression": "resolve(api.getLatestObs(patient.id, '22809b19-54ca-4d88-8d26-9577637c184e')).then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
+                    "calculateExpression": "api.getLatestObs(patient.id, '22809b19-54ca-4d88-8d26-9577637c184e').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
                   },
                   "answers": [
                     {
