@@ -6,7 +6,7 @@
   <parent>
     <groupId>com.ozonehis</groupId>
     <artifactId>maven-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0-alpha.11</version>
     <relativePath />
   </parent>
 
@@ -20,7 +20,7 @@
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
     <limeEmrVersion>0.1.0</limeEmrVersion>
-    <referenceApplicationDockerVersion>qa</referenceApplicationDockerVersion>
+    <referenceApplicationDockerVersion>3.2.0-rc.3</referenceApplicationDockerVersion>
     <datafilterVersion>2.3.0-SNAPSHOT</datafilterVersion>
     <yamlCombinePluginVersion>2.0.6</yamlCombinePluginVersion>
   </properties>
@@ -288,18 +288,36 @@
                 <echo level="info" message="Adding openFn server to ozone csv template" />
                 <replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/ozone-urls-template.csv"
-                  token="OpenMRS 3,${SERVER_SCHEME}://${O3_HOSTNAME}/openmrs/spa,admin,Admin123,openmrs">
+                  token="OpenMRS 3,${O3_HOSTNAME}/openmrs/spa,admin,Admin123,openmrs">
                   <replacevalue>
-                    OpenFn,${SERVER_SCHEME}://${OPENFN_HOSTNAME},admin@openfn.org,Admin1234567,openfn&#10;OpenMRS 3,${SERVER_SCHEME}://${O3_HOSTNAME}/openmrs/spa,admin,Admin123,openmrs
+                    OpenFn,${OPENFN_HOSTNAME},admin@openfn.org,Admin1234567,openfn&#10;OpenMRS 3,${O3_HOSTNAME}/openmrs/spa,admin,Admin123,openmrs
                   </replacevalue>
                 </replace>
 
-                <echo level="info" message="Adding MSF utils to start script" />
+                <echo level="info" message="Adding MSF utils to ozone scripts" />
                 <replace
-                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
+                  dir="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts"
                   token='source utils.sh'>
+                  <include name="**/*.sh"/>
                   <replacevalue>
                     source utils.sh&#10;&#10;source msf_utils.sh
+                  </replacevalue>
+                </replace>
+
+                <echo level="info" message="Adding MSF project Name to ozone" />
+                <replace
+                  dir="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts"
+                  token='-p ozone'>
+                  <include name="**/*.sh"/>
+                  <replacevalue>
+                    -p $PROJECT_NAME
+                  </replacevalue>
+                </replace>
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
+                  token='export BOLD=`tput bold`'>
+                  <replacevalue>
+                    export BOLD=`tput bold`&#10;export PROJECT_NAME="${project.artifactId}"
                   </replacevalue>
                 </replace>
 
@@ -328,17 +346,18 @@
                     echo "$INFO Exporting Traefik hostnames..."
                     export OPENFN_HOSTNAME=openfn-"${IP_WITH_DASHES}.traefik.me"
                     echo "→ OPENFN_HOSTNAME=$OPENFN_HOSTNAME"
+                    export TRAEFIK_HOSTNAME=api-"${IP_WITH_DASHES}.traefik.me"
+                    echo "→ TRAEFIK_HOSTNAME=$TRAEFIK_HOSTNAME"
                   </replacevalue>
                 </replace>
-
-                <echo level="info" message="Adding traefik to Ozone start script" />
                 <replace
-                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
-                  token='echo "$INFO Skipping running Nginx proxy... (\$TRAEFIK=true)"'>
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
+                  token='echo "-,-,-,-" >> .urls_1.txt'>
                   <replacevalue>
-                    runMSFServerTraefikAndNginxProxy
+                    echo "-,-,-,-" >> .urls_1.txt
+                    echo "Traefik,${TRAEFIK_HOSTNAME},admin,Admin123" >> .urls_1.txt
                   </replacevalue>
-                </replace>proxy_pass http://fhir-odoo:8080;
+                </replace>
 
                 <echo level="info" message="Adding traefik host access details Ozone start script" />
                 <replace
@@ -346,6 +365,13 @@
                   token='displayAccessURLsWithCredentials'>
                   <replacevalue>
                     displayAccessURLsWithCredentials&#10;&#10;displayMSFAccessURLsWithCredentials
+                  </replacevalue>
+                </replace>
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
+                  token='echo "$INFO Skipping running Nginx proxy... (\$TRAEFIK=true)"'>
+                  <replacevalue>
+                    runMSFServerTraefikAndNginxProxy
                   </replacevalue>
                 </replace>
 
