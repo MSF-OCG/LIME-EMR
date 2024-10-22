@@ -11,11 +11,11 @@ function setMSFEnvironment {
     # ignore setting nginx since traefik is not enabled
     if [ "$TRAEFIK" == "true" ]; then
         echo "$INFO \$TRAEFIK=true, Exporting MSF Nginx hostnames..."
-        echo "PROXY_PUBLIC_PORT=8090" >> ../.env
+        echo "TRAEFIK_PUBLIC_PORT=8090" >> ../.env
         export OPENFN_LOCAL_HOSTNAME="localhost:4000"
         echo "→ OPENFN_LOCAL_HOSTNAME=$OPENFN_LOCAL_HOSTNAME"
 
-        export O3_LOCAL_HOSTNAME="localhost:8090"
+        export O3_LOCAL_HOSTNAME="localhost"
         echo "→ O3_LOCAL_HOSTNAME=$O3_LOCAL_HOSTNAME"
         setNginxHostnames
     fi

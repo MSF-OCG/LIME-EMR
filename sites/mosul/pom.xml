@@ -142,21 +142,16 @@
             </configuration>
           </execution>
           <execution>
-            <id>Add Mosul name to MSF distro</id>
+            <id>Add MSF Mosul Script Configuration</id>
             <phase>process-resources</phase>
             <goals>
               <goal>run</goal>
             </goals>
             <configuration>
               <target>
-                <echo level="info" message="Adding openFn admin user" />
-                <replace
-                  file="${project.build.directory}/${project.artifactId}-${project.version}/distro/ozone-info.json"
-                  token="ozone-msf-distro">
-                  <replacevalue>
-                    ${project.artifactId}
-                  </replacevalue>
-                </replace>
+                <echo level="info" message="Adding MSF project Name to ozone" />
+                <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
+                  match="export PROJECT_NAME=.*" replace='export PROJECT_NAME="${project.artifactId}"' />
               </target>
             </configuration>
           </execution>

@@ -99,7 +99,7 @@ This will allow you to access the server either using `*.traefik.me` or the usua
 
 <img width="955" alt="Screenshot 2024-10-16 at 14 42 45" src="https://github.com/user-attachments/assets/5ef76bd3-a62f-4fc2-b5f7-71b709cc43e1">
 
-> Note: With ssl enabled, OpenMRS will now be locally accessible at `http://localhost:8090/openmrs` instead of `http://localhost`.
+> Note: With ssl enabled, OpenMRS will remain locally accessible via `http://localhost/openmrs`.
 
 ## Testing
 
