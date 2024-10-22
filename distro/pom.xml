@@ -74,24 +74,6 @@
         <artifactId>maven-resources-plugin</artifactId>
         <executions>
           <execution>
-            <!-- Copy MSF reference-application-spa-assemble-config.json to frontend working directory -->
-            <id>Copy MSF reference-application-spa-assemble-config.json to local working directory</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.build.directory}/openmrs_frontend</outputDirectory>
-              <overwrite>true</overwrite>
-              <resources>
-                <resource>
-                  <directory>${project.basedir}/configs/openmrs/frontend_assembly</directory>
-                  <filtering>false</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-          <execution>
             <!-- Override the Ozone files exclusion execution so to inherit all O3 Ref App files -->
             <id>Exclude unneeded Ozone files</id>
             <phase>process-resources</phase>
@@ -170,6 +152,7 @@
               </resources>
             </configuration>
           </execution>
+
           <execution>
             <!-- Copy MSF OpenFn docker compose .yml file -->
             <id>Copy MSF docker compose .yml file</id>
@@ -192,6 +175,7 @@
               </resources>
             </configuration>
           </execution>
+
           <execution>
             <!-- Copy MSF OpenFn database script files -->
             <id>Copy MSF OpenFn database script files</id>
@@ -213,6 +197,7 @@
               </resources>
             </configuration>
           </execution>
+
           <execution>
             <id>Copy MSF environment variables</id>
             <phase>process-resources</phase>
