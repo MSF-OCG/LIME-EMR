@@ -244,16 +244,32 @@
     </changeSet>
 
     <!-- Delete deprecated Inconnu concept -->
-    <changeSet id="delete_inconnu_concept-202407081130" author="Joshua">
+    <changeSet id="delete_inconnu_concept-202407081130" author="pirupius">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept WHERE uuid = 'MSF-AAAAAA000000000000001329';
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept WHERE uuid = 'MSF-AAAAAA000000000000001329' AND id = 729;
             </sqlCheck>
         </preConditions>
         <comment>
             Delete deprecated Inconnu concept
         </comment>
-        <delete tableName="concept" where="uuid = 'MSF-AAAAAA000000000000001329'"/>
+        <sql>
+            DELETE FROM concept WHERE uuid = 'MSF-AAAAAA000000000000001329' AND id = 729;
+        </sql>
+    </changeSet>
+    <!-- Delete duplicate CIEL unknown concept -->
+    <changeSet id="delete_duplicate_ciel_unknown_concept-202407081130" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 1 THEN 1 ELSE 0 END FROM concept WHERE uuid = '1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND id = 78;
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete duplicate CIEL unknown concept
+        </comment>
+        <sql>
+            DELETE FROM concept WHERE uuid = '1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND id = 78;
+        </sql>
     </changeSet>
 
 </databaseChangeLog>
