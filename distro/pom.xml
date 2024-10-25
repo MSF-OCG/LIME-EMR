@@ -380,8 +380,24 @@
                   </replacevalue>
                 </replace>
 
+                <echo level="info" message="Adding traefik server stop and destroy script" />
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/destroy-demo.sh"
+                  token='docker compose -p $PROJECT_NAME $dockerComposeProxyCLIOptions down -v'>
+                  <replacevalue>
+                    docker compose -p $PROJECT_NAME $dockerComposeProxyCLIOptions down -v&#10;&#9;echo "$INFO Destroying Traefik services..."&#10;&#9;docker compose -p $PROJECT_NAME --env-file $dockerComposeEnvFilePath -f ../docker-compose-traefik.yml down -v
+                  </replacevalue>
+                </replace>
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/stop-demo.sh"
+                  token='docker compose -p $PROJECT_NAME $dockerComposeProxyCLIOptions stop'>
+                  <replacevalue>
+                    docker compose -p $PROJECT_NAME $dockerComposeProxyCLIOptions stop&#10;&#9;echo "$INFO stoping Traefik services..."&#10;&#9;docker compose -p $PROJECT_NAME --env-file $dockerComposeEnvFilePath -f ../docker-compose-traefik.yml stop
+                  </replacevalue>
+                </replace>
+
                 <echo level="info" message="Setting executable permissions for the Ozone start.sh script" />
-                <chmod file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh" perm="700"/>
+                <chmod file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/*.sh" perm="700"/>
               </target>
             </configuration>
           </execution>
