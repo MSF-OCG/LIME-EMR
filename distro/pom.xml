@@ -276,6 +276,11 @@
             </goals>
             <configuration>
               <target>
+                <echo level="info" message="Adding msf core version"/>
+                <replaceregexp file="${project.build.directory}/openmrs/frontend_assembly/build-openmrs-frontend.groovy"
+                              match="openmrsVersion =.*" replace='openmrsVersion = slurper.parse(Paths.get("${project.build.directory}", "openmrs_frontend", "spa-assemble-config.json").toFile())["coreVersion"] ?: "next"'/>
+
+
                 <echo level="info" message="Adding openFn admin user" />
                 <replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
