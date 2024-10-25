@@ -11,8 +11,6 @@ services:
       - "443:443"
     networks:
       - web
-    env_file:
-      - '${MSF_ENV_CONFIG_PATH}/${MSF_SERVER_TYPE}.msf.env'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - '${TRAEFIK_CONFIG_PATH}/config/traefik.yml:/etc/traefik/traefik.yml'
@@ -32,8 +30,6 @@ services:
         condition: service_completed_successfully
   reverse-proxy-https-helper:
     image: alpine
-    env_file:
-      - '${MSF_ENV_CONFIG_PATH}/${MSF_SERVER_TYPE}.msf.env'
     command: sh -c "cd /etc/ssl/traefik
       && wget traefik.me/fullchain.pem -O cert.pem
       && wget traefik.me/privkey.pem -O privkey.pem"
