@@ -1703,6 +1703,9 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "9a8204ca-d908-4157-9285-7c970dbb5287",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, '9a8204ca-d908-4157-9285-7c970dbb5287').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
+                },
                 "answers": [
                   {
                     "label": "Psychosomatic",
@@ -4156,6 +4159,9 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "c1a3ed2d-6d9a-453d-9d93-749164a76413",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'c1a3ed2d-6d9a-453d-9d93-749164a76413').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
+                },
                 "answers": [
                   {
                     "label": "Medical Conditions",
