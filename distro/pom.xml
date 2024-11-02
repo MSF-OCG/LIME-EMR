@@ -250,6 +250,8 @@
                 <echo level="info" message="Adding msf docker image version"/>
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
                               match="O3_DOCKER_IMAGE_TAG=.*" replace="O3_DOCKER_IMAGE_TAG=${referenceApplicationDockerVersion}" />
+                <replace file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/docker-compose-openmrs.yml"
+                              token="3.0.0-beta.21" value="${O3_DOCKER_IMAGE_TAG:-nightly}" />
               </target>
             </configuration>
           </execution>
@@ -276,6 +278,11 @@
             </goals>
             <configuration>
               <target>
+                <echo level="info" message="Adding msf core version"/>
+                <replaceregexp file="${project.build.directory}/openmrs/frontend_assembly/build-openmrs-frontend.groovy"
+                              match="openmrsVersion =.*" replace='openmrsVersion = slurper.parse(Paths.get("${project.build.directory}", "openmrs_frontend", "spa-assemble-config.json").toFile())["coreVersion"] ?: "next"'/>
+
+
                 <echo level="info" message="Adding openFn admin user" />
                 <replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
@@ -334,7 +341,7 @@
                   token='echo "→ DISTRO_PATH=$DISTRO_PATH"'>
                   <replacevalue>
                     echo "→ DISTRO_PATH=$DISTRO_PATH"
-                    export MSF_ENV_CONFIG_PATH=${project.build.directory}/${project.artifactId}-${project.version}/run/docker
+                    export MSF_ENV_CONFIG_PATH=./
                     export MSF_SERVER_TYPE="${msfServerType}"
                     echo "→ MSF_SERVER_TYPE=$MSF_SERVER_TYPE"
                   </replacevalue>
@@ -375,8 +382,24 @@
                   </replacevalue>
                 </replace>
 
+                <echo level="info" message="Adding traefik server stop and destroy script" />
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/destroy-demo.sh"
+                  token='docker compose -p $PROJECT_NAME $dockerComposeProxyCLIOptions down -v'>
+                  <replacevalue>
+                    docker compose -p $PROJECT_NAME $dockerComposeProxyCLIOptions down -v&#10;&#9;echo "$INFO Destroying Traefik services..."&#10;&#9;docker compose -p $PROJECT_NAME --env-file $dockerComposeEnvFilePath -f ../docker-compose-traefik.yml down -v
+                  </replacevalue>
+                </replace>
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/stop-demo.sh"
+                  token='docker compose -p $PROJECT_NAME $dockerComposeProxyCLIOptions stop'>
+                  <replacevalue>
+                    docker compose -p $PROJECT_NAME $dockerComposeProxyCLIOptions stop&#10;&#9;echo "$INFO stoping Traefik services..."&#10;&#9;docker compose -p $PROJECT_NAME --env-file $dockerComposeEnvFilePath -f ../docker-compose-traefik.yml stop
+                  </replacevalue>
+                </replace>
+
                 <echo level="info" message="Setting executable permissions for the Ozone start.sh script" />
-                <chmod file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh" perm="700"/>
+                <chmod file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/*.sh" perm="700"/>
               </target>
             </configuration>
           </execution>

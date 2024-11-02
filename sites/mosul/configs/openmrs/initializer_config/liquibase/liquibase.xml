@@ -244,16 +244,20 @@
     </changeSet>
 
     <!-- Delete deprecated Inconnu concept -->
-    <changeSet id="delete_inconnu_concept-202407081130" author="Joshua">
+    <changeSet id="delete_inconnu_concept-202407081130" author="pirupius">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept WHERE uuid = 'MSF-AAAAAA000000000000001329';
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept WHERE uuid = 'MSF-AAAAAA000000000000001329' AND concept_id = 729;
             </sqlCheck>
         </preConditions>
         <comment>
             Delete deprecated Inconnu concept
         </comment>
-        <delete tableName="concept" where="uuid = 'MSF-AAAAAA000000000000001329'"/>
+        <sql>
+            DELETE FROM concept_answer WHERE answer_concept = 729;
+            DELETE FROM concept_name WHERE concept_id = 729;
+            DELETE FROM concept WHERE uuid = 'MSF-AAAAAA000000000000001329' AND concept_id = 729;
+        </sql>
     </changeSet>
 
 </databaseChangeLog>
