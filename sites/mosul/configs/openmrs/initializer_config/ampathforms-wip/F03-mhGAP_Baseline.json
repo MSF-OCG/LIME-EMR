@@ -81,7 +81,7 @@
                     },
                     {
                       "label": "Unknown",
-                      "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                      "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
                     }
                   ]
                 }
@@ -730,6 +730,20 @@
                   ]
                 },
                 "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult"
+              },
+              {
+                "id": "lastPhq9Score",
+                "label": "Last PHQ-9 score",
+                "type": "control",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "number",
+                  "isTransient": true,
+                  "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23",
+                  "calculate": {
+                    "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(value => value)"
+                  }
+                }
               }
             ]
           },
@@ -777,6 +791,53 @@
                     {
                       "label": "7 - Extremely ill patient",
                       "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "lastCgsIScore",
+                "label": "Last CGS-I score",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "lastCgsIScore",
+                  "calculate": {
+                    "calculateExpression": "api.getLatestObs(patient.id, 'c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3').then(value => value)"
+                  },
+                  "answers": [
+                    {
+                      "label": "- Not assessed",
+                      "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                    },
+                    {
+                      "label": "- Very much improved",
+                      "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                    },
+                    {
+                      "label": "- Much improved",
+                      "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                    },
+                    {
+                      "label": "- Minimally improved",
+                      "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                    },
+                    {
+                      "label": "- No change",
+                      "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                    },
+                    {
+                      "label": "- Minimally worse",
+                      "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                    },
+                    {
+                      "label": "- Much worse",
+                      "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                    },
+                    {
+                      "label": "- Very much worse",
+                      "concept": "ece17856-b110-4453-9bc5-a92891f86846"
                     }
                   ]
                 }

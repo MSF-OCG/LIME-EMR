@@ -1,12 +1,11 @@
 {
-    "name": "MSF Mental Health - mhGAP Baseline",
-    "description": "MSF Form - F03-mhGAP Baseline",
-    "version": "7",
+    "name": "MSF Mental Health - mhGAP Follow-up",
+    "description": "MSF Form - F04-mhGAP Follow-up",
+    "version": "8",
     "published": true,
     "uuid": "",
     "processor": "EncounterFormProcessor",
-    "encounter": "Mental Health",
-    "encounterType": "95d68645-1b72-4290-be0b-ec1fb64bc067",
+    "encounter": "Consultation",
     "retired": false,
     "referencedForms": [],
     "pages": [
@@ -18,230 +17,29 @@
             "isExpanded": false,
             "questions": [
               {
-                "id": "admissionType",
-                "label": "Admission type",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "4dae5b12-070f-4153-b1ca-fbec906106e1",
-                  "answers": [
-                    {
-                      "label": "New admission",
-                      "concept": "9f2fe30f-a8f0-49ba-82e4-71c232259130"
-                    },
-                    {
-                      "label": "Readmission",
-                      "concept": "e4e42ecd-196b-4aa8-a265-bfbed09d77cf"
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "label": "Admission",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "sex",
-                "label": "Sex",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7",
-                  "calculate": {
-                    "calculateExpression": "api.getLatestObs(patient.id, 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
-                  },
-                  "answers": [
-                    {
-                      "label": "Male",
-                      "concept": "625baaf5-ba75-4c23-bdef-283fd47c34db"
-                    },
-                    {
-                      "label": "Female",
-                      "concept": "2ded9cfb-c089-4e1c-b032-7aa4a17882f7"
-                    },
-                    {
-                      "label": "Transgender male",
-                      "concept": "166416AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "Transgender female",
-                      "concept": "166417AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "Gender variant - Non conforming",
-                      "concept": "810ca6e9-cabf-4aa6-98d0-c3d31cfdb5f0"
-                    },
-                    {
-                      "label": "Prefer not to answer",
-                      "concept": "245151ca-691e-4d5a-a792-64cb573e2b34"
-                    },
-                    {
-                      "label": "Unknown",
-                      "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "howManyPeopleLiveWithThePatient",
-                "label": "How many people live with the patient",
+                "id": "sessionNumber",
+                "label": "Session number",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "number",
-                  "concept": "58dec757-38d5-4c7b-9bd3-713d965f4883"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "History",
-        "sections": [
-          {
-            "label": "History",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "presentingHistoryOrEvolutionOfSymptoms",
-                "label": "Presenting history / evolution of symptoms",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "4ed7be54-3759-4a39-904b-ddefc9a22459"
-                },
-                "questionInfo": "Current symptoms, onset, duration, course, intensity, triggers, associated symptoms."
-              },
-              {
-                "id": "pastPsychiatricHistory",
-                "label": "Past psychiatric history",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "eed1e8e1-ba03-41d5-856f-cd069568f484"
-                },
-                "questionInfo": "Past diagnoses, past substance use, number of episodes, duration, treatment, side-effects."
-              },
-              {
-                "id": "familyHistory",
-                "label": "Family history",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "a072fee0-ca76-4ac6-9543-a4f3b0efc831"
-                },
-                "questionInfo": "Psychological/psychiatric/neurological/medical conditions or disorders."
-              },
-              {
-                "id": "patientMedicalOrSurgicalHistory",
-                "label": "Patient medical / surgical history",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "f8883168-4a8d-432b-8812-6dcdfbf5b13a"
-                },
-                "questionInfo": "Check also in 'Conditions' and update it there if necessary."
-              },
-              {
-                "id": "allergiesOrContraIndications",
-                "label": "Allergies / Contra-indications",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "6fcf69eb-244a-4756-84b7-1da5b8fa7025"
-                },
-                "questionInfo": "Check also in 'Allergies' and update it there if necessary."
-              }
-            ]
-          },
-          {
-            "label": "Special Populations",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "pregnantOrBreastfeeding",
-                "label": "Pregnant / breastfeeding ",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "2be92591-da1b-4418-ba49-43b3fc0e4ce5",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "childOrAdolescent",
-                "label": "Child / adolescent (under 18 years)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "f6cefc80-506a-44b0-ab5f-d6f5908cf7a5",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "olderAdult",
-                "label": "Older adult (over 60 years)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "15748787-7372-4022-b5d4-81ff8d6887ca",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
+                  "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11"
                 }
               }
             ]
           },
           {
-            "label": "mhGAP file information",
+            "label": "Missed session",
             "isExpanded": false,
             "questions": [
               {
-                "id": "patientAlreadyOnPsychotropicOrPsychiatricMedication",
-                "label": "Patient already on psychotropic / psychiatric medication (not prescribed by MSF)  ",
+                "id": "thePatientDidNotCome",
+                "label": "The patient did not come",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "radio",
-                  "concept": "99a8b512-17f9-4a5d-9fd4-80c27500995b",
+                  "concept": "54e8c1b6-6397-4822-89a4-cf81fbc68ce9",
                   "answers": [
                     {
                       "label": "Yes",
@@ -255,26 +53,91 @@
                 }
               },
               {
-                "id": "medicationAndDosagePleaseCheckInmedications",
-                "label": "Medication and dosage - Please check in Medications (update it if necessary)",
+                "id": "numberOfAppointmentsMissed",
+                "label": "Number of appointments missed",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
-                  "rendering": "text",
-                  "concept": "28007e95-79a5-4b11-bb2b-89261b5f3ea8"
+                  "rendering": "number",
+                  "concept": "d7410cd3-29be-4f8b-93d6-eb4de005db29"
                 },
                 "hide": {
-                  "hideWhenExpression": "patientAlreadyOnPsychotropicOrPsychiatricMedication !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                  "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
               },
               {
-                "id": "additionalInformationAboutPreviousTreatment",
-                "label": "Additional information about previous treatment (including side effects)",
+                "id": "patientRescheduledFillTheExitForm",
+                "label": "Patient rescheduled (if Yes fill the Follow-up section at the end of this form. If No (closing file or patient no longer wants services) fill the Exit form.)",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "278d3d1e-c02a-4db1-8ab3-8db3b82eb9b5",
+                  "answers": [
+                    {
+                      "label": "Yes",
+                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    },
+                    {
+                      "label": "No",
+                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    }
+                  ]
+                },
+                "hide": {
+                  "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                }
+              },
+              {
+                "id": "reasonForMissedAppointment",
+                "label": "Reason for missed appointment",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "d34d5e93-03d6-494e-8f4c-2d7221227162",
+                  "answers": [
+                    {
+                      "label": "Patient forgot about session",
+                      "concept": "df40472b-d192-4d0d-87c6-dadfae58270d"
+                    },
+                    {
+                      "label": "No transportation / unable to attend",
+                      "concept": "988d1f88-1202-4a13-8ae7-02156b5ccbe2"
+                    },
+                    {
+                      "label": "Patient unreachable",
+                      "concept": "e0f8014a-aa6c-4a59-aa09-ed6e3dad6b47"
+                    },
+                    {
+                      "label": "Patient no longer wants services",
+                      "concept": "49da2b46-b7d1-4ba7-ba57-cfe219694a9c"
+                    },
+                    {
+                      "label": "Patient was busy",
+                      "concept": "cd1a5f24-c862-4cb6-9ef9-db2f3d46aad2"
+                    },
+                    {
+                      "label": "Other",
+                      "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    }
+                  ]
+                },
+                "hide": {
+                  "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                }
+              },
+              {
+                "id": "reasonForMissedAppointment_ifOtherSpecify",
+                "label": "If other, specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
                   "rendering": "text",
-                  "concept": "ed4b93f6-9115-4813-8784-d653af7e74ed"
+                  "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                },
+                "hide": {
+                  "hideWhenExpression": "reasonForMissedAppointment !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                 }
               }
             ]
@@ -296,6 +159,33 @@
                   "rendering": "workspace-launcher",
                   "buttonLabel": "Capture patient vitals",
                   "workspaceName": "patient-vitals-biometrics-form-workspace"
+                }
+              }
+            ]
+          },
+          {
+            "label": "mhGAP file information",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "evolutionOfSymptoms",
+                "label": "Evolution of symptoms",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "textarea",
+                  "concept": "4c9228b2-4ba2-4edb-8daf-31a824e5fa9a"
+                },
+                "questionInfo": "Current symptoms, onset, duration, course, intensity, triggers, associated symptoms."
+              },
+              {
+                "id": "sideEffectsFromCurrentTreatment",
+                "label": "Side effects from current treatment",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "textarea",
+                  "concept": "0da21d2e-e464-4871-8ff8-f950808fbd85"
                 }
               },
               {
@@ -408,8 +298,8 @@
                 }
               },
               {
-                "id": "clinicalDiagnosis_ifOtherSpecify",
-                "label": "If other, specify",
+                "id": "clinicalDiagnosisIfOtherSpecify",
+                "label": "Clinical diagnosis - If other specify",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
@@ -730,6 +620,19 @@
                   ]
                 },
                 "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult"
+              },
+              {
+                "id": "lastPhq9Score",
+                "label": "Last PHQ-9 score",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "number",
+                  "concept": "lastPhq9Score",
+                  "calculate": {
+                    "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(value => value)"
+                  }
+                }
               }
             ]
           },
@@ -780,6 +683,144 @@
                     }
                   ]
                 }
+              },
+              {
+                "id": "lastCgiSScore",
+                "label": "Last CGI-S score",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "text",
+                  "concept": "lastCgiSScore",
+                  "calculate": {
+                    "calculateExpression": "api.getLatestObs(patient.id, '77f1a782-24af-40ba-bac1-b97d9a080f40').then(value => value)"
+                  },
+                  "answers": [
+                    {
+                      "label": "- Not assessed",
+                      "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                    },
+                    {
+                      "label": "- Normal/not ill",
+                      "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                    },
+                    {
+                      "label": "- Suspected mentally ill",
+                      "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
+                    },
+                    {
+                      "label": "- Mildly ill",
+                      "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
+                    },
+                    {
+                      "label": "- Moderately ill",
+                      "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
+                    },
+                    {
+                      "label": "- Markedly ill",
+                      "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
+                    },
+                    {
+                      "label": "- Severely ill",
+                      "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
+                    },
+                    {
+                      "label": "- Extremely ill patient",
+                      "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "cgiI",
+                "label": "CGI-I (rating of  improvement CGI-I how much has the patient improved at this time)",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "f94de17e-9771-4711-aabb-c5bb0c022be2",
+                  "answers": [
+                    {
+                      "label": "0 - Not assessed",
+                      "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                    },
+                    {
+                      "label": "1 - Very much improved",
+                      "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                    },
+                    {
+                      "label": "2 - Much improved",
+                      "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                    },
+                    {
+                      "label": "3 - Minimally improved",
+                      "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                    },
+                    {
+                      "label": "4 - No change",
+                      "concept": "162679AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    },
+                    {
+                      "label": "5 - Minimally worse",
+                      "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                    },
+                    {
+                      "label": "6 - Much worse",
+                      "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                    },
+                    {
+                      "label": "7 - Very much worse",
+                      "concept": "ece17856-b110-4453-9bc5-a92891f86846"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "lastCgsIScore",
+                "label": "Last CGS-I score",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "lastCgsIScore",
+                  "calculate": {
+                    "calculateExpression": "api.getLatestObs(patient.id, 'c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3').then(value => value)"
+                  },
+                  "answers": [
+                    {
+                      "label": "- Not assessed",
+                      "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                    },
+                    {
+                      "label": "- Very much improved",
+                      "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                    },
+                    {
+                      "label": "- Much improved",
+                      "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                    },
+                    {
+                      "label": "- Minimally improved",
+                      "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                    },
+                    {
+                      "label": "- No change",
+                      "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                    },
+                    {
+                      "label": "- Minimally worse",
+                      "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                    },
+                    {
+                      "label": "- Much worse",
+                      "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                    },
+                    {
+                      "label": "- Very much worse",
+                      "concept": "ece17856-b110-4453-9bc5-a92891f86846"
+                    }
+                  ]
+                }
               }
             ]
           }
@@ -793,22 +834,13 @@
             "isExpanded": false,
             "questions": [
               {
-                "value": [
-                  "Check in **Active Medications** and update it if necessary:"
-                ],
-                "questionOptions": {
-                  "rendering": "markdown"
-                },
-                "id": "checkInmedicationsAndUpdateItIfNecessary"
-              },
-              {
-                "label": "Active medications",
+                "label": "Order medications",
                 "required": false,
-                "id": "medicationWorkspaceLauncher",
+                "id": "orderWorkspaceLauncher",
                 "questionOptions": {
                   "rendering": "workspace-launcher",
-                  "buttonLabel": "Active medications",
-                  "workspaceName": "medications-form-workspace"
+                  "buttonLabel": "Order medications",
+                  "workspaceName": "order-basket"
                 }
               }
             ]
@@ -840,12 +872,48 @@
         "label": "Follow-up",
         "sections": [
           {
+            "label": "Adherence to treatment",
+            "isExpanded": false,
+            "questions": [
+              {
+                "id": "isThePatientTakingTheMedicationAsPrescribed",
+                "label": "Is the patient taking the medication as prescribed   ",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "dbf35880-d18e-4f15-ad9c-97b5b053e14a",
+                  "answers": [
+                    {
+                      "label": "Yes",
+                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    },
+                    {
+                      "label": "No",
+                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "detailsIfNeeded",
+                "label": "Details if needed",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "textarea",
+                  "concept": "dc072a1a-20d8-4512-9e57-3585a07cb074"
+                }
+              }
+            ]
+          },
+          {
             "label": "Follow-up",
             "isExpanded": false,
             "questions": [
               {
                 "id": "followUpRequired",
-                "label": "Follow-up required",
+                "label": "Follow-up required  ",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
@@ -880,5 +948,6 @@
           }
         ]
       }
-    ]
+    ],
+    "encounterType": "95d68645-1b72-4290-be0b-ec1fb64bc067"
   }
