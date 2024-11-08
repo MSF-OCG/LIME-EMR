@@ -1,1866 +1,2491 @@
 {
-    "name": "MSF Mental Health - MHPSS Follow-up",
-    "description": "MSF Form - F02-MHPSS Follow-up",
-    "version": "7",
-    "published": true,
-    "uuid": "",
-    "processor": "EncounterFormProcessor",
-    "encounter": "Consultation",
-    "retired": false,
-    "referencedForms": [],
-    "pages": [
-      {
-        "label": "Consultation",
-        "sections": [
-          {
-            "label": "Consultation information",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "sessionNumber",
-                "label": "Session number",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "number",
-                  "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11"
-                },
-                "default": "(calculated - # of session)"
+  "name": "MSF Mental Health - MHPSS Follow-up",
+  "description": "MSF Form - F02-MHPSS Follow-up",
+  "version": "7",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Mental Health",
+  "encounterType": "95d68645-1b72-4290-be0b-ec1fb64bc067",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Consultation",
+      "sections": [
+        {
+          "label": "Consultation information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "sessionNumber",
+              "label": "Session number",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11"
               },
-              {
-                "id": "typeOfConsultation",
-                "label": "Type of consultation",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "1a8bf24f-4f36-4971-aad9-ae77f3525738",
-                  "answers": [
-                    {
-                      "label": "Individual",
-                      "concept": "96223dc7-6959-4ea5-a362-c0246d858c87"
-                    },
-                    {
-                      "label": "Couple",
-                      "concept": "61b32a22-acef-4141-9faa-9c236cdfa978"
-                    },
-                    {
-                      "label": "Family",
-                      "concept": "f16d5d76-155b-453d-bd60-ea8ee4d344e9"
-                    },
-                    {
-                      "label": "Parent-Child",
-                      "concept": "1528AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "totalNumberOfBeneficiariesInFamilyConsultation",
-                "label": "Total number of beneficiaries in family consultation",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "number",
-                  "concept": "b87a93ff-a4a1-4601-b35d-1e42bfa7e194"
-                },
-                "hide": {
-                  "hideWhenExpression": "typeOfConsultation !== 'f16d5d76-155b-453d-bd60-ea8ee4d344e9'"
-                }
-              },
-              {
-                "id": "consultationDoneBy",
-                "label": "Consultation done by",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "722dd83a-c1cf-48ad-ac99-45ac131ccc96",
-                  "answers": [
-                    {
-                      "label": "Psychologist",
-                      "concept": "278401ee-3d6f-4c65-9455-f1c16d0a7a98"
-                    },
-                    {
-                      "label": "Counsellor",
-                      "concept": "fda1cdd0-745e-4ff7-a3d0-b8f8ddb99331"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "locationOfIntervention",
-                "label": "Location of intervention",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "82978311-bef9-46f9-9a9a-cc62254b00a6",
-                  "answers": [
-                    {
-                      "label": "Health facility",
-                      "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0166"
-                    },
-                    {
-                      "label": "MSF health facility",
-                      "concept": "41e68dee-a2a3-4e6c-9d96-53def5caff52"
-                    },
-                    {
-                      "label": "Mobile clinic",
-                      "concept": "08cd4b4a-4b0b-4391-987b-b5b3d770d30f"
-                    },
-                    {
-                      "label": "Home visit",
-                      "concept": "bd5bf44b-164c-415c-8bff-b1d4849928d3"
-                    },
-                    {
-                      "label": "School visit",
-                      "concept": "7091b6ea-7067-4ee3-9f67-8805904e2f61"
-                    },
-                    {
-                      "label": "Remote / phone",
-                      "concept": "398ce872-5862-4826-bba8-826915eddf98"
-                    },
-                    {
-                      "label": "Other",
-                      "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "specifyHealthFacility",
-                "label": "Specify Health Facility",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0166"
-                },
-                "hide": {
-                  "hideWhenExpression": "locationOfIntervention !== 'da33d74e-33b3-495a-9d7c-aa00a-aa0166'"
-                }
-              },
-              {
-                "id": "specifyMsfHealthFacility",
-                "label": "Specify MSF Health Facility",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "41e68dee-a2a3-4e6c-9d96-53def5caff52"
-                },
-                "hide": {
-                  "hideWhenExpression": "locationOfIntervention !== '41e68dee-a2a3-4e6c-9d96-53def5caff52'"
-                }
-              },
-              {
-                "id": "specifyMobileClinic",
-                "label": "Specify Mobile Clinic",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "08cd4b4a-4b0b-4391-987b-b5b3d770d30f"
-                },
-                "hide": {
-                  "hideWhenExpression": "locationOfIntervention !== '08cd4b4a-4b0b-4391-987b-b5b3d770d30f'"
-                }
-              },
-              {
-                "id": "locationOfIntervention_ifOtherSpecify",
-                "label": "If other, specify",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "e08d532b-e56c-43dc-b831-af705654d2dc"
-                },
-                "hide": {
-                  "hideWhenExpression": "locationOfIntervention !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "typeOfIntervention",
-                "label": "Type of intervention",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "82978311-bef9-46f9-9a9a-cc62254b00a6",
-                  "answers": [
-                    {
-                      "label": "Counselling",
-                      "concept": "08c534b7-c901-46fb-9831-50ecfcd74d1b"
-                    },
-                    {
-                      "label": "Psychotherapy",
-                      "concept": "aa9c5d82-1ebf-43c7-9218-6766c4affbc4"
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "label": "Missed session",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "thePatientDidNotCome",
-                "label": "The patient did not come",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "54e8c1b6-6397-4822-89a4-cf81fbc68ce9",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "numberOfAppointmentsMissed",
-                "label": "Number of appointments missed",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "number",
-                  "concept": "d7410cd3-29be-4f8b-93d6-eb4de005db29"
-                },
-                "hide": {
-                  "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "patientRescheduledFillTheExitForm",
-                "label": "Patient rescheduled (if Yes fill the Follow-up section at the end of this form. If No (closing file or patient no longer wants services) fill the Exit form.",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "278d3d1e-c02a-4db1-8ab3-8db3b82eb9b5",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                },
-                "hide": {
-                  "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "reasonForMissedAppointment",
-                "label": "Reason for missed appointment",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "d34d5e93-03d6-494e-8f4c-2d7221227162",
-                  "answers": [
-                    {
-                      "label": "Patient forgot about session",
-                      "concept": "df40472b-d192-4d0d-87c6-dadfae58270d"
-                    },
-                    {
-                      "label": "No transportation / unable to attend",
-                      "concept": "988d1f88-1202-4a13-8ae7-02156b5ccbe2"
-                    },
-                    {
-                      "label": "Patient unreachable",
-                      "concept": "e0f8014a-aa6c-4a59-aa09-ed6e3dad6b47"
-                    },
-                    {
-                      "label": "Patient no longer wants services",
-                      "concept": "49da2b46-b7d1-4ba7-ba57-cfe219694a9c"
-                    },
-                    {
-                      "label": "Patient was busy",
-                      "concept": "cd1a5f24-c862-4cb6-9ef9-db2f3d46aad2"
-                    },
-                    {
-                      "label": "Other",
-                      "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                },
-                "hide": {
-                  "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "reasonForMissedAppointment_ifOtherSpecify",
-                "label": "If other, specify",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                },
-                "hide": {
-                  "hideWhenExpression": "reasonForMissedAppointment !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Progress",
-        "sections": [
-          {
-            "label": "Patient’s progress",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "patientsProgressSinceTheLastSessionHowHasThePatientBeenFeelingOrHowHaveThingsBeenGoingInThePatientsLife",
-                "label": "Patients progress since the last session how has the patient been feeling/how have things been going in the patients life",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "f186c7ec-7028-4841-b669-78ee192af4c9"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Resilience & coping",
-        "sections": [
-          {
-            "label": "Resilience & coping",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "positiveFunctionalityIsThePatientCapableOfBeingIndependentCaringForThemselvesGoingToWorkOrSchoolEtc",
-                "label": "Positive functionality Is the patient capable of being independent caring for themselves (bathing/eating) going to work/school etc.",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "00617df0-f2bb-4e9c-84b8-836c9d281a20",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "internalResourcesDoesThePatientBelieveThatTheyHaveTheAbilitiesNeededToOvercomeTheCurrentProblemOrDoTheyHaveHopeForTheirFuture",
-                "label": "Internal resources Does the patient believe that they have the abilities needed to overcome the current problem / do they have hope for their future",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "021d9afe-7d46-406c-b450-c0cd1e251f79",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "externalResourcesDoesThePatientBelieveThatTheyHaveSomeoneWhoTheyCanRelyOnForHelpInTheirLives",
-                "label": "External resources Does the patient believe that they have someone who they can rely on for help in their lives",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "b745fc24-46ec-433b-8df6-78bbd6733472",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "spiritualOrMoralResourcesAreThePatientsBeliefsASourceOfStrengthForThemWhenDealingWithProblems",
-                "label": "Spiritual / moral resources Are the patients beliefs a source of strength for them when dealing with problems",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "e3babf1f-95da-4e30-9593-a37beeff8ef2",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Scores",
-        "sections": [
-          {
-            "label": "MHOS (required) - In the past week…",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "problemsPerformingDailyActivities",
-                "label": "Did you have problems performing daily activities such as cooking bathing or chores outside the household?",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "b5c4b6d2-c880-43c5-a250-8fe09c9e394c",
-                  "answers": [
-                    {
-                      "label": "Not at all (1 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "A little (2 points)",
-                      "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
-                    },
-                    {
-                      "label": "Some (3 points)",
-                      "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
-                    },
-                    {
-                      "label": "Fair amount (4 points)",
-                      "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
-                    },
-                    {
-                      "label": "A lot",
-                      "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "problemsGettingAlongWithFamilyOrFriends",
-                "label": "Did you have problems getting along with family or friends?",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "b8968e50-436f-444e-8ab6-4b707fab090c",
-                  "answers": [
-                    {
-                      "label": "Not at all (1 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "A little (2 points)",
-                      "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
-                    },
-                    {
-                      "label": "Some (3 points)",
-                      "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
-                    },
-                    {
-                      "label": "Fair amount (4 points)",
-                      "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
-                    },
-                    {
-                      "label": "A lot",
-                      "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "problemsSleepingSuchAsSleepingTooMuchOrNotEnough",
-                "label": "Did you have any problems sleeping such as sleeping too much or not enough?",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "f44f52dd-6eda-4ca5-8375-61164bff5a32",
-                  "answers": [
-                    {
-                      "label": "Not at all (1 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "A little (2 points)",
-                      "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
-                    },
-                    {
-                      "label": "Some (3 points)",
-                      "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
-                    },
-                    {
-                      "label": "Fair amount (4 points)",
-                      "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
-                    },
-                    {
-                      "label": "A lot",
-                      "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "botheredByUnpleasantThoughtsWorriesOrIdeas",
-                "label": "Have you been bothered by unpleasant thoughts worries or ideas?",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "09ba3837-cc74-4fe5-8be4-e439b02a1d62",
-                  "answers": [
-                    {
-                      "label": "Not at all (1 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "A little (2 points)",
-                      "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
-                    },
-                    {
-                      "label": "Some (3 points)",
-                      "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
-                    },
-                    {
-                      "label": "Fair amount (4 points)",
-                      "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
-                    },
-                    {
-                      "label": "A lot",
-                      "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "haveYouFeltSadOrNervous",
-                "label": "Have you felt sad or nervous?",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "79d37985-b959-49c2-a7b8-7fe1618d641b",
-                  "answers": [
-                    {
-                      "label": "Not at all (1 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "A little (2 points)",
-                      "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
-                    },
-                    {
-                      "label": "Some (3 points)",
-                      "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
-                    },
-                    {
-                      "label": "Fair amount (4 points)",
-                      "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
-                    },
-                    {
-                      "label": "A lot",
-                      "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "haveYouBeenSuffering",
-                "label": "Have you been suffering?",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "802f0ec2-169f-41b7-ae83-2e8f2fc86e3a",
-                  "answers": [
-                    {
-                      "label": "Not at all (1 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "A little (2 points)",
-                      "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
-                    },
-                    {
-                      "label": "Some (3 points)",
-                      "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
-                    },
-                    {
-                      "label": "Fair amount (4 points)",
-                      "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
-                    },
-                    {
-                      "label": "A lot",
-                      "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "mhosScore",
-                "label": "MHOS score",
-                "type": "obs",
-                "required": false,
-                "readonly": true,
-                "questionOptions": {
-                  "rendering": "number",
-                  "concept": "b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df",
-                  "calculate": {
-                    "calculateExpression": "(problemsPerformingDailyActivities === 'ed0e2463-c990-4341-b095-53b899707af9' ? 1 : problemsPerformingDailyActivities === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : problemsPerformingDailyActivities === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : problemsPerformingDailyActivities === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : problemsPerformingDailyActivities === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (problemsGettingAlongWithFamilyOrFriends === 'ed0e2463-c990-4341-b095-53b899707af9' ? 1 : problemsGettingAlongWithFamilyOrFriends === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : problemsGettingAlongWithFamilyOrFriends === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : problemsGettingAlongWithFamilyOrFriends === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : problemsGettingAlongWithFamilyOrFriends === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (problemsSleepingSuchAsSleepingTooMuchOrNotEnough === 'ed0e2463-c990-4341-b095-53b899707af9' ? 1 : problemsSleepingSuchAsSleepingTooMuchOrNotEnough === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : problemsSleepingSuchAsSleepingTooMuchOrNotEnough === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : problemsSleepingSuchAsSleepingTooMuchOrNotEnough === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : problemsSleepingSuchAsSleepingTooMuchOrNotEnough === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (botheredByUnpleasantThoughtsWorriesOrIdeas === 'ed0e2463-c990-4341-b095-53b899707af9' ? 1 : botheredByUnpleasantThoughtsWorriesOrIdeas === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : botheredByUnpleasantThoughtsWorriesOrIdeas === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : botheredByUnpleasantThoughtsWorriesOrIdeas === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : botheredByUnpleasantThoughtsWorriesOrIdeas === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (haveYouFeltSadOrNervous === 'ed0e2463-c990-4341-b095-53b899707af9' ? 1 : haveYouFeltSadOrNervous === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : haveYouFeltSadOrNervous === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : haveYouFeltSadOrNervous === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : haveYouFeltSadOrNervous === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (haveYouBeenSuffering === 'ed0e2463-c990-4341-b095-53b899707af9' ? 1 : haveYouBeenSuffering === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : haveYouBeenSuffering === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : haveYouBeenSuffering === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : haveYouBeenSuffering === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0)"
-                  }
-                },
-                "questionInfo": "Sum of all points from answers above"
-              }
-            ]
-          },
-          {
-            "label": "PHQ-9 (only for depression) - Over the last two weeks, how often have you been bothered by any of the following problems?",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "littleInterestOrPleasureInDoingThings",
-                "label": "Little interest or pleasure in doing things",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "eeac083f-9acd-4c04-bafc-b4266a02a3a3",
-                  "answers": [
-                    {
-                      "label": "Not at all (0 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "Several days (1 point)",
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "label": "More than half the days (2 points)",
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "label": "Nearly every day (3 points)",
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "feelingDownDepressedOrHopeless",
-                "label": "Feeling down depressed or hopeless",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "0902dd6a-3f4e-422c-92eb-10e89cb783e2",
-                  "answers": [
-                    {
-                      "label": "Not at all (0 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "Several days (1 point)",
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "label": "More than half the days (2 points)",
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "label": "Nearly every day (3 points)",
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "troubleFallingOrStayingAsleepOrSleepingTooMuch",
-                "label": "Trouble falling or staying asleep or sleeping too much",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "2ad5e737-fb27-44ea-bcf9-fafcbd7640fd",
-                  "answers": [
-                    {
-                      "label": "Not at all (0 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "Several days (1 point)",
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "label": "More than half the days (2 points)",
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "label": "Nearly every day (3 points)",
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "feelingTiredOrHavingLittleEnergy",
-                "label": "Feeling tired or having little energy",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "f899935f-13f0-472e-b1dd-569ead3c63f1",
-                  "answers": [
-                    {
-                      "label": "Not at all (0 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "Several days (1 point)",
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "label": "More than half the days (2 points)",
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "label": "Nearly every day (3 points)",
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "poorAppetiteOrOverEating",
-                "label": "Poor appetite or over eating",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "48177433-e9c0-43b7-be27-7d4992723e01",
-                  "answers": [
-                    {
-                      "label": "Not at all (0 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "Several days (1 point)",
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "label": "More than half the days (2 points)",
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "label": "Nearly every day (3 points)",
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "feelingBadAboutYourself",
-                "label": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "eb14c9f6-8c32-4cbb-a595-66ffd72b8cdb",
-                  "answers": [
-                    {
-                      "label": "Not at all (0 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "Several days (1 point)",
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "label": "More than half the days (2 points)",
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "label": "Nearly every day (3 points)",
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "troubleConcentratingOnThings",
-                "label": "Trouble concentrating on things such as reading the newspaper or watching television",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "2bf607e1-85f3-4514-9e07-e3f8caabbc57",
-                  "answers": [
-                    {
-                      "label": "Not at all (0 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "Several days (1 point)",
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "label": "More than half the days (2 points)",
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "label": "Nearly every day (3 points)",
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "movingOrSpeakingSoSlowly",
-                "label": "Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "50fb199e-410c-40d4-bbd9-44f641d4421d",
-                  "answers": [
-                    {
-                      "label": "Not at all (0 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "Several days (1 point)",
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "label": "More than half the days (2 points)",
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "label": "Nearly every day (3 points)",
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "thoughtsThatYouWouldBeBetterOffDead",
-                "label": "Thoughts that you would be better off dead or of hurting yourself in some way",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "5723ae77-b752-404a-a5dd-5b1d8be222c4",
-                  "answers": [
-                    {
-                      "label": "Not at all (0 point)",
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "label": "Several days (1 point)",
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "label": "More than half the days (2 points)",
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "label": "Nearly every day (3 points)",
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "phq9Score",
-                "label": "PHQ-9 score",
-                "type": "obs",
-                "required": false,
-                "readonly": true,
-                "questionOptions": {
-                  "rendering": "number",
-                  "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23",
-                  "calculate": {
-                    "calculateExpression": "(littleInterestOrPleasureInDoingThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : littleInterestOrPleasureInDoingThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : littleInterestOrPleasureInDoingThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingDownDepressedOrHopeless === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingDownDepressedOrHopeless === '234259ec-5368-4488-8482-4f261cc76714' ? 2 :  feelingDownDepressedOrHopeless==='8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleFallingOrStayingAsleepOrSleepingTooMuch === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingTiredOrHavingLittleEnergy === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingTiredOrHavingLittleEnergy === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingTiredOrHavingLittleEnergy === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) +(poorAppetiteOrOverEating === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : poorAppetiteOrOverEating === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : poorAppetiteOrOverEating === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingBadAboutYourself === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingBadAboutYourself === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingBadAboutYourself === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleConcentratingOnThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleConcentratingOnThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleConcentratingOnThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (movingOrSpeakingSoSlowly === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : movingOrSpeakingSoSlowly === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : movingOrSpeakingSoSlowly === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (thoughtsThatYouWouldBeBetterOffDead === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : thoughtsThatYouWouldBeBetterOffDead === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : thoughtsThatYouWouldBeBetterOffDead === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0)"
-                  }
-                },
-                "questionInfo": "Sum of all points from answers above"
-              },
-              {
-                "id": "depressionSeverityScale",
-                "label": "Depression severity scale",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "select",
-                  "concept": "ffead923-80bc-4afa-833d-7690f35bf5b0",
-                  "answers": [
-                    {
-                      "label": "No depression",
-                      "concept": "5aa4edf5-b218-4470-b5da-ad1d88007954"
-                    },
-                    {
-                      "label": "Minimal symptoms (5-9)",
-                      "concept": "9d7d154f-e7a1-4490-b93a-85f5c2157f92"
-                    },
-                    {
-                      "label": "Minor to mild depression (or dysthymia). (10-14)",
-                      "concept": "ed7484ef-a3ea-4c95-bf59-58987c7f6d7c"
-                    },
-                    {
-                      "label": "Major depression (15-19)",
-                      "concept": "d163711c-9fcf-4050-b015-d3463b4602fa"
-                    },
-                    {
-                      "label": "Severe depression (> 20)",
-                      "concept": "0ff3a7dc-1a6e-4453-91d5-29cf6a9f790c"
-                    }
-                  ]
-                },
-                "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult"
-              }
-            ]
-          },
-          {
-            "label": "CGI - Clinical Global Impression",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "cgiS",
-                "label": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time?)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "a1a75011-0fef-460a-b666-dda2d171f39b",
-                  "answers": [
-                    {
-                      "label": "0 - Not assessed",
-                      "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
-                    },
-                    {
-                      "label": "1 - Normal/not ill",
-                      "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
-                    },
-                    {
-                      "label": "2 - Suspected mentally ill",
-                      "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
-                    },
-                    {
-                      "label": "3 - Mildly ill",
-                      "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
-                    },
-                    {
-                      "label": "4 - Moderately ill",
-                      "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
-                    },
-                    {
-                      "label": "5 - Markedly ill",
-                      "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
-                    },
-                    {
-                      "label": "6 - Severely ill",
-                      "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
-                    },
-                    {
-                      "label": "7 - Extremely ill patient",
-                      "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "cgiI",
-                "label": "CGI-I (rating of  improvement CGI-I how much has the patient improved at this time)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "f94de17e-9771-4711-aabb-c5bb0c022be2",
-                  "answers": [
-                    {
-                      "label": "0 - Not assessed",
-                      "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
-                    },
-                    {
-                      "label": "1 - Very much improved",
-                      "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
-                    },
-                    {
-                      "label": "2 - Much improved",
-                      "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
-                    },
-                    {
-                      "label": "3 - Minimally improved",
-                      "concept": "e19f352f-b693-434a-af4d-2813487de15c"
-                    },
-                    {
-                      "label": "4 - No change",
-                      "concept": "162679AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "5 - Minimally worse",
-                      "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
-                    },
-                    {
-                      "label": "6 - Much worse",
-                      "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
-                    },
-                    {
-                      "label": "7 - Very much worse",
-                      "concept": "ece17856-b110-4453-9bc5-a92891f86846"
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Diagnosis & evolution",
-        "sections": [
-          {
-            "label": "Evolution of symptoms/complaints",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "evolutionOfSymptomsOrComplaints",
-                "label": "Evolution of symptoms/complaints",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "4c9228b2-4ba2-4edb-8daf-31a824e5fa9a"
-                },
-                "questionInfo": "Since the last session, have the patient’s symptoms or complaints changed? Please describe in the patient’s words."
-              }
-            ]
-          },
-          {
-            "label": "Clinical diagnosis",
-            "isExpanded": false,
-            "readonly": "!customHasRequiredPrivilege('Edit sensitive mental health fields')",
-            "questions": [
-              {
-                "id": "clinicalDiagnosis",
-                "label": "Clinical diagnosis (only to be established by a psychologist using the list at the baseline)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "select",
-                  "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
-                  "calculate": {
-                    "calculateExpression": "api.getLatestObs(patient.id, '22809b19-54ca-4d88-8d26-9577637c184e').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
+              "default": "(calculated - # of session)"
+            },
+            {
+              "id": "typeOfConsultation",
+              "label": "Type of consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1a8bf24f-4f36-4971-aad9-ae77f3525738",
+                "answers": [
+                  {
+                    "label": "Individual",
+                    "concept": "96223dc7-6959-4ea5-a362-c0246d858c87"
                   },
-                  "answers": [
-                    {
-                      "label": "Acute stress reaction",
-                      "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
-                    },
-                    {
-                      "label": "Bereavement/grief",
-                      "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
-                    },
-                    {
-                      "label": "Post-Traumatic Stress Disorder",
-                      "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
-                    },
-                    {
-                      "label": "Conversion/Dissociative reaction",
-                      "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
-                    },
-                    {
-                      "label": "Anxiety Disorder",
-                      "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
-                    },
-                    {
-                      "label": "Medically Unexplained Physical Symptoms (MUPS)",
-                      "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
-                    },
-                    {
-                      "label": "Depression",
-                      "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
-                    },
-                    {
-                      "label": "Self-harming behavior/suicide attempt",
-                      "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
-                    },
-                    {
-                      "label": "Acute psychosis (incl. post-partum psychosis)",
-                      "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
-                    },
-                    {
-                      "label": "Chronic psychosis (incl. schizophrenia)",
-                      "concept": "1197f1f41-b0c7-407d-b95f-b1e26c3fd23c"
-                    },
-                    {
-                      "label": "Bipolar disorder (incl. mania)",
-                      "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
-                    },
-                    {
-                      "label": "Enuresis / Encopresis",
-                      "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
-                    },
-                    {
-                      "label": "Developmental disorder (incl. intellectual disability autism)",
-                      "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
-                    },
-                    {
-                      "label": "Childhood behavioral disorder (incl. ADHD conduct disorder)",
-                      "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
-                    },
-                    {
-                      "label": "Childhood emotional disorder",
-                      "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
-                    },
-                    {
-                      "label": "Substance-related disorder",
-                      "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
-                    },
-                    {
-                      "label": "Epilepsy / seizures",
-                      "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
-                    },
-                    {
-                      "label": "Other disorder",
-                      "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No diagnosis",
-                      "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
-                    }
-                  ]
+                  {
+                    "label": "Couple",
+                    "concept": "61b32a22-acef-4141-9faa-9c236cdfa978"
+                  },
+                  {
+                    "label": "Family",
+                    "concept": "f16d5d76-155b-453d-bd60-ea8ee4d344e9"
+                  },
+                  {
+                    "label": "Parent-Child",
+                    "concept": "1528AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "totalNumberOfBeneficiariesInFamilyConsultation",
+              "label": "Total number of beneficiaries in family consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b87a93ff-a4a1-4601-b35d-1e42bfa7e194"
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfConsultation !== 'f16d5d76-155b-453d-bd60-ea8ee4d344e9'"
+              }
+            },
+            {
+              "id": "consultationDoneBy",
+              "label": "Consultation done by",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "722dd83a-c1cf-48ad-ac99-45ac131ccc96",
+                "answers": [
+                  {
+                    "label": "Psychologist",
+                    "concept": "278401ee-3d6f-4c65-9455-f1c16d0a7a98"
+                  },
+                  {
+                    "label": "Counsellor",
+                    "concept": "fda1cdd0-745e-4ff7-a3d0-b8f8ddb99331"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "locationOfIntervention",
+              "label": "Location of intervention",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "82978311-bef9-46f9-9a9a-cc62254b00a6",
+                "answers": [
+                  {
+                    "label": "Health facility",
+                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0166"
+                  },
+                  {
+                    "label": "MSF health facility",
+                    "concept": "41e68dee-a2a3-4e6c-9d96-53def5caff52"
+                  },
+                  {
+                    "label": "Mobile clinic",
+                    "concept": "08cd4b4a-4b0b-4391-987b-b5b3d770d30f"
+                  },
+                  {
+                    "label": "Home visit",
+                    "concept": "bd5bf44b-164c-415c-8bff-b1d4849928d3"
+                  },
+                  {
+                    "label": "School visit",
+                    "concept": "7091b6ea-7067-4ee3-9f67-8805904e2f61"
+                  },
+                  {
+                    "label": "Remote / phone",
+                    "concept": "398ce872-5862-4826-bba8-826915eddf98"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "specifyHealthFacility",
+              "label": "Specify Health Facility",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0166"
+              },
+              "hide": {
+                "hideWhenExpression": "locationOfIntervention !== 'da33d74e-33b3-495a-9d7c-aa00a-aa0166'"
+              }
+            },
+            {
+              "id": "specifyMsfHealthFacility",
+              "label": "Specify MSF Health Facility",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "41e68dee-a2a3-4e6c-9d96-53def5caff52"
+              },
+              "hide": {
+                "hideWhenExpression": "locationOfIntervention !== '41e68dee-a2a3-4e6c-9d96-53def5caff52'"
+              }
+            },
+            {
+              "id": "specifyMobileClinic",
+              "label": "Specify Mobile Clinic",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "08cd4b4a-4b0b-4391-987b-b5b3d770d30f"
+              },
+              "hide": {
+                "hideWhenExpression": "locationOfIntervention !== '08cd4b4a-4b0b-4391-987b-b5b3d770d30f'"
+              }
+            },
+            {
+              "id": "locationOfIntervention_ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e08d532b-e56c-43dc-b831-af705654d2dc"
+              },
+              "hide": {
+                "hideWhenExpression": "locationOfIntervention !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "typeOfIntervention",
+              "label": "Type of intervention",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "82d1fcad-d1be-4ea2-a66c-c872fb4825b4",
+                "answers": [
+                  {
+                    "label": "Counselling",
+                    "concept": "08c534b7-c901-46fb-9831-50ecfcd74d1b"
+                  },
+                  {
+                    "label": "Psychotherapy",
+                    "concept": "aa9c5d82-1ebf-43c7-9218-6766c4affbc4"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Missed session",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "thePatientDidNotCome",
+              "label": "The patient did not come",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "54e8c1b6-6397-4822-89a4-cf81fbc68ce9",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "numberOfAppointmentsMissed",
+              "label": "Number of appointments missed",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "d7410cd3-29be-4f8b-93d6-eb4de005db29"
+              },
+              "hide": {
+                "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "patientRescheduledFillTheExitForm",
+              "label": "Patient rescheduled (if Yes fill the Follow-up section at the end of this form. If No (closing file or patient no longer wants services) fill the Exit form.",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "278d3d1e-c02a-4db1-8ab3-8db3b82eb9b5",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "reasonForMissedAppointment",
+              "label": "Reason for missed appointment",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d34d5e93-03d6-494e-8f4c-2d7221227162",
+                "answers": [
+                  {
+                    "label": "Patient forgot about session",
+                    "concept": "df40472b-d192-4d0d-87c6-dadfae58270d"
+                  },
+                  {
+                    "label": "No transportation / unable to attend",
+                    "concept": "988d1f88-1202-4a13-8ae7-02156b5ccbe2"
+                  },
+                  {
+                    "label": "Patient unreachable",
+                    "concept": "e0f8014a-aa6c-4a59-aa09-ed6e3dad6b47"
+                  },
+                  {
+                    "label": "Patient no longer wants services",
+                    "concept": "49da2b46-b7d1-4ba7-ba57-cfe219694a9c"
+                  },
+                  {
+                    "label": "Patient was busy",
+                    "concept": "cd1a5f24-c862-4cb6-9ef9-db2f3d46aad2"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "thePatientDidNotCome !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "reasonForMissedAppointment_ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              },
+              "hide": {
+                "hideWhenExpression": "reasonForMissedAppointment !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Progress",
+      "sections": [
+        {
+          "label": "Patient’s progress",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "patientsProgressSinceTheLastSessionHowHasThePatientBeenFeelingOrHowHaveThingsBeenGoingInThePatientsLife",
+              "label": "Patients progress since the last session how has the patient been feeling/how have things been going in the patients life",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "f186c7ec-7028-4841-b669-78ee192af4c9"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Resilience & coping",
+      "sections": [
+        {
+          "label": "Resilience & coping",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "positiveFunctionalityIsThePatientCapableOfBeingIndependentCaringForThemselvesGoingToWorkOrSchoolEtc",
+              "label": "Positive functionality Is the patient capable of being independent caring for themselves (bathing/eating) going to work/school etc.",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "00617df0-f2bb-4e9c-84b8-836c9d281a20",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "internalResourcesDoesThePatientBelieveThatTheyHaveTheAbilitiesNeededToOvercomeTheCurrentProblemOrDoTheyHaveHopeForTheirFuture",
+              "label": "Internal resources Does the patient believe that they have the abilities needed to overcome the current problem / do they have hope for their future",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "021d9afe-7d46-406c-b450-c0cd1e251f79",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "externalResourcesDoesThePatientBelieveThatTheyHaveSomeoneWhoTheyCanRelyOnForHelpInTheirLives",
+              "label": "External resources Does the patient believe that they have someone who they can rely on for help in their lives",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b745fc24-46ec-433b-8df6-78bbd6733472",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "spiritualOrMoralResourcesAreThePatientsBeliefsASourceOfStrengthForThemWhenDealingWithProblems",
+              "label": "Spiritual / moral resources Are the patients beliefs a source of strength for them when dealing with problems",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e3babf1f-95da-4e30-9593-a37beeff8ef2",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Scores",
+      "sections": [
+        {
+          "label": "MHOS - Mental Health Outcome Score",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "inThePastWeek",
+              "label": "In the past week",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["In the past week."]
+            },
+            {
+              "id": "problemsPerformingDailyActivities",
+              "label": "Did you have problems performing daily activities such as cooking bathing or chores outside the household?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b5c4b6d2-c880-43c5-a250-8fe09c9e394c",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15"
+              }
+            },
+            {
+              "id": "problemsGettingAlongWithFamilyOrFriends",
+              "label": "Did you have problems getting along with family or friends?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b8968e50-436f-444e-8ab6-4b707fab090c",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15"
+              }
+            },
+            {
+              "id": "problemsSleepingSuchAsSleepingTooMuchOrNotEnough",
+              "label": "Did you have any problems sleeping such as sleeping too much or not enough?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f44f52dd-6eda-4ca5-8375-61164bff5a32",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15"
+              }
+            },
+            {
+              "id": "botheredByUnpleasantThoughtsWorriesOrIdeas",
+              "label": "Have you been bothered by unpleasant thoughts worries or ideas?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "09ba3837-cc74-4fe5-8be4-e439b02a1d62",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15"
+              }
+            },
+            {
+              "id": "haveYouFeltSadOrNervous",
+              "label": "Have you felt sad or nervous?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "79d37985-b959-49c2-a7b8-7fe1618d641b",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15"
+              }
+            },
+            {
+              "id": "haveYouBeenSuffering",
+              "label": "Have you been suffering?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "802f0ec2-169f-41b7-ae83-2e8f2fc86e3a",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age < 15"
+              }
+            },
+            {
+              "id": "inGeneralInThePastWeekHowWellHasTheChildBeenFeeling",
+              "label": "In general in the past week how well has the child been feeling?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5ef0f180-b7b1-48d7-8be1-4508238afa05",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "didTheChildHaveProblemsPlayingDoingChoresHomeworkOrOtherDayToDayActivities",
+              "label": "Did the child have problems playing doing chores homework or other day to day activities",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9908cd74-1507-40b9-99ce-05c9d4044b35",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "didTheChildHaveProblemsGettingAlongWithOthers",
+              "label": "Did the child have problems getting along with others",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c7c57a7e-22ac-4841-a3ff-ab92f092d7ca",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "didTheChildHaveProblemsPayingAttentionUnderstandingOrRememberingThings",
+              "label": "Did the child have problems paying attention understanding or remembering things",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3c0fdd75-9891-4df1-b470-99f7aa3c3708",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "didTheChildHaveProblemsWithHisAppetiteSuchAsHavingTooLittleOrTooMuchHunger",
+              "label": "Did the child have problems with his appetite such as having too little or too much hunger",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a6ee4861-87e9-405b-aa60-6e7e4a4a5bfc",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "didTheChildHaveProblemSleepingSuchAsSleepingTooMuchOrNotEnough",
+              "label": "Did the child have problem sleeping such as sleeping too much or not enough",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "98ed6527-a772-4516-bd46-ce85b710f9a1",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "didTheChildComplainAboutPainOrDiscomfortWithHisOrHerBody",
+              "label": "Did the child complain about pain or discomfort with his/her body",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "07fd69f0-2db2-4a1b-ae2d-0932a19ee757",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "didTheChildBehavePoorly",
+              "label": "Did the child behave poorly",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "519df50f-395c-47fe-a302-52d9417bb22a",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "didTheChildSeekComfortAndClosenessFromSomeone",
+              "label": "Did the child seek comfort and closeness from someone",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "64bd0551-fca4-44de-bea9-25f8a53ff732",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "didTheChildWetTheBed",
+              "label": "Did the child wet the bed",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e89f15f2-559f-4a46-8d21-5e32e2a51c4a",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "wasTheChildSadOrIrritable",
+              "label": "Was the child sad or irritable",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e75836f2-843b-42d1-9eb3-62da997ac23e",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "wasTheChildWorriedOrScared",
+              "label": "Was the child worried or scared",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "71163a70-fe4c-436b-b6b8-12757889fab3",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "hasTheChildBeenCrying",
+              "label": "Has the child been crying",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "515d9893-24a5-438e-a294-37b897cba8ab",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "hasTheChildBeenSuffering",
+              "label": "Has the child been suffering",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "456714e9-4268-4a2a-a7c2-d0758ab92ea8",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "aLastQuestion",
+              "label": "A last question",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["A last question."],
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "inGeneralHowHelpfulWereTheTherapeuticOrCounsellingSessionsForYourChild",
+              "label": "In general how helpful were the therapeutic or counselling sessions FOR YOUR CHILD",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "975d4314-0f9d-448c-bf46-a274c7cbe943",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "inGeneralHowHelpfulWereTheTherapeuticOrCounsellingSessionsForYou",
+              "label": "In general how helpful were the therapeutic or counselling sessions FOR YOU",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3fd956b5-4e18-4d07-91d4-8d0807758d43",
+                "answers": [
+                  {
+                    "label": "Not at all (0 points)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "A little (1 points)",
+                    "concept": "f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0"
+                  },
+                  {
+                    "label": "Some (2 points)",
+                    "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
+                  },
+                  {
+                    "label": "Fair amount (3 points)",
+                    "concept": "de7fa192-bf2e-4991-a81f-582c4b50ae51"
+                  },
+                  {
+                    "label": "A lot (4 points)",
+                    "concept": "0f074510-1ff6-4924-bfef-effdcffd44f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "age >= 15"
+              }
+            },
+            {
+              "id": "mhosScore",
+              "label": "MHOS score",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df",
+                "calculate": {
+                  "calculateExpression": "(problemsPerformingDailyActivities === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : problemsPerformingDailyActivities === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : problemsPerformingDailyActivities === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : problemsPerformingDailyActivities === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (problemsGettingAlongWithFamilyOrFriends === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : problemsGettingAlongWithFamilyOrFriends === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : problemsGettingAlongWithFamilyOrFriends === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : problemsGettingAlongWithFamilyOrFriends === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (problemsSleepingSuchAsSleepingTooMuchOrNotEnough === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : problemsSleepingSuchAsSleepingTooMuchOrNotEnough === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : problemsSleepingSuchAsSleepingTooMuchOrNotEnough === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : problemsSleepingSuchAsSleepingTooMuchOrNotEnough === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (botheredByUnpleasantThoughtsWorriesOrIdeas === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : botheredByUnpleasantThoughtsWorriesOrIdeas === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : botheredByUnpleasantThoughtsWorriesOrIdeas === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : botheredByUnpleasantThoughtsWorriesOrIdeas === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (haveYouFeltSadOrNervous === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : haveYouFeltSadOrNervous === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : haveYouFeltSadOrNervous === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : haveYouFeltSadOrNervous === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (haveYouBeenSuffering === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : haveYouBeenSuffering === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : haveYouBeenSuffering === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : haveYouBeenSuffering === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (inGeneralInThePastWeekHowWellHasTheChildBeenFeeling === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : inGeneralInThePastWeekHowWellHasTheChildBeenFeeling === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : inGeneralInThePastWeekHowWellHasTheChildBeenFeeling === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : inGeneralInThePastWeekHowWellHasTheChildBeenFeeling === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (didTheChildHaveProblemsPlayingDoingChoresHomeworkOrOtherDayToDayActivities === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : didTheChildHaveProblemsPlayingDoingChoresHomeworkOrOtherDayToDayActivities === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : didTheChildHaveProblemsPlayingDoingChoresHomeworkOrOtherDayToDayActivities === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : didTheChildHaveProblemsPlayingDoingChoresHomeworkOrOtherDayToDayActivities === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (didTheChildHaveProblemsGettingAlongWithOthers === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : didTheChildHaveProblemsGettingAlongWithOthers === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : didTheChildHaveProblemsGettingAlongWithOthers === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : didTheChildHaveProblemsGettingAlongWithOthers === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (didTheChildHaveProblemsPayingAttentionUnderstandingOrRememberingThings === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : didTheChildHaveProblemsPayingAttentionUnderstandingOrRememberingThings === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : didTheChildHaveProblemsPayingAttentionUnderstandingOrRememberingThings === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : didTheChildHaveProblemsPayingAttentionUnderstandingOrRememberingThings === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (didTheChildHaveProblemsWithHisAppetiteSuchAsHavingTooLittleOrTooMuchHunger === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : didTheChildHaveProblemsWithHisAppetiteSuchAsHavingTooLittleOrTooMuchHunger === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : didTheChildHaveProblemsWithHisAppetiteSuchAsHavingTooLittleOrTooMuchHunger === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : didTheChildHaveProblemsWithHisAppetiteSuchAsHavingTooLittleOrTooMuchHunger === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (didTheChildHaveProblemSleepingSuchAsSleepingTooMuchOrNotEnough === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : didTheChildHaveProblemSleepingSuchAsSleepingTooMuchOrNotEnough === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : didTheChildHaveProblemSleepingSuchAsSleepingTooMuchOrNotEnough === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : didTheChildHaveProblemSleepingSuchAsSleepingTooMuchOrNotEnough === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (didTheChildComplainAboutPainOrDiscomfortWithHisOrHerBody === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : didTheChildComplainAboutPainOrDiscomfortWithHisOrHerBody === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : didTheChildComplainAboutPainOrDiscomfortWithHisOrHerBody === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : didTheChildComplainAboutPainOrDiscomfortWithHisOrHerBody === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (didTheChildBehavePoorly === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : didTheChildBehavePoorly === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : didTheChildBehavePoorly === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : didTheChildBehavePoorly === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (didTheChildSeekComfortAndClosenessFromSomeone === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : didTheChildSeekComfortAndClosenessFromSomeone === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : didTheChildSeekComfortAndClosenessFromSomeone === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : didTheChildSeekComfortAndClosenessFromSomeone === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (didTheChildWetTheBed === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : didTheChildWetTheBed === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : didTheChildWetTheBed === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : didTheChildWetTheBed === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (wasTheChildSadOrIrritable === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : wasTheChildSadOrIrritable === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : wasTheChildSadOrIrritable === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : wasTheChildSadOrIrritable === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (wasTheChildWorriedOrScared === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : wasTheChildWorriedOrScared === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : wasTheChildWorriedOrScared === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : wasTheChildWorriedOrScared === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (hasTheChildBeenCrying === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : hasTheChildBeenCrying === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : hasTheChildBeenCrying === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : hasTheChildBeenCrying === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (hasTheChildBeenSuffering === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : hasTheChildBeenSuffering === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : hasTheChildBeenSuffering === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : hasTheChildBeenSuffering === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (inGeneralHowHelpfulWereTheTherapeuticOrCounsellingSessionsForYourChild === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : inGeneralHowHelpfulWereTheTherapeuticOrCounsellingSessionsForYourChild === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : inGeneralHowHelpfulWereTheTherapeuticOrCounsellingSessionsForYourChild === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : inGeneralHowHelpfulWereTheTherapeuticOrCounsellingSessionsForYourChild === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0) + (inGeneralHowHelpfulWereTheTherapeuticOrCounsellingSessionsForYou === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 1 : inGeneralHowHelpfulWereTheTherapeuticOrCounsellingSessionsForYou === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 2 : inGeneralHowHelpfulWereTheTherapeuticOrCounsellingSessionsForYou === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 3 : inGeneralHowHelpfulWereTheTherapeuticOrCounsellingSessionsForYou === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 4 : 0)"
                 }
               },
-              {
-                "id": "clinicalDiagnosis_ifOtherSpecify",
-                "label": "If other, specify",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
-                },
-                "hide": {
-                  "hideWhenExpression": "clinicalDiagnosis !== 'otherDisorder'"
+              "questionInfo": "Sum of all points from answers above"
+            },
+            {
+              "id": "lastMhosScore",
+              "label": "Last MHOS score",
+              "type": "control",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "isTransient": true,
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df').then(obs => obs?.valueQuantity?.value)"
                 }
               }
-            ]
-          },
-          {
-            "label": "Homework / action plan",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "homeworkOrActionPlan",
-                "label": "Homework / action plan",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "d0169612-3ce9-4e38-b495-d1a4b0ccb76b"
-                },
-                "questionInfo": "Did the patient complete their homework? Did it help improve the current situation? Specify homework from previous session and results."
+            }
+          ]
+        },
+        {
+          "label": "PHQ-9 (only for depression) - Over the last two weeks, how often have you been bothered by any of the following problems?",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "littleInterestOrPleasureInDoingThings",
+              "label": "Little interest or pleasure in doing things",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "eeac083f-9acd-4c04-bafc-b4266a02a3a3",
+                "answers": [
+                  {
+                    "label": "Not at all (0 point)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "Several days (1 point)",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "More than half the days (2 points)",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "Nearly every day (3 points)",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "feelingDownDepressedOrHopeless",
+              "label": "Feeling down depressed or hopeless",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0902dd6a-3f4e-422c-92eb-10e89cb783e2",
+                "answers": [
+                  {
+                    "label": "Not at all (0 point)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "Several days (1 point)",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "More than half the days (2 points)",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "Nearly every day (3 points)",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "troubleFallingOrStayingAsleepOrSleepingTooMuch",
+              "label": "Trouble falling or staying asleep or sleeping too much",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2ad5e737-fb27-44ea-bcf9-fafcbd7640fd",
+                "answers": [
+                  {
+                    "label": "Not at all (0 point)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "Several days (1 point)",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "More than half the days (2 points)",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "Nearly every day (3 points)",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "feelingTiredOrHavingLittleEnergy",
+              "label": "Feeling tired or having little energy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f899935f-13f0-472e-b1dd-569ead3c63f1",
+                "answers": [
+                  {
+                    "label": "Not at all (0 point)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "Several days (1 point)",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "More than half the days (2 points)",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "Nearly every day (3 points)",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "poorAppetiteOrOverEating",
+              "label": "Poor appetite or over eating",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "48177433-e9c0-43b7-be27-7d4992723e01",
+                "answers": [
+                  {
+                    "label": "Not at all (0 point)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "Several days (1 point)",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "More than half the days (2 points)",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "Nearly every day (3 points)",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "feelingBadAboutYourself",
+              "label": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "eb14c9f6-8c32-4cbb-a595-66ffd72b8cdb",
+                "answers": [
+                  {
+                    "label": "Not at all (0 point)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "Several days (1 point)",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "More than half the days (2 points)",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "Nearly every day (3 points)",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "troubleConcentratingOnThings",
+              "label": "Trouble concentrating on things such as reading the newspaper or watching television",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2bf607e1-85f3-4514-9e07-e3f8caabbc57",
+                "answers": [
+                  {
+                    "label": "Not at all (0 point)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "Several days (1 point)",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "More than half the days (2 points)",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "Nearly every day (3 points)",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "movingOrSpeakingSoSlowly",
+              "label": "Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "50fb199e-410c-40d4-bbd9-44f641d4421d",
+                "answers": [
+                  {
+                    "label": "Not at all (0 point)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "Several days (1 point)",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "More than half the days (2 points)",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "Nearly every day (3 points)",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "thoughtsThatYouWouldBeBetterOffDead",
+              "label": "Thoughts that you would be better off dead or of hurting yourself in some way",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5723ae77-b752-404a-a5dd-5b1d8be222c4",
+                "answers": [
+                  {
+                    "label": "Not at all (0 point)",
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "label": "Several days (1 point)",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "More than half the days (2 points)",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "Nearly every day (3 points)",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "phq9Score",
+              "label": "PHQ-9 score",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23",
+                "calculate": {
+                  "calculateExpression": "(littleInterestOrPleasureInDoingThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : littleInterestOrPleasureInDoingThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : littleInterestOrPleasureInDoingThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingDownDepressedOrHopeless === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingDownDepressedOrHopeless === '234259ec-5368-4488-8482-4f261cc76714' ? 2 :  feelingDownDepressedOrHopeless==='8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleFallingOrStayingAsleepOrSleepingTooMuch === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingTiredOrHavingLittleEnergy === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingTiredOrHavingLittleEnergy === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingTiredOrHavingLittleEnergy === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) +(poorAppetiteOrOverEating === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : poorAppetiteOrOverEating === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : poorAppetiteOrOverEating === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingBadAboutYourself === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingBadAboutYourself === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingBadAboutYourself === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleConcentratingOnThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleConcentratingOnThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleConcentratingOnThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (movingOrSpeakingSoSlowly === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : movingOrSpeakingSoSlowly === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : movingOrSpeakingSoSlowly === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (thoughtsThatYouWouldBeBetterOffDead === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : thoughtsThatYouWouldBeBetterOffDead === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : thoughtsThatYouWouldBeBetterOffDead === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0)"
+                }
               },
-              {
-                "id": "patientCompletedHomework",
-                "label": "Patient completed homework ",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "24528acc-242a-4c3b-9143-76973b6f57cf",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
+              "questionInfo": "Sum of all points from answers above"
+            },
+            {
+              "id": "lastPhq9Score",
+              "label": "Last PHQ-9 score",
+              "type": "control",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
                 }
               }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Risk factors",
-        "sections": [
-          {
-            "label": "Risk factors (since the last session. . .)",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "hasThePatientHadThoughtsOfDeathOrSuicide",
-                "label": "Has the patient had thoughts of death or suicide",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "c2664992-8a5a-4a6d-9238-5df591307d55",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
+            },
+            {
+              "id": "depressionSeverityScale",
+              "label": "Depression severity scale",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "ffead923-80bc-4afa-833d-7690f35bf5b0",
+                "answers": [
+                  {
+                    "label": "No depression",
+                    "concept": "5aa4edf5-b218-4470-b5da-ad1d88007954"
+                  },
+                  {
+                    "label": "Minimal symptoms (5-9)",
+                    "concept": "9d7d154f-e7a1-4490-b93a-85f5c2157f92"
+                  },
+                  {
+                    "label": "Minor to mild depression (or dysthymia). (10-14)",
+                    "concept": "ed7484ef-a3ea-4c95-bf59-58987c7f6d7c"
+                  },
+                  {
+                    "label": "Major depression (15-19)",
+                    "concept": "d163711c-9fcf-4050-b015-d3463b4602fa"
+                  },
+                  {
+                    "label": "Severe depression (> 20)",
+                    "concept": "0ff3a7dc-1a6e-4453-91d5-29cf6a9f790c"
+                  }
+                ]
               },
-              {
-                "id": "frequency",
-                "label": "Frequency",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "a590d345-65d1-4534-bfe4-375ef780e424"
-                },
-                "hide": {
-                  "hideWhenExpression": "hasThePatientHadThoughtsOfDeathOrSuicide !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "hasThePatientHurtThemselvesOrCausedSelfHarm",
-                "label": "Has the patient hurt themselves / caused self-harm",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "d3d978ab-da68-4672-ae0c-8270fa992a08",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "typeOfBehaviorAndFrequency",
-                "label": "Type of behavior and frequency",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "8ab1ff08-c32d-4832-bc9d-5542be594d12"
-                },
-                "hide": {
-                  "hideWhenExpression": "hasThePatientHurtThemselvesOrCausedSelfHarm !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "hasThePatientAttemptedSuicideOrTriedToKillThemselves",
-                "label": "Has the patient attempted suicide or tried to kill themselves",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "a6c5188c-29f0-4d3d-8cf5-7852998df86f",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "numberOfAttemptsAndMethod",
-                "label": "Number of attempts and method",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "667ebdfe-e989-4b56-8511-bb7a3165b327"
-                },
-                "hide": {
-                  "hideWhenExpression": "hasThePatientAttemptedSuicideOrTriedToKillThemselves !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "isThePatientCurrentlyAtRiskOfHurtingHimselfOrHerselfOrAttemptingSuicide",
-                "label": "Is the patient currently at risk of hurting himself/herself or attempting suicide",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "abede172-ba87-4ebe-8054-3afadb181ea3",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "actionTakenToReduceRiskOfHurtingHimself",
-                "label": "Action taken to reduce risk of hurting himself/herself",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "58187804-7c6c-47bf-b9d4-d45effbb3665"
-                },
-                "hide": {
-                  "hideWhenExpression": "isThePatientCurrentlyAtRiskOfHurtingHimselfOrHerselfOrAttemptingSuicide !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "isThePatientCurrentlyAtRiskOfHurtingOthers",
-                "label": "Is the patient currently at risk of hurting others",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "ccc4f06c-b76a-440d-9b7e-c48ba2c4a0ab",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "actionTakenToReduceRiskOfHurtingOthers",
-                "label": "Action taken to reduce risk of hurting others",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "517ff456-6aa7-4deb-8526-c0773423632f"
-                },
-                "hide": {
-                  "hideWhenExpression": "isThePatientCurrentlyAtRiskOfHurtingOthers !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "doesThePatientRegularlyUseAlcoholOrSubstancesToBecomeIntoxicated",
-                "label": "Does the patient regularly use alcohol / substances to become intoxicated",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "d516de07-979b-411c-b7e4-bd09cf7d9d91",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "typeOfSubstanceAndFrequency",
-                "label": "Type of substance and frequency ",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "7a62e58e-4f0f-4669-8d7c-51b5e21c5c4c"
-                },
-                "hide": {
-                  "hideWhenExpression": "doesThePatientRegularlyUseAlcoholOrSubstancesToBecomeIntoxicated !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "isThePatientCurrentlyOnPsychotropicOrPsychiatricMedication",
-                "label": "Is the patient currently on psychotropic / psychiatric medication",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "5f5e126b-962f-4c92-96bc-cbb1f3f06ba3",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "prescribedBy",
-                "label": "Prescribed by",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "d5d1e465-d663-44b4-b0e4-d9ce3eb1d5c2",
-                  "answers": [
-                    {
-                      "label": "MSF",
-                      "concept": "74c9a7c6-e64d-4f49-b8a6-f10999eb25bc"
-                    },
-                    {
-                      "label": "Non MSF",
-                      "concept": "77822de2-c236-4400-96f4-ee13b9334cea"
-                    }
-                  ]
-                },
-                "hide": {
-                  "hideWhenExpression": "isThePatientCurrentlyOnPsychotropicOrPsychiatricMedication !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "hasThePatientExperiencedAnActOfAggressionOrViolence",
-                "label": "Has the patient experienced an act of aggression or violence",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "3e97c2d0-15c1-4cfd-884f-7a4721079217",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "whatTypeOfViolence1",
-                "label": "What type(s) of violence? - 1",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "6fe1e8b4-26cd-42ba-b0c2-25ee14c2813c",
-                  "answers": [
-                    {
-                      "label": "Sexual",
-                      "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
-                    },
-                    {
-                      "label": "Physical",
-                      "concept": "6473ad84-53e1-4bb0-bb25-32ac424aaa97"
-                    },
-                    {
-                      "label": "Verbal",
-                      "concept": "58bdf548-26ee-42da-8837-8ecaf82fce1d"
-                    },
-                    {
-                      "label": "Psychological",
-                      "concept": "5d595702-1991-47fa-bea1-8682e23c62bd"
-                    },
-                    {
-                      "label": "Other",
-                      "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                },
-                "hide": {
-                  "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "whatTypeOfViolence2",
-                "label": "What type(s) of violence? - 2",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "e40838bf-2180-4307-ac99-19c4cd9620fe",
-                  "answers": [
-                    {
-                      "label": "Sexual",
-                      "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
-                    },
-                    {
-                      "label": "Physical",
-                      "concept": "6473ad84-53e1-4bb0-bb25-32ac424aaa97"
-                    },
-                    {
-                      "label": "Verbal",
-                      "concept": "58bdf548-26ee-42da-8837-8ecaf82fce1d"
-                    },
-                    {
-                      "label": "Psychological",
-                      "concept": "5d595702-1991-47fa-bea1-8682e23c62bd"
-                    },
-                    {
-                      "label": "Other",
-                      "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                },
-                "hide": {
-                  "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "whatTypeOfViolence3",
-                "label": "What type(s) of violence? - 3",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "89ff29ce-72ce-496b-9a5d-4661a651a3b8",
-                  "answers": [
-                    {
-                      "label": "Sexual",
-                      "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
-                    },
-                    {
-                      "label": "Physical",
-                      "concept": "6473ad84-53e1-4bb0-bb25-32ac424aaa97"
-                    },
-                    {
-                      "label": "Verbal",
-                      "concept": "58bdf548-26ee-42da-8837-8ecaf82fce1d"
-                    },
-                    {
-                      "label": "Psychological",
-                      "concept": "5d595702-1991-47fa-bea1-8682e23c62bd"
-                    },
-                    {
-                      "label": "Other",
-                      "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                },
-                "hide": {
-                  "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence_ifOtherSpecify",
-                "label": "If other, specify",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "d9b92c93-5017-4229-be19-2a0ebf9e9169"
-                },
-                "hide": {
-                  "hideWhenExpression": "isEmpty(whatTypeOfViolence) || !arrayContains(whatTypeOfViolence,'5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
-                }
-              },
-              {
-                "id": "timeBetweenViolenceEventAndConsultation",
-                "label": "Time between violence event and consultation",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "aae000c3-5242-4e3c-bd1f-7e922a6d3d34",
-                  "answers": [
-                    {
-                      "label": "< 24 hrs",
-                      "concept": "63a236d1-add1-49ec-88c9-8e89108a71f2"
-                    },
-                    {
-                      "label": "-72hrs",
-                      "concept": "8d9cf61e-1f64-4f25-b202-52da17e8c634"
-                    },
-                    {
-                      "label": "Less than 1 month",
-                      "concept": "0e298528-7c8c-4724-a24f-d71ee7c1ebea"
-                    },
-                    {
-                      "label": "Less than 1 year",
-                      "concept": "b5b58ef8-1bdf-4c14-9384-afbeb848d571"
-                    },
-                    {
-                      "label": "> 1 year",
-                      "concept": "4a17e0a6-1add-49a6-9831-d8ad7c647ec9"
-                    },
-                    {
-                      "label": "Unknown",
-                      "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                },
-                "hide": {
-                  "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "wouldThePatientLikeAReferralToTheMedicalDepartmentForTreatment",
-                "label": "Would the patient like a referral to the medical department for treatment (or midwife/maternity for sexual violence)?",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "af302eef-4738-4337-b4b9-e154adbbab49",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                },
-                "hide": {
-                  "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "actionTaken",
-                "label": "Action taken",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "30b0ac06-848f-4a86-93d7-c91debb8f2ad"
-                },
-                "hide": {
-                  "hideWhenExpression": "wouldThePatientLikeAReferralToTheMedicalDepartmentForTreatment !== 'yes'"
-                }
+              "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult"
+            }
+          ]
+        },
+        {
+          "label": "CGI - Clinical Global Impression",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "cgiS",
+              "label": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time?)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a1a75011-0fef-460a-b666-dda2d171f39b",
+                "answers": [
+                  {
+                    "label": "0 - Not assessed",
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "label": "1 - Normal/not ill",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "label": "2 - Suspected mentally ill",
+                    "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
+                  },
+                  {
+                    "label": "3 - Mildly ill",
+                    "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
+                  },
+                  {
+                    "label": "4 - Moderately ill",
+                    "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
+                  },
+                  {
+                    "label": "5 - Markedly ill",
+                    "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
+                  },
+                  {
+                    "label": "6 - Severely ill",
+                    "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
+                  },
+                  {
+                    "label": "7 - Extremely ill patient",
+                    "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                  }
+                ]
               }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Intervention & follow-up",
-        "sections": [
-          {
-            "label": "Intervention",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "overallGoalsForTherapy",
-                "label": "Overall goals for therapy",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "8bea5a61-73e6-40c1-af04-43dec63749a4"
-                },
-                "questionInfo": "What are you trying to accomplish over several sessions with the patient? Try to be specific & define these with the patient. Only complete if goals for therapy have changed."
-              },
-              {
-                "id": "todaysSession",
-                "label": "Todays session (what did you do today in session)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "c0744459-b715-4a66-8d65-4bdaef3f90b7"
-                }
-              },
-              {
-                "id": "homework",
-                "label": "Homework (what will the patient do before next session)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "8e7e0064-59c3-4440-b687-a253d7880c29"
-                }
+            },
+            {
+              "id": "cgiI",
+              "label": "CGI-I (rating of  improvement CGI-I how much has the patient improved at this time)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f94de17e-9771-4711-aabb-c5bb0c022be2",
+                "answers": [
+                  {
+                    "label": "0 - Not assessed",
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "label": "1 - Very much improved",
+                    "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                  },
+                  {
+                    "label": "2 - Much improved",
+                    "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                  },
+                  {
+                    "label": "3 - Minimally improved",
+                    "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                  },
+                  {
+                    "label": "4 - No change",
+                    "concept": "162679AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "5 - Minimally worse",
+                    "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                  },
+                  {
+                    "label": "6 - Much worse",
+                    "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                  },
+                  {
+                    "label": "7 - Very much worse",
+                    "concept": "ece17856-b110-4453-9bc5-a92891f86846"
+                  }
+                ]
               }
-            ]
-          },
-          {
-            "label": "Follow-up",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "followUpSessionRequired",
-                "label": "Follow up session required (If no fill the Exit form)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "5f6e245c-83fc-421b-8d46-061ac773ae71",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis & evolution",
+      "sections": [
+        {
+          "label": "Evolution of symptoms/complaints",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "evolutionOfSymptomsOrComplaints",
+              "label": "Evolution of symptoms/complaints",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "4c9228b2-4ba2-4edb-8daf-31a824e5fa9a"
               },
-              {
-                "label": "Appointments",
-                "required": false,
-                "id": "appointmentsWorkspaceLauncher",
-                "questionOptions": {
-                  "rendering": "workspace-launcher",
-                  "buttonLabel": "Set the next appointment date",
-                  "workspaceName": "appointments-form-workspace"
+              "questionInfo": "Since the last session, have the patient’s symptoms or complaints changed? Please describe in the patient’s words."
+            }
+          ]
+        },
+        {
+          "label": "Clinical diagnosis",
+          "isExpanded": false,
+          "readonly": "!customHasRequiredPrivilege('Edit sensitive mental health fields')",
+          "questions": [
+            {
+              "id": "clinicalDiagnosis",
+              "label": "Clinical diagnosis (only to be established by a psychologist using the list at the baseline)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, '22809b19-54ca-4d88-8d26-9577637c184e').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
                 },
-                "hide": {
-                  "hideWhenExpression": "followUpSessionRequired !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "referralDone",
-                "label": "Referral done",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "6d3876be-0a27-466d-ad58-92edcc8c31fb",
-                  "answers": [
-                    {
-                      "label": "Yes",
-                      "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "No",
-                      "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "typeOfReferral",
-                "label": "Type of referral",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "8fb3bb7d-c935-4b57-8444-1b953470e109",
-                  "answers": [
-                    {
-                      "label": "Medical care (MSF MoH NGO)",
-                      "concept": "5f121c90-eca2-4af4-bc2f-49ad1a50ff2e"
-                    },
-                    {
-                      "label": "MSF psychiatric services",
-                      "concept": "485939c5-1e77-4495-b5e1-77fb2abbcfd7"
-                    },
-                    {
-                      "label": "Non-MSF psychiatrist services",
-                      "concept": "489b042d-5ed4-436f-944c-27b7f31bef3f"
-                    },
-                    {
-                      "label": "Social services",
-                      "concept": "978fa5d2-e6c4-4b2a-a293-73c098de0af6"
-                    },
-                    {
-                      "label": "Legal services",
-                      "concept": "8fe43e9c-dd37-4f61-8f30-e3ac2f3b9445"
-                    },
-                    {
-                      "label": "Protection services",
-                      "concept": "eff27d0b-d485-4983-814f-febbc4fe185a"
-                    },
-                    {
-                      "label": "Hospitalisation",
-                      "concept": "6b8fca2d-0147-4dd8-a8f5-3b813152b952"
-                    },
-                    {
-                      "label": "CHW",
-                      "concept": "1555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "label": "Other",
-                      "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    }
-                  ]
-                },
-                "hide": {
-                  "hideWhenExpression": "referralDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "typeOfReferral_ifOtherSpecify",
-                "label": "If other, specify",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                },
-                "hide": {
-                  "hideWhenExpression": "typeOfReferral !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "reasonForReferral",
-                "label": "Reason for referral",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "b7fdcd18-fc30-4b5d-82b2-bb0eec31f0e4"
-                },
-                "hide": {
-                  "hideWhenExpression": "referralDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
+                "answers": [
+                  {
+                    "label": "Acute stress reaction",
+                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
+                  },
+                  {
+                    "label": "Bereavement/grief",
+                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
+                  },
+                  {
+                    "label": "Post-Traumatic Stress Disorder",
+                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
+                  },
+                  {
+                    "label": "Conversion/Dissociative reaction",
+                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
+                  },
+                  {
+                    "label": "Anxiety Disorder",
+                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
+                  },
+                  {
+                    "label": "Medically Unexplained Physical Symptoms (MUPS)",
+                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
+                  },
+                  {
+                    "label": "Depression",
+                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
+                  },
+                  {
+                    "label": "Self-harming behavior/suicide attempt",
+                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
+                  },
+                  {
+                    "label": "Acute psychosis (incl. post-partum psychosis)",
+                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
+                  },
+                  {
+                    "label": "Chronic psychosis (incl. schizophrenia)",
+                    "concept": "1197f1f41-b0c7-407d-b95f-b1e26c3fd23c"
+                  },
+                  {
+                    "label": "Bipolar disorder (incl. mania)",
+                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
+                  },
+                  {
+                    "label": "Enuresis / Encopresis",
+                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
+                  },
+                  {
+                    "label": "Developmental disorder (incl. intellectual disability autism)",
+                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
+                  },
+                  {
+                    "label": "Childhood behavioral disorder (incl. ADHD conduct disorder)",
+                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
+                  },
+                  {
+                    "label": "Childhood emotional disorder",
+                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
+                  },
+                  {
+                    "label": "Substance-related disorder",
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                  },
+                  {
+                    "label": "Epilepsy / seizures",
+                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                  },
+                  {
+                    "label": "Other disorder",
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No diagnosis",
+                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
+                  }
+                ]
               }
-            ]
-          }
-        ]
-      }
-    ],
-    "encounterType": "95d68645-1b72-4290-be0b-ec1fb64bc067"
-  }
+            },
+            {
+              "id": "clinicalDiagnosis_ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
+              },
+              "hide": {
+                "hideWhenExpression": "clinicalDiagnosis !== 'otherDisorder'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Homework / action plan",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "homeworkOrActionPlan",
+              "label": "Homework / action plan",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "d0169612-3ce9-4e38-b495-d1a4b0ccb76b"
+              },
+              "questionInfo": "Did the patient complete their homework? Did it help improve the current situation? Specify homework from previous session and results."
+            },
+            {
+              "id": "patientCompletedHomework",
+              "label": "Patient completed homework ",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "24528acc-242a-4c3b-9143-76973b6f57cf",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Risk factors",
+      "sections": [
+        {
+          "label": "Risk factors (since the last session. . .)",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "hasThePatientHadThoughtsOfDeathOrSuicide",
+              "label": "Has the patient had thoughts of death or suicide",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c2664992-8a5a-4a6d-9238-5df591307d55",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "frequency",
+              "label": "Frequency",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a590d345-65d1-4534-bfe4-375ef780e424"
+              },
+              "hide": {
+                "hideWhenExpression": "hasThePatientHadThoughtsOfDeathOrSuicide !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "hasThePatientHurtThemselvesOrCausedSelfHarm",
+              "label": "Has the patient hurt themselves / caused self-harm",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d3d978ab-da68-4672-ae0c-8270fa992a08",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "typeOfBehaviorAndFrequency",
+              "label": "Type of behavior and frequency",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "8ab1ff08-c32d-4832-bc9d-5542be594d12"
+              },
+              "hide": {
+                "hideWhenExpression": "hasThePatientHurtThemselvesOrCausedSelfHarm !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "hasThePatientAttemptedSuicideOrTriedToKillThemselves",
+              "label": "Has the patient attempted suicide or tried to kill themselves",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a6c5188c-29f0-4d3d-8cf5-7852998df86f",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "numberOfAttemptsAndMethod",
+              "label": "Number of attempts and method",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "667ebdfe-e989-4b56-8511-bb7a3165b327"
+              },
+              "hide": {
+                "hideWhenExpression": "hasThePatientAttemptedSuicideOrTriedToKillThemselves !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "isThePatientCurrentlyAtRiskOfHurtingHimselfOrHerselfOrAttemptingSuicide",
+              "label": "Is the patient currently at risk of hurting himself/herself or attempting suicide",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "abede172-ba87-4ebe-8054-3afadb181ea3",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "actionTakenToReduceRiskOfHurtingHimself",
+              "label": "Action taken to reduce risk of hurting himself/herself",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "58187804-7c6c-47bf-b9d4-d45effbb3665"
+              },
+              "hide": {
+                "hideWhenExpression": "isThePatientCurrentlyAtRiskOfHurtingHimselfOrHerselfOrAttemptingSuicide !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "isThePatientCurrentlyAtRiskOfHurtingOthers",
+              "label": "Is the patient currently at risk of hurting others",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ccc4f06c-b76a-440d-9b7e-c48ba2c4a0ab",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "actionTakenToReduceRiskOfHurtingOthers",
+              "label": "Action taken to reduce risk of hurting others",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "517ff456-6aa7-4deb-8526-c0773423632f"
+              },
+              "hide": {
+                "hideWhenExpression": "isThePatientCurrentlyAtRiskOfHurtingOthers !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "doesThePatientRegularlyUseAlcoholOrSubstancesToBecomeIntoxicated",
+              "label": "Does the patient regularly use alcohol / substances to become intoxicated",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d516de07-979b-411c-b7e4-bd09cf7d9d91",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "typeOfSubstanceAndFrequency",
+              "label": "Type of substance and frequency ",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "7a62e58e-4f0f-4669-8d7c-51b5e21c5c4c"
+              },
+              "hide": {
+                "hideWhenExpression": "doesThePatientRegularlyUseAlcoholOrSubstancesToBecomeIntoxicated !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "isThePatientCurrentlyOnPsychotropicOrPsychiatricMedication",
+              "label": "Is the patient currently on psychotropic / psychiatric medication",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5f5e126b-962f-4c92-96bc-cbb1f3f06ba3",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "prescribedBy",
+              "label": "Prescribed by",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d5d1e465-d663-44b4-b0e4-d9ce3eb1d5c2",
+                "answers": [
+                  {
+                    "label": "MSF",
+                    "concept": "74c9a7c6-e64d-4f49-b8a6-f10999eb25bc"
+                  },
+                  {
+                    "label": "Non MSF",
+                    "concept": "77822de2-c236-4400-96f4-ee13b9334cea"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isThePatientCurrentlyOnPsychotropicOrPsychiatricMedication !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "hasThePatientExperiencedAnActOfAggressionOrViolence",
+              "label": "Has the patient experienced an act of aggression or violence",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3e97c2d0-15c1-4cfd-884f-7a4721079217",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "whatTypeOfViolence1",
+              "label": "What type(s) of violence? - 1",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6fe1e8b4-26cd-42ba-b0c2-25ee14c2813c",
+                "answers": [
+                  {
+                    "label": "Sexual",
+                    "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
+                  },
+                  {
+                    "label": "Physical",
+                    "concept": "6473ad84-53e1-4bb0-bb25-32ac424aaa97"
+                  },
+                  {
+                    "label": "Verbal",
+                    "concept": "58bdf548-26ee-42da-8837-8ecaf82fce1d"
+                  },
+                  {
+                    "label": "Psychological",
+                    "concept": "5d595702-1991-47fa-bea1-8682e23c62bd"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "whatTypeOfViolence2",
+              "label": "What type(s) of violence? - 2",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e40838bf-2180-4307-ac99-19c4cd9620fe",
+                "answers": [
+                  {
+                    "label": "Sexual",
+                    "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
+                  },
+                  {
+                    "label": "Physical",
+                    "concept": "6473ad84-53e1-4bb0-bb25-32ac424aaa97"
+                  },
+                  {
+                    "label": "Verbal",
+                    "concept": "58bdf548-26ee-42da-8837-8ecaf82fce1d"
+                  },
+                  {
+                    "label": "Psychological",
+                    "concept": "5d595702-1991-47fa-bea1-8682e23c62bd"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "whatTypeOfViolence3",
+              "label": "What type(s) of violence? - 3",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "89ff29ce-72ce-496b-9a5d-4661a651a3b8",
+                "answers": [
+                  {
+                    "label": "Sexual",
+                    "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
+                  },
+                  {
+                    "label": "Physical",
+                    "concept": "6473ad84-53e1-4bb0-bb25-32ac424aaa97"
+                  },
+                  {
+                    "label": "Verbal",
+                    "concept": "58bdf548-26ee-42da-8837-8ecaf82fce1d"
+                  },
+                  {
+                    "label": "Psychological",
+                    "concept": "5d595702-1991-47fa-bea1-8682e23c62bd"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence_ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d9b92c93-5017-4229-be19-2a0ebf9e9169"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(whatTypeOfViolence) || !arrayContains(whatTypeOfViolence,'5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+              }
+            },
+            {
+              "id": "timeBetweenViolenceEventAndConsultation",
+              "label": "Time between violence event and consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "aae000c3-5242-4e3c-bd1f-7e922a6d3d34",
+                "answers": [
+                  {
+                    "label": "< 24 hrs",
+                    "concept": "63a236d1-add1-49ec-88c9-8e89108a71f2"
+                  },
+                  {
+                    "label": "-72hrs",
+                    "concept": "8d9cf61e-1f64-4f25-b202-52da17e8c634"
+                  },
+                  {
+                    "label": "Less than 1 month",
+                    "concept": "0e298528-7c8c-4724-a24f-d71ee7c1ebea"
+                  },
+                  {
+                    "label": "Less than 1 year",
+                    "concept": "b5b58ef8-1bdf-4c14-9384-afbeb848d571"
+                  },
+                  {
+                    "label": "> 1 year",
+                    "concept": "4a17e0a6-1add-49a6-9831-d8ad7c647ec9"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "wouldThePatientLikeAReferralToTheMedicalDepartmentForTreatment",
+              "label": "Would the patient like a referral to the medical department for treatment (or midwife/maternity for sexual violence)?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "af302eef-4738-4337-b4b9-e154adbbab49",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "actionTaken",
+              "label": "Action taken",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "30b0ac06-848f-4a86-93d7-c91debb8f2ad"
+              },
+              "hide": {
+                "hideWhenExpression": "wouldThePatientLikeAReferralToTheMedicalDepartmentForTreatment !== 'yes'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Intervention & follow-up",
+      "sections": [
+        {
+          "label": "Intervention",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "overallGoalsForTherapy",
+              "label": "Overall goals for therapy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "8bea5a61-73e6-40c1-af04-43dec63749a4"
+              },
+              "questionInfo": "What are you trying to accomplish over several sessions with the patient? Try to be specific & define these with the patient. Only complete if goals for therapy have changed."
+            },
+            {
+              "id": "todaysSession",
+              "label": "Todays session (what did you do today in session)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "c0744459-b715-4a66-8d65-4bdaef3f90b7"
+              }
+            },
+            {
+              "id": "homework",
+              "label": "Homework (what will the patient do before next session)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "8e7e0064-59c3-4440-b687-a253d7880c29"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Follow-up",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "followUpSessionRequired",
+              "label": "Follow up session required (If no fill the Exit form)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5f6e245c-83fc-421b-8d46-061ac773ae71",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Appointments",
+              "required": false,
+              "id": "appointmentsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "followUpSessionRequired !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "referralDone",
+              "label": "Referral done",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6d3876be-0a27-466d-ad58-92edcc8c31fb",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "typeOfReferral",
+              "label": "Type of referral",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8fb3bb7d-c935-4b57-8444-1b953470e109",
+                "answers": [
+                  {
+                    "label": "Medical care (MSF MoH NGO)",
+                    "concept": "5f121c90-eca2-4af4-bc2f-49ad1a50ff2e"
+                  },
+                  {
+                    "label": "MSF psychiatric services",
+                    "concept": "485939c5-1e77-4495-b5e1-77fb2abbcfd7"
+                  },
+                  {
+                    "label": "Non-MSF psychiatrist services",
+                    "concept": "489b042d-5ed4-436f-944c-27b7f31bef3f"
+                  },
+                  {
+                    "label": "Social services",
+                    "concept": "978fa5d2-e6c4-4b2a-a293-73c098de0af6"
+                  },
+                  {
+                    "label": "Legal services",
+                    "concept": "8fe43e9c-dd37-4f61-8f30-e3ac2f3b9445"
+                  },
+                  {
+                    "label": "Protection services",
+                    "concept": "eff27d0b-d485-4983-814f-febbc4fe185a"
+                  },
+                  {
+                    "label": "Hospitalisation",
+                    "concept": "6b8fca2d-0147-4dd8-a8f5-3b813152b952"
+                  },
+                  {
+                    "label": "CHW",
+                    "concept": "1555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "referralDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "typeOfReferral_ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfReferral !== '5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            },
+            {
+              "id": "reasonForReferral",
+              "label": "Reason for referral",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "b7fdcd18-fc30-4b5d-82b2-bb0eec31f0e4"
+              },
+              "hide": {
+                "hideWhenExpression": "referralDone !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
