@@ -81,7 +81,7 @@
                     },
                     {
                       "label": "Unknown",
-                      "concept": "1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                      "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
                     }
                   ]
                 }
@@ -734,11 +734,12 @@
               {
                 "id": "lastPhq9Score",
                 "label": "Last PHQ-9 score",
-                "type": "obs",
+                "type": "control",
                 "required": false,
                 "questionOptions": {
                   "rendering": "number",
-                  "concept": "lastPhq9Score",
+                  "isTransient": true,
+                  "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23",
                   "calculate": {
                     "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(value => value)"
                   }

@@ -285,4 +285,34 @@
         </sql>
     </changeSet>
 
+    <!-- Delete openconceptlab_item entries for CIEL unknown concept -->
+    <changeSet id="delete_ocl_item_for_ciel_unknown_concept-202411061900" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM openconceptlab_item WHERE uuid = '1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete OpenConceptLab items for CIEL Unknown concept
+        </comment>
+        <sql>
+            DELETE FROM openconceptlab_item WHERE uuid = '1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+        </sql>
+    </changeSet>
+
+    <!-- Delete inconnu MSF concept from openconceptlab_item -->
+    <changeSet id="delete_ocl_item_for_inconnu_msf_concept-202411061900" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM openconceptlab_item WHERE uuid = 'MSF-AAAAAA000000000000001329';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete OpenConceptLab items for Inconnu MSF concept
+        </comment>
+        <sql>
+            DELETE FROM openconceptlab_item WHERE uuid = 'MSF-AAAAAA000000000000001329';
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
