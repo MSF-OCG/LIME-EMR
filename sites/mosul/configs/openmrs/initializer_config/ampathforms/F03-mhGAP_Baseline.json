@@ -366,7 +366,7 @@
                     },
                     {
                       "label": "Chronic psychosis (incl. schizophrenia)",
-                      "concept": "1197f1f41-b0c7-407d-b95f-b1e26c3fd23c"
+                      "concept": "197f1f41-b0c7-407d-b95f-b1e26c3fd23c"
                     },
                     {
                       "label": "Bipolar disorder (incl. mania)",
@@ -699,6 +699,34 @@
                 "questionInfo": "Sum of all points from answers above"
               },
               {
+                "id": "ifYouCheckedOffAnyProblemsHowDifficultHaveTheseProblemsMadeItForYouToDoYourWork",
+                "label": "If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",
+                "type": "obs",
+                "required": false,
+                "questionOptions": {
+                  "rendering": "radio",
+                  "concept": "c608b9a1-d0b9-48d8-9f6f-1da89d57481c",
+                  "answers": [
+                    {
+                      "label": "Not difficult at all",
+                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                    },
+                    {
+                      "label": "Somewhat difficult",
+                      "concept": "243698be-42a0-46da-8be8-21c774f2f42a"
+                    },
+                    {
+                      "label": "Very difficult",
+                      "concept": "45125711-2156-475e-ac7e-6eed34b976a7"
+                    },
+                    {
+                      "label": "Extremely difficult",
+                      "concept": "7914639c-89bc-4ff9-bff5-06b5c22aed11"
+                    }
+                  ]
+                }
+              },
+              {
                 "id": "depressionSeverityScale",
                 "label": "Depression severity scale",
                 "type": "obs",
@@ -729,7 +757,7 @@
                     }
                   ]
                 },
-                "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult"
+                "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult”. Consider referral to mhGAP clinician/ psychiatrist if major/severe depression."
               },
               {
                 "id": "lastPhq9Score",
@@ -871,7 +899,7 @@
                 "questionOptions": {
                   "rendering": "workspace-launcher",
                   "buttonLabel": "Active medications",
-                  "workspaceName": "medications-form-workspace"
+                  "workspaceName": "add-drug-order"
                 }
               }
             ]
@@ -908,7 +936,7 @@
             "questions": [
               {
                 "id": "followUpRequired",
-                "label": "Follow-up required",
+                "label": "Follow up session required? (If no, fill the Exit form)",
                 "type": "obs",
                 "required": false,
                 "questionOptions": {
