@@ -524,6 +524,19 @@
               "questionInfo": "Sum of all points from answers above"
             },
             {
+              "id": "lastPhq9Score",
+              "label": "Last PHQ-9 score",
+              "type": "control",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
+                }
+              }
+            },
+            {
               "id": "depressionSeverityScale",
               "label": "Depression severity scale",
               "type": "obs",
@@ -594,6 +607,46 @@
               }
             },
             {
+              "id": "lastCgiSScore",
+              "label": "Last CGI-S score",
+              "type": "control",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "a1a75011-0fef-460a-b666-dda2d171f39b",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
+                },
+                "answers": [
+                  {
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
+                  },
+                  {
+                    "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
+                  },
+                  {
+                    "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
+                  },
+                  {
+                    "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
+                  },
+                  {
+                    "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
+                  },
+                  {
+                    "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                  }
+                ]
+              }
+            },
+            {
               "id": "cgiI",
               "label": "CGI-I (rating of  improvement CGI-I how much has the patient improved at this time)",
               "type": "obs",
@@ -616,6 +669,46 @@
                   },
                   {
                     "concept": "162679AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                  },
+                  {
+                    "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                  },
+                  {
+                    "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                  },
+                  {
+                    "concept": "ece17856-b110-4453-9bc5-a92891f86846"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "lastCgsIScore",
+              "label": "Last CGS-I score",
+              "type": "control",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "f94de17e-9771-4711-aabb-c5bb0c022be2",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'f94de17e-9771-4711-aabb-c5bb0c022be2').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
+                },
+                "answers": [
+                  {
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                  },
+                  {
+                    "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                  },
+                  {
+                    "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                  },
+                  {
+                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
                   },
                   {
                     "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
