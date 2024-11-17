@@ -1,886 +1,886 @@
 {
-    "name": "MSF Mental Health - mhGAP Baseline",
-    "description": "MSF Form - F03-mhGAP Baseline",
-    "version": "7",
-    "published": true,
-    "uuid": "",
-    "processor": "EncounterFormProcessor",
-    "encounter": "Mental Health",
-    "encounterType": "95d68645-1b72-4290-be0b-ec1fb64bc067",
-    "retired": false,
-    "referencedForms": [],
-    "pages": [
-      {
-        "label": "Consultation",
-        "sections": [
-          {
-            "label": "Consultation information",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "admissionType",
-                "label": "Admission type",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "4dae5b12-070f-4153-b1ca-fbec906106e1",
-                  "answers": [
-                    {
-                      "concept": "9f2fe30f-a8f0-49ba-82e4-71c232259130"
-                    },
-                    {
-                      "concept": "e4e42ecd-196b-4aa8-a265-bfbed09d77cf"
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "label": "Admission",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "sex",
-                "label": "Sex",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7",
-                  "calculate": {
-                    "calculateExpression": "api.getLatestObs(patient.id, 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
+  "name": "MSF Mental Health - mhGAP Baseline",
+  "description": "MSF Form - F03-mhGAP Baseline",
+  "version": "8",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Mental Health",
+  "encounterType": "95d68645-1b72-4290-be0b-ec1fb64bc067",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Consultation",
+      "sections": [
+        {
+          "label": "Consultation information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "admissionType",
+              "label": "Admission type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4dae5b12-070f-4153-b1ca-fbec906106e1",
+                "answers": [
+                  {
+                    "concept": "9f2fe30f-a8f0-49ba-82e4-71c232259130"
                   },
-                  "answers": [
-                    {
-                      "concept": "625baaf5-ba75-4c23-bdef-283fd47c34db"
-                    },
-                    {
-                      "concept": "2ded9cfb-c089-4e1c-b032-7aa4a17882f7"
-                    },
-                    {
-                      "concept": "166416AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "concept": "166417AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                    },
-                    {
-                      "concept": "810ca6e9-cabf-4aa6-98d0-c3d31cfdb5f0"
-                    },
-                    {
-                      "concept": "245151ca-691e-4d5a-a792-64cb573e2b34"
-                    },
-                    {
-                      "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "howManyPeopleLiveWithThePatient",
-                "label": "How many people live with the patient",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "number",
-                  "concept": "58dec757-38d5-4c7b-9bd3-713d965f4883"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "History",
-        "sections": [
-          {
-            "label": "History",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "presentingHistoryOrEvolutionOfSymptoms",
-                "label": "Presenting history / evolution of symptoms",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "4ed7be54-3759-4a39-904b-ddefc9a22459"
-                },
-                "questionInfo": "Current symptoms, onset, duration, course, intensity, triggers, associated symptoms."
-              },
-              {
-                "id": "pastPsychiatricHistory",
-                "label": "Past psychiatric history",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "eed1e8e1-ba03-41d5-856f-cd069568f484"
-                },
-                "questionInfo": "Past diagnoses, past substance use, number of episodes, duration, treatment, side-effects."
-              },
-              {
-                "id": "familyHistory",
-                "label": "Family history",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "a072fee0-ca76-4ac6-9543-a4f3b0efc831"
-                },
-                "questionInfo": "Psychological/psychiatric/neurological/medical conditions or disorders."
-              },
-              {
-                "id": "patientMedicalOrSurgicalHistory",
-                "label": "Patient medical / surgical history",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "f8883168-4a8d-432b-8812-6dcdfbf5b13a"
-                },
-                "questionInfo": "Check also in 'Conditions' and update it there if necessary."
-              },
-              {
-                "id": "allergiesOrContraIndications",
-                "label": "Allergies / Contra-indications",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "6fcf69eb-244a-4756-84b7-1da5b8fa7025"
-                },
-                "questionInfo": "Check also in 'Allergies' and update it there if necessary."
-              }
-            ]
-          },
-          {
-            "label": "Special Populations",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "pregnantOrBreastfeeding",
-                "label": "Pregnant / breastfeeding ",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "2be92591-da1b-4418-ba49-43b3fc0e4ce5",
-                  "answers": [
-                    {
-                      "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                    },
-                    {
-                      "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "childOrAdolescent",
-                "label": "Child / adolescent (under 18 years)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "f6cefc80-506a-44b0-ab5f-d6f5908cf7a5",
-                  "answers": [
-                    {
-                      "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                    },
-                    {
-                      "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "olderAdult",
-                "label": "Older adult (over 60 years)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "15748787-7372-4022-b5d4-81ff8d6887ca",
-                  "answers": [
-                    {
-                      "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                    },
-                    {
-                      "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "label": "mhGAP file information",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "patientAlreadyOnPsychotropicOrPsychiatricMedication",
-                "label": "Patient already on psychotropic / psychiatric medication (not prescribed by MSF)  ",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "99a8b512-17f9-4a5d-9fd4-80c27500995b",
-                  "answers": [
-                    {
-                      "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                    },
-                    {
-                      "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "medicationAndDosagePleaseCheckInmedications",
-                "label": "Medication and dosage - Please check in Medications (update it if necessary)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "28007e95-79a5-4b11-bb2b-89261b5f3ea8"
-                },
-                "hide": {
-                  "hideWhenExpression": "patientAlreadyOnPsychotropicOrPsychiatricMedication !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
-                }
-              },
-              {
-                "id": "additionalInformationAboutPreviousTreatment",
-                "label": "Additional information about previous treatment (including side effects)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "ed4b93f6-9115-4813-8784-d653af7e74ed"
-                }
-              },
-              {
-                "id": "additionalInformationAboutPreviousTreatment",
-                "label": "Enter in **Vitals** today's measurements for **weight**, **blood pressure** and **heart rate**",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "ed4b93f6-9115-4813-8784-d653af7e74ed"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Examination & diagnosis",
-        "sections": [
-          {
-            "label": "Examination",
-            "isExpanded": false,
-            "questions": [
-              {
-                "label": "Vitals",
-                "required": false,
-                "id": "vitalsWorkspaceLauncher",
-                "questionOptions": {
-                  "rendering": "workspace-launcher",
-                  "buttonLabel": "Capture patient vitals",
-                  "workspaceName": "patient-vitals-biometrics-form-workspace"
-                }
-              },
-              {
-                "id": "basicMentalStatusExamination",
-                "label": "Basic mental status examination ",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "cb4974ca-ddac-4662-8b0a-2861f1e50569"
-                },
-                "questionInfo": "Appearance, orientation, speech / motor activity, mood / affect, thought / perception, cognitive."
-              }
-            ]
-          },
-          {
-            "label": "Clinical diagnosis",
-            "isExpanded": false,
-            "readonly": "!customHasRequiredPrivilege('Edit sensitive mental health fields')",
-            "questions": [
-              {
-                "id": "clinicalDiagnosis",
-                "label": "Clinical diagnosis (only to be established by mhGAP clinician)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "select",
-                  "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
-                  "calculate": {
-                    "calculateExpression": "api.getLatestObs(patient.id, '22809b19-54ca-4d88-8d26-9577637c184e').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
-                  },
-                  "answers": [
-                    {
-                      "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
-                    },
-                    {
-                      "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
-                    },
-                    {
-                      "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
-                    },
-                    {
-                      "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
-                    },
-                    {
-                      "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
-                    },
-                    {
-                      "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
-                    },
-                    {
-                      "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
-                    },
-                    {
-                      "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
-                    },
-                    {
-                      "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
-                    },
-                    {
-                      "concept": "197f1f41-b0c7-407d-b95f-b1e26c3fd23c"
-                    },
-                    {
-                      "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
-                    },
-                    {
-                      "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
-                    },
-                    {
-                      "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
-                    },
-                    {
-                      "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
-                    },
-                    {
-                      "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
-                    },
-                    {
-                      "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
-                    },
-                    {
-                      "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
-                    },
-                    {
-                      "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                    },
-                    {
-                      "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "clinicalDiagnosis_ifOtherSpecify",
-                "label": "If other, specify",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "text",
-                  "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
-                },
-                "hide": {
-                  "hideWhenExpression": "clinicalDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Scores",
-        "sections": [
-          {
-            "label": "PHQ-9 (only for depression) - Over the last two weeks, how often have you been bothered by any of the following problems?",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "littleInterestOrPleasureInDoingThings",
-                "label": "Little interest or pleasure in doing things",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "eeac083f-9acd-4c04-bafc-b4266a02a3a3",
-                  "answers": [
-                    {
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "feelingDownDepressedOrHopeless",
-                "label": "Feeling down depressed or hopeless",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "0902dd6a-3f4e-422c-92eb-10e89cb783e2",
-                  "answers": [
-                    {
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "troubleFallingOrStayingAsleepOrSleepingTooMuch",
-                "label": "Trouble falling or staying asleep or sleeping too much",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "2ad5e737-fb27-44ea-bcf9-fafcbd7640fd",
-                  "answers": [
-                    {
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "feelingTiredOrHavingLittleEnergy",
-                "label": "Feeling tired or having little energy",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "f899935f-13f0-472e-b1dd-569ead3c63f1",
-                  "answers": [
-                    {
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "poorAppetiteOrOverEating",
-                "label": "Poor appetite or over eating",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "48177433-e9c0-43b7-be27-7d4992723e01",
-                  "answers": [
-                    {
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "feelingBadAboutYourself",
-                "label": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "eb14c9f6-8c32-4cbb-a595-66ffd72b8cdb",
-                  "answers": [
-                    {
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "troubleConcentratingOnThings",
-                "label": "Trouble concentrating on things such as reading the newspaper or watching television",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "2bf607e1-85f3-4514-9e07-e3f8caabbc57",
-                  "answers": [
-                    {
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "movingOrSpeakingSoSlowly",
-                "label": "Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "50fb199e-410c-40d4-bbd9-44f641d4421d",
-                  "answers": [
-                    {
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "thoughtsThatYouWouldBeBetterOffDead",
-                "label": "Thoughts that you would be better off dead or of hurting yourself in some way",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "5723ae77-b752-404a-a5dd-5b1d8be222c4",
-                  "answers": [
-                    {
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
-                    },
-                    {
-                      "concept": "234259ec-5368-4488-8482-4f261cc76714"
-                    },
-                    {
-                      "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "phq9Score",
-                "label": "PHQ-9 score",
-                "type": "obs",
-                "required": false,
-                "readonly": true,
-                "questionOptions": {
-                  "rendering": "number",
-                  "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23",
-                  "calculate": {
-                    "calculateExpression": "(littleInterestOrPleasureInDoingThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : littleInterestOrPleasureInDoingThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : littleInterestOrPleasureInDoingThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingDownDepressedOrHopeless === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingDownDepressedOrHopeless === '234259ec-5368-4488-8482-4f261cc76714' ? 2 :  feelingDownDepressedOrHopeless==='8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleFallingOrStayingAsleepOrSleepingTooMuch === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingTiredOrHavingLittleEnergy === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingTiredOrHavingLittleEnergy === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingTiredOrHavingLittleEnergy === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) +(poorAppetiteOrOverEating === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : poorAppetiteOrOverEating === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : poorAppetiteOrOverEating === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingBadAboutYourself === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingBadAboutYourself === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingBadAboutYourself === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleConcentratingOnThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleConcentratingOnThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleConcentratingOnThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (movingOrSpeakingSoSlowly === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : movingOrSpeakingSoSlowly === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : movingOrSpeakingSoSlowly === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (thoughtsThatYouWouldBeBetterOffDead === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : thoughtsThatYouWouldBeBetterOffDead === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : thoughtsThatYouWouldBeBetterOffDead === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0)"
+                  {
+                    "concept": "e4e42ecd-196b-4aa8-a265-bfbed09d77cf"
                   }
-                },
-                "questionInfo": "Sum of all points from answers above"
-              },
-              {
-                "id": "ifYouCheckedOffAnyProblemsHowDifficultHaveTheseProblemsMadeItForYouToDoYourWork",
-                "label": "If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "c608b9a1-d0b9-48d8-9f6f-1da89d57481c",
-                  "answers": [
-                    {
-                      "concept": "ed0e2463-c990-4341-b095-53b899707af9"
-                    },
-                    {
-                      "concept": "243698be-42a0-46da-8be8-21c774f2f42a"
-                    },
-                    {
-                      "concept": "45125711-2156-475e-ac7e-6eed34b976a7"
-                    },
-                    {
-                      "concept": "7914639c-89bc-4ff9-bff5-06b5c22aed11"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "depressionSeverityScale",
-                "label": "Depression severity scale",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "select",
-                  "concept": "ffead923-80bc-4afa-833d-7690f35bf5b0",
-                  "answers": [
-                    {
-                      "concept": "5aa4edf5-b218-4470-b5da-ad1d88007954"
-                    },
-                    {
-                      "concept": "9d7d154f-e7a1-4490-b93a-85f5c2157f92"
-                    },
-                    {
-                      "concept": "ed7484ef-a3ea-4c95-bf59-58987c7f6d7c"
-                    },
-                    {
-                      "concept": "d163711c-9fcf-4050-b015-d3463b4602fa"
-                    },
-                    {
-                      "concept": "0ff3a7dc-1a6e-4453-91d5-29cf6a9f790c"
-                    }
-                  ]
-                },
-                "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult”. Consider referral to mhGAP clinician/ psychiatrist if major/severe depression."
-              },
-              {
-                "id": "lastPhq9Score",
-                "label": "Last PHQ-9 score",
-                "type": "control",
-                "required": false,
-                "readonly": true,
-                "questionOptions": {
-                  "rendering": "number",
-                  "isTransient": true,
-                  "concept": "4854003a-4f26-497f-959d-45a56bc77c65",
-                  "calculate": {
-                    "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
-                  }
-                }
+                ]
               }
-            ]
-          },
-          {
-            "label": "CGI - Clinical Global Impression",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "cgiS",
-                "label": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time?)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "a1a75011-0fef-460a-b666-dda2d171f39b",
-                  "answers": [
-                    {
-                      "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
-                    },
-                    {
-                      "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
-                    },
-                    {
-                      "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
-                    },
-                    {
-                      "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
-                    },
-                    {
-                      "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
-                    },
-                    {
-                      "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
-                    },
-                    {
-                      "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
-                    },
-                    {
-                      "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "lastCgisScore",
-                "label": "Last CGI-S score",
-                "type": "obs",
-                "required": false,
-                "readonly": true,
-                "questionOptions": {
-                  "rendering": "select",
-                  "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
-                  "calculate": {
-                    "calculateExpression": "api.getLatestObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
+            }
+          ]
+        },
+        {
+          "label": "Admission",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "sex",
+              "label": "Sex",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
+                },
+                "answers": [
+                  {
+                    "concept": "625baaf5-ba75-4c23-bdef-283fd47c34db"
                   },
-                  "answers": [
-                    {
-                      "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
-                    },
-                    {
-                      "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
-                    },
-                    {
-                      "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
-                    },
-                    {
-                      "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
-                    },
-                    {
-                      "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
-                    },
-                    {
-                      "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
-                    },
-                    {
-                      "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
-                    },
-                    {
-                      "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
-                    }
-                  ]
-                }
+                  {
+                    "concept": "2ded9cfb-c089-4e1c-b032-7aa4a17882f7"
+                  },
+                  {
+                    "concept": "37ccc7b5-0d1d-48d3-87a6-aee614bb500f"
+                  },
+                  {
+                    "concept": "1226d253-376f-4e73-9ae2-36c7e9362e8b"
+                  },
+                  {
+                    "concept": "810ca6e9-cabf-4aa6-98d0-c3d31cfdb5f0"
+                  },
+                  {
+                    "concept": "245151ca-691e-4d5a-a792-64cb573e2b34"
+                  },
+                  {
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
               }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Medication",
-        "sections": [
-          {
-            "label": "MSF Pharmacological treament",
-            "isExpanded": false,
-            "questions": [
-              {
-                "value": [
-                  "Check in **Active Medications** and update it if necessary:"
-                ],
-                "questionOptions": {
-                  "rendering": "markdown"
-                },
-                "id": "checkInmedicationsAndUpdateItIfNecessary"
+            },
+            {
+              "id": "howManyPeopleLiveWithThePatient",
+              "label": "How many people live with the patient",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "58dec757-38d5-4c7b-9bd3-713d965f4883"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "History",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "presentingHistoryOrEvolutionOfSymptoms",
+              "label": "Presenting history / evolution of symptoms",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "4ed7be54-3759-4a39-904b-ddefc9a22459"
               },
-              {
-                "label": "Active medications",
-                "required": false,
-                "id": "medicationWorkspaceLauncher",
-                "questionOptions": {
-                  "rendering": "workspace-launcher",
-                  "buttonLabel": "Active medications",
-                  "workspaceName": "add-drug-order"
-                }
+              "questionInfo": "Current symptoms, onset, duration, course, intensity, triggers, associated symptoms."
+            },
+            {
+              "id": "pastPsychiatricHistory",
+              "label": "Past psychiatric history",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "eed1e8e1-ba03-41d5-856f-cd069568f484"
+              },
+              "questionInfo": "Past diagnoses, past substance use, number of episodes, duration, treatment, side-effects."
+            },
+            {
+              "id": "familyHistory",
+              "label": "Family history",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "a072fee0-ca76-4ac6-9543-a4f3b0efc831"
+              },
+              "questionInfo": "Psychological/psychiatric/neurological/medical conditions or disorders."
+            },
+            {
+              "id": "patientMedicalOrSurgicalHistory",
+              "label": "Patient medical / surgical history",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "f8883168-4a8d-432b-8812-6dcdfbf5b13a"
+              },
+              "questionInfo": "Check also in 'Conditions' and update it there if necessary."
+            },
+            {
+              "id": "allergiesOrContraIndications",
+              "label": "Allergies / Contra-indications",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "6fcf69eb-244a-4756-84b7-1da5b8fa7025"
+              },
+              "questionInfo": "Check also in 'Allergies' and update it there if necessary."
+            }
+          ]
+        },
+        {
+          "label": "Special Populations",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pregnantOrBreastfeeding",
+              "label": "Pregnant / breastfeeding ",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2be92591-da1b-4418-ba49-43b3fc0e4ce5",
+                "answers": [
+                  {
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
               }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Observations",
-        "sections": [
-          {
-            "label": "Observations",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "additionalInformationOrNotes",
-                "label": "Additional information/notes",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "textarea",
-                  "concept": "c13f9fb3-6890-4e13-b13c-8c09fef6ba93"
-                }
+            },
+            {
+              "id": "childOrAdolescent",
+              "label": "Child / adolescent (under 18 years)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f6cefc80-506a-44b0-ab5f-d6f5908cf7a5",
+                "answers": [
+                  {
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
               }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Follow-up",
-        "sections": [
-          {
-            "label": "Follow-up",
-            "isExpanded": false,
-            "questions": [
-              {
-                "id": "followUpRequired",
-                "label": "Follow up session required? (If no, fill the Exit form)",
-                "type": "obs",
-                "required": false,
-                "questionOptions": {
-                  "rendering": "radio",
-                  "concept": "5f6e245c-83fc-421b-8d46-061ac773ae71",
-                  "answers": [
-                    {
-                      "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                    },
-                    {
-                      "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                    }
-                  ]
+            },
+            {
+              "id": "olderAdult",
+              "label": "Older adult (over 60 years)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "15748787-7372-4022-b5d4-81ff8d6887ca",
+                "answers": [
+                  {
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "mhGAP file information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "patientAlreadyOnPsychotropicOrPsychiatricMedication",
+              "label": "Patient already on psychotropic / psychiatric medication (not prescribed by MSF)  ",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "99a8b512-17f9-4a5d-9fd4-80c27500995b",
+                "answers": [
+                  {
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "medicationAndDosagePleaseCheckInmedications",
+              "label": "Medication and dosage - Please check in Medications (update it if necessary)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "28007e95-79a5-4b11-bb2b-89261b5f3ea8"
+              },
+              "hide": {
+                "hideWhenExpression": "patientAlreadyOnPsychotropicOrPsychiatricMedication !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "additionalInformationAboutPreviousTreatment",
+              "label": "Additional information about previous treatment (including side effects)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ed4b93f6-9115-4813-8784-d653af7e74ed"
+              }
+            },
+            {
+              "id": "additionalInformationAboutPreviousTreatment",
+              "label": "Enter in **Vitals** today's measurements for **weight**, **blood pressure** and **heart rate**",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ed4b93f6-9115-4813-8784-d653af7e74ed"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Examination & diagnosis",
+      "sections": [
+        {
+          "label": "Examination",
+          "isExpanded": false,
+          "questions": [
+            {
+              "label": "Vitals",
+              "required": false,
+              "id": "vitalsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "basicMentalStatusExamination",
+              "label": "Basic mental status examination ",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "cb4974ca-ddac-4662-8b0a-2861f1e50569"
+              },
+              "questionInfo": "Appearance, orientation, speech / motor activity, mood / affect, thought / perception, cognitive."
+            }
+          ]
+        },
+        {
+          "label": "Clinical diagnosis",
+          "isExpanded": false,
+          "readonly": "!customHasRequiredPrivilege('Edit sensitive mental health fields')",
+          "questions": [
+            {
+              "id": "clinicalDiagnosis",
+              "label": "Clinical diagnosis (only to be established by mhGAP clinician)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, '22809b19-54ca-4d88-8d26-9577637c184e').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
+                },
+                "answers": [
+                  {
+                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
+                  },
+                  {
+                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
+                  },
+                  {
+                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
+                  },
+                  {
+                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
+                  },
+                  {
+                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
+                  },
+                  {
+                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
+                  },
+                  {
+                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
+                  },
+                  {
+                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
+                  },
+                  {
+                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
+                  },
+                  {
+                    "concept": "197f1f41-b0c7-407d-b95f-b1e26c3fd23c"
+                  },
+                  {
+                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
+                  },
+                  {
+                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
+                  },
+                  {
+                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
+                  },
+                  {
+                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
+                  },
+                  {
+                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
+                  },
+                  {
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                  },
+                  {
+                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                  },
+                  {
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "clinicalDiagnosis_ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
+              },
+              "hide": {
+                "hideWhenExpression": "clinicalDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Scores",
+      "sections": [
+        {
+          "label": "PHQ-9 (only for depression) - Over the last two weeks, how often have you been bothered by any of the following problems?",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "littleInterestOrPleasureInDoingThings",
+              "label": "Little interest or pleasure in doing things",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "eeac083f-9acd-4c04-bafc-b4266a02a3a3",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "feelingDownDepressedOrHopeless",
+              "label": "Feeling down depressed or hopeless",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0902dd6a-3f4e-422c-92eb-10e89cb783e2",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "troubleFallingOrStayingAsleepOrSleepingTooMuch",
+              "label": "Trouble falling or staying asleep or sleeping too much",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2ad5e737-fb27-44ea-bcf9-fafcbd7640fd",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "feelingTiredOrHavingLittleEnergy",
+              "label": "Feeling tired or having little energy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f899935f-13f0-472e-b1dd-569ead3c63f1",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "poorAppetiteOrOverEating",
+              "label": "Poor appetite or over eating",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "48177433-e9c0-43b7-be27-7d4992723e01",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "feelingBadAboutYourself",
+              "label": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "eb14c9f6-8c32-4cbb-a595-66ffd72b8cdb",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "troubleConcentratingOnThings",
+              "label": "Trouble concentrating on things such as reading the newspaper or watching television",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2bf607e1-85f3-4514-9e07-e3f8caabbc57",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "movingOrSpeakingSoSlowly",
+              "label": "Moving or speaking so slowly that other people could have noticed Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "50fb199e-410c-40d4-bbd9-44f641d4421d",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "thoughtsThatYouWouldBeBetterOffDead",
+              "label": "Thoughts that you would be better off dead or of hurting yourself in some way",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5723ae77-b752-404a-a5dd-5b1d8be222c4",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "phq9Score",
+              "label": "PHQ-9 score",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23",
+                "calculate": {
+                  "calculateExpression": "(littleInterestOrPleasureInDoingThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : littleInterestOrPleasureInDoingThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : littleInterestOrPleasureInDoingThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingDownDepressedOrHopeless === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingDownDepressedOrHopeless === '234259ec-5368-4488-8482-4f261cc76714' ? 2 :  feelingDownDepressedOrHopeless==='8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleFallingOrStayingAsleepOrSleepingTooMuch === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingTiredOrHavingLittleEnergy === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingTiredOrHavingLittleEnergy === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingTiredOrHavingLittleEnergy === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) +(poorAppetiteOrOverEating === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : poorAppetiteOrOverEating === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : poorAppetiteOrOverEating === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingBadAboutYourself === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingBadAboutYourself === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingBadAboutYourself === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleConcentratingOnThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleConcentratingOnThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleConcentratingOnThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (movingOrSpeakingSoSlowly === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : movingOrSpeakingSoSlowly === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : movingOrSpeakingSoSlowly === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (thoughtsThatYouWouldBeBetterOffDead === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : thoughtsThatYouWouldBeBetterOffDead === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : thoughtsThatYouWouldBeBetterOffDead === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0)"
                 }
               },
-              {
-                "label": "Appointments",
-                "required": false,
-                "id": "appointmentsWorkspaceLauncher",
-                "questionOptions": {
-                  "rendering": "workspace-launcher",
-                  "buttonLabel": "Set the next appointment date",
-                  "workspaceName": "appointments-form-workspace"
-                },
-                "hide": {
-                  "hideWhenExpression": "followUpRequired !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+              "questionInfo": "Sum of all points from answers above"
+            },
+            {
+              "id": "ifYouCheckedOffAnyProblemsHowDifficultHaveTheseProblemsMadeItForYouToDoYourWork",
+              "label": "If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c608b9a1-d0b9-48d8-9f6f-1da89d57481c",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "243698be-42a0-46da-8be8-21c774f2f42a"
+                  },
+                  {
+                    "concept": "45125711-2156-475e-ac7e-6eed34b976a7"
+                  },
+                  {
+                    "concept": "7914639c-89bc-4ff9-bff5-06b5c22aed11"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "depressionSeverityScale",
+              "label": "Depression severity scale",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "ffead923-80bc-4afa-833d-7690f35bf5b0",
+                "answers": [
+                  {
+                    "concept": "5aa4edf5-b218-4470-b5da-ad1d88007954"
+                  },
+                  {
+                    "concept": "9d7d154f-e7a1-4490-b93a-85f5c2157f92"
+                  },
+                  {
+                    "concept": "ed7484ef-a3ea-4c95-bf59-58987c7f6d7c"
+                  },
+                  {
+                    "concept": "d163711c-9fcf-4050-b015-d3463b4602fa"
+                  },
+                  {
+                    "concept": "0ff3a7dc-1a6e-4453-91d5-29cf6a9f790c"
+                  }
+                ]
+              },
+              "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult”. Consider referral to mhGAP clinician/ psychiatrist if major/severe depression."
+            },
+            {
+              "id": "lastPhq9Score",
+              "label": "Last PHQ-9 score",
+              "type": "control",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "isTransient": true,
+                "concept": "4854003a-4f26-497f-959d-45a56bc77c65",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
                 }
               }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+            }
+          ]
+        },
+        {
+          "label": "CGI - Clinical Global Impression",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "cgiS",
+              "label": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time?)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a1a75011-0fef-460a-b666-dda2d171f39b",
+                "answers": [
+                  {
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
+                  },
+                  {
+                    "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
+                  },
+                  {
+                    "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
+                  },
+                  {
+                    "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
+                  },
+                  {
+                    "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
+                  },
+                  {
+                    "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "lastCgisScore",
+              "label": "Last CGI-S score",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
+                },
+                "answers": [
+                  {
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
+                  },
+                  {
+                    "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
+                  },
+                  {
+                    "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
+                  },
+                  {
+                    "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
+                  },
+                  {
+                    "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
+                  },
+                  {
+                    "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Medication",
+      "sections": [
+        {
+          "label": "MSF Pharmacological treament",
+          "isExpanded": false,
+          "questions": [
+            {
+              "value": [
+                "Check in **Active Medications** and update it if necessary:"
+              ],
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "id": "checkInmedicationsAndUpdateItIfNecessary"
+            },
+            {
+              "label": "Active medications",
+              "required": false,
+              "id": "medicationWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Active medications",
+                "workspaceName": "add-drug-order"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Observations",
+      "sections": [
+        {
+          "label": "Observations",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalInformationOrNotes",
+              "label": "Additional information/notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "c13f9fb3-6890-4e13-b13c-8c09fef6ba93"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow-up",
+      "sections": [
+        {
+          "label": "Follow-up",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "followUpRequired",
+              "label": "Follow up session required? (If no, fill the Exit form)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5f6e245c-83fc-421b-8d46-061ac773ae71",
+                "answers": [
+                  {
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "Appointments",
+              "required": false,
+              "id": "appointmentsWorkspaceLauncher",
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "followUpRequired !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
