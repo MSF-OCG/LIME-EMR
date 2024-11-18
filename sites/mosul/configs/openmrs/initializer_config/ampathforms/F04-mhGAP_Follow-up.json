@@ -1,7 +1,7 @@
 {
   "name": "MSF Mental Health - mhGAP Follow-up",
   "description": "MSF Form - F04-mhGAP Follow-up",
-  "version": "14",
+  "version": "15",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
@@ -798,6 +798,21 @@
               "hide": {
                 "hideWhenExpression": "followUpRequired !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
+            },
+            {
+              "label": "Next appointment date",
+              "type": "obs",
+              "required": false,
+              "id": "Nextappointmentdate",
+              "datePickerFormat": "calendar",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "edc6f30c-4ff2-4a4f-8b90-ca4502bb97a1"
+              },
+              "hide": {
+                "hideWhenExpression": "followUpSessionRequired !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              },
+              "validators": []
             }
           ]
         }
