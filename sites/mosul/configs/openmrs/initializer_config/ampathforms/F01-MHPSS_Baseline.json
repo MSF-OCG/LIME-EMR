@@ -1,7 +1,7 @@
 {
   "name": "MSF Mental Health - MHPSS Baseline",
   "description": "MSF Form - MHPSS Baseline",
-  "version": "31",
+  "version": "40",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
@@ -44,7 +44,7 @@
                 "rendering": "radio",
                 "concept": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
+                  "calculateExpression": "api.getLatestObs(patient.id, 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
                 },
                 "answers": [
                   {
@@ -1676,7 +1676,7 @@
                 "rendering": "markdown"
               },
               "value": [
-                "In the past week."
+                "In the past week"
               ]
             },
             {
@@ -2287,7 +2287,7 @@
                 "rendering": "markdown"
               },
               "value": [
-                "A last question."
+                "A last question"
               ],
               "hide": {
                 "hideWhenExpression": "age >= 15"
@@ -2620,17 +2620,27 @@
               "questionInfo": "Sum of all points from answers above"
             },
             {
-              "id": "lastPhq9Score",
-              "label": "Last PHQ-9 score",
+              "id": "workAndHomeAndSocialDifficulty",
+              "label": "If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people",
               "type": "obs",
               "required": false,
-              "readonly": true,
               "questionOptions": {
-                "rendering": "number",
-                "concept": "4854003a-4f26-497f-959d-45a56bc77c65",
-                "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
-                }
+                "rendering": "radio",
+                "concept": "c608b9a1-d0b9-48d8-9f6f-1da89d57481c",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "243698be-42a0-46da-8be8-21c774f2f42a"
+                  },
+                  {
+                    "concept": "45125711-2156-475e-ac7e-6eed34b976a7"
+                  },
+                  {
+                    "concept": "7914639c-89bc-4ff9-bff5-06b5c22aed11"
+                  }
+                ]
               }
             },
             {
@@ -2659,7 +2669,21 @@
                   }
                 ]
               },
-              "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult"
+              "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult”. Consider referral to mhGAP clinician/ psychiatrist if major/severe depression."
+            },
+            {
+              "id": "lastPhq9Score",
+              "label": "Last PHQ-9 score",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "4854003a-4f26-497f-959d-45a56bc77c65",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
+                }
+              }
             }
           ]
         },
@@ -2701,7 +2725,8 @@
                     "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
                   }
                 ]
-              }
+              },
+              "questionInfo": "If the patient’s  score ≥ 5, consider referral to mhGAP clinician / psychiatrist."
             },
             {
               "id": "lastCgiSScore",
@@ -2957,6 +2982,7 @@
                 "rendering": "text",
                 "concept": "58187804-7c6c-47bf-b9d4-d45effbb3665"
               },
+              "questionInfo": "Consider referral to mhGAP clinician",
               "hide": {
                 "hideWhenExpression": "isThePatientCurrentlyAtRiskOfHurtingHimselfOrHerselfOrAttemptingSuicide !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
@@ -2988,6 +3014,7 @@
                 "rendering": "text",
                 "concept": "517ff456-6aa7-4deb-8526-c0773423632f"
               },
+              "questionInfo": "Consider referral to mhGAP clinician",
               "hide": {
                 "hideWhenExpression": "isThePatientCurrentlyAtRiskOfHurtingOthers !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
@@ -3111,6 +3138,19 @@
               }
             },
             {
+              "id": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence_ifOtherSpecify1",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d9b92c93-5017-4229-be19-2a0ebf9e9169"
+              },
+              "hide": {
+                "hideWhenExpression": "whatTypeOfViolence1 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+              }
+            },
+            {
               "id": "whatTypeOfViolence2",
               "label": "What type(s) of violence? - 2",
               "type": "obs",
@@ -3138,6 +3178,19 @@
               },
               "hide": {
                 "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence_ifOtherSpecify2",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d9b92c93-5017-4229-be19-2a0ebf9e9169"
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(whatTypeOfViolence2) || whatTypeOfViolence1 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -3171,7 +3224,7 @@
               }
             },
             {
-              "id": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence_ifOtherSpecify",
+              "id": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence_ifOtherSpecify3",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -3180,7 +3233,7 @@
                 "concept": "d9b92c93-5017-4229-be19-2a0ebf9e9169"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(whatTypeOfViolence) || !arrayContains(whatTypeOfViolence,'790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                "hideWhenExpression": "isEmpty(whatTypeOfViolence3) || whatTypeOfViolence1 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -3235,8 +3288,7 @@
               },
               "hide": {
                 "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
-              },
-              "questionInfo": "9. If yes, would the patient like a referral to the medical department for treatment (or midwife/maternity for sexual violence)?"
+              }
             },
             {
               "id": "actionTaken",
@@ -3248,7 +3300,7 @@
                 "concept": "30b0ac06-848f-4a86-93d7-c91debb8f2ad"
               },
               "hide": {
-                "hideWhenExpression": "wouldThePatientLikeAReferralToTheMedicalDepartmentForTreatment !== 'yes'"
+                "hideWhenExpression": "wouldThePatientLikeAReferralToTheMedicalDepartmentForTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
             }
           ]
@@ -3449,7 +3501,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "pastOrPrecipitatingEvents_other !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "isEmpty(pastOrPrecipitatingEvents_other)"
               }
             }
           ]
@@ -4212,19 +4264,34 @@
                 "concept": "c1a3ed2d-6d9a-453d-9d93-749164a76413",
                 "answers": [
                   {
-                    "concept": "e8846576-7fae-4ae1-b747-48eccd524d4d"
+                    "concept": "e8846576-7fae-4ae1-b747-48eccd524d4d",
+                    "hide": {
+                      "hideWhenExpression": "isEmpty(medicalConditions)"
+                    }
                   },
                   {
-                    "concept": "0d56f886-875b-4932-a0c2-cde2886a286c"
+                    "concept": "0d56f886-875b-4932-a0c2-cde2886a286c",
+                    "hide": {
+                      "hideWhenExpression": "isEmpty(violence)"
+                    }
                   },
                   {
-                    "concept": "2e8cee73-d7ec-490f-8422-30bc7615e24d"
+                    "concept": "2e8cee73-d7ec-490f-8422-30bc7615e24d",
+                    "hide": {
+                      "hideWhenExpression": "isEmpty(separationOrLoss)"
+                    }
                   },
                   {
-                    "concept": "73fcb975-b93d-4de6-bd42-dfeb1a221412"
+                    "concept": "73fcb975-b93d-4de6-bd42-dfeb1a221412",
+                    "hide": {
+                      "hideWhenExpression": "isEmpty(disaster)"
+                    }
                   },
                   {
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002",
+                    "hide": {
+                      "hideWhenExpression": "isEmpty(pastOrPrecipitatingEvents_other)"
+                    }
                   }
                 ]
               }
