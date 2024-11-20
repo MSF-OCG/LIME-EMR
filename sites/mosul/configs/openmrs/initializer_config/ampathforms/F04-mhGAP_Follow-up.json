@@ -1,7 +1,7 @@
 {
   "name": "MSF Mental Health - mhGAP Follow-up",
   "description": "MSF Form - F04-mhGAP Follow-up",
-  "version": "15",
+  "version": "16",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
@@ -524,6 +524,30 @@
               "questionInfo": "Sum of all points from answers above"
             },
             {
+              "id": "ifYouCheckedOffAnyProblemsHowDifficultHaveTheseProblemsMadeItForYouToDoYourWork",
+              "label": "If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c608b9a1-d0b9-48d8-9f6f-1da89d57481c",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "243698be-42a0-46da-8be8-21c774f2f42a"
+                  },
+                  {
+                    "concept": "45125711-2156-475e-ac7e-6eed34b976a7"
+                  },
+                  {
+                    "concept": "7914639c-89bc-4ff9-bff5-06b5c22aed11"
+                  }
+                ]
+              }
+            },
+            {
               "id": "depressionSeverityScale",
               "label": "Depression severity scale",
               "type": "obs",
@@ -549,18 +573,20 @@
                   }
                 ]
               },
-              "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult"
+              "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult”. Consider referral to mhGAP clinician/ psychiatrist if major/severe depression."
             },
             {
               "id": "lastPhq9Score",
               "label": "Last PHQ-9 score",
-              "type": "obs",
+              "type": "control",
               "required": false,
+              "readonly": true,
               "questionOptions": {
                 "rendering": "number",
+                "isTransient": true,
                 "concept": "4854003a-4f26-497f-959d-45a56bc77c65",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(value => value)"
+                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
                 }
               }
             }
@@ -607,76 +633,41 @@
               }
             },
             {
-              "id": "cgiI",
-              "label": "CGI-I (rating of  improvement CGI-I how much has the patient improved at this time)",
+              "id": "lastCgisScore",
+              "label": "Last CGI-S score",
               "type": "obs",
               "required": false,
+              "readonly": true,
               "questionOptions": {
-                "rendering": "radio",
-                "concept": "f94de17e-9771-4711-aabb-c5bb0c022be2",
-                "answers": [
-                  {
-                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
-                  },
-                  {
-                    "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
-                  },
-                  {
-                    "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
-                  },
-                  {
-                    "concept": "e19f352f-b693-434a-af4d-2813487de15c"
-                  },
-                  {
-                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
-                  },
-                  {
-                    "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
-                  },
-                  {
-                    "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
-                  },
-                  {
-                    "concept": "ece17856-b110-4453-9bc5-a92891f86846"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "lastCgsIScore",
-              "label": "Last CGS-I score",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "3269eeab-5ce2-45d9-95be-70e9e73712c8",
+                "rendering": "select",
+                "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, 'c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3').then(value => value)"
+                  "calculateExpression": "api.getLatestObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
                 },
                 "answers": [
                   {
                     "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
                   },
                   {
-                    "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
                   },
                   {
-                    "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                    "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
                   },
                   {
-                    "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                    "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
                   },
                   {
-                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                    "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
                   },
                   {
-                    "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                    "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
                   },
                   {
-                    "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                    "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
                   },
                   {
-                    "concept": "ece17856-b110-4453-9bc5-a92891f86846"
+                    "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
                   }
                 ]
               }
@@ -686,20 +677,28 @@
       ]
     },
     {
-      "label": "Medication",
+      "label": "Prescribe medications",
       "sections": [
         {
           "label": "MSF Pharmacological treament",
           "isExpanded": false,
           "questions": [
             {
-              "label": "Order medications",
+              "value": [
+                "Check in **Active Medications** and update it if necessary"
+              ],
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "id": "checkInmedicationsAndUpdateItIfNecessary"
+            },
+            {
               "required": false,
-              "id": "orderWorkspaceLauncher",
+              "id": "medicationWorkspaceLauncher",
               "questionOptions": {
                 "rendering": "workspace-launcher",
-                "buttonLabel": "Order medications",
-                "workspaceName": "order-basket"
+                "buttonLabel": "Update medications",
+                "workspaceName": "add-drug-order"
               }
             }
           ]
@@ -770,7 +769,7 @@
           "questions": [
             {
               "id": "followUpRequired",
-              "label": "Follow-up required  ",
+              "label": "Follow-up required",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -810,7 +809,7 @@
                 "concept": "edc6f30c-4ff2-4a4f-8b90-ca4502bb97a1"
               },
               "hide": {
-                "hideWhenExpression": "followUpSessionRequired !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+                "hideWhenExpression": "followUpRequired !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               },
               "validators": []
             }

@@ -1,7 +1,7 @@
 {
   "name": "MSF Mental Health - mhGAP Baseline",
   "description": "MSF Form - F03-mhGAP Baseline",
-  "version": "9",
+  "version": "10",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
@@ -259,16 +259,6 @@
                 "rendering": "text",
                 "concept": "ed4b93f6-9115-4813-8784-d653af7e74ed"
               }
-            },
-            {
-              "id": "additionalInformationAboutPreviousTreatment",
-              "label": "Enter in **Vitals** today's measurements for **weight**, **blood pressure** and **heart rate**",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "ed4b93f6-9115-4813-8784-d653af7e74ed"
-              }
             }
           ]
         }
@@ -282,7 +272,15 @@
           "isExpanded": false,
           "questions": [
             {
-              "label": "Vitals",
+              "value": [
+                "Enter in **Vitals** today's measurements for **weight**, **blood pressure** and **heart rate**"
+              ],
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "id": "addVitalsMarkdown"
+            },
+            {
               "required": false,
               "id": "vitalsWorkspaceLauncher",
               "questionOptions": {
@@ -798,7 +796,7 @@
           "questions": [
             {
               "value": [
-                "Check in **Active Medications** and update it if necessary:"
+                "Check in **Active Medications** and update it if necessary"
               ],
               "questionOptions": {
                 "rendering": "markdown"
@@ -806,7 +804,6 @@
               "id": "checkInmedicationsAndUpdateItIfNecessary"
             },
             {
-              "label": "Active medications",
               "required": false,
               "id": "medicationWorkspaceLauncher",
               "questionOptions": {
@@ -849,7 +846,7 @@
           "questions": [
             {
               "id": "followUpRequired",
-              "label": "Follow up session required? (If no, fill the Exit form)",
+              "label": "Follow-up required",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -889,7 +886,7 @@
                 "concept": "edc6f30c-4ff2-4a4f-8b90-ca4502bb97a1"
               },
               "hide": {
-                "hideWhenExpression": "followUpSessionRequired !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+                "hideWhenExpression": "followUpRequired !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               },
               "validators": []
             }

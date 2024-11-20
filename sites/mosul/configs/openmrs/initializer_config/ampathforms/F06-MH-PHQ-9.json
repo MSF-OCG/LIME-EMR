@@ -1,7 +1,7 @@
 {
   "name": "MSF Mental Health - PHQ-9",
   "description": "MSF Mental Health Form - PHQ-9",
-  "version": "6",
+  "version": "7",
   "published": true,
   "uuid": "f6125ef3-da5f-4c58-85ae-f7c5c507d952",
   "processor": "EncounterFormProcessor",
@@ -248,6 +248,30 @@
               },
               "validators": [],
               "questionInfo": "Sum of all points from answers above"
+            },
+            {
+              "id": "ifYouCheckedOffAnyProblemsHowDifficultHaveTheseProblemsMadeItForYouToDoYourWork",
+              "label": "If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c608b9a1-d0b9-48d8-9f6f-1da89d57481c",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "243698be-42a0-46da-8be8-21c774f2f42a"
+                  },
+                  {
+                    "concept": "45125711-2156-475e-ac7e-6eed34b976a7"
+                  },
+                  {
+                    "concept": "7914639c-89bc-4ff9-bff5-06b5c22aed11"
+                  }
+                ]
+              }
             }
           ]
         },

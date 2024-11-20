@@ -1,7 +1,7 @@
 {
   "name": "MSF Mental Health - MHPSS Follow-up",
   "description": "MSF Form - F02-MHPSS Follow-up",
-  "version": "11",
+  "version": "12",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
@@ -194,7 +194,7 @@
           "questions": [
             {
               "id": "thePatientDidNotCome",
-              "label": "The patient did not come",
+              "label": "Did the patient miss the session?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -413,7 +413,7 @@
                 "rendering": "markdown"
               },
               "value": [
-                "In the past week."
+                "In the past week"
               ]
             },
             {
@@ -1024,7 +1024,7 @@
                 "rendering": "markdown"
               },
               "value": [
-                "A last question."
+                "A last question"
               ],
               "hide": {
                 "hideWhenExpression": "age >= 15"
@@ -1108,12 +1108,12 @@
             {
               "id": "lastMhosScore",
               "label": "Last MHOS score",
-              "type": "control",
+              "type": "obs",
               "required": false,
               "readonly": true,
               "questionOptions": {
                 "rendering": "number",
-                "isTransient": true,
+                "concept": "b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df",
                 "calculate": {
                   "calculateExpression": "api.getLatestObs(patient.id, 'b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df').then(obs => obs?.valueQuantity?.value)"
                 }
@@ -1357,15 +1357,27 @@
               "questionInfo": "Sum of all points from answers above"
             },
             {
-              "id": "lastPhq9Score",
-              "label": "Last PHQ-9 score",
-              "type": "control",
+              "id": "workAndHomeAndSocialDifficulty",
+              "label": "If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people",
+              "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "number",
-                "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
-                }
+                "rendering": "radio",
+                "concept": "c608b9a1-d0b9-48d8-9f6f-1da89d57481c",
+                "answers": [
+                  {
+                    "concept": "ed0e2463-c990-4341-b095-53b899707af9"
+                  },
+                  {
+                    "concept": "243698be-42a0-46da-8be8-21c774f2f42a"
+                  },
+                  {
+                    "concept": "45125711-2156-475e-ac7e-6eed34b976a7"
+                  },
+                  {
+                    "concept": "7914639c-89bc-4ff9-bff5-06b5c22aed11"
+                  }
+                ]
               }
             },
             {
@@ -1394,7 +1406,21 @@
                   }
                 ]
               },
-              "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult"
+              "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is “more than half the time” AND the question about difficulty at home, work and going along with others is answered at least “somewhat difficult”. Consider referral to mhGAP clinician/ psychiatrist if major/severe depression."
+            },
+            {
+              "id": "lastPhq9Score",
+              "label": "Last PHQ-9 score",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "4854003a-4f26-497f-959d-45a56bc77c65",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
+                }
+              }
             }
           ]
         },
@@ -1403,13 +1429,54 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "cgiS",
-              "label": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time?)",
+              "id": "cgiSScoreHowMentallyIllIsThePatientAtThisTime",
+              "label": "CGI-S score - How mentally ill is the patient at this time",
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "select",
                 "concept": "a1a75011-0fef-460a-b666-dda2d171f39b",
+                "answers": [
+                  {
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "concept": "031386f7-5ee9-4a0b-876d-3e0f3d2bb1d1"
+                  },
+                  {
+                    "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
+                  },
+                  {
+                    "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
+                  },
+                  {
+                    "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
+                  },
+                  {
+                    "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
+                  },
+                  {
+                    "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                  }
+                ]
+              },
+              "questionInfo": "If the patient’s  score ≥ 5, consider referral to mhGAP clinician / psychiatrist."
+            },
+            {
+              "id": "lastCgiSScore",
+              "label": "Last CGI-S score",
+              "type": "control",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
+                },
                 "answers": [
                   {
                     "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
@@ -1446,6 +1513,45 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "f94de17e-9771-4711-aabb-c5bb0c022be2",
+                "answers": [
+                  {
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                  },
+                  {
+                    "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                  },
+                  {
+                    "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                  },
+                  {
+                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                  },
+                  {
+                    "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                  },
+                  {
+                    "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                  },
+                  {
+                    "concept": "ece17856-b110-4453-9bc5-a92891f86846"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "lastCgiIScore",
+              "label": "Last CGI-I score",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'f94de17e-9771-4711-aabb-c5bb0c022be2').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
+                },
                 "answers": [
                   {
                     "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
@@ -1631,7 +1737,7 @@
       "label": "Risk factors",
       "sections": [
         {
-          "label": "Risk factors (since the last session. . .)",
+          "label": "Risk factors (in the last 6 months, except for the last question)",
           "isExpanded": false,
           "questions": [
             {
@@ -1754,6 +1860,7 @@
                 "rendering": "text",
                 "concept": "58187804-7c6c-47bf-b9d4-d45effbb3665"
               },
+              "questionInfo": "Consider referral to mhGAP clinician",
               "hide": {
                 "hideWhenExpression": "isThePatientCurrentlyAtRiskOfHurtingHimselfOrHerselfOrAttemptingSuicide !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
@@ -1785,6 +1892,7 @@
                 "rendering": "text",
                 "concept": "517ff456-6aa7-4deb-8526-c0773423632f"
               },
+              "questionInfo": "Consider referral to mhGAP clinician",
               "hide": {
                 "hideWhenExpression": "isThePatientCurrentlyAtRiskOfHurtingOthers !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
@@ -1908,6 +2016,19 @@
               }
             },
             {
+              "id": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence_ifOtherSpecify1",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d9b92c93-5017-4229-be19-2a0ebf9e9169"
+              },
+              "hide": {
+                "hideWhenExpression": "whatTypeOfViolence1 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+              }
+            },
+            {
               "id": "whatTypeOfViolence2",
               "label": "What type(s) of violence? - 2",
               "type": "obs",
@@ -1935,6 +2056,19 @@
               },
               "hide": {
                 "hideWhenExpression": "hasThePatientExperiencedAnActOfAggressionOrViolence !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence_ifOtherSpecify2",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d9b92c93-5017-4229-be19-2a0ebf9e9169"
+              },
+              "hide": {
+                "hideWhenExpression": "whatTypeOfViolence2 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -1968,7 +2102,7 @@
               }
             },
             {
-              "id": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence_ifOtherSpecify",
+              "id": "patientExperiencedAnActOfAggressionOrViolenceWhatTypeOfViolence_ifOtherSpecify3",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -1977,7 +2111,7 @@
                 "concept": "d9b92c93-5017-4229-be19-2a0ebf9e9169"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(whatTypeOfViolence) || !arrayContains(whatTypeOfViolence,'790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                "hideWhenExpression": "whatTypeOfViolence3 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -2044,7 +2178,7 @@
                 "concept": "30b0ac06-848f-4a86-93d7-c91debb8f2ad"
               },
               "hide": {
-                "hideWhenExpression": "wouldThePatientLikeAReferralToTheMedicalDepartmentForTreatment !== 'yes'"
+                "hideWhenExpression": "wouldThePatientLikeAReferralToTheMedicalDepartmentForTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
             }
           ]

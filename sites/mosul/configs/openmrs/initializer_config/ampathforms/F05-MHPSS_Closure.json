@@ -1,7 +1,7 @@
 {
   "name": "MSF Mental Health - MHPSS Closure",
   "description": "MSF Form - F05-MH Closure",
-  "version": "8",
+  "version": "9",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
@@ -288,7 +288,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "select",
                 "concept": "c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3",
                 "calculate": {
                   "calculateExpression": "api.getLatestObs(patient.id, 'f94de17e-9771-4711-aabb-c5bb0c022be2').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
@@ -328,7 +328,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "select",
                 "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40",
                 "calculate": {
                   "calculateExpression": "api.getLatestObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
