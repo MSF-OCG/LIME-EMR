@@ -165,26 +165,6 @@
         </insert>
     </changeSet>
 
-    <!-- Person attributes - emergency contact relationship change from string to concept -->
-    <changeSet id="update_person_attribute-202406191265" author="pirupius">
-        <preConditions onFail="MARK_RAN">
-            <sqlCheck expectedResult="1">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM person_attribute a
-                    INNER JOIN person_attribute_type t ON a.person_attribute_type_id = t.person_attribute_type_id
-                WHERE t.uuid IN ('057e07a8-2170-4422-b257-26e401e3c151', '486da62c-12a8-463c-ada9-4e8f6488075e');
-            </sqlCheck>
-        </preConditions>
-        <comment>
-            Update person attribute value for emergency contact relationship 1 and emergency contact relationship 2 with concept uuid
-        </comment>
-        <sql>
-            UPDATE person_attribute SET value = '972AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' WHERE value = 'sister' OR value = 'brother';
-            UPDATE person_attribute SET value = '5618AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' WHERE value = 'friend';
-            UPDATE person_attribute SET value = '1527AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' WHERE value = 'mother' OR value = 'father';
-            DELETE FROM person_attribute WHERE value = 'test';
-        </sql>
-    </changeSet>
-
     <!-- Add admin as provider -->
     <changeSet id="add_admin_provider-202407101630" author="pirupius">
         <preConditions onFail="MARK_RAN">
