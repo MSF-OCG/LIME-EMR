@@ -245,26 +245,6 @@
         }
       },
       {
-        "id": "familyName2",
-        "type": "person attribute",
-        "uuid": "ec705ed9-2274-483c-bc92-1f120232161f",
-        "label": "Family Name 2",
-        "placeholder": "placeholder",
-        "validation": {
-          "required": false
-        }
-      },
-      {
-        "id": "familyName3",
-        "type": "person attribute",
-        "uuid": "33829173-d444-4d1d-a407-869d322c27d4",
-        "label": "Family Name 3",
-        "placeholder": "placeholder",
-        "validation": {
-          "required": false
-        }
-      },
-      {
         "id": "emergencycontact1firstName",
         "type": "person attribute",
         "uuid": "b0f6124c-7645-420e-a82b-058799209e33",
@@ -395,8 +375,6 @@
         "id": "demographics",
         "fields": [
           "name",
-          "familyName2",
-          "familyName3",
           "gender",
           "dob",
           "id"
@@ -459,6 +437,15 @@
     "registrationObs": {
       "encounterTypeUuid": "10d061d8-0677-47f2-8061-f302244dc48b",
       "encounterProviderRoleUuid": "240b26f9-dd88-4172-823d-4a8bfeb7841f"
+    },
+    "defaultPatientIdentifierTypes": [
+      "05a29f94-c0ed-11e2-94be-8c13b969e334"
+    ],
+    "Translation overrides": {
+      "en": {
+        "givenNameTextLabel": "Full Name in Arabic",
+        "familyNameTextLabel": "Full Name in English"
+      }
     }
   },
   "@openmrs/esm-form-builder-app": {
