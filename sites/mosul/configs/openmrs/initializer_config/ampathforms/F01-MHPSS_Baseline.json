@@ -1568,6 +1568,9 @@
           "label": "Clinical diagnosis",
           "isExpanded": false,
           "readonly": "!customHasRequiredPrivilege('Edit sensitive mental health fields')",
+          "hide": {
+            "hideWhenExpression": "consultationDoneBy !== '278401ee-3d6f-4c65-9455-f1c16d0a7a98'"
+          },
           "questions": [
             {
               "id": "clinicalDiagnosis",
