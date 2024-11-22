@@ -1608,6 +1608,9 @@
           "label": "Clinical diagnosis",
           "isExpanded": false,
           "readonly": "!customHasRequiredPrivilege('Edit sensitive mental health fields')",
+          "hide": {
+            "hideWhenExpression": "consultationDoneBy !== '278401ee-3d6f-4c65-9455-f1c16d0a7a98'"
+          },
           "questions": [
             {
               "id": "clinicalDiagnosis",
@@ -1679,6 +1682,9 @@
                     "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "consultationDoneBy !== '278401ee-3d6f-4c65-9455-f1c16d0a7a98'"
               }
             },
             {
@@ -1691,7 +1697,7 @@
                 "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
               },
               "hide": {
-                "hideWhenExpression": "clinicalDiagnosis !== 'otherDisorder'"
+                "hideWhenExpression": "clinicalDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
