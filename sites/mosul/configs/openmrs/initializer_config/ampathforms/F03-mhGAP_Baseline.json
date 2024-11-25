@@ -50,7 +50,7 @@
                 "rendering": "radio",
                 "concept": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
+                  "calculateExpression": "api.getLatestOpenmrsObs(patient.id, 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7').then(obs => obs)"
                 },
                 "answers": [
                   {
@@ -316,7 +316,7 @@
                 "rendering": "select",
                 "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, '22809b19-54ca-4d88-8d26-9577637c184e').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
+                  "calculateExpression": "api.getLatestOpenmrsObs(patient.id, '22809b19-54ca-4d88-8d26-9577637c184e').then(obs => obs)"
                 },
                 "answers": [
                   {
@@ -754,7 +754,7 @@
                 "rendering": "select",
                 "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs.valueCodeableConcept?.coding[0]?.code)"
+                  "calculateExpression": "api.getLatestOpenmrsObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs)"
                 },
                 "answers": [
                   {
