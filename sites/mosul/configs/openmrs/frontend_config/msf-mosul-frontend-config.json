@@ -454,5 +454,38 @@
         }
       }
     }
+  },
+  "@openmrs/esm-patient-banner-app": {
+    "printPatientSticker": {
+      "autoPrint": true,
+      "pageSize": "70mm 50mm",
+      "header": {
+        "showBarcode": true,
+        "showLogo": false
+      },
+      "printStickerFields": {
+        "fields": [
+          "identifier",
+          "name",
+          "gender",
+          "dob"
+        ],
+        "fieldSeparator": false,
+        "fieldsTableGroups": [
+          [
+            "gender",
+            "dob"
+          ]
+        ],
+        "fieldsContainerStyleOverrides": {
+          "grid-template-columns": "auto"
+        }
+      },
+      "printMultipleStickers": {
+        "numberOfStickers": 10,
+        "stickerColumnsPerPage": 1,
+        "stickerRowsPerPage": 1
+      }
+    }
   }
 }
