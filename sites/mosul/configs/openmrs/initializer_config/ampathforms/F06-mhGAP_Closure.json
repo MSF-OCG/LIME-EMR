@@ -1,7 +1,7 @@
 {
   "name": "MSF Mental Health - mhGAP Closure",
   "description": "MSF Mental Health - mhGAP Closure",
-  "version": "3",
+  "version": "4",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
@@ -255,6 +255,7 @@
               "label": "MHOS",
               "type": "obs",
               "required": false,
+              "readonly": true,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "90b3d09c-d296-44d2-8292-8e04377fe027",
@@ -271,6 +272,7 @@
               "label": "PHQ-9",
               "type": "obs",
               "required": false,
+              "readonly": true,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "6545b874-f44d-4d18-9ab1-7a8bb21c0a15",
@@ -283,15 +285,16 @@
               "default": "Value of last PHQ-9 score measured"
             },
             {
-              "id": "cgiI",
-              "label": "CGI-I",
-              "type": "obs",
+              "id": "lastCgiSScore",
+              "label": "Last CGI-S score",
+              "type": "control",
               "required": false,
+              "readonly": true,
               "questionOptions": {
                 "rendering": "select",
-                "concept": "c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3",
+                "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, 'c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3').then(value => value)"
+                  "calculateExpression": "api.getLatestOpenmrsObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs)"
                 },
                 "answers": [
                   {
@@ -319,19 +322,19 @@
                     "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
                   }
                 ]
-              },
-              "default": "Value of last CGI-I score measured"
+              }
             },
             {
-              "id": "cgiS",
-              "label": "CGI-S",
+              "id": "lastCgiIScore",
+              "label": "Last CGI-I score",
               "type": "obs",
               "required": false,
+              "readonly": true,
               "questionOptions": {
                 "rendering": "select",
-                "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40",
+                "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, '77f1a782-24af-40ba-bac1-b97d9a080f40').then(value => value)"
+                  "calculateExpression": "api.getLatestOpenmrsObs(patient.id, 'f94de17e-9771-4711-aabb-c5bb0c022be2').then(obs => obs)"
                 },
                 "answers": [
                   {
@@ -359,8 +362,7 @@
                     "concept": "ece17856-b110-4453-9bc5-a92891f86846"
                   }
                 ]
-              },
-              "default": "Value of last CGI-S score measured"
+              }
             }
           ]
         }

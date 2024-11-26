@@ -1,7 +1,7 @@
 {
   "name": "MSF Mental Health - MHPSS Follow-up",
   "description": "MSF Form - F02-MHPSS Follow-up",
-  "version": "14",
+  "version": "15",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
@@ -1434,7 +1434,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "select",
+                "rendering": "radio",
                 "concept": "a1a75011-0fef-460a-b666-dda2d171f39b",
                 "answers": [
                   {
@@ -1546,8 +1546,9 @@
               "label": "Last CGI-I score",
               "type": "obs",
               "required": false,
+              "readonly": true,
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "select",
                 "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
                 "calculate": {
                   "calculateExpression": "api.getLatestOpenmrsObs(patient.id, 'f94de17e-9771-4711-aabb-c5bb0c022be2').then(obs => obs)"

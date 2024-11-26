@@ -598,8 +598,8 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "cgiS",
-              "label": "CGI-S (rating of severity CGI-S how mentally ill is the patient at this time?)",
+              "id": "cgiSScoreHowMentallyIllIsThePatientAtThisTime",
+              "label": "CGI-S score - How mentally ill is the patient at this time",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -631,18 +631,18 @@
                     "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
                   }
                 ]
-              }
+              },
+              "questionInfo": "If the patient’s  score ≥ 5, consider referral to mhGAP clinician / psychiatrist."
             },
             {
-              "id": "lastCgisScore",
+              "id": "lastCgiSScore",
               "label": "Last CGI-S score",
-              "type": "obs",
+              "type": "control",
               "required": false,
               "readonly": true,
-              "questionInfo": "If the patient’s  score ≥ 5, consider referral to mhGAP clinician / psychiatrist",
               "questionOptions": {
                 "rendering": "select",
-                "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
+                "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40",
                 "calculate": {
                   "calculateExpression": "api.getLatestOpenmrsObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs)"
                 },
@@ -670,6 +670,82 @@
                   },
                   {
                     "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "cgiI",
+              "label": "CGI-I (rating of  improvement CGI-I how much has the patient improved at this time)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f94de17e-9771-4711-aabb-c5bb0c022be2",
+                "answers": [
+                  {
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                  },
+                  {
+                    "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                  },
+                  {
+                    "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                  },
+                  {
+                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                  },
+                  {
+                    "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                  },
+                  {
+                    "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                  },
+                  {
+                    "concept": "ece17856-b110-4453-9bc5-a92891f86846"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "lastCgiIScore",
+              "label": "Last CGI-I score",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
+                "calculate": {
+                  "calculateExpression": "api.getLatestOpenmrsObs(patient.id, 'f94de17e-9771-4711-aabb-c5bb0c022be2').then(obs => obs)"
+                },
+                "answers": [
+                  {
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                  },
+                  {
+                    "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                  },
+                  {
+                    "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                  },
+                  {
+                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                  },
+                  {
+                    "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                  },
+                  {
+                    "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                  },
+                  {
+                    "concept": "ece17856-b110-4453-9bc5-a92891f86846"
                   }
                 ]
               }
