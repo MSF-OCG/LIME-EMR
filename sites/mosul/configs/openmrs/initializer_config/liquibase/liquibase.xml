@@ -61,7 +61,7 @@
             <column name="person_name_id" valueNumeric="31"/>
             <column name="preferred" valueBoolean="true"/>
             <column name="person_id" valueNumeric="31"/>
-            <column name="given_name" value="Mental Health Nurse"/>
+            <column name="given_name" value="Mental Health Counselor"/>
             <column name="family_name" value="User"/>
             <column name="creator" valueNumeric="1"/>
             <column name="date_created" value="2024-06-19 12:55:00"/>
@@ -72,7 +72,7 @@
             <column name="person_name_id" valueNumeric="32"/>
             <column name="preferred" valueBoolean="true"/>
             <column name="person_id" valueNumeric="32"/>
-            <column name="given_name" value="Mental Health Counselor"/>
+            <column name="given_name" value="Mental Health Psychologist"/>
             <column name="family_name" value="User"/>
             <column name="creator" valueNumeric="1"/>
             <column name="date_created" value="2024-06-19 12:55:00"/>
@@ -83,7 +83,7 @@
             <column name="person_name_id" valueNumeric="33"/>
             <column name="preferred" valueBoolean="true"/>
             <column name="person_id" valueNumeric="33"/>
-            <column name="given_name" value="Mental Health Doctor"/>
+            <column name="given_name" value="Mental Health Psychiatrist"/>
             <column name="family_name" value="User"/>
             <column name="creator" valueNumeric="1"/>
             <column name="date_created" value="2024-06-19 12:55:00"/>
@@ -94,7 +94,7 @@
             <column name="person_name_id" valueNumeric="34"/>
             <column name="preferred" valueBoolean="true"/>
             <column name="person_id" valueNumeric="34"/>
-            <column name="given_name" value="Maternity Nurse"/>
+            <column name="given_name" value="General Doctor"/>
             <column name="family_name" value="User"/>
             <column name="creator" valueNumeric="1"/>
             <column name="date_created" value="2024-06-19 12:55:00"/>
@@ -110,8 +110,8 @@
         </comment>
         <insert tableName="users">
             <column name="user_id" value="30" />
-            <column name="system_id" value="REG_officer" />
-            <column name="username" value="REG_officer" />
+            <column name="system_id" value="registration.officer" />
+            <column name="username" value="registration.officer" />
             <column name="password" value="e57803f05704936892416eeb894a261aa7bb0f3327b81d51bb1c1dc8e229a98c4515de3e9de652d045b8e004fbfb4cfaa458374a6e65ca3658d97e92059e5f89" />
             <column name="salt" value="bdf469e93449e50a829ed46e9c9f39e926f3483acd8f0b79718d6d48cd72ba5f8cb8d4006127e51c5588663ba77114c566fd94d5a64d9e3e9c85ef8525e66b07" />
             <column name="person_id" value="30" />
@@ -121,8 +121,8 @@
         </insert>
         <insert tableName="users">
             <column name="user_id" value="31" />
-            <column name="system_id" value="MH_nurse" />
-            <column name="username" value="MH_nurse" />
+            <column name="system_id" value="mentalhealth.counselor" />
+            <column name="username" value="mentalhealth.counselor" />
             <column name="password" value="e57803f05704936892416eeb894a261aa7bb0f3327b81d51bb1c1dc8e229a98c4515de3e9de652d045b8e004fbfb4cfaa458374a6e65ca3658d97e92059e5f89" />
             <column name="salt" value="bdf469e93449e50a829ed46e9c9f39e926f3483acd8f0b79718d6d48cd72ba5f8cb8d4006127e51c5588663ba77114c566fd94d5a64d9e3e9c85ef8525e66b07" />
             <column name="person_id" value="31" />
@@ -132,8 +132,8 @@
         </insert>
         <insert tableName="users">
             <column name="user_id" value="32" />
-            <column name="system_id" value="MH_counselor" />
-            <column name="username" value="MH_counselor" />
+            <column name="system_id" value="mentalhealth.psychologist" />
+            <column name="username" value="mentalhealth.psychologist" />
             <column name="password" value="e57803f05704936892416eeb894a261aa7bb0f3327b81d51bb1c1dc8e229a98c4515de3e9de652d045b8e004fbfb4cfaa458374a6e65ca3658d97e92059e5f89" />
             <column name="salt" value="bdf469e93449e50a829ed46e9c9f39e926f3483acd8f0b79718d6d48cd72ba5f8cb8d4006127e51c5588663ba77114c566fd94d5a64d9e3e9c85ef8525e66b07" />
             <column name="person_id" value="32" />
@@ -143,8 +143,8 @@
         </insert>
         <insert tableName="users">
             <column name="user_id" value="33" />
-            <column name="system_id" value="MH_doctor" />
-            <column name="username" value="MH_doctor" />
+            <column name="system_id" value="mentalhealth.psychiatrist" />
+            <column name="username" value="mentalhealth.psychiatrist" />
             <column name="password" value="e57803f05704936892416eeb894a261aa7bb0f3327b81d51bb1c1dc8e229a98c4515de3e9de652d045b8e004fbfb4cfaa458374a6e65ca3658d97e92059e5f89" />
             <column name="salt" value="bdf469e93449e50a829ed46e9c9f39e926f3483acd8f0b79718d6d48cd72ba5f8cb8d4006127e51c5588663ba77114c566fd94d5a64d9e3e9c85ef8525e66b07" />
             <column name="person_id" value="33" />
@@ -154,8 +154,8 @@
         </insert>
         <insert tableName="users">
             <column name="user_id" value="34" />
-            <column name="system_id" value="MAT_nurse" />
-            <column name="username" value="MAT_nurse" />
+            <column name="system_id" value="general.doctor" />
+            <column name="username" value="general.doctor" />
             <column name="password" value="e57803f05704936892416eeb894a261aa7bb0f3327b81d51bb1c1dc8e229a98c4515de3e9de652d045b8e004fbfb4cfaa458374a6e65ca3658d97e92059e5f89" />
             <column name="salt" value="bdf469e93449e50a829ed46e9c9f39e926f3483acd8f0b79718d6d48cd72ba5f8cb8d4006127e51c5588663ba77114c566fd94d5a64d9e3e9c85ef8525e66b07" />
             <column name="person_id" value="34" />
@@ -188,8 +188,8 @@
         <insert tableName="provider">
             <column name="provider_id" value="31" />
             <column name="person_id" value="31" />
-            <column name="name" value="Mental Health Nurse" />
-            <column name="identifier" value="MH_nurse" />
+            <column name="name" value="mentalhealth.counselor" />
+            <column name="identifier" value="mentalhealth.counselor" />
             <column name="uuid" value="00daec3f-122e-485c-8828-efb1949acf47" />
             <column name="creator" value="1" />
             <column name="date_created" value="2024-07-11 11:30:00" />
@@ -197,8 +197,8 @@
         <insert tableName="provider">
             <column name="provider_id" value="32" />
             <column name="person_id" value="32" />
-            <column name="name" value="Mental Health Counselor" />
-            <column name="identifier" value="MH_counselor" />
+            <column name="name" value="mentalhealth.psychologist" />
+            <column name="identifier" value="mentalhealth.psychologist" />
             <column name="uuid" value="257c4d86-c30e-48db-b513-27a4b935a9df" />
             <column name="creator" value="1" />
             <column name="date_created" value="2024-07-11 11:30:00" />
@@ -206,8 +206,8 @@
         <insert tableName="provider">
             <column name="provider_id" value="33" />
             <column name="person_id" value="33" />
-            <column name="name" value="Mental Health Doctor" />
-            <column name="identifier" value="MH_doctor" />
+            <column name="name" value="mentalhealth.psychiatrist" />
+            <column name="identifier" value="mentalhealth.psychiatrist" />
             <column name="uuid" value="7c6c5781-dfbf-4f99-928a-45696e2ae37c" />
             <column name="creator" value="1" />
             <column name="date_created" value="2024-07-11 11:30:00" />
@@ -215,12 +215,22 @@
         <insert tableName="provider">
             <column name="provider_id" value="34" />
             <column name="person_id" value="34" />
-            <column name="name" value="Maternity Nurse" />
-            <column name="identifier" value="MAT_nurse" />
+            <column name="name" value="general.doctor" />
+            <column name="identifier" value="general.doctor" />
             <column name="uuid" value="f89b80a6-a2c3-4a98-8beb-3b2138303124" />
             <column name="creator" value="1" />
             <column name="date_created" value="2024-07-11 11:30:00" />
         </insert>
+    </changeSet>
+    <!-- Unvoid arabic translations voided by Initializer -->
+    <changeSet id="unvoid_arabic_translations-202411261121" author="michaelbontyes">
+        <sql>
+            UPDATE concept_name
+            SET voided = 0
+            WHERE voided = 1
+              AND void_reason = 'Voided by module Initializer'
+              AND locale = 'ar';
+        </sql>
     </changeSet>
 
 </databaseChangeLog>
