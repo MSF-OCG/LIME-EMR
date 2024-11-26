@@ -11,128 +11,106 @@
             }
           }
         }
+      },
+      "homepage-dashboard-slot": {
+        "remove": [
+          "service-queues-dashboard-link",
+          "clinical-appointments-dashboard-link",
+          "laboratory-dashboard-link"
+        ]
       }
     }
   },
   "@openmrs/esm-patient-chart-app": {
     "Display conditions": {
-      "privileges": [
-        "Patient Dashboard - View Patient Summary"
-      ]
+      "privileges": ["Patient Dashboard - View Patient Summary"]
     },
     "extensionSlots": {
       "patient-chart-dashboard-slot": {
+        "remove": [
+          "clinical-view-section",
+          "patient-mental-health-summary-dashboard",
+          "patient-nutrition-summary-dashboard"
+        ],
         "configure": {
           "charts-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Patient Dashboard - View Patient Summary"
-              ]
+              "privileges": ["Patient Dashboard - View Patient Summary"]
             }
           },
           "medications-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Manage Patient Medication"
-              ]
+              "privileges": ["Manage Patient Medication"]
             }
           },
           "encounters-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Configure Visits"
-              ]
+              "privileges": ["Configure Visits"]
             }
           },
           "allergies-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Patient Overview - View Allergies"
-              ]
+              "privileges": ["Patient Overview - View Allergies"]
             }
           },
           "laboratory-patient-chart-link": {
             "Display conditions": {
-              "privileges": [
-                "Manage Patient Investigation"
-              ]
+              "privileges": ["Manage Patient Investigation"]
             }
           },
           "results-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Patient Dashboard - View Encounters Section"
-              ]
+              "privileges": ["Patient Dashboard - View Encounters Section"]
             }
           },
           "programs-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Patient Overview - View Programs"
-              ]
+              "privileges": ["Patient Overview - View Programs"]
             }
           },
           "test-results-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "View Concepts"
-              ]
+              "privileges": ["View Concepts"]
             }
           },
           "immunization-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Manage Immunization Summary"
-              ]
+              "privileges": ["Manage Immunization Summary"]
             }
           },
           "patient-appointments-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Manage Appointments"
-              ]
+              "privileges": ["Manage Appointments"]
             }
           },
           "visit-header-right-slot": {
             "Display conditions": {
-              "privileges": [
-                "Configure Visits"
-              ]
+              "privileges": ["Configure Visits"]
             }
           },
           "patient-orders-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Manage Patient Orders"
-              ]
+              "privileges": ["Manage Patient Orders"]
             }
           },
           "conditions-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Patient Dashboard - View Conditions"
-              ]
+              "privileges": ["Patient Dashboard - View Conditions"]
             }
           },
           "attachments-results-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Manage Patient Orders"
-              ]
+              "privileges": ["Manage Patient Orders"]
             }
           },
           "patient-mental-health-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Manage Mental Health"
-              ]
+              "privileges": ["Manage Mental Health"]
             }
           },
           "patient-nutrition-summary-dashboard": {
             "Display conditions": {
-              "privileges": [
-                "Manage Nutrition"
-              ]
+              "privileges": ["Manage Nutrition"]
             }
           }
         }
@@ -141,9 +119,7 @@
         "configure": {
           "laboratory-orders-summary": {
             "Display conditions": {
-              "privileges": [
-                "Manage Patient Lab Orders"
-              ]
+              "privileges": ["Manage Patient Lab Orders"]
             }
           }
         }
@@ -152,9 +128,7 @@
         "configure": {
           "immunization-details-widget": {
             "Display conditions": {
-              "privileges": [
-                "Manage Patient Immunization Orders"
-              ]
+              "privileges": ["Manage Patient Immunization Orders"]
             }
           }
         }
@@ -163,30 +137,22 @@
         "configure": {
           "order-basket-action-menu": {
             "Display conditions": {
-              "privileges": [
-                "Manage Order Basket"
-              ]
+              "privileges": ["Manage Order Basket"]
             }
           },
           "visit-note-nav-button": {
             "Display conditions": {
-              "privileges": [
-                "Manage Visit Note"
-              ]
+              "privileges": ["Manage Visit Note"]
             }
           },
           "clinical-form-action-menu": {
             "Display conditions": {
-              "privileges": [
-                "Manage Clinical Forms"
-              ]
+              "privileges": ["Manage Clinical Forms"]
             }
           },
           "patient-lists-action-menu": {
             "Display conditions": {
-              "privileges": [
-                "View Patients"
-              ]
+              "privileges": ["View Patients"]
             }
           }
         }
