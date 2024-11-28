@@ -13,7 +13,7 @@ The OpenMRS 3 distribution for MSF OCG
 - Role-based **appointments**
 - Role-based **forms**
 - Role-based **encounters**
-- Role-base **form modification**
+- Role-based **form modification**
 
 ### Advanced form configuration
 - Answer-based **filter for questions**
