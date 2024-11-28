@@ -1,5 +1,32 @@
 # MSF LIME EMR
-Using Ozone Approach
+The OpenMRS 3 distribution for MSF OCG
+
+## Key features
+
+### Program-specific content
+- **Mental health** forms (7 forms - PHQ9, MHPSS and mhGap)
+
+### Multilingual UI and forms
+- **Arabic and English** support
+
+### Role-based access control (RBAC)
+- Role-based **appointments**
+- Role-based **forms**
+- Role-based **encounters**
+
+### Advanced form configuration
+- Answer-based **filter for questions**
+- Role-based **write privilege**
+- Get **previous observations**
+
+### Printing
+- Patient **identification stickers** in registration with barcodes
+
+### Visit management
+- Auto-close **OPD Visits** nightly
+
+### Data exchange and interoperability
+- Syncing automatically data between **OpenMRS and DHIS2 Tracker** using OpenFN
 
 ## Configuration hierarchy and inheritance
 
