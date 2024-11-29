@@ -1,7 +1,7 @@
 {
   "name": "MSF Mental Health - mhGAP Closure",
   "description": "MSF Mental Health - mhGAP Closure",
-  "version": "4",
+  "version": "5",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
@@ -24,7 +24,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "date",
-                "concept": "40108bf5-0bbd-42e8-8102-bcbd0550a943"
+                "concept": "b58a6a93-4339-41f5-863c-b528cf3cca68"
               },
               "default": "Date of the first Mental Health consultation (after the last closure if any)"
             },
@@ -255,7 +255,6 @@
               "label": "MHOS",
               "type": "obs",
               "required": false,
-              "readonly": true,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "90b3d09c-d296-44d2-8292-8e04377fe027",
@@ -272,7 +271,6 @@
               "label": "PHQ-9",
               "type": "obs",
               "required": false,
-              "readonly": true,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "6545b874-f44d-4d18-9ab1-7a8bb21c0a15",
@@ -289,12 +287,11 @@
               "label": "Last CGI-S score",
               "type": "control",
               "required": false,
-              "readonly": true,
               "questionOptions": {
                 "rendering": "select",
                 "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40",
                 "calculate": {
-                  "calculateExpression": "getLatestOpenmrsObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs)"
+                  "calculateExpression": "api.getLatestOpenmrsObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs)"
                 },
                 "answers": [
                   {
@@ -329,12 +326,11 @@
               "label": "Last CGI-I score",
               "type": "obs",
               "required": false,
-              "readonly": true,
               "questionOptions": {
                 "rendering": "select",
-                "concept": "c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3",
+                "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
                 "calculate": {
-                  "calculateExpression": "getLatestOpenmrsObs(patient.id, 'f94de17e-9771-4711-aabb-c5bb0c022be2').then(obs => obs)"
+                  "calculateExpression": "api.getLatestOpenmrsObs(patient.id, 'f94de17e-9771-4711-aabb-c5bb0c022be2').then(obs => obs)"
                 },
                 "answers": [
                   {
