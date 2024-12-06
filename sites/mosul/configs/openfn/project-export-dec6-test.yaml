@@ -1,12 +1,12 @@
 name: msf-lime-test
 description: null
 credentials:
-  {!EMAIL_ADMIN}-dhis2:
+  Michael.BONTYES@geneva.msf.org-dhis2:
     name: dhis2
-    owner: {!EMAIL_ADMIN}
-  {!EMAIL_ADMIN}-openmrs:
+    owner: Michael.BONTYES@geneva.msf.org
+  Michael.BONTYES@geneva.msf.org-openmrs:
     name: openmrs
-    owner: {!EMAIL_ADMIN}
+    owner: Michael.BONTYES@geneva.msf.org
 workflows:
   wf1-dhis2-omrs-migration:
     name: wf1-dhis2-omrs-migration
@@ -90,7 +90,7 @@ workflows:
       Get-Teis-and-Locations:
         name: Get Teis and Locations
         adaptor: '@openfn/language-dhis2@latest'
-        credential: {!EMAIL_ADMIN}-dhis2
+        credential: Michael.BONTYES@geneva.msf.org-dhis2
         body: |
           // Get teis that are "active" in the target program
           get(
@@ -136,7 +136,7 @@ workflows:
       Create-Patients:
         name: Create Patients
         adaptor: '@openfn/language-openmrs@latest'
-        credential: {!EMAIL_ADMIN}-openmrs
+        credential: Michael.BONTYES@geneva.msf.org-openmrs
         body: |
           //Define gender options and prepare newPatientUuid and identifiers
           fn(state => {
@@ -309,7 +309,7 @@ workflows:
       Update-Teis:
         name: Update Teis
         adaptor: '@openfn/language-dhis2@5.0.1'
-        credential: {!EMAIL_ADMIN}-dhis2
+        credential: Michael.BONTYES@geneva.msf.org-dhis2
         body: |
           fn(state => {
             if (state.newPatientUuid.length === 0) {
@@ -388,7 +388,7 @@ workflows:
       Get-Patients:
         name: Get Patients
         adaptor: '@openfn/language-openmrs@latest'
-        credential: {!EMAIL_ADMIN}-openmrs
+        credential: Michael.BONTYES@geneva.msf.org-openmrs
         body: |
           //Here we define the date cursor
           //$.cursor at beggining of the project 2023-05-20T06:01:24.000+0000
@@ -424,7 +424,7 @@ workflows:
       Upsert-TEIs:
         name: Upsert TEIs
         adaptor: '@openfn/language-dhis2@5.0.1'
-        credential: {!EMAIL_ADMIN}-dhis2
+        credential: Michael.BONTYES@geneva.msf.org-dhis2
         body: |
           const buildPatientsUpsert = (state, patient, isNewPatient) => {
             const { placeOflivingMap, genderOptions } = state;
@@ -583,7 +583,7 @@ workflows:
       Get-Encounters:
         name: Get Encounters
         adaptor: '@openfn/language-http@latest'
-        credential: {!EMAIL_ADMIN}-openmrs
+        credential: Michael.BONTYES@geneva.msf.org-openmrs
         body: |
           // Fetch all encounters
           get(
@@ -670,7 +670,7 @@ workflows:
       Get-TEIs-and-Map-Answers:
         name: Get TEIs and Map Answers
         adaptor: '@openfn/language-dhis2@5.0.1'
-        credential: {!EMAIL_ADMIN}-dhis2
+        credential: Michael.BONTYES@geneva.msf.org-dhis2
         body: |
           const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
           
@@ -930,7 +930,7 @@ workflows:
       Create-Events:
         name: Create Events
         adaptor: '@openfn/language-dhis2@5.0.1'
-        credential: {!EMAIL_ADMIN}-dhis2
+        credential: Michael.BONTYES@geneva.msf.org-dhis2
         body: |
           // Create events for each encounter
           create(
@@ -1051,7 +1051,7 @@ workflows:
       Update-TEIs:
         name: Update TEIs
         adaptor: '@openfn/language-dhis2@5.0.1'
-        credential: {!EMAIL_ADMIN}-dhis2
+        credential: Michael.BONTYES@geneva.msf.org-dhis2
         body: |
           fn(state => {
             const { optsMap, genderUpdated, TEIs } = state;
