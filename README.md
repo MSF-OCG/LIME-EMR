@@ -19,6 +19,7 @@ The OpenMRS 3 distribution for MSF OCG
 - Answer-based **filter for questions**
 - Role-based **write privilege**
 - Get **previous observations**
+- Score **Calculations**
 
 ### Printing
 - Patient **identification stickers** in registration with barcodes
