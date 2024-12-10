@@ -20,12 +20,12 @@ echo "$INFO Creating OpenFn admin user..."
                 %{
                     name: "openmrs",
                     schema: "raw",
-                    body: %{"username" => System.get_env("MSF_OPENMRS_USERNAME"), "password" => System.get_env("MSF_OPENMRS_PASSWORD")}
+                    body: %{"username" => System.get_env("MSF_OPENMRS_USERNAME"), "instanceUrl" => System.get_env("MSF_OPENMRS_INSTANCE_URL"), "password" => System.get_env("MSF_OPENMRS_PASSWORD")}
                 },
                 %{
                     name: "dhis2",
                     schema: "raw",
-                    body: %{"username" => System.get_env("MSF_DHIS2_USERNAME"), "password" => System.get_env("MSF_DHIS2_PASSWORD")}
+                    body: %{"username" => System.get_env("MSF_DHIS2_USERNAME"), "hostUrl" => System.get_env("MSF_DHIS2_HOST_URL"), "password" => System.get_env("MSF_DHIS2_PASSWORD")}
                 }
             ]
         )'  && echo "$INFO Creating OpenFn admin user completed successfully."

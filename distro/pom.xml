@@ -267,6 +267,7 @@
                 <concat destfile="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env" append="true">
                   <filelist dir="${project.build.directory}/${project.artifactId}-${project.version}/run/docker" files="${envFileToInclude}"/>
                 </concat>
+                <delete file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/${envFileToInclude}"/>
               </target>
             </configuration>
           </execution>
