@@ -32,9 +32,8 @@ setup('authenticate dev', async ({ page }) => {
   await page.getByRole('button', { name: 'Continue' }).click();
   await page.getByLabel('Password').fill('Admin123');
   await page.getByRole('button', { name: 'Log in' }).click();
-  // await page.getByText('Registration Counter (REG').click();
-  await page.getByText('Mental Health (MH').click();
-  await page.getByRole('button', { name: 'Confirm' }).click();
+  // await page.getByText('Mental Health (MH').click();
+  // await page.getByRole('button', { name: 'Confirm' }).click();
   // Wait until the page receives the cookies.
   //
   // Sometimes login flow sets cookies in the process of several redirects.
