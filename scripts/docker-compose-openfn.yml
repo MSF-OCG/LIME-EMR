@@ -9,7 +9,7 @@ services:
     stop_grace_period: '3s'
     volumes:
       - "${SQL_SCRIPTS_PATH}/postgresql/create_openfn_db.sh:/docker-entrypoint-initdb.d/create_openfn_db.sh"
-      
+
   migrations:
     platform: linux/x86_64/v8
     image: 'openfn/lightning:latest'
@@ -34,10 +34,12 @@ services:
           memory: '${DOCKER_WEB_MEMORY:-0}'
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/.env'
+    environment:
+      ADAPTORS_REGISTRY_JSON_PATH: /app/priv/adaptor_registry_cache
     depends_on:
       migrations:
         condition: service_completed_successfully
-      postgresql: 
+      postgresql:
         condition: service_started
     labels:
       traefik.enable: "true"
@@ -56,6 +58,8 @@ services:
     networks:
       - ozone
       - web
+    volumes:
+      - ./adaptor_registry_cache.json:/app/priv/adaptor_registry_cache
 
   worker:
     platform: linux/x86_64/v8
@@ -71,6 +75,11 @@ services:
         restart: true
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/.env'
+    environment:
+      WORKER_REPO_DIR: /tmp/worker_repo/
+      OPENFN_REPO_DIR: /tmp/worker_repo/
+    volumes:
+      - '${OPENFN_WORKER_REPO_DIR:-./worker_repo}:/tmp/worker_repo/'
     command:
       ['pnpm', 'start:prod', '-l', 'ws://web:${URL_PORT:-4000}/worker']
     restart: '${DOCKER_RESTART_POLICY:-unless-stopped}'
@@ -80,4 +89,3 @@ services:
     networks:
       - ozone
       - web
-

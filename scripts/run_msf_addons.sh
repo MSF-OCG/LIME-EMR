@@ -32,3 +32,6 @@ echo "$INFO Creating OpenFn admin user..."
 
 ) || echo "$ERROR Creating OpenFn admin user failed. Skipping"
 echo ""
+
+# this step requires internet. It downloads node modules. Should be run on the host
+# docker compose run worker npm install -g @openfn/cli && openfn repo install -a http@latest dhis2@latest openmrs@latest dhis2@5.0.1
