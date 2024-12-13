@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 
 test('test', async ({ page }) => {
     await page.goto('http://lime-mosul-uat.madiro.org/openmrs/spa/patient/0f2851c6-62e1-4d42-932c-e094d621ef6a/chart/Patient%20Summary');
