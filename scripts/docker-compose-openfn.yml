@@ -11,7 +11,7 @@ services:
       - "${SQL_SCRIPTS_PATH}/postgresql/create_openfn_db.sh:/docker-entrypoint-initdb.d/create_openfn_db.sh"
   migrations:
     platform: linux/x86_64/v8
-    image: 'openfn/lightning:latest'
+    image: 'openfn/lightning:v2.10.7'
     command: ["/app/bin/lightning", "eval", "Lightning.Release.migrate"]
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/.env'
@@ -24,7 +24,7 @@ services:
 
   web:
     platform: linux/x86_64/v8
-    image: 'openfn/lightning:latest'
+    image: 'openfn/lightning:v2.10.7'
     command: ["/app/bin/server"]
     deploy:
       resources:
