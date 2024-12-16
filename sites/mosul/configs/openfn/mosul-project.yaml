@@ -13,7 +13,7 @@ workflows:
     jobs:
       Fetch-Metadata:
         name: Fetch Metadata
-        adaptor: '@openfn/language-http@latest'
+        adaptor: '@openfn/language-http@6.5.1'
         credential: null
         body: |
           // { manualCursor:'2023-06-20T17:00:00.00' }
@@ -89,7 +89,7 @@ workflows:
           
       Get-Teis-and-Locations:
         name: Get Teis and Locations
-        adaptor: '@openfn/language-dhis2@latest'
+        adaptor: '@openfn/language-dhis2@6.0.1'
         credential: michael.bontyes@madiro.org-dhis2
         body: |
           // Get teis that are "active" in the target program
@@ -135,7 +135,7 @@ workflows:
           
       Create-Patients:
         name: Create Patients
-        adaptor: '@openfn/language-openmrs@latest'
+        adaptor: '@openfn/language-openmrs@4.1.3'
         credential: michael.bontyes@madiro.org-openmrs
         body: |
           //Define gender options and prepare newPatientUuid and identifiers
@@ -387,7 +387,7 @@ workflows:
     jobs:
       Get-Patients:
         name: Get Patients
-        adaptor: '@openfn/language-openmrs@latest'
+        adaptor: '@openfn/language-openmrs@4.1.3'
         credential: michael.bontyes@madiro.org-openmrs
         body: |
           //Here we define the date cursor
@@ -582,7 +582,7 @@ workflows:
           
       Get-Encounters:
         name: Get Encounters
-        adaptor: '@openfn/language-http@latest'
+        adaptor: '@openfn/language-http@6.5.1'
         credential: michael.bontyes@madiro.org-openmrs
         body: |
           // Fetch all encounters
@@ -983,7 +983,7 @@ workflows:
           
       Mappings:
         name: Mappings
-        adaptor: '@openfn/language-http@latest'
+        adaptor: '@openfn/language-http@6.5.1'
         credential: null
         body: |
           get(

@@ -35,4 +35,4 @@ echo ""
 
 # this step requires internet. It downloads node modules. Should be run on the host
 echo "$INFO Pre-warming worker cache with adaptors..."
-docker compose run --rm worker npm install -g @openfn/cli && openfn repo install -a http@5.0.3 -a dhis2@5.0.3 -a openmrs@3.1.4 -a dhis2@5.0.1
+docker compose run --rm worker npm install -g @openfn/cli && openfn repo install -a http@6.5.1 -a openmrs@4.1.3 -a dhis2@6.0.1 -a dhis2@5.0.1
