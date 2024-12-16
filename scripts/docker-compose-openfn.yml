@@ -75,8 +75,8 @@ services:
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/.env'
     environment:
-      WORKER_REPO_DIR: /tmp/worker_repo/
-      OPENFN_REPO_DIR: /tmp/worker_repo/
+      WORKER_REPO_DIR: /tmp/worker_repo
+      OPENFN_REPO_DIR: /tmp/worker_repo
     volumes:
       - '${OPENFN_WORKER_REPO_DIR:-./worker_repo}:/tmp/worker_repo/'
     command: ['pnpm', 'start:prod', '-l', 'ws://web:${URL_PORT:-4000}/worker']
