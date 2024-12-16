@@ -9,7 +9,6 @@ services:
     stop_grace_period: '3s'
     volumes:
       - "${SQL_SCRIPTS_PATH}/postgresql/create_openfn_db.sh:/docker-entrypoint-initdb.d/create_openfn_db.sh"
-
   migrations:
     platform: linux/x86_64/v8
     image: 'openfn/lightning:latest'
@@ -26,7 +25,7 @@ services:
   web:
     platform: linux/x86_64/v8
     image: 'openfn/lightning:latest'
-    command: ['/app/bin/server']
+    command: ["/app/bin/server"]
     deploy:
       resources:
         limits:
@@ -39,14 +38,14 @@ services:
     depends_on:
       migrations:
         condition: service_completed_successfully
-      postgresql:
+      postgresql: 
         condition: service_started
     labels:
-      traefik.enable: 'true'
-      traefik.http.routers.web.rule: 'Host(`${OPENFN_HOSTNAME}`)'
-      traefik.http.routers.web.entrypoints: 'websecure'
-      traefik.http.routers.web.tls: 'true'
-      traefik.http.services.web.loadbalancer.server.port: '${URL_PORT:-4000}'
+      traefik.enable: "true"
+      traefik.http.routers.web.rule: "Host(`${OPENFN_HOSTNAME}`)"
+      traefik.http.routers.web.entrypoints: "websecure"
+      traefik.http.routers.web.tls: "true"
+      traefik.http.services.web.loadbalancer.server.port: "${URL_PORT:-4000}"
     healthcheck:
       test: '${DOCKER_WEB_HEALTHCHECK_TEST:-curl localhost:4000/health_check}'
       interval: '10s'

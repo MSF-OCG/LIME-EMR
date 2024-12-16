@@ -34,4 +34,4 @@ echo "$INFO Creating OpenFn admin user..."
 echo ""
 
 # this step requires internet. It downloads node modules. Should be run on the host
-# docker compose run worker npm install -g @openfn/cli && openfn repo install -a http@latest dhis2@latest openmrs@latest dhis2@5.0.1
+# docker compose run --rm worker npm install -g @openfn/cli && openfn repo install -a http@5.0.3 -a dhis2@5.0.3 -a openmrs@3.1.4 -a dhis2@5.0.1
