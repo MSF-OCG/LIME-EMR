@@ -58,7 +58,7 @@ services:
       - ozone
       - web
     volumes:
-      - ./adaptor_registry_cache.json:/app/priv/adaptor_registry_cache.json
+      - $DISTRO_PATH/configs/openfn/adaptor_registry_cache.json:/app/priv/adaptor_registry_cache.json
 
   worker:
     platform: linux/x86_64/v8
