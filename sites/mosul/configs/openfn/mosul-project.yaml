@@ -8,6 +8,327 @@ credentials:
     name: openmrs
     owner: michael.bontyes@madiro.org
 workflows:
+  fetch-metadata-and-generate-opts-json:
+    name: fetch-metadata-and-generate-opts-json
+    jobs:
+      Get-metadata-file-from-Sharepoint:
+        name: Get metadata file from Sharepoint
+        adaptor: '@openfn/language-msgraph@latest'
+        credential: mtuchi@openfn.org-OpenFnSharepoint
+        body: |
+          fn(state => {
+            state.sheets = ['OptionSets', 'identifiers', 'Places of living'];
+            state.siteId =
+              'openfnorg.sharepoint.com,4724a499-afbc-4ded-a371-34ae40bf5d8d,1d20a7d4-a6f1-407c-aa77-76bd47bb0f32';
+            return state;
+          });
+          
+          getDrive(
+            {
+              id: $.siteId,
+              owner: 'sites',
+            },
+            'default'
+          );
+          
+          getFile('/msf-metadata/LIME EMR - Iraq Metadata - Release 1.xlsx', {
+            metadata: true,
+          });
+          
+          fn(state => {
+            const itemId = state.data.id;
+            const driveId = state.drives.default.id;
+            state.workbookBase = `sites/${state.siteId}/drives/${driveId}/items/${itemId}/workbook`;
+            return state;
+          });
+          
+          get(
+            `${$.workbookBase}/worksheets('omrs-form-metadata')/usedRange`,
+            {},
+            state => {
+              const [headers, ...rows] = state.data.values;
+              state.formMetadata = rows
+                .map(row =>
+                  row.reduce((obj, value, index) => {
+                    if (value) {
+                      obj[headers[index]] = value;
+                    }
+                    return obj;
+                  }, {})
+                )
+                .filter(obj => Object.keys(obj).length > 0 && obj['Active']);
+          
+              state.sheets.push(
+                ...state.formMetadata.map(obj => obj['OMRS form sheet name'])
+              );
+              return state;
+            }
+          );
+          
+          each(
+            $.sheets,
+            get(`${$.workbookBase}/worksheets('${$.data}')/usedRange`, {}, state => {
+              const sheetName = state.references.at(-1);
+              console.log('Fetched sheet: ', sheetName);
+              state[sheetName] = state.data.values;
+              return state;
+            })
+          );
+          
+          fn(state => {
+            delete state.data;
+            delete state.response;
+            delete state.references;
+            return state;
+          });
+          
+      Map-metadata-file-to-option-set-Json-format:
+        name: Map metadata file to option-set Json format
+        adaptor: '@openfn/language-common@latest'
+        credential: null
+        body: |
+          const isValidValue = value => value !== '' && value !== 'NA';
+          
+          const mapArrayToObject = (item, keys) => {
+            return item.reduce((acc, value, idx) => {
+              acc[keys[idx]] = value;
+              return acc;
+            }, {});
+          };
+          
+          const safeKeyValuePairs = arr => {
+            if (arr === null || arr === undefined) {
+              return arr;
+            }
+            const mappedArr = arr.slice(2).map(item => mapArrayToObject(item, arr[1]));
+            try {
+              return mappedArr
+                .filter(
+                  o => isValidValue(o['External ID']) && isValidValue(o['DHIS2 DE UID'])
+                )
+                .reduce((acc, value) => {
+                  acc[value['DHIS2 DE UID']] = value['External ID'];
+                  return acc;
+                }, {});
+            } catch (error) {
+              console.error(`Error processing ${arr}:`, error);
+              return arr; // Return original value if processing fails
+            }
+          };
+          
+          //New OptionSet Mappping
+          const questionKeyValuePairs = arr => {
+            if (arr === null || arr === undefined) {
+              return arr;
+            }
+            const mappedArr = arr.slice(2).map(item => mapArrayToObject(item, arr[1]));
+            try {
+              return mappedArr
+                .filter(
+                  o =>
+                    isValidValue(o['External ID']) &&
+                    isValidValue(o['DHIS2 Option Set UID'])
+                )
+                .map(value => ({
+                  [value['DHIS2 Option Set UID']]: value['External ID'],
+                }));
+            } catch (error) {
+              console.error(`Error processing ${arr}:`, error);
+              return arr; // Return original value if processing fails
+            }
+          };
+          
+          fn(state => {
+            state.placeOflivingMap = state['Places of living']
+              .slice(2)
+              .map(item => mapArrayToObject(item, state['Places of living'][1]))
+              .filter(
+                o =>
+                  (isValidValue(o['External ID']) &&
+                    isValidValue(o['DHIS2 DE full name'])) ||
+                  (isValidValue(o['value.display - Answers']) &&
+                    isValidValue(o['DHIS2 Option code']))
+              )
+              .reduce((acc, value) => {
+                acc[value['Answers']] = value['DHIS2 Option code'];
+                return acc;
+              }, {});
+          
+            return state;
+          });
+          
+          fn(state => {
+            const { OptionSets, identifiers } = state;
+            const keys = OptionSets[1];
+          
+            state.optsMap = OptionSets.slice(2)
+              .map(item => mapArrayToObject(item, keys))
+              .filter(
+                o =>
+                  (isValidValue(o['External ID']) &&
+                    isValidValue(o['DHIS2 DE full name'])) ||
+                  (isValidValue(o['value.display - Answers']) &&
+                    isValidValue(o['DHIS2 Option code']))
+              )
+              .map(o => {
+                const optionSetUid =
+                  o['DHIS2 Option Set UID'] == 'NA'
+                    ? ''
+                    : `-${o['DHIS2 Option Set UID']}`;
+                //then build an answerKeyUid = DEuid + OptionSetUid
+                const answerKeyUid = `${o['External ID']}${optionSetUid}`;
+          
+                return {
+                  'DHIS2 Option Set UID': o['DHIS2 Option Set UID'],
+                  'DHIS2 Option name': o['DHIS2 Option name'],
+                  'DHIS2 Option UID': o['DHIS2 Option UID'],
+                  'DHIS2 Option Code': o['DHIS2 Option code'],
+                  'value.display - Answers': o['Answers'],
+                  'value.uuid - External ID': o['External ID'],
+                  answerMappingUid: answerKeyUid,
+                  'DHIS2 DE full name': o['DHIS2 DE full name'],
+                  'DHIS2 DE UID': o['DHIS2 DE UID'],
+                  'OptionSet name': o['OptionSet name'],
+                  'DHIS2 Option Set name': o['DHIS2 Option Set name'],
+                };
+              });
+          
+            const [iheaders, ...irows] = identifiers;
+            state.identifiers = irows
+              .map(row =>
+                row.reduce((obj, value, index) => {
+                  if (value != null && value !== '') {
+                    obj[iheaders[index]] = value;
+                  }
+                  return obj;
+                }, {})
+              )
+              .filter(obj => Object.keys(obj).length > 0);
+            return state;
+          });
+          
+          fn(state => {
+            const { formMetadata, optsMap, identifiers, placeOflivingMap } = state;
+          
+            const formMaps = formMetadata.reduce((acc, form) => {
+              const formName = form['OMRS form sheet name'];
+              acc[form['OMRS form.uuid']] = {
+                formName,
+                orgUnit: form['DHIS2 orgUnit ID'],
+                programId: form['DHIS2 program ID'],
+                programStage: form['DHIS2 programStage ID'],
+                dataValueMap: safeKeyValuePairs(state[formName]),
+                optionSetMap: questionKeyValuePairs(state[formName]),
+              };
+          
+              return acc;
+            }, {});
+          
+            const optionSetKey = Object.entries(formMaps).reduce(
+              (acc, [formKey, formValue]) => {
+                formValue.optionSetMap.forEach(item => {
+                  const [originalKey, originalValue] = Object.entries(item)[0];
+                  acc[`${formKey}-${originalValue}`] = originalKey;
+                });
+                return acc;
+              },
+              {}
+            );
+          
+            return {
+              formMaps,
+              formMetadata,
+              optsMap,
+              optionSetKey,
+              identifiers,
+              placeOflivingMap,
+            };
+          });
+          
+      Save-option-set-json-to-github:
+        name: Save option-set json to github
+        adaptor: '@openfn/language-http@latest'
+        credential: mtuchi@openfn.org-mtuchi-github-token
+        body: |
+          const metadataPath =
+            'repos/OpenFn/openfn-lime-pilot/contents/metadata/collections.json';
+          
+          get(metadataPath, {
+            headers: {
+              'user-agent': 'OpenFn',
+            },
+            query: {
+              ref: 'collections',
+            },
+          });
+          
+          fn(state => {
+            const {
+              formMaps,
+              formMetadata,
+              optsMap,
+              data,
+              identifiers,
+              optionSetKey,
+              placeOflivingMap,
+            } = state;
+          
+            state.body = {
+              message: 'Update metadata content',
+              committer: {
+                name: 'Emmanuel Evance',
+                email: 'mtuchidev@gmail.com',
+              },
+              content: util.encode(
+                JSON.stringify({
+                  optionSetKey,
+                  optsMap,
+                  formMaps,
+                  identifiers,
+                  formMetadata,
+                  placeOflivingMap,
+                })
+              ),
+              sha: data.sha,
+              branch: 'collections',
+            };
+          
+            return state;
+          });
+          
+          put(
+            metadataPath,
+            {
+              body: $.body,
+              headers: {
+                Accept: 'application/vnd.github+json',
+                'X-GitHub-Api-Version': '2022-11-28',
+                'user-agent': 'OpenFn',
+              },
+            },
+            ({ body, data, references, response, ...state }) => state
+          );
+          
+    triggers:
+      webhook:
+        type: webhook
+        enabled: true
+    edges:
+      Get-metadata-file-from-Sharepoint->Map-metadata-file-to-option-set-Json-format:
+        source_job: Get-metadata-file-from-Sharepoint
+        target_job: Map-metadata-file-to-option-set-Json-format
+        condition_type: on_job_success
+        enabled: true
+      Map-metadata-file-to-option-set-Json-format->Save-option-set-json-to-github:
+        source_job: Map-metadata-file-to-option-set-Json-format
+        target_job: Save-option-set-json-to-github
+        condition_type: on_job_success
+        enabled: true
+      webhook->Get-metadata-file-from-Sharepoint:
+        source_trigger: webhook
+        target_job: Get-metadata-file-from-Sharepoint
+        condition_type: always
+        enabled: true
   wf1-dhis2-omrs-migration:
     name: wf1-dhis2-omrs-migration
     jobs:
@@ -22255,25 +22576,25 @@ workflows:
                   programId: 'w9MSPn5oSqp',
                   programStage: 'MdTtRixaC1B',
                   dataValueMap: {
-                    fa7uwpCKIwa: 'c404d489-dcb9-44d9-9c30-c5a64ea0df25',
-                    Jt9BhFZkvP2: '38ef5485-e67f-4a10-bf36-08304fe63877',
-                    qptKDiv9uPl: 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7',
-                    WDp4nVor9Z7: 'c020e465-d495-4f6b-97fa-6d4c0009fcd2',
-                    mVbzW9TVo7r: '18075593-dd9b-48b1-a1a0-16e787b6e5ec',
-                    Xvzc9e0JJmp: '3dc96ee4-daea-4460-b141-6b31f7b7ae93',
-                    YUIQIA2ClN6: 'b3767edc-78f5-4d0f-a2d8-564ae58d00cf',
-                    Qq6xQ2s6LO8: '9728c2ff-a489-4e97-94d0-07e02f403baa',
-                    FpuGAOu6itZ: '544ef960-3b65-4add-8795-96b2b084faa3',
-                    v7k4OcXrWR8: '\te35ca42c-031e-4dc2-83fe-a926b3de4d12',
-                    SVoT2cVLd5O: 'b0ba8725-10d9-443e-8251-415c37fb9567',
+                    // fa7uwpCKIwa: 'c404d489-dcb9-44d9-9c30-c5a64ea0df25', //firt name
+                    // Jt9BhFZkvP2: '38ef5485-e67f-4a10-bf36-08304fe63877', //last name
+                    // qptKDiv9uPl: 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7', //sex
+                    // WDp4nVor9Z7: 'c020e465-d495-4f6b-97fa-6d4c0009fcd2', //Date of birth
+                    mVbzW9TVo7r: 'bc851ec1-9fb7-49da-acd7-1a61168002fe', //Phone number
+                    Xvzc9e0JJmp: '24d1fa23-9778-4a8e-9f7b-93f694fc25e2', //Nationality
+                    YUIQIA2ClN6: 'e0b6ed99-72c4-4847-a442-e9929eac4a0f', //Current status
+                    Qq6xQ2s6LO8: 'a9b2c642-097f-43f8-b96b-4d2f50ffd9b1', //Legal status
+                    FpuGAOu6itZ: '3884dc76-c271-4bcb-8df8-81c6fb897f53', //Marital status
+                    v7k4OcXrWR8: 'dd1f7f0f-ccea-4228-9aa8-a8c3b0ea4c3e', //Employment status
+                    SVoT2cVLd5O: 'e363161a-9d5c-4331-8463-238938f018ed', //No. of Children (If Applicable)
                   },
                   optionSetMap: [
-                    { DNOavthBRGL: 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7' },
-                    { qr9jBtm9uvm: '3dc96ee4-daea-4460-b141-6b31f7b7ae93' },
-                    { FTbwlOo7CpG: 'b3767edc-78f5-4d0f-a2d8-564ae58d00cf' },
-                    { y38Qm3uiuuV: '9728c2ff-a489-4e97-94d0-07e02f403baa' },
-                    { G69FtaNkBgp: '544ef960-3b65-4add-8795-96b2b084faa3' },
-                    { RpW3aZrlHDi: '\te35ca42c-031e-4dc2-83fe-a926b3de4d12' },
+                    // { DNOavthBRGL: 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7' }, //sex
+                    { qr9jBtm9uvm: '24d1fa23-9778-4a8e-9f7b-93f694fc25e2' }, 
+                    { FTbwlOo7CpG: 'e0b6ed99-72c4-4847-a442-e9929eac4a0f' }, 
+                    { y38Qm3uiuuV: 'a9b2c642-097f-43f8-b96b-4d2f50ffd9b1' },
+                    { G69FtaNkBgp: '3884dc76-c271-4bcb-8df8-81c6fb897f53' },
+                    { RpW3aZrlHDi: 'dd1f7f0f-ccea-4228-9aa8-a8c3b0ea4c3e' },
                   ],
                 },
                 '979a8c02-8475-3488-80ff-a0dcf73ece99': {
@@ -22762,8 +23083,16 @@ workflows:
               i => i.type === 'DHIS2_PATIENT_NUMBER'
             )?.['omrs identifierType']; //DHIS2 ID or DHIS2 Patient Number
           
+            state.dhis2PatientNumberAttributeId = identifiers.find(
+              i => i.type === 'DHIS2_PATIENT_NUMBER'
+            )?.['dhis2 attribute id']; //DHIS2 ID or DHIS2 Patient Number
+          
             state.openmrsAutoId = identifiers.find(i => i.type === 'OPENMRS_AUTO_ID')?.[
               'omrs identifierType'
+            ]; //MSF ID or OpenMRS Patient Number
+          
+            state.openmrsAutoIdAttributeId = identifiers.find(i => i.type === 'OPENMRS_AUTO_ID')?.[
+              'dhis2 attribute id'
             ]; //MSF ID or OpenMRS Patient Number
           
             return state;
@@ -22781,9 +23110,12 @@ workflows:
               orgUnit: $.orgUnit, //'OPjuJMZFLop',
               program: $.program, //'w9MSPn5oSqp',
               programStatus: 'ACTIVE',
+              updatedAfter: $.cursor,
+              skipPaging: true,
             },
             {},
             state => {
+              // console.log('TEIs found ::', JSON.stringify(state.data.instances, null,2))
               const teis = state.data.instances.filter(
                 tei => tei.updatedAt >= state.cursor
               );
@@ -22857,7 +23189,9 @@ workflows:
               return result ? result.value : undefined;
             };
           
+          
             const calculateDOB = age => {
+              if (!age) return age
               const currentDate = new Date();
               const currentYear = currentDate.getFullYear();
               const birthYear = currentYear - age;
@@ -22872,7 +23206,7 @@ workflows:
             };
           
             state.patients = teis.map((d, i) => {
-              const patientNumber = getValueForCode(d.attributes, 'patient_number'); // Add random number for testing + Math.random()
+              const patientNumber = getValueForCode(d.attributes, 'patient_number') || d.trackedEntity; // Add random number for testing + Math.random()
           
               const lonlat = d.attributes.find(a => a.attribute === 'rBtrjV1Mqkz')?.value;
               const location = lonlat
@@ -22893,16 +23227,21 @@ workflows:
                 .filter(a => a.attribute in state.patientAttributes)
                 .map(a => {
                   let value = a.value;
+          
                   if (a.displayName === 'Nationality') {
                     value = nationalityMap[a.value];
                   } else if (a.displayName.includes(' status')) {
                     value = statusMap[a.value];
                   }
-                  return {
-                    attributeType: state.patientAttributes[a.attribute],
-                    value,
-                  };
-                });
+          
+                  if (value) {
+                    return {
+                      attributeType: state.patientAttributes[a.attribute].trim(),
+                      value,
+                    };
+                  }
+                }).filter(Boolean);
+          
               return {
                 patientNumber,
                 person: {
@@ -22966,15 +23305,17 @@ workflows:
               state => {
                 const { patientNumber, ...patient } = state.data;
                 console.log(
-                  'Upserting patient record\n',
+                  'Upserting patient record...',
                   JSON.stringify(patient, null, 2)
                 );
                 return patient;
               },
               state => {
                 state.newPatientUuid ??= [];
+               //console.log('state.references ::', state.references)
                 state.newPatientUuid.push({
                   patient_number: state.references.at(-1)?.patientNumber,
+                  omrs_patient_number: state.references.at(-1)?.identifiers.find(i => i.identifierType=`${state.openmrsAutoId}`),
                   uuid: state.data.uuid,
                 });
                 return state;
@@ -23010,25 +23351,46 @@ workflows:
               {
                 ou: $.orgUnit,
                 program: $.program,
-                filter: [`${$.dhis2PatientNumber}:Eq:${$.data.patient_number}`],
+                filter: [`${$.dhis2PatientNumberAttributeId}:Eq:${$.data.patient_number}`],
               },
-              {
-                orgUnit: $.orgUnit,
-                program: $.program,
-                trackedEntityType: 'cHlzCA2MuEF',
-                attributes: [
-                  {
-                    attribute: `${$.dhis2PatientNumber}`,
-                    value: `${$.data.patient_number}`,
-                  }, //DHIS2 patient number to use as lookup key
-                  { attribute: 'AYbfTPYMNJH', value: `${$.data.patient.uuid}` }, //OMRS patient uuid
-                  {
-                    attribute: `${$.openmrsAutoId}`,
-                    value: `${$.data.patient.identifier[0].identifier}`,
-                  }, //id generated in wf1-2 e.g., "IQ146-24-000-027"
-                ],
+              state => {
+                const payload = {
+                  orgUnit: state.orgUnit,
+                  program: state.program,
+                  trackedEntityType: 'cHlzCA2MuEF',
+                  attributes: [
+                    {
+                      attribute: `${state.dhis2PatientNumberAttributeId}`,
+                      value: `${state.data.patient_number}`,
+                    }, //DHIS2 patient number to use as lookup key
+                    { attribute: 'AYbfTPYMNJH', value: `${state.data.uuid}` }, //OMRS patient uuid
+                    {
+                      attribute: `${state.openmrsAutoIdAttributeId}`,
+                      value: `${state.data.omrs_patient_number.identifier}`,
+                    }, //id generated in wf1-2 e.g., "IQ146-24-000-027"
+                  ],
+                }
+          
+                console.log('final payload to send to dhis2:', payload)
+                return payload; 
               }
             )
+              // {
+              //   orgUnit: $.orgUnit,
+              //   program: $.program,
+              //   trackedEntityType: 'cHlzCA2MuEF',
+              //   attributes: [
+              //     {
+              //       attribute: `${$.dhis2PatientNumberAttributeId}`,
+              //       value: `${state.data.patient_number}`,
+              //     }, //DHIS2 patient number to use as lookup key
+              //     { attribute: 'AYbfTPYMNJH', value: `${state.data.uuid}` }, //OMRS patient uuid
+              //     {
+              //       attribute: `${state.openmrsAutoIdAttributeId}`,
+              //       value: `${state.data.omrs_patient_number.identifier}`,
+              //     }, //id generated in wf1-2 e.g., "IQ146-24-000-027"
+              //   ],
+              // },
           );
           
     triggers:
@@ -23037,15 +23399,10 @@ workflows:
         cron_expression: '0 0 * * *'
         enabled: false
     edges:
-      Fetch-Metadata->Get-Teis-and-Locations:
-        source_job: Fetch-Metadata
-        target_job: Get-Teis-and-Locations
-        condition_type: on_job_success
-        enabled: true
-      Create-Patients->Update-Teis:
-        source_job: Create-Patients
-        target_job: Update-Teis
-        condition_type: on_job_success
+      cron->Fetch-Metadata:
+        source_trigger: cron
+        target_job: Fetch-Metadata
+        condition_type: always
         enabled: true
       Get-Teis-and-Locations->Create-Patients:
         source_job: Get-Teis-and-Locations
@@ -23056,10 +23413,15 @@ workflows:
           state.teis.length > 0 && !state.errors
           
         enabled: true
-      cron->Fetch-Metadata:
-        source_trigger: cron
-        target_job: Fetch-Metadata
-        condition_type: always
+      Create-Patients->Update-Teis:
+        source_job: Create-Patients
+        target_job: Update-Teis
+        condition_type: on_job_success
+        enabled: true
+      Fetch-Metadata->Get-Teis-and-Locations:
+        source_job: Fetch-Metadata
+        target_job: Get-Teis-and-Locations
+        condition_type: on_job_success
         enabled: true
   wf2-omrs-dhis2:
     name: wf2-omrs-dhis2
@@ -23134,6 +23496,55 @@ workflows:
               };
             });
           
+            const standardAttr =  [
+              {
+                attribute: 'fa7uwpCKIwa',
+                value: patient.person?.names[0]?.givenName,
+              },
+              {
+                attribute: 'Jt9BhFZkvP2',
+                value: patient.person?.names[0]?.familyName,
+              },
+              {
+                attribute: 'P4wdYGkldeG', //DHIS2 ID ==> "Patient Number"
+                value:
+                  findIdentifierByUuid(
+                    patient.identifiers,
+                    state.dhis2PatientNumber
+                  ) || findIdentifierByUuid(patient.identifiers, state.openmrsAutoId), //map OMRS ID if no DHIS2 id
+              },
+              {
+                attribute: 'ZBoxuExmxcZ', //MSF ID ==> "OpenMRS Patient Number"
+                value: findIdentifierByUuid(patient.identifiers, state.openmrsAutoId),
+              },
+              {
+                attribute: 'AYbfTPYMNJH', //"OpenMRS Patient UID"
+                value: patient.uuid,
+              },
+              {
+                attribute: 'qptKDiv9uPl',
+                value: genderOptions[patient.person.gender],
+              },
+              {
+                attribute: 'T1iX2NuPyqS',
+                value: patient.person.age,
+              },
+              {
+                attribute: 'WDp4nVor9Z7',
+                value: patient.person.birthdate?.slice(0, 10),
+              },
+              {
+                attribute: 'rBtrjV1Mqkz', //Place of living
+                value: placeOflivingMap[patient.person?.addresses[0]?.cityVillage],
+              }
+            ];
+          
+            //filter out attributes that don't have a value from dhis2
+            const filteredAttr = standardAttr.filter(a => a.value)
+            const filteredStatusAttr = statusAttrMaps.filter(a => a.value)
+            //console.log('standardAttr ::', JSON.stringify(standardAttr, null,2))
+            //console.log('filteredAttr ::', JSON.stringify(filteredAttr, null,2))
+          
             const payload = {
               query: {
                 ou: state.orgUnit,
@@ -23145,47 +23556,8 @@ workflows:
                 orgUnit: state.orgUnit,
                 trackedEntityType: 'cHlzCA2MuEF',
                 attributes: [
-                  {
-                    attribute: 'fa7uwpCKIwa',
-                    value: patient.person?.names[0]?.givenName,
-                  },
-                  {
-                    attribute: 'Jt9BhFZkvP2',
-                    value: patient.person?.names[0]?.familyName,
-                  },
-                  {
-                    attribute: 'P4wdYGkldeG', //DHIS2 ID ==> "Patient Number"
-                    value:
-                      findIdentifierByUuid(
-                        patient.identifiers,
-                        state.dhis2PatientNumber
-                      ) || findIdentifierByUuid(patient.identifiers, state.openmrsAutoId), //map OMRS ID if no DHIS2 id
-                  },
-                  {
-                    attribute: 'ZBoxuExmxcZ', //MSF ID ==> "OpenMRS Patient Number"
-                    value: findIdentifierByUuid(patient.identifiers, state.openmrsAutoId),
-                  },
-                  {
-                    attribute: 'AYbfTPYMNJH', //"OpenMRS Patient UID"
-                    value: patient.uuid,
-                  },
-                  {
-                    attribute: 'qptKDiv9uPl',
-                    value: genderOptions[patient.person.gender],
-                  },
-                  {
-                    attribute: 'T1iX2NuPyqS',
-                    value: patient.person.age,
-                  },
-                  {
-                    attribute: 'WDp4nVor9Z7',
-                    value: patient.person.birthdate.slice(0, 10),
-                  },
-                  {
-                    attribute: 'rBtrjV1Mqkz', //Place of living
-                    value: placeOflivingMap[patient.person?.addresses[0]?.cityVillage],
-                  },
-                  ...statusAttrMaps,
+                  ...filteredAttr,
+                  ...filteredStatusAttr,
                 ],
               },
             };
@@ -23249,7 +23621,6 @@ workflows:
             next.patientUuids = patients.map(p => p.uuid);
             return next;
           });
-          
       Get-Encounters:
         name: Get Encounters
         adaptor: '@openfn/language-http@6.5.1'
@@ -23281,10 +23652,10 @@ workflows:
           );
           
           fn(state => {
-            state.encounterUuids = state.allResponse.entry.map(p => p.resource.id);
+            state.encounterUuids = state.allResponse?.entry?.map(p => p.resource.id);
             state.patientUuids = [
               ...new Set(
-                state.allResponse.entry.map(p =>
+                state.allResponse?.entry?.map(p =>
                   p.resource.subject.reference.replace('Patient/', '')
                 )
               ),
@@ -23321,7 +23692,7 @@ workflows:
             )
           );
           
-          fn(state => {
+          fnIf($.encounters, state => {
             const {
               data,
               index,
@@ -23336,6 +23707,10 @@ workflows:
             return next;
           });
           
+          fnIf(!$.encounters, state => {
+            console.log('No encounters found for cursor: ', state.cursor)
+            return state
+          })
       Get-TEIs-and-Map-Answers:
         name: Get TEIs and Map Answers
         adaptor: '@openfn/language-dhis2@5.0.1'
@@ -23556,7 +23931,6 @@ workflows:
           
             return state;
           });
-          
       Create-Events:
         name: Create Events
         adaptor: '@openfn/language-dhis2@5.0.1'
@@ -23609,7 +23983,6 @@ workflows:
             state => state.genderUpdated.length === 0,
             ({ lastRunDateTime }) => ({ lastRunDateTime })
           );
-          
       Mappings:
         name: Mappings
         adaptor: '@openfn/language-http@6.5.1'
@@ -45855,21 +46228,21 @@ workflows:
                     Jt9BhFZkvP2: '38ef5485-e67f-4a10-bf36-08304fe63877',
                     qptKDiv9uPl: 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7',
                     WDp4nVor9Z7: 'c020e465-d495-4f6b-97fa-6d4c0009fcd2',
-                    mVbzW9TVo7r: '18075593-dd9b-48b1-a1a0-16e787b6e5ec',
-                    Xvzc9e0JJmp: '3dc96ee4-daea-4460-b141-6b31f7b7ae93',
-                    YUIQIA2ClN6: 'b3767edc-78f5-4d0f-a2d8-564ae58d00cf',
-                    Qq6xQ2s6LO8: '9728c2ff-a489-4e97-94d0-07e02f403baa',
-                    FpuGAOu6itZ: '544ef960-3b65-4add-8795-96b2b084faa3',
-                    v7k4OcXrWR8: '\te35ca42c-031e-4dc2-83fe-a926b3de4d12',
-                    SVoT2cVLd5O: 'b0ba8725-10d9-443e-8251-415c37fb9567',
+                    mVbzW9TVo7r: 'bc851ec1-9fb7-49da-acd7-1a61168002fe', //Phone number
+                    Xvzc9e0JJmp: '24d1fa23-9778-4a8e-9f7b-93f694fc25e2', //Nationality
+                    YUIQIA2ClN6: 'e0b6ed99-72c4-4847-a442-e9929eac4a0f', //Current status
+                    Qq6xQ2s6LO8: 'a9b2c642-097f-43f8-b96b-4d2f50ffd9b1', //Legal status
+                    FpuGAOu6itZ: '3884dc76-c271-4bcb-8df8-81c6fb897f53', //Marital status
+                    v7k4OcXrWR8: 'dd1f7f0f-ccea-4228-9aa8-a8c3b0ea4c3e', //Employment status
+                    SVoT2cVLd5O: 'e363161a-9d5c-4331-8463-238938f018ed', //No. of Children (If Applicable)
                   },
                   optionSetMap: [
                     { DNOavthBRGL: 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7' },
-                    { qr9jBtm9uvm: '3dc96ee4-daea-4460-b141-6b31f7b7ae93' },
-                    { FTbwlOo7CpG: 'b3767edc-78f5-4d0f-a2d8-564ae58d00cf' },
-                    { y38Qm3uiuuV: '9728c2ff-a489-4e97-94d0-07e02f403baa' },
-                    { G69FtaNkBgp: '544ef960-3b65-4add-8795-96b2b084faa3' },
-                    { RpW3aZrlHDi: '\te35ca42c-031e-4dc2-83fe-a926b3de4d12' },
+                    { qr9jBtm9uvm: '24d1fa23-9778-4a8e-9f7b-93f694fc25e2' }, 
+                    { FTbwlOo7CpG: 'e0b6ed99-72c4-4847-a442-e9929eac4a0f' }, 
+                    { y38Qm3uiuuV: 'a9b2c642-097f-43f8-b96b-4d2f50ffd9b1' },
+                    { G69FtaNkBgp: '3884dc76-c271-4bcb-8df8-81c6fb897f53' },
+                    { RpW3aZrlHDi: 'dd1f7f0f-ccea-4228-9aa8-a8c3b0ea4c3e' },
                   ],
                 },
                 '979a8c02-8475-3488-80ff-a0dcf73ece99': {
@@ -46420,20 +46793,6 @@ workflows:
         cron_expression: '0 0 * * *'
         enabled: false
     edges:
-      Mappings->Upsert-TEIs:
-        source_job: Mappings
-        target_job: Upsert-TEIs
-        condition_type: on_job_success
-        enabled: true
-      Get-Patients->Mappings:
-        source_job: Get-Patients
-        target_job: Mappings
-        condition_type: js_expression
-        condition_label: has-patients
-        condition_expression: |
-          state.patients.length > 0 && !state.errors
-          
-        enabled: true
       Get-TEIs-and-Map-Answers->Create-Events:
         source_job: Get-TEIs-and-Map-Answers
         target_job: Create-Events
@@ -46452,6 +46811,15 @@ workflows:
           state?.genderUpdated?.length > 0 && !state.errors
           
         enabled: true
+      Mappings->Upsert-TEIs:
+        source_job: Mappings
+        target_job: Upsert-TEIs
+        condition_type: js_expression
+        condition_label: has-patients
+        condition_expression: |
+          state.patients.length > 0 && !state.errors
+          
+        enabled: true
       cron->Get-Patients:
         source_trigger: cron
         target_job: Get-Patients
@@ -46466,8 +46834,24 @@ workflows:
           state.patientUuids.length > 0 && !state.errors
           
         enabled: true
+      Get-Patients->Mappings:
+        source_job: Get-Patients
+        target_job: Mappings
+        condition_type: on_job_success
+        enabled: true
       Get-Encounters->Get-TEIs-and-Map-Answers:
         source_job: Get-Encounters
         target_job: Get-TEIs-and-Map-Answers
-        condition_type: on_job_success
+        condition_type: js_expression
+        condition_label: has-encounters
+        condition_expression: |
+          !state.errors && state.encounters
+        enabled: true
+      Mappings->Get-Encounters:
+        source_job: Mappings
+        target_job: Get-Encounters
+        condition_type: js_expression
+        condition_label: has-no-patients
+        condition_expression: |
+          !state.errors && state.patients.length === 0
         enabled: true
