@@ -1,13 +1,3 @@
-name: msf-lime-test
-description: null
-credentials:
-  michael.bontyes@madiro.org-dhis2:
-    name: dhis2
-    owner: michael.bontyes@madiro.org
-  michael.bontyes@madiro.org-openmrs:
-    name: openmrs
-    owner: michael.bontyes@madiro.org
-workflows:
   wf1-dhis2-omrs-migration:
     name: wf1-dhis2-omrs-migration
     jobs:
@@ -46534,3 +46524,4 @@ workflows:
         condition_expression: |
           !state.errors && state.patients.length === 0
         enabled: true
+        
