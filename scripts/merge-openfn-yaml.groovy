@@ -7,11 +7,16 @@ outputFile.withWriter { writer ->
     writer.write("")
 }
 
-def files = new File(targetDir).listFiles().findAll { it.name.endsWith('.yaml') }
-files.sort { it.name == "${distroOpenfnFile}" ? -1 : 0 }
+def files = new File(targetDir).listFiles().findAll { it.name.endsWith('.yaml') && it != outputFile }
+
+files.sort { a, b ->
+    a.name == "${distroOpenfnFile}" ? -1 : (b.name == "${distroOpenfnFile}" ? 1 : a.name <=> b.name)
+}
 
 // Append the contents of each YAML file to the output file
 files.each { file ->
+    log.info("Processing file: ${file.name}")
+
     if (file != outputFile) {
         // Add a comment header for each file
         outputFile.append("# ${file.name} OpenFn configuration file\n")

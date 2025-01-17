@@ -1,0 +1,1775 @@
+{
+  "name": "F13-PNC",
+  "description": "MSF Form - F13-PNC",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Consultation",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Postnatal consultation",
+      "sections": [
+        {
+          "label": "Postnatal consultation",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "numberOfPnConsultation",
+              "label": "Number of PN consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "numberOfPnConsultation",
+                "answers": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Obstetric history",
+      "sections": [
+        {
+          "label": "Obstetric history",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "gravida",
+              "label": "Gravida",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "gravida"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "para",
+              "label": "Para",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "para"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "abortion",
+              "label": "Abortion",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "abortion"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Previous pregnancies",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "numberOfLiveBirths",
+              "label": "Number of live births",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "numberOfLiveBirths"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "numberOfStillBirths",
+              "label": "Number of still births (born dead)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "numberOfStillBirths"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "numberOfNeonatalDeaths",
+              "label": "Number of neonatal deaths (<1 month)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "numberOfNeonatalDeaths"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "numberOfInfantDeaths",
+              "label": "Number of infant deaths (<1month - 1 year)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "numberOfInfantDeaths"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "numberOfMiscarriagesOrAbortions",
+              "label": "Number of miscarriages/abortions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "numberOfMiscarriagesOrAbortions"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Latest pregnancy and delivery",
+      "sections": [
+        {
+          "label": "Delivery ",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "latestDeliveryDate",
+              "label": "Latest delivery - Date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "latestDeliveryDate"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "placeOfDelivery",
+              "label": "Place of delivery",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "placeOfDelivery",
+                "answers": [
+                  {
+                    "label": "Ministry of Health (MOH) Health Centre",
+                    "concept": "ministryOfHealthHealthCentre"
+                  },
+                  {
+                    "label": "MSF Health Centre",
+                    "concept": "msfHealthCentre"
+                  },
+                  {
+                    "label": "Private Health Centre",
+                    "concept": "privateHealthCentre"
+                  },
+                  {
+                    "label": "Home - attended by TBA / CHW",
+                    "concept": "homeAttendedByTbaOrChw"
+                  },
+                  {
+                    "label": "Home - unattended",
+                    "concept": "homeUnattended"
+                  },
+                  {
+                    "label": "On the way to HC (in car on road etc.)",
+                    "concept": "onTheWayToHc"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "placeOfDeliveryOther"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "dateOfDischarge",
+              "label": "Date of discharge",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "dateOfDischarge"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "dateToReturnToFirstPncVisit",
+              "label": "Date to return to first PNC visit",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "dateToReturnToFirstPncVisit"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Infant 1",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "infant1Name",
+              "label": "Infant 1 name",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "infant1Name"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "gestationalAge",
+              "label": "Gestational age",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "gestationalAge",
+                "answers": [
+                  {
+                    "label": "Full term",
+                    "concept": "fullTerm"
+                  },
+                  {
+                    "label": "Preterm",
+                    "concept": "preterm"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "birthWeight",
+              "label": "Birth weight (g)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "birthWeight"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "headCircunference",
+              "label": "Head circunference (cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "headCircunference"
+              },
+              "disallowDecimals": false,
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Infant 2",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "infant2Name",
+              "label": "Infant 2 name",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "infant2Name"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "gestationalAge",
+              "label": "Gestational age",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "gestationalAge",
+                "answers": [
+                  {
+                    "label": "Full term",
+                    "concept": "fullTerm"
+                  },
+                  {
+                    "label": "Preterm",
+                    "concept": "preterm"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "birthWeight",
+              "label": "Birth weight (g)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "birthWeight"
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "headCircunference",
+              "label": "Head circunference (cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "headCircunference"
+              },
+              "disallowDecimals": false,
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Problems",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "problems",
+              "label": "Problems",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "multiCheckbox",
+                "answers": [
+                  {
+                    "label": "Anaemia",
+                    "concept": "anaemia_1"
+                  },
+                  {
+                    "label": "Hypertension/pre-/eclampsia",
+                    "concept": "hypertensionOrPreOrEclampsia"
+                  },
+                  {
+                    "label": "Antepartum hemorrhage",
+                    "concept": "antepartumHemorrhage"
+                  },
+                  {
+                    "label": "Prolonged/obstructed labour",
+                    "concept": "prolongedOrObstructedLabour"
+                  },
+                  {
+                    "label": "Malpresentation (breach other)",
+                    "concept": "malpresentation"
+                  },
+                  {
+                    "label": "Caesarean section",
+                    "concept": "caesareanSection"
+                  },
+                  {
+                    "label": "Instrumental extraction",
+                    "concept": "instrumentalExtraction"
+                  },
+                  {
+                    "label": "Manual delivery of placenta",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Episiotomy",
+                    "concept": "episiotomy"
+                  },
+                  {
+                    "label": "Perineal laceration (tear)",
+                    "concept": "perinealLaceration"
+                  },
+                  {
+                    "label": "Fistula",
+                    "concept": "fistula"
+                  },
+                  {
+                    "label": "Postapartum haemorrhage",
+                    "concept": "postapartumHaemorrhage"
+                  },
+                  {
+                    "label": "Infection (puerperal sepsis)",
+                    "concept": "infection"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "problemsOther"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "hb",
+              "label": "Hb (g/dl)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "hb"
+              },
+              "hide": {
+                "hideWhenExpression": "latestDeliveryProblems !== 'anaemia'"
+              }
+            },
+            {
+              "id": "fistulaManagement",
+              "label": "Fistula management",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "fistulaManagement"
+              },
+              "hide": {
+                "hideWhenExpression": "latestDeliveryProblems !== 'fistula'"
+              }
+            },
+            {
+              "id": "ifOtherSpecify",
+              "label": "If other specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ifOtherSpecify"
+              },
+              "hide": {
+                "hideWhenExpression": "latestDeliveryProblems !== 'others'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Medical history",
+      "sections": [
+        {
+          "label": "Medical history",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "anyOfSelectedItemsShouldAlsoBeAddedInconditions",
+              "label": "Any of selected items should also be added in Conditions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "multiCheckbox",
+                "answers": [
+                  {
+                    "label": "Abdominal surgery",
+                    "concept": "abdominalSurgery"
+                  },
+                  {
+                    "label": "Diabetes",
+                    "concept": "diabetes"
+                  },
+                  {
+                    "label": "Epilepsy",
+                    "concept": "epilepsy"
+                  },
+                  {
+                    "label": "Heart disease",
+                    "concept": "heartDisease"
+                  },
+                  {
+                    "label": "HIV+",
+                    "concept": "hivPlus"
+                  },
+                  {
+                    "label": "Hypertension",
+                    "concept": "hypertension"
+                  },
+                  {
+                    "label": "Sexually transmitted infection",
+                    "concept": "sexuallyTransmittedInfection"
+                  },
+                  {
+                    "label": "Tuberculosis",
+                    "concept": "tuberculosis"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "anyOfSelectedItemsShouldAlsoBeAddedInconditionsOther"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "medicalHistory",
+              "label": "Medical history",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["## Medical history"],
+              "hide": {
+                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+              }
+            },
+            {
+              "id": "ifOtherSpecify",
+              "label": "If other specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ifOtherSpecify"
+              },
+              "hide": {
+                "hideWhenExpression": "medicalHistory !== 'other'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Evaluation of the mother",
+      "sections": [
+        {
+          "label": "Evaluation of the mother",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "presentAtConsultation",
+              "label": "Present at consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "presentAtConsultation",
+                "answers": []
+              }
+            },
+            {
+              "id": "checkInvitalBiometricsAndFillWithUpdatedMeasurementsForbloodPressuretemperatureAndmuac",
+              "label": "Check in Vital  Biometrics and fill with updated measurements for Blood pressure Temperature and MUAC",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "muacCategory",
+              "label": "MUAC category",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "muacCategory",
+                "answers": [
+                  {
+                    "label": "MUAC < 185 mm ",
+                    "concept": "muacLessThan185Mm"
+                  },
+                  {
+                    "label": "MUAC Africa > 230 mm",
+                    "concept": "muacAfricaMoreThan230Mm"
+                  },
+                  {
+                    "label": "MUAC Africa 185 - 230 mm",
+                    "concept": "muacAfrica185To230Mm"
+                  },
+                  {
+                    "label": "MUAC Asia > 210 mm",
+                    "concept": "muacAsiaMoreThan210Mm"
+                  },
+                  {
+                    "label": "MUAC Asia 185 - 210 mm",
+                    "concept": "muacAsia185To210Mm"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "anaemia",
+              "label": "Anaemia (conjunctiva heamoglobin)",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Mild",
+                    "concept": "mild"
+                  },
+                  {
+                    "label": "Severe",
+                    "concept": "severe"
+                  }
+                ]
+              },
+              "value": ["## Anaemia (conjunctiva heamoglobin)"],
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "hb",
+              "label": "Hb (g/dl)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "hb"
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "breasts",
+              "label": "Breasts (e.g. infection enforgement)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "breasts",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "normal"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "abnormal"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "sexuallyTransmittedInfection",
+              "label": "Sexually Transmitted Infection",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "sexuallyTransmittedInfection",
+                "answers": []
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "motherInfantInteraction",
+              "label": "Mother-infant interaction",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "motherInfantInteraction",
+                "answers": [
+                  {
+                    "label": "Abnormal",
+                    "concept": "abnormal"
+                  },
+                  {
+                    "label": "Normal",
+                    "concept": "normal"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "daysPostDelivery",
+              "label": "3-8 days post-delivery",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "daysPostDelivery",
+                "answers": []
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "uterineInvolution",
+              "label": "Uterine involution (level of fundus)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "uterineInvolution",
+                "answers": [
+                  {
+                    "label": "Abnormal",
+                    "concept": "abnormal"
+                  },
+                  {
+                    "label": "Normal",
+                    "concept": "normal"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "daysPostDelivery !== 'yes'"
+              }
+            },
+            {
+              "id": "lochia",
+              "label": "Lochia (color and quantity)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "lochia"
+              },
+              "hide": {
+                "hideWhenExpression": "daysPostDelivery !== 'yes'"
+              }
+            },
+            {
+              "id": "healing",
+              "label": "Healing (if laceration episiotomy or C -section)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "healing",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "normal"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "abnormal"
+                  },
+                  {
+                    "label": "nan",
+                    "concept": "nan"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "daysPostDelivery !== 'yes'"
+              }
+            },
+            {
+              "id": "passingUrineOrStool",
+              "label": "Passing urine or stool",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "passingUrineOrStool",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "normal"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "abnormal"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "daysPostDelivery !== 'yes'"
+              }
+            },
+            {
+              "id": "checkInimmunizationsForTetanusVaccine",
+              "label": "Check in Immunizations for tetanus vaccine",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient immunizations",
+                "workspaceName": "immunization-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "checkInresultsViewerForLatestLaboratoryTestResults",
+              "label": "Check in Results Viewer for latest laboratory test results",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "results-viewer-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "PHQ-2 - Over the last two weeks, how often have you been bothered by any of the following problems?",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "littleInterestOrPleasureInDoingThings",
+              "label": "Little interest or pleasure in doing things",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "littleInterestOrPleasureInDoingThings",
+                "answers": [
+                  {
+                    "label": "Not at all (0 point)",
+                    "concept": "notAtAll"
+                  },
+                  {
+                    "label": "Several days (1 point)",
+                    "concept": "severalDays"
+                  },
+                  {
+                    "label": "More than half the days (2 points)",
+                    "concept": "moreThanHalfTheDays"
+                  },
+                  {
+                    "label": "Nearly every day (3 points)",
+                    "concept": "nearlyEveryDay"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "feelingDownDepressedOrHopeless",
+              "label": "Feeling down depressed or hopeless",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "feelingDownDepressedOrHopeless",
+                "answers": [
+                  {
+                    "label": "Not at all (0 point)",
+                    "concept": "notAtAll"
+                  },
+                  {
+                    "label": "Several days (1 point)",
+                    "concept": "severalDays"
+                  },
+                  {
+                    "label": "More than half the days (2 points)",
+                    "concept": "moreThanHalfTheDays"
+                  },
+                  {
+                    "label": "Nearly every day (3 points)",
+                    "concept": "nearlyEveryDay"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "PHQ2",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "scoring",
+              "label": "Scoring",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["## Scoring"],
+              "questionInfo": "Sum of all points from answers above",
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Evaluation of the infant 1",
+      "sections": [
+        {
+          "label": "Evaluation of the infant 1",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "presentAtConsultation",
+              "label": "Present at consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "presentAtConsultation",
+                "answers": []
+              }
+            },
+            {
+              "id": "healthStatus",
+              "label": "Health status",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "multiCheckbox",
+                "answers": [
+                  {
+                    "label": "Alive",
+                    "concept": "alive"
+                  },
+                  {
+                    "label": "Dead",
+                    "concept": "dead"
+                  },
+                  {
+                    "label": "IPD",
+                    "concept": "ipd"
+                  },
+                  {
+                    "label": "Premature",
+                    "concept": "premature"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infan1PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "checkInvitalsBiometricsAndFillWithUpdatedMeasurementsFortemperaturepulserRateAndweight",
+              "label": "Check in Vitals  Biometrics and fill with updated measurements for Temperature Pulse R. rate and Weight",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "infan1PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "headCircumference",
+              "label": "Head circumference (cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "headCircumference"
+              },
+              "hide": {
+                "hideWhenExpression": "infan1PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "headToToeExam",
+              "label": "Head-to-toe exam (if not done at birth)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "headToToeExam",
+                "answers": []
+              },
+              "hide": {
+                "hideWhenExpression": "infan1PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "result",
+              "label": "Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "result",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "normal"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "abnormal"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infan1HeadToToeExaxm !== 'yes'"
+              }
+            },
+            {
+              "id": "appearance",
+              "label": "Appearance (colour breathing activity)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "appearance",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "normal"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "abnormal"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infan1PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "cordCondition",
+              "label": "Cord condition",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "cordCondition",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "normal"
+                  },
+                  {
+                    "label": "Infeted",
+                    "concept": "infeted"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "abnormal"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infan1PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "feeding",
+              "label": "Feeding",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "feeding",
+                "answers": [
+                  {
+                    "label": "Breastfeeding only",
+                    "concept": "breastfeedingOnly"
+                  },
+                  {
+                    "label": "Breastfeeding and formula",
+                    "concept": "breastfeedingAndFormula"
+                  },
+                  {
+                    "label": "Formula only",
+                    "concept": "formulaOnly"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infan1PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "passingUrineAndStool",
+              "label": "Passing urine and stool",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "passingUrineAndStool",
+                "answers": []
+              },
+              "hide": {
+                "hideWhenExpression": "infan1PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "result",
+              "label": "Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "result"
+              },
+              "hide": {
+                "hideWhenExpression": "infan1PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "checkInimmunizationsForHepatitisBAndOtherBirthDoseVaccines",
+              "label": "Check in Immunizations for Hepatitis B and other birth dose vaccines",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient immunizations",
+                "workspaceName": "immunization-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "infan1PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "checkInmedicationsForTetracyclineEyeOintmentAndVitamin",
+              "label": "Check in Medications for Tetracycline eye ointment and Vitamin",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Active medications",
+                "workspaceName": "medications-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "infan1PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "additionalRemarks",
+              "label": "Additional remarks",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "additionalRemarks"
+              },
+              "hide": {
+                "hideWhenExpression": "infan1PresentAtConsultation !== 'yes'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Evaluation of the infant 2",
+      "sections": [
+        {
+          "label": "Evaluation of the infant 2",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "presentAtConsultation",
+              "label": "Present at consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "presentAtConsultation",
+                "answers": []
+              },
+              "hide": {
+                "hideWhenExpression": "infan2PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "healthStatus",
+              "label": "Health status",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "multiCheckbox",
+                "answers": [
+                  {
+                    "label": "Alive",
+                    "concept": "alive"
+                  },
+                  {
+                    "label": "Dead",
+                    "concept": "dead"
+                  },
+                  {
+                    "label": "IPD",
+                    "concept": "ipd"
+                  },
+                  {
+                    "label": "Premature",
+                    "concept": "premature"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infan2PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "checkInvitalsBiometricsAndFillWithUpdatedMeasurementsFortemperaturepulserRateAndweight",
+              "label": "Check in Vitals  Biometrics and fill with updated measurements for Temperature Pulse R. rate and Weight",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "infan2PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "headCircumference",
+              "label": "Head circumference (cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "headCircumference"
+              },
+              "hide": {
+                "hideWhenExpression": "infan2PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "headToToeExam",
+              "label": "Head-to-toe exam (if not done at birth)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "headToToeExam",
+                "answers": []
+              },
+              "hide": {
+                "hideWhenExpression": "infan2PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "result",
+              "label": "Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "result",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "normal"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "abnormal"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infan2HeadToToeExaxm !== 'yes'"
+              }
+            },
+            {
+              "id": "appearance",
+              "label": "Appearance (colour breathing activity)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "appearance",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "normal"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "abnormal"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infan2PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "cordCondition",
+              "label": "Cord condition",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "cordCondition",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "normal"
+                  },
+                  {
+                    "label": "Infeted",
+                    "concept": "infeted"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "abnormal"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infan2PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "feeding",
+              "label": "Feeding (observe/gaining weight)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "feeding",
+                "answers": [
+                  {
+                    "label": "Breastfeeding only",
+                    "concept": "breastfeedingOnly"
+                  },
+                  {
+                    "label": "Breastfeeding and formula",
+                    "concept": "breastfeedingAndFormula"
+                  },
+                  {
+                    "label": "Formula only",
+                    "concept": "formulaOnly"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infan2PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "checkInimmunizationsForHepatitisBAndOtherBirthDoseVaccines",
+              "label": "Check in Immunizations for Hepatitis B and other birth dose vaccines",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient immunizations",
+                "workspaceName": "immunization-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "infan2PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "checkInmedicationsForTetracyclineEyeOintmentAndVitamin",
+              "label": "Check in Medications for Tetracycline eye ointment and Vitamin",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Active medications",
+                "workspaceName": "medications-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "infan2PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "additionalRemarks",
+              "label": "Additional remarks",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "additionalRemarks"
+              },
+              "hide": {
+                "hideWhenExpression": "infan2PresentAtConsultation !== 'yes'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Evaluation of the infant 3",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "result",
+              "label": "Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "result",
+                "answers": []
+              },
+              "hide": {
+                "hideWhenExpression": "infan2PresentAtConsultation !== 'yes'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Health education",
+      "sections": [
+        {
+          "label": "Health education",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "informationGivenAbout",
+              "label": "Information given about",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "multiCheckbox",
+                "answers": [
+                  {
+                    "label": "Self and infant care",
+                    "concept": "selfAndInfantCare"
+                  },
+                  {
+                    "label": "Danger signs for mother and infant",
+                    "concept": "dangerSignsForMotherAndInfant"
+                  },
+                  {
+                    "label": "Breastfeeding support",
+                    "concept": "breastfeedingSupport"
+                  },
+                  {
+                    "label": "Birth spacing and family planning",
+                    "concept": "birthSpacingAndFamilyPlanning"
+                  },
+                  {
+                    "label": "Resumption of menses and sexual activity",
+                    "concept": "resumptionOfMensesAndSexualActivity"
+                  },
+                  {
+                    "label": "Exclusive breasfeeding 6 months/weaning advice",
+                    "concept": "exclusiveBreasfeeding6MonthsOrWeaningAdvice"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Observations or examinations",
+      "sections": [
+        {
+          "label": "Observations or examinations",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "notes",
+              "label": "Notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "notes"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis",
+      "sections": [
+        {
+          "label": "Diagnosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "postnatalDiagnosis",
+              "label": "Postnatal diagnosis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "multiCheckbox",
+                "answers": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Prescription",
+      "sections": [
+        {
+          "label": "Prescription",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "contraceptionStartedInThisVisit",
+              "label": "Contraception started in this visit",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "contraceptionStartedInThisVisit",
+                "answers": []
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "contraceptionMethodPrescribed",
+              "label": "Contraception method prescribed",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "contraceptionMethodPrescribed",
+                "answers": [
+                  {
+                    "label": "Male condom",
+                    "concept": "maleCondom"
+                  },
+                  {
+                    "label": "Female condom",
+                    "concept": "femaleCondom"
+                  },
+                  {
+                    "label": "COC",
+                    "concept": "coc"
+                  },
+                  {
+                    "label": "POP",
+                    "concept": "pop"
+                  },
+                  {
+                    "label": "Injectable Depo Provera",
+                    "concept": "injectableDepoProvera"
+                  },
+                  {
+                    "label": "Injectable Sayanna",
+                    "concept": "injectableSayanna"
+                  },
+                  {
+                    "label": "Implant",
+                    "concept": "implant"
+                  },
+                  {
+                    "label": "Copper IUD",
+                    "concept": "copperIud"
+                  },
+                  {
+                    "label": "Hormonal IUD",
+                    "concept": "hormonalIud"
+                  },
+                  {
+                    "label": "Emergency contraceptive",
+                    "concept": "emergencyContraceptive"
+                  },
+                  {
+                    "label": "Tubal ligation",
+                    "concept": "tubalLigation"
+                  },
+                  {
+                    "label": "Vasectomy",
+                    "concept": "vasectomy"
+                  }
+                ]
+              },
+              "questionInfo": "Use Family planning form if necessary",
+              "hide": {
+                "hideWhenExpression": "contraceptionStartedInThisVisit !== 'yes'"
+              }
+            },
+            {
+              "id": "isThereAFollowUpVisitPlanned",
+              "label": "Is there a follow up visit planned",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "isThereAFollowUpVisitPlanned",
+                "answers": []
+              }
+            },
+            {
+              "id": "setTheNextConsultationDateInappointments",
+              "label": "Set the next consultation date in Appointments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              }
+            },
+            {
+              "id": "referral",
+              "label": "Referral",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "multiCheckbox",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "no"
+                  },
+                  {
+                    "label": "Emergency",
+                    "concept": "emergency"
+                  },
+                  {
+                    "label": "Mental health",
+                    "concept": "mentalHealth"
+                  },
+                  {
+                    "label": "Nutrition",
+                    "concept": "nutrition"
+                  },
+                  {
+                    "label": "Gynecology",
+                    "concept": "gynecology"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "referralOther"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifOtherSpecify",
+              "label": "If other specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ifOtherSpecify",
+                "answers": []
+              }
+            },
+            {
+              "id": "reason",
+              "label": "Reason",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "reason"
+              }
+            },
+            {
+              "id": "prescribeNewExamsAndMedicationWithTheOrderBasketIfNecessary",
+              "label": "Prescribe new exams and medication with the order basket if necessary (after closing this form)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              },
+              "questionInfo": "Consider prescription of ferrous salts"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
