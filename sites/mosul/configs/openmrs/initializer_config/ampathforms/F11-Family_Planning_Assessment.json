@@ -1,0 +1,762 @@
+{
+  "name": "F11-Family Planning Assessment",
+  "description": "MSF Form - F11-Family Planning Assessment",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Consultation",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "Obstetric history",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "gravida",
+              "label": "Gravida",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "gravida"
+              }
+            },
+            {
+              "id": "para",
+              "label": "Para",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "para"
+              }
+            },
+            {
+              "id": "abortion",
+              "label": "Abortion",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "abortion"
+              }
+            },
+            {
+              "id": "livingChildren",
+              "label": "Living children",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "livingChildren"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Last delivery ",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "date",
+              "label": "Date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "date"
+              }
+            },
+            {
+              "id": "outcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "outcome",
+                "answers": [
+                  {
+                    "label": "Child alive",
+                    "concept": "childAlive"
+                  },
+                  {
+                    "label": "Child died",
+                    "concept": "childDied"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "breastfeeding",
+              "label": "Breastfeeding",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "breastfeeding",
+                "answers": [
+                  {
+                    "label": "Bottle",
+                    "concept": "bottle"
+                  },
+                  {
+                    "label": "Exclusive",
+                    "concept": "exclusive"
+                  },
+                  {
+                    "label": "Mixed",
+                    "concept": "mixed"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Past family planning",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "familyPlanningBefore",
+              "label": "Family Planning before",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "familyPlanningBefore",
+                "answers": []
+              }
+            },
+            {
+              "id": "whichMethod",
+              "label": "Which method",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "whichMethod",
+                "answers": []
+              },
+              "hide": {
+                "hideWhenExpression": "familyPlanningBefore !== 'yes'"
+              }
+            },
+            {
+              "id": "whenDidThePatientStop",
+              "label": "When did the patient stop",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "whenDidThePatientStop"
+              },
+              "hide": {
+                "hideWhenExpression": "familyPlanningBefore !== 'yes'"
+              }
+            },
+            {
+              "id": "whyDidThePatientStop",
+              "label": "Why did the patient stop",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "whyDidThePatientStop"
+              },
+              "hide": {
+                "hideWhenExpression": "familyPlanningBefore !== 'yes'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Exclusion of actual pregnancy",
+      "sections": [
+        {
+          "label": "Exclusion of actual pregnancy",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "weCanBeReasonableSureThatThePatientIsNotPregnantIf",
+              "label": "We can be reasonable sure that the patient is not pregnant if",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "weCanBeReasonableSureThatThePatientIsNotPregnantIf",
+                "answers": [
+                  {
+                    "label": "Last menstruation period less than 7 days ago",
+                    "concept": "lastMenstruationPeriodLessThan7DaysAgo"
+                  },
+                  {
+                    "label": "Had a spontaneous or induced abortion or miscarriage less than 7 days ago",
+                    "concept": "hadASpontaneousOrInducedAbortionOrMiscarriageLessThan7DaysAgo"
+                  },
+                  {
+                    "label": "Had a babyless than 4 weeks ago",
+                    "concept": "hadABabylessThan4WeeksAgo"
+                  },
+                  {
+                    "label": "Has been correctly and consistently using a reliable contraceptive method",
+                    "concept": "hasBeenCorrectlyAndConsistentlyUsingAReliableContraceptiveMethod"
+                  },
+                  {
+                    "label": "Has absteined from sex since last menstrual period abortion or delivery",
+                    "concept": "hasAbsteinedFromSexSinceLastMenstrualPeriodAbortionOrDelivery"
+                  },
+                  {
+                    "label": "None of the above",
+                    "concept": "noneOfTheAbove"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Patient wishes",
+      "sections": [
+        {
+          "label": "Patient wishes",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "thePatientHasAMethodInMind",
+              "label": "The patient has a method in mind",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "thePatientHasAMethodInMind",
+                "answers": []
+              }
+            },
+            {
+              "id": "ifYesWhichOne",
+              "label": "If yes which one",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ifYesWhichOne"
+              }
+            },
+            {
+              "id": "whatIsImportant",
+              "label": "What is important",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "multiCheckbox",
+                "answers": [
+                  {
+                    "label": "Very effective",
+                    "concept": "veryEffective"
+                  },
+                  {
+                    "label": "Breastfeeding < 6 months",
+                    "concept": "breastfeedingLessThan6Months"
+                  },
+                  {
+                    "label": "No children later",
+                    "concept": "noChildrenLater"
+                  },
+                  {
+                    "label": "Permanent",
+                    "concept": "permanent"
+                  },
+                  {
+                    "label": "Few side effects",
+                    "concept": "fewSideEffects"
+                  },
+                  {
+                    "label": "Easy to stop",
+                    "concept": "easyToStop"
+                  },
+                  {
+                    "label": "Easy to use",
+                    "concept": "easyToUse"
+                  },
+                  {
+                    "label": "Nothing to do before sex",
+                    "concept": "nothingToDoBeforeSex"
+                  },
+                  {
+                    "label": "Use only when needed",
+                    "concept": "useOnlyWhenNeeded"
+                  },
+                  {
+                    "label": "Avoid touching intimate areas",
+                    "concept": "avoidTouchingIntimateAreas"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Vitals & Biometrics",
+      "sections": [
+        {
+          "label": "Vitals & Biometrics",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInvitalBiometricsForbpAndweightAndAddTodaysMeasurements",
+              "label": "Please check in vital  Biometrics for BP and Weight AND add todays measurements",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Family Planning",
+      "sections": [
+        {
+          "label": "Emergency contraception",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "unprotectedSexInTheLast5Days",
+              "label": "Unprotected sex in the last 5 days",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "unprotectedSexInTheLast5Days",
+                "answers": []
+              }
+            }
+          ]
+        },
+        {
+          "label": "Contra-indication",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "lastMentrualPeriod4OrMoreWeeksAgo",
+              "label": "Last mentrual period 4 or more weeks ago",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "lastMentrualPeriod4OrMoreWeeksAgo",
+                "answers": []
+              },
+              "hide": {
+                "hideWhenExpression": "weCanBeReasonableSureThatThePatientIsNotPregnantIf !== 'noneOfTheAbove'"
+              }
+            },
+            {
+              "id": "urinePregnancyTestResult",
+              "label": "Urine pregnancy test result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "urinePregnancyTestResult",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": " a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              },
+              "questionInfo": "Recommended if IUD is being considered or last mentrual period was more than 4 weeks ago"
+            },
+            {
+              "id": "conditions",
+              "label": "Conditions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "multiCheckbox",
+                "answers": [
+                  {
+                    "label": "Active liver disease / jaundice",
+                    "concept": "activeLiverDiseaseOrJaundice"
+                  },
+                  {
+                    "label": "BP > 140/90 and migraine with aura",
+                    "concept": "bpMoreThan140Or90AndMigraineWithAura"
+                  },
+                  {
+                    "label": "BP > 160/100",
+                    "concept": "bpMoreThan160Or100"
+                  },
+                  {
+                    "label": "Breastfeeding < 6 weeks",
+                    "concept": "breastfeedingLessThan6Weeks"
+                  },
+                  {
+                    "label": "Current / history of trombembolism",
+                    "concept": "currentOrHistoryOfTrombembolism"
+                  },
+                  {
+                    "label": "Current STI/current PID",
+                    "concept": "currentStiOrCurrentPid"
+                  },
+                  {
+                    "label": "Diabetes for > 20 years",
+                    "concept": "diabetesForMoreThan20Years"
+                  },
+                  {
+                    "label": "History of extra-uterine pregnancy",
+                    "concept": "historyOfExtraUterinePregnancy"
+                  },
+                  {
+                    "label": "HIV + patient on ARV",
+                    "concept": "hivPlusPatientOnArv"
+                  },
+                  {
+                    "label": "HIV + patient with active AIDS but NOT on ARV",
+                    "concept": "hivPlusPatientWithActiveAidsButNotOnArv"
+                  },
+                  {
+                    "label": "Hyper or dysmenorrhoea",
+                    "concept": "hyperOrDysmenorrhoea"
+                  },
+                  {
+                    "label": "Latex allergy (patient or partner)",
+                    "concept": "latexAllergy"
+                  },
+                  {
+                    "label": "On Epilepsy medication",
+                    "concept": "onEpilepsyMedication"
+                  },
+                  {
+                    "label": "On TB medication",
+                    "concept": "onTbMedication"
+                  },
+                  {
+                    "label": "Pregnancy",
+                    "concept": "pregnancy"
+                  },
+                  {
+                    "label": "Severe untreated anaemia",
+                    "concept": "severeUntreatedAnaemia"
+                  },
+                  {
+                    "label": "Smoker > 35 years old",
+                    "concept": "smokerMoreThan35YearsOld"
+                  },
+                  {
+                    "label": "Unexplained vaginal bleeding",
+                    "concept": "unexplainedVaginalBleeding"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "referToTheDoctorForADecisionAboutTheMethod",
+              "label": "Refer to the doctor for a decision about the method",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "referToTheDoctorForADecisionAboutTheMethod"
+              },
+              "hide": {
+                "hideWhenExpression": "conditions !== 'hivPlusPatientOnArv'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Absolute contra-indication",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "maleAndFemaleCondom",
+              "label": "Male and Female condom",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "maleAndFemaleCondom"
+              },
+              "hide": {
+                "hideWhenExpression": "conditions !== 'latexAllergy'"
+              }
+            },
+            {
+              "id": "coc",
+              "label": "COC",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "coc"
+              },
+              "hide": {
+                "hideWhenExpression": "conditions !== 'currentOrHistoryTromboembolism'"
+              }
+            },
+            {
+              "id": "popImplant",
+              "label": "POP Implant",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "popImplant"
+              },
+              "hide": {
+                "hideWhenExpression": "conditions !== 'pregnancy'"
+              }
+            },
+            {
+              "id": "iud",
+              "label": "IUD",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "iud"
+              },
+              "hide": {
+                "hideWhenExpression": "conditions !== 'pregnancy'"
+              }
+            },
+            {
+              "id": "injectable",
+              "label": "Injectable",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "injectable"
+              },
+              "hide": {
+                "hideWhenExpression": "conditions !== 'pregnancy'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Relative contra-indication:",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "injectableImplant",
+              "label": "Injectable implant",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "injectableImplant"
+              },
+              "hide": {
+                "hideWhenExpression": "conditions !== 'breastfeedingLessThan6Weeks'"
+              }
+            },
+            {
+              "id": "tubalLigation",
+              "label": "Tubal ligation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "tubalLigation"
+              },
+              "hide": {
+                "hideWhenExpression": "conditions !== 'pregnancy'"
+              }
+            },
+            {
+              "id": "cocPop",
+              "label": "COC POP",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "cocPop"
+              },
+              "hide": {
+                "hideWhenExpression": "conditions !== 'unexplainedVaginalBleeding'"
+              }
+            },
+            {
+              "id": "iud",
+              "label": "IUD",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "iud"
+              },
+              "hide": {
+                "hideWhenExpression": "conditions !== 'hyperOrDysmenorrhoea'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Conclusion",
+      "sections": [
+        {
+          "label": "Conclusion",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "familyPlanningRecommended",
+              "label": "Family planning recommended",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "familyPlanningRecommended",
+                "answers": []
+              }
+            },
+            {
+              "id": "reason",
+              "label": "Reason",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "reason"
+              },
+              "hide": {
+                "hideWhenExpression": "familyPlanningInitiated !== 'no'"
+              }
+            },
+            {
+              "id": "chosenMethod",
+              "label": "Chosen method",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "chosenMethod",
+                "answers": [
+                  {
+                    "label": "Male condom",
+                    "concept": "maleCondom"
+                  },
+                  {
+                    "label": "Female condom",
+                    "concept": "femaleCondom"
+                  },
+                  {
+                    "label": "COC",
+                    "concept": "coc"
+                  },
+                  {
+                    "label": "POP",
+                    "concept": "pop"
+                  },
+                  {
+                    "label": "Injectable Depo Provera",
+                    "concept": "injectableDepoProvera"
+                  },
+                  {
+                    "label": "Injectable Sayanna",
+                    "concept": "injectableSayanna"
+                  },
+                  {
+                    "label": "Implant",
+                    "concept": "implant"
+                  },
+                  {
+                    "label": "Copper IUD",
+                    "concept": "copperIud"
+                  },
+                  {
+                    "label": "Hormonal IUD",
+                    "concept": "hormonalIud"
+                  },
+                  {
+                    "label": "Emergency contraceptive",
+                    "concept": "emergencyContraceptive"
+                  },
+                  {
+                    "label": "Tubal ligation",
+                    "concept": "tubalLigation"
+                  },
+                  {
+                    "label": "Vasectomy",
+                    "concept": "vasectomy"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "familyPlanningInitiated !== 'yes'"
+              }
+            },
+            {
+              "id": "prescribeTheChosenFamilyPlanningMethodWithTheOrderBasketIfNecessary",
+              "label": "Prescribe the chosen family planning method with the order basket if necessary",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              },
+              "hide": {
+                "hideWhenExpression": "familyPlanningInitiated !== 'yes'"
+              }
+            },
+            {
+              "id": "observations",
+              "label": "Observations",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "observations"
+              }
+            },
+            {
+              "id": "pleaseScheduleNextVisitInappointments",
+              "label": "Please schedule next visit in Appointments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

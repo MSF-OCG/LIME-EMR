@@ -1,0 +1,390 @@
+{
+  "name": "F12-Family Planning Follow-up",
+  "description": "MSF Form - F12-Family Planning Follow-up",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Consultation",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "History",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "method",
+              "label": "Method",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "method",
+                "answers": [
+                  {
+                    "label": "Male condom",
+                    "concept": "maleCondom"
+                  },
+                  {
+                    "label": "Female condom",
+                    "concept": "femaleCondom"
+                  },
+                  {
+                    "label": "COC",
+                    "concept": "coc"
+                  },
+                  {
+                    "label": "POP",
+                    "concept": "pop"
+                  },
+                  {
+                    "label": "Injectable Depo Provera",
+                    "concept": "injectableDepoProvera"
+                  },
+                  {
+                    "label": "Injectable Sayanna",
+                    "concept": "injectableSayanna"
+                  },
+                  {
+                    "label": "Implant",
+                    "concept": "implant"
+                  },
+                  {
+                    "label": "Copper IUD",
+                    "concept": "copperIud"
+                  },
+                  {
+                    "label": "Hormonal IUD",
+                    "concept": "hormonalIud"
+                  },
+                  {
+                    "label": "Emergency contraceptive",
+                    "concept": "emergencyContraceptive"
+                  },
+                  {
+                    "label": "Tubal ligation",
+                    "concept": "tubalLigation"
+                  },
+                  {
+                    "label": "Vasectomy",
+                    "concept": "vasectomy"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "needForDualProtection",
+              "label": "Need for dual protection",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "needForDualProtection",
+                "answers": []
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Problems related to family planning method",
+      "sections": [
+        {
+          "label": "Problems related to family planning method",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "satisfiedWithMethod",
+              "label": "Satisfied with method",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "satisfiedWithMethod",
+                "answers": []
+              }
+            },
+            {
+              "id": "newFamilyPlanningNeeds",
+              "label": "New family planning needs",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "newFamilyPlanningNeeds",
+                "answers": []
+              }
+            },
+            {
+              "id": "changedBleedingPattern",
+              "label": "Changed bleeding pattern",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "changedBleedingPattern",
+                "answers": []
+              }
+            },
+            {
+              "id": "describe",
+              "label": "Describe",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "describe"
+              },
+              "hide": {
+                "hideWhenExpression": "changedBleedingPattern !== 'yes'"
+              }
+            },
+            {
+              "id": "headacheOrDizziness",
+              "label": "Headache / dizziness",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "headacheOrDizziness",
+                "answers": []
+              }
+            },
+            {
+              "id": "nauseaOrAbdominalPain",
+              "label": "Nausea / abdominal pain",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "nauseaOrAbdominalPain",
+                "answers": []
+              }
+            },
+            {
+              "id": "breastTender",
+              "label": "Breast tender",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "breastTender",
+                "answers": []
+              }
+            },
+            {
+              "id": "moodChanges",
+              "label": "Mood changes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "moodChanges",
+                "answers": []
+              }
+            },
+            {
+              "id": "otherProblem",
+              "label": "Other problem(s)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "otherProblem"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Examination",
+      "sections": [
+        {
+          "label": "Examination",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInvitalsBiometricsForbpAndweightAndAddTodaysMeasurements",
+              "label": "Please check in Vitals  Biometrics for BP and Weight AND add todays measurements",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "vaginalOrSpeculumExam",
+              "label": "Vaginal / speculum exam (ONLY if suspicion of STI or IUD displacement)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "vaginalOrSpeculumExam"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Conclusion",
+      "sections": [
+        {
+          "label": "Conclusion",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "stopCurrentContraception",
+              "label": "Stop current contraception",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "stopCurrentContraception",
+                "answers": []
+              }
+            },
+            {
+              "id": "forWhichReason",
+              "label": "For which reason",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "forWhichReason"
+              },
+              "hide": {
+                "hideWhenExpression": "stopCurrentContraception !== 'yes'"
+              }
+            },
+            {
+              "id": "anotherFamilyPlanningMethodPrescribed",
+              "label": "Another family planning method prescribed",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "anotherFamilyPlanningMethodPrescribed",
+                "answers": []
+              }
+            },
+            {
+              "id": "whichMethod",
+              "label": "Which method",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "whichMethod",
+                "answers": [
+                  {
+                    "label": "Male condom",
+                    "concept": "maleCondom"
+                  },
+                  {
+                    "label": "Female condom",
+                    "concept": "femaleCondom"
+                  },
+                  {
+                    "label": "COC",
+                    "concept": "coc"
+                  },
+                  {
+                    "label": "POP",
+                    "concept": "pop"
+                  },
+                  {
+                    "label": "Injectable Depo Provera",
+                    "concept": "injectableDepoProvera"
+                  },
+                  {
+                    "label": "Injectable Sayanna",
+                    "concept": "injectableSayanna"
+                  },
+                  {
+                    "label": "Implant",
+                    "concept": "implant"
+                  },
+                  {
+                    "label": "Copper IUD",
+                    "concept": "copperIud"
+                  },
+                  {
+                    "label": "Hormonal IUD",
+                    "concept": "hormonalIud"
+                  },
+                  {
+                    "label": "Emergency contraceptive",
+                    "concept": "emergencyContraceptive"
+                  },
+                  {
+                    "label": "Tubal ligation",
+                    "concept": "tubalLigation"
+                  },
+                  {
+                    "label": "Vasectomy",
+                    "concept": "vasectomy"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "anotherFamilyPlanningMethodPrescribed !== 'yes'"
+              }
+            },
+            {
+              "id": "remarks",
+              "label": "Remarks",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "remarks"
+              }
+            },
+            {
+              "id": "dateOfNextVisit",
+              "label": "Date of next visit",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "dateOfNextVisit"
+              }
+            },
+            {
+              "id": "inappointmentsSetTheNextDateForFollowUpWheneverNecessary",
+              "label": "In Appointments set the next date for follow up whenever necessary",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              }
+            },
+            {
+              "id": "prescribeEnoughFamilyPlanningMethodWithTheOrderBasketIfNecessary",
+              "label": "Prescribe enough family planning method with the order basket if necessary",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              },
+              "questionInfo": "If pills condoms or injections were selected provide enough for 3 months."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
