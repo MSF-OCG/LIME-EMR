@@ -46,8 +46,8 @@ else
 
     ) || echo "$ERROR Creating OpenFn admin user failed. Skipping"
     echo ""
-
-    # this step requires internet. It downloads node modules. Should be run on the host
-    echo "$INFO Pre-warming worker cache with adaptors..."
-    docker exec -it $PROJECT_NAME-worker-1 sh -c "npm install -g @openfn/cli && openfn repo install  -a common@latest -a collections@latest -a http@6.5.1 -a openmrs@4.1.3 -a dhis2@5.0.1"
 fi
+
+# this step requires internet. It downloads node modules. Should be run on the host
+echo "$INFO Pre-warming worker cache with adaptors..."
+docker exec -it $PROJECT_NAME-worker-1 sh -c "npm install -g @openfn/cli && openfn repo install  -a common@latest -a collections@latest -a http@6.5.1 -a openmrs@4.1.3 -a dhis2@5.0.1"
