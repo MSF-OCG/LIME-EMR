@@ -1,11 +1,12 @@
 {
-  "name": "F09-ITFC Discharge form",
+  "name": "MSF Nutrition -ITFC discharge form",
   "description": "MSF Form - F09-ITFC Discharge form",
   "version": "1",
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
   "encounter": "Consultation",
+  "encounterType": "efb1ee49-ed60-40f4-aa2e-c45143dc4d49",
   "retired": false,
   "referencedForms": [],
   "pages": [
@@ -25,7 +26,10 @@
                 "rendering": "datetime",
                 "concept": "7f00c65d-de60-467a-8964-fe80c7a85ef0"
               },
-              "default": ""
+              "calculate": {
+                "calculateExpression": "new Date()"
+              },
+              "default": "encounter dateTime from ITFC admission form"
             },
             {
               "id": "spontaneousAdmission",
@@ -120,7 +124,7 @@
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -139,7 +143,7 @@
           "questions": [
             {
               "id": "checkInvitalsBiometricsToComplete",
-              "label": "Check in Vitals  Biometrics to complete",
+              "label": "Check in \"Vitals & Biometrics\" to complete",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -184,11 +188,11 @@
                     "concept": "a456ad55-006a-4f90-b03e-8d608e85194b"
                   },
                   {
-                    "label": "-3  -2 Zs",
+                    "label": "[-3 ; -2 Zs[",
                     "concept": "6a48b558-b61d-4be7-9c13-c9279f396bbc"
                   },
                   {
-                    "label": "> -2 Zs",
+                    "label": ">= -2 Zs",
                     "concept": "4eca905b-97ca-4c48-9408-2dece451ab2a"
                   }
                 ]
@@ -215,56 +219,16 @@
                 "concept": "754d677f-316c-4c31-999d-a328fb8b17e1",
                 "answers": [
                   {
-                    "label": "",
+                    "label": "+",
                     "concept": "382578c2-91b4-4235-a02d-d20fbe9f8044"
                   },
                   {
-                    "label": "",
+                    "label": "++",
                     "concept": "709e4a07-af9f-432b-8711-b3caed41998c"
                   },
                   {
-                    "label": "",
+                    "label": "+++",
                     "concept": "9e6f2ae1-4aa3-4cbc-bd8d-98515b76cc15"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "severePathology",
-              "label": "Severe pathology",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "2afd11ac-4f2d-4d6a-bc73-1d1074f2b973",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "anorexia",
-              "label": "Anorexia",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "92b89271-e6be-43bb-a00b-7cc8fa29672a",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
                   },
                   {
                     "label": "No",
@@ -292,7 +256,7 @@
                   },
                   {
                     "label": "Not done",
-                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                    "concept": "\u00a0a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
                   }
                 ]
               }
@@ -310,7 +274,10 @@
               "required": false,
               "questionOptions": {
                 "rendering": "date",
-                "concept": "13cea1c8-e426-411f-95b4-33651fc4325d"
+                "concept": "13cea1c8-e426-411f-95b4-33651fc4325d",
+                "calculate": {
+                    "calculateExpression": "new Date()"
+                  }
               },
               "default": "Current date"
             },
@@ -350,11 +317,11 @@
                     "concept": "a456ad55-006a-4f90-b03e-8d608e85194b"
                   },
                   {
-                    "label": "-3  -2 Zs",
+                    "label": "[-3 ; -2 Zs[",
                     "concept": "6a48b558-b61d-4be7-9c13-c9279f396bbc"
                   },
                   {
-                    "label": "> -2 Zs",
+                    "label": ">= -2 Zs",
                     "concept": "4eca905b-97ca-4c48-9408-2dece451ab2a"
                   }
                 ]
@@ -376,199 +343,6 @@
       ]
     },
     {
-      "label": "History",
-      "sections": [
-        {
-          "label": "History",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "seenInMsfNutProgramDuringLast2Months",
-              "label": "Seen in MSF nut program during last 2 months",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "19919e84-9293-415e-b126-49a5d4ec43ce",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "msfNutProgramOutcome",
-              "label": "MSF nut program outcome",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "7c0aba73-5507-495c-a786-b039ce31cd8e",
-                "answers": [
-                  {
-                    "label": "Cured",
-                    "concept": "4afad5ca-6b49-4fc2-9dca-4468f5f3a3f6"
-                  },
-                  {
-                    "label": "Defaulter",
-                    "concept": "81cbc44a-ac84-4458-ab99-feab4d64c691"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
-                    "label": "Unknown",
-                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "seenInMsfNutProgramDuringLast2Months !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "SMC",
-      "sections": [
-        {
-          "label": "SMC",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "st",
-              "label": "st",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "124e7427-f7b8-439c-bca4-b1cee021d8a3",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "nd",
-              "label": "nd",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "3b0148a8-565d-4120-8518-3b9786a80c0c",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "rd",
-              "label": "rd",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "8aa4ecee-a7d4-4a06-8090-f44339fbacc5",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "th",
-              "label": "th",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "73d7ba86-696d-4013-b6a4-5b5a021bfeb3",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "notThisYear",
-              "label": "Not this year",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "ba853f90-d747-45e8-9c6e-e90c7a548dee",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "smcUnknown",
-              "label": "SMC unknown",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "d76e493d-cac1-4c22-9092-3d1422ce17ef",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
       "label": "Immunization",
       "sections": [
         {
@@ -577,7 +351,7 @@
           "questions": [
             {
               "id": "checkimmunizationAndUpdatePossibleMissingVaccines",
-              "label": "Check Immunization and update possible missing vaccines",
+              "label": "Check \"Immunization\" and update possible missing vaccines",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -650,7 +424,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "bcg !== 'unknown' && bcg !== 'noVaccinated'"
               }
             },
             {
@@ -697,7 +471,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "hepatitisB0 !== 'unknown' && hepatitisB0 !== 'noVaccinated'"
               }
             },
             {
@@ -756,7 +530,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "pentavalent !== 'unknown' && pentavalent !== 'noVaccinated'"
               }
             },
             {
@@ -819,7 +593,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "afp !== 'unknown' && afp !== 'noVaccinated'"
               }
             },
             {
@@ -870,7 +644,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "measles !== 'unknown' && measles !== 'noVaccinated'"
               }
             },
             {
@@ -929,7 +703,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "pcv !== 'unknown' && pcv !== 'noVaccinated'"
               }
             },
             {
@@ -984,7 +758,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "rotavirus !== 'unknown' && rotavirus !== 'noVaccinated'"
               }
             },
             {
@@ -1031,7 +805,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "yellowFever !== 'unknown' && yellowFever !== 'noVaccinated'"
               }
             },
             {
@@ -1086,7 +860,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "ipv !== 'unknown' && ipv !== 'noVaccinated'"
               }
             },
             {
@@ -1137,7 +911,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "meningitisA !== 'unknown' && meningitisA !== 'noVaccinated'"
               }
             },
             {
@@ -1184,7 +958,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "ppv23 !== 'unknown' && ppv23 !== 'noVaccinated'"
               }
             },
             {
@@ -1235,7 +1009,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "hpv !== 'unknown' && hpv !== 'noVaccinated'"
               }
             },
             {
@@ -1264,7 +1038,7 @@
                     "concept": "65df6859-cbdc-47b4-a7ec-9c615a70a724"
                   },
                   {
-                    "label": "TT5",
+                    "label": "\u2265TT5",
                     "concept": "a8924fbf-06dd-43d1-b9bb-74b412a6750a"
                   },
                   {
@@ -1298,7 +1072,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "antitetanusVaccinationOfTheMother !== 'unknown' && antitetanusVaccinationOfTheMother !== 'noVaccinated'"
               }
             },
             {
@@ -1339,7 +1113,7 @@
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   },
                   {
-                    "label": "nan",
+                    "label": "NA",
                     "concept": "8fb2f830-52b3-4593-8e8f-5db8e2be7668"
                   }
                 ]
@@ -1573,9 +1347,8 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Open Workspace",
-                "workspaceName": "multiCheckbox",
+                "rendering": "multiCheckbox",
+                "concept": "55a462cb-7cc8-48e4-8ae4-139a58ccf2f4",
                 "answers": [
                   {
                     "label": "Yes",
@@ -1822,331 +1595,331 @@
                 "answers": [
                   {
                     "label": "Acute asthma",
-                    "concept": "acuteAsthma"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Acute febrile illness (<7 days)",
-                    "concept": "acuteFebrileIllness"
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute flaccid paralysis",
-                    "concept": "acuteFlaccidParalysis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Apnoea of prematurity",
-                    "concept": "apnoeaOfPrematurity"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bacterial meningitis",
-                    "concept": "bacterialMeningitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Birth injury",
-                    "concept": "birthInjury"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bronchiolitis obstructive bronchitis",
-                    "concept": "bronchiolitisObstructiveBronchitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bronchospasm",
-                    "concept": "bronchospasm"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Burns",
-                    "concept": "burns"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cardiogenic shock",
-                    "concept": "cardiogenicShock"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cerebral palsy - Neuro disability",
-                    "concept": "cerebralPalsyNeuroDisability"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cholera (suspected)",
-                    "concept": "cholera"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cholera confirmed",
-                    "concept": "choleraConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Complicated ear infection",
-                    "concept": "complicatedEarInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Complications of SCD",
-                    "concept": "complicationsOfScd"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital herpes virus infection",
-                    "concept": "congenitalHerpesVirusInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital malaria",
-                    "concept": "congenitalMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital or acquired cardiac pathology",
-                    "concept": "congenitalOrAcquiredCardiacPathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital syphilis",
-                    "concept": "congenitalSyphilis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congestive Heart Failure",
-                    "concept": "congestiveHeartFailure"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "COPD",
-                    "concept": "copd"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Covid-19 confirmed",
-                    "concept": "covid19Confirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Covid-19 probable",
-                    "concept": "covid19Probable"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cutaneous leishmaniosis",
-                    "concept": "cutaneousLeishmaniosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue confirmed",
-                    "concept": "dengueConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue suspected",
-                    "concept": "dengueSuspected"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes type 2 and complications",
-                    "concept": "diabetesType2AndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes Type I and complications",
-                    "concept": "diabetesTypeIAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diarrhea (persistent)",
-                    "concept": "diarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diphtheria",
-                    "concept": "diphtheria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dog bite",
-                    "concept": "dogBite"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Epilepsy - Seizures",
-                    "concept": "epilepsySeizures"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
-                    "concept": "extraPulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Eye diseases (including trachoma)",
-                    "concept": "eyeDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Febrile convulsions",
-                    "concept": "febrileConvulsions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Gynaecological cases",
-                    "concept": "gynaecologicalCases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis A",
-                    "concept": "hepatitisA"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis B",
-                    "concept": "hepatitisB"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis Delta",
-                    "concept": "hepatitisDelta"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis E",
-                    "concept": "hepatitisE"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "HIV Infection confirmed",
-                    "concept": "hivInfectionConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hyperglycemia",
-                    "concept": "hyperglycemia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hyperreactive splenomegaly due to malaria",
-                    "concept": "hyperreactiveSplenomegalyDueToMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hypoglycemia",
-                    "concept": "hypoglycemia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hypovolemic shock",
-                    "concept": "hypovolemicShock"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
-                    "concept": "infectiousDiseasesNotOtherwiseClassified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles (complicated)",
-                    "concept": "measles_1"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles (uncomplicated)",
-                    "concept": "measles_1"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Meningeal TB",
-                    "concept": "meningealTb"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Meningitis unspecified",
-                    "concept": "meningitisUnspecified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Mental and psychiatric conditions",
-                    "concept": "mentalAndPsychiatricConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Moderate acute malnutrition",
-                    "concept": "moderateAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Musculoskeletal conditions (infectious origin)",
-                    "concept": "musculoskeletalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Musculoskeletal conditions (non-infectious)",
-                    "concept": "musculoskeletalConditions"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Necrotizing  bullous skin infections",
-                    "concept": "necrotizingBullousSkinInfections"
+                    "label": "Necrotizing & bullous skin infections",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neglected tropical diseases",
-                    "concept": "neglectedTropicalDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal conjunctivitis",
-                    "concept": "neonatalConjunctivitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal convulsions",
-                    "concept": "neonatalConvulsions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal jaundice",
-                    "concept": "neonatalJaundice"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal meconial aspiration",
-                    "concept": "neonatalMeconialAspiration"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal Necrotizing Enterocolitis",
-                    "concept": "neonatalNecrotizingEnterocolitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal pneumonia",
-                    "concept": "neonatalPneumonia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal pneumothorax",
-                    "concept": "neonatalPneumothorax"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal tetanus",
-                    "concept": "neonatalTetanus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal tuberculosis",
-                    "concept": "neonatalTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Nephrotic Syndrome  Acute Glomerulonephritis",
-                    "concept": "nephroticSyndromeAcuteGlomerulonephritis"
+                    "label": "Nephrotic Syndrome & Acute Glomerulonephritis",
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Newborn to an HIV mother",
-                    "concept": "newbornToAnHivMother"
+                    "label": "Newborn to an HIV+ mother",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non cardiac congenital pathology",
-                    "concept": "nonCardiacCongenitalPathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non urgent surgical conditions",
-                    "concept": "nonUrgentSurgicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Observation",
-                    "concept": "observation"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Obstetric cases",
-                    "concept": "obstetricCases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Oral and digestive severe candidiasis",
-                    "concept": "oralAndDigestiveSevereCandidiasis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other bites and stings",
-                    "concept": "otherBitesAndStings"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other neonatal conditions",
-                    "concept": "otherNeonatalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other neurological conditions",
-                    "concept": "otherNeurologicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other non communicable diseases",
-                    "concept": "otherNonCommunicableDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other symptoms and abnor. clinical / lab findings",
-                    "concept": "otherSymptomsAndAbnorClinicalOrLabFindings"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other",
@@ -2154,186 +1927,186 @@
                   },
                   {
                     "label": "Perinatal asphyxia and complications",
-                    "concept": "perinatalAsphyxiaAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
-                    "concept": "persistentFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Poliomyelitis confirmed",
-                    "concept": "poliomyelitisConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Post surgical infections",
-                    "concept": "postSurgicalInfections"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Prematurity and or low birth weight",
-                    "concept": "prematurityAndOrLowBirthWeight"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Pulmonary tuberculosis",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Rabies",
-                    "concept": "rabies"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Rheumatic heart disease",
-                    "concept": "rheumaticHeartDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Risk of sepsis",
-                    "concept": "riskOfSepsis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Septic shock",
-                    "concept": "septicShock"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe Acute Malnutrition (Kwashiorkor)",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe Acute Malnutrition (Marasmus - Kwashiorkor)",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe Acute Malnutrition (Marasmus)",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe anaemia",
-                    "concept": "severeAnaemia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe dehydration",
-                    "concept": "severeDehydration"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe malaria",
-                    "concept": "severeMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sexual violence / rape",
-                    "concept": "sexualViolenceOrRape"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sexually transmitted disease (STI)",
-                    "concept": "sexuallyTransmittedDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Shigellosis - Salmonellosis",
-                    "concept": "shigellosisSalmonellosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Shock uspecified",
-                    "concept": "shockUspecified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sickle cell disease",
-                    "concept": "sickleCellDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Simple malaria",
-                    "concept": "simpleMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Skin and soft tissue conditions",
-                    "concept": "skinAndSoftTissueConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Snake bites",
-                    "concept": "snakeBites"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Substance abuse / dependency",
-                    "concept": "substanceAbuseOrDependency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Suspected or confirmed malignancy",
-                    "concept": "suspectedOrConfirmedMalignancy"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Tetanus",
-                    "concept": "tetanus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Toxicity / poisoning",
-                    "concept": "toxicityOrPoisoning"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Transient tachypnoea of the newborn",
-                    "concept": "transientTachypnoeaOfTheNewborn"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Typhoid fever",
-                    "concept": "typhoidFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Upper respiratory tract infection",
-                    "concept": "upperRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Urgent surgical conditions",
-                    "concept": "urgentSurgicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Urolithiasis / Renal colic",
-                    "concept": "urolithiasisOrRenalColic"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "utiAndRenalTractAcutePathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Varicella",
-                    "concept": "varicella"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Viral haemorrhagic fevers",
-                    "concept": "viralHaemorrhagicFevers"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Visceral leishmaniasis",
-                    "concept": "visceralLeishmaniasis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit A deficiency",
-                    "concept": "vitADeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit B complex deficiency",
-                    "concept": "vitBComplexDeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit C deficiency (scurvy)",
-                    "concept": "vitCDeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit D deficiency (rickets)",
-                    "concept": "vitDDeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Yellow fever",
-                    "concept": "yellowFever_1"
+                    "concept": "#N/A"
                   }
                 ]
               }
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2355,351 +2128,351 @@
                 "answers": [
                   {
                     "label": "Acute asthma",
-                    "concept": "acuteAsthma"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Acute febrile illness (<7 days)",
-                    "concept": "acuteFebrileIllness"
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute flaccid paralysis",
-                    "concept": "acuteFlaccidParalysis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bacterial meningitis",
-                    "concept": "bacterialMeningitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Burns",
-                    "concept": "burns"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cholera (suspected)",
-                    "concept": "cholera"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cholera confirmed",
-                    "concept": "choleraConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Complicated ear infection",
-                    "concept": "complicatedEarInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Complications of SCD",
-                    "concept": "complicationsOfScd"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital or acquired cardiac pathology",
-                    "concept": "congenitalOrAcquiredCardiacPathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congestive Heart Failure",
-                    "concept": "congestiveHeartFailure"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cutaneous leishmaniosis",
-                    "concept": "cutaneousLeishmaniosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue confirmed",
-                    "concept": "dengueConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes type 2 and complications",
-                    "concept": "diabetesType2AndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes Type I and complications",
-                    "concept": "diabetesTypeIAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diarrhea (persistent)",
-                    "concept": "diarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diphtheria",
-                    "concept": "diphtheria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Epilepsy - Seizures",
-                    "concept": "epilepsySeizures"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
-                    "concept": "extraPulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Eye diseases (including trachoma)",
-                    "concept": "eyeDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Gynaecological cases",
-                    "concept": "gynaecologicalCases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis A",
-                    "concept": "hepatitisA"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis B",
-                    "concept": "hepatitisB"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis Delta",
-                    "concept": "hepatitisDelta"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis E",
-                    "concept": "hepatitisE"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "HIV Infection confirmed",
-                    "concept": "hivInfectionConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hyperreactive splenomegaly due to malaria",
-                    "concept": "hyperreactiveSplenomegalyDueToMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
-                    "concept": "infectiousDiseasesNotOtherwiseClassified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles (complicated)",
-                    "concept": "measles_1"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles (uncomplicated)",
-                    "concept": "measles_1"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Meningeal TB",
-                    "concept": "meningealTb"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Meningitis unspecified",
-                    "concept": "meningitisUnspecified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Mental and psychiatric conditions",
-                    "concept": "mentalAndPsychiatricConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Moderate acute malnutrition",
-                    "concept": "moderateAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Musculoskeletal conditions (infectious origin)",
-                    "concept": "musculoskeletalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Musculoskeletal conditions (non-infectious)",
-                    "concept": "musculoskeletalConditions"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Necrotizing  bullous skin infections",
-                    "concept": "necrotizingBullousSkinInfections"
+                    "label": "Necrotizing & bullous skin infections",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neglected tropical diseases",
-                    "concept": "neglectedTropicalDiseases"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Nephrotic Syndrome  Acute Glomerulonephritis",
-                    "concept": "nephroticSyndromeAcuteGlomerulonephritis"
+                    "label": "Nephrotic Syndrome & Acute Glomerulonephritis",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cerebral palsy/Neuro disability",
-                    "concept": "cerebralPalsyOrNeuroDisability"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non urgent surgical conditions",
-                    "concept": "nonUrgentSurgicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Obstetric cases",
-                    "concept": "obstetricCases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Oral and digestive severe candidiasis",
-                    "concept": "oralAndDigestiveSevereCandidiasis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
-                    "concept": "persistentFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Poliomyelitis confirmed",
-                    "concept": "poliomyelitisConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Post surgical infections",
-                    "concept": "postSurgicalInfections"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Pulmonary tuberculosis",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Rabies",
-                    "concept": "rabies"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe Acute Malnutrition (Kwashiorkor)",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe Acute Malnutrition (Marasmus - Kwashiorkor)",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe Acute Malnutrition (Marasmus)",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe malaria",
-                    "concept": "severeMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sexual violence / rape",
-                    "concept": "sexualViolenceOrRape"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sexually transmitted disease (STI)",
-                    "concept": "sexuallyTransmittedDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Shigellosis - Salmonellosis",
-                    "concept": "shigellosisSalmonellosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sickle cell disease",
-                    "concept": "sickleCellDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Simple malaria",
-                    "concept": "simpleMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Skin and soft tissue conditions",
-                    "concept": "skinAndSoftTissueConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Snake bites",
-                    "concept": "snakeBites"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Substance abuse / dependency",
-                    "concept": "substanceAbuseOrDependency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Suspected or confirmed malignancy",
-                    "concept": "suspectedOrConfirmedMalignancy"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Tetanus",
-                    "concept": "tetanus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Toxicity / poisoning",
-                    "concept": "toxicityOrPoisoning"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Typhoid fever",
-                    "concept": "typhoidFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Upper respiratory tract infection",
-                    "concept": "upperRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Urgent surgical conditions",
-                    "concept": "urgentSurgicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Urolithiasis / Renal colic",
-                    "concept": "urolithiasisOrRenalColic"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "utiAndRenalTractAcutePathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Viral haemorrhagic fevers",
-                    "concept": "viralHaemorrhagicFevers"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Visceral leishmaniasis",
-                    "concept": "visceralLeishmaniasis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit A deficiency",
-                    "concept": "vitADeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit B complex deficiency",
-                    "concept": "vitBComplexDeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit C deficiency (scurvy)",
-                    "concept": "vitCDeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit D deficiency (rickets)",
-                    "concept": "vitDDeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Yellow fever",
-                    "concept": "yellowFever_1"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other bites and stings",
-                    "concept": "otherBitesAndStings"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other neonatal conditions",
-                    "concept": "otherNeonatalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other neurological conditions",
-                    "concept": "otherNeurologicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other non communicable diseases",
-                    "concept": "otherNonCommunicableDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other symptoms and abnor. clinical / lab findings",
-                    "concept": "otherSymptomsAndAbnorClinicalOrLabFindings"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other",
@@ -2707,166 +2480,166 @@
                   },
                   {
                     "label": "Covid-19 confirmed",
-                    "concept": "covid19Confirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Covid-19 probable",
-                    "concept": "covid19Probable"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Apnoea of prematurity",
-                    "concept": "apnoeaOfPrematurity"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Birth injury",
-                    "concept": "birthInjury"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "COPD",
-                    "concept": "copd"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bronchiolitis - obstructive bronchitis",
-                    "concept": "bronchiolitisObstructiveBronchitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bronchospasm",
-                    "concept": "bronchospasm"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cardiogenic shock",
-                    "concept": "cardiogenicShock"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital herpes virus infection",
-                    "concept": "congenitalHerpesVirusInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital malaria",
-                    "concept": "congenitalMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital syphilis",
-                    "concept": "congenitalSyphilis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue suspected",
-                    "concept": "dengueSuspected"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dog bite",
-                    "concept": "dogBite"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Febrile convulsions",
-                    "concept": "febrileConvulsions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hyperglycemia",
-                    "concept": "hyperglycemia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hypoglycemia",
-                    "concept": "hypoglycemia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "hypovolemic_shock",
-                    "concept": "hypovolemicShock"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal conjunctivitis",
-                    "concept": "neonatalConjunctivitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal convulsions",
-                    "concept": "neonatalConvulsions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal jaundice",
-                    "concept": "neonatalJaundice"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal meconial aspiration",
-                    "concept": "neonatalMeconialAspiration"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal Necrotizing Enterocolitis",
-                    "concept": "neonatalNecrotizingEnterocolitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal pneumonia",
-                    "concept": "neonatalPneumonia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal pneumothorax",
-                    "concept": "neonatalPneumothorax"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal tetanus",
-                    "concept": "neonatalTetanus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal tuberculosis",
-                    "concept": "neonatalTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non cardiac congenital pathology",
-                    "concept": "nonCardiacCongenitalPathology"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Newborn to an HIV mother",
-                    "concept": "newbornToAnHivMother"
+                    "label": "Newborn to an HIV+ mother",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Observation",
-                    "concept": "observation"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Perinatal asphyxia and complications",
-                    "concept": "perinatalAsphyxiaAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Prematurity and or low birth weight",
-                    "concept": "prematurityAndOrLowBirthWeight"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Rheumatic heart disease",
-                    "concept": "rheumaticHeartDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Risk of sepsis",
-                    "concept": "riskOfSepsis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Septic shock",
-                    "concept": "septicShock"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Shock uspecified",
-                    "concept": "shockUspecified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe anaemia",
-                    "concept": "severeAnaemia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe dehydration",
-                    "concept": "severeDehydration"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Transient tachypnoea of the newborn",
-                    "concept": "transientTachypnoeaOfTheNewborn"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Varicella",
-                    "concept": "varicella"
+                    "concept": "#N/A"
                   }
                 ]
               }
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2888,351 +2661,351 @@
                 "answers": [
                   {
                     "label": "Acute asthma",
-                    "concept": "acuteAsthma"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Acute febrile illness (<7 days)",
-                    "concept": "acuteFebrileIllness"
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute flaccid paralysis",
-                    "concept": "acuteFlaccidParalysis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bacterial meningitis",
-                    "concept": "bacterialMeningitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Burns",
-                    "concept": "burns"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cholera (suspected)",
-                    "concept": "cholera"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cholera confirmed",
-                    "concept": "choleraConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Complicated ear infection",
-                    "concept": "complicatedEarInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Complications of SCD",
-                    "concept": "complicationsOfScd"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital or acquired cardiac pathology",
-                    "concept": "congenitalOrAcquiredCardiacPathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congestive Heart Failure",
-                    "concept": "congestiveHeartFailure"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cutaneous leishmaniosis",
-                    "concept": "cutaneousLeishmaniosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue confirmed",
-                    "concept": "dengueConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes type 2 and complications",
-                    "concept": "diabetesType2AndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes Type I and complications",
-                    "concept": "diabetesTypeIAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diarrhea (persistent)",
-                    "concept": "diarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diphtheria",
-                    "concept": "diphtheria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Epilepsy - Seizures",
-                    "concept": "epilepsySeizures"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
-                    "concept": "extraPulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Eye diseases (including trachoma)",
-                    "concept": "eyeDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Gynaecological cases",
-                    "concept": "gynaecologicalCases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis A",
-                    "concept": "hepatitisA"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis B",
-                    "concept": "hepatitisB"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis Delta",
-                    "concept": "hepatitisDelta"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis E",
-                    "concept": "hepatitisE"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "HIV Infection confirmed",
-                    "concept": "hivInfectionConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hyperreactive splenomegaly due to malaria",
-                    "concept": "hyperreactiveSplenomegalyDueToMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
-                    "concept": "infectiousDiseasesNotOtherwiseClassified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles (complicated)",
-                    "concept": "measles_1"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles (uncomplicated)",
-                    "concept": "measles_1"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Meningeal TB",
-                    "concept": "meningealTb"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Meningitis unspecified",
-                    "concept": "meningitisUnspecified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Mental and psychiatric conditions",
-                    "concept": "mentalAndPsychiatricConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Moderate acute malnutrition",
-                    "concept": "moderateAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Musculoskeletal conditions (infectious origin)",
-                    "concept": "musculoskeletalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Musculoskeletal conditions (non-infectious)",
-                    "concept": "musculoskeletalConditions"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Necrotizing  bullous skin infections",
-                    "concept": "necrotizingBullousSkinInfections"
+                    "label": "Necrotizing & bullous skin infections",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neglected tropical diseases",
-                    "concept": "neglectedTropicalDiseases"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Nephrotic Syndrome  Acute Glomerulonephritis",
-                    "concept": "nephroticSyndromeAcuteGlomerulonephritis"
+                    "label": "Nephrotic Syndrome & Acute Glomerulonephritis",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cerebral palsy - Neuro disability",
-                    "concept": "cerebralPalsyNeuroDisability"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non urgent surgical conditions",
-                    "concept": "nonUrgentSurgicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Obstetric cases",
-                    "concept": "obstetricCases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Oral and digestive severe candidiasis",
-                    "concept": "oralAndDigestiveSevereCandidiasis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
-                    "concept": "persistentFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Poliomyelitis confirmed",
-                    "concept": "poliomyelitisConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Post surgical infections",
-                    "concept": "postSurgicalInfections"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Pulmonary tuberculosis",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Rabies",
-                    "concept": "rabies"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe Acute Malnutrition (Kwashiorkor)",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe Acute Malnutrition (Marasmus - Kwashiorkor)",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe Acute Malnutrition (Marasmus)",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe malaria",
-                    "concept": "severeMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sexual violence / rape",
-                    "concept": "sexualViolenceOrRape"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sexually transmitted disease (STI)",
-                    "concept": "sexuallyTransmittedDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Shigellosis - Salmonellosis",
-                    "concept": "shigellosisSalmonellosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sickle cell disease",
-                    "concept": "sickleCellDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Simple malaria",
-                    "concept": "simpleMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Skin and soft tissue conditions",
-                    "concept": "skinAndSoftTissueConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Snake bites",
-                    "concept": "snakeBites"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Substance abuse / dependency",
-                    "concept": "substanceAbuseOrDependency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Suspected or confirmed malignancy",
-                    "concept": "suspectedOrConfirmedMalignancy"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Tetanus",
-                    "concept": "tetanus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Toxicity / poisoning",
-                    "concept": "toxicityOrPoisoning"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Typhoid fever",
-                    "concept": "typhoidFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Upper respiratory tract infection",
-                    "concept": "upperRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Urgent surgical conditions",
-                    "concept": "urgentSurgicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Urolithiasis / Renal colic",
-                    "concept": "urolithiasisOrRenalColic"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "utiAndRenalTractAcutePathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Viral haemorrhagic fevers",
-                    "concept": "viralHaemorrhagicFevers"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Visceral leishmaniasis",
-                    "concept": "visceralLeishmaniasis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit A deficiency",
-                    "concept": "vitADeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit B complex deficiency",
-                    "concept": "vitBComplexDeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit C deficiency (scurvy)",
-                    "concept": "vitCDeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit D deficiency (rickets)",
-                    "concept": "vitDDeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Yellow fever",
-                    "concept": "yellowFever_1"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other bites and stings",
-                    "concept": "otherBitesAndStings"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other neonatal conditions",
-                    "concept": "otherNeonatalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other neurological conditions",
-                    "concept": "otherNeurologicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other non communicable diseases",
-                    "concept": "otherNonCommunicableDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other symptoms and abnor. clinical / lab findings",
-                    "concept": "otherSymptomsAndAbnorClinicalOrLabFindings"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other",
@@ -3240,166 +3013,166 @@
                   },
                   {
                     "label": "Covid-19 confirmed",
-                    "concept": "covid19Confirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Covid-19 probable",
-                    "concept": "covid19Probable"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Apnoea of prematurity",
-                    "concept": "apnoeaOfPrematurity"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Birth injury",
-                    "concept": "birthInjury"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bronchiolitis - obstructive bronchitis",
-                    "concept": "bronchiolitisObstructiveBronchitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bronchospasm",
-                    "concept": "bronchospasm"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cardiogenic shock",
-                    "concept": "cardiogenicShock"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital herpes virus infection",
-                    "concept": "congenitalHerpesVirusInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital malaria",
-                    "concept": "congenitalMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital syphilis",
-                    "concept": "congenitalSyphilis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "COPD",
-                    "concept": "copd"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue suspected",
-                    "concept": "dengueSuspected"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dog bite",
-                    "concept": "dogBite"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Febrile convulsions",
-                    "concept": "febrileConvulsions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hyperglycemia",
-                    "concept": "hyperglycemia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hypoglycemia",
-                    "concept": "hypoglycemia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hypovolemic shock",
-                    "concept": "hypovolemicShock"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal conjunctivitis",
-                    "concept": "neonatalConjunctivitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal convulsions",
-                    "concept": "neonatalConvulsions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal jaundice",
-                    "concept": "neonatalJaundice"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal meconial aspiration",
-                    "concept": "neonatalMeconialAspiration"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal Necrotizing Enterocolitis",
-                    "concept": "neonatalNecrotizingEnterocolitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal pneumonia",
-                    "concept": "neonatalPneumonia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal pneumothorax",
-                    "concept": "neonatalPneumothorax"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal tetanus",
-                    "concept": "neonatalTetanus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal tuberculosis",
-                    "concept": "neonatalTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non cardiac congenital pathology",
-                    "concept": "nonCardiacCongenitalPathology"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Newborn to an HIV mother",
-                    "concept": "newbornToAnHivMother"
+                    "label": "Newborn to an HIV+ mother",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Observation",
-                    "concept": "observation"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Perinatal asphyxia and complications",
-                    "concept": "perinatalAsphyxiaAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Prematurity and or low birth weight",
-                    "concept": "prematurityAndOrLowBirthWeight"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Rheumatic heart disease",
-                    "concept": "rheumaticHeartDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Risk of sepsis",
-                    "concept": "riskOfSepsis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Septic shock",
-                    "concept": "septicShock"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Shock uspecified",
-                    "concept": "shockUspecified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe anaemia",
-                    "concept": "severeAnaemia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe dehydration",
-                    "concept": "severeDehydration"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Transient tachypnoea of the newborn",
-                    "concept": "transientTachypnoeaOfTheNewborn"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Varicella",
-                    "concept": "varicella"
+                    "concept": "#N/A"
                   }
                 ]
               }
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -3421,319 +3194,319 @@
                 "answers": [
                   {
                     "label": "Acute asthma",
-                    "concept": "acuteAsthma"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non cardiac congenital pathology",
-                    "concept": "nonCardiacCongenitalPathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal tuberculosis",
-                    "concept": "neonatalTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal tetanus",
-                    "concept": "neonatalTetanus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal pneumothorax",
-                    "concept": "neonatalPneumothorax"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal necrotizing enterocolitis",
-                    "concept": "neonatalNecrotizingEnterocolitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal meconial aspiration",
-                    "concept": "neonatalMeconialAspiration"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal jaundice",
-                    "concept": "neonatalJaundice"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal convulsions",
-                    "concept": "neonatalConvulsions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal conjunctivitis",
-                    "concept": "neonatalConjunctivitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neonatal pneumonia",
-                    "concept": "neonatalPneumonia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Acute febrile illness (<7 days)",
-                    "concept": "acuteFebrileIllness"
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute flaccid paralysis",
-                    "concept": "acuteFlaccidParalysis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Apnoea of prematurity",
-                    "concept": "apnoeaOfPrematurity"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bacterial meningitis",
-                    "concept": "bacterialMeningitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Birth injury",
-                    "concept": "birthInjury"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bronchiolitis - obstructive bronchitis",
-                    "concept": "bronchiolitisObstructiveBronchitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bronchospasm",
-                    "concept": "bronchospasm"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Burns",
-                    "concept": "burns"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cardiogenic shock",
-                    "concept": "cardiogenicShock"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cerebral palsy - Neuro disability",
-                    "concept": "cerebralPalsyNeuroDisability"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cholera (suspected)",
-                    "concept": "cholera"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cholera confirmed",
-                    "concept": "choleraConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Complicated ear infection",
-                    "concept": "complicatedEarInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Complications of SCD",
-                    "concept": "complicationsOfScd"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital herpes virus infection",
-                    "concept": "congenitalHerpesVirusInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital malaria",
-                    "concept": "congenitalMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital or acquired cardiac pathology",
-                    "concept": "congenitalOrAcquiredCardiacPathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital syphilis",
-                    "concept": "congenitalSyphilis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congestive Heart Failure",
-                    "concept": "congestiveHeartFailure"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "COPD",
-                    "concept": "copd"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Covid-19 confirmed",
-                    "concept": "covid19Confirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Covid-19 probable",
-                    "concept": "covid19Probable"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cutaneous leishmaniosis",
-                    "concept": "cutaneousLeishmaniosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue confirmed",
-                    "concept": "dengueConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue suspected",
-                    "concept": "dengueSuspected"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes type 2 and complications",
-                    "concept": "diabetesType2AndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes Type I and complications",
-                    "concept": "diabetesTypeIAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diarrhea (persistent)",
-                    "concept": "diarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diphtheria",
-                    "concept": "diphtheria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dog bite",
-                    "concept": "dogBite"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Epilepsy - Seizures",
-                    "concept": "epilepsySeizures"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
-                    "concept": "extraPulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Eye diseases (including trachoma)",
-                    "concept": "eyeDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Febrile convulsions",
-                    "concept": "febrileConvulsions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Gynaecological cases",
-                    "concept": "gynaecologicalCases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis A",
-                    "concept": "hepatitisA"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis B",
-                    "concept": "hepatitisB"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis Delta",
-                    "concept": "hepatitisDelta"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis E",
-                    "concept": "hepatitisE"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "HIV Infection confirmed",
-                    "concept": "hivInfectionConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hyperglycemia",
-                    "concept": "hyperglycemia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hyperreactive splenomegaly due to malaria",
-                    "concept": "hyperreactiveSplenomegalyDueToMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hypoglycemia",
-                    "concept": "hypoglycemia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hypovolemic shock",
-                    "concept": "hypovolemicShock"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
-                    "concept": "infectiousDiseasesNotOtherwiseClassified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles (complicated)",
-                    "concept": "measles_1"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles (uncomplicated)",
-                    "concept": "measles_1"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Meningeal TB",
-                    "concept": "meningealTb"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Meningitis unspecified",
-                    "concept": "meningitisUnspecified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Mental and psychiatric conditions",
-                    "concept": "mentalAndPsychiatricConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Moderate acute malnutrition",
-                    "concept": "moderateAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Musculoskeletal conditions (infectious origin)",
-                    "concept": "musculoskeletalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Musculoskeletal conditions (non-infectious)",
-                    "concept": "musculoskeletalConditions"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Necrotizing  bullous skin infections",
-                    "concept": "necrotizingBullousSkinInfections"
+                    "label": "Necrotizing & bullous skin infections",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neglected tropical diseases",
-                    "concept": "neglectedTropicalDiseases"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Nephrotic Syndrome  Acute Glomerulonephritis",
-                    "concept": "nephroticSyndromeAcuteGlomerulonephritis"
+                    "label": "Nephrotic Syndrome & Acute Glomerulonephritis",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non urgent surgical conditions",
-                    "concept": "nonUrgentSurgicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Obstetric cases",
-                    "concept": "obstetricCases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Oral and digestive severe candidiasis",
-                    "concept": "oralAndDigestiveSevereCandidiasis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other bites and stings",
-                    "concept": "otherBitesAndStings"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other neonatal conditions",
-                    "concept": "otherNeonatalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other neurological conditions",
-                    "concept": "otherNeurologicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other non communicable diseases",
-                    "concept": "otherNonCommunicableDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other symptoms and abnor. clinical / lab findings",
-                    "concept": "otherSymptomsAndAbnorClinicalOrLabFindings"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other",
@@ -3741,194 +3514,194 @@
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
-                    "concept": "persistentFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Poliomyelitis confirmed",
-                    "concept": "poliomyelitisConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Post surgical infections",
-                    "concept": "postSurgicalInfections"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Pulmonary tuberculosis",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Rabies",
-                    "concept": "rabies"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe Acute Malnutrition (Kwashiorkor)",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe Acute Malnutrition (Marasmus - Kwashiorkor)",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe Acute Malnutrition (Marasmus)",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe malaria",
-                    "concept": "severeMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sexual violence / rape",
-                    "concept": "sexualViolenceOrRape"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Shigellosis - Salmonellosis",
-                    "concept": "shigellosisSalmonellosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sickle cell disease",
-                    "concept": "sickleCellDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Simple malaria",
-                    "concept": "simpleMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Skin and soft tissue conditions",
-                    "concept": "skinAndSoftTissueConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Snake bites",
-                    "concept": "snakeBites"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Substance abuse / dependency",
-                    "concept": "substanceAbuseOrDependency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Suspected or confirmed malignancy",
-                    "concept": "suspectedOrConfirmedMalignancy"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Tetanus",
-                    "concept": "tetanus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Toxicity / poisoning",
-                    "concept": "toxicityOrPoisoning"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Typhoid fever",
-                    "concept": "typhoidFever"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Newborn to an HIV mother",
-                    "concept": "newbornToAnHivMother"
+                    "label": "Newborn to an HIV+ mother",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sexually transmitted disease (STI)",
-                    "concept": "sexuallyTransmittedDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Upper respiratory tract infection",
-                    "concept": "upperRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Urgent surgical conditions",
-                    "concept": "urgentSurgicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Urolithiasis / Renal colic",
-                    "concept": "urolithiasisOrRenalColic"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "utiAndRenalTractAcutePathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Viral haemorrhagic fevers",
-                    "concept": "viralHaemorrhagicFevers"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Visceral leishmaniasis",
-                    "concept": "visceralLeishmaniasis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit A deficiency",
-                    "concept": "vitADeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit B complex deficiency",
-                    "concept": "vitBComplexDeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit C deficiency (scurvy)",
-                    "concept": "vitCDeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Vit D deficiency (rickets)",
-                    "concept": "vitDDeficiency"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Yellow fever",
-                    "concept": "yellowFever_1"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Observation",
-                    "concept": "observation"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Perinatal asphyxia and complications",
-                    "concept": "perinatalAsphyxiaAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Prematurity and/or low birth weight",
-                    "concept": "prematurityAndOrOrLowBirthWeight"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Rheumatic heart disease",
-                    "concept": "rheumaticHeartDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Risk of sepsis",
-                    "concept": "riskOfSepsis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Septic shock",
-                    "concept": "septicShock"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Shock uspecified",
-                    "concept": "shockUspecified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe anaemia",
-                    "concept": "severeAnaemia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe dehydration",
-                    "concept": "severeDehydration"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Transient tachypnoea of the newborn",
-                    "concept": "transientTachypnoeaOfTheNewborn"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Varicella",
-                    "concept": "varicella"
+                    "concept": "#N/A"
                   }
                 ]
               }
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -4182,7 +3955,7 @@
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -4230,99 +4003,99 @@
                 "answers": [
                   {
                     "label": "Acute asthma",
-                    "concept": "acuteAsthma"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Anaphylaxis",
-                    "concept": "anaphylaxis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Arythmia",
-                    "concept": "arythmia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bacterial meningitis",
-                    "concept": "bacterialMeningitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Central nervous system failure",
-                    "concept": "centralNervousSystemFailure"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cholera (suspected)",
-                    "concept": "cholera"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cholera confirmed",
-                    "concept": "choleraConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Complications of HIV",
-                    "concept": "complicationsOfHiv"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Complications of sickle cell disease",
-                    "concept": "complicationsOfSickleCellDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital malformation",
-                    "concept": "congenitalMalformation"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue",
-                    "concept": "dengue"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes and complications",
-                    "concept": "diabetesAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diphtheria",
-                    "concept": "diphtheria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Epilepsy",
-                    "concept": "epilepsy"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis B",
-                    "concept": "hepatitisB"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis C",
-                    "concept": "hepatitisC"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles and complications",
-                    "concept": "measlesAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Meningeal TB",
-                    "concept": "meningealTb"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Meningitis unspecified",
-                    "concept": "meningitisUnspecified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other",
@@ -4330,103 +4103,103 @@
                   },
                   {
                     "label": "Perinatal asphyxia",
-                    "concept": "perinatalAsphyxia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Poliomyelitis confirmed",
-                    "concept": "poliomyelitisConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Prematurity and/or low birth weight",
-                    "concept": "prematurityAndOrOrLowBirthWeight"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Pulmonary tuberculosis",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Rabies",
-                    "concept": "rabies"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Renal failure",
-                    "concept": "renalFailure"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Respiratory failure",
-                    "concept": "respiratoryFailure"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sepsis",
-                    "concept": "sepsis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe acute malnutrition",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe malaria",
-                    "concept": "severeMalaria"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Shock cardiogenic",
-                    "concept": "shockCardiogenic"
+                    "label": "Shock: cardiogenic",
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Shock haemorrhagic",
-                    "concept": "shockHaemorrhagic"
+                    "label": "Shock: haemorrhagic",
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Shock hypovolaemic",
-                    "concept": "shockHypovolaemic"
+                    "label": "Shock: hypovolaemic",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Snake bites",
-                    "concept": "snakeBites"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Stroke / CVA",
-                    "concept": "strokeOrCva"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Suspected or confirmed malignancy",
-                    "concept": "suspectedOrConfirmedMalignancy"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Tetanus",
-                    "concept": "tetanus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Toxicity / poisoning",
-                    "concept": "toxicityOrPoisoning"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Typhoid fever",
-                    "concept": "typhoidFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Traumatic brain injury",
-                    "concept": "traumaticBrainInjury"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Viral haemorrhagic fevers",
-                    "concept": "viralHaemorrhagicFevers"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Visceral leishmaniasis",
-                    "concept": "visceralLeishmaniasis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Yellow fever",
-                    "concept": "yellowFever_1"
+                    "concept": "#N/A"
                   }
                 ]
               },
@@ -4436,7 +4209,7 @@
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -4480,7 +4253,7 @@
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -4525,7 +4298,7 @@
           "questions": [
             {
               "id": "pleaseCheckInimmunizationsTheVaccinationStatusOfTheMotherAndAccompanyingChildren",
-              "label": "Please check in immunizations (update if necessary) the vaccination status of the mother (tetanus) and accompanying children",
+              "label": "Please check in \"immunizations\" (update if necessary) the vaccination status of the mother (tetanus) and accompanying children",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -4547,7 +4320,7 @@
             },
             {
               "id": "inappointmentsSetTheNextDateForFollowUpWheneverNecessary",
-              "label": "In Appointments set the next date for follow up whenever necessary",
+              "label": "In \"Appointments\" set the next date for follow up whenever necessary",
               "type": "obs",
               "required": false,
               "questionOptions": {

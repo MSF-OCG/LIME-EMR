@@ -27,22 +27,22 @@
                 "answers": [
                   {
                     "label": "Admission",
-                    "concept": "admission"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Follow up",
-                    "concept": "followUp"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Discharge",
-                    "concept": "discharge"
+                    "concept": "#N/A"
                   }
                 ]
               }
             },
             {
               "id": "caretakersName",
-              "label": "Caretakers name",
+              "label": "Caretaker's name",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -72,7 +72,7 @@
               },
               "default": "Current date/time",
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'admission'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -98,20 +98,20 @@
                   },
                   {
                     "label": "Movement from ITFC",
-                    "concept": "movementFromItfc"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Movement from ATFC",
-                    "concept": "movementFromAtfc"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Patient referred",
-                    "concept": "patientReferred"
+                    "concept": "#N/A"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'admission'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -125,19 +125,19 @@
                 "answers": [
                   {
                     "label": "MUAC AND Weight/Height",
-                    "concept": "muacAndWeightOrHeight"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "MUAC only",
-                    "concept": "muacOnly"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Weight/Height only",
-                    "concept": "weightOrHeightOnly"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Oedema",
-                    "concept": "oedema"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other",
@@ -146,7 +146,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'admission'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -172,7 +172,7 @@
                 "concept": "referralDate"
               },
               "hide": {
-                "hideWhenExpression": "admissionType !== 'patientReferred'"
+                "hideWhenExpression": "admissionType !== '#N/A'"
               }
             },
             {
@@ -207,7 +207,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "admissionType !== 'patientReferred'"
+                "hideWhenExpression": "admissionType !== '#N/A'"
               }
             },
             {
@@ -337,20 +337,20 @@
                 "concept": "dehydration",
                 "answers": [
                   {
-                    "label": " +",
-                    "concept": "plus"
+                    "label": " + ",
+                    "concept": "#N/A"
                   },
                   {
                     "label": " ++",
-                    "concept": "plusPlus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": " +++",
-                    "concept": "plusPlusPlus"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "nan",
-                    "concept": "nan"
+                    "label": "None",
+                    "concept": "#N/A"
                   }
                 ]
               }
@@ -365,20 +365,20 @@
                 "concept": "anaemia",
                 "answers": [
                   {
-                    "label": " +",
-                    "concept": "plus"
+                    "label": " + ",
+                    "concept": "#N/A"
                   },
                   {
                     "label": " ++",
-                    "concept": "plusPlus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": " +++",
-                    "concept": "plusPlusPlus"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "nan",
-                    "concept": "nan"
+                    "label": "None",
+                    "concept": "#N/A"
                   }
                 ]
               }
@@ -393,20 +393,20 @@
                 "concept": "oedema",
                 "answers": [
                   {
-                    "label": " +",
-                    "concept": "plus"
+                    "label": " + ",
+                    "concept": "#N/A"
                   },
                   {
                     "label": " ++",
-                    "concept": "plusPlus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": " +++",
-                    "concept": "plusPlusPlus"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "nan",
-                    "concept": "nan"
+                    "label": "None",
+                    "concept": "#N/A"
                   }
                 ]
               }
@@ -453,7 +453,7 @@
             },
             {
               "id": "rutf",
-              "label": "RUTF (type and qty/day) ",
+              "label": "RUTF (type and qty/day) ",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -489,7 +489,7 @@
             },
             {
               "id": "fillInvitalsBiometricsWithTheMeasurementsOfWeightHeightMuacTemperatureAndRRate",
-              "label": "Fill in Vitals  Biometrics with the measurements of Weight Height MUAC Temperature and R. rate",
+              "label": "Fill in \"Vitals & Biometrics\" with the measurements of Weight, Height, MUAC, Temperature and R. rate",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -498,7 +498,7 @@
                 "workspaceName": "patient-vitals-biometrics-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -522,7 +522,7 @@
           "questions": [
             {
               "id": "checkInvitalsBiometricsToComplete",
-              "label": "Check in Vitals  Biometrics to complete",
+              "label": "Check in \"Vitals & Biometrics\" to complete",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -531,7 +531,7 @@
                 "workspaceName": "patient-vitals-biometrics-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -541,12 +541,13 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "weight"
+                "concept": "weight",
+                "answers": []
               },
               "disallowDecimals": false,
               "default": "Value of first ATFC form (but keep editable)",
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -559,7 +560,7 @@
                 "concept": "weightOrHeight",
                 "answers": [
                   {
-                    "label": "-3  -2 Zs",
+                    "label": "[-3 ; -2 Zs[",
                     "concept": "6a48b558-b61d-4be7-9c13-c9279f396bbc"
                   },
                   {
@@ -567,17 +568,17 @@
                     "concept": "a456ad55-006a-4f90-b03e-8d608e85194b"
                   },
                   {
-                    "label": "> -2 Zs",
+                    "label": ">= -2 Zs",
                     "concept": "4eca905b-97ca-4c48-9408-2dece451ab2a"
                   },
                   {
                     "label": "Not relevant",
-                    "concept": "notRelevant"
+                    "concept": "#N/A"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -587,10 +588,11 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "muac"
+                "concept": "muac",
+                "answers": []
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             }
           ]
@@ -606,11 +608,12 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "weight"
+                "concept": "weight",
+                "answers": []
               },
               "disallowDecimals": false,
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -623,7 +626,7 @@
                 "concept": "weightOrHeight",
                 "answers": [
                   {
-                    "label": "-3  -2 Zs",
+                    "label": "[-3 ; -2 Zs[",
                     "concept": "6a48b558-b61d-4be7-9c13-c9279f396bbc"
                   },
                   {
@@ -631,17 +634,17 @@
                     "concept": "a456ad55-006a-4f90-b03e-8d608e85194b"
                   },
                   {
-                    "label": "> -2 Zs",
+                    "label": ">= -2 Zs",
                     "concept": "4eca905b-97ca-4c48-9408-2dece451ab2a"
                   },
                   {
                     "label": "Not relevant",
-                    "concept": "notRelevant"
+                    "concept": "#N/A"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -651,10 +654,11 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "muac"
+                "concept": "muac",
+                "answers": []
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             }
           ]
@@ -682,7 +686,7 @@
                   },
                   {
                     "label": "Not done",
-                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                    "concept": "\u00a0a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
                   }
                 ]
               }
@@ -724,75 +728,75 @@
                 "answers": [
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Acute febrile illness (<7 days)",
-                    "concept": "acuteFebrileIllness"
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute flaccid paralysis",
-                    "concept": "acuteFlaccidParalysis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cutaneous leishmaniosis",
-                    "concept": "cutaneousLeishmaniosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue suspected",
-                    "concept": "dengueSuspected"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes and complications",
-                    "concept": "diabetesAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diarrhea (persistent)",
-                    "concept": "diarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
-                    "concept": "extraPulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Eye diseases (including trachoma)",
-                    "concept": "eyeDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "HIV Infection suspected",
-                    "concept": "hivInfectionSuspected"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
-                    "concept": "infectiousDiseasesNotOtherwiseClassified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles (suspected)",
-                    "concept": "measles"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Mental and psychiatric conditions",
-                    "concept": "mentalAndPsychiatricConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neglected tropical diseases",
-                    "concept": "neglectedTropicalDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other",
@@ -800,52 +804,52 @@
                   },
                   {
                     "label": "Other neurological conditions",
-                    "concept": "otherNeurologicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other symptoms and abnor. clinical / lab findings",
-                    "concept": "otherSymptomsAndAbnorClinicalOrLabFindings"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
-                    "concept": "persistentFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Pulmonary tuberculosis (suspected)",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sexually transmitted disease (STI)",
-                    "concept": "sexuallyTransmittedDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sickle cell disease",
-                    "concept": "sickleCellDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Simple malaria",
-                    "concept": "simpleMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Skin and soft tissue conditions",
-                    "concept": "skinAndSoftTissueConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "utiAndRenalTractAcutePathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "#N/A"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             }
           ]
@@ -865,75 +869,75 @@
                 "answers": [
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Acute febrile illness (<7 days)",
-                    "concept": "acuteFebrileIllness"
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute flaccid paralysis",
-                    "concept": "acuteFlaccidParalysis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cutaneous leishmaniosis",
-                    "concept": "cutaneousLeishmaniosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue suspected",
-                    "concept": "dengueSuspected"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes and complications",
-                    "concept": "diabetesAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diarrhea (persistent)",
-                    "concept": "diarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
-                    "concept": "extraPulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Eye diseases (including trachoma)",
-                    "concept": "eyeDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "HIV Infection suspected",
-                    "concept": "hivInfectionSuspected"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
-                    "concept": "infectiousDiseasesNotOtherwiseClassified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles (suspected)",
-                    "concept": "measles"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Mental and psychiatric conditions",
-                    "concept": "mentalAndPsychiatricConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neglected tropical diseases",
-                    "concept": "neglectedTropicalDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other",
@@ -941,62 +945,63 @@
                   },
                   {
                     "label": "Other neurological conditions",
-                    "concept": "otherNeurologicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other symptoms and abnor. clinical / lab findings",
-                    "concept": "otherSymptomsAndAbnorClinicalOrLabFindings"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
-                    "concept": "persistentFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Pulmonary tuberculosis (suspected)",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sexually transmitted disease (STI)",
-                    "concept": "sexuallyTransmittedDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sickle cell disease",
-                    "concept": "sickleCellDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Simple malaria",
-                    "concept": "simpleMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Skin and soft tissue conditions",
-                    "concept": "skinAndSoftTissueConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "utiAndRenalTractAcutePathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "#N/A"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "ifOtherSpecify"
+                "concept": "ifOtherSpecify",
+                "answers": []
               },
               "hide": {
                 "hideWhenExpression": "diseasesTreatedDuringTheStayMostSerious !== 'other'"
@@ -1013,17 +1018,18 @@
                 "answers": []
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "ifOtherSpecify"
+                "concept": "ifOtherSpecify",
+                "answers": []
               },
               "hide": {
                 "hideWhenExpression": "diseasesTreatedDuringTheStaySecondary1 !== 'other'"
@@ -1040,75 +1046,75 @@
                 "answers": [
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Acute febrile illness (<7 days)",
-                    "concept": "acuteFebrileIllness"
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute flaccid paralysis",
-                    "concept": "acuteFlaccidParalysis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cutaneous leishmaniosis",
-                    "concept": "cutaneousLeishmaniosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue suspected",
-                    "concept": "dengueSuspected"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes and complications",
-                    "concept": "diabetesAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diarrhea (persistent)",
-                    "concept": "diarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
-                    "concept": "extraPulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Eye diseases (including trachoma)",
-                    "concept": "eyeDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "HIV Infection suspected",
-                    "concept": "hivInfectionSuspected"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
-                    "concept": "infectiousDiseasesNotOtherwiseClassified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles (suspected)",
-                    "concept": "measles"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Mental and psychiatric conditions",
-                    "concept": "mentalAndPsychiatricConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neglected tropical diseases",
-                    "concept": "neglectedTropicalDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other",
@@ -1116,62 +1122,63 @@
                   },
                   {
                     "label": "Other neurological conditions",
-                    "concept": "otherNeurologicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other symptoms and abnor. clinical / lab findings",
-                    "concept": "otherSymptomsAndAbnorClinicalOrLabFindings"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
-                    "concept": "persistentFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Pulmonary tuberculosis (suspected)",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sexually transmitted disease (STI)",
-                    "concept": "sexuallyTransmittedDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sickle cell disease",
-                    "concept": "sickleCellDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Simple malaria",
-                    "concept": "simpleMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Skin and soft tissue conditions",
-                    "concept": "skinAndSoftTissueConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "utiAndRenalTractAcutePathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "#N/A"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "ifOtherSpecify"
+                "concept": "ifOtherSpecify",
+                "answers": []
               },
               "hide": {
                 "hideWhenExpression": "diseasesTreatedDuringTheStaySecondary2 !== 'other'"
@@ -1188,75 +1195,75 @@
                 "answers": [
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Acute febrile illness (<7 days)",
-                    "concept": "acuteFebrileIllness"
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute flaccid paralysis",
-                    "concept": "acuteFlaccidParalysis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cutaneous leishmaniosis",
-                    "concept": "cutaneousLeishmaniosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue suspected",
-                    "concept": "dengueSuspected"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes and complications",
-                    "concept": "diabetesAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diarrhea (persistent)",
-                    "concept": "diarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
-                    "concept": "extraPulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Eye diseases (including trachoma)",
-                    "concept": "eyeDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "HIV Infection suspected",
-                    "concept": "hivInfectionSuspected"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
-                    "concept": "infectiousDiseasesNotOtherwiseClassified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles (suspected)",
-                    "concept": "measles"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Mental and psychiatric conditions",
-                    "concept": "mentalAndPsychiatricConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Neglected tropical diseases",
-                    "concept": "neglectedTropicalDiseases"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other",
@@ -1264,62 +1271,63 @@
                   },
                   {
                     "label": "Other neurological conditions",
-                    "concept": "otherNeurologicalConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other symptoms and abnor. clinical / lab findings",
-                    "concept": "otherSymptomsAndAbnorClinicalOrLabFindings"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
-                    "concept": "persistentFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Pulmonary tuberculosis (suspected)",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sexually transmitted disease (STI)",
-                    "concept": "sexuallyTransmittedDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sickle cell disease",
-                    "concept": "sickleCellDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Simple malaria",
-                    "concept": "simpleMalaria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Skin and soft tissue conditions",
-                    "concept": "skinAndSoftTissueConditions"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "utiAndRenalTractAcutePathology"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "#N/A"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "ifOtherSpecify"
+                "concept": "ifOtherSpecify",
+                "answers": []
               },
               "hide": {
                 "hideWhenExpression": "diseasesTreatedDuringTheStaySecondary3 !== 'other'"
@@ -1359,11 +1367,12 @@
               "required": false,
               "questionOptions": {
                 "rendering": "date",
-                "concept": "dischargeDate"
+                "concept": "dischargeDate",
+                "answers": []
               },
               "default": "Current date (but keep editable)",
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -1381,7 +1390,7 @@
                   },
                   {
                     "label": "Deceased",
-                    "concept": "deceased"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Defaulter",
@@ -1389,11 +1398,11 @@
                   },
                   {
                     "label": "Discharge on demand",
-                    "concept": "dischargeOnDemand"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non-responding",
-                    "concept": "nonResponding"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other",
@@ -1401,28 +1410,28 @@
                   },
                   {
                     "label": "Referal to another structure",
-                    "concept": "referalToAnotherStructure"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Stabilized and referred to MSF ATFC",
-                    "concept": "stabilizedAndReferredToMsfAtfc"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Referred to non-MSF ATFC",
-                    "concept": "referredToNonMsfAtfc"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Transferred to ITFC (severe pathology)",
-                    "concept": "transferredToItfc"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Transferred to ITFC (stagnant weight)",
-                    "concept": "transferredToItfc"
+                    "concept": "#N/A"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -1432,10 +1441,11 @@
               "required": false,
               "questionOptions": {
                 "rendering": "datetime",
-                "concept": "dateAndTimeOfDeath"
+                "concept": "dateAndTimeOfDeath",
+                "answers": []
               },
               "hide": {
-                "hideWhenExpression": "outcomeOfTheStayInAtfc !== 'deceased'"
+                "hideWhenExpression": "outcomeOfTheStayInAtfc !== '#N/A'"
               }
             },
             {
@@ -1449,99 +1459,99 @@
                 "answers": [
                   {
                     "label": "Acute asthma",
-                    "concept": "acuteAsthma"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Anaphylaxis",
-                    "concept": "anaphylaxis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Arythmia",
-                    "concept": "arythmia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Bacterial meningitis",
-                    "concept": "bacterialMeningitis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Central nervous system failure",
-                    "concept": "centralNervousSystemFailure"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cholera (suspected)",
-                    "concept": "cholera"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Cholera confirmed",
-                    "concept": "choleraConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Complications of HIV",
-                    "concept": "complicationsOfHiv"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Complications of sickle cell disease",
-                    "concept": "complicationsOfSickleCellDisease"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Congenital malformation",
-                    "concept": "congenitalMalformation"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Dengue",
-                    "concept": "dengue"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diabetes and complications",
-                    "concept": "diabetesAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Diphtheria",
-                    "concept": "diphtheria"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Epilepsy",
-                    "concept": "epilepsy"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis B",
-                    "concept": "hepatitisB"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Hepatitis C",
-                    "concept": "hepatitisC"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Measles and complications",
-                    "concept": "measlesAndComplications"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Meningeal TB",
-                    "concept": "meningealTb"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Meningitis unspecified",
-                    "concept": "meningitisUnspecified"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Other",
@@ -1549,108 +1559,108 @@
                   },
                   {
                     "label": "Perinatal asphyxia",
-                    "concept": "perinatalAsphyxia"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Poliomyelitis confirmed",
-                    "concept": "poliomyelitisConfirmed"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Prematurity and/or low birth weight",
-                    "concept": "prematurityAndOrOrLowBirthWeight"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Pulmonary tuberculosis",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Rabies",
-                    "concept": "rabies"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Renal failure",
-                    "concept": "renalFailure"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Respiratory failure",
-                    "concept": "respiratoryFailure"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Sepsis",
-                    "concept": "sepsis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe acute malnutrition",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Severe malaria",
-                    "concept": "severeMalaria"
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Shock cardiogenic",
-                    "concept": "shockCardiogenic"
+                    "label": "Shock: cardiogenic",
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Shock haemorrhagic",
-                    "concept": "shockHaemorrhagic"
+                    "label": "Shock: haemorrhagic",
+                    "concept": "#N/A"
                   },
                   {
-                    "label": "Shock hypovolaemic",
-                    "concept": "shockHypovolaemic"
+                    "label": "Shock: hypovolaemic",
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Snake bites",
-                    "concept": "snakeBites"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Stroke / CVA",
-                    "concept": "strokeOrCva"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Suspected or confirmed malignancy",
-                    "concept": "suspectedOrConfirmedMalignancy"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Tetanus",
-                    "concept": "tetanus"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Toxicity / poisoning",
-                    "concept": "toxicityOrPoisoning"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Typhoid fever",
-                    "concept": "typhoidFever"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Traumatic brain injury",
-                    "concept": "traumaticBrainInjury"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Viral haemorrhagic fevers",
-                    "concept": "viralHaemorrhagicFevers"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Visceral leishmaniasis",
-                    "concept": "visceralLeishmaniasis"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "#N/A"
                   },
                   {
                     "label": "Yellow fever",
-                    "concept": "yellowFever"
+                    "concept": "#N/A"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "outcomeOfTheStayInAtfc !== 'deceased'"
+                "hideWhenExpression": "outcomeOfTheStayInAtfc !== '#N/A'"
               }
             }
           ]
@@ -1661,7 +1671,7 @@
           "questions": [
             {
               "id": "checkimmunizationAndUpdatePossibleMissingVaccines",
-              "label": "Check Immunization and update possible missing vaccines",
+              "label": "Check \"Immunization\" and update possible missing vaccines",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1670,7 +1680,7 @@
                 "workspaceName": "immunization-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -1697,7 +1707,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -1720,7 +1730,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1747,7 +1757,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -1770,7 +1780,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1809,7 +1819,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -1832,7 +1842,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1875,7 +1885,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -1898,7 +1908,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1929,7 +1939,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -1952,7 +1962,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1991,7 +2001,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -2014,7 +2024,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -2049,7 +2059,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -2072,7 +2082,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -2099,7 +2109,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -2122,7 +2132,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -2157,7 +2167,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -2180,7 +2190,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -2211,7 +2221,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -2234,7 +2244,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             }
           ]
@@ -2245,7 +2255,7 @@
           "questions": [
             {
               "id": "st",
-              "label": "st",
+              "label": "1st",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2263,12 +2273,12 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
               "id": "nd",
-              "label": "nd",
+              "label": "2nd",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2286,12 +2296,12 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
               "id": "rd",
-              "label": "rd",
+              "label": "3rd",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2309,12 +2319,12 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
               "id": "th",
-              "label": "th",
+              "label": "4th",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2332,7 +2342,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -2355,7 +2365,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -2378,7 +2388,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             }
           ]
@@ -2394,7 +2404,7 @@
           "questions": [
             {
               "id": "pleaseCheckInimmunizations",
-              "label": "Please check in Immunizations (update it if necessary)",
+              "label": "Please check in \"Immunizations\" (update it if necessary)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2403,12 +2413,12 @@
                 "workspaceName": "immunization-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
               "id": "pleaseCheckInmedications",
-              "label": "Please check in Medications (update it if necessary)",
+              "label": "Please check in \"Medications\" (update it if necessary)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2417,7 +2427,7 @@
                 "workspaceName": "medications-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -2433,7 +2443,7 @@
             },
             {
               "id": "inappointmentsSetTheNextDateForFollowUp",
-              "label": "In Appointments set the next date for follow up",
+              "label": "In \"Appointments\" set the next date for follow up",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2442,12 +2452,16 @@
                 "workspaceName": "appointments-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "Invalid expression format"
               }
             }
           ]
         }
       ]
+    },
+    {
+      "label": "None",
+      "sections": []
     }
   ]
 }

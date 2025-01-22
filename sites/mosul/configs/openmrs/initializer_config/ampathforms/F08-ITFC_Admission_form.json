@@ -1,5 +1,5 @@
 {
-  "name": "F08-ITFC Admission form",
+  "name": "MSF Nutrition - ITFC Admission",
   "description": "MSF Form - F08-ITFC Admission form",
   "version": "1",
   "published": true,
@@ -18,7 +18,7 @@
           "questions": [
             {
               "id": "caretakersName",
-              "label": "Caretakers name",
+              "label": "Caretaker's name",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -33,7 +33,10 @@
               "required": false,
               "questionOptions": {
                 "rendering": "datetime",
-                "concept": "7f00c65d-de60-467a-8964-fe80c7a85ef0"
+                "concept": "7f00c65d-de60-467a-8964-fe80c7a85ef0",
+                "calculate": {
+                  "calculateExpression": "new Date()"
+                }
               },
               "default": "Current date and time"
             },
@@ -87,7 +90,7 @@
             },
             {
               "id": "ifReferredByWhomOrFromWhere",
-              "label": "If referred by whom/from where",
+              "label": "If referred, by whom/from where",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -130,7 +133,7 @@
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -138,7 +141,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "isEmpty(ifReferredByWhomOrFromWhere) || ifReferredByWhomOrFromWhere !== 'ifReferredByWhomOrFromWhereOther'"
               }
             }
           ]
@@ -154,7 +157,7 @@
           "questions": [
             {
               "id": "howLongHasTheChildBeenSick",
-              "label": "How long has the child been sick",
+              "label": "How long has the child been sick?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -164,7 +167,7 @@
             },
             {
               "id": "whatAreTheProblemsReportedByTheCaretaker",
-              "label": "What are the problems reported by the caretaker",
+              "label": "What are the problems reported by the caretaker?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -174,7 +177,7 @@
             },
             {
               "id": "isThereSomeoneInTheFamilyCoughingForMoreThanOneMonth",
-              "label": "Is there someone in the family coughing for more than one month",
+              "label": "Is there someone in the family coughing for more than one month?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -207,7 +210,7 @@
             },
             {
               "id": "isThereSomeoneTreatedForTbSinceTheBirthOfTheChild",
-              "label": "Is there someone treated for TB since the birth of the child",
+              "label": "Is there someone treated for TB since the birth of the child?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -246,7 +249,7 @@
           "questions": [
             {
               "id": "hasTheChildEverBeenBreastfed",
-              "label": "Has the child ever been breastfed",
+              "label": "Has the child ever been breastfed?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -266,7 +269,7 @@
             },
             {
               "id": "isTheChildCurrentlyBeingBreastfed",
-              "label": "Is the child currently being breastfed",
+              "label": "Is the child currently being breastfed?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -289,7 +292,7 @@
             },
             {
               "id": "atWhatAgeDidYouIntroduceSolidFood",
-              "label": "At what age did you introduce solid food",
+              "label": "At what age did you introduce solid food?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -299,7 +302,7 @@
             },
             {
               "id": "typeOfMealsBeforeIllness",
-              "label": "Type of meals before illness (breastfeeding porridge vegetables etc.)",
+              "label": "Type of meals before illness (breastfeeding, porridge, vegetables, etc.)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -335,7 +338,7 @@
           "questions": [
             {
               "id": "whoIsTheHeadOfFamily",
-              "label": "Who is the head of family",
+              "label": "Who is the head of family?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -359,7 +362,7 @@
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -372,7 +375,7 @@
             },
             {
               "id": "isTheMotherAlive",
-              "label": "Is the mother alive",
+              "label": "Is the mother alive?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -392,7 +395,7 @@
             },
             {
               "id": "whoIsTakingCareOfTheChild",
-              "label": "Who is taking care of the child",
+              "label": "Who is taking care of the child?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -407,18 +410,28 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "76a96d44-00f5-469f-9329-5a53409a87eb"
+                "concept": "76a96d44-00f5-469f-9329-5a53409a87eb",
+                "max": "20",
+                "min": "1"
               }
             },
             {
               "id": "numberOfMothersChildrenAlive",
-              "label": "Number of mothers children alive",
+              "label": "Number of mother's children alive",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "bfaee905-6a8f-4b4d-b66b-fe020d1ca3d8"
-              }
+                "concept": "bfaee905-6a8f-4b4d-b66b-fe020d1ca3d8",
+                "min": "1"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "numberOfBirthsForTheMother < numberOfMothersChildrenAlive",
+                  "message": "Value should be less than Number of births for the mother"
+                }
+              ]
             },
             {
               "id": "rankInTheBirthOrder",
@@ -427,8 +440,16 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "42503e1b-16f2-471e-a122-c914655f6cca"
-              }
+                "concept": "42503e1b-16f2-471e-a122-c914655f6cca",
+                "min": "1"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "numberOfBirthsForTheMother < rankInTheBirthOrder",
+                  "message": "Value should be less than Number of births for the mother"
+                }
+              ]
             },
             {
               "id": "theChildIs",
@@ -436,9 +457,8 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Open Workspace",
-                "workspaceName": "multiCheckbox",
+                "rendering": "multiCheckbox",
+                "concept": "caed563a-0922-4df5-bb9a-95033e63cb71",
                 "answers": [
                   {
                     "label": "Adopted",
@@ -551,7 +571,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": ""
+                "hideWhenExpression": "antitetanusVaccinationOfTheMother !== 'unknown' && antitetanusVaccinationOfTheMother !== 'notVaccinated'"
               }
             }
           ]
@@ -567,8 +587,7 @@
           "questions": [
             {
               "id": "pleaseCheckInvitalsBiometricsFortemperaturerRateweightheightAndmuacAndAddTodaysMeasurements",
-              "label": "Please check in Vitals  Biometrics for Temperature R. rate Weight Height and MUAC AND add todays measurements",
-              "type": "obs",
+              "label": "Please check in \"Vitals & Biometrics\" for \"Temperature\", \"R. rate\" \"Weight\", \"Height\" and \"MUAC\" AND add today's measurements",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -590,11 +609,11 @@
                     "concept": "a456ad55-006a-4f90-b03e-8d608e85194b"
                   },
                   {
-                    "label": "-3  -2 Zs",
+                    "label": "[-3 ; -2 Zs[",
                     "concept": "6a48b558-b61d-4be7-9c13-c9279f396bbc"
                   },
                   {
-                    "label": "> -2 Zs",
+                    "label": ">= -2 Zs",
                     "concept": "4eca905b-97ca-4c48-9408-2dece451ab2a"
                   }
                 ]
@@ -610,15 +629,15 @@
                 "concept": "754d677f-316c-4c31-999d-a328fb8b17e1",
                 "answers": [
                   {
-                    "label": "",
+                    "label": "+",
                     "concept": "382578c2-91b4-4235-a02d-d20fbe9f8044"
                   },
                   {
-                    "label": "",
+                    "label": "++",
                     "concept": "709e4a07-af9f-432b-8711-b3caed41998c"
                   },
                   {
-                    "label": "",
+                    "label": "+++",
                     "concept": "9e6f2ae1-4aa3-4cbc-bd8d-98515b76cc15"
                   },
                   {
@@ -671,7 +690,7 @@
           "questions": [
             {
               "id": "tbEvaluation",
-              "label": "TB evaluation (ex crofton)",
+              "label": "TB evaluation (ex: crofton)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1872,7 +1891,7 @@
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2417,7 +2436,7 @@
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2450,7 +2469,7 @@
                     "concept": "acuteDiarrhea"
                   },
                   {
-                    "label": "Acute febrile illness (<7 days)",
+                    "label": "Acute febrile illness (=<7 days)",
                     "concept": "acuteFebrileIllness"
                   },
                   {
@@ -2962,7 +2981,7 @@
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2986,18 +3005,19 @@
           "questions": [
             {
               "id": "pleaseStartTheFeedingForm",
-              "label": "Please start the Feeding form",
+              "label": "Please start the \"Feeding form\"",
+              "type": "markdown",
               "required": false,
               "questionOptions": {
                 "rendering": "markdown"
               },
               "value": [
-                "Please start the Feeding form"
+                "## Please start the \"Feeding form\""
               ]
             },
             {
               "id": "pleaseCheckInImmunizations",
-              "label": "Please check in Immunizations (update it if necessary)",
+              "label": "Please check in \"Immunizations\" (update it if necessary)",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -3007,7 +3027,7 @@
             },
             {
               "id": "pleaseCheckInMedications",
-              "label": "Please check in Medications (update it if necessary)",
+              "label": "Please check in \"Medications\" (update it if necessary)",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
