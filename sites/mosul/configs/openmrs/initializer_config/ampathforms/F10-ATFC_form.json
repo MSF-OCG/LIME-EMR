@@ -27,15 +27,15 @@
                 "answers": [
                   {
                     "label": "Admission",
-                    "concept": "#N/A"
+                    "concept": "admission"
                   },
                   {
                     "label": "Follow up",
-                    "concept": "#N/A"
+                    "concept": "followUp"
                   },
                   {
                     "label": "Discharge",
-                    "concept": "#N/A"
+                    "concept": "discharge"
                   }
                 ]
               }
@@ -490,7 +490,6 @@
             {
               "id": "fillInvitalsBiometricsWithTheMeasurementsOfWeightHeightMuacTemperatureAndRRate",
               "label": "Fill in \"Vitals & Biometrics\" with the measurements of Weight, Height, MUAC, Temperature and R. rate",
-              "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -498,7 +497,7 @@
                 "workspaceName": "patient-vitals-biometrics-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "typeOfConsultation !== '#N/A'"
               }
             },
             {
@@ -523,7 +522,6 @@
             {
               "id": "checkInvitalsBiometricsToComplete",
               "label": "Check in \"Vitals & Biometrics\" to complete",
-              "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -1672,7 +1670,6 @@
             {
               "id": "checkimmunizationAndUpdatePossibleMissingVaccines",
               "label": "Check \"Immunization\" and update possible missing vaccines",
-              "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -2405,7 +2402,6 @@
             {
               "id": "pleaseCheckInimmunizations",
               "label": "Please check in \"Immunizations\" (update it if necessary)",
-              "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -2419,7 +2415,6 @@
             {
               "id": "pleaseCheckInmedications",
               "label": "Please check in \"Medications\" (update it if necessary)",
-              "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -2433,7 +2428,6 @@
             {
               "id": "prescribeNewExamsAndMedicationWithTheOrderBasketIfNecessary",
               "label": "Prescribe new exams and medication with the order basket if necessary",
-              "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -2444,7 +2438,6 @@
             {
               "id": "inappointmentsSetTheNextDateForFollowUp",
               "label": "In \"Appointments\" set the next date for follow up",
-              "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -2458,10 +2451,6 @@
           ]
         }
       ]
-    },
-    {
-      "label": "None",
-      "sections": []
     }
   ]
 }
