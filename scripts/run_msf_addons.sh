@@ -50,7 +50,7 @@ fi
 
 # this step requires internet. It downloads node modules. Should be run on the host
 echo "$INFO Pre-warming worker cache with adaptors..."
-docker exec -it $PROJECT_NAME-worker-1 sh -c "npm install -g @openfn/cli && openfn repo install  -a common@latest -a collections@latest -a http@6.5.1 -a openmrs@4.1.3 -a dhis2@5.0.1"
+docker exec -it $PROJECT_NAME-worker-1 sh -c "npm install -g @openfn/cli@1.10.2 && openfn repo install  -a common@latest -a collections@latest -a http@6.5.1 -a openmrs@4.1.3 -a dhis2@5.0.1"
 
 echo ""
 echo "$INFO copying OpenFn files to $PROJECT_NAME-worker-1"
@@ -70,8 +70,9 @@ if [ "$copy_openfn_files_status" = true ]; then
 
     echo ""
     echo "$INFO Deploying latest version of the OpenFn workflow"
-    docker exec $PROJECT_NAME-worker-1 sh -c "cd /app/packages/ws-worker/lime && openfn deploy -c config.json --no-confirm"
-    if [ $? -eq 0 ]; then
+    deploy_openfn_workflow_status=true
+    docker exec $PROJECT_NAME-worker-1 sh -c "cd /app/packages/ws-worker/lime && openfn deploy -c config.json --no-confirm" || deploy_openfn_workflow_status=false
+    if [ "$deploy_openfn_workflow_status" = true ]; then
         echo "$INFO OpenFn workflow deployed successfully."
     else
         echo "$ERROR Unable to deploy OpenFn workflow."
