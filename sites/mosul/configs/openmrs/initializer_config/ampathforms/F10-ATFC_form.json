@@ -6,6 +6,7 @@
   "uuid": "",
   "processor": "EncounterFormProcessor",
   "encounter": "Consultation",
+  "encounterType": "dd528487-82a5-4082-9c72-ed246bd49591",
   "retired": false,
   "referencedForms": [],
   "pages": [
@@ -772,7 +773,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
               }
             },
             {
@@ -1673,7 +1674,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "(hepatitisB !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') || (hepatitisB !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
               }
             },
             {
@@ -1723,7 +1724,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "(bcg !== '0a3295a9-33c9-4898-966f-5109b146d2d7') || (bcg !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
               }
             },
             {
@@ -1785,7 +1786,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "(pentavalent !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') || (pentavalent !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
               }
             },
             {
@@ -1851,7 +1852,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "(afp !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') || (afp !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
               }
             },
             {
@@ -1905,7 +1906,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "(measles !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') || (measles !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
               }
             },
             {
@@ -1967,7 +1968,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "(pcv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') || (pcv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
               }
             },
             {
@@ -2025,7 +2026,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "(rotavirus !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') || (rotavirus !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
               }
             },
             {
@@ -2075,7 +2076,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "(yellowFever !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') || (yellowFever !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
               }
             },
             {
@@ -2133,7 +2134,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "(ipv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') || (ipv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
               }
             },
             {
@@ -2187,7 +2188,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "(meningitisA !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') || (meningitisA !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
               }
             }
           ]
@@ -2355,7 +2356,7 @@
                 "workspaceName": "immunization-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
               }
             },
             {
@@ -2368,7 +2369,7 @@
                 "workspaceName": "medications-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
               }
             },
             {
@@ -2391,7 +2392,7 @@
                 "workspaceName": "appointments-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "Invalid expression format"
+                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
               }
             }
           ]

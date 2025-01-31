@@ -5,7 +5,8 @@
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
-  "encounter": "Consultation",
+  "encounter": "Mental Health",
+  "encounterType": "95d68645-1b72-4290-be0b-ec1fb64bc067",
   "retired": false,
   "referencedForms": [],
   "pages": [
@@ -23,8 +24,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11",
-                "answers": []
+                "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11"
               },
               "default": "(calculated - # of session)"
             },
@@ -63,8 +63,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "b87a93ff-a4a1-4601-b35d-1e42bfa7e194",
-                "answers": []
+                "concept": "b87a93ff-a4a1-4601-b35d-1e42bfa7e194"
               },
               "hide": {
                 "hideWhenExpression": "typeOfConsultation !== 'f16d5d76-155b-453d-bd60-ea8ee4d344e9'"
@@ -108,9 +107,6 @@
                     "concept": "7091b6ea-7067-4ee3-9f67-8805904e2f61"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -120,8 +116,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d",
-                "answers": []
+                "concept": "0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d"
               },
               "hide": {
                 "hideWhenExpression": "locationOfIntervention !== '0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d'"
@@ -134,8 +129,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "41e68dee-a2a3-4e6c-9d96-53def5caff52",
-                "answers": []
+                "concept": "41e68dee-a2a3-4e6c-9d96-53def5caff52"
               },
               "hide": {
                 "hideWhenExpression": "locationOfIntervention !== '41e68dee-a2a3-4e6c-9d96-53def5caff52'"
@@ -148,22 +142,20 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "08cd4b4a-4b0b-4391-987b-b5b3d770d30f",
-                "answers": []
+                "concept": "08cd4b4a-4b0b-4391-987b-b5b3d770d30f"
               },
               "hide": {
                 "hideWhenExpression": "locationOfIntervention !== '08cd4b4a-4b0b-4391-987b-b5b3d770d30f'"
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "locationOfIntervention_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "e08d532b-e56c-43dc-b831-af705654d2dc",
-                "answers": []
+                "concept": "e08d532b-e56c-43dc-b831-af705654d2dc"
               },
               "hide": {
                 "hideWhenExpression": "locationOfIntervention !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
@@ -483,10 +475,7 @@
                   }
                 ]
               },
-              "questionInfo": "If in doubt: ask the patient: \"Do you think about killing yourself?\" If \"no\" then mark \"no risk\"",
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
-              }
+              "questionInfo": "If in doubt: ask the patient: \"Do you think about killing yourself?\" If \"no\" then mark \"no risk\""
             }
           ]
         }
@@ -529,9 +518,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -564,9 +550,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -599,9 +582,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -634,9 +614,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -669,9 +646,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -704,9 +678,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -739,9 +710,6 @@
                     "concept": "7c19766f-4dbd-4a7d-8939-00533fab8829"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -774,9 +742,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -809,9 +774,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -844,9 +806,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -879,9 +838,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -914,9 +870,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -949,9 +902,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -984,9 +934,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1019,9 +966,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1054,9 +998,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1089,9 +1030,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1124,9 +1062,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1159,9 +1094,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1194,9 +1126,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             }
           ]
@@ -1213,12 +1142,7 @@
               "questionOptions": {
                 "rendering": "markdown"
               },
-              "value": [
-                "## A last question:"
-              ],
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
-              }
+              "value": ["## A last question:"]
             },
             {
               "id": "inGeneralHowHelpfulWereTheTherapeuticOrCounsellingSessionsForYourChild",
@@ -1250,9 +1174,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1285,9 +1206,6 @@
                     "concept": "edf347b1-ee57-4d8f-babb-97acca20c3cb"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -1587,10 +1505,7 @@
                 "rendering": "number",
                 "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23"
               },
-              "questionInfo": "Sum of all points from answers above",
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
-              }
+              "questionInfo": "Sum of all points from answers above"
             },
             {
               "id": "ifYouCheckedOffAnyProblemsHowDifficultHaveTheseProblemsMadeItForYouToDoYourWorkTakeCareOfThingsAtHomeOrGetAlongWithOtherPeople",
@@ -2204,9 +2119,6 @@
                     "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
@@ -2263,9 +2175,6 @@
                     "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "Invalid expression format"
               }
             },
             {
