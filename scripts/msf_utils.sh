@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 
 function setMSFEnvironment {
-    echo "$INFO Adding OpenFn environment versions"
-    export TRAEFIK_CONFIG_PATH=$DISTRO_PATH/configs/traefik
-    echo "→ TRAEFIK_CONFIG_PATH=$TRAEFIK_CONFIG_PATH"
+    echo "$INFO Adding MSF environment variables"
+    
+    export OPENFN_CONFIG_PATH=$DISTRO_PATH/configs/openfn
+    echo "→ OPENFN_CONFIG_PATH=$OPENFN_CONFIG_PATH"
 
     export OPENFN_HOSTNAME="localhost:4000"
     echo "→ OPENFN_HOSTNAME=$OPENFN_HOSTNAME"
+    
+    export TRAEFIK_CONFIG_PATH=$DISTRO_PATH/configs/traefik
+    echo "→ TRAEFIK_CONFIG_PATH=$TRAEFIK_CONFIG_PATH"
 
     # ignore setting nginx since traefik is not enabled
     if [ "$TRAEFIK" == "true" ]; then
