@@ -83,11 +83,11 @@
                 "answers": [
                   {
                     "label": "Child alive",
-                    "concept": "#N/A"
+                    "concept": "childAlive"
                   },
                   {
                     "label": "Child died",
-                    "concept": "#N/A"
+                    "concept": "childDied"
                   }
                 ]
               }
@@ -102,16 +102,16 @@
                 "concept": "breastfeeding",
                 "answers": [
                   {
+                    "label": "Bottle",
+                    "concept": "bottle"
+                  },
+                  {
                     "label": "Exclusive",
-                    "concept": "#N/A"
+                    "concept": "exclusive"
                   },
                   {
                     "label": "Mixed",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Bottle",
-                    "concept": "#N/A"
+                    "concept": "mixed"
                   }
                 ]
               }
@@ -194,28 +194,28 @@
                 "concept": "weCanBeReasonableSureThatThePatientIsNotPregnantIf",
                 "answers": [
                   {
-                    "label": "Last menstruation period less than 7 days ago",
-                    "concept": "#N/A"
+                    "label": "Had a babyless than 4 weeks ago",
+                    "concept": "hadABabylessThan4WeeksAgo"
                   },
                   {
                     "label": "Had a spontaneous or induced abortion or miscarriage less than 7 days ago",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Had a babyless than 4 weeks ago",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Has been correctly and consistently using a reliable contraceptive method",
-                    "concept": "#N/A"
+                    "concept": "hadASpontaneousOrInducedAbortionOrMiscarriageLessThan7DaysAgo"
                   },
                   {
                     "label": "Has absteined from sex since last menstrual period, abortion or delivery",
-                    "concept": "#N/A"
+                    "concept": "hasAbsteinedFromSexSinceLastMenstrualPeriodAbortionOrDelivery"
+                  },
+                  {
+                    "label": "Has been correctly and consistently using a reliable contraceptive method",
+                    "concept": "hasBeenCorrectlyAndConsistentlyUsingAReliableContraceptiveMethod"
+                  },
+                  {
+                    "label": "Last menstruation period less than 7 days ago",
+                    "concept": "lastMenstruationPeriodLessThan7DaysAgo"
                   },
                   {
                     "label": "None of the above",
-                    "concept": "#N/A"
+                    "concept": "noneOfTheAbove"
                   }
                 ]
               }
@@ -262,44 +262,44 @@
                 "concept": "whatIsImportant",
                 "answers": [
                   {
-                    "label": "Very effective",
-                    "concept": "#N/A"
+                    "label": "Avoid touching intimate areas",
+                    "concept": "avoidTouchingIntimateAreas"
                   },
                   {
                     "label": "Breastfeeding < 6 months",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "No children later",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Permanent",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Few side effects",
-                    "concept": "#N/A"
+                    "concept": "breastfeedingLessThan6Months"
                   },
                   {
                     "label": "Easy to stop",
-                    "concept": "#N/A"
+                    "concept": "easyToStop"
                   },
                   {
                     "label": "Easy to use",
-                    "concept": "#N/A"
+                    "concept": "easyToUse"
+                  },
+                  {
+                    "label": "Few side effects",
+                    "concept": "fewSideEffects"
+                  },
+                  {
+                    "label": "No children later",
+                    "concept": "noChildrenLater"
                   },
                   {
                     "label": "Nothing to do before sex",
-                    "concept": "#N/A"
+                    "concept": "nothingToDoBeforeSex"
+                  },
+                  {
+                    "label": "Permanent",
+                    "concept": "permanent"
                   },
                   {
                     "label": "Use only when needed",
-                    "concept": "#N/A"
+                    "concept": "useOnlyWhenNeeded"
                   },
                   {
-                    "label": "Avoid touching intimate areas",
-                    "concept": "#N/A"
+                    "label": "Very effective",
+                    "concept": "veryEffective"
                   }
                 ]
               }
@@ -364,7 +364,7 @@
                 "answers": []
               },
               "hide": {
-                "hideWhenExpression": "weCanBeReasonableSureThatThePatientIsNotPregnantIf !== '#N/A'"
+                "hideWhenExpression": "weCanBeReasonableSureThatThePatientIsNotPregnantIf !== 'noneOfTheAbove'"
               }
             },
             {
@@ -377,16 +377,16 @@
                 "concept": "urinePregnancyTestResult",
                 "answers": [
                   {
-                    "label": "Positive",
-                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
-                  },
-                  {
                     "label": "Negative",
                     "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
                   },
                   {
                     "label": "Not done",
                     "concept": "\u00a0a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  },
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
                   }
                 ]
               },
@@ -402,76 +402,76 @@
                 "concept": "conditions",
                 "answers": [
                   {
-                    "label": "Latex allergy (patient or partner)",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Current / history of trombembolism",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Pregnancy",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Diabetes for > 20 years",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Breastfeeding < 6 weeks",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "BP > 160/100",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Smoker > 35 years old",
-                    "concept": "#N/A"
+                    "label": "Active liver disease / jaundice",
+                    "concept": "activeLiverDiseaseOrJaundice"
                   },
                   {
                     "label": "BP > 140/90 and migraine with aura",
-                    "concept": "#N/A"
+                    "concept": "bpMoreThan140Or90AndMigraineWithAura"
                   },
                   {
-                    "label": "Unexplained vaginal bleeding",
-                    "concept": "#N/A"
+                    "label": "BP > 160/100",
+                    "concept": "bpMoreThan160Or100"
                   },
                   {
-                    "label": "Hyper or dysmenorrhoea",
-                    "concept": "#N/A"
+                    "label": "Breastfeeding < 6 weeks",
+                    "concept": "breastfeedingLessThan6Weeks"
                   },
                   {
-                    "label": "History of extra-uterine pregnancy",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Severe untreated anaemia",
-                    "concept": "#N/A"
+                    "label": "Current / history of trombembolism",
+                    "concept": "currentOrHistoryOfTrombembolism"
                   },
                   {
                     "label": "Current STI/current PID",
-                    "concept": "#N/A"
+                    "concept": "currentStiOrCurrentPid"
+                  },
+                  {
+                    "label": "Diabetes for > 20 years",
+                    "concept": "diabetesForMoreThan20Years"
+                  },
+                  {
+                    "label": "History of extra-uterine pregnancy",
+                    "concept": "historyOfExtraUterinePregnancy"
                   },
                   {
                     "label": "HIV + patient on ARV",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "On TB medication",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "On Epilepsy medication",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Active liver disease / jaundice",
-                    "concept": "#N/A"
+                    "concept": "hivPlusPatientOnArv"
                   },
                   {
                     "label": "HIV + patient with active AIDS but NOT on ARV",
-                    "concept": "#N/A"
+                    "concept": "hivPlusPatientWithActiveAidsButNotOnArv"
+                  },
+                  {
+                    "label": "Hyper or dysmenorrhoea",
+                    "concept": "hyperOrDysmenorrhoea"
+                  },
+                  {
+                    "label": "Latex allergy (patient or partner)",
+                    "concept": "latexAllergy"
+                  },
+                  {
+                    "label": "On Epilepsy medication",
+                    "concept": "onEpilepsyMedication"
+                  },
+                  {
+                    "label": "On TB medication",
+                    "concept": "onTbMedication"
+                  },
+                  {
+                    "label": "Pregnancy",
+                    "concept": "pregnancy"
+                  },
+                  {
+                    "label": "Severe untreated anaemia",
+                    "concept": "severeUntreatedAnaemia"
+                  },
+                  {
+                    "label": "Smoker > 35 years old",
+                    "concept": "smokerMoreThan35YearsOld"
+                  },
+                  {
+                    "label": "Unexplained vaginal bleeding",
+                    "concept": "unexplainedVaginalBleeding"
                   }
                 ]
               }
@@ -505,7 +505,7 @@
                 "concept": "maleAndFemaleCondom"
               },
               "hide": {
-                "hideWhenExpression": "conditions !== '#N/A'"
+                "hideWhenExpression": "conditions !== 'latexAllergy'"
               }
             },
             {
@@ -531,7 +531,7 @@
                 "concept": "popImplant"
               },
               "hide": {
-                "hideWhenExpression": "conditions !== '#N/A'"
+                "hideWhenExpression": "conditions !== 'pregnancy'"
               }
             },
             {
@@ -544,7 +544,7 @@
                 "concept": "iud"
               },
               "hide": {
-                "hideWhenExpression": "conditions !== '#N/A'"
+                "hideWhenExpression": "conditions !== 'pregnancy'"
               }
             },
             {
@@ -557,7 +557,7 @@
                 "concept": "injectable"
               },
               "hide": {
-                "hideWhenExpression": "conditions !== '#N/A'"
+                "hideWhenExpression": "conditions !== 'pregnancy'"
               }
             }
           ]
@@ -589,7 +589,7 @@
                 "concept": "tubalLigation"
               },
               "hide": {
-                "hideWhenExpression": "conditions !== '#N/A'"
+                "hideWhenExpression": "conditions !== 'pregnancy'"
               }
             },
             {
@@ -602,7 +602,7 @@
                 "concept": "cocPop"
               },
               "hide": {
-                "hideWhenExpression": "conditions !== '#N/A'"
+                "hideWhenExpression": "conditions !== 'unexplainedVaginalBleeding'"
               }
             },
             {
@@ -615,7 +615,7 @@
                 "concept": "iud"
               },
               "hide": {
-                "hideWhenExpression": "conditions !== '#N/A'"
+                "hideWhenExpression": "conditions !== 'hyperOrDysmenorrhoea'"
               }
             }
           ]
@@ -663,52 +663,52 @@
                 "concept": "chosenMethod",
                 "answers": [
                   {
-                    "label": "Male condom",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Female condom",
-                    "concept": "#N/A"
-                  },
-                  {
                     "label": "COC",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "POP",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Injectable Depo Provera",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Injectable Sayanna",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Implant",
-                    "concept": "#N/A"
+                    "concept": "coc"
                   },
                   {
                     "label": "Copper IUD",
-                    "concept": "#N/A"
-                  },
-                  {
-                    "label": "Hormonal IUD",
-                    "concept": "#N/A"
+                    "concept": "copperIud"
                   },
                   {
                     "label": "Emergency contraceptive",
-                    "concept": "#N/A"
+                    "concept": "emergencyContraceptive"
+                  },
+                  {
+                    "label": "Female condom",
+                    "concept": "femaleCondom"
+                  },
+                  {
+                    "label": "Hormonal IUD",
+                    "concept": "hormonalIud"
+                  },
+                  {
+                    "label": "Implant",
+                    "concept": "implant"
+                  },
+                  {
+                    "label": "Injectable Depo Provera",
+                    "concept": "injectableDepoProvera"
+                  },
+                  {
+                    "label": "Injectable Sayanna",
+                    "concept": "injectableSayanna"
+                  },
+                  {
+                    "label": "Male condom",
+                    "concept": "maleCondom"
+                  },
+                  {
+                    "label": "POP",
+                    "concept": "pop"
                   },
                   {
                     "label": "Tubal ligation",
-                    "concept": "#N/A"
+                    "concept": "tubalLigation"
                   },
                   {
                     "label": "Vasectomy",
-                    "concept": "#N/A"
+                    "concept": "vasectomy"
                   }
                 ]
               },
