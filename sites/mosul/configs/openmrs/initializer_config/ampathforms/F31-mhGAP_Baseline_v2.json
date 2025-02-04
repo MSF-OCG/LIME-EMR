@@ -1,6 +1,6 @@
 {
-  "name": "F32-mhGAP Follow-up 2025",
-  "description": "MSF Form - F32-mhGAP Follow-up 2025",
+  "name": "F31-mhGAP Baseline v2",
+  "description": "MSF Form - F31-mhGAP Baseline v2",
   "version": "1",
   "published": true,
   "uuid": "",
@@ -13,135 +13,27 @@
       "label": "Consultation",
       "sections": [
         {
-          "label": "mhGAP forms are to be filled only by mhGAP clinician (Clinical officer / GP / nurse trained in mhGAP / psychiatrist)",
+          "label": "Consultation information",
           "isExpanded": false,
           "questions": [
             {
-              "id": "sessionNumber",
-              "label": "Session number",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "number",
-                "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11"
-              }
-            }
-          ]
-        },
-        {
-          "label": "Missed session",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "didThePatientMissTheSession",
-              "label": "Did the patient miss the session?",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "toggle",
-                "concept": "54e8c1b6-6397-4822-89a4-cf81fbc68ce9",
-                "answers": [
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  },
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "numberOfAppointmentsMissed",
-              "label": "Number of appointments missed",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "number",
-                "concept": "d7410cd3-29be-4f8b-93d6-eb4de005db29"
-              },
-              "hide": {
-                "hideWhenExpression": "didThePatientMissTheSession !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
-              }
-            },
-            {
-              "id": "patientRescheduledFillTheExitForm",
-              "label": "Patient rescheduled (if Yes, fill the Follow-up section at the end of this form. If No (closing file or patient no longer wants services), fill the Exit form.)",
+              "id": "admissionType",
+              "label": "Admission type",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "278d3d1e-c02a-4db1-8ab3-8db3b82eb9b5",
+                "concept": "4dae5b12-070f-4153-b1ca-fbec906106e1",
                 "answers": [
                   {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                    "label": "New admission",
+                    "concept": "9f2fe30f-a8f0-49ba-82e4-71c232259130"
                   },
                   {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                    "label": "Readmission",
+                    "concept": "e4e42ecd-196b-4aa8-a265-bfbed09d77cf"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "didThePatientMissTheSession !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
-              }
-            },
-            {
-              "id": "reasonForMissedAppointment",
-              "label": "Reason for missed appointment",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "d34d5e93-03d6-494e-8f4c-2d7221227162",
-                "answers": [
-                  {
-                    "label": "No transportation / unable to attend",
-                    "concept": "988d1f88-1202-4a13-8ae7-02156b5ccbe2"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
-                    "label": "Patient forgot about session",
-                    "concept": "df40472b-d192-4d0d-87c6-dadfae58270d"
-                  },
-                  {
-                    "label": "Patient no longer wants services",
-                    "concept": "49da2b46-b7d1-4ba7-ba57-cfe219694a9c"
-                  },
-                  {
-                    "label": "Patient unreachable",
-                    "concept": "e0f8014a-aa6c-4a59-aa09-ed6e3dad6b47"
-                  },
-                  {
-                    "label": "Patient was busy",
-                    "concept": "cd1a5f24-c862-4cb6-9ef9-db2f3d46aad2"
-                  },
-                  {
-                    "label": "Patient was sick",
-                    "concept": "1bab24bb-a305-4320-a6b1-fcd11acf44c4"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "didThePatientMissTheSession !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
-              }
-            },
-            {
-              "id": "ifOtherSpecify",
-              "label": "If other, specify",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-              },
-              "hide": {
-                "hideWhenExpression": "reasonForMissedAppointment !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -149,7 +41,334 @@
       ]
     },
     {
-      "label": "Examination & diagnosis",
+      "label": "File information",
+      "sections": [
+        {
+          "label": "Checklist reminder",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "mhgapFormsAreToBeFilledOnlyByMhgapClinician",
+              "label": "mhGAP forms are to be filled only by mhGAP clinician (Clinical officer / GP / nurse trained in mhGAP / psychiatrist)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "2d8a5986-5946-44a7-a4aa-5603971d3595",
+                "answers": [
+                  {
+                    "label": "Explain confidentiality",
+                    "concept": "8ce30461-216b-46b2-84b2-5314d8b355fc"
+                  },
+                  {
+                    "label": "Explain services/therapy",
+                    "concept": "b4af1ca8-f982-4a15-9ace-7a2f85553614"
+                  },
+                  {
+                    "label": "Explain the prescriber\u2019s/patient\u2019s roles",
+                    "concept": "4588c6d5-280f-411c-b669-af6e9ae8f0ae"
+                  },
+                  {
+                    "label": "Obtain informed consent",
+                    "concept": "ab2fcfa5-4236-4b0f-8a42-860408a78812"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Referral source",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "referralSource",
+              "label": "Referral source",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c3c86c1b-07be-4506-ab25-8f35f4389b19",
+                "answers": [
+                  {
+                    "label": "Counselor/psychotherapist/MHPSS team\u00a0",
+                    "concept": "f35229c8-933f-40cc-8ba8-466717f5f97"
+                  },
+                  {
+                    "label": "ER department",
+                    "concept": "c709f78b-5787-4c7e-b5bd-66aad28f7ff4"
+                  },
+                  {
+                    "label": "IPD/OPD\u00a0\u00a0",
+                    "concept": "0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Self-referral",
+                    "concept": "8d9386b1-a641-4155-9822-7a06a16aa8e8"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "Motive for consultation",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "whyIsThePatientComingToYou",
+              "label": "Why is the patient coming to you",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "94507d36-c7cc-469c-a521-e82ac1275bb1"
+              },
+              "questionInfo": "Write using the patient\u2019s words."
+            }
+          ]
+        },
+        {
+          "label": "Present",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "presentingHistoryOrEvolutionOfSymptoms",
+              "label": "Presenting history / evolution of symptoms",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "4ed7be54-3759-4a39-904b-ddefc9a22459"
+              },
+              "questionInfo": "Current symptoms, onset, duration, course, intensity, triggers, associated symptoms."
+            },
+            {
+              "id": "substanceMisuse",
+              "label": "Substance misuse",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "2a4c8a5d-0739-48f7-b837-01a63c231e28"
+              },
+              "questionInfo": "E.g., nicotine, alcohol, painkillers, others."
+            }
+          ]
+        },
+        {
+          "label": "Past",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pastPsychiatricHistory",
+              "label": "Past psychiatric history",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "eed1e8e1-ba03-41d5-856f-cd069568f484"
+              },
+              "questionInfo": "Past diagnoses, past substance use, number of episodes, duration, treatment, side-effects."
+            },
+            {
+              "id": "historyOfSelfHarmOrSuicide",
+              "label": "History of self-harm/suicide?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "af23b916-3e95-4bd4-8804-a4b1649ff365",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "doesThePatientHaveACurrentSuicidalRisk",
+              "label": "Does the patient have a current suicidal risk?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3dceead1-70d5-4030-b8f3-bda3938af08d",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              },
+              "questionInfo": "ask the patient: \"Do you think about killing yourself?\" If \"no\" then\u00a0 mark \"no risk\""
+            }
+          ]
+        },
+        {
+          "label": "Family",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "familyHistory",
+              "label": "Family history",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "a072fee0-ca76-4ac6-9543-a4f3b0efc831"
+              },
+              "questionInfo": "Psychological/psychiatric/neurological/medical conditions or disorders."
+            }
+          ]
+        },
+        {
+          "label": "Conditions",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "patientMedicalOrSurgicalHistory",
+              "label": "Patient medical / surgical history (incl. current medications and dosage)",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "patient-conditions-form-workspace"
+              },
+              "questionInfo": "Check also in  \"Conditions\" and \"Medications\" and update them there if necessary."
+            },
+            {
+              "id": "patientAlreadyOnPsychotropicOrPsychiatricMedication",
+              "label": "Patient already on psychotropic/psychiatric medication (not prescribed by MSF)? ",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "99a8b512-17f9-4a5d-9fd4-80c27500995b",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              },
+              "questionInfo": "Update \"medications\" if necessary"
+            },
+            {
+              "id": "additionalInformationAboutPreviousTreatment",
+              "label": "Additional information about previous treatment (including side effects)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ed4b93f6-9115-4813-8784-d653af7e74ed"
+              }
+            },
+            {
+              "id": "allergiesOrContraIndications",
+              "label": "Allergies / Contra-indications",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "6fcf69eb-244a-4756-84b7-1da5b8fa7025"
+              },
+              "questionInfo": "Check also in \"Allergies\" and update it there if necessary."
+            }
+          ]
+        },
+        {
+          "label": "Special Populations",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pregnantOrBreastfeeding",
+              "label": "Pregnant / breastfeeding ",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2be92591-da1b-4418-ba49-43b3fc0e4ce5",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "childOrAdolescent",
+              "label": "Child / adolescent (under 18 years)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f6cefc80-506a-44b0-ab5f-d6f5908cf7a5",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "olderAdult",
+              "label": "Older adult (over 60 years)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "15748787-7372-4022-b5d4-81ff8d6887ca",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Examination",
       "sections": [
         {
           "label": "Examination",
@@ -158,6 +377,18 @@
             {
               "id": "enterInvitalsTodaysMeasurementsForweightbloodPressureAndheartRate",
               "label": "Enter in \"Vitals\" today's measurements for \"weight\", \"blood pressure\" and \"heart rate\"",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "## Enter in \"Vitals\" today's measurements for \"weight\", \"blood pressure\" and \"heart rate\""
+              ]
+            },
+            {
+              "id": "capturePatientVitals",
+              "label": "Capture patient vitals",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -174,234 +405,7 @@
                 "rendering": "textarea",
                 "concept": "cb4974ca-ddac-4662-8b0a-2861f1e50569"
               },
-              "questionInfo": "Appearance, orientation/attention, mood/affect, speech, thought content/process, perception -e.g., hallucinations, illusions- judgment, insight"
-            }
-          ]
-        },
-        {
-          "label": "Evolution",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "evolutionOfSymptoms",
-              "label": "Evolution of symptoms",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "18de5811-2263-42b0-ac22-d19bced11a98"
-              },
-              "questionInfo": "Arising symptoms, change in intensity, new triggers"
-            },
-            {
-              "id": "comments",
-              "label": "Comments",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "18de5811-2263-42b0-ac22-d19bced11a98"
-              },
-              "questionInfo": "On functioning, employment, change in complaint, patients\u2019 observation, caretaker concerns, notes from counselor/psychologist"
-            },
-            {
-              "id": "sideEffectsFromCurrentTreatmentExtraPyramidal",
-              "label": "Side effects from current treatment - Extra Pyramidal",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "d25cd9fc-a179-4de2-aa53-9886974ca925",
-                "answers": [
-                  {
-                    "label": "Akathisia",
-                    "concept": "0b57ad14-5b9b-41cc-8bec-a52600f47635"
-                  },
-                  {
-                    "label": "Dystonia",
-                    "concept": "33f6c8c6-aeed-4b48-9bf4-32da9e1d28fc"
-                  },
-                  {
-                    "label": "Rigidity",
-                    "concept": "58aadf3e-8299-4935-8f18-45b028d8e4ff"
-                  },
-                  {
-                    "label": "Tardive dyskinesia",
-                    "concept": "c64e711e-b629-458e-bf25-7f8d6a5d0e39"
-                  },
-                  {
-                    "label": "Tremors",
-                    "concept": "713527ef-c69f-4ca1-8486-53b5f9f47e51"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "sideEffectsFromCurrentTreatmentMetabolic",
-              "label": "Side effects from current treatment - Metabolic",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "5db8deb4-f2dc-46fc-a204-d676d7a0bf8b",
-                "answers": [
-                  {
-                    "label": "Increased blood pressure",
-                    "concept": "761ed9d5-0d32-4016-8f2a-f1836be1afc"
-                  },
-                  {
-                    "label": "Increased blood sugar",
-                    "concept": "18230307-2786-41c2-8112-c0a5964bc5fa"
-                  },
-                  {
-                    "label": "Weight gain",
-                    "concept": "8bbce68f-a835-4813-8b6d-1c50ab19349a"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "sideEffectsFromCurrentTreatmentOthers",
-              "label": "Side effects from current treatment - Others",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "5c19b3cb-9a67-4b55-882f-6711ced9b74f",
-                "answers": [
-                  {
-                    "label": "Anticholinergic",
-                    "concept": " 3f0f9bcf-adec-405f-a902-54fc8a888a52"
-                  },
-                  {
-                    "label": "Anxiety",
-                    "concept": " 241b3278-3803-478b-8484-70e2b17e5543"
-                  },
-                  {
-                    "label": "Insomnia",
-                    "concept": "62a3fbee-254f-432c-b49e-8fcc285ef7ea"
-                  },
-                  {
-                    "label": "Other ",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
-                    "label": "Sexual dysfunction",
-                    "concept": "4ab8471f-712c-4d5a-85f2-ed2d328e8b19"
-                  },
-                  {
-                    "label": "Sleepiness",
-                    "concept": "fe577c37-5798-41d8-b532-ff62c74cf21c"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "ifOtherSpecify",
-              "label": "If other, specify",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-              },
-              "hide": {
-                "hideWhenExpression": "sideEffectsFromCurrentTreatmentOthers !== 'other'"
-              }
-            }
-          ]
-        },
-        {
-          "label": "Diagnosis",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "changeInDiagnosis",
-              "label": "Change in diagnosis",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
-                "answers": [
-                  {
-                    "label": "1. Acute stress reaction",
-                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
-                  },
-                  {
-                    "label": "10. Chronic psychosis (incl. schizophrenia)",
-                    "concept": "97f1f41-b0c7-407d-b95f-b1e26c3fd23c"
-                  },
-                  {
-                    "label": "11. Bipolar disorder (incl. mania)",
-                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
-                  },
-                  {
-                    "label": "12. Enuresis / Encopresis",
-                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
-                  },
-                  {
-                    "label": "13. Developmental disorder (incl. intellectual disability, autism)",
-                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
-                  },
-                  {
-                    "label": "14. Childhood behavioral disorder (incl. ADHD, conduct disorder)",
-                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
-                  },
-                  {
-                    "label": "15. Childhood emotional disorder",
-                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
-                  },
-                  {
-                    "label": "16. Substance-related disorder",
-                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
-                  },
-                  {
-                    "label": "17. Epilepsy / seizures",
-                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
-                  },
-                  {
-                    "label": "18. Other disorder",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
-                    "label": "19. No diagnosis",
-                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
-                  },
-                  {
-                    "label": "2. Bereavement/grief",
-                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
-                  },
-                  {
-                    "label": "3. Post-Traumatic Stress Disorder",
-                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
-                  },
-                  {
-                    "label": "4. Conversion/Dissociative reaction",
-                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
-                  },
-                  {
-                    "label": "5. Anxiety Disorder",
-                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
-                  },
-                  {
-                    "label": "6. Medically Unexplained Physical Symptoms (MUPS)",
-                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
-                  },
-                  {
-                    "label": "7. Depression",
-                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
-                  },
-                  {
-                    "label": "8. Self-harming behavior/suicide attempt",
-                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
-                  },
-                  {
-                    "label": "9. Acute psychosis (incl. post-partum psychosis)",
-                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
-                  }
-                ]
-              }
+              "questionInfo": "Appearance, orientation/attention, mood/affect, speech, thought content/process, perception - e.g., hallucinations, illusions- judgment, insight."
             }
           ]
         }
@@ -1434,7 +1438,10 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23"
+                "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23",
+                "calculate": {
+                  "calculateExpression": "(no_interest === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : no_interest === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : no_interest === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (depressed === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : depressed === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 :  depressed==='163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (sleep === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : sleep === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : sleep === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (feelingTired === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : feelingTired === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : feelingTired === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) +(poorAppetite === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : poorAppetite === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : poorAppetite === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (troubled === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : troubled === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : troubled === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (feelingBad === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : feelingBad === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : feelingBad === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (speakingSlowly === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : speakingSlowly === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : speakingSlowly === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0) + (betterDead === '163734AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 1 : betterDead === '163735AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 2 : betterDead === '163736AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? 3 : 0)"
+                }
               },
               "questionInfo": "Sum of all points from answers above"
             },
@@ -1801,7 +1808,7 @@
           ]
         },
         {
-          "label": "CGI - Clinical Global Impression",
+          "label": "CGI",
           "isExpanded": false,
           "questions": [
             {
@@ -1846,7 +1853,8 @@
                     "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
                   }
                 ]
-              }
+              },
+              "questionInfo": "If the patient\u2019s  score \u2265 5, consider referral  to mhGAP clinician / psychiatrist"
             },
             {
               "id": "lastCgiSScore",
@@ -1893,98 +1901,310 @@
                     "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
                   }
                 ]
-              },
-              "questionInfo": "If the patient\u2019s  score \u2265 5, consider referral  to mhGAP clinician / psychiatrist"
-            },
-            {
-              "id": "cgiI",
-              "label": "CGI-I (rating of  improvement CGI-I: how much has the patient improved at this time?)",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "f94de17e-9771-4711-aabb-c5bb0c022be2",
-                "answers": [
-                  {
-                    "label": "0 - Not assessed",
-                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
-                  },
-                  {
-                    "label": "1 - Very much improved",
-                    "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
-                  },
-                  {
-                    "label": "2 - Much improved",
-                    "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
-                  },
-                  {
-                    "label": "3 - Minimally improved",
-                    "concept": "e19f352f-b693-434a-af4d-2813487de15c"
-                  },
-                  {
-                    "label": "4 - No change",
-                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
-                  },
-                  {
-                    "label": "5 - Minimally worse",
-                    "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
-                  },
-                  {
-                    "label": "6 - Much worse",
-                    "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
-                  },
-                  {
-                    "label": "7 - Very much worse",
-                    "concept": "ece17856-b110-4453-9bc5-a92891f86846"
-                  }
-                ]
               }
-            },
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis",
+      "sections": [
+        {
+          "label": "Clinical diagnosis",
+          "isExpanded": false,
+          "questions": [
             {
-              "id": "lastCgiIScore",
-              "label": "Last CGI-I score",
+              "id": "mainDiagnosis",
+              "label": "Main diagnosis",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "select",
-                "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
-                "calculate": {
-                  "calculateExpression": "Fill with last CGI-I score available"
-                },
+                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
                 "answers": [
                   {
-                    "label": "0 - Not assessed",
-                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                    "label": "1. Acute stress reaction",
+                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
                   },
                   {
-                    "label": "1 - Very much improved",
-                    "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                    "label": "10. Chronic psychosis (incl. schizophrenia)",
+                    "concept": "97f1f41-b0c7-407d-b95f-b1e26c3fd23c"
                   },
                   {
-                    "label": "2 - Much improved",
-                    "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                    "label": "11. Bipolar disorder (incl. mania)",
+                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
                   },
                   {
-                    "label": "3 - Minimally improved",
-                    "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                    "label": "12. Enuresis / Encopresis",
+                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
                   },
                   {
-                    "label": "4 - No change",
-                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                    "label": "13. Developmental disorder (incl. intellectual disability, autism)",
+                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
                   },
                   {
-                    "label": "5 - Minimally worse",
-                    "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                    "label": "14. Childhood behavioral disorder (incl. ADHD, conduct disorder)",
+                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
                   },
                   {
-                    "label": "6 - Much worse",
-                    "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                    "label": "15. Childhood emotional disorder",
+                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
                   },
                   {
-                    "label": "7 - Very much worse",
-                    "concept": "ece17856-b110-4453-9bc5-a92891f86846"
+                    "label": "16. Substance-related disorder",
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                  },
+                  {
+                    "label": "17. Epilepsy / seizures",
+                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                  },
+                  {
+                    "label": "18. Other disorder",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "19. No diagnosis",
+                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
+                  },
+                  {
+                    "label": "2. Bereavement/grief",
+                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
+                  },
+                  {
+                    "label": "3. Post-Traumatic Stress Disorder",
+                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
+                  },
+                  {
+                    "label": "4. Conversion/Dissociative reaction",
+                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
+                  },
+                  {
+                    "label": "5. Anxiety Disorder",
+                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
+                  },
+                  {
+                    "label": "6. Medically Unexplained Physical Symptoms (MUPS)",
+                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
+                  },
+                  {
+                    "label": "7. Depression",
+                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
+                  },
+                  {
+                    "label": "8. Self-harming behavior/suicide attempt",
+                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
+                  },
+                  {
+                    "label": "9. Acute psychosis (incl. post-partum psychosis)",
+                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
                   }
                 ]
+              },
+              "questionInfo": "Clinical diagnosis (only by a psychologist, psychiatrist or GP trained in MH)"
+            },
+            {
+              "id": "ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "mainDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+              }
+            },
+            {
+              "id": "dateOfTheMainDiagnosis",
+              "label": "Date of the main diagnosis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "25ab1831-52a1-46ea-b4f5-a82b50efb396"
+              },
+              "default": "Current date"
+            },
+            {
+              "id": "concomitantDiagnosis",
+              "label": "Concomitant diagnosis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "819f79e7-b9af-4afd-85d4-2ab677223113",
+                "answers": [
+                  {
+                    "label": "1. Acute stress reaction",
+                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
+                  },
+                  {
+                    "label": "10. Chronic psychosis (incl. schizophrenia)",
+                    "concept": "97f1f41-b0c7-407d-b95f-b1e26c3fd23c"
+                  },
+                  {
+                    "label": "11. Bipolar disorder (incl. mania)",
+                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
+                  },
+                  {
+                    "label": "12. Enuresis / Encopresis",
+                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
+                  },
+                  {
+                    "label": "13. Developmental disorder (incl. intellectual disability, autism)",
+                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
+                  },
+                  {
+                    "label": "14. Childhood behavioral disorder (incl. ADHD, conduct disorder)",
+                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
+                  },
+                  {
+                    "label": "15. Childhood emotional disorder",
+                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
+                  },
+                  {
+                    "label": "16. Substance-related disorder",
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                  },
+                  {
+                    "label": "17. Epilepsy / seizures",
+                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                  },
+                  {
+                    "label": "18. Other disorder",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "19. No diagnosis",
+                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
+                  },
+                  {
+                    "label": "2. Bereavement/grief",
+                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
+                  },
+                  {
+                    "label": "3. Post-Traumatic Stress Disorder",
+                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
+                  },
+                  {
+                    "label": "4. Conversion/Dissociative reaction",
+                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
+                  },
+                  {
+                    "label": "5. Anxiety Disorder",
+                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
+                  },
+                  {
+                    "label": "6. Medically Unexplained Physical Symptoms (MUPS)",
+                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
+                  },
+                  {
+                    "label": "7. Depression",
+                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
+                  },
+                  {
+                    "label": "8. Self-harming behavior/suicide attempt",
+                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
+                  },
+                  {
+                    "label": "9. Acute psychosis (incl. post-partum psychosis)",
+                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
+                  }
+                ]
+              },
+              "questionInfo": "If applicable"
+            },
+            {
+              "id": "ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002",
+                "answers": [
+                  {
+                    "label": "1. Acute stress reaction",
+                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
+                  },
+                  {
+                    "label": "10. Chronic psychosis (incl. schizophrenia)",
+                    "concept": "97f1f41-b0c7-407d-b95f-b1e26c3fd23c"
+                  },
+                  {
+                    "label": "11. Bipolar disorder (incl. mania)",
+                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
+                  },
+                  {
+                    "label": "12. Enuresis / Encopresis",
+                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
+                  },
+                  {
+                    "label": "13. Developmental disorder (incl. intellectual disability, autism)",
+                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
+                  },
+                  {
+                    "label": "14. Childhood behavioral disorder (incl. ADHD, conduct disorder)",
+                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
+                  },
+                  {
+                    "label": "15. Childhood emotional disorder",
+                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
+                  },
+                  {
+                    "label": "16. Substance-related disorder",
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                  },
+                  {
+                    "label": "17. Epilepsy / seizures",
+                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                  },
+                  {
+                    "label": "18. Other disorder",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "19. No diagnosis",
+                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
+                  },
+                  {
+                    "label": "2. Bereavement/grief",
+                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
+                  },
+                  {
+                    "label": "3. Post-Traumatic Stress Disorder",
+                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
+                  },
+                  {
+                    "label": "4. Conversion/Dissociative reaction",
+                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
+                  },
+                  {
+                    "label": "5. Anxiety Disorder",
+                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
+                  },
+                  {
+                    "label": "6. Medically Unexplained Physical Symptoms (MUPS)",
+                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
+                  },
+                  {
+                    "label": "7. Depression",
+                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
+                  },
+                  {
+                    "label": "8. Self-harming behavior/suicide attempt",
+                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
+                  },
+                  {
+                    "label": "9. Acute psychosis (incl. post-partum psychosis)",
+                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "concomitantDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -1999,13 +2219,73 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "ifChangeOfMedicationRationaleForTheChange",
-              "label": "If change of medication, rationale for the change",
+              "id": "prescribeOrChangeMedicationIfNecessary",
+              "label": "Prescribe/change medication if necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            },
+            {
+              "id": "medicationsAndSideEffectsWereExplainedToThePatientOrCaregiver",
+              "label": "Medications and side effects were explained to the patient / caregiver?",
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "text",
-                "concept": "4484f909-4392-4810-a9fe-d3d09a77c661"
+                "rendering": "radio",
+                "concept": "f52b3cc9-e2b9-46f7-9992-76951f232695",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "thePatientOrCareGiverUnderstandsTheSideEffects",
+              "label": "The patient / care giver understands the side effects?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "06438020-5aef-4dd6-aa7d-4b887ffaa4e4",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "thePatientConsentedToProceedWithPharmacologicalTreatment",
+              "label": "The patient consented to proceed with pharmacological treatment?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "cd30570a-519e-4249-92e7-92ee3980d46f",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
               }
             }
           ]
@@ -2013,24 +2293,8 @@
       ]
     },
     {
-      "label": "Treatment plan",
+      "label": "Observations",
       "sections": [
-        {
-          "label": "Medication",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "updateMedicationsIfTheresAChange",
-              "label": "Update medications if there's a change",
-              "required": false,
-              "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Active medications",
-                "workspaceName": "medications-form-workspace"
-              }
-            }
-          ]
-        },
         {
           "label": "Observations",
           "isExpanded": false,
@@ -2046,42 +2310,6 @@
               }
             }
           ]
-        },
-        {
-          "label": "Adherence to treatment",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "isThePatientTakingTheMedicationAsPrescribed",
-              "label": "Is the patient taking the medication as prescribed?   ",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "dbf35880-d18e-4f15-ad9c-97b5b053e14a",
-                "answers": [
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  },
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "detailsIfNeeded",
-              "label": "Details, if needed",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "dc072a1a-20d8-4512-9e57-3585a07cb074"
-              }
-            }
-          ]
         }
       ]
     },
@@ -2093,8 +2321,8 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "followUpSessionRequired",
-              "label": "Follow up session required? (If no, fill the Exit form)",
+              "id": "followUpRequired",
+              "label": "Follow-up required?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2110,25 +2338,25 @@
                     "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
                   }
                 ]
-              }
+              },
+              "questionInfo": "Follow up session required? (If no, fill the Exit form)"
             },
             {
-              "id": "appointments",
-              "label": "Appointments",
+              "id": "setTheNextSessionDate",
+              "label": "Set the next session date",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
                 "buttonLabel": "Set the next appointment date",
-                "workspaceName": "appointments-form-workspace",
-                "answers": []
+                "workspaceName": "appointments-form-workspace"
               },
               "hide": {
                 "hideWhenExpression": "followUpSessionRequired !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
             },
             {
-              "id": "nextAppointmentDate",
-              "label": "Next appointment date",
+              "id": "nextSessionDate",
+              "label": "Next session date",
               "type": "obs",
               "required": false,
               "questionOptions": {
