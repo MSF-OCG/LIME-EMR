@@ -7,7 +7,7 @@ The OpenMRS 3 distribution for MSF OCG
 - **Mental health** forms (7 forms - PHQ9, MHPSS and mhGap)
 
 ### Multilingual UI and forms
-- **Arabic and English** support
+- **Arabic and English** support. You can read more about the [implementation here](/Translations.md)
 
 ### Role-based access control (RBAC)
 - Role-based **appointments**
