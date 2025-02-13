@@ -258,7 +258,7 @@
                     "concept": "8e67e45a-82de-4a3a-896f-2ef326375fa5"
                   },
                   {
-                    "label": "Patient cannot access the service: MSF is no longer",
+                    "label": "Patient cannot access the service: MSF is no longer there",
                     "concept": "1cb43f9e-16f1-41d9-af61-ff0ca1bdda6b"
                   },
                   {
@@ -336,14 +336,6 @@
                 "concept": "3d081f71-7b90-4fb2-a8bc-961263ab6cec",
                 "answers": [
                   {
-                    "label": "No change ",
-                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
-                  },
-                  {
-                    "label": "Challenges",
-                    "concept": "e3920288-c60e-453f-810c-e707924c37e3"
-                  },
-                  {
                     "label": "Achieved",
                     "concept": "fa2f265a-3fa5-4d93-b750-c84d5e659113"
                   },
@@ -368,14 +360,6 @@
                 "concept": "e6461d60-052f-450a-96aa-9523e807b560",
                 "answers": [
                   {
-                    "label": "No change ",
-                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
-                  },
-                  {
-                    "label": "Challenges",
-                    "concept": "e3920288-c60e-453f-810c-e707924c37e3"
-                  },
-                  {
                     "label": "Achieved",
                     "concept": "fa2f265a-3fa5-4d93-b750-c84d5e659113"
                   },
@@ -399,14 +383,6 @@
                 "rendering": "radio",
                 "concept": "d8e794bc-efd6-447b-8079-d8f84a267e36",
                 "answers": [
-                  {
-                    "label": "No change ",
-                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
-                  },
-                  {
-                    "label": "Challenges",
-                    "concept": "e3920288-c60e-453f-810c-e707924c37e3"
-                  },
                   {
                     "label": "Achieved",
                     "concept": "fa2f265a-3fa5-4d93-b750-c84d5e659113"
@@ -472,26 +448,94 @@
               "default": "Value of last GAD7 score measured"
             },
             {
-              "id": "cgiI",
-              "label": "CGI-I",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3"
-              },
-              "default": "Value of last CGI-I score measured"
-            },
-            {
               "id": "cgiS",
-              "label": "CGI-S",
+              "label": "CGI-S (rating of severity CGI-S: how mentally ill is the patient at this time?)",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "select",
-                "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40"
+                "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40",
+                "answers": [
+                  {
+                    "label": "0 - Not assessed",
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "label": "1 - Normal/not ill",
+                    "concept": "28eca5ef-725d-411f-af28-538a4a6f0a89"
+                  },
+                  {
+                    "label": "2 - Suspected mentally ill",
+                    "concept": "8f8af8f2-4256-4fba-9ce9-e62097b871d3"
+                  },
+                  {
+                    "label": "3 - Mildly ill",
+                    "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
+                  },
+                  {
+                    "label": "4 - Moderately ill",
+                    "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
+                  },
+                  {
+                    "label": "5 - Markedly ill",
+                    "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
+                  },
+                  {
+                    "label": "6 - Severely ill",
+                    "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
+                  },
+                  {
+                    "label": "7 - Extremely ill patient",
+                    "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                  }
+                ]
               },
               "default": "Value of last CGI-S score measured"
+            },
+            {
+              "id": "cgiI",
+              "label": "CGI-I (rating of  improvement CGI-I: how much has the patient improved at this time?)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3",
+                "answers": [
+                  {
+                    "label": "0 - Not assessed",
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "label": "1 - Very much improved",
+                    "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                  },
+                  {
+                    "label": "2 - Much improved",
+                    "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                  },
+                  {
+                    "label": "3 - Minimally improved",
+                    "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                  },
+                  {
+                    "label": "4 - No change",
+                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                  },
+                  {
+                    "label": "5 - Minimally worse",
+                    "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                  },
+                  {
+                    "label": "6 - Much worse",
+                    "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                  },
+                  {
+                    "label": "7 - Very much worse",
+                    "concept": "ece17856-b110-4453-9bc5-a92891f86846"
+                  }
+                ]
+              },
+              "default": "Value of last CGI-I score measured"
             }
           ]
         }

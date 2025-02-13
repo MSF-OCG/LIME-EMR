@@ -337,7 +337,7 @@
                 "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
                 "answers": [
                   {
-                    "label": "Acute stress reaction",
+                    "label": "Acute stress disorder",
                     "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
                   },
                   {
@@ -474,6 +474,33 @@
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
+              },
+              "questionInfo": "If in doubt: ask the patient: \"Do you think about killing yourself?\" If \"no\" then mark \"no risk\"",
+              "hide": {
+                "hideWhenExpression": "Invalid expression format"
+              }
+            },
+            {
+              "id": "doesThePatientPresentARiskOfHarmingOthers",
+              "label": "Does the patient present a risk of harming others?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ccc4f06c-b76a-440d-9b7e-c48ba2c4a0ab",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "Invalid expression format"
               }
             }
           ]
@@ -553,7 +580,7 @@
                     "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
                   },
                   {
-                    "label": "1.10 Abortion ",
+                    "label": "1.10 Termination of pregnancy ",
                     "concept": "f3753bd0-13cf-4bc0-887b-bf9c0e50cc97"
                   },
                   {
@@ -561,6 +588,9 @@
                     "concept": "e9e30daa-2232-4095-935d-717b3b25d29f"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "didThePatientSufferNewCriticalEventsSinceTheLastConsultation !== 'yes'"
               }
             },
             {
@@ -593,7 +623,7 @@
                     "concept": "8917acb0-e25d-4f9e-84bb-cae9998abf35"
                   },
                   {
-                    "label": "2.6 Deportation",
+                    "label": "2.6 Deportation/pushback",
                     "concept": "f279409d-71ba-41c6-8301-76ee90d239dc"
                   },
                   {
@@ -669,14 +699,13 @@
                     "concept": "2196bd0a-90c1-4ee4-8d72-8a1f2f949a53"
                   },
                   {
-                    "label": "2.25 Pushback ",
-                    "concept": "49373120-0962-4023-8c7e-ced32b96e071"
-                  },
-                  {
-                    "label": "2.26 Other forms of ill-treatment ",
+                    "label": "2.25 Other forms of ill-treatment ",
                     "concept": "bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "didThePatientSufferNewCriticalEventsSinceTheLastConsultation !== 'yes'"
               }
             },
             {
@@ -689,7 +718,7 @@
                 "concept": "edab07a2-b620-4e56-a079-af7fc9449039",
                 "answers": [
                   {
-                    "label": "3.1 Family member killed or missing (arrested / detained / disappeared) ",
+                    "label": "3.1 Family member killed or missing",
                     "concept": "4e3ab089-6a99-4e15-8883-3c49a150e6c6"
                   },
                   {
@@ -737,6 +766,9 @@
                     "concept": "891854f1-bf43-4483-acb0-c7b68dd851d5"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "didThePatientSufferNewCriticalEventsSinceTheLastConsultation !== 'yes'"
               }
             },
             {
@@ -757,6 +789,9 @@
                     "concept": "9e0945eb-68f0-4d1c-a421-27f46fa41eaa"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "didThePatientSufferNewCriticalEventsSinceTheLastConsultation !== 'yes'"
               }
             },
             {
@@ -785,6 +820,9 @@
                     "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "didThePatientSufferNewCriticalEventsSinceTheLastConsultation !== 'yes'"
               }
             },
             {
@@ -852,7 +890,7 @@
                     "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
                   },
                   {
-                    "label": "1.10 Abortion ",
+                    "label": "1.10 Termination of pregnancy ",
                     "concept": "f3753bd0-13cf-4bc0-887b-bf9c0e50cc97"
                   },
                   {
@@ -880,7 +918,7 @@
                     "concept": "8917acb0-e25d-4f9e-84bb-cae9998abf35"
                   },
                   {
-                    "label": "2.6 Deportation",
+                    "label": "2.6 Deportation/pushback",
                     "concept": "f279409d-71ba-41c6-8301-76ee90d239dc"
                   },
                   {
@@ -964,7 +1002,7 @@
                     "concept": "bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d"
                   },
                   {
-                    "label": "3.1 Family member killed or missing (arrested / detained / disappeared) ",
+                    "label": "3.1 Family member killed or missing",
                     "concept": "4e3ab089-6a99-4e15-8883-3c49a150e6c6"
                   },
                   {
@@ -1036,6 +1074,9 @@
                     "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "didThePatientSufferNewCriticalEventsSinceTheLastConsultation !== 'yes'"
               }
             },
             {
@@ -1084,7 +1125,7 @@
                     "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
                   },
                   {
-                    "label": "1.10 Abortion ",
+                    "label": "1.10 Termination of pregnancy ",
                     "concept": "f3753bd0-13cf-4bc0-887b-bf9c0e50cc97"
                   },
                   {
@@ -1112,7 +1153,7 @@
                     "concept": "8917acb0-e25d-4f9e-84bb-cae9998abf35"
                   },
                   {
-                    "label": "2.6 Deportation",
+                    "label": "2.6 Deportation/pushback",
                     "concept": "f279409d-71ba-41c6-8301-76ee90d239dc"
                   },
                   {
@@ -1196,7 +1237,7 @@
                     "concept": "bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d"
                   },
                   {
-                    "label": "3.1 Family member killed or missing (arrested / detained / disappeared) ",
+                    "label": "3.1 Family member killed or missing",
                     "concept": "4e3ab089-6a99-4e15-8883-3c49a150e6c6"
                   },
                   {
@@ -1268,6 +1309,9 @@
                     "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "didThePatientSufferNewCriticalEventsSinceTheLastConsultation !== 'yes'"
               }
             },
             {
@@ -1316,7 +1360,7 @@
                     "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
                   },
                   {
-                    "label": "1.10 Abortion ",
+                    "label": "1.10 Termination of pregnancy ",
                     "concept": "f3753bd0-13cf-4bc0-887b-bf9c0e50cc97"
                   },
                   {
@@ -1344,7 +1388,7 @@
                     "concept": "8917acb0-e25d-4f9e-84bb-cae9998abf35"
                   },
                   {
-                    "label": "2.6 Deportation",
+                    "label": "2.6 Deportation/pushback",
                     "concept": "f279409d-71ba-41c6-8301-76ee90d239dc"
                   },
                   {
@@ -1428,7 +1472,7 @@
                     "concept": "bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d"
                   },
                   {
-                    "label": "3.1 Family member killed or missing (arrested / detained / disappeared) ",
+                    "label": "3.1 Family member killed or missing",
                     "concept": "4e3ab089-6a99-4e15-8883-3c49a150e6c6"
                   },
                   {
@@ -1500,6 +1544,9 @@
                     "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "didThePatientSufferNewCriticalEventsSinceTheLastConsultation !== 'yes'"
               }
             },
             {
@@ -1577,6 +1624,9 @@
                     "concept": "f7ae6f81-0dcf-4316-9706-26d96a8d9c1e"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "didThePatientSufferNewCriticalEventsSinceTheLastConsultation !== 'yes'"
               }
             },
             {
@@ -1587,6 +1637,9 @@
               "questionOptions": {
                 "rendering": "textarea",
                 "concept": "2e6ca6a9-886e-483a-911f-92f6a16b11c9"
+              },
+              "hide": {
+                "hideWhenExpression": "didThePatientSufferNewCriticalEventsSinceTheLastConsultation !== 'yes'"
               }
             }
           ]
@@ -3236,6 +3289,14 @@
                   {
                     "label": "Improvement",
                     "concept": "fa603058-728b-4a5a-b1ff-377fab429b4f"
+                  },
+                  {
+                    "label": "No change ",
+                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                  },
+                  {
+                    "label": "Challenges",
+                    "concept": "e3920288-c60e-453f-810c-e707924c37e3"
                   }
                 ]
               }
@@ -3251,6 +3312,14 @@
                   {
                     "label": "Improvement",
                     "concept": "fa603058-728b-4a5a-b1ff-377fab429b4f"
+                  },
+                  {
+                    "label": "No change ",
+                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                  },
+                  {
+                    "label": "Challenges",
+                    "concept": "e3920288-c60e-453f-810c-e707924c37e3"
                   }
                 ]
               }
@@ -3267,6 +3336,14 @@
                   {
                     "label": "Improvement",
                     "concept": "fa603058-728b-4a5a-b1ff-377fab429b4f"
+                  },
+                  {
+                    "label": "No change ",
+                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                  },
+                  {
+                    "label": "Challenges",
+                    "concept": "e3920288-c60e-453f-810c-e707924c37e3"
                   }
                 ]
               }
@@ -3318,8 +3395,8 @@
               }
             },
             {
-              "id": "setTheNextAppointmentDate",
-              "label": "Set the next appointment date",
+              "id": "setTheNextSessionDate",
+              "label": "Set the next session date",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -3331,8 +3408,8 @@
               }
             },
             {
-              "id": "nextAppointmentDate",
-              "label": "Next appointment date",
+              "id": "nextSessionDate",
+              "label": "Next session date",
               "type": "obs",
               "required": false,
               "questionOptions": {
