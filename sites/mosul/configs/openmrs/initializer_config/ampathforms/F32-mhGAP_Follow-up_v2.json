@@ -5,7 +5,7 @@
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
-  "encounter": "Consultation",
+  "encounter": "Mental Health",
   "retired": false,
   "referencedForms": [],
   "pages": [
@@ -132,7 +132,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "reasonForMissedAppointment_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -272,12 +272,12 @@
               }
             },
             {
-              "id": "others",
+              "id": "sideEffectsFromCurrentTreatmentOthers",
               "label": "Others",
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "multiCheckbox",
+                "rendering": "radio",
                 "concept": "5c19b3cb-9a67-4b55-882f-6711ced9b74f",
                 "answers": [
                   {
@@ -293,16 +293,16 @@
                     "concept": "62a3fbee-254f-432c-b49e-8fcc285ef7ea"
                   },
                   {
-                    "label": "Other ",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
                     "label": "Sexual dysfunction",
                     "concept": "4ab8471f-712c-4d5a-85f2-ed2d328e8b19"
                   },
                   {
                     "label": "Sleepiness",
                     "concept": "fe577c37-5798-41d8-b532-ff62c74cf21c"
+                  },
+                  {
+                    "label": "Other ",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
               }
@@ -317,7 +317,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "sideEffectsFromCurrentTreatmentOthers !== 'other'"
+                "hideWhenExpression": "sideEffectsFromCurrentTreatmentOthers !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -415,7 +415,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age > 15"
+                "hideWhenExpression": "age < 15"
               }
             },
             {
@@ -450,7 +450,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age > 15"
+                "hideWhenExpression": "age < 15"
               }
             },
             {
@@ -485,7 +485,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age > 15"
+                "hideWhenExpression": "age < 15"
               }
             },
             {
@@ -520,7 +520,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age > 15"
+                "hideWhenExpression": "age < 15"
               }
             },
             {
@@ -555,7 +555,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age > 15"
+                "hideWhenExpression": "age < 15"
               }
             },
             {
@@ -590,7 +590,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age > 15"
+                "hideWhenExpression": "age < 15"
               }
             },
             {
@@ -625,7 +625,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -660,7 +660,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -695,7 +695,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -730,7 +730,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -765,7 +765,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -800,7 +800,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -835,7 +835,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -870,7 +870,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -905,7 +905,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -940,7 +940,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -975,7 +975,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -1010,7 +1010,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -1045,7 +1045,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -1080,7 +1080,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             }
           ]
@@ -1099,7 +1099,7 @@
               },
               "value": ["A last question:"],
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -1134,7 +1134,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -1169,7 +1169,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "age <= 15"
+                "hideWhenExpression": "age >= 15"
               }
             },
             {
@@ -2171,7 +2171,7 @@
                 "rendering": "date",
                 "concept": "edc6f30c-4ff2-4a4f-8b90-ca4502bb97a1",
                 "calculate": {
-                  "calculateExpression": "Autofill with the first date of mhGAP visit after the current form's date"
+                  "calculateExpression": "Autofill with the first date of mhGAP visit after the current form\u2019s date"
                 }
               },
               "hide": {
@@ -2250,7 +2250,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "patientReferredTo_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,

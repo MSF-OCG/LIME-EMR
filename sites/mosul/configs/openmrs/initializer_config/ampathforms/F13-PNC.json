@@ -482,7 +482,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "latestDeliveryProblems_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -570,7 +570,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "medicalHistory_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -1795,13 +1795,16 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "referral_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "textarea",
                 "concept": "ifOtherSpecify"
+              },
+              "hide": {
+                "hideWhenExpression": "referral !== 'other'"
               }
             },
             {
