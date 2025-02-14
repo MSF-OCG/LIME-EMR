@@ -1591,7 +1591,7 @@
                 "rendering": "number",
                 "concept": "4854003a-4f26-497f-959d-45a56bc77c65",
                 "calculate": {
-                  "calculateExpression": "Fill with last PHQ-9 score available"
+                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
                 }
               }
             }
@@ -1896,7 +1896,7 @@
                 "rendering": "select",
                 "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
                 "calculate": {
-                  "calculateExpression": "Fill with last CGI-S score available"
+                  "calculateExpression": "api.getLatestObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
                 },
                 "answers": [
                   {
