@@ -1698,7 +1698,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "didYouHaveProblemsPerformingDailyActivitiesSuchAsCookingBathingOrChoresOutsideTheHousehold",
+              "id": "problemsPerformingDailyActivities",
               "label": "Did you have problems performing daily activities, such as cooking, bathing, or chores outside the household?",
               "type": "obs",
               "required": false,
@@ -1733,7 +1733,7 @@
               }
             },
             {
-              "id": "didYouHaveProblemsGettingAlongWithFamilyOrFriends",
+              "id": "problemsGettingAlongWithFamilyOrFriends",
               "label": "Did you have problems getting along with family or friends?",
               "type": "obs",
               "required": false,
@@ -1768,7 +1768,7 @@
               }
             },
             {
-              "id": "didYouHaveAnyProblemsSleepingSuchAsSleepingTooMuchOrNotEnough",
+              "id": "problemsSleepingSuchAsSleepingTooMuchOrNotEnough",
               "label": "Did you have any problems sleeping, such as sleeping too much or not enough?",
               "type": "obs",
               "required": false,
@@ -1803,7 +1803,7 @@
               }
             },
             {
-              "id": "haveYouBeenBotheredByUnpleasantThoughtsWorriesOrIdeas",
+              "id": "botheredByUnpleasantThoughtsWorriesOrIdeas",
               "label": "Have you been bothered by unpleasant thoughts, worries or ideas?",
               "type": "obs",
               "required": false,
@@ -2509,7 +2509,7 @@
                 "rendering": "number",
                 "concept": "6156a8ec-565e-4104-83cb-2d6e0c1a887f",
                 "calculate": {
-                  "calculateExpression": "Fill with last MHOS score available"
+                  "calculateExpression": "api.getLatestObs(patient.id, 'b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df').then(obs => obs?.valueQuantity?.value)"
                 }
               }
             }
@@ -2660,7 +2660,7 @@
               }
             },
             {
-              "id": "feelingBadAboutYourselfOrThatYouAreAFailureOrHaveLetYourselfOrYourFamilyDown",
+              "id": "feelingBadAboutYourself",
               "label": "Feeling bad about yourself - or that you are a failure or have let yourself or your family down?",
               "type": "obs",
               "required": false,
@@ -2688,7 +2688,7 @@
               }
             },
             {
-              "id": "troubleConcentratingOnThingsSuchAsReadingTheNewspaperOrWatchingTelevision",
+              "id": "troubleConcentratingOnThings",
               "label": "Trouble concentrating on things, such as reading the newspaper or watching television?",
               "type": "obs",
               "required": false,
@@ -2716,7 +2716,7 @@
               }
             },
             {
-              "id": "movingOrSpeakingSoSlowlyThatOtherPeopleCouldHaveNoticedOrTheOppositeBeingSoFidgetyOrRestlessThatYouHaveBeenMovingAroundALotMoreThanUsual",
+              "id": "movingOrSpeakingSoSlowly",
               "label": "Moving or speaking so slowly that other people could have noticed? Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual?",
               "type": "obs",
               "required": false,
@@ -2744,7 +2744,7 @@
               }
             },
             {
-              "id": "thoughtsThatYouWouldBeBetterOffDeadOrOfHurtingYourselfInSomeWay",
+              "id": "thoughtsThatYouWouldBeBetterOffDead",
               "label": "Thoughts that you would be better off dead, or of hurting yourself in some way?",
               "type": "obs",
               "required": false,
@@ -2786,7 +2786,7 @@
                 "rendering": "number",
                 "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23",
                 "calculate": {
-                  "calculateExpression": "(littleInterestOrPleasureInDoingThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : littleInterestOrPleasureInDoingThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : littleInterestOrPleasureInDoingThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingDownDepressedOrHopeless === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingDownDepressedOrHopeless === '234259ec-5368-4488-8482-4f261cc76714' ? 2 :  feelingDownDepressedOrHopeless==='8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleFallingOrStayingAsleepOrSleepingTooMuch === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingTiredOrHavingLittleEnergy === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingTiredOrHavingLittleEnergy === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingTiredOrHavingLittleEnergy === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) +(poorAppetiteOrOverEating === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : poorAppetiteOrOverEating === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : poorAppetiteOrOverEating === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingBadAboutYourself === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingBadAboutYourself === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingBadAboutYourself === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleConcentratingOnThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleConcentratingOnThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleConcentratingOnThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (movingOrSpeakingSoSlowly === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : movingOrSpeakingSoSlowly === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : movingOrSpeakingSoSlowly === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (thoughtsThatYouWouldBeBetterOffDead === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : thoughtsThatYouWouldBeBetterOffDead === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : thoughtsThatYouWouldBeBetterOffDead === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0)"
+                  "calculateExpression": "(littleInterestOrPleasureInDoingThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : littleInterestOrPleasureInDoingThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : littleInterestOrPleasureInDoingThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingDownDepressedOrHopeless === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingDownDepressedOrHopeless === '234259ec-5368-4488-8482-4f261cc76714' ? 2 :  feelingDownDepressedOrHopeless ==='8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleFallingOrStayingAsleepOrSleepingTooMuch === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingTiredOrHavingLittleEnergy === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingTiredOrHavingLittleEnergy === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingTiredOrHavingLittleEnergy === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (poorAppetiteOrOverEating === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : poorAppetiteOrOverEating === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : poorAppetiteOrOverEating === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingBadAboutYourself === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingBadAboutYourself === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingBadAboutYourself === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleConcentratingOnThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleConcentratingOnThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleConcentratingOnThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (movingOrSpeakingSoSlowly === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : movingOrSpeakingSoSlowly === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : movingOrSpeakingSoSlowly === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (thoughtsThatYouWouldBeBetterOffDead === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : thoughtsThatYouWouldBeBetterOffDead === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : thoughtsThatYouWouldBeBetterOffDead === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0)"
                 }
               },
               "questionInfo": "Sum of all points from answers above"
@@ -2873,7 +2873,7 @@
                 "rendering": "number",
                 "concept": "4854003a-4f26-497f-959d-45a56bc77c65",
                 "calculate": {
-                  "calculateExpression": "Fill with last PHQ-9 score available"
+                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
                 }
               }
             }
@@ -3718,12 +3718,12 @@
               }
             },
             {
-              "id": "other",
+              "id": "pastOrPrecipitatingEvents_other",
               "label": "5. Other",
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "multiCheckbox",
+                "rendering": "radio",
                 "concept": "af96ffd7-e0f3-487f-98a0-ef4dee327b38",
                 "answers": [
                   {
@@ -3755,7 +3755,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "pastOrPrecipitatingEvents !== 'other'"
+                "hideWhenExpression": "pastOrPrecipitatingEvents_other !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -3775,223 +3775,388 @@
                 "answers": [
                   {
                     "label": "1.1 Highly stigmatizing disease (HIV/AIDS, FHF, cancer, etc.)",
-                    "concept": "6e02debd-31eb-4112-8566-00e520835c76"
+                    "concept": "6e02debd-31eb-4112-8566-00e520835c76",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '6e02debd-31eb-4112-8566-00e520835c76')"
+                    }
                   },
                   {
                     "label": "1.2 Severe medical condition (malnutrition, disability, sexual or reproductive problems, etc.)",
-                    "concept": "ccd5d010-12c7-44d7-966e-c5b17c02e3a2"
+                    "concept": "ccd5d010-12c7-44d7-966e-c5b17c02e3a2",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'ccd5d010-12c7-44d7-966e-c5b17c02e3a2')"
+                    }
                   },
                   {
                     "label": "1.3 Unwanted pregnancy",
-                    "concept": "35910034-cc37-4dd1-abb7-ce140b0eff2b"
+                    "concept": "35910034-cc37-4dd1-abb7-ce140b0eff2b",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '35910034-cc37-4dd1-abb7-ce140b0eff2b')"
+                    }
                   },
                   {
                     "label": "1.4 History of mental health disorder",
-                    "concept": "72ad3cc7-820c-4799-ab1c-36ad8f1ca97d"
+                    "concept": "72ad3cc7-820c-4799-ab1c-36ad8f1ca97d",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '72ad3cc7-820c-4799-ab1c-36ad8f1ca97d')"
+                    }
                   },
                   {
                     "label": "1.5 Chronic disease (diabetes, hypertension, cancer, etc.) ",
-                    "concept": "4bf7b376-9193-4ee4-a51a-445d07d2d22b"
+                    "concept": "4bf7b376-9193-4ee4-a51a-445d07d2d22b",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '4bf7b376-9193-4ee4-a51a-445d07d2d22b')"
+                    }
                   },
                   {
                     "label": "1.6 Family member with a serious medical condition",
-                    "concept": "42e8ab5a-607f-4259-a23f-9f9bac5d5b46"
+                    "concept": "42e8ab5a-607f-4259-a23f-9f9bac5d5b46",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '42e8ab5a-607f-4259-a23f-9f9bac5d5b46')"
+                    }
                   },
                   {
                     "label": "1.7 Patient under palliative care",
-                    "concept": "fb17afb6-033e-4560-8343-eecd6ff0f028"
+                    "concept": "fb17afb6-033e-4560-8343-eecd6ff0f028",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'fb17afb6-033e-4560-8343-eecd6ff0f028')"
+                    }
                   },
                   {
                     "label": "1.8 Chronic pain ",
-                    "concept": "d2f59555-b1ef-4f3b-89c5-88c91f3a8126"
+                    "concept": "d2f59555-b1ef-4f3b-89c5-88c91f3a8126",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'd2f59555-b1ef-4f3b-89c5-88c91f3a8126')"
+                    }
                   },
                   {
                     "label": "1.9 Substance abuse",
-                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'fcc01124-3d7b-4e6f-be35-50233a7f64cb')"
+                    }
                   },
                   {
                     "label": "1.10 Termination of pregnancy ",
-                    "concept": "f3753bd0-13cf-4bc0-887b-bf9c0e50cc97"
+                    "concept": "f3753bd0-13cf-4bc0-887b-bf9c0e50cc97",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'f3753bd0-13cf-4bc0-887b-bf9c0e50cc97')"
+                    }
                   },
                   {
                     "label": "1.11 Barriers to accessing healthcare (incl. MH)",
-                    "concept": "e9e30daa-2232-4095-935d-717b3b25d29f"
+                    "concept": "e9e30daa-2232-4095-935d-717b3b25d29f",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'e9e30daa-2232-4095-935d-717b3b25d29f')"
+                    }
                   },
                   {
                     "label": "2.1 Sexual violence within the family",
-                    "concept": "5cccf137-2952-4c9b-b879-b4ed2a9be621"
+                    "concept": "5cccf137-2952-4c9b-b879-b4ed2a9be621",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '5cccf137-2952-4c9b-b879-b4ed2a9be621')"
+                    }
                   },
                   {
                     "label": "2.2 Sexual violence outside the family",
-                    "concept": "dbe73631-79ae-4ab9-a3c8-65d6732c8714"
+                    "concept": "dbe73631-79ae-4ab9-a3c8-65d6732c8714",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'dbe73631-79ae-4ab9-a3c8-65d6732c8714')"
+                    }
                   },
                   {
                     "label": "2.3 Exposed to war/armed conflict",
-                    "concept": "cf28335f-d72c-440a-afc1-bcca39b51155"
+                    "concept": "cf28335f-d72c-440a-afc1-bcca39b51155",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'cf28335f-d72c-440a-afc1-bcca39b51155')"
+                    }
                   },
                   {
                     "label": "2.4 Incarceration/detention",
-                    "concept": "66492df1-6d26-498a-b6c7-b10931da1642"
+                    "concept": "66492df1-6d26-498a-b6c7-b10931da1642",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '66492df1-6d26-498a-b6c7-b10931da1642')"
+                    }
                   },
                   {
                     "label": "2.5 Hostage/kidnapping/forced recruitment",
-                    "concept": "8917acb0-e25d-4f9e-84bb-cae9998abf35"
+                    "concept": "8917acb0-e25d-4f9e-84bb-cae9998abf35",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '8917acb0-e25d-4f9e-84bb-cae9998abf35')"
+                    }
                   },
                   {
                     "label": "2.6 Deportation/pushback",
-                    "concept": "f279409d-71ba-41c6-8301-76ee90d239dc"
+                    "concept": "f279409d-71ba-41c6-8301-76ee90d239dc",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'f279409d-71ba-41c6-8301-76ee90d239dc')"
+                    }
                   },
                   {
                     "label": "2.7 Intimate partner\u2019s violence ",
-                    "concept": "e25f9ca1-0b33-4765-a8c4-5da48289bda7"
+                    "concept": "e25f9ca1-0b33-4765-a8c4-5da48289bda7",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'e25f9ca1-0b33-4765-a8c4-5da48289bda7')"
+                    }
                   },
                   {
                     "label": "2.8 Victim of threats",
-                    "concept": "7ab56ef2-0ff7-4ebf-b7c2-42f6b46c2206"
+                    "concept": "7ab56ef2-0ff7-4ebf-b7c2-42f6b46c2206",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '7ab56ef2-0ff7-4ebf-b7c2-42f6b46c2206')"
+                    }
                   },
                   {
                     "label": "2.9 Victim of human trafficking or smuggling",
-                    "concept": "5958f0fd-c755-4640-80d7-5ef0f9522b2e"
+                    "concept": "5958f0fd-c755-4640-80d7-5ef0f9522b2e",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '5958f0fd-c755-4640-80d7-5ef0f9522b2e')"
+                    }
                   },
                   {
                     "label": "2.10 Witness violence/killings/threats",
-                    "concept": "107a7f52-f95d-447f-bf1a-c801e1a0082c"
+                    "concept": "107a7f52-f95d-447f-bf1a-c801e1a0082c",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '107a7f52-f95d-447f-bf1a-c801e1a0082c')"
+                    }
                   },
                   {
                     "label": "2.11 Forced to flee (IDP/refugee/migrant)",
-                    "concept": "a8b0e025-a735-407b-b958-fe9b29c370e7"
+                    "concept": "a8b0e025-a735-407b-b958-fe9b29c370e7",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'a8b0e025-a735-407b-b958-fe9b29c370e7')"
+                    }
                   },
                   {
                     "label": "2.12 Target of stigma/discrimination/marginalization",
-                    "concept": "e702655a-57af-457a-a1ae-42e31f119f80"
+                    "concept": "e702655a-57af-457a-a1ae-42e31f119f80",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'e702655a-57af-457a-a1ae-42e31f119f80')"
+                    }
                   },
                   {
                     "label": "2.13 Physical violence (wounded/beaten/torture)",
-                    "concept": "c80eb3f7-31b1-4717-a78d-0aac623fc129"
+                    "concept": "c80eb3f7-31b1-4717-a78d-0aac623fc129",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'c80eb3f7-31b1-4717-a78d-0aac623fc129')"
+                    }
                   },
                   {
                     "label": "2.14 Forced curfew or confinement",
-                    "concept": "ea673f5c-5f99-4da5-9f41-92c21446de31"
+                    "concept": "ea673f5c-5f99-4da5-9f41-92c21446de31",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'ea673f5c-5f99-4da5-9f41-92c21446de31')"
+                    }
                   },
                   {
                     "label": "2.15 History of suicide attempts",
-                    "concept": "160734e2-e5ed-44e9-b573-bdbb6e619e30"
+                    "concept": "160734e2-e5ed-44e9-b573-bdbb6e619e30",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '160734e2-e5ed-44e9-b573-bdbb6e619e30')"
+                    }
                   },
                   {
                     "label": "2.16 History of self-harm/mutilation",
-                    "concept": "19408a7e-e17e-4040-adec-d6aa426564ce"
+                    "concept": "19408a7e-e17e-4040-adec-d6aa426564ce",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '19408a7e-e17e-4040-adec-d6aa426564ce')"
+                    }
                   },
                   {
                     "label": "2.17 Family members lived a violent experience",
-                    "concept": "5a462534-7605-4137-8d5c-503584538eb4"
+                    "concept": "5a462534-7605-4137-8d5c-503584538eb4",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '5a462534-7605-4137-8d5c-503584538eb4')"
+                    }
                   },
                   {
                     "label": "2.18 Adult forced marriage ",
-                    "concept": "a725a884-e785-4c08-b08a-386d8652faaf"
+                    "concept": "a725a884-e785-4c08-b08a-386d8652faaf",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'a725a884-e785-4c08-b08a-386d8652faaf')"
+                    }
                   },
                   {
                     "label": "2.19 Child marriage",
-                    "concept": "cf6a1837-ad3a-4efc-b99f-4c7679a171d6"
+                    "concept": "cf6a1837-ad3a-4efc-b99f-4c7679a171d6",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'cf6a1837-ad3a-4efc-b99f-4c7679a171d6')"
+                    }
                   },
                   {
                     "label": "2.20 Combat experience (incl. forced recruitment) ",
-                    "concept": "0391d68c-cbbc-47ad-b4e4-5c60bb080943"
+                    "concept": "0391d68c-cbbc-47ad-b4e4-5c60bb080943",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '0391d68c-cbbc-47ad-b4e4-5c60bb080943')"
+                    }
                   },
                   {
                     "label": "2.21 Persecution ",
-                    "concept": "6de81a84-8491-4af5-be77-2317ff95d518"
+                    "concept": "6de81a84-8491-4af5-be77-2317ff95d518",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '6de81a84-8491-4af5-be77-2317ff95d518')"
+                    }
                   },
                   {
                     "label": "2.22 Psychological torture",
-                    "concept": "2e6e7afe-3689-42d6-8fa5-60cbde925c57"
+                    "concept": "2e6e7afe-3689-42d6-8fa5-60cbde925c57",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '2e6e7afe-3689-42d6-8fa5-60cbde925c57')"
+                    }
                   },
                   {
                     "label": "2.23 Physical torture (incl. Injuries)",
-                    "concept": "8494f5a1-5eb3-4cb3-9f83-39cb9f8a635c"
+                    "concept": "8494f5a1-5eb3-4cb3-9f83-39cb9f8a635c",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '8494f5a1-5eb3-4cb3-9f83-39cb9f8a635c')"
+                    }
                   },
                   {
                     "label": "2.24 Violence based on gender identity ",
-                    "concept": "2196bd0a-90c1-4ee4-8d72-8a1f2f949a53"
+                    "concept": "2196bd0a-90c1-4ee4-8d72-8a1f2f949a53",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '2196bd0a-90c1-4ee4-8d72-8a1f2f949a53')"
+                    }
                   },
                   {
                     "label": "2.25 Pushback ",
-                    "concept": "49373120-0962-4023-8c7e-ced32b96e071"
+                    "concept": "49373120-0962-4023-8c7e-ced32b96e071",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '49373120-0962-4023-8c7e-ced32b96e071')"
+                    }
                   },
                   {
                     "label": "2.26 Other forms of ill-treatment ",
-                    "concept": "bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d"
+                    "concept": "bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d')"
+                    }
                   },
                   {
                     "label": "3.1 Family member killed or missing",
-                    "concept": "4e3ab089-6a99-4e15-8883-3c49a150e6c6"
+                    "concept": "4e3ab089-6a99-4e15-8883-3c49a150e6c6",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '4e3ab089-6a99-4e15-8883-3c49a150e6c6')"
+                    }
                   },
                   {
                     "label": "3.2 Unaccompanied minor or orphaned",
-                    "concept": "b10b3c8c-2f11-4f0e-9f45-2959a45997c8"
+                    "concept": "b10b3c8c-2f11-4f0e-9f45-2959a45997c8",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'b10b3c8c-2f11-4f0e-9f45-2959a45997c8')"
+                    }
                   },
                   {
                     "label": "3.3 Negligence of caretakers",
-                    "concept": "f2be320d-7757-4525-bcb0-6005368982d7"
+                    "concept": "f2be320d-7757-4525-bcb0-6005368982d7",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'f2be320d-7757-4525-bcb0-6005368982d7')"
+                    }
                   },
                   {
                     "label": "3.4 Property destroyed or lost",
-                    "concept": "979b6137-2d14-412d-8e07-d3f2a1743deb"
+                    "concept": "979b6137-2d14-412d-8e07-d3f2a1743deb",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '979b6137-2d14-412d-8e07-d3f2a1743deb')"
+                    }
                   },
                   {
                     "label": "3.5 Loss of income/job",
-                    "concept": "c88d3256-f445-4eee-8aac-c31542386f23"
+                    "concept": "c88d3256-f445-4eee-8aac-c31542386f23",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'c88d3256-f445-4eee-8aac-c31542386f23')"
+                    }
                   },
                   {
                     "label": "3.6 Death of family member (natural or accidental death)",
-                    "concept": "a98876f1-98f2-4821-b7d4-e2510b4ac3f1"
+                    "concept": "a98876f1-98f2-4821-b7d4-e2510b4ac3f1",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'a98876f1-98f2-4821-b7d4-e2510b4ac3f1')"
+                    }
                   },
                   {
                     "label": "3.7 Relationship problems",
-                    "concept": "0e61d02d-5041-4cb2-8f4c-c59b89e7a17e"
+                    "concept": "0e61d02d-5041-4cb2-8f4c-c59b89e7a17e",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '0e61d02d-5041-4cb2-8f4c-c59b89e7a17e')"
+                    }
                   },
                   {
                     "label": "3.8 Divorce/separation",
-                    "concept": "c461d1ad-5f8e-4e67-bcc7-70e4765640f1"
+                    "concept": "c461d1ad-5f8e-4e67-bcc7-70e4765640f1",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'c461d1ad-5f8e-4e67-bcc7-70e4765640f1')"
+                    }
                   },
                   {
                     "label": "3.9 Migration due to financial reasons",
-                    "concept": "dca34aab-8ed4-4d8c-9dc6-7e6862e91504"
+                    "concept": "dca34aab-8ed4-4d8c-9dc6-7e6862e91504",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'dca34aab-8ed4-4d8c-9dc6-7e6862e91504')"
+                    }
                   },
                   {
                     "label": "3.10 Separated families",
-                    "concept": "d5c4f239-71fe-4f4e-862d-734a4fb9fb92"
+                    "concept": "d5c4f239-71fe-4f4e-862d-734a4fb9fb92",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'd5c4f239-71fe-4f4e-862d-734a4fb9fb92')"
+                    }
                   },
                   {
                     "label": "3.11. Stillbirth/neonatal death",
-                    "concept": "0971aca0-e47f-423d-9845-b445ac1bd2ff"
+                    "concept": "0971aca0-e47f-423d-9845-b445ac1bd2ff",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '0971aca0-e47f-423d-9845-b445ac1bd2ff')"
+                    }
                   },
                   {
                     "label": "3.12. Uncertainty about the future",
-                    "concept": "891854f1-bf43-4483-acb0-c7b68dd851d5"
+                    "concept": "891854f1-bf43-4483-acb0-c7b68dd851d5",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '891854f1-bf43-4483-acb0-c7b68dd851d5')"
+                    }
                   },
                   {
                     "label": "4.1 Natural disaster (earthquake, tsunami, flood, hurricane etc.)",
-                    "concept": "02dd014e-f5c7-443f-b9e7-053fdd27ce8d"
+                    "concept": "02dd014e-f5c7-443f-b9e7-053fdd27ce8d",
+                    "hide": {
+                      "hideWhenExpression": "!includes(disaster, '02dd014e-f5c7-443f-b9e7-053fdd27ce8d')"
+                    }
                   },
                   {
                     "label": "4.2 Exposure to traumatic accident",
-                    "concept": "9e0945eb-68f0-4d1c-a421-27f46fa41eaa"
+                    "concept": "9e0945eb-68f0-4d1c-a421-27f46fa41eaa",
+                    "hide": {
+                      "hideWhenExpression": "!includes(disaster, '9e0945eb-68f0-4d1c-a421-27f46fa41eaa')"
+                    }
                   },
                   {
                     "label": "5.1 Financial problems",
-                    "concept": "e6957cdb-3694-4ab6-b98b-2031c02b4460"
+                    "concept": "e6957cdb-3694-4ab6-b98b-2031c02b4460",
+                    "hide": {
+                      "hideWhenExpression": "!includes(events_other, 'e6957cdb-3694-4ab6-b98b-2031c02b4460')"
+                    }
                   },
                   {
                     "label": "5.2 Difficult living conditions",
-                    "concept": "cd22a8af-1506-47af-9d1b-325c31c230a8"
+                    "concept": "cd22a8af-1506-47af-9d1b-325c31c230a8",
+                    "hide": {
+                      "hideWhenExpression": "!includes(events_other, 'cd22a8af-1506-47af-9d1b-325c31c230a8')"
+                    }
                   },
                   {
                     "label": "5.3 Difficulty with social integration",
-                    "concept": "3d9e6665-8ce1-45bf-abfc-8609a0bf45d3"
+                    "concept": "3d9e6665-8ce1-45bf-abfc-8609a0bf45d3",
+                    "hide": {
+                      "hideWhenExpression": "!includes(events_other, '3d9e6665-8ce1-45bf-abfc-8609a0bf45d3')"
+                    }
                   },
                   {
                     "label": "5.4 Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002",
+                    "hide": {
+                      "hideWhenExpression": "!includes(events_other, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                    }
                   }
                 ]
               }
@@ -4007,223 +4172,388 @@
                 "answers": [
                   {
                     "label": "1.1 Highly stigmatizing disease (HIV/AIDS, FHF, cancer, etc.)",
-                    "concept": "6e02debd-31eb-4112-8566-00e520835c76"
+                    "concept": "6e02debd-31eb-4112-8566-00e520835c76",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '6e02debd-31eb-4112-8566-00e520835c76')"
+                    }
                   },
                   {
                     "label": "1.2 Severe medical condition (malnutrition, disability, sexual or reproductive problems, etc.)",
-                    "concept": "ccd5d010-12c7-44d7-966e-c5b17c02e3a2"
+                    "concept": "ccd5d010-12c7-44d7-966e-c5b17c02e3a2",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'ccd5d010-12c7-44d7-966e-c5b17c02e3a2')"
+                    }
                   },
                   {
                     "label": "1.3 Unwanted pregnancy",
-                    "concept": "35910034-cc37-4dd1-abb7-ce140b0eff2b"
+                    "concept": "35910034-cc37-4dd1-abb7-ce140b0eff2b",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '35910034-cc37-4dd1-abb7-ce140b0eff2b')"
+                    }
                   },
                   {
                     "label": "1.4 History of mental health disorder",
-                    "concept": "72ad3cc7-820c-4799-ab1c-36ad8f1ca97d"
+                    "concept": "72ad3cc7-820c-4799-ab1c-36ad8f1ca97d",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '72ad3cc7-820c-4799-ab1c-36ad8f1ca97d')"
+                    }
                   },
                   {
                     "label": "1.5 Chronic disease (diabetes, hypertension, cancer, etc.) ",
-                    "concept": "4bf7b376-9193-4ee4-a51a-445d07d2d22b"
+                    "concept": "4bf7b376-9193-4ee4-a51a-445d07d2d22b",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '4bf7b376-9193-4ee4-a51a-445d07d2d22b')"
+                    }
                   },
                   {
                     "label": "1.6 Family member with a serious medical condition",
-                    "concept": "42e8ab5a-607f-4259-a23f-9f9bac5d5b46"
+                    "concept": "42e8ab5a-607f-4259-a23f-9f9bac5d5b46",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '42e8ab5a-607f-4259-a23f-9f9bac5d5b46')"
+                    }
                   },
                   {
                     "label": "1.7 Patient under palliative care",
-                    "concept": "fb17afb6-033e-4560-8343-eecd6ff0f028"
+                    "concept": "fb17afb6-033e-4560-8343-eecd6ff0f028",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'fb17afb6-033e-4560-8343-eecd6ff0f028')"
+                    }
                   },
                   {
                     "label": "1.8 Chronic pain ",
-                    "concept": "d2f59555-b1ef-4f3b-89c5-88c91f3a8126"
+                    "concept": "d2f59555-b1ef-4f3b-89c5-88c91f3a8126",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'd2f59555-b1ef-4f3b-89c5-88c91f3a8126')"
+                    }
                   },
                   {
                     "label": "1.9 Substance abuse",
-                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'fcc01124-3d7b-4e6f-be35-50233a7f64cb')"
+                    }
                   },
                   {
                     "label": "1.10 Termination of pregnancy ",
-                    "concept": "f3753bd0-13cf-4bc0-887b-bf9c0e50cc97"
+                    "concept": "f3753bd0-13cf-4bc0-887b-bf9c0e50cc97",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'f3753bd0-13cf-4bc0-887b-bf9c0e50cc97')"
+                    }
                   },
                   {
                     "label": "1.11 Barriers to accessing healthcare (incl. MH)",
-                    "concept": "e9e30daa-2232-4095-935d-717b3b25d29f"
+                    "concept": "e9e30daa-2232-4095-935d-717b3b25d29f",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'e9e30daa-2232-4095-935d-717b3b25d29f')"
+                    }
                   },
                   {
                     "label": "2.1 Sexual violence within the family",
-                    "concept": "5cccf137-2952-4c9b-b879-b4ed2a9be621"
+                    "concept": "5cccf137-2952-4c9b-b879-b4ed2a9be621",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '5cccf137-2952-4c9b-b879-b4ed2a9be621')"
+                    }
                   },
                   {
                     "label": "2.2 Sexual violence outside the family",
-                    "concept": "dbe73631-79ae-4ab9-a3c8-65d6732c8714"
+                    "concept": "dbe73631-79ae-4ab9-a3c8-65d6732c8714",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'dbe73631-79ae-4ab9-a3c8-65d6732c8714')"
+                    }
                   },
                   {
                     "label": "2.3 Exposed to war/armed conflict",
-                    "concept": "cf28335f-d72c-440a-afc1-bcca39b51155"
+                    "concept": "cf28335f-d72c-440a-afc1-bcca39b51155",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'cf28335f-d72c-440a-afc1-bcca39b51155')"
+                    }
                   },
                   {
                     "label": "2.4 Incarceration/detention",
-                    "concept": "66492df1-6d26-498a-b6c7-b10931da1642"
+                    "concept": "66492df1-6d26-498a-b6c7-b10931da1642",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '66492df1-6d26-498a-b6c7-b10931da1642')"
+                    }
                   },
                   {
                     "label": "2.5 Hostage/kidnapping/forced recruitment",
-                    "concept": "8917acb0-e25d-4f9e-84bb-cae9998abf35"
+                    "concept": "8917acb0-e25d-4f9e-84bb-cae9998abf35",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '8917acb0-e25d-4f9e-84bb-cae9998abf35')"
+                    }
                   },
                   {
                     "label": "2.6 Deportation/pushback",
-                    "concept": "f279409d-71ba-41c6-8301-76ee90d239dc"
+                    "concept": "f279409d-71ba-41c6-8301-76ee90d239dc",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'f279409d-71ba-41c6-8301-76ee90d239dc')"
+                    }
                   },
                   {
                     "label": "2.7 Intimate partner\u2019s violence ",
-                    "concept": "e25f9ca1-0b33-4765-a8c4-5da48289bda7"
+                    "concept": "e25f9ca1-0b33-4765-a8c4-5da48289bda7",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'e25f9ca1-0b33-4765-a8c4-5da48289bda7')"
+                    }
                   },
                   {
                     "label": "2.8 Victim of threats",
-                    "concept": "7ab56ef2-0ff7-4ebf-b7c2-42f6b46c2206"
+                    "concept": "7ab56ef2-0ff7-4ebf-b7c2-42f6b46c2206",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '7ab56ef2-0ff7-4ebf-b7c2-42f6b46c2206')"
+                    }
                   },
                   {
                     "label": "2.9 Victim of human trafficking or smuggling",
-                    "concept": "5958f0fd-c755-4640-80d7-5ef0f9522b2e"
+                    "concept": "5958f0fd-c755-4640-80d7-5ef0f9522b2e",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '5958f0fd-c755-4640-80d7-5ef0f9522b2e')"
+                    }
                   },
                   {
                     "label": "2.10 Witness violence/killings/threats",
-                    "concept": "107a7f52-f95d-447f-bf1a-c801e1a0082c"
+                    "concept": "107a7f52-f95d-447f-bf1a-c801e1a0082c",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '107a7f52-f95d-447f-bf1a-c801e1a0082c')"
+                    }
                   },
                   {
                     "label": "2.11 Forced to flee (IDP/refugee/migrant)",
-                    "concept": "a8b0e025-a735-407b-b958-fe9b29c370e7"
+                    "concept": "a8b0e025-a735-407b-b958-fe9b29c370e7",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'a8b0e025-a735-407b-b958-fe9b29c370e7')"
+                    }
                   },
                   {
                     "label": "2.12 Target of stigma/discrimination/marginalization",
-                    "concept": "e702655a-57af-457a-a1ae-42e31f119f80"
+                    "concept": "e702655a-57af-457a-a1ae-42e31f119f80",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'e702655a-57af-457a-a1ae-42e31f119f80')"
+                    }
                   },
                   {
                     "label": "2.13 Physical violence (wounded/beaten/torture)",
-                    "concept": "c80eb3f7-31b1-4717-a78d-0aac623fc129"
+                    "concept": "c80eb3f7-31b1-4717-a78d-0aac623fc129",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'c80eb3f7-31b1-4717-a78d-0aac623fc129')"
+                    }
                   },
                   {
                     "label": "2.14 Forced curfew or confinement",
-                    "concept": "ea673f5c-5f99-4da5-9f41-92c21446de31"
+                    "concept": "ea673f5c-5f99-4da5-9f41-92c21446de31",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'ea673f5c-5f99-4da5-9f41-92c21446de31')"
+                    }
                   },
                   {
                     "label": "2.15 History of suicide attempts",
-                    "concept": "160734e2-e5ed-44e9-b573-bdbb6e619e30"
+                    "concept": "160734e2-e5ed-44e9-b573-bdbb6e619e30",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '160734e2-e5ed-44e9-b573-bdbb6e619e30')"
+                    }
                   },
                   {
                     "label": "2.16 History of self-harm/mutilation",
-                    "concept": "19408a7e-e17e-4040-adec-d6aa426564ce"
+                    "concept": "19408a7e-e17e-4040-adec-d6aa426564ce",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '19408a7e-e17e-4040-adec-d6aa426564ce')"
+                    }
                   },
                   {
                     "label": "2.17 Family members lived a violent experience",
-                    "concept": "5a462534-7605-4137-8d5c-503584538eb4"
+                    "concept": "5a462534-7605-4137-8d5c-503584538eb4",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '5a462534-7605-4137-8d5c-503584538eb4')"
+                    }
                   },
                   {
                     "label": "2.18 Adult forced marriage ",
-                    "concept": "a725a884-e785-4c08-b08a-386d8652faaf"
+                    "concept": "a725a884-e785-4c08-b08a-386d8652faaf",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'a725a884-e785-4c08-b08a-386d8652faaf')"
+                    }
                   },
                   {
                     "label": "2.19 Child marriage",
-                    "concept": "cf6a1837-ad3a-4efc-b99f-4c7679a171d6"
+                    "concept": "cf6a1837-ad3a-4efc-b99f-4c7679a171d6",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'cf6a1837-ad3a-4efc-b99f-4c7679a171d6')"
+                    }
                   },
                   {
                     "label": "2.20 Combat experience (incl. forced recruitment) ",
-                    "concept": "0391d68c-cbbc-47ad-b4e4-5c60bb080943"
+                    "concept": "0391d68c-cbbc-47ad-b4e4-5c60bb080943",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '0391d68c-cbbc-47ad-b4e4-5c60bb080943')"
+                    }
                   },
                   {
                     "label": "2.21 Persecution ",
-                    "concept": "6de81a84-8491-4af5-be77-2317ff95d518"
+                    "concept": "6de81a84-8491-4af5-be77-2317ff95d518",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '6de81a84-8491-4af5-be77-2317ff95d518')"
+                    }
                   },
                   {
                     "label": "2.22 Psychological torture",
-                    "concept": "2e6e7afe-3689-42d6-8fa5-60cbde925c57"
+                    "concept": "2e6e7afe-3689-42d6-8fa5-60cbde925c57",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '2e6e7afe-3689-42d6-8fa5-60cbde925c57')"
+                    }
                   },
                   {
                     "label": "2.23 Physical torture (incl. Injuries)",
-                    "concept": "8494f5a1-5eb3-4cb3-9f83-39cb9f8a635c"
+                    "concept": "8494f5a1-5eb3-4cb3-9f83-39cb9f8a635c",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '8494f5a1-5eb3-4cb3-9f83-39cb9f8a635c')"
+                    }
                   },
                   {
                     "label": "2.24 Violence based on gender identity ",
-                    "concept": "2196bd0a-90c1-4ee4-8d72-8a1f2f949a53"
+                    "concept": "2196bd0a-90c1-4ee4-8d72-8a1f2f949a53",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '2196bd0a-90c1-4ee4-8d72-8a1f2f949a53')"
+                    }
                   },
                   {
                     "label": "2.25 Pushback ",
-                    "concept": "49373120-0962-4023-8c7e-ced32b96e071"
+                    "concept": "49373120-0962-4023-8c7e-ced32b96e071",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '49373120-0962-4023-8c7e-ced32b96e071')"
+                    }
                   },
                   {
                     "label": "2.26 Other forms of ill-treatment ",
-                    "concept": "bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d"
+                    "concept": "bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d')"
+                    }
                   },
                   {
                     "label": "3.1 Family member killed or missing",
-                    "concept": "4e3ab089-6a99-4e15-8883-3c49a150e6c6"
+                    "concept": "4e3ab089-6a99-4e15-8883-3c49a150e6c6",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '4e3ab089-6a99-4e15-8883-3c49a150e6c6')"
+                    }
                   },
                   {
                     "label": "3.2 Unaccompanied minor or orphaned",
-                    "concept": "b10b3c8c-2f11-4f0e-9f45-2959a45997c8"
+                    "concept": "b10b3c8c-2f11-4f0e-9f45-2959a45997c8",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'b10b3c8c-2f11-4f0e-9f45-2959a45997c8')"
+                    }
                   },
                   {
                     "label": "3.3 Negligence of caretakers",
-                    "concept": "f2be320d-7757-4525-bcb0-6005368982d7"
+                    "concept": "f2be320d-7757-4525-bcb0-6005368982d7",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'f2be320d-7757-4525-bcb0-6005368982d7')"
+                    }
                   },
                   {
                     "label": "3.4 Property destroyed or lost",
-                    "concept": "979b6137-2d14-412d-8e07-d3f2a1743deb"
+                    "concept": "979b6137-2d14-412d-8e07-d3f2a1743deb",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '979b6137-2d14-412d-8e07-d3f2a1743deb')"
+                    }
                   },
                   {
                     "label": "3.5 Loss of income/job",
-                    "concept": "c88d3256-f445-4eee-8aac-c31542386f23"
+                    "concept": "c88d3256-f445-4eee-8aac-c31542386f23",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'c88d3256-f445-4eee-8aac-c31542386f23')"
+                    }
                   },
                   {
                     "label": "3.6 Death of family member (natural or accidental death)",
-                    "concept": "a98876f1-98f2-4821-b7d4-e2510b4ac3f1"
+                    "concept": "a98876f1-98f2-4821-b7d4-e2510b4ac3f1",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'a98876f1-98f2-4821-b7d4-e2510b4ac3f1')"
+                    }
                   },
                   {
                     "label": "3.7 Relationship problems",
-                    "concept": "0e61d02d-5041-4cb2-8f4c-c59b89e7a17e"
+                    "concept": "0e61d02d-5041-4cb2-8f4c-c59b89e7a17e",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '0e61d02d-5041-4cb2-8f4c-c59b89e7a17e')"
+                    }
                   },
                   {
                     "label": "3.8 Divorce/separation",
-                    "concept": "c461d1ad-5f8e-4e67-bcc7-70e4765640f1"
+                    "concept": "c461d1ad-5f8e-4e67-bcc7-70e4765640f1",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'c461d1ad-5f8e-4e67-bcc7-70e4765640f1')"
+                    }
                   },
                   {
                     "label": "3.9 Migration due to financial reasons",
-                    "concept": "dca34aab-8ed4-4d8c-9dc6-7e6862e91504"
+                    "concept": "dca34aab-8ed4-4d8c-9dc6-7e6862e91504",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'dca34aab-8ed4-4d8c-9dc6-7e6862e91504')"
+                    }
                   },
                   {
                     "label": "3.10 Separated families",
-                    "concept": "d5c4f239-71fe-4f4e-862d-734a4fb9fb92"
+                    "concept": "d5c4f239-71fe-4f4e-862d-734a4fb9fb92",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'd5c4f239-71fe-4f4e-862d-734a4fb9fb92')"
+                    }
                   },
                   {
                     "label": "3.11. Stillbirth/neonatal death",
-                    "concept": "0971aca0-e47f-423d-9845-b445ac1bd2ff"
+                    "concept": "0971aca0-e47f-423d-9845-b445ac1bd2ff",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '0971aca0-e47f-423d-9845-b445ac1bd2ff')"
+                    }
                   },
                   {
                     "label": "3.12. Uncertainty about the future",
-                    "concept": "891854f1-bf43-4483-acb0-c7b68dd851d5"
+                    "concept": "891854f1-bf43-4483-acb0-c7b68dd851d5",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '891854f1-bf43-4483-acb0-c7b68dd851d5')"
+                    }
                   },
                   {
                     "label": "4.1 Natural disaster (earthquake, tsunami, flood, hurricane etc.)",
-                    "concept": "02dd014e-f5c7-443f-b9e7-053fdd27ce8d"
+                    "concept": "02dd014e-f5c7-443f-b9e7-053fdd27ce8d",
+                    "hide": {
+                      "hideWhenExpression": "!includes(disaster, '02dd014e-f5c7-443f-b9e7-053fdd27ce8d')"
+                    }
                   },
                   {
                     "label": "4.2 Exposure to traumatic accident",
-                    "concept": "9e0945eb-68f0-4d1c-a421-27f46fa41eaa"
+                    "concept": "9e0945eb-68f0-4d1c-a421-27f46fa41eaa",
+                    "hide": {
+                      "hideWhenExpression": "!includes(disaster, '9e0945eb-68f0-4d1c-a421-27f46fa41eaa')"
+                    }
                   },
                   {
                     "label": "5.1 Financial problems",
-                    "concept": "e6957cdb-3694-4ab6-b98b-2031c02b4460"
+                    "concept": "e6957cdb-3694-4ab6-b98b-2031c02b4460",
+                    "hide": {
+                      "hideWhenExpression": "!includes(events_other, 'e6957cdb-3694-4ab6-b98b-2031c02b4460')"
+                    }
                   },
                   {
                     "label": "5.2 Difficult living conditions",
-                    "concept": "cd22a8af-1506-47af-9d1b-325c31c230a8"
+                    "concept": "cd22a8af-1506-47af-9d1b-325c31c230a8",
+                    "hide": {
+                      "hideWhenExpression": "!includes(events_other, 'cd22a8af-1506-47af-9d1b-325c31c230a8')"
+                    }
                   },
                   {
                     "label": "5.3 Difficulty with social integration",
-                    "concept": "3d9e6665-8ce1-45bf-abfc-8609a0bf45d3"
+                    "concept": "3d9e6665-8ce1-45bf-abfc-8609a0bf45d3",
+                    "hide": {
+                      "hideWhenExpression": "!includes(events_other, '3d9e6665-8ce1-45bf-abfc-8609a0bf45d3')"
+                    }
                   },
                   {
                     "label": "5.4 Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002",
+                    "hide": {
+                      "hideWhenExpression": "!includes(events_other, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                    }
                   }
                 ]
               }
@@ -4239,223 +4569,388 @@
                 "answers": [
                   {
                     "label": "1.1 Highly stigmatizing disease (HIV/AIDS, FHF, cancer, etc.)",
-                    "concept": "6e02debd-31eb-4112-8566-00e520835c76"
+                    "concept": "6e02debd-31eb-4112-8566-00e520835c76",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '6e02debd-31eb-4112-8566-00e520835c76')"
+                    }
                   },
                   {
                     "label": "1.2 Severe medical condition (malnutrition, disability, sexual or reproductive problems, etc.)",
-                    "concept": "ccd5d010-12c7-44d7-966e-c5b17c02e3a2"
+                    "concept": "ccd5d010-12c7-44d7-966e-c5b17c02e3a2",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'ccd5d010-12c7-44d7-966e-c5b17c02e3a2')"
+                    }
                   },
                   {
                     "label": "1.3 Unwanted pregnancy",
-                    "concept": "35910034-cc37-4dd1-abb7-ce140b0eff2b"
+                    "concept": "35910034-cc37-4dd1-abb7-ce140b0eff2b",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '35910034-cc37-4dd1-abb7-ce140b0eff2b')"
+                    }
                   },
                   {
                     "label": "1.4 History of mental health disorder",
-                    "concept": "72ad3cc7-820c-4799-ab1c-36ad8f1ca97d"
+                    "concept": "72ad3cc7-820c-4799-ab1c-36ad8f1ca97d",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '72ad3cc7-820c-4799-ab1c-36ad8f1ca97d')"
+                    }
                   },
                   {
                     "label": "1.5 Chronic disease (diabetes, hypertension, cancer, etc.) ",
-                    "concept": "4bf7b376-9193-4ee4-a51a-445d07d2d22b"
+                    "concept": "4bf7b376-9193-4ee4-a51a-445d07d2d22b",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '4bf7b376-9193-4ee4-a51a-445d07d2d22b')"
+                    }
                   },
                   {
                     "label": "1.6 Family member with a serious medical condition",
-                    "concept": "42e8ab5a-607f-4259-a23f-9f9bac5d5b46"
+                    "concept": "42e8ab5a-607f-4259-a23f-9f9bac5d5b46",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, '42e8ab5a-607f-4259-a23f-9f9bac5d5b46')"
+                    }
                   },
                   {
                     "label": "1.7 Patient under palliative care",
-                    "concept": "fb17afb6-033e-4560-8343-eecd6ff0f028"
+                    "concept": "fb17afb6-033e-4560-8343-eecd6ff0f028",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'fb17afb6-033e-4560-8343-eecd6ff0f028')"
+                    }
                   },
                   {
                     "label": "1.8 Chronic pain ",
-                    "concept": "d2f59555-b1ef-4f3b-89c5-88c91f3a8126"
+                    "concept": "d2f59555-b1ef-4f3b-89c5-88c91f3a8126",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'd2f59555-b1ef-4f3b-89c5-88c91f3a8126')"
+                    }
                   },
                   {
                     "label": "1.9 Substance abuse",
-                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'fcc01124-3d7b-4e6f-be35-50233a7f64cb')"
+                    }
                   },
                   {
                     "label": "1.10 Termination of pregnancy ",
-                    "concept": "f3753bd0-13cf-4bc0-887b-bf9c0e50cc97"
+                    "concept": "f3753bd0-13cf-4bc0-887b-bf9c0e50cc97",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'f3753bd0-13cf-4bc0-887b-bf9c0e50cc97')"
+                    }
                   },
                   {
                     "label": "1.11 Barriers to accessing healthcare (incl. MH)",
-                    "concept": "e9e30daa-2232-4095-935d-717b3b25d29f"
+                    "concept": "e9e30daa-2232-4095-935d-717b3b25d29f",
+                    "hide": {
+                      "hideWhenExpression": "!includes(medicalConditions, 'e9e30daa-2232-4095-935d-717b3b25d29f')"
+                    }
                   },
                   {
                     "label": "2.1 Sexual violence within the family",
-                    "concept": "5cccf137-2952-4c9b-b879-b4ed2a9be621"
+                    "concept": "5cccf137-2952-4c9b-b879-b4ed2a9be621",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '5cccf137-2952-4c9b-b879-b4ed2a9be621')"
+                    }
                   },
                   {
                     "label": "2.2 Sexual violence outside the family",
-                    "concept": "dbe73631-79ae-4ab9-a3c8-65d6732c8714"
+                    "concept": "dbe73631-79ae-4ab9-a3c8-65d6732c8714",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'dbe73631-79ae-4ab9-a3c8-65d6732c8714')"
+                    }
                   },
                   {
                     "label": "2.3 Exposed to war/armed conflict",
-                    "concept": "cf28335f-d72c-440a-afc1-bcca39b51155"
+                    "concept": "cf28335f-d72c-440a-afc1-bcca39b51155",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'cf28335f-d72c-440a-afc1-bcca39b51155')"
+                    }
                   },
                   {
                     "label": "2.4 Incarceration/detention",
-                    "concept": "66492df1-6d26-498a-b6c7-b10931da1642"
+                    "concept": "66492df1-6d26-498a-b6c7-b10931da1642",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '66492df1-6d26-498a-b6c7-b10931da1642')"
+                    }
                   },
                   {
                     "label": "2.5 Hostage/kidnapping/forced recruitment",
-                    "concept": "8917acb0-e25d-4f9e-84bb-cae9998abf35"
+                    "concept": "8917acb0-e25d-4f9e-84bb-cae9998abf35",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '8917acb0-e25d-4f9e-84bb-cae9998abf35')"
+                    }
                   },
                   {
                     "label": "2.6 Deportation/pushback",
-                    "concept": "f279409d-71ba-41c6-8301-76ee90d239dc"
+                    "concept": "f279409d-71ba-41c6-8301-76ee90d239dc",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'f279409d-71ba-41c6-8301-76ee90d239dc')"
+                    }
                   },
                   {
                     "label": "2.7 Intimate partner\u2019s violence ",
-                    "concept": "e25f9ca1-0b33-4765-a8c4-5da48289bda7"
+                    "concept": "e25f9ca1-0b33-4765-a8c4-5da48289bda7",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'e25f9ca1-0b33-4765-a8c4-5da48289bda7')"
+                    }
                   },
                   {
                     "label": "2.8 Victim of threats",
-                    "concept": "7ab56ef2-0ff7-4ebf-b7c2-42f6b46c2206"
+                    "concept": "7ab56ef2-0ff7-4ebf-b7c2-42f6b46c2206",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '7ab56ef2-0ff7-4ebf-b7c2-42f6b46c2206')"
+                    }
                   },
                   {
                     "label": "2.9 Victim of human trafficking or smuggling",
-                    "concept": "5958f0fd-c755-4640-80d7-5ef0f9522b2e"
+                    "concept": "5958f0fd-c755-4640-80d7-5ef0f9522b2e",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '5958f0fd-c755-4640-80d7-5ef0f9522b2e')"
+                    }
                   },
                   {
                     "label": "2.10 Witness violence/killings/threats",
-                    "concept": "107a7f52-f95d-447f-bf1a-c801e1a0082c"
+                    "concept": "107a7f52-f95d-447f-bf1a-c801e1a0082c",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '107a7f52-f95d-447f-bf1a-c801e1a0082c')"
+                    }
                   },
                   {
                     "label": "2.11 Forced to flee (IDP/refugee/migrant)",
-                    "concept": "a8b0e025-a735-407b-b958-fe9b29c370e7"
+                    "concept": "a8b0e025-a735-407b-b958-fe9b29c370e7",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'a8b0e025-a735-407b-b958-fe9b29c370e7')"
+                    }
                   },
                   {
                     "label": "2.12 Target of stigma/discrimination/marginalization",
-                    "concept": "e702655a-57af-457a-a1ae-42e31f119f80"
+                    "concept": "e702655a-57af-457a-a1ae-42e31f119f80",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'e702655a-57af-457a-a1ae-42e31f119f80')"
+                    }
                   },
                   {
                     "label": "2.13 Physical violence (wounded/beaten/torture)",
-                    "concept": "c80eb3f7-31b1-4717-a78d-0aac623fc129"
+                    "concept": "c80eb3f7-31b1-4717-a78d-0aac623fc129",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'c80eb3f7-31b1-4717-a78d-0aac623fc129')"
+                    }
                   },
                   {
                     "label": "2.14 Forced curfew or confinement",
-                    "concept": "ea673f5c-5f99-4da5-9f41-92c21446de31"
+                    "concept": "ea673f5c-5f99-4da5-9f41-92c21446de31",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'ea673f5c-5f99-4da5-9f41-92c21446de31')"
+                    }
                   },
                   {
                     "label": "2.15 History of suicide attempts",
-                    "concept": "160734e2-e5ed-44e9-b573-bdbb6e619e30"
+                    "concept": "160734e2-e5ed-44e9-b573-bdbb6e619e30",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '160734e2-e5ed-44e9-b573-bdbb6e619e30')"
+                    }
                   },
                   {
                     "label": "2.16 History of self-harm/mutilation",
-                    "concept": "19408a7e-e17e-4040-adec-d6aa426564ce"
+                    "concept": "19408a7e-e17e-4040-adec-d6aa426564ce",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '19408a7e-e17e-4040-adec-d6aa426564ce')"
+                    }
                   },
                   {
                     "label": "2.17 Family members lived a violent experience",
-                    "concept": "5a462534-7605-4137-8d5c-503584538eb4"
+                    "concept": "5a462534-7605-4137-8d5c-503584538eb4",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '5a462534-7605-4137-8d5c-503584538eb4')"
+                    }
                   },
                   {
                     "label": "2.18 Adult forced marriage ",
-                    "concept": "a725a884-e785-4c08-b08a-386d8652faaf"
+                    "concept": "a725a884-e785-4c08-b08a-386d8652faaf",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'a725a884-e785-4c08-b08a-386d8652faaf')"
+                    }
                   },
                   {
                     "label": "2.19 Child marriage",
-                    "concept": "cf6a1837-ad3a-4efc-b99f-4c7679a171d6"
+                    "concept": "cf6a1837-ad3a-4efc-b99f-4c7679a171d6",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'cf6a1837-ad3a-4efc-b99f-4c7679a171d6')"
+                    }
                   },
                   {
                     "label": "2.20 Combat experience (incl. forced recruitment) ",
-                    "concept": "0391d68c-cbbc-47ad-b4e4-5c60bb080943"
+                    "concept": "0391d68c-cbbc-47ad-b4e4-5c60bb080943",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '0391d68c-cbbc-47ad-b4e4-5c60bb080943')"
+                    }
                   },
                   {
                     "label": "2.21 Persecution ",
-                    "concept": "6de81a84-8491-4af5-be77-2317ff95d518"
+                    "concept": "6de81a84-8491-4af5-be77-2317ff95d518",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '6de81a84-8491-4af5-be77-2317ff95d518')"
+                    }
                   },
                   {
                     "label": "2.22 Psychological torture",
-                    "concept": "2e6e7afe-3689-42d6-8fa5-60cbde925c57"
+                    "concept": "2e6e7afe-3689-42d6-8fa5-60cbde925c57",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '2e6e7afe-3689-42d6-8fa5-60cbde925c57')"
+                    }
                   },
                   {
                     "label": "2.23 Physical torture (incl. Injuries)",
-                    "concept": "8494f5a1-5eb3-4cb3-9f83-39cb9f8a635c"
+                    "concept": "8494f5a1-5eb3-4cb3-9f83-39cb9f8a635c",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '8494f5a1-5eb3-4cb3-9f83-39cb9f8a635c')"
+                    }
                   },
                   {
                     "label": "2.24 Violence based on gender identity ",
-                    "concept": "2196bd0a-90c1-4ee4-8d72-8a1f2f949a53"
+                    "concept": "2196bd0a-90c1-4ee4-8d72-8a1f2f949a53",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '2196bd0a-90c1-4ee4-8d72-8a1f2f949a53')"
+                    }
                   },
                   {
                     "label": "2.25 Pushback ",
-                    "concept": "49373120-0962-4023-8c7e-ced32b96e071"
+                    "concept": "49373120-0962-4023-8c7e-ced32b96e071",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, '49373120-0962-4023-8c7e-ced32b96e071')"
+                    }
                   },
                   {
                     "label": "2.26 Other forms of ill-treatment ",
-                    "concept": "bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d"
+                    "concept": "bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d",
+                    "hide": {
+                      "hideWhenExpression": "!includes(violence, 'bc3ddc59-4f9a-4f5e-97e2-291e3c539d6d')"
+                    }
                   },
                   {
                     "label": "3.1 Family member killed or missing",
-                    "concept": "4e3ab089-6a99-4e15-8883-3c49a150e6c6"
+                    "concept": "4e3ab089-6a99-4e15-8883-3c49a150e6c6",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '4e3ab089-6a99-4e15-8883-3c49a150e6c6')"
+                    }
                   },
                   {
                     "label": "3.2 Unaccompanied minor or orphaned",
-                    "concept": "b10b3c8c-2f11-4f0e-9f45-2959a45997c8"
+                    "concept": "b10b3c8c-2f11-4f0e-9f45-2959a45997c8",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'b10b3c8c-2f11-4f0e-9f45-2959a45997c8')"
+                    }
                   },
                   {
                     "label": "3.3 Negligence of caretakers",
-                    "concept": "f2be320d-7757-4525-bcb0-6005368982d7"
+                    "concept": "f2be320d-7757-4525-bcb0-6005368982d7",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'f2be320d-7757-4525-bcb0-6005368982d7')"
+                    }
                   },
                   {
                     "label": "3.4 Property destroyed or lost",
-                    "concept": "979b6137-2d14-412d-8e07-d3f2a1743deb"
+                    "concept": "979b6137-2d14-412d-8e07-d3f2a1743deb",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '979b6137-2d14-412d-8e07-d3f2a1743deb')"
+                    }
                   },
                   {
                     "label": "3.5 Loss of income/job",
-                    "concept": "c88d3256-f445-4eee-8aac-c31542386f23"
+                    "concept": "c88d3256-f445-4eee-8aac-c31542386f23",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'c88d3256-f445-4eee-8aac-c31542386f23')"
+                    }
                   },
                   {
                     "label": "3.6 Death of family member (natural or accidental death)",
-                    "concept": "a98876f1-98f2-4821-b7d4-e2510b4ac3f1"
+                    "concept": "a98876f1-98f2-4821-b7d4-e2510b4ac3f1",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'a98876f1-98f2-4821-b7d4-e2510b4ac3f1')"
+                    }
                   },
                   {
                     "label": "3.7 Relationship problems",
-                    "concept": "0e61d02d-5041-4cb2-8f4c-c59b89e7a17e"
+                    "concept": "0e61d02d-5041-4cb2-8f4c-c59b89e7a17e",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '0e61d02d-5041-4cb2-8f4c-c59b89e7a17e')"
+                    }
                   },
                   {
                     "label": "3.8 Divorce/separation",
-                    "concept": "c461d1ad-5f8e-4e67-bcc7-70e4765640f1"
+                    "concept": "c461d1ad-5f8e-4e67-bcc7-70e4765640f1",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'c461d1ad-5f8e-4e67-bcc7-70e4765640f1')"
+                    }
                   },
                   {
                     "label": "3.9 Migration due to financial reasons",
-                    "concept": "dca34aab-8ed4-4d8c-9dc6-7e6862e91504"
+                    "concept": "dca34aab-8ed4-4d8c-9dc6-7e6862e91504",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'dca34aab-8ed4-4d8c-9dc6-7e6862e91504')"
+                    }
                   },
                   {
                     "label": "3.10 Separated families",
-                    "concept": "d5c4f239-71fe-4f4e-862d-734a4fb9fb92"
+                    "concept": "d5c4f239-71fe-4f4e-862d-734a4fb9fb92",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, 'd5c4f239-71fe-4f4e-862d-734a4fb9fb92')"
+                    }
                   },
                   {
                     "label": "3.11. Stillbirth/neonatal death",
-                    "concept": "0971aca0-e47f-423d-9845-b445ac1bd2ff"
+                    "concept": "0971aca0-e47f-423d-9845-b445ac1bd2ff",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '0971aca0-e47f-423d-9845-b445ac1bd2ff')"
+                    }
                   },
                   {
                     "label": "3.12. Uncertainty about the future",
-                    "concept": "891854f1-bf43-4483-acb0-c7b68dd851d5"
+                    "concept": "891854f1-bf43-4483-acb0-c7b68dd851d5",
+                    "hide": {
+                      "hideWhenExpression": "!includes(separationOrLoss, '891854f1-bf43-4483-acb0-c7b68dd851d5')"
+                    }
                   },
                   {
                     "label": "4.1 Natural disaster (earthquake, tsunami, flood, hurricane etc.)",
-                    "concept": "02dd014e-f5c7-443f-b9e7-053fdd27ce8d"
+                    "concept": "02dd014e-f5c7-443f-b9e7-053fdd27ce8d",
+                    "hide": {
+                      "hideWhenExpression": "!includes(disaster, '02dd014e-f5c7-443f-b9e7-053fdd27ce8d')"
+                    }
                   },
                   {
                     "label": "4.2 Exposure to traumatic accident",
-                    "concept": "9e0945eb-68f0-4d1c-a421-27f46fa41eaa"
+                    "concept": "9e0945eb-68f0-4d1c-a421-27f46fa41eaa",
+                    "hide": {
+                      "hideWhenExpression": "!includes(disaster, '9e0945eb-68f0-4d1c-a421-27f46fa41eaa')"
+                    }
                   },
                   {
                     "label": "5.1 Financial problems",
-                    "concept": "e6957cdb-3694-4ab6-b98b-2031c02b4460"
+                    "concept": "e6957cdb-3694-4ab6-b98b-2031c02b4460",
+                    "hide": {
+                      "hideWhenExpression": "!includes(events_other, 'e6957cdb-3694-4ab6-b98b-2031c02b4460')"
+                    }
                   },
                   {
                     "label": "5.2 Difficult living conditions",
-                    "concept": "cd22a8af-1506-47af-9d1b-325c31c230a8"
+                    "concept": "cd22a8af-1506-47af-9d1b-325c31c230a8",
+                    "hide": {
+                      "hideWhenExpression": "!includes(events_other, 'cd22a8af-1506-47af-9d1b-325c31c230a8')"
+                    }
                   },
                   {
                     "label": "5.3 Difficulty with social integration",
-                    "concept": "3d9e6665-8ce1-45bf-abfc-8609a0bf45d3"
+                    "concept": "3d9e6665-8ce1-45bf-abfc-8609a0bf45d3",
+                    "hide": {
+                      "hideWhenExpression": "!includes(events_other, '3d9e6665-8ce1-45bf-abfc-8609a0bf45d3')"
+                    }
                   },
                   {
                     "label": "5.4 Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002",
+                    "hide": {
+                      "hideWhenExpression": "!includes(events_other, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                    }
                   }
                 ]
               }
