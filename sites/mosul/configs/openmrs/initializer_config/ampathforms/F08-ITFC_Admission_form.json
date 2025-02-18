@@ -194,7 +194,7 @@
               }
             },
             {
-              "id": "specifyWho",
+              "id": "isThereSomeoneInTheFamilyCoughingForMoreThanOneMonth_specifyWho",
               "label": "Specify who",
               "type": "obs",
               "required": false,
@@ -227,7 +227,7 @@
               }
             },
             {
-              "id": "specifyWho",
+              "id": "isThereSomeoneTreatedForTbSinceTheBirthOfTheChild_specifyWho",
               "label": "Specify who",
               "type": "obs",
               "required": false,
@@ -484,95 +484,6 @@
               }
             }
           ]
-        },
-        {
-          "label": "Immunization status of the mother",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "vaccinationCard",
-              "label": "Vaccination card",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "978ebd5a-9de1-411c-8385-f68730f6fd86",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "antitetanusVaccinationOfTheMother",
-              "label": "Antitetanus vaccination of the mother",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "4b40b92a-5859-439f-94f5-892d934d48a0",
-                "answers": [
-                  {
-                    "label": "TT1",
-                    "concept": "df890b6d-ec6f-4041-8a77-f36cfb87d30a"
-                  },
-                  {
-                    "label": "TT2",
-                    "concept": "fe632fa3-c7b8-4665-aae1-5e2aa9671cb5"
-                  },
-                  {
-                    "label": "TT3",
-                    "concept": "66c5e98e-0e46-4d37-853d-eed01cb803d4"
-                  },
-                  {
-                    "label": "TT4",
-                    "concept": "65df6859-cbdc-47b4-a7ec-9c615a70a724"
-                  },
-                  {
-                    "label": "TT5",
-                    "concept": "a8924fbf-06dd-43d1-b9bb-74b412a6750a"
-                  },
-                  {
-                    "label": "Not vaccinated",
-                    "concept": "5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf"
-                  },
-                  {
-                    "label": "Unknown",
-                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "antitetanusLastDoseGivenOnSite",
-              "label": "Antitetanus - Last dose given on site",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "c5843875-fa38-4c6b-b6da-27fe2a625dd4",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "antitetanusVaccinationOfTheMother !== 'unknown' && antitetanusVaccinationOfTheMother !== 'notVaccinated'"
-              }
-            }
-          ]
         }
       ]
     },
@@ -652,6 +563,22 @@
     {
       "label": "Evaluation",
       "sections": [
+        {
+          "label": "Target",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "targetWeightOrMuac",
+              "label": "Target weight / MUAC",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "93c926ef-b9ee-437f-996e-1a5ccfb235db"
+              }
+            }
+          ]
+        },
         {
           "label": "Malaria test",
           "isExpanded": false,
@@ -1064,7 +991,7 @@
                     "concept": "musculoskeletalConditions"
                   },
                   {
-                    "label": "Necrotizing  bullous skin infections",
+                    "label": "Necrotizing & bullous skin infections",
                     "concept": "necrotizingBullousSkinInfections"
                   },
                   {

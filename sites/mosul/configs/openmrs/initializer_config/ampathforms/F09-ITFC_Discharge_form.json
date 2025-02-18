@@ -14,7 +14,7 @@
       "label": "Condition at admission and discharge",
       "sections": [
         {
-          "label": "Admission data",
+          "label": "Condition at admission",
           "isExpanded": false,
           "questions": [
             {
@@ -31,116 +31,6 @@
               },
               "default": "encounter dateTime from ITFC admission form"
             },
-            {
-              "id": "spontaneousAdmission",
-              "label": "Spontaneous admission",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "8c57877c-0499-4d29-b366-18c667c5554f",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "admissionType",
-              "label": "Admission type",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "552ad8cb-35de-4d61-ab8c-5c7b698a573a",
-                "answers": [
-                  {
-                    "label": "Internal movement",
-                    "concept": "341376b1-c152-4f53-b784-ab1d5afc7799"
-                  },
-                  {
-                    "label": "New admission",
-                    "concept": "9f2fe30f-a8f0-49ba-82e4-71c232259130"
-                  },
-                  {
-                    "label": "Readmission",
-                    "concept": "e4e42ecd-196b-4aa8-a265-bfbed09d77cf"
-                  },
-                  {
-                    "label": "Relapse",
-                    "concept": "4199719a-56aa-491f-acdf-2cdcbbf208ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "byWhomOrFromWhere",
-              "label": "By whom / from where",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "552ad8cb-35de-4d61-ab8c-5c7b698a573a",
-                "answers": [
-                  {
-                    "label": "ER",
-                    "concept": "c709f78b-5787-4c7e-b5bd-66aad28f7ff4"
-                  },
-                  {
-                    "label": "NGO",
-                    "concept": "80ea94ed-44ea-40fa-b697-98523b62df36"
-                  },
-                  {
-                    "label": "MSF ATFC",
-                    "concept": "6083e686-7f96-4c5c-860a-49d141b5df8c"
-                  },
-                  {
-                    "label": "Non-MSF ATFC",
-                    "concept": "dd7897b7-9a26-4df7-bc27-505f5a6b078e"
-                  },
-                  {
-                    "label": "Hospital or Health facility",
-                    "concept": "0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d"
-                  },
-                  {
-                    "label": "Self-referral",
-                    "concept": "8d9386b1-a641-4155-9822-7a06a16aa8e8"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "spontaneousAdmission !== 'a5c5563e-df0e-4742-a335-b24fb63664ee'"
-              }
-            },
-            {
-              "id": "ifOtherSpecify",
-              "label": "If other, specify",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-              },
-              "hide": {
-                "hideWhenExpression": "admissionTypeReferredByWhomOrFromWhere !== 'other'"
-              }
-            }
-          ]
-        },
-        {
-          "label": "Condition at admission",
-          "isExpanded": false,
-          "questions": [
             {
               "id": "checkInvitalsBiometricsToComplete",
               "label": "Check in \"Vitals & Biometrics\" to complete",
@@ -232,30 +122,6 @@
                   {
                     "label": "No",
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "malariaTestAtAdmission",
-              "label": "Malaria test at admission",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "1fc54f92-c324-49c4-aba1-21ade7663ba0",
-                "answers": [
-                  {
-                    "label": "Positive",
-                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
-                  },
-                  {
-                    "label": "Negative",
-                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
-                  },
-                  {
-                    "label": "Not done",
-                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
                   }
                 ]
               }
@@ -422,7 +288,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "bcg !== 'unknown' && bcg !== 'noVaccinated'"
+                "hideWhenExpression": "bcg !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || bcg !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -469,7 +335,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "hepatitisB0 !== 'unknown' && hepatitisB0 !== 'noVaccinated'"
+                "hideWhenExpression": "hepatitisB0 !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || hepatitisB0 !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -528,7 +394,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "pentavalent !== 'unknown' && pentavalent !== 'noVaccinated'"
+                "hideWhenExpression": "pentavalent !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || pentavalent !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -591,7 +457,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "afp !== 'unknown' && afp !== 'noVaccinated'"
+                "hideWhenExpression": "afp !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || afp !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -642,7 +508,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "measles !== 'unknown' && measles !== 'noVaccinated'"
+                "hideWhenExpression": "measles !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || measles !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -701,7 +567,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "pcv !== 'unknown' && pcv !== 'noVaccinated'"
+                "hideWhenExpression": "pcv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || pcv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -756,7 +622,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "rotavirus !== 'unknown' && rotavirus !== 'noVaccinated'"
+                "hideWhenExpression": "rotavirus !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || rotavirus !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -803,7 +669,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "yellowFever !== 'unknown' && yellowFever !== 'noVaccinated'"
+                "hideWhenExpression": "yellowFever !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || yellowFever !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -858,7 +724,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "ipv !== 'unknown' && ipv !== 'noVaccinated'"
+                "hideWhenExpression": "ipv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || ipv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -909,7 +775,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "meningitisA !== 'unknown' && meningitisA !== 'noVaccinated'"
+                "hideWhenExpression": "meningitisA !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || meningitisA !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -956,7 +822,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "ppv23 !== 'unknown' && ppv23 !== 'noVaccinated'"
+                "hideWhenExpression": "ppv23 !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || ppv23 !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -1007,7 +873,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "hpv !== 'unknown' && hpv !== 'noVaccinated'"
+                "hideWhenExpression": "hpv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || hpv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -1070,7 +936,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "antitetanusVaccinationOfTheMother !== 'unknown' && antitetanusVaccinationOfTheMother !== 'noVaccinated'"
+                "hideWhenExpression": "antitetanusVaccinationOfTheMother !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || antitetanusVaccinationOfTheMother !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
