@@ -126,6 +126,24 @@ cd sites/mosul/target/ozone-msf-mosul-<version>/run/docker/scripts
 ./start-demo.sh
 ```
 
+## Maven configuration
+Sometimes, you might need to customize your Maven configuration file to build the project.
+
+On Mac, you can edit those settings using: `vi ~/.m2/settings.xml`
+
+Add the below Maven Server config and API key to your system's Maven settings. Refer to [this doc](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token) to create API Key.
+
+```xml
+  <servers>
+    <server>
+      <id>msf-ocg-github-lime-emr</id>
+      <username>YOUR_GITHUB_USERNAME</username>
+      <password>YOU_GITHUB_TOKEN</password>
+    </server>
+  </servers>
+```
+
+
 #### Enable SSL (i.e., Run with Traefik Enabled)
 
 To enable SSL, start the server with Traefik, use the following command:
