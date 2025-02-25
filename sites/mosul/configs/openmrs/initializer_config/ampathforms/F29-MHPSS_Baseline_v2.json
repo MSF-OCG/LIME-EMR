@@ -115,7 +115,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "text",
+                "rendering": "textarea",
                 "concept": "f16d5d76-155b-453d-bd60-ea8ee4d344e9"
               }
             }
@@ -160,7 +160,9 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "b87a93ff-a4a1-4601-b35d-1e42bfa7e194"
+                "concept": "b87a93ff-a4a1-4601-b35d-1e42bfa7e194",
+                "min": 0,
+                "max": 99
               },
               "hide": {
                 "hideWhenExpression": "typeOfConsultation !== 'f16d5d76-155b-453d-bd60-ea8ee4d344e9'"
@@ -2109,7 +2111,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "text",
+                "rendering": "textarea",
                 "concept": "3f95778c-7746-424e-aaeb-41f4478678f2"
               }
             }
@@ -2921,6 +2923,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df",
+                "min": 0,
+                "max": 65,
                 "calculate": {
                   "calculateExpression": "(problemsPerformingDailyActivities === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : problemsPerformingDailyActivities === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : problemsPerformingDailyActivities === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : problemsPerformingDailyActivities === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : problemsPerformingDailyActivities === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (problemsGettingAlongWithFamilyOrFriends === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : problemsGettingAlongWithFamilyOrFriends === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : problemsGettingAlongWithFamilyOrFriends === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : problemsGettingAlongWithFamilyOrFriends === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : problemsGettingAlongWithFamilyOrFriends === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (problemsSleepingSuchAsSleepingTooMuchOrNotEnough === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : problemsSleepingSuchAsSleepingTooMuchOrNotEnough === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : problemsSleepingSuchAsSleepingTooMuchOrNotEnough === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : problemsSleepingSuchAsSleepingTooMuchOrNotEnough === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : problemsSleepingSuchAsSleepingTooMuchOrNotEnough === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (botheredByUnpleasantThoughtsWorriesOrIdeas === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : botheredByUnpleasantThoughtsWorriesOrIdeas === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : botheredByUnpleasantThoughtsWorriesOrIdeas === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : botheredByUnpleasantThoughtsWorriesOrIdeas === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : botheredByUnpleasantThoughtsWorriesOrIdeas === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (haveYouFeltSadOrNervous === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : haveYouFeltSadOrNervous === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : haveYouFeltSadOrNervous === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : haveYouFeltSadOrNervous === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : haveYouFeltSadOrNervous === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (haveYouBeenSuffering === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : haveYouBeenSuffering === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : haveYouBeenSuffering === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : haveYouBeenSuffering === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : haveYouBeenSuffering === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (inGeneralInThePastWeekHowWellHasTheChildBeenFeeling === '7c19766f-4dbd-4a7d-8939-00533fab8829' ? 1 : inGeneralInThePastWeekHowWellHasTheChildBeenFeeling === '2e5c4d54-f36f-4358-8a5c-2c210471c699' ? 2 : inGeneralInThePastWeekHowWellHasTheChildBeenFeeling === '5783e6cb-de48-483a-a589-85cb220e7cde' ? 3 : inGeneralInThePastWeekHowWellHasTheChildBeenFeeling === 'c8fc45f0-b5cc-40a1-87c4-486c0cf0603f' ? 4 : inGeneralInThePastWeekHowWellHasTheChildBeenFeeling === '32ff796a-adc9-4d37-800f-fff542bce55f' ? 5 : 0) + (didTheChildHaveProblemsPlayingDoingChoresHomeworkOrOtherDayToDayActivities === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : didTheChildHaveProblemsPlayingDoingChoresHomeworkOrOtherDayToDayActivities === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : didTheChildHaveProblemsPlayingDoingChoresHomeworkOrOtherDayToDayActivities === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : didTheChildHaveProblemsPlayingDoingChoresHomeworkOrOtherDayToDayActivities === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : didTheChildHaveProblemsPlayingDoingChoresHomeworkOrOtherDayToDayActivities === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (didTheChildHaveProblemsGettingAlongWithOthers === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : didTheChildHaveProblemsGettingAlongWithOthers === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : didTheChildHaveProblemsGettingAlongWithOthers === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : didTheChildHaveProblemsGettingAlongWithOthers === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : didTheChildHaveProblemsGettingAlongWithOthers === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (didTheChildHaveProblemsPayingAttentionUnderstandingOrRememberingThings === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : didTheChildHaveProblemsPayingAttentionUnderstandingOrRememberingThings === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : didTheChildHaveProblemsPayingAttentionUnderstandingOrRememberingThings === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : didTheChildHaveProblemsPayingAttentionUnderstandingOrRememberingThings === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : didTheChildHaveProblemsPayingAttentionUnderstandingOrRememberingThings === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (didTheChildHaveProblemsWithHisAppetiteSuchAsHavingTooLittleOrTooMuchHunger === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : didTheChildHaveProblemsWithHisAppetiteSuchAsHavingTooLittleOrTooMuchHunger === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : didTheChildHaveProblemsWithHisAppetiteSuchAsHavingTooLittleOrTooMuchHunger === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : didTheChildHaveProblemsWithHisAppetiteSuchAsHavingTooLittleOrTooMuchHunger === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : didTheChildHaveProblemsWithHisAppetiteSuchAsHavingTooLittleOrTooMuchHunger === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (didTheChildHaveProblemSleepingSuchAsSleepingTooMuchOrNotEnough === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : didTheChildHaveProblemSleepingSuchAsSleepingTooMuchOrNotEnough === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : didTheChildHaveProblemSleepingSuchAsSleepingTooMuchOrNotEnough === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : didTheChildHaveProblemSleepingSuchAsSleepingTooMuchOrNotEnough === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : didTheChildHaveProblemSleepingSuchAsSleepingTooMuchOrNotEnough === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (didTheChildComplainAboutPainOrDiscomfortWithHisOrHerBody === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : didTheChildComplainAboutPainOrDiscomfortWithHisOrHerBody === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : didTheChildComplainAboutPainOrDiscomfortWithHisOrHerBody === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : didTheChildComplainAboutPainOrDiscomfortWithHisOrHerBody === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : didTheChildComplainAboutPainOrDiscomfortWithHisOrHerBody === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (didTheChildBehavePoorly === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : didTheChildBehavePoorly === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : didTheChildBehavePoorly === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : didTheChildBehavePoorly === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : didTheChildBehavePoorly === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) - (didTheChildSeekComfortAndClosenessFromSomeone === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : didTheChildSeekComfortAndClosenessFromSomeone === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : didTheChildSeekComfortAndClosenessFromSomeone === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : didTheChildSeekComfortAndClosenessFromSomeone === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : didTheChildSeekComfortAndClosenessFromSomeone === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (didTheChildWetTheBed === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : didTheChildWetTheBed === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : didTheChildWetTheBed === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : didTheChildWetTheBed === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : didTheChildWetTheBed === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (wasTheChildSadOrIrritable === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : wasTheChildSadOrIrritable === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : wasTheChildSadOrIrritable === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : wasTheChildSadOrIrritable === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : wasTheChildSadOrIrritable === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (wasTheChildWorriedOrScared === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : wasTheChildWorriedOrScared === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : wasTheChildWorriedOrScared === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : wasTheChildWorriedOrScared === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : wasTheChildWorriedOrScared === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (hasTheChildBeenCrying === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : hasTheChildBeenCrying === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : hasTheChildBeenCrying === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : hasTheChildBeenCrying === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : hasTheChildBeenCrying === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0) + (hasTheChildBeenSuffering === '509c5438-cf9e-4f05-971b-a6e0aad45360' ? 1 : hasTheChildBeenSuffering === 'f6a5ea2d-fc7d-4e9e-8dfd-dbbea05cd9a0' ? 2 : hasTheChildBeenSuffering === 'edf347b1-ee57-4d8f-babb-97acca20c3cb' ? 3 : hasTheChildBeenSuffering === 'de7fa192-bf2e-4991-a81f-582c4b50ae51' ? 4 : hasTheChildBeenSuffering === '0f074510-1ff6-4924-bfef-effdcffd44f8' ? 5 : 0)"
                 }
@@ -2935,6 +2939,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "6156a8ec-565e-4104-83cb-2d6e0c1a887f",
+                "min": 0,
+                "max": 65,
                 "calculate": {
                   "calculateExpression": "api.getLatestObs(patient.id, 'b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df').then(obs => obs?.valueQuantity?.value)"
                 }
@@ -3212,6 +3218,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "5f3d618e-5c89-43bd-8c79-07e4e98c2f23",
+                "min": 0,
+                "max": 27,
                 "calculate": {
                   "calculateExpression": "(littleInterestOrPleasureInDoingThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : littleInterestOrPleasureInDoingThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : littleInterestOrPleasureInDoingThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingDownDepressedOrHopeless === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingDownDepressedOrHopeless === '234259ec-5368-4488-8482-4f261cc76714' ? 2 :  feelingDownDepressedOrHopeless ==='8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleFallingOrStayingAsleepOrSleepingTooMuch === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleFallingOrStayingAsleepOrSleepingTooMuch === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingTiredOrHavingLittleEnergy === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingTiredOrHavingLittleEnergy === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingTiredOrHavingLittleEnergy === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (poorAppetiteOrOverEating === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : poorAppetiteOrOverEating === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : poorAppetiteOrOverEating === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingBadAboutYourself === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingBadAboutYourself === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingBadAboutYourself === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (troubleConcentratingOnThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : troubleConcentratingOnThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : troubleConcentratingOnThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (movingOrSpeakingSoSlowly === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : movingOrSpeakingSoSlowly === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : movingOrSpeakingSoSlowly === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (thoughtsThatYouWouldBeBetterOffDead === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : thoughtsThatYouWouldBeBetterOffDead === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : thoughtsThatYouWouldBeBetterOffDead === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0)"
                 }
@@ -3299,6 +3307,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "4854003a-4f26-497f-959d-45a56bc77c65",
+                "min": 0,
+                "max": 27,
                 "calculate": {
                   "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
                 }
@@ -3540,6 +3550,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "1dfec9ae-33af-4a22-9fc0-e72a4ccca39f",
+                "min": 0,
+                "max": 27,
                 "calculate": {
                   "calculateExpression": "api.getLatestObs(patient.id, '89e1b4f8-d4c6-491b-bc32-4d4f79a8df9d').then(obs => obs?.valueQuantity?.value)"
                 }
@@ -5153,23 +5165,23 @@
                 },
                 "answers": [
                   {
-                    "label": "Medical Conditions",
+                    "label": "1. Medical Conditions",
                     "concept": "e8846576-7fae-4ae1-b747-48eccd524d4d"
                   },
                   {
-                    "label": "Violence",
+                    "label": "2. Violence",
                     "concept": "0d56f886-875b-4932-a0c2-cde2886a286c"
                   },
                   {
-                    "label": "Separation or Loss",
+                    "label": "3. Separation or Loss",
                     "concept": "2e8cee73-d7ec-490f-8422-30bc7615e24d"
                   },
                   {
-                    "label": "Disaster",
+                    "label": "4. Disaster",
                     "concept": "73fcb975-b93d-4de6-bd42-dfeb1a221412"
                   },
                   {
-                    "label": "Other",
+                    "label": "5. Other",
                     "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
@@ -5328,8 +5340,8 @@
               "questionInfo": "Only to be established by a psychologist, psychiatrist or GP trained in MH"
             },
             {
-              "id": "whatWasTheDiagnosis_ifOtherSpecify",
-              "label": "If other, specify",
+              "id": "mainDiagnosisIfOtherSpecify",
+              "label": "Main diagnosis - If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -5464,7 +5476,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "text",
+                "rendering": "textarea",
                 "concept": "882e7815-c6e4-4952-a1d6-26c5fb72d850"
               },
               "questionInfo": "Case formulation"
