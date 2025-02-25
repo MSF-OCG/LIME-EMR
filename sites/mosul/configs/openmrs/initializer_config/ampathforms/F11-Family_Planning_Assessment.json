@@ -210,28 +210,32 @@
                 "concept": "weCanBeReasonableSureThatThePatientIsNotPregnantIf",
                 "answers": [
                   {
-                    "label": "Had a babyless than 4 weeks ago",
-                    "concept": "hadABabylessThan4WeeksAgo"
+                    "label": "Gave birth in the last 4 weeks",
+                    "concept": "gaveBirthInTheLast4Weeks"
                   },
                   {
-                    "label": "Had a spontaneous or induced abortion or miscarriage less than 7 days ago",
-                    "concept": "hadASpontaneousOrInducedAbortionOrMiscarriageLessThan7DaysAgo"
+                    "label": "Less than 6 months postpartum AND exclusively breastfeeding AND not having menstrual bleeding ",
+                    "concept": "lessThan6MonthsPostpartumAndExclusivelyBreastfeedingAndNotHavingMenstrualBleeding"
                   },
                   {
-                    "label": "Has absteined from sex since last menstrual period, abortion or delivery",
-                    "concept": "hasAbsteinedFromSexSinceLastMenstrualPeriodAbortionOrDelivery"
+                    "label": "Had an abortion or miscarriage in the past 7 days",
+                    "concept": "hadAnAbortionOrMiscarriageInThePast7Days"
                   },
                   {
-                    "label": "Has been correctly and consistently using a reliable contraceptive method",
+                    "label": "Had gone without sexual intercourse since the last menstrual period",
+                    "concept": "hadGoneWithoutSexualIntercourseSinceTheLastMenstrualPeriod"
+                  },
+                  {
+                    "label": "Has been correctly AND consistently using a reliable contraceptive method",
                     "concept": "hasBeenCorrectlyAndConsistentlyUsingAReliableContraceptiveMethod"
                   },
                   {
-                    "label": "Last menstruation period less than 7 days ago",
-                    "concept": "lastMenstruationPeriodLessThan7DaysAgo"
+                    "label": "Last menstruation period started within the past 7 days",
+                    "concept": "lastMenstruationPeriodStartedWithinThePast7Days"
                   },
                   {
-                    "label": "None of the above",
-                    "concept": "noneOfTheAbove"
+                    "label": "None of the above - actual pregnancy cannot be excluded",
+                    "concept": "noneOfTheAboveActualPregnancyCannotBeExcluded"
                   }
                 ]
               }
@@ -707,11 +711,11 @@
             },
             {
               "id": "chosenMethod",
-              "label": "Chosen method",
+              "label": "Chosen method(s)",
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "multiCheckbox",
                 "concept": "chosenMethod",
                 "answers": [
                   {
@@ -764,13 +768,14 @@
                   }
                 ]
               },
+              "inlineMultiCheckbox": true,
               "hide": {
                 "hideWhenExpression": "familyPlanningInitiated !== 'yes'"
               }
             },
             {
               "id": "prescribeTheChosenFamilyPlanningMethodWithTheOrderBasketIfNecessary",
-              "label": "Prescribe the chosen family planning method with the order basket if necessary",
+              "label": "Prescribe the chosen family planning method(s) with the order basket if necessary",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",

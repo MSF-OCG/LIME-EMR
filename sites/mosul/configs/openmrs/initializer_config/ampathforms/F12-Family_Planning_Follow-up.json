@@ -22,7 +22,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "multiCheckbox",
                 "concept": "method",
                 "answers": [
                   {
@@ -74,27 +74,9 @@
                     "concept": "vasectomy"
                   }
                 ]
-              }
-            },
-            {
-              "id": "needForDualProtection",
-              "label": "Need for dual protection",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "needForDualProtection",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
+              },
+              "inlineMultiCheckbox": true,
+              "default": "the most recent answer from \"Family planning recommended - Chosen method\" from Family Planning Assessment form or from \"Which method\" from last Family Planing Follow-up form"
             }
           ]
         }
@@ -128,6 +110,19 @@
               }
             },
             {
+              "id": "describeIssuesExplainedByThePatient",
+              "label": "Describe issues explained by the patient",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "describeIssuesExplainedByThePatient"
+              },
+              "hide": {
+                "hideWhenExpression": "satisfiedWithMethod !== 'a5c5563e-df0e-4742-a335-b24fb63664ee'"
+              }
+            },
+            {
               "id": "newFamilyPlanningNeeds",
               "label": "New family planning needs",
               "type": "obs",
@@ -145,6 +140,19 @@
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
+              }
+            },
+            {
+              "id": "describeCurrentNeeds",
+              "label": "Describe current needs",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "describeCurrentNeeds"
+              },
+              "hide": {
+                "hideWhenExpression": "newFamilyPlanningNeeds !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
             },
             {
@@ -261,6 +269,19 @@
               }
             },
             {
+              "id": "describe",
+              "label": "Describe",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "describe"
+              },
+              "hide": {
+                "hideWhenExpression": "moodChanges !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
               "id": "otherProblem",
               "label": "Other problem(s)",
               "type": "obs",
@@ -367,11 +388,11 @@
             },
             {
               "id": "whichMethod",
-              "label": "Which method",
+              "label": "Which method(s)",
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "radio",
+                "rendering": "multiCheckbox",
                 "concept": "whichMethod",
                 "answers": [
                   {
@@ -424,6 +445,8 @@
                   }
                 ]
               },
+              "inlineMultiCheckbox": true,
+              "questionInfo": "Select all methods including previous one if it is not stoped",
               "hide": {
                 "hideWhenExpression": "anotherFamilyPlanningMethodPrescribed !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
