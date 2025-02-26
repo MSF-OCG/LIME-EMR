@@ -58,14 +58,20 @@ test('Sample Form - Verify UI elements and interactions', async ({ page }) => {
   ).toBeVisible();
 
   // Locate and validate each radio option using the wrapper's class and its text
-  await expect(page.locator('div[class*="radio-button-wrapper"]:has-text("Choice 1") >> input[type="radio"]')).toBeVisible();
-  await expect(page.locator('div[class*="radio-button-wrapper"]:has-text("Choice 2") >> input[type="radio"]')).toBeVisible();
-  await expect(page.locator('div[class*="radio-button-wrapper"]:has-text("Choice 3") >> input[type="radio"]')).toBeVisible();
+  await expect(
+    page.locator('div[class*="radio-button-wrapper"]:has-text("Choice 1") >> input[type="radio"]')
+  ).toBeVisible();
+  await expect(
+    page.locator('div[class*="radio-button-wrapper"]:has-text("Choice 2") >> input[type="radio"]')
+  ).toBeVisible();
+  await expect(
+    page.locator('div[class*="radio-button-wrapper"]:has-text("Choice 3") >> input[type="radio"]')
+  ).toBeVisible();
 
-  // Select the first radio option and verify it is checked - <input type="radio" class="cds--radio-button" id="anotherSampleQuestion-Choice 1" name="anotherSampleQuestion" value="another-system-defined-concept-uuid">
+  // Select the first radio option and verify it is checked
   page.evaluate('document.getElementById("anotherSampleQuestion-Choice 1").checked=true');
   // Check if the first radio option is checked
-  expect(page.evaluate('document.getElementById("anotherSampleQuestion-Choice 1").checked')).toBeTruthy();
-
-  // --- Validate Checkboxes ---
+  expect(
+    page.evaluate('document.getElementById("anotherSampleQuestion-Choice 1").checked')
+  ).toBeTruthy();
 });
