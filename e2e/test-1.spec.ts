@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { assert } from 'console';
 
+// Documentation, prompting, and coverage: https://docs.google.com/document/d/1ECV_sWmxkLHpFYsTLV5oIjo7m7mqBKOnSKFoPzdQL68/edit?usp=sharing
+
 test('Sample Form - Verify UI elements and interactions', async ({ page }) => {
   // --- Login Flow ---
   await page.goto('https://dev3.openmrs.org/openmrs/spa/login');
