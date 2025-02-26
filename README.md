@@ -517,3 +517,6 @@ Ensure your workflow file is placed inside `./config/openfn`.
 ## Release Notes
 
 ### 1.0.0-SNAPSHOT (in progress)
+
+### Automated QA  
+This project is tested with BrowserStack
