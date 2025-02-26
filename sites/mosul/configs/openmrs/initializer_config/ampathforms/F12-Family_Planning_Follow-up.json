@@ -73,10 +73,12 @@
                     "label": "Vasectomy",
                     "concept": "vasectomy"
                   }
-                ]
+                ],
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'whichMethod').then(obs => obs)"
+                }
               },
-              "inlineMultiCheckbox": true,
-              "default": "the most recent answer from \"Family planning recommended - Chosen method\" from Family Planning Assessment form or from \"Which method\" from last Family Planing Follow-up form"
+              "inlineMultiCheckbox": true
             }
           ]
         }
