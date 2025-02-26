@@ -288,6 +288,57 @@
               }
             },
             {
+              "id": "patientReferredTo",
+              "label": "Patient referred to",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8fb3bb7d-c935-4b57-8444-1b953470e109",
+                "answers": [
+                  {
+                    "label": "Medical care (MSF, MoH, NGO)",
+                    "concept": "5f121c90-eca2-4af4-bc2f-49ad1a50ff2e"
+                  },
+                  {
+                    "label": "MSF psychiatric care",
+                    "concept": "485939c5-1e77-4495-b5e1-77fb2abbcfd7"
+                  },
+                  {
+                    "label": "Non-MSF psychiatrist services",
+                    "concept": "489b042d-5ed4-436f-944c-27b7f31bef3f"
+                  },
+                  {
+                    "label": "Social services",
+                    "concept": "978fa5d2-e6c4-4b2a-a293-73c098de0af6"
+                  },
+                  {
+                    "label": "Legal services",
+                    "concept": "8fe43e9c-dd37-4f61-8f30-e3ac2f3b9445"
+                  },
+                  {
+                    "label": "Protection services",
+                    "concept": "eff27d0b-d485-4983-814f-febbc4fe185a"
+                  },
+                  {
+                    "label": "Hospitalisation",
+                    "concept": "6b8fca2d-0147-4dd8-a8f5-3b813152b952"
+                  },
+                  {
+                    "label": "Group support",
+                    "concept": "204c5cd9-7ef2-4347-89c2-df17e4789d06"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfClosure !== '8e67e45a-82de-4a3a-896f-2ef326375fa5'"
+              }
+            },
+            {
               "id": "patientReferredTo_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",

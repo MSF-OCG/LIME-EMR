@@ -565,7 +565,7 @@
               "questionOptions": {
                 "rendering": "workspace-launcher",
                 "buttonLabel": "Active medications",
-                "workspaceName": "medications-form-workspace"
+                "workspaceName": "add-drug-order"
               },
               "hide": {
                 "hideWhenExpression": "wasThePatientPrescribedPsychotropicMedication !== '53eaf1b5-6ff7-498f-b95c-7ce3f116f181'"
@@ -880,7 +880,7 @@
                 "concept": "e08d532b-e56c-43dc-b831-af705654d2dc"
               },
               "hide": {
-                "hideWhenExpression": "currentSymptomsOrComplaints !== 'other'"
+                "hideWhenExpression": "!includes(otherSymptoms, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             }
           ]
