@@ -2043,6 +2043,52 @@
               }
             }
           ]
+        },
+        {
+          "label": "History of Mental Disorder",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "wasThePatientPrescribedPsychotropicMedication",
+              "label": "Was the patient prescribed psychotropic medication?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "92be5b5d-b6ef-43ba-9230-3c80d6db300f",
+                "answers": [
+                  {
+                    "label": "Never",
+                    "concept": "325f6695-deb3-4472-a9f4-69905efcdce4"
+                  },
+                  {
+                    "label": "Previously",
+                    "concept": "2d5122f8-24bb-4bce-ab18-9c1e9d224b3c"
+                  },
+                  {
+                    "label": "Yes, currently",
+                    "concept": "53eaf1b5-6ff7-498f-b95c-7ce3f116f181"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "doesThePatientHaveAPreviousMentalDisorderDiagnosis !== 'yes'"
+              }
+            },
+            {
+              "id": "ifYesEnterDetailsInmedications",
+              "label": "If yes, enter details in \"Medications\"",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Active medications",
+                "workspaceName": "medications-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "wasThePatientPrescribedPsychotropicMedication !== '53eaf1b5-6ff7-498f-b95c-7ce3f116f181'"
+              }
+            }
+          ]
         }
       ]
     },
@@ -3278,7 +3324,7 @@
                     "concept": "9d7d154f-e7a1-4490-b93a-85f5c2157f92"
                   },
                   {
-                    "label": "PHQ9 score 10-14: Minor to mild depression (or dysthymia)",
+                    "label": "PHQ9 score 10-14: Mild depression or chronic depression (symptoms lasting for more than two years)",
                     "concept": "ed7484ef-a3ea-4c95-bf59-58987c7f6d7c"
                   },
                   {
@@ -5260,7 +5306,7 @@
                 "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
                 "answers": [
                   {
-                    "label": "Acute stress disorder",
+                    "label": "Acute stress reaction",
                     "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
                   },
                   {
@@ -5372,7 +5418,7 @@
                 "concept": "819f79e7-b9af-4afd-85d4-2ab677223113",
                 "answers": [
                   {
-                    "label": "Acute stress disorder",
+                    "label": "Acute stress reaction",
                     "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
                   },
                   {

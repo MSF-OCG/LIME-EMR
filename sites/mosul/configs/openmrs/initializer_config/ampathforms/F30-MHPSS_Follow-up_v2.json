@@ -225,8 +225,8 @@
               }
             },
             {
-              "id": "patientRescheduledFillTheExitForm",
-              "label": "Patient rescheduled (if Yes, fill the Follow-up section at the end of this form. If No (closing file or patient no longer wants services), fill the Exit form.)",
+              "id": "patientRescheduled",
+              "label": "Patient rescheduled (if Yes, fill the Follow-up section at the end of this form. If No, fill the Exit form.)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -332,6 +332,27 @@
           "isExpanded": false,
           "questions": [
             {
+              "id": "wasThePatientGivenADiagnosis",
+              "label": "Was the patient given a diagnosis?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f63e1804-0062-4a4a-a412-d07dad95e960",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "questionInfo": "Chech in \"Conditions\" or previous Encounters in  \"Visits\""
+            },
+            {
               "id": "whatWasTheDiagnosis",
               "label": "What was the diagnosis",
               "type": "obs",
@@ -341,7 +362,7 @@
                 "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
                 "answers": [
                   {
-                    "label": "Acute stress disorder",
+                    "label": "Acute stress reaction",
                     "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
                   },
                   {
@@ -418,7 +439,10 @@
                   }
                 ]
               },
-              "questionInfo": "Only to be established by a psychologist, psychiatrist or GP trained in MH"
+              "questionInfo": "Only to be established by a psychologist, psychiatrist or GP trained in MH",
+              "hide": {
+                "hideWhenExpression": "wasThePatientGivenADiagnosis !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
             },
             {
               "id": "whatWasTheDiagnosis_ifOtherSpecify",
@@ -3342,7 +3366,7 @@
                     "concept": "9d7d154f-e7a1-4490-b93a-85f5c2157f92"
                   },
                   {
-                    "label": "PHQ9 score 10-14: Minor to mild depression (or dysthymia)",
+                    "label": "PHQ9 score 10-14: Mild depression or chronic depression (symptoms lasting for more than two years)",
                     "concept": "ed7484ef-a3ea-4c95-bf59-58987c7f6d7c"
                   },
                   {
