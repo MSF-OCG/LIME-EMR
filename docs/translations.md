@@ -13,8 +13,8 @@ To change the language,
 2. Navigate and click on the profile icon on the top right corner, there you will see an option to Change language. This will open a list of languages available for translation.
 3. Select the language you want to translate to and confirm the change. The page will reload and the language will be changed.
 
-![Change Language 1](/documentation/media/change_language_1.png)
-![Change Language 2](/documentation/media/change_language_2.png)
+![Change Language 1](/docs/media/change_language_1.png)
+![Change Language 2](/docs/media/change_language_2.png)
 
 ### Managing Concept Metadata Translations
 
@@ -22,7 +22,7 @@ Concepts are the building blocks of the OpenMRS data model. They are used to rep
 
 These concepts can then be added to your distro and used in forms, reports, and other parts of the OpenMRS application.
 
-![Concept Dictionary](/documentation/media/concept_dictionary.png)
+![Concept Dictionary](/docs/media/concept_dictionary.png)
 
 
 ### Translating Forms
@@ -159,7 +159,7 @@ Concepts by default have translations in multiple languages. You can use the Con
 
 Preview of the form with the translated answers.
 
-![Translated Answers](/documentation/media/concept_translated_answers.png)
+![Translated Answers](/docs/media/concept_translated_answers.png)
 
 
 #### b) Using the Form translation files
@@ -229,4 +229,4 @@ Alternatively, you can even use the translation files for custom English labels 
 
 Preview of the form with the custom translated answers
 
-![Custom Translated Answers](/documentation/media/concept_translated_custom_labels.png)
+![Custom Translated Answers](/docs/media/concept_translated_custom_labels.png)
