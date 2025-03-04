@@ -3921,6 +3921,75 @@
           ]
         },
         {
+          "label": "Change in goal",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "doesAnyOfThesePreviousSetGoalsChange",
+              "label": "Does any of these previous set goals change",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "db174c75-f97b-4f4a-8d59-852e38a604ca",
+                "answers": [
+                  {
+                    "label": "Goal 1",
+                    "concept": "3d081f71-7b90-4fb2-a8bc-961263ab6cec"
+                  },
+                  {
+                    "label": "Goal 2",
+                    "concept": "e6461d60-052f-450a-96aa-9523e807b560"
+                  },
+                  {
+                    "label": "Goal 3",
+                    "concept": "d8e794bc-efd6-447b-8079-d8f84a267e36"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "explainTheChangeAndSetTheNewGoal1",
+              "label": "Explain the change and set the new goal 1",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "366e9cb0-245a-4309-b2ed-cbead5464d1a"
+              },
+              "hide": {
+                "hideWhenExpression": "doesAnyOfThesePreviousSetGoalsChange !== '3d081f71-7b90-4fb2-a8bc-961263ab6cec'"
+              }
+            },
+            {
+              "id": "explainTheChangeAndSetTheNewGoal2",
+              "label": "Explain the change and set the new goal 2",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "366e9cb0-245a-4309-b2ed-cbead5464d1a"
+              },
+              "hide": {
+                "hideWhenExpression": "doesAnyOfThesePreviousSetGoalsChange !== 'e6461d60-052f-450a-96aa-9523e807b560'"
+              }
+            },
+            {
+              "id": "explainTheChangeAndSetTheNewGoal3",
+              "label": "Explain the change and set the new goal 3",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "366e9cb0-245a-4309-b2ed-cbead5464d1a"
+              },
+              "hide": {
+                "hideWhenExpression": "doesAnyOfThesePreviousSetGoalsChange !== 'd8e794bc-efd6-447b-8079-d8f84a267e36'"
+              }
+            }
+          ]
+        },
+        {
           "label": "Intervention",
           "isExpanded": false,
           "questions": [
