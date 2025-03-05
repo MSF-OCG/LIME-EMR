@@ -14,7 +14,7 @@
       "label": "Consultation",
       "sections": [
         {
-          "label": "Admission",
+          "label": "File information",
           "isExpanded": false,
           "questions": [
             {
@@ -38,93 +38,25 @@
               }
             },
             {
-              "id": "gender",
-              "label": "Gender",
+              "id": "typeOfIntervention",
+              "label": "Type of intervention",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7",
+                "concept": "82d1fcad-d1be-4ea2-a66c-c872fb4825b4",
                 "answers": [
                   {
-                    "label": "Male",
-                    "concept": "625baaf5-ba75-4c23-bdef-283fd47c34db"
+                    "label": "Counselling",
+                    "concept": "08c534b7-c901-46fb-9831-50ecfcd74d1b"
                   },
                   {
-                    "label": "Female",
-                    "concept": "2ded9cfb-c089-4e1c-b032-7aa4a17882f7"
-                  },
-                  {
-                    "label": "Transgender male",
-                    "concept": "37ccc7b5-0d1d-48d3-87a6-aee614bb500f"
-                  },
-                  {
-                    "label": "Transgender female",
-                    "concept": "1226d253-376f-4e73-9ae2-36c7e9362e8b"
-                  },
-                  {
-                    "label": "Gender variant - Non conforming",
-                    "concept": "810ca6e9-cabf-4aa6-98d0-c3d31cfdb5f0"
-                  },
-                  {
-                    "label": "Prefer not to answer",
-                    "concept": "245151ca-691e-4d5a-a792-64cb573e2b34"
-                  },
-                  {
-                    "label": "Unknown",
-                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                    "label": "Psychotherapy/Psychological support",
+                    "concept": "aa9c5d82-1ebf-43c7-9218-6766c4affbc4"
                   }
                 ]
               }
             },
-            {
-              "id": "education",
-              "label": "Education",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "cc3a5a7a-abfe-4630-b0c0-c1275c6cbb54",
-                "answers": [
-                  {
-                    "label": "Illiterate",
-                    "concept": "f49d8262-d0f2-4a99-93c5-4533943663d3"
-                  },
-                  {
-                    "label": "Primary",
-                    "concept": "d0a9a2bd-ca9c-4825-8728-29648f8610e4"
-                  },
-                  {
-                    "label": "Secondary",
-                    "concept": "d6ba27d2-6477-4174-bde9-229946ce9bbe"
-                  },
-                  {
-                    "label": "College",
-                    "concept": "6d5582c2-ae2f-4a18-a173-3e0011ec4616"
-                  },
-                  {
-                    "label": "University",
-                    "concept": "6d5582c2-ae2f-4a18-a173-3e0011ec4616"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "familyTree",
-              "label": "Family tree",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "f16d5d76-155b-453d-bd60-ea8ee4d344e9"
-              }
-            }
-          ]
-        },
-        {
-          "label": "Consultation information",
-          "isExpanded": false,
-          "questions": [
             {
               "id": "typeOfConsultation",
               "label": "Type of consultation",
@@ -169,21 +101,29 @@
               }
             },
             {
-              "id": "typeOfIntervention",
-              "label": "Type of intervention",
+              "id": "checklistReminder",
+              "label": "Checklist reminder",
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "radio",
-                "concept": "82d1fcad-d1be-4ea2-a66c-c872fb4825b4",
+                "rendering": "multiCheckbox",
+                "concept": "2d8a5986-5946-44a7-a4aa-5603971d3595",
                 "answers": [
                   {
-                    "label": "Counselling",
-                    "concept": "08c534b7-c901-46fb-9831-50ecfcd74d1b"
+                    "label": "Explain confidentiality",
+                    "concept": "8ce30461-216b-46b2-84b2-5314d8b355fc"
                   },
                   {
-                    "label": "Psychotherapy/Psychological support",
-                    "concept": "aa9c5d82-1ebf-43c7-9218-6766c4affbc4"
+                    "label": "Explain services/therapy",
+                    "concept": "b4af1ca8-f982-4a15-9ace-7a2f85553614"
+                  },
+                  {
+                    "label": "Explain the therapist's/patient\u2019s roles",
+                    "concept": "4588c6d5-280f-411c-b669-af6e9ae8f0ae"
+                  },
+                  {
+                    "label": "Obtain informed consent",
+                    "concept": "ab2fcfa5-4236-4b0f-8a42-860408a78812"
                   }
                 ]
               }
@@ -303,7 +243,101 @@
                   }
                 ]
               }
+            }
+          ]
+        },
+        {
+          "label": "Demographics",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "gender",
+              "label": "Gender",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7",
+                "answers": [
+                  {
+                    "label": "Male",
+                    "concept": "625baaf5-ba75-4c23-bdef-283fd47c34db"
+                  },
+                  {
+                    "label": "Female",
+                    "concept": "2ded9cfb-c089-4e1c-b032-7aa4a17882f7"
+                  },
+                  {
+                    "label": "Transgender male",
+                    "concept": "37ccc7b5-0d1d-48d3-87a6-aee614bb500f"
+                  },
+                  {
+                    "label": "Transgender female",
+                    "concept": "1226d253-376f-4e73-9ae2-36c7e9362e8b"
+                  },
+                  {
+                    "label": "Gender variant - Non conforming",
+                    "concept": "810ca6e9-cabf-4aa6-98d0-c3d31cfdb5f0"
+                  },
+                  {
+                    "label": "Prefer not to answer",
+                    "concept": "245151ca-691e-4d5a-a792-64cb573e2b34"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
             },
+            {
+              "id": "education",
+              "label": "Education",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "cc3a5a7a-abfe-4630-b0c0-c1275c6cbb54",
+                "answers": [
+                  {
+                    "label": "Illiterate",
+                    "concept": "f49d8262-d0f2-4a99-93c5-4533943663d3"
+                  },
+                  {
+                    "label": "Primary",
+                    "concept": "d0a9a2bd-ca9c-4825-8728-29648f8610e4"
+                  },
+                  {
+                    "label": "Secondary",
+                    "concept": "d6ba27d2-6477-4174-bde9-229946ce9bbe"
+                  },
+                  {
+                    "label": "College",
+                    "concept": "6d5582c2-ae2f-4a18-a173-3e0011ec4616"
+                  },
+                  {
+                    "label": "University",
+                    "concept": "6d5582c2-ae2f-4a18-a173-3e0011ec4616"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "familyTree",
+              "label": "Family tree",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "f16d5d76-155b-453d-bd60-ea8ee4d344e9"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Knowledge",
+          "isExpanded": false,
+          "questions": [
             {
               "id": "knowledgeOfTheService",
               "label": "Knowledge of the service",
@@ -468,49 +502,10 @@
       ]
     },
     {
-      "label": "File information",
-      "sections": [
-        {
-          "label": "Checklist reminder",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "checklistReminder",
-              "label": "Checklist reminder",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "multiCheckbox",
-                "concept": "2d8a5986-5946-44a7-a4aa-5603971d3595",
-                "answers": [
-                  {
-                    "label": "Explain confidentiality",
-                    "concept": "8ce30461-216b-46b2-84b2-5314d8b355fc"
-                  },
-                  {
-                    "label": "Explain services/therapy",
-                    "concept": "b4af1ca8-f982-4a15-9ace-7a2f85553614"
-                  },
-                  {
-                    "label": "Explain the therapist's/patient\u2019s roles",
-                    "concept": "4588c6d5-280f-411c-b669-af6e9ae8f0ae"
-                  },
-                  {
-                    "label": "Obtain informed consent",
-                    "concept": "ab2fcfa5-4236-4b0f-8a42-860408a78812"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
       "label": "History",
       "sections": [
         {
-          "label": "Motive for consultation",
+          "label": "Motive",
           "isExpanded": false,
           "questions": [
             {
