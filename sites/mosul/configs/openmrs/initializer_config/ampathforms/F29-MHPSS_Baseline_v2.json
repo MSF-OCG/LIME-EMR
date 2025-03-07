@@ -593,6 +593,79 @@
       ]
     },
     {
+      "label": "Risk factors",
+      "sections": [
+        {
+          "label": "Consider referral to mhGAP/psychologist",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "doesThePatientHaveACurrentSuicidalRisk",
+              "label": "Does the patient have a current suicidal risk?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3dceead1-70d5-4030-b8f3-bda3938af08d",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "questionInfo": "If in doubt: ask the patient: \"Do you think about killing yourself?\" If \"no\" then mark \"no risk\""
+            },
+            {
+              "id": "doesThePatientPresentARiskOfHarmingOthers",
+              "label": "Does the patient present a risk of harming others?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ccc4f06c-b76a-440d-9b7e-c48ba2c4a0ab",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Resilience and coping",
+      "sections": [
+        {
+          "label": "Resilience and coping",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "copingStrategiesAlreadyUsedByThePatientToAddressTheMainProblemOrComplaint",
+              "label": "Coping strategies already used by the patient to address the main problem(s)/complaint(s)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "3f95778c-7746-424e-aaeb-41f4478678f2"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "label": "Problems / symptoms",
       "sections": [
         {
@@ -2039,237 +2112,6 @@
               }
             }
           ]
-        },
-        {
-          "label": "History of Mental Disorder",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "doesThePatientHaveAPreviousMentalDisorderDiagnosis",
-              "label": "Does the patient have a previous mental disorder diagnosis?",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "d300cf49-11f1-4a13-bd36-70a4282e923c",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "whatWasTheDiagnosis",
-              "label": "What was the diagnosis",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
-                "answers": [
-                  {
-                    "label": "Acute stress reaction",
-                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
-                  },
-                  {
-                    "label": "Bereavement/grief",
-                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
-                  },
-                  {
-                    "label": "Post-Traumatic Stress Disorder",
-                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
-                  },
-                  {
-                    "label": "Conversion/Dissociative reaction",
-                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
-                  },
-                  {
-                    "label": "Anxiety Disorder",
-                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
-                  },
-                  {
-                    "label": "Medically Unexplained Physical Symptoms (MUPS)",
-                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
-                  },
-                  {
-                    "label": "Enuresis / Encopresis",
-                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
-                  },
-                  {
-                    "label": "Depression",
-                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
-                  },
-                  {
-                    "label": "Self-harming behavior/suicide attempt",
-                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
-                  },
-                  {
-                    "label": "Bipolar disorder (incl. mania)",
-                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
-                  },
-                  {
-                    "label": "Acute psychosis (incl. post-partum psychosis)",
-                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
-                  },
-                  {
-                    "label": "Chronic psychosis (incl. schizophrenia)",
-                    "concept": "97f1f41-b0c7-407d-b95f-b1e26c3fd23c"
-                  },
-                  {
-                    "label": "Developmental disorder (incl. intellectual disability, autism)",
-                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
-                  },
-                  {
-                    "label": "Childhood behavioral disorder (incl. ADHD, conduct disorder)",
-                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
-                  },
-                  {
-                    "label": "Childhood emotional disorder",
-                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
-                  },
-                  {
-                    "label": "Substance-related disorder",
-                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
-                  },
-                  {
-                    "label": "Epilepsy / seizures",
-                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
-                  },
-                  {
-                    "label": "Other disorder",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
-                    "label": "No diagnosis",
-                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
-                  }
-                ]
-              },
-              "questionInfo": "Only to be established by a psychologist, psychiatrist or GP trained in MH",
-              "hide": {
-                "hideWhenExpression": "doesThePatientHaveAPreviousMentalDisorderDiagnosis !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
-              }
-            },
-            {
-              "id": "wasThePatientPrescribedPsychotropicMedication",
-              "label": "Was the patient prescribed psychotropic medication?",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "92be5b5d-b6ef-43ba-9230-3c80d6db300f",
-                "answers": [
-                  {
-                    "label": "Never",
-                    "concept": "325f6695-deb3-4472-a9f4-69905efcdce4"
-                  },
-                  {
-                    "label": "Previously",
-                    "concept": "2d5122f8-24bb-4bce-ab18-9c1e9d224b3c"
-                  },
-                  {
-                    "label": "Yes, currently",
-                    "concept": "53eaf1b5-6ff7-498f-b95c-7ce3f116f181"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "doesThePatientHaveAPreviousMentalDisorderDiagnosis !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
-              }
-            },
-            {
-              "id": "ifYesEnterDetailsInmedications",
-              "label": "If yes, enter details in \"Medications\"",
-              "required": false,
-              "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Active medications",
-                "workspaceName": "medications-form-workspace"
-              },
-              "hide": {
-                "hideWhenExpression": "wasThePatientPrescribedPsychotropicMedication !== '53eaf1b5-6ff7-498f-b95c-7ce3f116f181'"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Risk factors",
-      "sections": [
-        {
-          "label": "Consider referral to mhGAP/psychologist",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "doesThePatientHaveACurrentSuicidalRisk",
-              "label": "Does the patient have a current suicidal risk?",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "3dceead1-70d5-4030-b8f3-bda3938af08d",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              },
-              "questionInfo": "If in doubt: ask the patient: \"Do you think about killing yourself?\" If \"no\" then mark \"no risk\""
-            },
-            {
-              "id": "doesThePatientPresentARiskOfHarmingOthers",
-              "label": "Does the patient present a risk of harming others?",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "ccc4f06c-b76a-440d-9b7e-c48ba2c4a0ab",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Resilience and coping",
-      "sections": [
-        {
-          "label": "Resilience and coping",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "copingStrategiesAlreadyUsedByThePatientToAddressTheMainProblemOrComplaint",
-              "label": "Coping strategies already used by the patient to address the main problem(s)/complaint(s)",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "3f95778c-7746-424e-aaeb-41f4478678f2"
-              }
-            }
-          ]
         }
       ]
     },
@@ -3103,6 +2945,104 @@
           ]
         },
         {
+          "label": "CGI",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "cgiSScoreHowMentallyIllIsThePatientAtThisTime",
+              "label": "CGI-S score - How mentally ill is the patient at this time?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a1a75011-0fef-460a-b666-dda2d171f39b",
+                "answers": [
+                  {
+                    "label": "0 - Not assessed",
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "label": "1 - Normal/not ill",
+                    "concept": "28eca5ef-725d-411f-af28-538a4a6f0a89"
+                  },
+                  {
+                    "label": "2 - Suspected mentally ill",
+                    "concept": "8f8af8f2-4256-4fba-9ce9-e62097b871d3"
+                  },
+                  {
+                    "label": "3 - Mildly ill",
+                    "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
+                  },
+                  {
+                    "label": "4 - Moderately ill",
+                    "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
+                  },
+                  {
+                    "label": "5 - Markedly ill",
+                    "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
+                  },
+                  {
+                    "label": "6 - Severely ill",
+                    "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
+                  },
+                  {
+                    "label": "7 - Extremely ill patient",
+                    "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                  }
+                ]
+              },
+              "questionInfo": "If the patient\u2019s  score \u2265 5, consider referral  to mhGAP clinician / psychiatrist"
+            },
+            {
+              "id": "lastCgiSScore",
+              "label": "Last CGI-S score",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
+                },
+                "answers": [
+                  {
+                    "label": "0 - Not assessed",
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "label": "1 - Normal/not ill",
+                    "concept": "28eca5ef-725d-411f-af28-538a4a6f0a89"
+                  },
+                  {
+                    "label": "2 - Suspected mentally ill",
+                    "concept": "8f8af8f2-4256-4fba-9ce9-e62097b871d3"
+                  },
+                  {
+                    "label": "3 - Mildly ill",
+                    "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
+                  },
+                  {
+                    "label": "4 - Moderately ill",
+                    "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
+                  },
+                  {
+                    "label": "5 - Markedly ill",
+                    "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
+                  },
+                  {
+                    "label": "6 - Severely ill",
+                    "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
+                  },
+                  {
+                    "label": "7 - Extremely ill patient",
+                    "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
           "label": "PHQ9 - Over the last two weeks, how often have you been bothered by any of the following problems?",
           "isExpanded": false,
           "questions": [
@@ -3712,101 +3652,228 @@
               }
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis",
+      "sections": [
         {
-          "label": "CGI",
+          "label": "Clinical diagnosis",
           "isExpanded": false,
           "questions": [
             {
-              "id": "cgiSScoreHowMentallyIllIsThePatientAtThisTime",
-              "label": "CGI-S score - How mentally ill is the patient at this time?",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "a1a75011-0fef-460a-b666-dda2d171f39b",
-                "answers": [
-                  {
-                    "label": "0 - Not assessed",
-                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
-                  },
-                  {
-                    "label": "1 - Normal/not ill",
-                    "concept": "28eca5ef-725d-411f-af28-538a4a6f0a89"
-                  },
-                  {
-                    "label": "2 - Suspected mentally ill",
-                    "concept": "8f8af8f2-4256-4fba-9ce9-e62097b871d3"
-                  },
-                  {
-                    "label": "3 - Mildly ill",
-                    "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
-                  },
-                  {
-                    "label": "4 - Moderately ill",
-                    "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
-                  },
-                  {
-                    "label": "5 - Markedly ill",
-                    "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
-                  },
-                  {
-                    "label": "6 - Severely ill",
-                    "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
-                  },
-                  {
-                    "label": "7 - Extremely ill patient",
-                    "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
-                  }
-                ]
-              },
-              "questionInfo": "If the patient\u2019s  score \u2265 5, consider referral  to mhGAP clinician / psychiatrist"
-            },
-            {
-              "id": "lastCgiSScore",
-              "label": "Last CGI-S score",
+              "id": "mainDiagnosis",
+              "label": "Main diagnosis",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "select",
-                "concept": "19dffa49-65bb-4d21-b71e-ea46e599a20d",
-                "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
-                },
+                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
                 "answers": [
                   {
-                    "label": "0 - Not assessed",
-                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                    "label": "Acute stress reaction",
+                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
                   },
                   {
-                    "label": "1 - Normal/not ill",
-                    "concept": "28eca5ef-725d-411f-af28-538a4a6f0a89"
+                    "label": "Bereavement/grief",
+                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
                   },
                   {
-                    "label": "2 - Suspected mentally ill",
-                    "concept": "8f8af8f2-4256-4fba-9ce9-e62097b871d3"
+                    "label": "Post-Traumatic Stress Disorder",
+                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
                   },
                   {
-                    "label": "3 - Mildly ill",
-                    "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
+                    "label": "Conversion/Dissociative reaction",
+                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
                   },
                   {
-                    "label": "4 - Moderately ill",
-                    "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
+                    "label": "Anxiety Disorder",
+                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
                   },
                   {
-                    "label": "5 - Markedly ill",
-                    "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
+                    "label": "Medically Unexplained Physical Symptoms (MUPS)",
+                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
                   },
                   {
-                    "label": "6 - Severely ill",
-                    "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
+                    "label": "Enuresis / Encopresis",
+                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
                   },
                   {
-                    "label": "7 - Extremely ill patient",
-                    "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                    "label": "Depression",
+                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
+                  },
+                  {
+                    "label": "Self-harming behavior/suicide attempt",
+                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
+                  },
+                  {
+                    "label": "Chronic psychosis (incl. schizophrenia)",
+                    "concept": "97f1f41-b0c7-407d-b95f-b1e26c3fd23c"
+                  },
+                  {
+                    "label": "Bipolar disorder (incl. mania)",
+                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
+                  },
+                  {
+                    "label": "Acute psychosis (incl. post-partum psychosis)",
+                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
+                  },
+                  {
+                    "label": "Developmental disorder (incl. intellectual disability, autism)",
+                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
+                  },
+                  {
+                    "label": "Childhood behavioral disorder (incl. ADHD, conduct disorder)",
+                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
+                  },
+                  {
+                    "label": "Childhood emotional disorder",
+                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
+                  },
+                  {
+                    "label": "Substance-related disorder",
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                  },
+                  {
+                    "label": "Epilepsy / seizures",
+                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                  },
+                  {
+                    "label": "Other disorder",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "No diagnosis",
+                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
                   }
                 ]
+              },
+              "questionInfo": "Only to be established by a psychologist, psychiatrist or GP trained in MH"
+            },
+            {
+              "id": "mainDiagnosisIfOtherSpecify",
+              "label": "Main diagnosis - If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
+              },
+              "hide": {
+                "hideWhenExpression": "mainDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+              }
+            },
+            {
+              "id": "dateOfTheMainDiagnosis",
+              "label": "Date of the main diagnosis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "25ab1831-52a1-46ea-b4f5-a82b50efb396"
+              }
+            },
+            {
+              "id": "concomitantDiagnosis",
+              "label": "Concomitant diagnosis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "819f79e7-b9af-4afd-85d4-2ab677223113",
+                "answers": [
+                  {
+                    "label": "Acute stress reaction",
+                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
+                  },
+                  {
+                    "label": "Bereavement/grief",
+                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
+                  },
+                  {
+                    "label": "Post-Traumatic Stress Disorder",
+                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
+                  },
+                  {
+                    "label": "Conversion/Dissociative reaction",
+                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
+                  },
+                  {
+                    "label": "Anxiety Disorder",
+                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
+                  },
+                  {
+                    "label": "Medically Unexplained Physical Symptoms (MUPS)",
+                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
+                  },
+                  {
+                    "label": "Enuresis / Encopresis",
+                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
+                  },
+                  {
+                    "label": "Depression",
+                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
+                  },
+                  {
+                    "label": "Self-harming behavior/suicide attempt",
+                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
+                  },
+                  {
+                    "label": "Chronic psychosis (incl. schizophrenia)",
+                    "concept": "97f1f41-b0c7-407d-b95f-b1e26c3fd23c"
+                  },
+                  {
+                    "label": "Bipolar disorder (incl. mania)",
+                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
+                  },
+                  {
+                    "label": "Acute psychosis (incl. post-partum psychosis)",
+                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
+                  },
+                  {
+                    "label": "Developmental disorder (incl. intellectual disability, autism)",
+                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
+                  },
+                  {
+                    "label": "Childhood behavioral disorder (incl. ADHD, conduct disorder)",
+                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
+                  },
+                  {
+                    "label": "Childhood emotional disorder",
+                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
+                  },
+                  {
+                    "label": "Substance-related disorder",
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                  },
+                  {
+                    "label": "Epilepsy / seizures",
+                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                  },
+                  {
+                    "label": "Other disorder",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "No diagnosis",
+                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
+                  }
+                ]
+              },
+              "questionInfo": "If applicable"
+            },
+            {
+              "id": "concomitantDiagnosis_ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "concomitantDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -5398,228 +5465,8 @@
       ]
     },
     {
-      "label": "Diagnosis",
+      "label": "Clinical summary",
       "sections": [
-        {
-          "label": "Clinical diagnosis",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "mainDiagnosis",
-              "label": "Main diagnosis",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
-                "answers": [
-                  {
-                    "label": "Acute stress reaction",
-                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
-                  },
-                  {
-                    "label": "Bereavement/grief",
-                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
-                  },
-                  {
-                    "label": "Post-Traumatic Stress Disorder",
-                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
-                  },
-                  {
-                    "label": "Conversion/Dissociative reaction",
-                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
-                  },
-                  {
-                    "label": "Anxiety Disorder",
-                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
-                  },
-                  {
-                    "label": "Medically Unexplained Physical Symptoms (MUPS)",
-                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
-                  },
-                  {
-                    "label": "Enuresis / Encopresis",
-                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
-                  },
-                  {
-                    "label": "Depression",
-                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
-                  },
-                  {
-                    "label": "Self-harming behavior/suicide attempt",
-                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
-                  },
-                  {
-                    "label": "Chronic psychosis (incl. schizophrenia)",
-                    "concept": "97f1f41-b0c7-407d-b95f-b1e26c3fd23c"
-                  },
-                  {
-                    "label": "Bipolar disorder (incl. mania)",
-                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
-                  },
-                  {
-                    "label": "Acute psychosis (incl. post-partum psychosis)",
-                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
-                  },
-                  {
-                    "label": "Developmental disorder (incl. intellectual disability, autism)",
-                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
-                  },
-                  {
-                    "label": "Childhood behavioral disorder (incl. ADHD, conduct disorder)",
-                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
-                  },
-                  {
-                    "label": "Childhood emotional disorder",
-                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
-                  },
-                  {
-                    "label": "Substance-related disorder",
-                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
-                  },
-                  {
-                    "label": "Epilepsy / seizures",
-                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
-                  },
-                  {
-                    "label": "Other disorder",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
-                    "label": "No diagnosis",
-                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
-                  }
-                ]
-              },
-              "questionInfo": "Only to be established by a psychologist, psychiatrist or GP trained in MH"
-            },
-            {
-              "id": "mainDiagnosisIfOtherSpecify",
-              "label": "Main diagnosis - If other, specify",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
-              },
-              "hide": {
-                "hideWhenExpression": "mainDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
-              }
-            },
-            {
-              "id": "dateOfTheMainDiagnosis",
-              "label": "Date of the main diagnosis",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "date",
-                "concept": "25ab1831-52a1-46ea-b4f5-a82b50efb396"
-              }
-            },
-            {
-              "id": "concomitantDiagnosis",
-              "label": "Concomitant diagnosis",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "select",
-                "concept": "819f79e7-b9af-4afd-85d4-2ab677223113",
-                "answers": [
-                  {
-                    "label": "Acute stress reaction",
-                    "concept": "a2f8295b-1259-481f-8ef3-34e213b7b4d6"
-                  },
-                  {
-                    "label": "Bereavement/grief",
-                    "concept": "7d486d0c-0e2b-475d-8e17-07296cc624b9"
-                  },
-                  {
-                    "label": "Post-Traumatic Stress Disorder",
-                    "concept": "ec7a63e8-5d0b-4dcf-8f72-7529c1df699a"
-                  },
-                  {
-                    "label": "Conversion/Dissociative reaction",
-                    "concept": "58881584-4f0e-4cf3-b2bf-d9f0898ae106"
-                  },
-                  {
-                    "label": "Anxiety Disorder",
-                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
-                  },
-                  {
-                    "label": "Medically Unexplained Physical Symptoms (MUPS)",
-                    "concept": "9df01581-6135-4876-8fb8-cbaaa522064e"
-                  },
-                  {
-                    "label": "Enuresis / Encopresis",
-                    "concept": "a22392b2-c8dc-43b5-8f8a-b18a223f25f2"
-                  },
-                  {
-                    "label": "Depression",
-                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
-                  },
-                  {
-                    "label": "Self-harming behavior/suicide attempt",
-                    "concept": "b27187bd-e94a-4dbc-9a77-46c0cefad25a"
-                  },
-                  {
-                    "label": "Chronic psychosis (incl. schizophrenia)",
-                    "concept": "97f1f41-b0c7-407d-b95f-b1e26c3fd23c"
-                  },
-                  {
-                    "label": "Bipolar disorder (incl. mania)",
-                    "concept": "1ba02bf8-6bbe-46a6-baff-d18b5c9f6425"
-                  },
-                  {
-                    "label": "Acute psychosis (incl. post-partum psychosis)",
-                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
-                  },
-                  {
-                    "label": "Developmental disorder (incl. intellectual disability, autism)",
-                    "concept": "63f73696-3d7c-4dc5-8c16-5382c20c3f9f"
-                  },
-                  {
-                    "label": "Childhood behavioral disorder (incl. ADHD, conduct disorder)",
-                    "concept": "1189fb28-8d79-4d69-a434-63fed6e0ea60"
-                  },
-                  {
-                    "label": "Childhood emotional disorder",
-                    "concept": "52d85e63-b238-4161-985c-97f75ad80c9a"
-                  },
-                  {
-                    "label": "Substance-related disorder",
-                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
-                  },
-                  {
-                    "label": "Epilepsy / seizures",
-                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
-                  },
-                  {
-                    "label": "Other disorder",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
-                    "label": "No diagnosis",
-                    "concept": "dc77c73a-5ce5-4aac-821e-81f19f81b65f"
-                  }
-                ]
-              },
-              "questionInfo": "If applicable"
-            },
-            {
-              "id": "concomitantDiagnosis_ifOtherSpecify",
-              "label": "If other, specify",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-              },
-              "hide": {
-                "hideWhenExpression": "concomitantDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
-              }
-            }
-          ]
-        },
         {
           "label": "Clinical summary",
           "isExpanded": false,
