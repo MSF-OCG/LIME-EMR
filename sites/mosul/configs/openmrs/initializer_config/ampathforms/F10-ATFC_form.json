@@ -312,7 +312,9 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "numberOfTimesPerDay"
+                "concept": "numberOfTimesPerDay",
+                "min": 0,
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "diarrhoea !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -505,7 +507,8 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "targetWeight"
+                "concept": "targetWeight",
+                "min": 0
               },
               "disallowDecimals": false,
               "default": "Value of last ATFC form (but keep editable)",

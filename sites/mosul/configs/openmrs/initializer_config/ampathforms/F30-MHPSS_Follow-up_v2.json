@@ -24,7 +24,9 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11"
+                "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11",
+                "min": 0,
+                "step": 1
               },
               "default": "(calculated - # of session)"
             },
@@ -65,7 +67,8 @@
                 "rendering": "number",
                 "concept": "b87a93ff-a4a1-4601-b35d-1e42bfa7e194",
                 "min": 0,
-                "max": 99
+                "max": 99,
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "typeOfConsultation !== 'f16d5d76-155b-453d-bd60-ea8ee4d344e9'"
@@ -218,7 +221,8 @@
                 "rendering": "number",
                 "concept": "d7410cd3-29be-4f8b-93d6-eb4de005db29",
                 "min": 0,
-                "max": 50
+                "max": 50,
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "didThePatientMissTheSession !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
