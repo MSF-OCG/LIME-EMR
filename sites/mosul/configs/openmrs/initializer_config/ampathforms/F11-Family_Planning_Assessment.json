@@ -23,9 +23,9 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "gravida",
-                "min": 0,
-                "max": 18,
+                "concept": "00df1796-a090-447d-8904-3d6e0d9e5948",
+                "min": "0",
+                "max": "18",
                 "step": 1
               }
             },
@@ -36,9 +36,9 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "para",
-                "min": 0,
-                "max": 18,
+                "concept": "76a96d44-00f5-469f-9329-5a53409a87eb",
+                "min": "0",
+                "max": "18",
                 "step": 1
               }
             },
@@ -49,9 +49,9 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "abortion",
-                "min": 0,
-                "max": 18,
+                "concept": "aa296b81-5599-4076-8e53-e47d6e96159e",
+                "min": "0",
+                "max": "18",
                 "step": 1
               }
             },
@@ -62,9 +62,9 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "livingChildren",
-                "min": 0,
-                "max": 18,
+                "concept": "bfaee905-6a8f-4b4d-b66b-fe020d1ca3d8",
+                "min": "0",
+                "max": "18",
                 "step": 1
               }
             }
@@ -81,7 +81,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "date",
-                "concept": "date"
+                "concept": "ab4f7509-118c-484c-9c7b-b0f21536fbaf"
               }
             },
             {
@@ -91,7 +91,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "outcome",
+                "concept": "a356c3f4-a6f7-4289-bd9e-d83ec01305ed",
                 "answers": [
                   {
                     "label": "Child alive",
@@ -111,7 +111,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "breastfeeding",
+                "concept": "cbabb700-a5b7-4635-840c-c47aaaba6652",
                 "answers": [
                   {
                     "label": "Exclusive",
@@ -141,7 +141,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "familyPlanningBefore",
+                "concept": "7c346f81-376d-4b89-ab60-1d7eeb169ba1",
                 "answers": [
                   {
                     "label": "Yes",
@@ -161,7 +161,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "whichMethod"
+                "concept": "7d68053c-99db-49f5-b074-0a4b640da369"
               },
               "hide": {
                 "hideWhenExpression": "familyPlanningBefore !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -174,7 +174,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "whenDidThePatientStop"
+                "concept": "572a46c0-b206-4edb-a066-bc10bb635237"
               },
               "hide": {
                 "hideWhenExpression": "familyPlanningBefore !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -187,7 +187,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "textarea",
-                "concept": "whyDidThePatientStop"
+                "concept": "f3dc70a6-dcac-4bf3-9e51-34f29bc914eb"
               },
               "hide": {
                 "hideWhenExpression": "familyPlanningBefore !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -211,7 +211,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "weCanBeReasonableSureThatThePatientIsNotPregnantIf",
+                "concept": "1c88efaf-a911-45ce-a1c0-3b2f87482692",
                 "answers": [
                   {
                     "label": "Gave birth in the last 4 weeks",
@@ -286,7 +286,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "thePatientHasAMethodInMind",
+                "concept": "733ca33e-5729-4c10-ad46-39563cf10b26",
                 "answers": [
                   {
                     "label": "Yes",
@@ -306,7 +306,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "ifYesWhichOne"
+                "concept": "390083d8-f561-4616-b218-27716e461a75"
               },
               "hide": {
                 "hideWhenExpression": "thePatientHasAMethodInMind !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -319,7 +319,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "multiCheckbox",
-                "concept": "whatIsImportant",
+                "concept": "e8ab920f-6ae3-47b1-a0e4-eb3836cc601e",
                 "answers": [
                   {
                     "label": "Very effective",
@@ -403,7 +403,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "unprotectedSexInTheLast5Days",
+                "concept": "bd4988e1-a116-49c4-8d2a-138a3b901577",
                 "answers": [
                   {
                     "label": "Yes",
@@ -423,13 +423,37 @@
           "isExpanded": false,
           "questions": [
             {
+              "id": "lastMenstrualPeriod4OrMoreWeeksAgo",
+              "label": "Last menstrual period 4 or more weeks ago?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4434f3fc-ce4b-4707-8571-735f8a3ae034",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "questionInfo": "Pregnancy test highly recommended",
+              "hide": {
+                "hideWhenExpression": "weCanBeReasonableSureThatThePatientIsNotPregnantIf !== 'noneOfTheAbove'"
+              }
+            },
+            {
               "id": "urinePregnancyTestResult",
               "label": "Urine pregnancy test result",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "urinePregnancyTestResult",
+                "concept": "61d473d6-ab11-458e-b841-382bc183fd13",
                 "answers": [
                   {
                     "label": "Negative",
@@ -454,7 +478,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "multiCheckbox",
-                "concept": "conditions",
+                "concept": "9deb65e1-8709-41a5-92a5-f48e18237516",
                 "answers": [
                   {
                     "label": "Latex allergy (patient or partner)",
@@ -538,7 +562,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "referToTheDoctorForADecisionAboutTheMethod"
+                "concept": "b99948a7-2eb2-4fbd-b335-7f73bdce8a75"
               },
               "hide": {
                 "hideWhenExpression": "conditions !== 'hivPlusPatientOnArv'"
@@ -557,7 +581,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "maleAndFemaleCondom"
+                "concept": "3cce7a20-26fe-102b-80cb-0017a47871b2"
               },
               "hide": {
                 "hideWhenExpression": "conditions !== 'latexAllergy'"
@@ -570,7 +594,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "coc"
+                "concept": "dcc05293-cda6-48ee-b934-8982712ae59c"
               },
               "hide": {
                 "hideWhenExpression": "conditions !== 'currentOrHistoryTromboembolism'"
@@ -583,7 +607,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "popImplant"
+                "concept": "54dace58-33ff-40fb-9469-29afc2775bd6"
               },
               "hide": {
                 "hideWhenExpression": "conditions !== 'pregnancy'"
@@ -596,7 +620,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "iud"
+                "concept": "3f8b448d-eaf7-4097-b772-a43e33485cd8"
               },
               "hide": {
                 "hideWhenExpression": "conditions !== 'pregnancy'"
@@ -609,7 +633,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "injectable"
+                "concept": "ff6bd60e-48fc-4922-926e-d69ae1e62f31"
               },
               "hide": {
                 "hideWhenExpression": "conditions !== 'pregnancy'"
@@ -628,7 +652,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "injectableImplant"
+                "concept": "9e208135-69fd-4ff0-a139-fc26d87743ab"
               },
               "hide": {
                 "hideWhenExpression": "conditions !== 'breastfeedingLessThan6Weeks'"
@@ -641,7 +665,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "tubalLigation"
+                "concept": "5939ffb8-257c-4b16-9f6c-f961289b747c"
               },
               "hide": {
                 "hideWhenExpression": "conditions !== 'pregnancy'"
@@ -654,7 +678,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "cocPop"
+                "concept": "12516179-7b44-4990-a1d1-b953815bb4ca"
               },
               "hide": {
                 "hideWhenExpression": "conditions !== 'unexplainedVaginalBleeding'"
@@ -667,7 +691,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "iud"
+                "concept": "3f8b448d-eaf7-4097-b772-a43e33485cd8"
               },
               "hide": {
                 "hideWhenExpression": "conditions !== 'hyperOrDysmenorrhoea'"
@@ -691,7 +715,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "familyPlanningRecommended",
+                "concept": "422c3a5d-4f67-4cbf-9236-3b7bfdcd8e14",
                 "answers": [
                   {
                     "label": "Yes",
@@ -711,7 +735,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "reason"
+                "concept": "82bc8d77-5423-49f4-a81e-694ffa57514a"
               },
               "hide": {
                 "hideWhenExpression": "familyPlanningRecommended !== 'a5c5563e-df0e-4742-a335-b24fb63664ee'"
@@ -724,7 +748,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "multiCheckbox",
-                "concept": "chosenMethod",
+                "concept": "30b2d692-6a05-401f-8ede-13e027b8a436",
                 "answers": [
                   {
                     "label": "Male condom",
@@ -801,7 +825,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "textarea",
-                "concept": "observations"
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
               }
             },
             {
