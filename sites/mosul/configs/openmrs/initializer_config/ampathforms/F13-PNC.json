@@ -975,7 +975,7 @@
             },
             {
               "id": "scoring",
-              "label": "Scoring",
+              "label": "PHQ-2 Scoring - when 3 or more points, refer to Psychosocial counselling",
               "type": "markdown",
               "required": false,
               "questionOptions": {
@@ -999,7 +999,7 @@
                 "workspaceName": "immunization-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+                "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
             },
             {
@@ -1012,7 +1012,9 @@
                 "workspaceName": "results-viewer-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+                "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'",
+                "buttonLabel": "Add Results",
+                "workspaceName": "results-viewer-form-workspace"
               }
             }
           ]
