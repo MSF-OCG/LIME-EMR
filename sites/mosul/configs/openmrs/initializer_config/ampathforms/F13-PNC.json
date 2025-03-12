@@ -911,40 +911,8 @@
               }
             },
             {
-              "id": "checkInimmunizationsForTetanusVaccine",
-              "label": "Check in \"Immunizations\" for tetanus vaccine",
-              "required": false,
-              "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Capture patient immunizations",
-                "workspaceName": "immunization-form-workspace"
-              },
-              "hide": {
-                "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
-              }
-            },
-            {
-              "id": "checkInresultsViewerForLatestLaboratoryTestResults",
-              "label": "Check in \"Results Viewer\" for latest laboratory test results",
-              "required": false,
-              "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Add Results",
-                "workspaceName": "results-viewer-form-workspace"
-              },
-              "hide": {
-                "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
-              }
-            }
-          ]
-        },
-        {
-          "label": "PHQ-2 - Over the last two weeks, how often have you been bothered by any of the following problems?",
-          "isExpanded": false,
-          "questions": [
-            {
               "id": "littleInterestOrPleasureInDoingThings",
-              "label": "Little interest or pleasure in doing things?",
+              "label": "PHQ-2 - Over the last two weeks, how often have you had little interest or pleasure in doing things?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -975,7 +943,7 @@
             },
             {
               "id": "feelingDownDepressedOrHopeless",
-              "label": "Feeling down, depressed, or hopeless?",
+              "label": "PHQ-2 - Over the last two weeks, how often have you been feeling down, depressed, or hopeless?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1003,16 +971,10 @@
               "hide": {
                 "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
-            }
-          ]
-        },
-        {
-          "label": "PHQ2",
-          "isExpanded": false,
-          "questions": [
+            },
             {
               "id": "scoring",
-              "label": "Scoring",
+              "label": "PHQ-2 Scoring - when 3 or more points, refer to Psychosocial counselling",
               "type": "markdown",
               "required": false,
               "questionOptions": {
@@ -1022,6 +984,32 @@
                 "Scoring:(in\"i\":\"Sum of all points from answers above\") (answer is automatic sum of points from the 2 previous questions- when 3 or more points, automatic answer includes \"Please refer to Psychosocial counselling follow up)"
               ],
               "questionInfo": "Sum of all points from answers above",
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "checkInimmunizationsForTetanusVaccine",
+              "label": "Check in \"Immunizations\" for tetanus vaccine",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient immunizations",
+                "workspaceName": "immunization-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "checkInresultsViewerForLatestLaboratoryTestResults",
+              "label": "Check in \"Results Viewer\" for latest laboratory test results",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Add Results",
+                "workspaceName": "results-viewer-form-workspace"
+              },
               "hide": {
                 "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
