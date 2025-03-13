@@ -184,8 +184,8 @@
               }
             },
             {
-              "id": "latestDeliveryPlaceOfDelivery",
-              "label": "Latest delivery - Place of delivery",
+              "id": "placeOfDelivery",
+              "label": "Place of delivery",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -488,7 +488,7 @@
             },
             {
               "id": "latestDeliveryFistulaPresentManagement",
-              "label": "Latest delivery - Fistula present - Management",
+              "label": "Latest delivery - Fistula management",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -912,40 +912,8 @@
               }
             },
             {
-              "id": "checkInimmunizationsForTetanusVaccine",
-              "label": "Check in \"Immunizations\" for tetanus vaccine",
-              "required": false,
-              "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Capture patient immunizations",
-                "workspaceName": "immunization-form-workspace"
-              },
-              "hide": {
-                "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
-              }
-            },
-            {
-              "id": "checkInresultsViewerForLatestLaboratoryTestResults",
-              "label": "Check in \"Results Viewer\" for latest laboratory test results",
-              "required": false,
-              "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Add Results",
-                "workspaceName": "results-viewer-form-workspace"
-              },
-              "hide": {
-                "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
-              }
-            }
-          ]
-        },
-        {
-          "label": "PHQ-2 - Over the last two weeks, how often have you been bothered by any of the following problems?",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "littleInterestOrPleasureInDoingThings",
-              "label": "Little interest or pleasure in doing things?",
+              "id": "phq2OverTheLastTwoWeeksHowOftenHaveYouHadLittleInterestOrPleasureInDoingThings",
+              "label": "PHQ-2 - Over the last two weeks, how often have you had little interest or pleasure in doing things?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -975,8 +943,8 @@
               }
             },
             {
-              "id": "feelingDownDepressedOrHopeless",
-              "label": "Feeling down, depressed, or hopeless?",
+              "id": "phq2OverTheLastTwoWeeksHowOftenHaveYouBeenFeelingDownDepressedOrHopeless",
+              "label": "PHQ-2 - Over the last two weeks, how often have you been feeling down, depressed, or hopeless?",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1004,13 +972,7 @@
               "hide": {
                 "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
-            }
-          ]
-        },
-        {
-          "label": "PHQ2",
-          "isExpanded": false,
-          "questions": [
+            },
             {
               "id": "scoring",
               "label": "Scoring",
@@ -1025,6 +987,32 @@
               "questionInfo": "Sum of all points from answers above",
               "hide": {
                 "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "checkInimmunizationsForTetanusVaccine",
+              "label": "Check in \"Immunizations\" for tetanus vaccine",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient immunizations",
+                "workspaceName": "immunization-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "checkInresultsViewerForLatestLaboratoryTestResults",
+              "label": "Check in \"Results Viewer\" for latest laboratory test results",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "results-viewer-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== 'yes'"
               }
             }
           ]
@@ -1298,7 +1286,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "textarea",
-                "concept": "infant1AdditionalRemarks"
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
               },
               "hide": {
                 "hideWhenExpression": "infant1PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -1335,7 +1323,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "infant2PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+                "hideWhenExpression": "infant1PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
             },
             {
@@ -1520,8 +1508,21 @@
               }
             },
             {
-              "id": "infant2PassingUrineAndStoolDescribe",
-              "label": "Infant 2 - Passing urine and stool - Describe",
+              "id": "infant2PassingUrineAndStool",
+              "label": "Infant 2 - Passing urine and stool",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "a7f86874-d932-4065-9d92-090e1bf18141"
+              },
+              "hide": {
+                "hideWhenExpression": "infant2PresentAtConsultation !== 'yes'"
+              }
+            },
+            {
+              "id": "describe",
+              "label": "Describe",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1566,25 +1567,6 @@
               "questionOptions": {
                 "rendering": "textarea",
                 "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
-              },
-              "hide": {
-                "hideWhenExpression": "infant2PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
-              }
-            }
-          ]
-        },
-        {
-          "label": "Evaluation of the infant 3",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "infant2PassingUrineAndStool",
-              "label": "Infant 2 - Passing urine and stool",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "a7f86874-d932-4065-9d92-090e1bf18141"
               },
               "hide": {
                 "hideWhenExpression": "infant2PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -1855,7 +1837,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "date",
-                "concept": "dateOfDischargeFromPnc"
+                "concept": "13cea1c8-e426-411f-95b4-33651fc4325d"
               },
               "default": "Current date",
               "hide": {
