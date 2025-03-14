@@ -1,3 +1,4 @@
+workflows:
   wf1-dhis2-omrs-migration:
     name: wf1-dhis2-omrs-migration
     jobs:
@@ -22770,39 +22771,75 @@
       Get-Teis-and-Locations:
         name: Get Teis and Locations
         adaptor: '@openfn/language-dhis2@5.0.1'
-        credential: michael.bontyes@madiro.org-dhis2
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
+          const findDuplicatePatient = teis => {
+            const seen = new Map();
+            const duplicates = new Set();
+          
+            teis.forEach(tei => {
+              const patientNumber = tei.attributes.find(
+                attr => attr.code === 'patient_number'
+              )?.value;
+          
+              if (seen.get(patientNumber)) {
+                duplicates.add(patientNumber);
+              } else {
+                seen.set(patientNumber, tei);
+              }
+            });
+          
+            return duplicates;
+          };
           // Get teis that are "active" in the target program
-          get(
-            'tracker/trackedEntities',
-            {
-              orgUnit: $.orgUnit, //'OPjuJMZFLop',
-              program: $.program, //'w9MSPn5oSqp',
-              programStatus: 'ACTIVE',
-              updatedAfter: $.cursor,
-              skipPaging: true,
-            },
-            {},
-            state => {
-              // console.log('TEIs found ::', JSON.stringify(state.data.instances, null,2))
-              const teis = state.data.instances.filter(
-                tei => tei.updatedAt >= state.cursor
-              );
+          get('tracker/trackedEntities', {
+            orgUnit: $.orgUnit, //'OPjuJMZFLop',
+            program: $.program, //'w9MSPn5oSqp',
+            programStatus: 'ACTIVE',
+            updatedAfter: $.cursor,
+            skipPaging: true,
+          });
           
-              console.log(
-                '# of TEIs found before filter ::',
-                state.data.instances.length
-              );
-              console.log('# of TEIs to migrate to OMRS ::', teis.length);
+          fn(state => {
+            console.log('# of TEIs found before filter ::', state.data.instances.length);
+            const uniqueTeis = [];
+            const duplicatePatients = [];
+            const missingPatientNumber = [];
           
-              return {
-                ...state,
-                data: {},
-                references: [],
-                teis,
-              };
-            }
-          );
+            const filteredTeis = state.data.instances.filter(
+              tei => tei.updatedAt >= state.cursor
+            );
+          
+            console.log('Filtered TEIs ::', filteredTeis.length);
+            const duplicateIds = findDuplicatePatient(filteredTeis);
+          
+            filteredTeis.forEach(tei => {
+              const patientNumber = tei.attributes.find(
+                attr => attr.code === 'patient_number'
+              )?.value;
+          
+              if (!patientNumber) {
+                missingPatientNumber.push(tei);
+              } else if (duplicateIds.has(patientNumber)) {
+                duplicatePatients.push(tei);
+              } else {
+                uniqueTeis.push(tei);
+              }
+            });
+          
+            console.log('# of Unique TEIs to migrate to OMRS ::', uniqueTeis.length);
+              console.log('# Duplicate Patients found::', duplicatePatients.length);
+          
+            // return { uniqueTeis, duplicatePatients, filteredTeis, missingPatientNumber };
+            return {
+              ...state,
+              data: {},
+              references: [],
+              uniqueTeis,
+              duplicatePatients,
+              missingPatientNumber,
+            };
+          });
           
           get('optionGroups/kdef7pUey9f', {
             fields: 'id,displayName,options[id,displayName,code]',
@@ -22815,37 +22852,36 @@
           
       Create-Patients:
         name: Create Patients
-        adaptor: '@openfn/language-openmrs@4.1.3'
-        credential: michael.bontyes@madiro.org-openmrs
+        adaptor: '@openfn/language-openmrs@4.2.0'
+        credential: michael.bontyes@geneva.msf.org-openmrs
         body: |
           //Define gender options and prepare newPatientUuid and identifiers
           fn(state => {
-            const { teis } = state;
-            if (teis.length > 0)
-              console.log('# of TEIs to send to OpenMRS: ', teis.length);
-            if (teis.length === 0) console.log('No data fetched in step prior to sync.');
+            const { uniqueTeis } = state;
+            if (uniqueTeis.length > 0)
+              console.log('# of TEIs to send to OpenMRS: ', uniqueTeis.length);
+            if (uniqueTeis.length === 0)
+              console.log('No data fetched in step prior to sync.');
           
             return state;
           });
           
           //First we generate a unique OpenMRS ID for each patient
           each(
-            $.teis,
+            $.uniqueTeis,
             post(
-              'idgen/identifiersource/8549f706-7e85-4c1d-9424-217d50a2988b/identifier',
-              {},
-              state => {
-                state.identifiers ??= [];
-                state.identifiers.push(state.data.identifier);
-                return state;
-              }
-            )
+              'idgen/identifiersource/8549f706-7e85-4c1d-9424-217d50a2988b/identifier'
+            ).then(state => {
+              state.identifiers ??= [];
+              state.identifiers.push(state.data.identifier);
+              return state;
+            })
           );
           
-          // Then we map teis to openMRS data model
+          // Then we map uniqueTeis to openMRS data model
           fn(state => {
             const {
-              teis,
+              uniqueTeis,
               nationalityMap,
               genderOptions,
               identifiers,
@@ -22858,9 +22894,8 @@
               return result ? result.value : undefined;
             };
           
-          
             const calculateDOB = age => {
-              if (!age) return age
+              if (!age) return age;
               const currentDate = new Date();
               const currentYear = currentDate.getFullYear();
               const birthYear = currentYear - age;
@@ -22874,8 +22909,9 @@
               return birthday.toISOString().replace(/\.\d+Z$/, '+0000');
             };
           
-            state.patients = teis.map((d, i) => {
-              const patientNumber = getValueForCode(d.attributes, 'patient_number') || d.trackedEntity; // Add random number for testing + Math.random()
+            state.patients = uniqueTeis.map((d, i) => {
+              const patientNumber =
+                getValueForCode(d.attributes, 'patient_number') || d.trackedEntity; // Add random number for testing + Math.random()
           
               const lonlat = d.attributes.find(a => a.attribute === 'rBtrjV1Mqkz')?.value;
               const location = lonlat
@@ -22909,16 +22945,19 @@
                       value,
                     };
                   }
-                }).filter(Boolean);
+                })
+                .filter(Boolean);
           
               return {
                 patientNumber,
                 person: {
                   age: getValueForCode(d.attributes, 'age'),
-                  gender: genderOptions[getValueForCode(d.attributes, 'sex')] || 'U',
+                  gender: genderOptions[getValueForCode(d.attributes, 'sex')] ?? 'U',
                   birthdate:
                     d.attributes.find(a => a.attribute === 'WDp4nVor9Z7')?.value ??
                     calculateDOB(getValueForCode(d.attributes, 'age')),
+                  // d.attributes.find(a => a.attribute === 'WDp4nVor9Z7')?.value ?
+                  // calculateDOB(getValueForCode(d.attributes, 'age')) : '1900-01-01',
                   birthdateEstimated: d.attributes.find(
                     a => a.attribute === 'WDp4nVor9Z7'
                   )
@@ -22946,14 +22985,14 @@
                 },
                 identifiers: [
                   {
-                    identifier: identifiers[i], //map ID value from DHIS2 attribute
+                    identifier: identifiers[i], //OMRS-generated identifier - see above
                     identifierType: '05a29f94-c0ed-11e2-94be-8c13b969e334',
                     location: 'cf6fa7d4-1f19-4c85-ac50-ff824805c51c', //default location old:44c3efb0-2583-4c80-a79e-1f756a03c0a1
                     preferred: true,
                   },
                   {
                     uuid: d.trackedEntity,
-                    identifier: patientNumber,
+                    identifier: patientNumber, //Patient Number from DHIS2
                     identifierType: '8d79403a-c2cc-11de-8d13-0010c6dffd0f', //Old Identification number
                     location: 'cf6fa7d4-1f19-4c85-ac50-ff824805c51c', //default location
                     preferred: false, //default value for this identifiertype
@@ -22970,7 +23009,9 @@
             $.patients,
             upsert(
               'patient',
-              { q: $.data.patientNumber },
+              { q: $.data.patientNumber,
+                limit: 1, 
+                startIndex: 0 },
               state => {
                 const { patientNumber, ...patient } = state.data;
                 console.log(
@@ -22981,10 +23022,14 @@
               },
               state => {
                 state.newPatientUuid ??= [];
-               //console.log('state.references ::', state.references)
+                //console.log('state.references ::', state.references)
                 state.newPatientUuid.push({
                   patient_number: state.references.at(-1)?.patientNumber,
-                  omrs_patient_number: state.references.at(-1)?.identifiers.find(i => i.identifierType=`${state.openmrsAutoId}`),
+                  omrs_patient_number: state.references
+                    .at(-1)
+                    ?.identifiers.find(
+                      i => (i.identifierType = `${state.openmrsAutoId}`)
+                    ),
                   uuid: state.data.uuid,
                 });
                 return state;
@@ -22998,7 +23043,7 @@
       Update-Teis:
         name: Update Teis
         adaptor: '@openfn/language-dhis2@5.0.1'
-        credential: michael.bontyes@madiro.org-dhis2
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           fn(state => {
             if (state.newPatientUuid.length === 0) {
@@ -23062,6 +23107,18 @@
               // },
           );
           
+      Alert-Admin:
+        name: Alert Admin
+        adaptor: '@openfn/language-common@latest'
+        credential: null
+        body: |
+          fn(state => {
+            util.throwError('DUPLICATE_PATIENT_NUMBERS', {
+              description: 'Found TIEs with duplicate patient numbers',
+              duplicates: state.duplicatePatients,
+            });
+          });
+          
     triggers:
       cron:
         type: cron
@@ -23073,34 +23130,43 @@
         target_job: Fetch-Metadata
         condition_type: always
         enabled: true
-      Get-Teis-and-Locations->Create-Patients:
-        source_job: Get-Teis-and-Locations
-        target_job: Create-Patients
-        condition_type: js_expression
-        condition_label: has-teis
-        condition_expression: |
-          state.teis.length > 0 && !state.errors
-          
+      Fetch-Metadata->Get-Teis-and-Locations:
+        source_job: Fetch-Metadata
+        target_job: Get-Teis-and-Locations
+        condition_type: on_job_success
         enabled: true
       Create-Patients->Update-Teis:
         source_job: Create-Patients
         target_job: Update-Teis
         condition_type: on_job_success
         enabled: true
-      Fetch-Metadata->Get-Teis-and-Locations:
-        source_job: Fetch-Metadata
-        target_job: Get-Teis-and-Locations
-        condition_type: on_job_success
+      Get-Teis-and-Locations->Create-Patients:
+        source_job: Get-Teis-and-Locations
+        target_job: Create-Patients
+        condition_type: js_expression
+        condition_label: has-teis
+        condition_expression: |
+          state.uniqueTeis.length > 0 && !state.errors
+          
+        enabled: true
+      Get-Teis-and-Locations->Alert-Admin:
+        source_job: Get-Teis-and-Locations
+        target_job: Alert-Admin
+        condition_type: js_expression
+        condition_label: has-duplicate-patients
+        condition_expression: |
+          state.duplicatePatients.length > 0 && !state.errors
+          
         enabled: true
   wf2-omrs-dhis2:
     name: wf2-omrs-dhis2
     jobs:
       Get-Patients:
         name: Get Patients
-        adaptor: '@openfn/language-openmrs@4.1.3'
-        credential: michael.bontyes@madiro.org-openmrs
+        adaptor: '@openfn/language-openmrs@4.3.0'
+        credential: michael.bontyes@geneva.msf.org-openmrs
         body: |
-          cursor($.lastRunDateTime || $.manualCursor || '2023-05-20T06:01:24.000+0000');
+          cursor($.lastRunDateTime || $.manualCursor || '2023-05-20T06:01:24.000Z');
           
           cursor('today', {
             key: 'lastRunDateTime',
@@ -23129,7 +23195,7 @@
       Upsert-TEIs:
         name: Upsert TEIs
         adaptor: '@openfn/language-dhis2@5.0.1'
-        credential: michael.bontyes@madiro.org-dhis2
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           const buildPatientsUpsert = (state, patient, isNewPatient) => {
             const { placeOflivingMap, genderOptions } = state;
@@ -23165,7 +23231,7 @@
               };
             });
           
-            const standardAttr =  [
+            const standardAttr = [
               {
                 attribute: 'fa7uwpCKIwa',
                 value: patient.person?.names[0]?.givenName,
@@ -23177,10 +23243,8 @@
               {
                 attribute: 'P4wdYGkldeG', //DHIS2 ID ==> "Patient Number"
                 value:
-                  findIdentifierByUuid(
-                    patient.identifiers,
-                    state.dhis2PatientNumber
-                  ) || findIdentifierByUuid(patient.identifiers, state.openmrsAutoId), //map OMRS ID if no DHIS2 id
+                  findIdentifierByUuid(patient.identifiers, state.dhis2PatientNumber) ||
+                  findIdentifierByUuid(patient.identifiers, state.openmrsAutoId), //map OMRS ID if no DHIS2 id
               },
               {
                 attribute: 'ZBoxuExmxcZ', //MSF ID ==> "OpenMRS Patient Number"
@@ -23205,12 +23269,12 @@
               {
                 attribute: 'rBtrjV1Mqkz', //Place of living
                 value: placeOflivingMap[patient.person?.addresses[0]?.cityVillage],
-              }
+              },
             ];
           
             //filter out attributes that don't have a value from dhis2
-            const filteredAttr = standardAttr.filter(a => a.value)
-            const filteredStatusAttr = statusAttrMaps.filter(a => a.value)
+            const filteredAttr = standardAttr.filter(a => a.value);
+            const filteredStatusAttr = statusAttrMaps.filter(a => a.value);
             //console.log('standardAttr ::', JSON.stringify(standardAttr, null,2))
             //console.log('filteredAttr ::', JSON.stringify(filteredAttr, null,2))
           
@@ -23224,10 +23288,7 @@
                 program: state.program,
                 orgUnit: state.orgUnit,
                 trackedEntityType: 'cHlzCA2MuEF',
-                attributes: [
-                  ...filteredAttr,
-                  ...filteredStatusAttr,
-                ],
+                attributes: [...filteredAttr, ...filteredStatusAttr],
               },
             };
           
@@ -23290,37 +23351,43 @@
             next.patientUuids = patients.map(p => p.uuid);
             return next;
           });
+          
       Get-Encounters:
         name: Get Encounters
-        adaptor: '@openfn/language-http@6.5.1'
-        credential: michael.bontyes@madiro.org-openmrs
+        adaptor: '@openfn/language-openmrs@4.3.0'
+        credential: michael.bontyes@geneva.msf.org-openmrs
         body: |
           // Fetch all encounters
-          get(
-            '/ws/fhir2/R4/Encounter',
-            { query: { _count: 100, _lastUpdated: `ge${$.cursor}` }, parseAs: 'json' },
-            state => {
+          http
+            .get('/ws/fhir2/R4/Encounter', {
+              query: { _count: 100, _lastUpdated: `ge${$.cursor}` },
+            })
+            .then(state => {
               const { link, total } = state.data;
               state.nextUrl = link
                 .find(l => l.relation === 'next')
-                ?.url.replace(/(_count=)\d+/, `$1${total}`);
+                ?.url.replace(/(_count=)\d+/, `$1${total}`)
+                .split('/openmrs')[1];
           
               state.allResponse = state.data;
               return state;
-            }
-          );
+            });
           
           fnIf(
             $.nextUrl,
-            get($.nextUrl, { parseAs: 'json' }, state => {
+            http.get($.nextUrl).then(state => {
+              console.log(`Fetched ${state.data.entry.length} remaining encounters`);
               delete state.allResponse.link;
               state.allResponse.entry.push(...state.data.entry);
-              console.log(state.allResponse.entry.length);
               return state;
             })
           );
           
           fn(state => {
+            console.log(
+              'Total # of encounters fetched: ',
+              state.allResponse?.entry?.length
+            );
             state.encounterUuids = state.allResponse?.entry?.map(p => p.resource.id);
             state.patientUuids = [
               ...new Set(
@@ -23336,29 +23403,25 @@
           // Fetch patient encounters
           each(
             $.patientUuids,
-            get(
-              '/ws/rest/v1/encounter/',
-              { query: { patient: $.data, v: 'full' }, parseAs: 'json' },
-              state => {
-                const patientUuid = state.references.at(-1);
-                const filteredEncounters = state.formUuids.map(formUuid =>
-                  state.data.results.filter(
-                    e => e.encounterDatetime >= state.cursor && e?.form?.uuid === formUuid
-                  )
-                );
+            get('encounter', { patient: $.data, v: 'full' }).then(state => {
+              const patientUuid = state.references.at(-1);
+              const filteredEncounters = state.formUuids.map(formUuid =>
+                state.data.results.filter(
+                  e => e.encounterDatetime >= state.cursor && e?.form?.uuid === formUuid
+                )
+              );
           
-                const encounters = filteredEncounters.map(e => e[0]).filter(e => e);
-                state.encounters ??= [];
-                state.encounters.push(...encounters);
+              const encounters = filteredEncounters.map(e => e[0]).filter(e => e);
+              state.encounters ??= [];
+              state.encounters.push(...encounters);
           
-                console.log(
-                  encounters.length,
-                  `# of filtered encounters found in OMRS for ${patientUuid}`
-                );
+              console.log(
+                encounters.length,
+                `# of filtered encounters found in OMRS for ${patientUuid}`
+              );
           
-                return state;
-              }
-            )
+              return state;
+            })
           );
           
           fnIf($.encounters, state => {
@@ -23377,13 +23440,14 @@
           });
           
           fnIf(!$.encounters, state => {
-            console.log('No encounters found for cursor: ', state.cursor)
-            return state
-          })
+            console.log('No encounters found for cursor: ', state.cursor);
+            return state;
+          });
+          
       Get-TEIs-and-Map-Answers:
         name: Get TEIs and Map Answers
         adaptor: '@openfn/language-dhis2@5.0.1'
-        credential: michael.bontyes@madiro.org-dhis2
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
           
@@ -23600,10 +23664,11 @@
           
             return state;
           });
+          
       Create-Events:
         name: Create Events
         adaptor: '@openfn/language-dhis2@5.0.1'
-        credential: michael.bontyes@madiro.org-dhis2
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           // Create or update events for each encounter
           create(
@@ -23652,6 +23717,7 @@
             state => state.genderUpdated.length === 0,
             ({ lastRunDateTime }) => ({ lastRunDateTime })
           );
+          
       Mappings:
         name: Mappings
         adaptor: '@openfn/language-http@6.5.1'
@@ -45907,8 +45973,8 @@
                   },
                   optionSetMap: [
                     { DNOavthBRGL: 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7' },
-                    { qr9jBtm9uvm: '24d1fa23-9778-4a8e-9f7b-93f694fc25e2' }, 
-                    { FTbwlOo7CpG: 'e0b6ed99-72c4-4847-a442-e9929eac4a0f' }, 
+                    { qr9jBtm9uvm: '24d1fa23-9778-4a8e-9f7b-93f694fc25e2' },
+                    { FTbwlOo7CpG: 'e0b6ed99-72c4-4847-a442-e9929eac4a0f' },
                     { y38Qm3uiuuV: 'a9b2c642-097f-43f8-b96b-4d2f50ffd9b1' },
                     { G69FtaNkBgp: '3884dc76-c271-4bcb-8df8-81c6fb897f53' },
                     { RpW3aZrlHDi: 'dd1f7f0f-ccea-4228-9aa8-a8c3b0ea4c3e' },
@@ -46407,7 +46473,7 @@
       Update-TEIs:
         name: Update TEIs
         adaptor: '@openfn/language-dhis2@5.0.1'
-        credential: michael.bontyes@madiro.org-dhis2
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           fn(state => {
             const { optsMap, genderUpdated, TEIs } = state;
@@ -46489,6 +46555,11 @@
           state.patients.length > 0 && !state.errors
           
         enabled: true
+      Get-Patients->Mappings:
+        source_job: Get-Patients
+        target_job: Mappings
+        condition_type: on_job_success
+        enabled: true
       cron->Get-Patients:
         source_trigger: cron
         target_job: Get-Patients
@@ -46503,11 +46574,6 @@
           state.patientUuids.length > 0 && !state.errors
           
         enabled: true
-      Get-Patients->Mappings:
-        source_job: Get-Patients
-        target_job: Mappings
-        condition_type: on_job_success
-        enabled: true
       Get-Encounters->Get-TEIs-and-Map-Answers:
         source_job: Get-Encounters
         target_job: Get-TEIs-and-Map-Answers
@@ -46515,6 +46581,7 @@
         condition_label: has-encounters
         condition_expression: |
           !state.errors && state.encounters
+          
         enabled: true
       Mappings->Get-Encounters:
         source_job: Mappings
@@ -46523,5 +46590,5 @@
         condition_label: has-no-patients
         condition_expression: |
           !state.errors && state.patients.length === 0
+          
         enabled: true
-        
