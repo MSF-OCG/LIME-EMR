@@ -22,10 +22,22 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "number",
+                "rendering": "radio",
                 "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11",
-                "min": 0,
-                "step": 1
+                "answers": [
+                  {
+                    "label": "1st consultation",
+                    "concept": "428825e2-73ec-407e-9988-e9646f1d1f14"
+                  },
+                  {
+                    "label": "2nd consultation",
+                    "concept": "c55aad2a-0b81-441e-aa67-332d2b1cc233"
+                  },
+                  {
+                    "label": "3rd consultation or more",
+                    "concept": "4418bcbd-39a8-44e6-86a6-363734bc1355"
+                  }
+                ]
               }
             }
           ]
@@ -49,7 +61,7 @@
                 "concept": "00df1796-a090-447d-8904-3d6e0d9e5948"
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -62,7 +74,7 @@
                 "concept": "76a96d44-00f5-469f-9329-5a53409a87eb"
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -77,7 +89,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             }
           ]
@@ -98,7 +110,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -111,7 +123,7 @@
                 "concept": "e7b3eace-ebac-4fc2-98f1-1f20e573683b"
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -126,7 +138,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -141,7 +153,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -156,7 +168,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             }
           ]
@@ -180,7 +192,7 @@
                 "concept": "ab4f7509-118c-484c-9c7b-b0f21536fbaf"
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -223,7 +235,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -236,7 +248,7 @@
                 "concept": "13cea1c8-e426-411f-95b4-33651fc4325d"
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -249,7 +261,7 @@
                 "concept": "3f48a239-7a84-4b6c-a969-b38ec7c4d1bc"
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             }
           ]
@@ -267,8 +279,9 @@
                 "rendering": "text",
                 "concept": "7acf9b9e-40bf-4bc3-b656-fe7dc6c11f08"
               },
+              "questionInfo": "In case of twins and only 1 present at consultation, Infant 1 refers to the one present. If more than 2 twins, after completing this form open another form and fill only information about the children missed.",
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -291,7 +304,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -305,7 +318,7 @@
                 "min": 0
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -320,7 +333,7 @@
               },
               "disallowDecimals": false,
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             }
           ]
@@ -339,7 +352,7 @@
                 "concept": "7acf9b9e-40bf-4bc3-b656-fe7dc6c11f08"
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -362,7 +375,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -376,7 +389,7 @@
                 "min": 0
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -391,7 +404,7 @@
               },
               "disallowDecimals": false,
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             }
           ]
@@ -468,7 +481,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -570,7 +583,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -583,7 +596,7 @@
               },
               "value": ["Medical history"],
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== 'stConsultation'"
+                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
