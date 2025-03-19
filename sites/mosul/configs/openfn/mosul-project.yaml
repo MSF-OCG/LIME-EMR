@@ -23107,16 +23107,29 @@ workflows:
               // },
           );
           
-      Alert-Admin:
-        name: Alert Admin
-        adaptor: '@openfn/language-common@latest'
+      Alert-Admin-of-Duplicate-TEIs:
+        name: Alert Admin of Duplicate TEIs
+        adaptor: '@openfn/language-common@2.1.1'
         credential: null
         body: |
           fn(state => {
-            util.throwError('DUPLICATE_PATIENT_NUMBERS', {
-              description: 'Found TIEs with duplicate patient numbers',
-              duplicates: state.duplicatePatients,
-            });
+            const code = 'DUPLICATE_PATIENT_NUMBERS';
+            const description = `Found ${state.duplicatePatients.length} TIEs with duplicate patient numbers`;
+            const message = `${code}: ${description}`;
+            const patientNumbers = state.duplicatePatients.map(
+              patient =>
+                patient.attributes.find(attr => attr.code === 'patient_number').value
+            );
+          
+            const details = {
+              code,
+              description,
+              duplicatePatientNumbers: patientNumbers,
+            };
+            const e = new Error(message);
+            e.details = details;
+            console.error(e.details);
+            throw e;
           });
           
     triggers:
@@ -23149,9 +23162,9 @@ workflows:
           state.uniqueTeis.length > 0 && !state.errors
           
         enabled: true
-      Get-Teis-and-Locations->Alert-Admin:
+      Get-Teis-and-Locations->Alert-Admin-of-Duplicate-TEIs:
         source_job: Get-Teis-and-Locations
-        target_job: Alert-Admin
+        target_job: Alert-Admin-of-Duplicate-TEIs
         condition_type: js_expression
         condition_label: has-duplicate-patients
         condition_expression: |
