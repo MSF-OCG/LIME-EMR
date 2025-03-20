@@ -327,6 +327,13 @@
                     export BOLD=`tput bold`&#10;export PROJECT_NAME="${project.artifactId}"
                   </replacevalue>
                 </replace>
+                <replace
+                  file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
+                  token='export O3_HOSTNAME="localhost"'>
+                  <replacevalue>
+                    export O3_HOSTNAME="localhost:4001"
+                  </replacevalue>
+                </replace>
 
                 <echo level="info" message="Adding MSF environment variables to Ozone" />
                 <replace
