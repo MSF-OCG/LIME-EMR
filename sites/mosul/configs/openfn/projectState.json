@@ -3,7 +3,7 @@
   "name": "msf-lime-mosul",
   "description": "OpenFn cloud project for workflow testing between MSF and OpenFn teams\n",
   "inserted_at": "2024-10-30T06:18:14Z",
-  "updated_at": "2025-03-12T07:55:57Z",
+  "updated_at": "2025-03-19T08:46:30Z",
   "scheduled_deletion": null,
   "project_credentials": {
     "mtuchi@openfn.org-mtuchi-github-token": {
@@ -75,14 +75,15 @@
   "history_retention_period": 90,
   "dataclip_retention_period": null,
   "retention_policy": "retain_all",
+  "requires_mfa": false,
   "workflows": {
     "wf1-dhis2-omrs-migration": {
       "id": "73fda9b2-2555-4764-b0f9-388a99583532",
       "name": "wf1-dhis2-omrs-migration",
       "inserted_at": "2024-10-30T12:02:03Z",
-      "updated_at": "2025-03-14T13:10:51Z",
+      "updated_at": "2025-03-19T08:51:50Z",
       "deleted_at": null,
-      "lock_version": 143,
+      "lock_version": 149,
       "triggers": {
         "cron": {
           "enabled": false,
@@ -120,11 +121,11 @@
           "adaptor": "@openfn/language-dhis2@5.0.1",
           "project_credential_id": "6fa3ef87-4d1e-4722-b4fe-fcb019bf814b"
         },
-        "Alert-Admin": {
+        "Alert-Admin-of-Duplicate-TEIs": {
           "id": "695e9c00-6d16-41d2-91c6-e11e0cd49299",
-          "name": "Alert Admin",
-          "body": "fn(state => {\n  util.throwError('DUPLICATE_PATIENT_NUMBERS', {\n    description: 'Found TIEs with duplicate patient numbers',\n    duplicates: state.duplicatePatients,\n  });\n});\n",
-          "adaptor": "@openfn/language-common@latest",
+          "name": "Alert Admin of Duplicate TEIs",
+          "body": "fn(state => {\n  const code = 'DUPLICATE_PATIENT_NUMBERS';\n  const description = `Found ${state.duplicatePatients.length} TIEs with duplicate patient numbers`;\n  const message = `${code}: ${description}`;\n  const patientNumbers = state.duplicatePatients.map(\n    patient =>\n      patient.attributes.find(attr => attr.code === 'patient_number').value\n  );\n\n  const details = {\n    code,\n    description,\n    duplicatePatientNumbers: patientNumbers,\n  };\n  const e = new Error(message);\n  e.details = details;\n  console.error(e.details);\n  throw e;\n});\n",
+          "adaptor": "@openfn/language-common@2.1.1",
           "project_credential_id": null
         }
       },
@@ -160,7 +161,7 @@
           "condition_label": "has-teis",
           "condition_expression": "state.uniqueTeis.length > 0 && !state.errors\n"
         },
-        "Get-Teis-and-Locations->Alert-Admin": {
+        "Get-Teis-and-Locations->Alert-Admin-of-Duplicate-TEIs": {
           "enabled": true,
           "id": "88024c8e-523a-4e6c-9775-870ae667ff28",
           "target_job_id": "695e9c00-6d16-41d2-91c6-e11e0cd49299",
@@ -175,9 +176,9 @@
       "id": "c886121c-0a91-45b5-ae30-7d0922b693be",
       "name": "wf2-omrs-dhis2",
       "inserted_at": "2024-10-30T12:02:03Z",
-      "updated_at": "2025-03-14T13:11:31Z",
+      "updated_at": "2025-03-18T12:20:58Z",
       "deleted_at": null,
-      "lock_version": 183,
+      "lock_version": 185,
       "triggers": {
         "cron": {
           "enabled": false,
@@ -309,6 +310,5 @@
         }
       }
     }
-  },
-  "requires_mfa": false
+  }
 }
