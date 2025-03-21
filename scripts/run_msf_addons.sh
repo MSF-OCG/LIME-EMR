@@ -5,11 +5,11 @@ echo ""
 # Check if MSF OpenFn super user exists in the database
 user_exists=$(docker exec $PROJECT_NAME-postgresql-1 bash -c "
     psql -U \${OPENFN_DB_USER} -d \${OPENFN_DB_NAME} -t -c \"
-        SELECT * FROM users 
-        WHERE role = 'superuser' 
-        AND email = '\${EMAIL_ADMIN}' 
-        AND first_name = '\${MSF_OPENFN_FIRST_NAME}' 
-        AND last_name = '\${MSF_OPENFN_LAST_NAME}' 
+        SELECT * FROM users
+        WHERE role = 'superuser'
+        AND email = '\${EMAIL_ADMIN}'
+        AND first_name = '\${MSF_OPENFN_FIRST_NAME}'
+        AND last_name = '\${MSF_OPENFN_LAST_NAME}'
     \"
 ")
 if [[ -n "$user_exists" ]]; then
@@ -50,7 +50,7 @@ fi
 
 # this step requires internet. It downloads node modules. Should be run on the host
 echo "$INFO Pre-warming worker cache with adaptors..."
-docker exec -it $PROJECT_NAME-worker-1 sh -c "npm install -g @openfn/cli@1.10.2 && openfn repo install  -a common@latest -a collections@latest -a http@6.5.1 -a openmrs@4.1.3 -a dhis2@5.0.1"
+docker exec -it $PROJECT_NAME-worker-1 sh -c "npm install -g @openfn/cli@1.11.4 && openfn repo install  -a common@latest -a collections@latest -a http@6.5.1 -a openmrs@4.1.3 -a dhis2@5.0.1"
 
 echo ""
 echo "$INFO copying OpenFn files to $PROJECT_NAME-worker-1"

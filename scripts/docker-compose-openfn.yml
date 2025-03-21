@@ -11,7 +11,7 @@ services:
       - "${SQL_SCRIPTS_PATH}/postgresql/create_openfn_db.sh:/docker-entrypoint-initdb.d/create_openfn_db.sh"
   migrations:
     platform: linux/x86_64/v8
-    image: 'openfn/lightning:v2.10.10'
+    image: 'openfn/lightning:v2.11.0'
     command: ["/app/bin/lightning", "eval", "Lightning.Release.migrate"]
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/.env'
@@ -24,7 +24,7 @@ services:
 
   web:
     platform: linux/x86_64/v8
-    image: 'openfn/lightning:v2.10.10'
+    image: 'openfn/lightning:v2.11.0'
     command: ["/app/bin/server"]
     deploy:
       resources:
@@ -38,7 +38,7 @@ services:
     depends_on:
       migrations:
         condition: service_completed_successfully
-      postgresql: 
+      postgresql:
         condition: service_started
     labels:
       traefik.enable: "true"
@@ -62,7 +62,7 @@ services:
 
   worker:
     platform: linux/x86_64/v8
-    image: 'openfn/ws-worker:latest'
+    image: 'openfn/ws-worker:v1.13.0'
     deploy:
       resources:
         limits:
