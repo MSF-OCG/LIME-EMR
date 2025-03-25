@@ -56,7 +56,7 @@ cd sites/mosul/target/ozone-msf-mosul-<version>/run/docker/scripts
 ./start-demo.sh
 ```
 > Note: By default, OpenMRS will start on port 4001.
-To change the port, modify the PROXY_PUBLIC_PORT variable in the `.env` file (/run/docker/.env).
+To change the port, modify the `PROXY_PUBLIC_PORT` variable in the `.env` file (/run/docker/.env).
 
 
 ## Ambitions and success criteria
