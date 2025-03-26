@@ -5,7 +5,7 @@
   "published": true,
   "uuid": "",
   "processor": "EncounterFormProcessor",
-  "encounter": "Consultation",
+  "encounter": "Family Planning",
   "retired": false,
   "referencedForms": [],
   "pages": [
@@ -26,28 +26,20 @@
                 "concept": "30b2d692-6a05-401f-8ede-13e027b8a436",
                 "answers": [
                   {
-                    "label": "COC",
-                    "concept": "dcc05293-cda6-48ee-b934-8982712ae59c"
-                  },
-                  {
-                    "label": "Copper IUD",
-                    "concept": "e47a2044-2fef-4535-9418-21108c8be2d3"
-                  },
-                  {
-                    "label": "Emergency contraceptive",
-                    "concept": "711f0159-f083-4953-be52-4862e25a11e0"
+                    "label": "Male condom",
+                    "concept": "6fafa6b0-9acb-4982-9532-af2b85ea2ed6"
                   },
                   {
                     "label": "Female condom",
                     "concept": "d0f6ffc4-5a90-433b-a866-75e040e2731f"
                   },
                   {
-                    "label": "Hormonal IUD",
-                    "concept": "99f02e71-cd90-4de6-a6c9-3a2f6fd94124"
+                    "label": "COC",
+                    "concept": "dcc05293-cda6-48ee-b934-8982712ae59c"
                   },
                   {
-                    "label": "Implant",
-                    "concept": "7791ffc1-beca-4543-b781-8f4f65872bb6"
+                    "label": "POP",
+                    "concept": "c1360005-c7f9-42af-b085-2a5909da9f0b"
                   },
                   {
                     "label": "Injectable Depo Provera",
@@ -58,12 +50,20 @@
                     "concept": "84bcf6c2-05f2-495e-9e56-22302558a418"
                   },
                   {
-                    "label": "Male condom",
-                    "concept": "6fafa6b0-9acb-4982-9532-af2b85ea2ed6"
+                    "label": "Implant",
+                    "concept": "7791ffc1-beca-4543-b781-8f4f65872bb6"
                   },
                   {
-                    "label": "POP",
-                    "concept": "c1360005-c7f9-42af-b085-2a5909da9f0b"
+                    "label": "Copper IUD",
+                    "concept": "e47a2044-2fef-4535-9418-21108c8be2d3"
+                  },
+                  {
+                    "label": "Hormonal IUD",
+                    "concept": "99f02e71-cd90-4de6-a6c9-3a2f6fd94124"
+                  },
+                  {
+                    "label": "Emergency contraceptive",
+                    "concept": "711f0159-f083-4953-be52-4862e25a11e0"
                   },
                   {
                     "label": "Tubal ligation",
@@ -132,19 +132,19 @@
                 "concept": "3d9bbd4f-32bf-4f6a-b428-7cb5a1409003",
                 "answers": [
                   {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  },
-                  {
                     "label": "Yes",
                     "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
               }
             },
             {
-              "id": "describeCurrentNeeds",
-              "label": "Describe current needs",
+              "id": "describeCurrentNeedsInFamilyPlanning",
+              "label": "Describe current needs in family planning",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -165,19 +165,19 @@
                 "concept": "e9fa46ab-9c41-4714-8c38-4968bc67bffa",
                 "answers": [
                   {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  },
-                  {
                     "label": "Yes",
                     "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
               }
             },
             {
-              "id": "describe",
-              "label": "Describe",
+              "id": "describeChangeInMenstrualPattern",
+              "label": "Describe change in menstrual pattern",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -198,12 +198,12 @@
                 "concept": "11694243-a773-49fb-b6fe-03106fe1be1c",
                 "answers": [
                   {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  },
-                  {
                     "label": "Yes",
                     "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
               }
@@ -218,12 +218,12 @@
                 "concept": "6d55fb49-4c7b-4422-a4da-57f9e2b0a75a",
                 "answers": [
                   {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  },
-                  {
                     "label": "Yes",
                     "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
               }
@@ -238,12 +238,12 @@
                 "concept": "a2c8cd74-698c-45c7-9315-e1bf6cfd9200",
                 "answers": [
                   {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  },
-                  {
                     "label": "Yes",
                     "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
               }
@@ -258,19 +258,19 @@
                 "concept": "e68010d8-5f82-4199-bc58-ca39dbb04c7e",
                 "answers": [
                   {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  },
-                  {
                     "label": "Yes",
                     "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
               }
             },
             {
-              "id": "describe",
-              "label": "Describe",
+              "id": "describeMoodChanges",
+              "label": "Describe mood changes",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -343,12 +343,12 @@
                 "concept": "cd1b7bae-2c26-428b-ad2c-4b11ef35c2cf",
                 "answers": [
                   {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  },
-                  {
                     "label": "Yes",
                     "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
               }
@@ -376,12 +376,12 @@
                 "concept": "c9706794-479c-4379-87a1-d36234a5b913",
                 "answers": [
                   {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  },
-                  {
                     "label": "Yes",
                     "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
               }
@@ -396,28 +396,20 @@
                 "concept": "30b2d692-6a05-401f-8ede-13e027b8a436",
                 "answers": [
                   {
-                    "label": "COC",
-                    "concept": "dcc05293-cda6-48ee-b934-8982712ae59c"
-                  },
-                  {
-                    "label": "Copper IUD",
-                    "concept": "e47a2044-2fef-4535-9418-21108c8be2d3"
-                  },
-                  {
-                    "label": "Emergency contraceptive",
-                    "concept": "711f0159-f083-4953-be52-4862e25a11e0"
+                    "label": "Male condom",
+                    "concept": "6fafa6b0-9acb-4982-9532-af2b85ea2ed6"
                   },
                   {
                     "label": "Female condom",
                     "concept": "d0f6ffc4-5a90-433b-a866-75e040e2731f"
                   },
                   {
-                    "label": "Hormonal IUD",
-                    "concept": "99f02e71-cd90-4de6-a6c9-3a2f6fd94124"
+                    "label": "COC",
+                    "concept": "dcc05293-cda6-48ee-b934-8982712ae59c"
                   },
                   {
-                    "label": "Implant",
-                    "concept": "7791ffc1-beca-4543-b781-8f4f65872bb6"
+                    "label": "POP",
+                    "concept": "c1360005-c7f9-42af-b085-2a5909da9f0b"
                   },
                   {
                     "label": "Injectable Depo Provera",
@@ -428,12 +420,20 @@
                     "concept": "84bcf6c2-05f2-495e-9e56-22302558a418"
                   },
                   {
-                    "label": "Male condom",
-                    "concept": "6fafa6b0-9acb-4982-9532-af2b85ea2ed6"
+                    "label": "Implant",
+                    "concept": "7791ffc1-beca-4543-b781-8f4f65872bb6"
                   },
                   {
-                    "label": "POP",
-                    "concept": "c1360005-c7f9-42af-b085-2a5909da9f0b"
+                    "label": "Copper IUD",
+                    "concept": "e47a2044-2fef-4535-9418-21108c8be2d3"
+                  },
+                  {
+                    "label": "Hormonal IUD",
+                    "concept": "99f02e71-cd90-4de6-a6c9-3a2f6fd94124"
+                  },
+                  {
+                    "label": "Emergency contraceptive",
+                    "concept": "711f0159-f083-4953-be52-4862e25a11e0"
                   },
                   {
                     "label": "Tubal ligation",
