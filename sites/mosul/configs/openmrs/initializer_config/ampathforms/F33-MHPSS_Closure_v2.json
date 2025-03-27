@@ -23,9 +23,16 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "date",
+                "rendering": "datetime",
                 "concept": "40108bf5-0bbd-42e8-8102-bcbd0550a943"
               },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "openingDate > new Date()",
+                  "message": "Opening date cannot be in the future"
+                }
+              ],
               "default": "Date of the first Mental Health consultation (after the last closure if any)"
             },
             {
@@ -37,7 +44,14 @@
                 "rendering": "date",
                 "concept": "8a9d2ace-372f-4413-a1c4-8999f55e2de2"
               },
-              "default": "Current date"
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "closureDate < openingDate",
+                  "message": "Closure date must be after the opening date"
+                }
+              ],
+              "default": "new Date()"
             },
             {
               "id": "totalNumberOfSessions",
