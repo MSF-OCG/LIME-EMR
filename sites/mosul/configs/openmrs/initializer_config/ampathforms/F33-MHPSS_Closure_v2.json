@@ -47,7 +47,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "closureDate < openingDate",
+                  "failsWhenExpression": "closureDate < openingDate || closureDate > new Date()",
                   "message": "Closure date must be after the opening date"
                 }
               ],
