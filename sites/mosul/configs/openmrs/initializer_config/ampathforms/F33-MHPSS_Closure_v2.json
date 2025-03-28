@@ -490,9 +490,13 @@
               "label": "MHOS",
               "type": "obs",
               "required": false,
+              "readonly": true,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "90b3d09c-d296-44d2-8292-8e04377fe027",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df').then(obs => obs?.valueQuantity?.value)"
+                },
                 "min": 0,
                 "max": 65,
                 "step": 1
@@ -504,9 +508,13 @@
               "label": "PHQ-9",
               "type": "obs",
               "required": false,
+              "readonly": true,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "6545b874-f44d-4d18-9ab1-7a8bb21c0a15",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
+                },
                 "min": 0,
                 "max": 27,
                 "step": 1
@@ -518,9 +526,13 @@
               "label": "GAD7",
               "type": "obs",
               "required": false,
+              "readonly": true,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "22b16c12-4487-42f4-956c-1890d1f81ac8",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, '89e1b4f8-d4c6-491b-bc32-4d4f79a8df9d').then(obs => obs?.valueQuantity?.value)"
+                },
                 "min": 0,
                 "max": 27,
                 "step": 1
@@ -532,9 +544,13 @@
               "label": "CGI-S (rating of severity CGI-S: how mentally ill is the patient at this time?)",
               "type": "obs",
               "required": false,
+              "readonly": true,
               "questionOptions": {
                 "rendering": "select",
                 "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
+                },
                 "answers": [
                   {
                     "label": "0 - Not assessed",
@@ -578,9 +594,13 @@
               "label": "CGI-I (rating of  improvement CGI-I: how much has the patient improved at this time?)",
               "type": "obs",
               "required": false,
+              "readonly": true,
               "questionOptions": {
                 "rendering": "select",
                 "concept": "c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'f94de17e-9771-4711-aabb-c5bb0c022be2').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
+                },
                 "answers": [
                   {
                     "label": "0 - Not assessed",
