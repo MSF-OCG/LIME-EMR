@@ -82,7 +82,14 @@
               "questionOptions": {
                 "rendering": "date",
                 "concept": "ab4f7509-118c-484c-9c7b-b0f21536fbaf"
-              }
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "date > new Date()",
+                  "message": "Last delivery date cannot be in the future"
+                }
+              ]
             },
             {
               "id": "outcome",
@@ -90,7 +97,7 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "multiCheckbox",
+                "rendering": "radio",
                 "concept": "a356c3f4-a6f7-4289-bd9e-d83ec01305ed",
                 "answers": [
                   {
