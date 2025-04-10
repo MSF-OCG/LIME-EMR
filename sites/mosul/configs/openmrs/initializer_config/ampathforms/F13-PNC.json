@@ -99,7 +99,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "numberOfLiveBirths",
+              "id": "numberOfLiveBirthsPreviousPregnancy",
               "label": "Number of live births",
               "type": "obs",
               "required": false,
@@ -263,6 +263,19 @@
               "hide": {
                 "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
+            },
+            {
+              "id": "numberOfLiveBirthsInTheLatestPregnancy",
+              "label": "Number of live births in the latest pregnancy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b6ce8062-3381-4019-a974-a254bc3e1d4c",
+                "min": 0,
+                "step": 1
+              },
+              "default": "Value entered in the first PNC form "
             }
           ]
         },
@@ -281,7 +294,7 @@
               },
               "questionInfo": "In case of twins and only 1 present at consultation, Infant 1 refers to the one present. If more than 2 twins, after completing this form open another form and fill only information about the children missed.",
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0"
               }
             },
             {
@@ -304,7 +317,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -315,10 +328,11 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "d2c5f664-b415-4376-8e7e-3efb44fc5896",
-                "min": 0
+                "min": 0,
+                "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -329,11 +343,12 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
-                "min": 0
+                "min": 0,
+                "step": 0.01
               },
               "disallowDecimals": false,
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             }
           ]
@@ -352,7 +367,7 @@
                 "concept": "7acf9b9e-40bf-4bc3-b656-fe7dc6c11f08"
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfLiveBirthsInTheLatestPregnancy == 1"
               }
             },
             {
@@ -375,7 +390,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfLiveBirthsInTheLatestPregnancy == 1 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -386,10 +401,11 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "d2c5f664-b415-4376-8e7e-3efb44fc5896",
-                "min": 0
+                "min": 0,
+                "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfLiveBirthsInTheLatestPregnancy == 1 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -400,11 +416,12 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
-                "min": 0
+                "min": 0,
+                "step": 0.01
               },
               "disallowDecimals": false,
               "hide": {
-                "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfLiveBirthsInTheLatestPregnancy == 1 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             }
           ]
@@ -471,7 +488,7 @@
                     "concept": "f586985a-2700-4958-8cb1-f426675f0d8d"
                   },
                   {
-                    "label": "Prolonged/obstructed labour",
+                    "label": "Prolonged/obstructed labor",
                     "concept": "f80dbec7-880a-4699-aa9d-4c6364892fd0"
                   },
                   {
@@ -492,7 +509,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
-                "min": 0
+                "min": 0,
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "latestDeliveryProblems !== 'anaemia'"
@@ -513,7 +531,7 @@
             },
             {
               "id": "latestDeliveryProblemsIfOtherSpecify",
-              "label": "Latest delivery - Problems - If other, specify",
+              "label": "Latest delivery Problems - If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -726,7 +744,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
-                "min": 0
+                "min": 0,
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -1112,7 +1131,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
-                "min": 0
+                "min": 0,
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "infant1PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
