@@ -17,7 +17,8 @@ The OpenMRS 3 distribution for MSF OCG
 ## Integration with
 
 <div>
-<td></td><img src="https://docs.openconceptlab.org/en/latest/_images/ocl-big-logo.png" height=50px>
+<td></td><img src="https://raw.githubusercontent.com/ozone-his/.github/refs/heads/main/profile/ozone-logo.png" height=50px>      
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://docs.openconceptlab.org/en/latest/_images/ocl-big-logo.png" height=50px>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://dhis2.org/wp-content/uploads/dhis2-logo-rgb-positive.svg" height=60px>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://docs.openfn.org/img/logo.svg" height=60px>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://blog.hl7.org/hubfs/HL7_FHIR_logo.png" height=60px>
