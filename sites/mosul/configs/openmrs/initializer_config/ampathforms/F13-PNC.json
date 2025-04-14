@@ -294,7 +294,7 @@
               },
               "questionInfo": "In case of twins and only 1 present at consultation, Infant 1 refers to the one present. If more than 2 twins, after completing this form open another form and fill only information about the children missed.",
               "hide": {
-                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 1"
               }
             },
             {
@@ -317,7 +317,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 1 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -332,7 +332,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 1 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -348,7 +348,7 @@
               },
               "disallowDecimals": false,
               "hide": {
-                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 1 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             }
           ]
@@ -367,7 +367,7 @@
                 "concept": "7acf9b9e-40bf-4bc3-b656-fe7dc6c11f08"
               },
               "hide": {
-                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfLiveBirthsInTheLatestPregnancy == 1"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 2"
               }
             },
             {
@@ -390,7 +390,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfLiveBirthsInTheLatestPregnancy == 1 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 2 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -405,7 +405,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfLiveBirthsInTheLatestPregnancy == 1 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 2 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             },
             {
@@ -421,7 +421,7 @@
               },
               "disallowDecimals": false,
               "hide": {
-                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy == 0 || numberOfLiveBirthsInTheLatestPregnancy == 1 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 2 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
             }
           ]
@@ -513,7 +513,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "latestDeliveryProblems !== 'anaemia'"
+                "hideWhenExpression": "latestDeliveryProblems !== 'a116ddd7-46af-4183-8b76-babcf2029ed6'"
               }
             },
             {
@@ -526,7 +526,7 @@
                 "concept": "61b8c9e7-4fce-48e1-a68d-229992d40faa"
               },
               "hide": {
-                "hideWhenExpression": "latestDeliveryProblems !== 'fistula'"
+                "hideWhenExpression": "latestDeliveryProblems !== 'a9252163-4673-4aba-bf37-b9e72b86f8a5'"
               }
             },
             {
@@ -1077,6 +1077,9 @@
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 1"
               }
             },
             {
@@ -1367,7 +1370,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "infant1PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+                "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 2"
               }
             },
             {
@@ -1944,7 +1947,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "referral !== 'other'"
+                "hideWhenExpression": "!includes(referral, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             },
             {
