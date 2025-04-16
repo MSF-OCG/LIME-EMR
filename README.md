@@ -56,6 +56,8 @@ Running MSF Mosul
 cd sites/mosul/target/ozone-msf-mosul-<version>/run/docker/scripts
 ./start-demo.sh
 ```
+> Note: By default, OpenMRS will start on port 4001.
+To change the port, modify the `PROXY_PUBLIC_PORT` variable in the `.env` file (/run/docker/.env).
 
 
 ## Ambitions and success criteria
@@ -207,7 +209,7 @@ This will allow you to access the server either using `*.traefik.me` or the usua
 
 <img width="710" alt="LIME server details" src="https://github.com/user-attachments/assets/caac8ed2-66e9-4197-ba16-952a0c7f3e51">
 
-> Note: With ssl enabled, OpenMRS will remain locally accessible via `http://localhost/openmrs`.
+> Note: With ssl enabled, OpenMRS will remain locally accessible via `http://localhost:4001/openmrs`.
 
 ## Testing
 
