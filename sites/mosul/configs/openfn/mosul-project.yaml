@@ -11,7 +11,7 @@ workflows:
             console.log('Date cursor to filter TEI extract ::', state.cursor);
             return state;
           });
-          
+
           cursor('now', {
             key: 'lastRunDateTime',
             format: c => {
@@ -23,19 +23,19 @@ workflows:
             console.log('Next sync start date:', state.lastRunDateTime);
             return state;
           });
-          
+
           // get(
           //   'https://raw.githubusercontent.com/OpenFn/openfn-lime-pilot/refs/heads/collections/metadata/collections.json',
           //   { parseAs: 'json' },
           //   state => {
           //     const { cursor, lastRunDateTime, data } = state;
-          
+
           //     return { ...data, cursor, lastRunDateTime };
           //   }
           // );
           fn(state => {
             const { cursor, lastRunDateTime } = state;
-          
+
             const data = {
               optionSetKey: {
                 'patient-ec42d68d-3e23-43de-b8c5-a03bb538e7c7': 'DNOavthBRGL',
@@ -22260,8 +22260,8 @@ workflows:
                   },
                   optionSetMap: [
                     // { DNOavthBRGL: 'ec42d68d-3e23-43de-b8c5-a03bb538e7c7' }, //sex
-                    { qr9jBtm9uvm: '24d1fa23-9778-4a8e-9f7b-93f694fc25e2' }, 
-                    { FTbwlOo7CpG: 'e0b6ed99-72c4-4847-a442-e9929eac4a0f' }, 
+                    { qr9jBtm9uvm: '24d1fa23-9778-4a8e-9f7b-93f694fc25e2' },
+                    { FTbwlOo7CpG: 'e0b6ed99-72c4-4847-a442-e9929eac4a0f' },
                     { y38Qm3uiuuV: 'a9b2c642-097f-43f8-b96b-4d2f50ffd9b1' },
                     { G69FtaNkBgp: '3884dc76-c271-4bcb-8df8-81c6fb897f53' },
                     { RpW3aZrlHDi: 'dd1f7f0f-ccea-4228-9aa8-a8c3b0ea4c3e' },
@@ -22710,7 +22710,7 @@ workflows:
                 Other: 'lon0.0_lat0.0',
               },
             };
-          
+
             return {
               ...data,
               cursor,
@@ -22739,35 +22739,35 @@ workflows:
                 acc[value['DHIS2 Option Code']] = value['value.uuid - External ID'];
                 return acc;
               }, {});
-          
+
             state.statusMap = optsMap
               .filter(o => o['DHIS2 DE full name'].includes(' status'))
               .reduce((acc, value) => {
                 acc[value['DHIS2 Option Code']] = value['value.uuid - External ID'];
                 return acc;
               }, {});
-          
+
             state.patientAttributes = formMaps.patient.dataValueMap;
-          
+
             state.dhis2PatientNumber = identifiers.find(
               i => i.type === 'DHIS2_PATIENT_NUMBER'
             )?.['omrs identifierType']; //DHIS2 ID or DHIS2 Patient Number
-          
+
             state.dhis2PatientNumberAttributeId = identifiers.find(
               i => i.type === 'DHIS2_PATIENT_NUMBER'
             )?.['dhis2 attribute id']; //DHIS2 ID or DHIS2 Patient Number
-          
+
             state.openmrsAutoId = identifiers.find(i => i.type === 'OPENMRS_AUTO_ID')?.[
               'omrs identifierType'
             ]; //MSF ID or OpenMRS Patient Number
-          
+
             state.openmrsAutoIdAttributeId = identifiers.find(i => i.type === 'OPENMRS_AUTO_ID')?.[
               'dhis2 attribute id'
             ]; //MSF ID or OpenMRS Patient Number
-          
+
             return state;
           });
-          
+
       Get-Teis-and-Locations:
         name: Get Teis and Locations
         adaptor: '@openfn/language-dhis2@5.0.1'
@@ -22776,19 +22776,19 @@ workflows:
           const findDuplicatePatient = teis => {
             const seen = new Map();
             const duplicates = new Set();
-          
+
             teis.forEach(tei => {
               const patientNumber = tei.attributes.find(
                 attr => attr.code === 'patient_number'
               )?.value;
-          
+
               if (seen.get(patientNumber)) {
                 duplicates.add(patientNumber);
               } else {
                 seen.set(patientNumber, tei);
               }
             });
-          
+
             return duplicates;
           };
           // Get teis that are "active" in the target program
@@ -22799,25 +22799,34 @@ workflows:
             updatedAfter: $.cursor,
             skipPaging: true,
           });
-          
+
           fn(state => {
             console.log('# of TEIs found before filter ::', state.data.instances.length);
             const uniqueTeis = [];
             const duplicatePatients = [];
             const missingPatientNumber = [];
-          
+
             const filteredTeis = state.data.instances.filter(
               tei => tei.updatedAt >= state.cursor
             );
-          
+
             console.log('Filtered TEIs ::', filteredTeis.length);
             const duplicateIds = findDuplicatePatient(filteredTeis);
-          
+
             filteredTeis.forEach(tei => {
               const patientNumber = tei.attributes.find(
                 attr => attr.code === 'patient_number'
               )?.value;
-          
+
+              const patientUid = tei.attributes.find(
+                attr => attr.attribute === 'AYbfTPYMNJH' //filtering patients that have OMRS-id
+              )?.value;
+              if (patientUid) {
+                console.log(
+                  `Skipping TEI:: ${tei.trackedEntity}. Found existing patient uid.`
+                );
+                return;
+              }
               if (!patientNumber) {
                 missingPatientNumber.push(tei);
               } else if (duplicateIds.has(patientNumber)) {
@@ -22826,10 +22835,10 @@ workflows:
                 uniqueTeis.push(tei);
               }
             });
-          
+
             console.log('# of Unique TEIs to migrate to OMRS ::', uniqueTeis.length);
-              console.log('# Duplicate Patients found::', duplicatePatients.length);
-          
+            console.log('# Duplicate Patients found::', duplicatePatients.length);
+
             // return { uniqueTeis, duplicatePatients, filteredTeis, missingPatientNumber };
             return {
               ...state,
@@ -22840,16 +22849,16 @@ workflows:
               missingPatientNumber,
             };
           });
-          
+
           get('optionGroups/kdef7pUey9f', {
             fields: 'id,displayName,options[id,displayName,code]',
           });
-          
+
           fn(({ data, ...state }) => {
             state.locations = data;
             return state;
           });
-          
+
       Create-Patients:
         name: Create Patients
         adaptor: '@openfn/language-openmrs@4.2.0'
@@ -22862,10 +22871,10 @@ workflows:
               console.log('# of TEIs to send to OpenMRS: ', uniqueTeis.length);
             if (uniqueTeis.length === 0)
               console.log('No data fetched in step prior to sync.');
-          
+
             return state;
           });
-          
+
           //First we generate a unique OpenMRS ID for each patient
           each(
             $.uniqueTeis,
@@ -22877,7 +22886,7 @@ workflows:
               return state;
             })
           );
-          
+
           // Then we map uniqueTeis to openMRS data model
           fn(state => {
             const {
@@ -22888,38 +22897,38 @@ workflows:
               statusMap,
               locations,
             } = state;
-          
+
             const getValueForCode = (attributes, code) => {
               const result = attributes.find(attribute => attribute.code === code);
               return result ? result.value : undefined;
             };
-          
+
             const calculateDOB = age => {
               if (!age) return age;
               const currentDate = new Date();
               const currentYear = currentDate.getFullYear();
               const birthYear = currentYear - age;
-          
+
               const birthday = new Date(
                 birthYear,
                 currentDate.getMonth(),
                 currentDate.getDay()
               );
-          
+
               return birthday.toISOString().replace(/\.\d+Z$/, '+0000');
             };
-          
+
             state.patients = uniqueTeis.map((d, i) => {
               const patientNumber =
                 getValueForCode(d.attributes, 'patient_number') || d.trackedEntity; // Add random number for testing + Math.random()
-          
+
               const lonlat = d.attributes.find(a => a.attribute === 'rBtrjV1Mqkz')?.value;
               const location = lonlat
                 ? locations.options.find(o => o.code === lonlat)?.displayName
                 : undefined;
-          
+
               let countyDistrict, cityVillage;
-          
+
               if (location) {
                 const match = location.match(/^(.*?)\s*\((.*?)\)/);
                 if (match) {
@@ -22927,18 +22936,18 @@ workflows:
                   cityVillage = cityVillage.split('-')[0].trim(); // Remove country code and trim
                 }
               }
-          
+
               const attributes = d.attributes
                 .filter(a => a.attribute in state.patientAttributes)
                 .map(a => {
                   let value = a.value;
-          
+
                   if (a.displayName === 'Nationality') {
                     value = nationalityMap[a.value];
                   } else if (a.displayName.includes(' status')) {
                     value = statusMap[a.value];
                   }
-          
+
                   if (value) {
                     return {
                       attributeType: state.patientAttributes[a.attribute].trim(),
@@ -22947,7 +22956,7 @@ workflows:
                   }
                 })
                 .filter(Boolean);
-          
+
               return {
                 patientNumber,
                 person: {
@@ -23000,17 +23009,17 @@ workflows:
                 ],
               };
             });
-          
+
             return state;
           });
-          
+
           // Creating patients in openMRS
           each(
             $.patients,
             upsert(
               'patient',
               { q: $.data.patientNumber,
-                limit: 1, 
+                limit: 1,
                 startIndex: 0 },
               state => {
                 const { patientNumber, ...patient } = state.data;
@@ -23036,10 +23045,10 @@ workflows:
               }
             )
           );
-          
+
           // Clean up state
           fn(({ data, references, ...state }) => state);
-          
+
       Update-Teis:
         name: Update Teis
         adaptor: '@openfn/language-dhis2@5.0.1'
@@ -23049,14 +23058,14 @@ workflows:
             if (state.newPatientUuid.length === 0) {
               console.log('No data fetched in step prior to sync.');
             }
-          
+
             console.log(
               'newPatientUuid ::',
               JSON.stringify(state.newPatientUuid, null, 2)
             );
             return state;
           });
-          
+
           // Update TEI on DHIS2
           each(
             $.newPatientUuid,
@@ -23084,9 +23093,9 @@ workflows:
                     }, //id generated in wf1-2 e.g., "IQ146-24-000-027"
                   ],
                 }
-          
+
                 console.log('final payload to send to dhis2:', payload)
-                return payload; 
+                return payload;
               }
             )
               // {
@@ -23106,7 +23115,7 @@ workflows:
               //   ],
               // },
           );
-          
+
       Alert-Admin-of-Duplicate-TEIs:
         name: Alert Admin of Duplicate TEIs
         adaptor: '@openfn/language-common@2.1.1'
@@ -23120,7 +23129,7 @@ workflows:
               patient =>
                 patient.attributes.find(attr => attr.code === 'patient_number').value
             );
-          
+
             const details = {
               code,
               description,
@@ -23131,7 +23140,7 @@ workflows:
             console.error(e.details);
             throw e;
           });
-          
+
     triggers:
       cron:
         type: cron
@@ -23160,7 +23169,7 @@ workflows:
         condition_label: has-teis
         condition_expression: |
           state.uniqueTeis.length > 0 && !state.errors
-          
+
         enabled: true
       Get-Teis-and-Locations->Alert-Admin-of-Duplicate-TEIs:
         source_job: Get-Teis-and-Locations
@@ -23169,7 +23178,7 @@ workflows:
         condition_label: has-duplicate-patients
         condition_expression: |
           state.duplicatePatients.length > 0 && !state.errors
-          
+
         enabled: true
   wf2-omrs-dhis2:
     name: wf2-omrs-dhis2
@@ -23180,18 +23189,18 @@ workflows:
         credential: michael.bontyes@geneva.msf.org-openmrs
         body: |
           cursor($.lastRunDateTime || $.manualCursor || '2023-05-20T06:01:24.000Z');
-          
+
           cursor('today', {
             key: 'lastRunDateTime',
             format: c => dateFns.format(new Date(c), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"),
           });
-          
+
           searchPatient({ q: 'IQ', v: 'full', limit: '100' });
-          
+
           fn(state => {
             const { cursor, data, lastRunDateTime } = state;
             console.log('Filtering patients since cursor:', cursor);
-          
+
             const patients = data.results.filter(({ auditInfo }) => {
               const lastModified = auditInfo?.dateChanged || auditInfo?.dateCreated;
               return lastModified > cursor;
@@ -23201,10 +23210,10 @@ workflows:
               'uuids of patients to sync to dhis2 ::',
               patients.map(p => p.uuid)
             );
-          
+
             return { cursor, lastRunDateTime, patients };
           });
-          
+
       Upsert-TEIs:
         name: Upsert TEIs
         adaptor: '@openfn/language-dhis2@5.0.1'
@@ -23215,7 +23224,7 @@ workflows:
             const dateCreated = patient.auditInfo.dateCreated.substring(0, 10);
             const findIdentifierByUuid = (identifiers, targetUuid) =>
               identifiers.find(i => i.identifierType.uuid === targetUuid)?.identifier;
-          
+
             const enrollments = [
               {
                 orgUnit: state.orgUnit,
@@ -23224,17 +23233,17 @@ workflows:
                 enrollmentDate: dateCreated,
               },
             ];
-          
+
             const findOptsUuid = uuid =>
               patient.person.attributes.find(a => a.attributeType.uuid === uuid)?.value
                 ?.uuid ||
               patient.person.attributes.find(a => a.attributeType.uuid === uuid)?.value;
-          
+
             const findOptCode = optUuid =>
               state.optsMap.find(o => o['value.uuid - External ID'] === optUuid)?.[
                 'DHIS2 Option Code'
               ];
-          
+
             const patientMap = state.formMaps.patient.dataValueMap;
             const statusAttrMaps = Object.keys(patientMap).map(d => {
               const optUid = findOptsUuid(patientMap[d]);
@@ -23243,7 +23252,7 @@ workflows:
                 value: findOptCode(optUid) || optUid,
               };
             });
-          
+
             const standardAttr = [
               {
                 attribute: 'fa7uwpCKIwa',
@@ -23284,13 +23293,13 @@ workflows:
                 value: placeOflivingMap[patient.person?.addresses[0]?.cityVillage],
               },
             ];
-          
+
             //filter out attributes that don't have a value from dhis2
             const filteredAttr = standardAttr.filter(a => a.value);
             const filteredStatusAttr = statusAttrMaps.filter(a => a.value);
             //console.log('standardAttr ::', JSON.stringify(standardAttr, null,2))
             //console.log('filteredAttr ::', JSON.stringify(filteredAttr, null,2))
-          
+
             const payload = {
               query: {
                 ou: state.orgUnit,
@@ -23304,19 +23313,19 @@ workflows:
                 attributes: [...filteredAttr, ...filteredStatusAttr],
               },
             };
-          
+
             console.log('mapped dhis2 payloads:: ', JSON.stringify(payload, null, 2));
-          
+
             if (isNewPatient) {
               console.log('create enrollment');
               payload.data.enrollments = enrollments;
             }
-          
+
             return payload;
           };
-          
+
           const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-          
+
           each(
             $.patients,
             get(
@@ -23330,9 +23339,9 @@ workflows:
               async state => {
                 const patient = state.references.at(-1);
                 console.log(patient.uuid, 'patient uuid');
-          
+
                 const isNewPatient = state.data.instances.length === 0;
-          
+
                 state.patientsUpsert ??= [];
                 state.patientsUpsert.push(
                   buildPatientsUpsert(state, patient, isNewPatient)
@@ -23342,7 +23351,7 @@ workflows:
               }
             )
           );
-          
+
           // Upsert TEIs to DHIS2
           each(
             $.patientsUpsert,
@@ -23360,11 +23369,11 @@ workflows:
               identifiers,
               ...next
             } = state;
-          
+
             next.patientUuids = patients.map(p => p.uuid);
             return next;
           });
-          
+
       Get-Encounters:
         name: Get Encounters
         adaptor: '@openfn/language-openmrs@4.3.0'
@@ -23381,11 +23390,11 @@ workflows:
                 .find(l => l.relation === 'next')
                 ?.url.replace(/(_count=)\d+/, `$1${total}`)
                 .split('/openmrs')[1];
-          
+
               state.allResponse = state.data;
               return state;
             });
-          
+
           fnIf(
             $.nextUrl,
             http.get($.nextUrl).then(state => {
@@ -23395,7 +23404,7 @@ workflows:
               return state;
             })
           );
-          
+
           fn(state => {
             console.log(
               'Total # of encounters fetched: ',
@@ -23409,10 +23418,10 @@ workflows:
                 )
               ),
             ];
-          
+
             return state;
           });
-          
+
           // Fetch patient encounters
           each(
             $.patientUuids,
@@ -23423,20 +23432,20 @@ workflows:
                   e => e.encounterDatetime >= state.cursor && e?.form?.uuid === formUuid
                 )
               );
-          
+
               const encounters = filteredEncounters.map(e => e[0]).filter(e => e);
               state.encounters ??= [];
               state.encounters.push(...encounters);
-          
+
               console.log(
                 encounters.length,
                 `# of filtered encounters found in OMRS for ${patientUuid}`
               );
-          
+
               return state;
             })
           );
-          
+
           fnIf($.encounters, state => {
             const {
               data,
@@ -23448,22 +23457,22 @@ workflows:
               ...next
             } = state;
             console.log(next.encounters.length, '# of new encounters to sync to dhis2');
-          
+
             return next;
           });
-          
+
           fnIf(!$.encounters, state => {
             console.log('No encounters found for cursor: ', state.cursor);
             return state;
           });
-          
+
       Get-TEIs-and-Map-Answers:
         name: Get TEIs and Map Answers
         adaptor: '@openfn/language-dhis2@5.0.1'
         credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-          
+
           each(
             $.encounters,
             get(
@@ -23478,7 +23487,7 @@ workflows:
               async state => {
                 const encounter = state.references.at(-1);
                 console.log(encounter.patient.uuid, 'Encounter patient uuid');
-          
+
                 const { trackedEntity, enrollments } = state.data?.instances?.[0] || {};
                 if (trackedEntity && enrollments) {
                   state.TEIs ??= {};
@@ -23488,13 +23497,13 @@ workflows:
                     enrollment: enrollments[0]?.enrollment,
                   };
                 }
-          
+
                 await delay(2000);
                 return state;
               }
             )
           );
-          
+
           const processAnswer = (
             answer,
             conceptUuid,
@@ -23512,7 +23521,7 @@ workflows:
                 )
               : processOtherAnswer(answer, conceptUuid, dataElement);
           };
-          
+
           const processObjectAnswer = (
             answer,
             conceptUuid,
@@ -23524,17 +23533,17 @@ workflows:
               console.log('Yes done by psychologist..');
               return '' + answer.value.uuid === '278401ee-3d6f-4c65-9455-f1c16d0a7a98';
             }
-          
+
             if (isTrueOnlyQuestion(conceptUuid, dataElement)) {
               console.log('True only question detected..', dataElement);
               return answer.value.uuid === '681cf0bc-5213-492a-8470-0a0b3cc324dd'
                 ? 'true'
                 : undefined;
             }
-          
+
             return findMatchingOption(answer, optsMap, optionSetKey);
           };
-          
+
           const processOtherAnswer = (answer, conceptUuid, dataElement) => {
             if (isPhq9Score(answer.value, conceptUuid, dataElement)) {
               console.log('isPhq9Score', isPhq9Score);
@@ -23542,63 +23551,63 @@ workflows:
             }
             return answer.value;
           };
-          
+
           const processNoAnswer = (data, conceptUuid, dataElement) => {
             if (isEncounterDate(conceptUuid, dataElement)) {
               return data.encounterDatetime.replace('+0000', '');
             }
             return '';
           };
-          
+
           const findMatchingOption = (answer, optsMap, optionSetKey) => {
             const optionKey = `${answer.formUuid}-${answer.concept.uuid}`;
-          
+
             const matchingOptionSet = optionSetKey[optionKey];
             console.log('optionKey', optionKey);
             console.log('conceptUid', answer.concept.uuid);
             console.log('value uid', answer.value.uuid);
             console.log('value display', answer.value.display);
             console.log('matchingOptionSet', matchingOptionSet);
-          
+
             const matchingOption =
               optsMap.find(
                 o =>
                   o['value.uuid - External ID'] === answer.value.uuid &&
                   o['DHIS2 Option Set UID'] === matchingOptionSet
               )?.['DHIS2 Option Code'] || answer.value.display; //TODO: revisit this logic if optionSet not found
-          
+
             console.log('matchingOption value', matchingOption);
-          
+
             if (matchingOption === 'FALSE') {
               return 'false';
             }
             if (matchingOption === 'TRUE') {
               return 'true';
             }
-          
+
             return matchingOption || '';
           };
-          
+
           const isEncounterDate = (conceptUuid, dataElement) => {
             return (
               conceptUuid === 'encounter-date' &&
               ['CXS4qAJH2qD', 'I7phgLmRWQq', 'yUT7HyjWurN'].includes(dataElement)
             );
           };
-          
+
           const isTrueOnlyQuestion = (conceptUuid, dataElement) =>
             conceptUuid === '54e8c1b6-6397-4822-89a4-cf81fbc68ce9' &&
             dataElement === 'G0hLyxqgcO7';
-          
+
           const isDiagnosisByPsychologist = (conceptUuid, dataElement) =>
             conceptUuid === '722dd83a-c1cf-48ad-ac99-45ac131ccc96' &&
             dataElement === 'pN4iQH4AEzk';
-          
+
           const isPhq9Score = (value, conceptUuid, dataElement) =>
             typeof value === 'number' &&
             (conceptUuid === '5f3d618e-5c89-43bd-8c79-07e4e98c2f23' ||
               conceptUuid === '6545b874-f44d-4d18-9ab1-7a8bb21c0a15');
-          
+
           const getRangePhq = input => {
             if (input >= 20) return '>20';
             if (input >= 15) return '15_19';
@@ -23606,7 +23615,7 @@ workflows:
             if (input >= 5) return '5_9';
             return '0_4';
           };
-          
+
           const dataValuesMapping = (data, dataValueMap, optsMap, optionSetKey) => {
             return Object.keys(dataValueMap)
               .map(dataElement => {
@@ -23619,28 +23628,28 @@ workflows:
                 const value = answer
                   ? processAnswer(answer, conceptUuid, dataElement, optsMap, optionSetKey)
                   : processNoAnswer(data, conceptUuid, dataElement);
-          
+
                 return { dataElement, value };
               })
               .filter(d => d);
           };
-          
+
           // Prepare DHIS2 data model for create events
           fn(state => {
             const handleMissingRecord = (data, state) => {
               const { uuid, display } = data.patient;
-          
+
               console.log(uuid, 'Patient is missing trackedEntity && enrollment');
-          
+
               state.missingRecords ??= {};
               state.missingRecords[uuid] ??= {
                 encounters: [],
                 patient: display,
               };
-          
+
               state.missingRecords[uuid].encounters.push(data.uuid);
             };
-          
+
             const processEncounter = (data, state) => {
               const form = state.formMaps[data.form.uuid];
               if (!form?.dataValueMap) {
@@ -23648,12 +23657,12 @@ workflows:
               }
               const { trackedEntity, enrollment, events } =
                 state.TEIs[data.patient.uuid] || {};
-          
+
               if (!trackedEntity || !enrollment) {
                 handleMissingRecord(data, state);
                 return null;
               }
-          
+
               return {
                 event: events.find(e => e.programStage === form.programStage)?.event,
                 program: state.program,
@@ -23670,14 +23679,14 @@ workflows:
                 ),
               };
             };
-          
+
             state.encountersMapping = state.encounters
               .map(data => processEncounter(data, state))
               .filter(Boolean);
-          
+
             return state;
           });
-          
+
       Create-Events:
         name: Create Events
         adaptor: '@openfn/language-dhis2@5.0.1'
@@ -23703,7 +23712,7 @@ workflows:
               },
             }
           );
-          
+
           fn(state => {
             const latestGenderUpdate = state.encounters.reduce((acc, e) => {
               const answer = e.obs.find(
@@ -23720,17 +23729,17 @@ workflows:
               }
               return acc;
             }, {});
-          
+
             state.genderUpdated = Object.values(latestGenderUpdate);
-          
+
             return state;
           });
-          
+
           fnIf(
             state => state.genderUpdated.length === 0,
             ({ lastRunDateTime }) => ({ lastRunDateTime })
           );
-          
+
       Mappings:
         name: Mappings
         adaptor: '@openfn/language-http@6.5.1'
@@ -23738,18 +23747,18 @@ workflows:
         body: |
           const isValidUUID = id => {
             if (!id || typeof id !== 'string') return false;
-          
+
             const UUID_PATTERN =
               /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
             return UUID_PATTERN.test(id);
           };
-          
+
           // get(
           //   'https://raw.githubusercontent.com/OpenFn/openfn-lime-pilot/refs/heads/collections/metadata/collections.json',
           //   { parseAs: 'json' },
           //   state => {
           //     const { cursor, lastRunDateTime, patients, data } = state;
-          
+
           //     return {
           //       ...data,
           //       cursor,
@@ -23758,10 +23767,10 @@ workflows:
           //     };
           //   }
           // );
-          
+
           fn(state => {
             const { cursor, lastRunDateTime, patients } = state;
-          
+
             const data = {
               optionSetKey: {
                 'patient-ec42d68d-3e23-43de-b8c5-a03bb538e7c7': 'DNOavthBRGL',
@@ -46436,7 +46445,7 @@ workflows:
                 Other: 'lon0.0_lat0.0',
               },
             };
-          
+
             return {
               ...data,
               cursor,
@@ -46444,34 +46453,34 @@ workflows:
               lastRunDateTime,
             };
           });
-          
+
           fn(state => {
             const { formMetadata, identifiers, ...rest } = state;
-          
+
             rest.formUuids = formMetadata
               .filter(form => isValidUUID(form['OMRS form.uuid']))
               .map(form => form['OMRS form.uuid']);
-          
+
             rest.orgUnit = identifiers.find(i => i.type === 'ORG_UNIT')?.[
               'dhis2 attribute id'
             ];
             rest.program = identifiers.find(i => i.type === 'PROGRAM')?.[
               'dhis2 attribute id'
             ];
-          
+
             rest.patientProgramStage = state.formMaps.patient.programStage;
-          
+
             rest.dhis2PatientNumber = identifiers.find(
               i => i.type === 'DHIS2_PATIENT_NUMBER'
             )?.['omrs identifierType']; //DHIS2 ID or DHIS2 Patient Number
-          
+
             rest.openmrsAutoId = identifiers.find(i => i.type === 'OPENMRS_AUTO_ID')?.[
               'omrs identifierType'
             ]; //MSF ID or OpenMRS Patient Number
-          
+
             return rest;
           });
-          
+
           fn(state => {
             state.genderOptions = state.optsMap
               .filter(o => o['OptionSet name'] === 'Sex - Patient')
@@ -46479,10 +46488,10 @@ workflows:
                 acc[value['value.uuid - External ID']] = value['DHIS2 Option Code'];
                 return acc;
               }, {});
-          
+
             return state;
           });
-          
+
       Update-TEIs:
         name: Update TEIs
         adaptor: '@openfn/language-dhis2@5.0.1'
@@ -46496,7 +46505,7 @@ workflows:
                 acc[obj['value.display - Answers']] = obj['DHIS2 Option Code'];
                 return acc;
               }, {});
-          
+
             state.teisToUpdate = genderUpdated
               .map(answer => {
                 const { trackedEntity } = TEIs[answer.person.uuid] || {};
@@ -46525,16 +46534,16 @@ workflows:
               .filter(Boolean);
             return state;
           });
-          
+
           // Update TEIs
           create(
             'tracker',
             { trackedEntities: $.teisToUpdate },
             { params: { async: false, importStrategy: 'UPDATE' } }
           );
-          
+
           fn(({ lastRunDateTime }) => ({ lastRunDateTime }));
-          
+
     triggers:
       cron:
         type: cron
@@ -46548,7 +46557,7 @@ workflows:
         condition_label: has-teis
         condition_expression: |
           state.TEIs && !state.errors
-          
+
         enabled: true
       Create-Events->Update-TEIs:
         source_job: Create-Events
@@ -46557,7 +46566,7 @@ workflows:
         condition_label: has-gender-updated
         condition_expression: |
           state?.genderUpdated?.length > 0 && !state.errors
-          
+
         enabled: true
       Mappings->Upsert-TEIs:
         source_job: Mappings
@@ -46566,7 +46575,7 @@ workflows:
         condition_label: has-patients
         condition_expression: |
           state.patients.length > 0 && !state.errors
-          
+
         enabled: true
       Get-Patients->Mappings:
         source_job: Get-Patients
@@ -46585,7 +46594,7 @@ workflows:
         condition_label: has-patient-uuids
         condition_expression: |
           state.patientUuids.length > 0 && !state.errors
-          
+
         enabled: true
       Get-Encounters->Get-TEIs-and-Map-Answers:
         source_job: Get-Encounters
@@ -46594,7 +46603,7 @@ workflows:
         condition_label: has-encounters
         condition_expression: |
           !state.errors && state.encounters
-          
+
         enabled: true
       Mappings->Get-Encounters:
         source_job: Mappings
@@ -46603,5 +46612,5 @@ workflows:
         condition_label: has-no-patients
         condition_expression: |
           !state.errors && state.patients.length === 0
-          
+
         enabled: true
