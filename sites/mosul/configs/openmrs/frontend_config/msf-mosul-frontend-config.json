@@ -5,9 +5,7 @@
         "configure": {
           "active-visits-widget": {
             "Display conditions": {
-              "privileges": [
-                "Configure Visits"
-              ]
+              "privileges": ["Configure Visits"]
             }
           }
         }
@@ -160,16 +158,12 @@
   },
   "@openmrs/esm-patient-attachments-app": {
     "Display conditions": {
-      "privileges": [
-        "Add Attachments"
-      ]
+      "privileges": ["Add Attachments"]
     }
   },
   "@openmrs/esm-patient-orders-app": {
     "Display conditions": {
-      "privileges": [
-        "Manage Patient Orders"
-      ]
+      "privileges": ["Manage Patient Orders"]
     }
   },
   "@openmrs/esm-patient-registration-app": {
@@ -334,12 +328,7 @@
     "sectionDefinitions": [
       {
         "id": "demographics",
-        "fields": [
-          "name",
-          "gender",
-          "dob",
-          "id"
-        ]
+        "fields": ["name", "gender", "dob", "id"]
       },
       {
         "id": "additionalInformation",
@@ -355,12 +344,7 @@
       {
         "id": "contact",
         "name": "Contact Details / تفاصيل الاتصال",
-        "fields": [
-          "address",
-          "telephoneNumber",
-          "emailAddress",
-          "nationality"
-        ]
+        "fields": ["address", "telephoneNumber", "emailAddress", "nationality"]
       },
       {
         "id": "emergencyContacts",
@@ -465,19 +449,9 @@
         "showLogo": false
       },
       "printStickerFields": {
-        "fields": [
-          "identifier",
-          "name",
-          "gender",
-          "dob"
-        ],
+        "fields": ["identifier", "name", "gender", "dob"],
         "fieldSeparator": false,
-        "fieldsTableGroups": [
-          [
-            "gender",
-            "dob"
-          ]
-        ],
+        "fieldsTableGroups": [["gender", "dob"]],
         "fieldsContainerStyleOverrides": {
           "grid-template-columns": "auto"
         }
@@ -487,6 +461,12 @@
         "stickerColumnsPerPage": 1,
         "stickerRowsPerPage": 1
       }
+    }
+  },
+  "@openmrs/esm-patient-medications-app": {
+    "daysDurationUnit": {
+      "uuid": "3fcaef9b-1d65-4c8b-8f4d-620edd8d601a",
+      "display": "Days"
     }
   },
   "@openmrs/esm-patient-vitals-app": {
