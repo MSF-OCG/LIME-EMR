@@ -26,7 +26,7 @@
                 "rendering": "datetime",
                 "concept": "7f00c65d-de60-467a-8964-fe80c7a85ef0",
                 "calculate": {
-                  "calculateExpression": "api.getLatestObs(patient.id, '7f00c65d-de60-467a-8964-fe80c7a85ef0').then(obs => obs?.valueDateTime)"
+                  "calculateExpression": "api.getLatestObs(patient.id, '7f00c65d-de60-467a-8964-fe80c7a85ef0').then(obs => Boolean(obs?.valueDateTime) ? new Date(obs.valueDateTime): undefined)"
                 }
               }
             },
