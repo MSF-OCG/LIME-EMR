@@ -26,10 +26,9 @@
                 "rendering": "datetime",
                 "concept": "7f00c65d-de60-467a-8964-fe80c7a85ef0",
                 "calculate": {
-                  "calculateExpression": "new Date()"
+                  "calculateExpression": "api.getLatestObs(patient.id, '7f00c65d-de60-467a-8964-fe80c7a85ef0').then(obs => Boolean(obs?.valueDateTime) ? new Date(obs.valueDateTime): undefined)"
                 }
-              },
-              "default": "encounter dateTime from ITFC admission form"
+              }
             },
             {
               "id": "checkInvitalsBiometricsToComplete",
