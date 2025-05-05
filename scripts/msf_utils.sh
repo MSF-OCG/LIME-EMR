@@ -19,7 +19,7 @@ function setMSFEnvironment {
         export OPENFN_LOCAL_HOSTNAME="localhost:4000"
         echo "→ OPENFN_LOCAL_HOSTNAME=$OPENFN_LOCAL_HOSTNAME"
 
-        export O3_LOCAL_HOSTNAME="localhost"
+        export O3_LOCAL_HOSTNAME="localhost:4001"
         echo "→ O3_LOCAL_HOSTNAME=$O3_LOCAL_HOSTNAME"
         setNginxHostnames
     fi
