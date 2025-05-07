@@ -36,6 +36,18 @@
         </sql>
     </changeSet>
 
+    <!-- Remove the C-reactive Protien () from the Tests Orderability concept -->
+    <changeSet id="remove_crp_from_tests_orderability" author="vasharma05">
+        <sql>
+            DELETE FROM concept_set
+                WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'fbc2647a-caef-4c3e-bc22-6109efefe70e' LIMIT 1)
+                AND concept_set = (SELECT concept_id FROM concept WHERE uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77' LIMIT 1);
+        </sql>
+    </changeSet>
+
+
+
+
     <!-- Schedule auto-close OPD visits -->
     <changeSet id="unvoid_arabic_translations-202411271458" author="michaelbontyes">
         <sql>
@@ -43,5 +55,6 @@
 	            ('Auto Close Visits Task','Stops all active visits that match the visit type(s) specified by the value of the global property ''visits.autoCloseVisitType''','org.openmrs.scheduler.tasks.AutoCloseVisitsTask','2024-11-28 00:00:00','MM/dd/yyyy HH:mm:ss',86400,1,1,1,'2018-06-04 18:30:16',1,'2024-11-27 11:54:11','2024-11-27 11:49:00','8c17b376-1a2b-11e1-a51a-00248140a5eb')
         </sql>
     </changeSet>
+
 
 </databaseChangeLog>
