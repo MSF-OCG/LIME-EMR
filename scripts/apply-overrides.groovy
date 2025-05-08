@@ -112,8 +112,20 @@ try {
                         cleanupDirectory(tempExtractDir)
                         unzipFile(file, tempExtractDir)
                         
-                        cleanupDirectory(targetPath)
-                        copyDirectoryContents(tempExtractDir, targetPath)
+                        // Find the actual app directory inside the extracted contents
+                        def extractedAppDir = Files.list(tempExtractDir)
+                            .filter { Files.isDirectory(it) && it.fileName.toString().contains(baseName) }
+                            .findFirst()
+                            .orElse(null)
+                        
+                        if (extractedAppDir != null) {
+                            cleanupDirectory(targetPath)
+                            copyDirectoryContents(extractedAppDir, targetPath)
+                        } else {
+                            // Fallback to original behavior if no subdirectory found
+                            cleanupDirectory(targetPath)
+                            copyDirectoryContents(tempExtractDir, targetPath)
+                        }
                     }
                 }
                 FileVisitResult.CONTINUE
