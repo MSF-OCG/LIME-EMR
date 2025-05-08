@@ -36,6 +36,15 @@
         </sql>
     </changeSet>
 
+    <!-- Remove the C-reactive Protien () from the Tests Orderability concept -->
+    <changeSet id="remove_crp_from_tests_orderability" author="vasharma05">
+        <sql>
+            DELETE FROM concept_set
+                WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'fbc2647a-caef-4c3e-bc22-6109efefe70e' LIMIT 1)
+                AND concept_set = (SELECT concept_id FROM concept WHERE uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77' LIMIT 1);
+        </sql>
+    </changeSet>
+
     <!-- Schedule auto-close OPD visits -->
     <changeSet id="unvoid_arabic_translations-202411271458" author="michaelbontyes">
         <sql>
