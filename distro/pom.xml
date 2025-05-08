@@ -428,6 +428,18 @@
               </scripts>
             </configuration>
           </execution>
+          <execution>
+            <id>apply-overrides</id>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <phase>process-resources</phase>
+            <configuration>
+              <scripts>
+                <script>file://${project.basedir}/../scripts/apply-overrides.groovy</script>
+              </scripts>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
