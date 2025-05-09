@@ -67,10 +67,11 @@
                 <resource>
                   <directory>${project.build.directory}/ozone-msf-iraq</directory>
                   <excludes>
+                    <exclude>distro/configs/**/ampathforms/*.*</exclude>
+                    <exclude>distro/configs/**/ampathformstranslations/*.*</exclude>
                     <exclude>distro/configs/**/addresshierarchy/*.*</exclude>
                     <exclude>distro/configs/**/locations/*.*</exclude>
                     <exclude>distro/configs/**/personattributetypes/*.*</exclude>
-                    <exclude>distro/configs/**/idgen/*.*</exclude>
                     <exclude>distro/configs/openfn/openfn-project.yaml</exclude>
                   </excludes>
                 </resource>
@@ -152,6 +153,8 @@
                 <echo level="info" message="Adding MSF project Name to ozone" />
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
                   match="export PROJECT_NAME=.*" replace='export PROJECT_NAME="${project.artifactId}"' />
+                <replace file="${project.build.directory}/${project.artifactId}-${project.version}/distro/ozone-info.json"
+                              token="ozone-msf-distro" value="ozone-msf-mosul" />
               </target>
             </configuration>
           </execution>
