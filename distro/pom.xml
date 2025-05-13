@@ -20,7 +20,7 @@
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
     <limeEmrVersion>0.1.0</limeEmrVersion>
-    <referenceApplicationDockerVersion>3.2.0-rc.5</referenceApplicationDockerVersion>
+    <referenceApplicationDockerVersion>3.4.0-rc.1</referenceApplicationDockerVersion>
     <datafilterVersion>2.3.0-SNAPSHOT</datafilterVersion>
     <yamlCombinePluginVersion>2.0.6</yamlCombinePluginVersion>
   </properties>
@@ -425,6 +425,18 @@
             <configuration>
               <scripts>
                 <script>file://${project.basedir}/../scripts/merge-openfn-yaml.groovy</script>
+              </scripts>
+            </configuration>
+          </execution>
+          <execution>
+            <id>apply-overrides</id>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <phase>process-resources</phase>
+            <configuration>
+              <scripts>
+                <script>file://${project.basedir}/../scripts/apply-overrides.groovy</script>
               </scripts>
             </configuration>
           </execution>
