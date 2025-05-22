@@ -5,11 +5,13 @@
 # Getting started
 
 ## Prerequisites
+
 1. Setup Docker on the localhost and hosting instances
 2. Get the latest docker-compose.yml
 3. Pull the latest images and run the app with Docker Compose (docker-compose pull && docker-compose up -d)
 
 ## Tools
+
 - Diagram and pathway design tool: https://bpmn.io/
 
 ## File structure
@@ -26,13 +28,14 @@
 ├ ~/var/log/ # directory for logs
 └ ~/var/lib/docker/volumes/ # directory where Docker will store volumes for data persistence
 ```
+
 ## Docker Compose
 
 > ~/srv/docker-compose.yml
 
 Docker diagram
 <div>
-<img src="./_media/docker-compose.png" width=80%>
+  <img src="./_media/docker-compose.png" width=80%>
 </div>
 
 ```yml
@@ -103,8 +106,6 @@ volumes:
 
 ```
 
-
-
 # Configure
 
 Types of configurations:
@@ -127,6 +128,7 @@ name=Ref 3.x distro
 version=3.0.0
 war.openmrs=${openmrs.version}
 ```
+
 ## Backend modules
 
 > /distro/distro.properties
@@ -149,6 +151,7 @@ omod.calculation=${calculation.version}
 omod.serialization.xstream=${serialization-xstream.version}
 omod.serialization.xstream.type=omod
 ```
+
 ## Frontend modules
 
 > /frontend/spa-build-config.json
@@ -204,6 +207,7 @@ omod.serialization.xstream.type=omod
 ### Examples
 
 #### Modify branding and styleguide
+
 ```json
 "@openmrs/esm-patient-chart-app": {
   "logo": {
@@ -228,6 +232,7 @@ omod.serialization.xstream.type=omod
 ```
 
 #### Modify navigation
+
 ```json
 "@openmrs/esm-primary-navigation-app": {
   "extensionSlots": {
@@ -242,6 +247,7 @@ omod.serialization.xstream.type=omod
 
 
 #### Modify the registration content
+
 ```json
 "@openmrs/esm-patient-registration-app": {
   "fieldDefinitions": [
@@ -294,6 +300,7 @@ omod.serialization.xstream.type=omod
 ```
 
 #### Modify the vital signs form
+
 ```json
 "@openmrs/esm-patient-vitals-app": {
   "vitals": {
@@ -305,12 +312,12 @@ omod.serialization.xstream.type=omod
 }
 ```
 
-
 ## Metadata
 
-
 Configurations are loaded through the Initializer module and located in the configuration folder
+
 > /distro/configuration
+
 ```shell
 # Configuration files are loaded when restarting OpenMRS and the Docker backend image
 docker restart lime-emr-project-demo-backend
@@ -322,19 +329,23 @@ Content is organized in OpenConceptLab (OCL), in the [LIME Demo collection](http
 > /distro/configuration/OCL
 
 In CSV templats
+
 1. Define project-specific metadata
 In OpenConceptLab (OCL)
 2. Identify concepts that can be reused in a) CIEL source b) MSF sources
 3. Create new concepts if needed in MSF OCG source
 4. Create collections of concepts needed for the implementation (per program, per form, and generic ones)
 5. Release the collection and export it as a ZIP file
+
 In distribution configuration
+
 1. Add the ZIP file in /distro/configuration/ampathforms/___.zip
 2. Restart OpenMRS to verify that the new concepts are well loaded in the OpenMRS dictionnary
 
 ### OpenConceptLab (OCL)
 
 UUID formula for Excel:
+
 ```shell
 =LOWER(CONCATENATE(DEC2HEX(RANDBETWEEN(0,POWER(16,8)),8),"-",DEC2HEX(RANDBETWEEN(0,POWER(16,4)),4),"-","4",DEC2HEX(RANDBETWEEN(0,POWER(16,3)),3),"-",DEC2HEX(RANDBETWEEN(8,11)),DEC2HEX(RANDBETWEEN(0,POWER(16,3)),3),"-",DEC2HEX(RANDBETWEEN(0,POWER(16,8)),8),DEC2HEX(RANDBETWEEN(0,POWER(16,4)),4)))
 ```
@@ -356,6 +367,7 @@ UUID formula for Excel:
 7. commit and pull request
 
 List of i18next parsers
+
 - https://github.com/openmrs/openmrs-esm-core/blob/17830ad39ae631d33a4db9b6a7e1b021ce8e8847/tools/i18next-parser.config.js#L45
 - https://github.com/openmrs/openmrs-esm-patient-chart/blob/46602a6a9f8d60be01a11d538226c095d433b589/tools/i18next-parser.config.js#L45
 - https://github.com/openmrs/openmrs-esm-patient-management/blob/40ca359d14608f0cea13677a1d2633e9b0ccd8c2/tools/i18next-parser.config.js#L45
@@ -376,17 +388,23 @@ Docker images will automatically be rebuilt and pushed to [Docker Hub of MSF OCG
 
 
 ### Build Docker images
+
 ### Update metadata and content
 
 #### Update OpenMRS frontend
+
 rebuild frontend image in Github Actions
 docker compose --profile openmrs3 pull
 docker compose --profile openmrs3 up d
+
 #### Update OpenMRS backend
+
 rebuild backend image in Github Actions
 docker compose --profile openmrs3 pull
 docker compose --profile openmrs3 up d
+
 #### Update content
+
 git pull
 docker restart backent
 
@@ -410,6 +428,7 @@ Dev, QA/UAT, Preprod, prod
 # Deploy
 
 ## On localhost
+
 ```shell
 # SSH Azure instance via jumphost
 ssh username@____.cloudapp.azure.com -p ____
@@ -552,11 +571,13 @@ This script performs a MySQL dump of an OpenMRS database, compresses the output 
 ## Update
 
 Type of updates:
+
 1. Binaries (OpenMRS files) - updated by Build actions
 2. Metadata and configuration - updated by Configuration actions
 3. Local data update - done manually by project team
 
 Latest images can be pulled on instances using the Docker command:
+
 ```shell
 docker-compose pull && docker-compose up -d
 ```
@@ -564,8 +585,11 @@ docker-compose pull && docker-compose up -d
 # Development tooling
 
 ## Local database
+
 ### Connect DBeaver to the Docker MariaDB container
+
 1. Update the openmrs user to be usable from the host machine
+
 ```shell
 ## Login in the MariaDB container
 docker exec -it lime-emr-project-demo-db-1 sh
@@ -574,7 +598,9 @@ mysql -u root -p
 ## Update the host allowance of the openmrs user
 update mysql.user set host='%' where user='openmrs'
 ```
+
 2. In MariaDB
+
   a. Set the server host as "localhost", the port as "3306", the database as "openmrs" and the database authentication username as "openmrs"
   b. In the driver properties, set the "allowPublicKeyRetrieval" to "true"
 3. Test the connection to confirm that it is successful
