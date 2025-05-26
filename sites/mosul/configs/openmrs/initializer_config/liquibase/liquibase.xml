@@ -53,4 +53,20 @@
         </sql>
     </changeSet>
 
+    <!-- Update PatientIdStickerXmlReportRenderer class path -->
+    <changeSet id="update_patient_id_sticker_renderer-202405261300" author="jnsereko">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END 
+                FROM reporting_report_design 
+                WHERE renderer_type = 'org.openmrs.module.commonreports.renderer.PatientIdStickerXmlReportRenderer';
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            UPDATE reporting_report_design
+            SET renderer_type = 'org.openmrs.module.patientdocuments.renderer.PatientIdStickerXmlReportRenderer'
+            WHERE renderer_type = 'org.openmrs.module.commonreports.renderer.PatientIdStickerXmlReportRenderer';
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
