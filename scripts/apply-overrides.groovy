@@ -146,6 +146,10 @@ try {
                         println " - Overriding ${targetFile.fileName} with ${overrideName}"
                         Files.delete(targetFile)
                         Files.copy(file, moduleBinariesDir.resolve(file.fileName), StandardCopyOption.REPLACE_EXISTING)
+                    } else {
+                        // If module doesn't exist, just copy it to the binaries directory
+                        println " - Adding new module ${overrideName} to binaries"
+                        Files.copy(file, moduleBinariesDir.resolve(file.fileName), StandardCopyOption.REPLACE_EXISTING)
                     }
                 }
                 FileVisitResult.CONTINUE
