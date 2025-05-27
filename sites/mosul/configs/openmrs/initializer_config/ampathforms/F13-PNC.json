@@ -280,12 +280,12 @@
           ]
         },
         {
-          "label": "Infant 1",
+          "label": "Latest delivery - Infant 1",
           "isExpanded": false,
           "questions": [
             {
               "id": "infant1Name",
-              "label": "Infant 1 name",
+              "label": "Latest delivery - Infant 1 name",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -299,7 +299,7 @@
             },
             {
               "id": "infant1GestationalAge",
-              "label": "Infant 1 - Gestational age",
+              "label": "Latest delivery - Infant 1 - Gestational age",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -322,7 +322,7 @@
             },
             {
               "id": "infant1BirthWeight",
-              "label": "Infant 1 - Birth weight (g)",
+              "label": "Latest delivery - Infant 1 - Birth weight (g)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -336,8 +336,8 @@
               }
             },
             {
-              "id": "infant1HeadCircumference",
-              "label": "Infant 1 - Head circumference (cm)",
+              "id": "latestPregnancyInfant1HeadCircumference",
+              "label": "Latest delivery - Infant 1 - Head circumference (cm)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -354,12 +354,12 @@
           ]
         },
         {
-          "label": "Infant 2",
+          "label": "Latest delivery - Infant 2",
           "isExpanded": false,
           "questions": [
             {
               "id": "infant2Name",
-              "label": "Infant 2 name",
+              "label": "Latest delivery - Infant 2 name",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -372,7 +372,7 @@
             },
             {
               "id": "infant2GestationalAge",
-              "label": "Infant 2 - Gestational age",
+              "label": "Latest delivery - Infant 2 - Gestational age",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -395,7 +395,7 @@
             },
             {
               "id": "infant2BirthWeight",
-              "label": "Infant 2 - Birth weight (g)",
+              "label": "Latest delivery - Infant 2 - Birth weight (g)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -409,8 +409,8 @@
               }
             },
             {
-              "id": "infant2HeadCircumference",
-              "label": "Infant 2 - Head circumference (cm)",
+              "id": "latestPregnancyInfant2HeadCircumference",
+              "label": "Latest delivery - Infant 2 - Head circumference (cm)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -513,7 +513,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "latestDeliveryProblems !== 'a116ddd7-46af-4183-8b76-babcf2029ed6'"
+                "hideWhenExpression": "!includes(latestDeliveryProblems, 'a116ddd7-46af-4183-8b76-babcf2029ed6')"
               }
             },
             {
@@ -526,7 +526,7 @@
                 "concept": "61b8c9e7-4fce-48e1-a68d-229992d40faa"
               },
               "hide": {
-                "hideWhenExpression": "latestDeliveryProblems !== 'a9252163-4673-4aba-bf37-b9e72b86f8a5'"
+                "hideWhenExpression": "!includes(latestDeliveryProblems, 'a9252163-4673-4aba-bf37-b9e72b86f8a5')"
               }
             },
             {
@@ -539,7 +539,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "latestDeliveryProblems !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "!includes(latestDeliveryProblems, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             }
           ]
@@ -712,10 +712,11 @@
             {
               "id": "anaemia",
               "label": "Anaemia (conjunctiva, heamoglobin)",
-              "type": "markdown",
+              "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "markdown",
+                "rendering": "radio",
+                "concept": "e0c0e914-cde1-41d9-b11f-3ebcebf441a8",
                 "answers": [
                   {
                     "label": "No",
@@ -731,7 +732,6 @@
                   }
                 ]
               },
-              "value": ["Anaemia (conjunctiva, heamoglobin)"],
               "hide": {
                 "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
@@ -1960,7 +1960,7 @@
                 "concept": "b7fdcd18-fc30-4b5d-82b2-bb0eec31f0e4"
               },
               "hide": {
-                "hideWhenExpression": "referral !== 'a5c5563e-df0e-4742-a335-b24fb63664ee'"
+                "hideWhenExpression": "isEmpty(referral) || includes(referral, 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
             },
             {
