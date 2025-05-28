@@ -151,12 +151,14 @@
           "questions": [
             {
               "id": "howLongHasTheChildBeenSick",
-              "label": "How long has the child been sick?",
+              "label": "How long has the child been sick? (in days)",
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "text",
-                "concept": "61f620e5-704f-4674-954e-20b7175240dd"
+                "rendering": "number",
+                "concept": "61f620e5-704f-4674-954e-20b7175240dd",
+                "min": 0,
+                "step": 1
               }
             },
             {
@@ -543,7 +545,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "754d677f-316c-4c31-999d-a328fb8b17e1",
+                "concept": "80469ebc-e769-4edd-a9b6-ecb5c517e2db",
                 "answers": [
                   {
                     "label": "+",
@@ -1075,8 +1077,16 @@
                     "concept": "a3eecae0-8ad4-4458-aab6-f3aa818979c5"
                   },
                   {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
                     "label": "Other bites and stings",
                     "concept": "f5a93496-81fa-441f-a09c-3899b0fb2a1c"
+                  },
+                  {
+                    "label": "Other neonatal conditions",
+                    "concept": "8216ea0d-fa4b-4873-b716-c147d1276a3e"
                   },
                   {
                     "label": "Other neurological conditions",
@@ -1204,11 +1214,11 @@
                   },
                   {
                     "label": "Toxicity / poisoning",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0139"
+                    "concept": "3a5b3971-6cef-4a54-82bc-8f897858bd00"
                   },
                   {
                     "label": "Transient tachypnoea of the newborn",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0140"
+                    "concept": "38a912c2-09c2-4085-85ad-899eaa98eada"
                   },
                   {
                     "label": "Typhoid fever",
@@ -1224,23 +1234,23 @@
                   },
                   {
                     "label": "Urolithiasis / Renal colic",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0145"
+                    "concept": "47900991-2835-48e2-8208-9698446ef178"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0146"
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
                   },
                   {
                     "label": "Varicella",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0147"
+                    "concept": "2fbe199d-fc82-4853-81da-8b63c1205d17"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0148"
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
                     "label": "Viral haemorrhagic fevers",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0149"
+                    "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
                   },
                   {
                     "label": "Visceral leishmaniasis",
@@ -1269,10 +1279,6 @@
                   {
                     "label": "Yellow fever",
                     "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
               }
@@ -1292,7 +1298,7 @@
             },
             {
               "id": "diagnosisAtAdmissionSecondary1",
-              "label": "Diagnosis at admission - Secondary 1",
+              "label": "Secondary 1",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1620,8 +1626,16 @@
                     "concept": "a3eecae0-8ad4-4458-aab6-f3aa818979c5"
                   },
                   {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
                     "label": "Other bites and stings",
                     "concept": "f5a93496-81fa-441f-a09c-3899b0fb2a1c"
+                  },
+                  {
+                    "label": "Other neonatal conditions",
+                    "concept": "8216ea0d-fa4b-4873-b716-c147d1276a3e"
                   },
                   {
                     "label": "Other neurological conditions",
@@ -1749,11 +1763,11 @@
                   },
                   {
                     "label": "Toxicity / poisoning",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0139"
+                    "concept": "3a5b3971-6cef-4a54-82bc-8f897858bd00"
                   },
                   {
                     "label": "Transient tachypnoea of the newborn",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0140"
+                    "concept": "38a912c2-09c2-4085-85ad-899eaa98eada"
                   },
                   {
                     "label": "Typhoid fever",
@@ -1769,23 +1783,23 @@
                   },
                   {
                     "label": "Urolithiasis / Renal colic",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0145"
+                    "concept": "47900991-2835-48e2-8208-9698446ef178"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0146"
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
                   },
                   {
                     "label": "Varicella",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0147"
+                    "concept": "2fbe199d-fc82-4853-81da-8b63c1205d17"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0148"
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
                     "label": "Viral haemorrhagic fevers",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0149"
+                    "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
                   },
                   {
                     "label": "Visceral leishmaniasis",
@@ -1814,10 +1828,6 @@
                   {
                     "label": "Yellow fever",
                     "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
               }
@@ -1837,7 +1847,7 @@
             },
             {
               "id": "diagnosisAtAdmissionSecondary2",
-              "label": "Diagnosis at admission - Secondary 2",
+              "label": "Secondary 2",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2165,8 +2175,16 @@
                     "concept": "a3eecae0-8ad4-4458-aab6-f3aa818979c5"
                   },
                   {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
                     "label": "Other bites and stings",
                     "concept": "f5a93496-81fa-441f-a09c-3899b0fb2a1c"
+                  },
+                  {
+                    "label": "Other neonatal conditions",
+                    "concept": "8216ea0d-fa4b-4873-b716-c147d1276a3e"
                   },
                   {
                     "label": "Other neurological conditions",
@@ -2294,11 +2312,11 @@
                   },
                   {
                     "label": "Toxicity / poisoning",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0139"
+                    "concept": "3a5b3971-6cef-4a54-82bc-8f897858bd00"
                   },
                   {
                     "label": "Transient tachypnoea of the newborn",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0140"
+                    "concept": "38a912c2-09c2-4085-85ad-899eaa98eada"
                   },
                   {
                     "label": "Typhoid fever",
@@ -2314,23 +2332,23 @@
                   },
                   {
                     "label": "Urolithiasis / Renal colic",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0145"
+                    "concept": "47900991-2835-48e2-8208-9698446ef178"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0146"
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
                   },
                   {
                     "label": "Varicella",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0147"
+                    "concept": "2fbe199d-fc82-4853-81da-8b63c1205d17"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0148"
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
                     "label": "Viral haemorrhagic fevers",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0149"
+                    "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
                   },
                   {
                     "label": "Visceral leishmaniasis",
@@ -2359,10 +2377,6 @@
                   {
                     "label": "Yellow fever",
                     "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
               }
@@ -2382,7 +2396,7 @@
             },
             {
               "id": "diagnosisAtAdmissionSecondary3",
-              "label": "Diagnosis at admission - Secondary 3",
+              "label": "Secondary 3",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -2710,8 +2724,16 @@
                     "concept": "a3eecae0-8ad4-4458-aab6-f3aa818979c5"
                   },
                   {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
                     "label": "Other bites and stings",
                     "concept": "f5a93496-81fa-441f-a09c-3899b0fb2a1c"
+                  },
+                  {
+                    "label": "Other neonatal conditions",
+                    "concept": "8216ea0d-fa4b-4873-b716-c147d1276a3e"
                   },
                   {
                     "label": "Other neurological conditions",
@@ -2839,11 +2861,11 @@
                   },
                   {
                     "label": "Toxicity / poisoning",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0139"
+                    "concept": "3a5b3971-6cef-4a54-82bc-8f897858bd00"
                   },
                   {
                     "label": "Transient tachypnoea of the newborn",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0140"
+                    "concept": "38a912c2-09c2-4085-85ad-899eaa98eada"
                   },
                   {
                     "label": "Typhoid fever",
@@ -2859,23 +2881,23 @@
                   },
                   {
                     "label": "Urolithiasis / Renal colic",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0145"
+                    "concept": "47900991-2835-48e2-8208-9698446ef178"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0146"
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
                   },
                   {
                     "label": "Varicella",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0147"
+                    "concept": "2fbe199d-fc82-4853-81da-8b63c1205d17"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0148"
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
                     "label": "Viral haemorrhagic fevers",
-                    "concept": "da33d74e-33b3-495a-9d7c-aa00a-aa0149"
+                    "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
                   },
                   {
                     "label": "Visceral leishmaniasis",
@@ -2904,10 +2926,6 @@
                   {
                     "label": "Yellow fever",
                     "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
               }
