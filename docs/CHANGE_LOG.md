@@ -1,48 +1,34 @@
-# Release 5th March, 2025
+# LIME CHANGE LOG 🚀
 
+## Release 16th May, 2025
 
-## MH v2
+### Features & Improvements
 
-- MHPSS FU v2 - question added in Clinical diagnosis - https://msf-ocg.atlassian.net/browse/LIME2-628
-- MH FU forms v2 - rename Patient reescheduled question - https://msf-ocg.atlassian.net/browse/LIME2-615
-- mhGAP v2 - rename Clinical diagnosis MH optionset - https://msf-ocg.atlassian.net/browse/LIME2-614
-- MH forms v2 - rename Depression severity scale option - https://msf-ocg.atlassian.net/browse/LIME2-613
-- MHPSS Baseline v2 - skip logic for Other in Main diagnosis not working - https://msf-ocg.atlassian.net/browse/LIME2-626
-- MHPSS Baseline - question added in History of Mental Disorder section - https://msf-ocg.atlassian.net/browse/LIME2-616 (In Progress)
-- MHPSS Baseline v2 - change in rendering of "Permission to be contacted" - https://msf-ocg.atlassian.net/browse/LIME2-635 (In Progress)
-- mhGAP Baseline v2 - rename and change order of questions/sections - https://msf-ocg.atlassian.net/browse/LIME2-634 (In Progress)
-- MHPSS Baseline v2 - rename and change order of questions/sections - https://msf-ocg.atlassian.net/browse/LIME2-617 (In Progress)
-- MHPSS Baseline v2 - "Previously" added for Medication skip logic - https://msf-ocg.atlassian.net/browse/LIME2-627 (In Progress)
-- MHPSS FU v2 - questions added in Intervention - https://msf-ocg.atlassian.net/browse/LIME2-636 (In Progress)
+- Re-enable laboratory and configs in LIME-EMR - [LIME2-703](https://msf-ocg.atlassian.net/browse/LIME2-703)
+- Add missing translations to workspace buttons - [LIME2-690](https://msf-ocg.atlassian.net/browse/LIME2-690)
 
+### Bug Fixes
 
-## Family Planning
-- Family Planning Assessment - skip logic added linked to The patient has a method in mind - https://msf-ocg.atlassian.net/browse/LIME2-630
-- Family Planning Assessment - rendering of Obstetric history in decimals - https://msf-ocg.atlassian.net/browse/LIME2-631
-- Family Planning Assessment - "Last menstrual period" skip logic not working - https://msf-ocg.atlassian.net/browse/LIME2-632
-- FP Follow-up - new questions added - https://msf-ocg.atlassian.net/browse/LIME2-595
-- FP Follow-up - change rendering and default value of Method - https://msf-ocg.atlassian.net/browse/LIME2-590
+- ITFC discharge - skip logic not working - [LIME2-729](https://msf-ocg.atlassian.net/browse/LIME2-729)
+- Immunization - not possible to save - [LIME2-727](https://msf-ocg.atlassian.net/browse/LIME2-727)
+- Notes are not displaying in the note tab of visits [LIME2-741](https://msf-ocg.atlassian.net/browse/LIME2-741)
+- Cannot create patient with "unknown" name in registration - [LIME2-738](https://msf-ocg.atlassian.net/browse/LIME2-738)
+- Patient name fix in laboratory (Community)
+- ITFC discharge - skip logic for vaccination questions not working - [LIME2-706](https://msf-ocg.atlassian.net/browse/LIME2-706)
+- ITFC discharge form - Get admission date/time from ITFC admission form - [LIME2-385](https://msf-ocg.atlassian.net/browse/LIME2-385)
+- ITFC discharge - skip logic for vaccination questions not working - [LIME2-706](https://msf-ocg.atlassian.net/browse/LIME2-706)
+- Remove one of the C-Reactive Test from the lab order list - [LIME2-713](https://msf-ocg.atlassian.net/browse/LIME2-713)
+- Registration - error on recording age in months - [LIME2-460](https://msf-ocg.atlassian.net/browse/LIME2-460)
 
-## PNC
-- PNC form previews - https://msf-ocg.atlassian.net/browse/LIME2-472
-- PNC - selection of Evaluation option - https://msf-ocg.atlassian.net/browse/LIME2-608
+### Patient Stickers
 
-## Nutrition
-- ATFC - changes in Tests questions - https://msf-ocg.atlassian.net/browse/LIME2-493
+- Add DHIS2 IDs on stickers - [LIME2-740](https://msf-ocg.atlassian.net/browse/LIME2-740)
+- Patient ID not fully visible in patient banner - [LIME2-739](https://msf-ocg.atlassian.net/browse/LIME2-739)
+- Add Arabic translations to patient sticker - [LIME2-710](https://msf-ocg.atlassian.net/browse/LIME2-710)
+- Adjust created Sticker report layout to match v1 - [LIME2-709](https://msf-ocg.atlassian.net/browse/LIME2-709)
+- Use Patient ID sticker report API in frontend - [LIME2-708](https://msf-ocg.atlassian.net/browse/LIME2-708)
 
+### Go-LIVE DB Preparation
 
-## Feeding Form
-
-- Feeding form - add Product options - https://msf-ocg.atlassian.net/browse/LIME2-619
-- Feeding form - rename Quantity - https://msf-ocg.atlassian.net/browse/LIME2-620
-- Feeding form - not possible to save form - https://msf-ocg.atlassian.net/browse/LIME2-577
-
-## Translations
-
-- Translations for MH forms 2025 (Ludovic's files) - https://msf-ocg.atlassian.net/browse/LIME2-599
-
-
-NOT READY
-
-- Family planning - messages appearing according to contra-indication - https://msf-ocg.atlassian.net/browse/LIME2-586
-- MHPSS FU v2 - skip logic added to Main category of precipitating event - https://msf-ocg.atlassian.net/browse/LIME2-629
+- Test prod users SQL + script on local - [LIME2-720](https://msf-ocg.atlassian.net/browse/LIME2-720)
+- Add permissions, roles and users for laboratory technician, nutrition clinician and nutrition assistant nurse - [LIME2-661](https://msf-ocg.atlassian.net/browse/LIME2-661)
