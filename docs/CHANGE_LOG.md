@@ -1,5 +1,35 @@
 # LIME CHANGE LOG 🚀
 
+## Release 30th May, 2025
+
+### Features & Improvements
+
+- Appointments list - Add MH providers' initials in type of services [LIME2-761](https://msf-ocg.atlassian.net/browse/LIME2-761)
+- Medication - Import OCG Medical Standard List - [LIME2-298](https://msf-ocg.atlassian.net/browse/LIME2-298)
+
+### Bug Fixes
+
+- Add `questionInfo`/ tooltip translations to the translation files in Form Gen - [LIME2-654](https://msf-ocg.atlassian.net/browse/LIME2-654)
+- ITFC forms (Admission) - not possible to save - [LIME2-722](https://msf-ocg.atlassian.net/browse/LIME2-722)
+- test and meds are not showing in visits module of the correct visit, but a previous visit - [LIME2-742](https://msf-ocg.atlassian.net/browse/LIME2-742)
+- PNC - skip logic for Head circumference not working - [LIME2-735](https://msf-ocg.atlassian.net/browse/LIME2-735)
+- Family planning - tooltip not working - [LIME2-737](https://msf-ocg.atlassian.net/browse/LIME2-737)
+- PNC - PHQ2 tooltip not appearing - [LIME2-734](https://msf-ocg.atlassian.net/browse/LIME2-734)
+- PNC - skip logic for Problems not working - [LIME2-732](https://msf-ocg.atlassian.net/browse/LIME2-732)
+- PNC - tooltip added to Infant 1 section - [LIME2-641](https://msf-ocg.atlassian.net/browse/LIME2-641)
+- PNC - Anaemia question not appearing - [LIME2-733](https://msf-ocg.atlassian.net/browse/LIME2-733)
+- PNC - Referral reason question skip logic not working - [LIME2-736](https://msf-ocg.atlassian.net/browse/LIME2-736)
+- Duplicated visits - [LIME2-766](https://msf-ocg.atlassian.net/browse/LIME2-766)
+
+### Patient Stickers
+
+- Implementors should conditionally pass custom xsl file to customize pdf look and feel - [LIME2-752](https://msf-ocg.atlassian.net/browse/LIME2-752)
+- Patient Identifier Sticker report referencing a null Report Definition (all reports in the common reports module) - [LIME2-749](https://msf-ocg.atlassian.net/browse/LIME2-749)
+- SqlFileDataSetDefinition Restricts Access to Essential Patient Data Values - [LIME2-751](https://msf-ocg.atlassian.net/browse/LIME2-751)
+- Move Patient Identifier Sticker Report backend logic to a new backend Module - [LIME2-743](https://msf-ocg.atlassian.net/browse/LIME2-743)
+- Fix Arabic disjointed letters on stickers - [LIME2-753](https://msf-ocg.atlassian.net/browse/LIME2-753)
+- Enhance Age Display to Show Years/Months or Weeks/Days Instead of Just 0 - [LIME2-756](https://msf-ocg.atlassian.net/browse/LIME2-756)
+
 ## Release 16th May, 2025
 
 ### Features & Improvements
