@@ -67,11 +67,12 @@
                 <resource>
                   <directory>${project.build.directory}/ozone-msf-iraq</directory>
                   <excludes>
+                    <exclude>distro/configs/**/ampathforms/*.*</exclude>
+                    <exclude>distro/configs/**/ampathformstranslations/*.*</exclude>
                     <exclude>distro/configs/**/addresshierarchy/*.*</exclude>
                     <exclude>distro/configs/**/locations/*.*</exclude>
-                    <exclude>distro/configs/**/personattributetypes/*.*</exclude>
-                    <exclude>distro/configs/**/idgen/*.*</exclude>
                     <exclude>distro/configs/openfn/openfn-project.yaml</exclude>
+                    <exclude>distro/ozone-info.json</exclude>  
                   </excludes>
                 </resource>
               </resources>
@@ -184,6 +185,37 @@
           </dependency>
         </dependencies>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.gmaven</groupId>
+        <artifactId>groovy-maven-plugin</artifactId>
+        <version>2.1.1</version>
+        <executions>
+            <execution>
+                <id>Create Mosul Ozone Info</id>
+                <phase>process-resources</phase>
+                <goals>
+                    <goal>execute</goal>
+                </goals>
+                <configuration>
+                  <source>
+                    // Ensure target directory exists
+                    def targetDir = new File("${project.build.directory}/${project.artifactId}-${project.version}/distro")
+                    targetDir.mkdirs()
+
+                    // Always create/overwrite the JSON file
+                    def ozoneInfoFile = new File(targetDir, "ozone-info.json")
+                    def ozoneInfo = [
+                        name: "${project.artifactId}",
+                        version: "${project.version}",
+                        description: "${project.description}"
+                    ]
+                    
+                    ozoneInfoFile.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(ozoneInfo))
+                </source>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
     </plugins>
   </build>
   
