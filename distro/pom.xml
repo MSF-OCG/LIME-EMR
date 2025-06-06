@@ -107,6 +107,9 @@
                 <resource>
                   <directory>${project.build.directory}/ozone</directory>
                   <excludes>
+                    <exclude>distro/configs/**/autogenerationoptions/*.*</exclude>
+                    <exclude>distro/configs/**/idgen/*.*</exclude>
+                    <exclude>distro/configs/**/patientidentifiertypes/*.*</exclude>
                     <!-- Temporarily remove Ozone -->
                     <exclude>distro/binaries/openmrs/modules/referencedemodata*.omod</exclude>
                     <!-- Remove Ozone frontend config -->
