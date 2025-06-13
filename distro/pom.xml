@@ -22,20 +22,13 @@
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
     <limeEmrVersion>0.1.0</limeEmrVersion>
-    <referenceApplicationDockerVersion>3.4.0-rc.1</referenceApplicationDockerVersion>
+    <referenceApplicationDockerVersion>3.4.0</referenceApplicationDockerVersion>
     <datafilterVersion>2.3.0-SNAPSHOT</datafilterVersion>
     <yamlCombinePluginVersion>2.0.6</yamlCombinePluginVersion>
   </properties>
 
   <dependencies>
 
-    <dependency>
-      <groupId>org.openmrs.web</groupId>
-      <artifactId>openmrs-webapp</artifactId>
-      <version>${openmrs.version}</version>
-      <type>war</type>
-      <scope>provided</scope>
-    </dependency>
 
     <dependency>
       <groupId>org.openmrs.module</groupId>
@@ -48,14 +41,6 @@
       <artifactId>datafilter-omod</artifactId>
       <version>${datafilterVersion}</version>
     </dependency>
-
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>webservices.rest-omod</artifactId>
-      <version>${webservices.rest.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
   </dependencies>
 
   <scm>
@@ -107,6 +92,9 @@
                 <resource>
                   <directory>${project.build.directory}/ozone</directory>
                   <excludes>
+                    <exclude>distro/configs/**/autogenerationoptions/*.*</exclude>
+                    <exclude>distro/configs/**/idgen/*.*</exclude>
+                    <exclude>distro/configs/**/patientidentifiertypes/*.*</exclude>
                     <!-- Temporarily remove Ozone -->
                     <exclude>distro/binaries/openmrs/modules/referencedemodata*.omod</exclude>
                     <!-- Remove Ozone frontend config -->
@@ -239,8 +227,12 @@
                 <echo level="info" message="Adding msf docker image version"/>
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
                               match="O3_DOCKER_IMAGE_TAG=.*" replace="O3_DOCKER_IMAGE_TAG=${referenceApplicationDockerVersion}" />
+                <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env"
+                              match="O3_DOCKER_IMAGE_TAG=.*" replace="O3_DOCKER_IMAGE_TAG=${referenceApplicationDockerVersion}" />
                 <replace file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/docker-compose-openmrs.yml"
-                              token="3.0.0-beta.21" value="${O3_DOCKER_IMAGE_TAG:-nightly}" />
+                              token="3.2.1" value="${O3_DOCKER_IMAGE_TAG:-nightly}" />
+                <replace file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/docker-compose-openmrs.yml"
+                              token="2.6.14" value="2.7.4" />
               </target>
             </configuration>
           </execution>
