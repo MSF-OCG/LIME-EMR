@@ -461,6 +461,7 @@
               "label": "Conditions",
               "type": "obs",
               "required": false,
+              "inlineMultiCheckbox": true,
               "questionOptions": {
                 "rendering": "multiCheckbox",
                 "concept": "9deb65e1-8709-41a5-92a5-f48e18237516",
@@ -486,16 +487,16 @@
                     "concept": "1e68bdf8-9b17-497b-835a-275a4bb6d943"
                   },
                   {
-                    "label": "BP > 160/100",
-                    "concept": "495831be-128a-4827-902c-06b7c76fdf31"
-                  },
-                  {
                     "label": "Smoker > 35 years old",
                     "concept": "6c15e5d8-601f-489e-8cbc-76fb4d881ab2"
                   },
                   {
                     "label": "BP > 140/90 and migraine with aura",
                     "concept": "ccf9216a-ee7d-4f77-b6aa-b352f22b71b0"
+                  },
+                  {
+                    "label": "BP > 160/100",
+                    "concept": "495831be-128a-4827-902c-06b7c76fdf31"
                   },
                   {
                     "label": "Unexplained vaginal bleeding",
@@ -538,6 +539,173 @@
                     "concept": "5ce4f939-edde-410d-a0af-69041733ac23"
                   }
                 ]
+              }
+            },
+            {
+              "id": "absoluteContraIndications",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["##### Absolute Contra-Indications"],
+              "hide": {
+                "hideWhenExpression": "isEmpty(conditions)"
+              }
+            },
+            {
+              "id": "absoluteContraIndication1",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["Male and Female condom"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, 'a5051ac2-d10c-40e5-be13-c06fad96d82c')"
+              }
+            },
+            {
+              "id": "absoluteContraIndication2",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["COC"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, '4a946435-5e35-4ce7-ac5e-c5b068a5e964') && !includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab') && !includes(conditions, '1e68bdf8-9b17-497b-835a-275a4bb6d943') && !includes(conditions, '6c15e5d8-601f-489e-8cbc-76fb4d881ab2') && !includes(conditions, 'ccf9216a-ee7d-4f77-b6aa-b352f22b71b0') && !includes(conditions, '495831be-128a-4827-902c-06b7c76fdf31') && !includes(conditions, '5b8c79a9-761b-458d-a29b-5a4c6e27f6c0')"
+              }
+            },
+            {
+              "id": "absoluteContraIndication3",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["POP"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab')"
+              }
+            },
+            {
+              "id": "absoluteContraIndication4",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["Injectable"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab') && !includes(conditions, 'ccf9216a-ee7d-4f77-b6aa-b352f22b71b0') && !includes(conditions, '495831be-128a-4827-902c-06b7c76fdf31')"
+              }
+            },
+            {
+              "id": "absoluteContraIndication5",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["Implant"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab')"
+              }
+            },
+            {
+              "id": "absoluteContraIndication6",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["IUD"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'd7e8b31f-3f64-443c-b62c-0166de84882a')"
+              }
+            },
+            {
+              "id": "relativeContraIndications",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["##### Relative Contra-Indications"],
+              "hide": {
+                "hideWhenExpression": "isEmpty(conditions)"
+              }
+            },
+            {
+              "id": "relativeContraIndication1",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["Tubal ligation"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'd7e8b31f-3f64-443c-b62c-0166de84882a')"
+              }
+            },
+            {
+              "id": "relativeContraIndication2",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["Injectable"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, '1e68bdf8-9b17-497b-835a-275a4bb6d943') && !includes(conditions, '5b8c79a9-761b-458d-a29b-5a4c6e27f6c0')"
+              }
+            },
+            {
+              "id": "relativeContraIndication3",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["Implant"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, '1e68bdf8-9b17-497b-835a-275a4bb6d943') && !includes(conditions, '5b8c79a9-761b-458d-a29b-5a4c6e27f6c0')"
+              }
+            },
+            {
+              "id": "relativeContraIndication4",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["COC"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, '5b8c79a9-761b-458d-a29b-5a4c6e27f6c0')"
+              }
+            },
+            {
+              "id": "relativeContraIndication5",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["POP"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, '5b8c79a9-761b-458d-a29b-5a4c6e27f6c0')"
+              }
+            },
+            {
+              "id": "relativeContraIndication5",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["IUD"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, '5b8c79a9-761b-458d-a29b-5a4c6e27f6c0') && !includes(conditions, '3d26e191-861c-4a50-845f-99b840274606') && !includes(conditions, '10f3449c-05fd-4a3d-9dca-1de634fd2366') && !includes(conditions, '8ff6da30-0e83-41d2-be01-4f296b6c4b7a')"
+              }
+            },
+            {
+              "id": "referToTheDoctorForDecision",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "##### Refer to the doctor for a decision about the method"
+              ],
+              "hide": {
+                "hideWhenExpression": "isEmpty(conditions) && !includes(conditions, '5ce4f939-edde-410d-a0af-69041733ac23') && !includes(conditions, '9a1003a7-27b0-42c7-804e-41f35bc5322e') && !includes(conditions, '64ae8090-ddd6-4c30-9b8a-8ee12d1d909f') && !includes(conditions, '6cbfaa66-9499-4653-848b-e485811894f1') && !includes(conditions, '8dde8bad-62c4-4ec7-9e63-b73f6378a6f0')"
               }
             }
           ]
