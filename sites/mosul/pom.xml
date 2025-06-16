@@ -70,8 +70,9 @@
                     <exclude>distro/configs/**/ampathforms/*.*</exclude>
                     <exclude>distro/configs/**/ampathformstranslations/*.*</exclude>
                     <exclude>distro/configs/**/addresshierarchy/*.*</exclude>
+                    <exclude>distro/configs/**/idgen/*.*</exclude>
                     <exclude>distro/configs/**/locations/*.*</exclude>
-                    <exclude>distro/configs/openfn/openfn-project.yaml</exclude>
+                    <exclude>distro/configs/**/visittypes/*.*</exclude>
                     <exclude>distro/ozone-info.json</exclude>  
                   </excludes>
                 </resource>
@@ -138,7 +139,9 @@
               <target>
                 <echo message="Adding MSF Mosul frontend config"/>
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
-                               match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/ozone/msf-mosul-frontend-config.json" />
+                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/ozone/msf-mosul-frontend-config.json" />
+                <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env"
+                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/ozone/msf-mosul-frontend-config.json" />
               </target>
             </configuration>
           </execution>

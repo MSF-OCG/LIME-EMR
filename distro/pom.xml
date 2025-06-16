@@ -107,6 +107,14 @@
                 <resource>
                   <directory>${project.build.directory}/ozone</directory>
                   <excludes>
+                    <exclude>distro/configs/**/concepts/*.*</exclude>
+                    <exclude>distro/configs/**/drugs/*.*</exclude>
+                    <exclude>distro/configs/**/autogenerationoptions/*.*</exclude>
+                    <exclude>distro/configs/**/globalproperties/*i18n*.*</exclude>
+                    <exclude>distro/configs/**/globalproperties/*drugorder*.*</exclude>
+                    <exclude>distro/configs/**/idgen/*.*</exclude>
+                    <exclude>distro/configs/**/ocl/*.*</exclude>                    
+                    <exclude>distro/configs/**/patientidentifiertypes/*.*</exclude>
                     <!-- Temporarily remove Ozone -->
                     <exclude>distro/binaries/openmrs/modules/referencedemodata*.omod</exclude>
                     <!-- Remove Ozone frontend config -->
