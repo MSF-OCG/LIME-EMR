@@ -1,9 +1,9 @@
 {
-  "name": "Pius Test - MSF Nutrition - Feeding Form",
-  "description": "Pius Test - MSF Form - Nutrition Feeding Form",
+  "name": "MSF Nutrition - Feeding Form",
+  "description": "MSF Form - Nutrition Feeding Form",
   "version": "1",
   "published": true,
-  "uuid": "0a4b6b68-bb76-4762-bfe5-91c0f6a94f6b",
+  "uuid": "9ed6d34e-1415-47a6-82e8-30070f859f38",
   "processor": "EncounterFormProcessor",
   "encounter": "Nutrition",
   "encounterType": "efb1ee49-ed60-40f4-aa2e-c45143dc4d49",
@@ -58,6 +58,7 @@
               "id": "phase",
               "label": "Feeding Phase",
               "type": "obs",
+              "readonly": "!customHasRequiredPrivilege('Manage Nutrition')",
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
@@ -83,6 +84,7 @@
               "label": "Number of meals / day",
               "type": "obs",
               "required": false,
+              "readonly": "!customHasRequiredPrivilege('Manage Nutrition')",
               "questionOptions": {
                 "rendering": "numeric",
                 "concept": "6e4c6118-30cf-4d61-8e24-c619e413e68a",
@@ -156,7 +158,7 @@
                   }
                 },
                 {
-                  "id": "amountTaken1",
+                  "id": "amountTaken",
                   "label": "Amount taken",
                   "type": "obs",
                   "required": false,
@@ -188,7 +190,7 @@
                   }
                 },
                 {
-                  "id": "remark1",
+                  "id": "remark",
                   "label": "Remark",
                   "type": "obs",
                   "required": false,
