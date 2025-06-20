@@ -17,7 +17,7 @@ The OpenMRS 3 distribution for MSF OCG
 ## Integration with
 
 <div>
-<td></td><img src="https://raw.githubusercontent.com/ozone-his/.github/refs/heads/main/profile/ozone-logo.png" height=50px>      
+<td></td><img src="https://raw.githubusercontent.com/ozone-his/.github/refs/heads/main/profile/ozone-logo.png" height=50px>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://docs.openconceptlab.org/en/latest/_images/ocl-big-logo.png" height=50px>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://dhis2.org/wp-content/uploads/dhis2-logo-rgb-positive.svg" height=60px>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><img src="https://docs.openfn.org/img/logo.svg" height=60px>
@@ -390,7 +390,7 @@ Below is how its done
 ```
 
 This task replaces all the occurrences of the sting `ozone-frontend-config.json` with `msf-frontend-config.json`
-After building the project using maven, the  `SPA_CONFIG_URLS` variable (it specifies the location of the frontend config file inside docker) in the `.env` file will have a value of `/openmrs/spa/ozone/msf-frontend-config.json`
+After building the project using maven, the  `SPA_CONFIG_URLS` variable (it specifies the location of the frontend config file inside docker) in the `.env` file will have a value of `/openmrs/spa/configs/msf-frontend-config.json`
 
 > Note: Docker compose will only load the file passed to the `SPA_CONFIG_URLS` in the `.env` file.  This means that any other file present in the `target` but not added to the `SPA_CONFIG_URLS` will be ignored.
 
@@ -416,7 +416,7 @@ We can also use the child frontend configuration file to override the inherited 
   result to the `.env` file after build
 
   ```properties
-  SPA_CONFIG_URLS=/openmrs/spa/ozone/msf-frontend-config.json
+  SPA_CONFIG_URLS=/openmrs/spa/configs/msf-frontend-config.json
   ```
 - Site frontend configuration inheriting from Organization level
   in pom.xml file
@@ -425,14 +425,14 @@ We can also use the child frontend configuration file to override the inherited 
   <replaceregexp
       file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
       match="(SPA_CONFIG_URLS=.+)"
-      replace="\1,/openmrs/spa/ozone/msf-mosul-frontend-config.json"
+      replace="\1,/openmrs/spa/configs/msf-mosul-frontend-config.json"
   />
   ```
 
   result to the `.env` file after build
 
   ```properties
-  SPA_CONFIG_URLS=/openmrs/spa/ozone/msf-frontend-config.json, /openmrs/spa/ozone/msf-mosul-frontend-config-json
+  SPA_CONFIG_URLS=/openmrs/spa/configs/msf-frontend-config.json, /openmrs/spa/configs/msf-mosul-frontend-config-json
   ```
 
 ---
