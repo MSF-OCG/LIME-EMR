@@ -41,7 +41,7 @@
               }
             },
             {
-              "id": "weight",
+              "id": "weightAtAdmission",
               "label": "Weight (kg)",
               "type": "obs",
               "required": false,
@@ -54,7 +54,7 @@
               "disallowDecimals": false
             },
             {
-              "id": "height",
+              "id": "heightAtAdmission",
               "label": "Height (in cm)",
               "type": "obs",
               "required": false,
@@ -66,7 +66,7 @@
               }
             },
             {
-              "id": "whz",
+              "id": "whzAtAdmission",
               "label": "WHZ",
               "type": "obs",
               "required": false,
@@ -90,7 +90,7 @@
               }
             },
             {
-              "id": "muac",
+              "id": "muacAtAdmission",
               "label": "MUAC (mm)",
               "type": "obs",
               "required": false,
@@ -150,7 +150,7 @@
               "default": "Current date"
             },
             {
-              "id": "weight",
+              "id": "weightAtDischarge",
               "label": "Weight (kg)",
               "type": "obs",
               "required": false,
@@ -163,7 +163,7 @@
               "disallowDecimals": false
             },
             {
-              "id": "height",
+              "id": "heightAtDischarge",
               "label": "Height (in cm)",
               "type": "obs",
               "required": false,
@@ -175,7 +175,7 @@
               }
             },
             {
-              "id": "whz",
+              "id": "whzAtDischarge",
               "label": "WHZ",
               "type": "obs",
               "required": false,
@@ -199,7 +199,7 @@
               }
             },
             {
-              "id": "muac",
+              "id": "muacAtDischarge",
               "label": "MUAC (mm)",
               "type": "obs",
               "required": false,
@@ -295,7 +295,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "bcg == null || bcg === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || bcg === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(bcg) || bcg === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || bcg === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -342,7 +342,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "hepatitisB0 == null || hepatitisB0 === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || hepatitisB0 === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(hepatitisB0) || hepatitisB0 === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || hepatitisB0 === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -401,7 +401,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "pentavalent == null || pentavalent === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || pentavalent === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(pentavalent) || pentavalent === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || pentavalent === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -464,7 +464,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "afp == null || afp === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || afp === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(afp) || afp === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || afp === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -515,7 +515,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "measles == null || measles === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || measles === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(measles) || measles === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || measles === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -574,7 +574,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "pcv == null || pcv === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || pcv === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(pcv) || pcv === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || pcv === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -629,7 +629,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "rotavirus == null || rotavirus === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || rotavirus === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(rotavirus) || rotavirus === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || rotavirus === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -676,7 +676,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "yellowFever == null || yellowFever === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || yellowFever === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(yellowFever) || yellowFever === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || yellowFever === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -731,7 +731,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "ipv == null || ipv === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || ipv === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(ipv) || ipv === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || ipv === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -782,7 +782,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "meningitisA == null || meningitisA === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || meningitisA === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(meningitisA) || meningitisA === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || meningitisA === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -829,7 +829,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "ppv23 == null || ppv23 === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || ppv23 === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(ppv23) || ppv23 === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || ppv23 === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -880,7 +880,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "hpv == null || hpv === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || hpv === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(hpv) || hpv === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || hpv === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
@@ -943,7 +943,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "antitetanusVaccinationOfTheMother == null || antitetanusVaccinationOfTheMother === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || antitetanusVaccinationOfTheMother === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
+                "hideWhenExpression": "isEmpty(antitetanusVaccinationOfTheMother) || antitetanusVaccinationOfTheMother === 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8' || antitetanusVaccinationOfTheMother === '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf'"
               }
             },
             {
