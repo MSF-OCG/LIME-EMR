@@ -253,22 +253,6 @@
             </configuration>
           </execution>
           <execution>
-            <id>Add MSF-OCG enviroment Configuration to ozone</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <target>
-                <echo level="info" message="Adding msf docker image version"/>
-                <concat destfile="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env" append="true">
-                  <filelist dir="${project.build.directory}/${project.artifactId}-${project.version}/run/docker" files="${envFileToInclude}"/>
-                </concat>
-                <delete file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/${envFileToInclude}"/>
-              </target>
-            </configuration>
-          </execution>
-          <execution>
             <id>Add MSF addons to ozone</id>
             <phase>process-resources</phase>
             <goals>

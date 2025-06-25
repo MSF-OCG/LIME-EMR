@@ -5,7 +5,7 @@ networks:
 services:
   postgresql:
     env_file:
-      - '${MSF_ENV_CONFIG_PATH}/.env'
+      - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
     stop_grace_period: '3s'
     volumes:
       - "${SQL_SCRIPTS_PATH}/postgresql/create_openfn_db.sh:/docker-entrypoint-initdb.d/create_openfn_db.sh"
@@ -14,7 +14,7 @@ services:
     image: 'openfn/lightning:v2.11.0'
     command: ["/app/bin/lightning", "eval", "Lightning.Release.migrate"]
     env_file:
-      - '${MSF_ENV_CONFIG_PATH}/.env'
+      - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
     depends_on:
       postgresql:
         condition: service_healthy
@@ -32,7 +32,7 @@ services:
           cpus: '${DOCKER_WEB_CPUS:-0}'
           memory: '${DOCKER_WEB_MEMORY:-0}'
     env_file:
-      - '${MSF_ENV_CONFIG_PATH}/.env'
+      - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
     environment:
       ADAPTORS_REGISTRY_JSON_PATH: /app/priv/adaptor_registry_cache.json
     depends_on:
@@ -73,7 +73,7 @@ services:
         condition: service_healthy
         restart: true
     env_file:
-      - '${MSF_ENV_CONFIG_PATH}/.env'
+      - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
     command: ['pnpm', 'start:prod', '-l', 'ws://web:${URL_PORT:-4000}/worker']
     restart: '${DOCKER_RESTART_POLICY:-unless-stopped}'
     stop_grace_period: '3s'
