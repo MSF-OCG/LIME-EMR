@@ -91,6 +91,56 @@
                 "min": 0,
                 "step": 1
               }
+            },
+            {
+              "id": "product",
+              "label": "Feeding Product",
+              "type": "obs",
+              "required": false,
+              "readonly": "!customHasRequiredPrivilege('Manage Nutrition')",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f6e95c03-ba4d-4263-b768-34f05c617a47",
+                "answers": [
+                  {
+                    "label": "F75",
+                    "concept": "63b914b9-836d-4869-8e76-de7cbaaa0ef7"
+                  },
+                  {
+                    "label": "F100",
+                    "concept": "d9db0be4-e01b-4520-8837-bc4dab724c78"
+                  },
+                  {
+                    "label": "Diluted F100",
+                    "concept": "96597743-6a5e-4a26-bbae-b7d02196fd59"
+                  },
+                  {
+                    "label": "Infant formula",
+                    "concept": "decf87b8-f1a6-4d77-b497-cefa846e5ef8"
+                  },
+                  {
+                    "label": "RUTF sachet",
+                    "concept": "75aed48d-0b2b-4edc-a5f8-fb278b733a8a"
+                  },
+                  {
+                    "label": "RUTF BP100",
+                    "concept": "87f0e64d-ad5c-4ba1-be38-f73ca6cedbe0"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "quantitySachetOrMeal",
+              "label": "Quantity - ml / sachet / biscuits per meal",
+              "type": "obs",
+              "required": false,
+              "readonly": "!customHasRequiredPrivilege('Manage Nutrition')",
+              "questionOptions": {
+                "rendering": "numeric",
+                "concept": "138e3afb-dc74-4976-9315-b74babf44188",
+                "min": 0,
+                "step": 1
+              }
             }
           ]
         },
@@ -104,59 +154,12 @@
               "type": "obsGroup",
               "questionOptions": {
                 "rendering": "repeating",
-                "concept": "xxxx"
+                "concept": "9d5a0528-6e3f-482e-9cea-a9931be75244",
+                "repeatOptions": {
+                  "limitExpression": "useFieldValue('numberOfMealsOrDay')"
+                }
               },
               "questions": [
-                {
-                  "id": "product",
-                  "label": "Feeding Product",
-                  "type": "obs",
-                  "required": false,
-                  "readonly": "!customHasRequiredPrivilege('Manage Nutrition')",
-                  "questionOptions": {
-                    "rendering": "radio",
-                    "concept": "f6e95c03-ba4d-4263-b768-34f05c617a47",
-                    "answers": [
-                      {
-                        "label": "F75",
-                        "concept": "63b914b9-836d-4869-8e76-de7cbaaa0ef7"
-                      },
-                      {
-                        "label": "F100",
-                        "concept": "d9db0be4-e01b-4520-8837-bc4dab724c78"
-                      },
-                      {
-                        "label": "Diluted F100",
-                        "concept": "96597743-6a5e-4a26-bbae-b7d02196fd59"
-                      },
-                      {
-                        "label": "Infant formula",
-                        "concept": "decf87b8-f1a6-4d77-b497-cefa846e5ef8"
-                      },
-                      {
-                        "label": "RUTF sachet",
-                        "concept": "75aed48d-0b2b-4edc-a5f8-fb278b733a8a"
-                      },
-                      {
-                        "label": "RUTF BP100",
-                        "concept": "87f0e64d-ad5c-4ba1-be38-f73ca6cedbe0"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "id": "quantitySachetOrMeal",
-                  "label": "Quantity - ml / sachet / biscuits per meal",
-                  "type": "obs",
-                  "required": false,
-                  "readonly": "!customHasRequiredPrivilege('Manage Nutrition')",
-                  "questionOptions": {
-                    "rendering": "numeric",
-                    "concept": "138e3afb-dc74-4976-9315-b74babf44188",
-                    "min": 0,
-                    "step": 1
-                  }
-                },
                 {
                   "id": "amountTaken",
                   "label": "Amount taken",
