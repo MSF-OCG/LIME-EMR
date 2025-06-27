@@ -1,12 +1,29 @@
-
 # MSF-OCG LIME EMR
 The OpenMRS 3 distribution for MSF OCG
 
-<div>
-<img src="https://www.msf.org/themes/custom/msf_theme/ogimage.jpg" width=260px>
-<img src="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/main/docs/logo.png" width=260px>
-<img src="https://github.com/MSF-OCG/LIME-EMR-project-demo/raw/main/docs/_media/Madiro.png" width=260px>
-</div>
+<table>
+  <tr>
+    <td rowspan="3" width="70%">
+      <img src="https://github.com/user-attachments/assets/6706385f-1bfa-40cb-84a9-ae58d918e92b">
+    </td>
+    <td>
+      <img src="https://www.msf.org/themes/custom/msf_theme/ogimage.jpg">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-project-demo/main/docs/logo.png">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://github.com/MSF-OCG/LIME-EMR-project-demo/raw/main/docs/_media/Madiro.png">
+    </td>
+  </tr>
+</table>
+
+
+
 
 ## A Generic Light Modular EMR using
 
@@ -25,7 +42,7 @@ The OpenMRS 3 distribution for MSF OCG
 </div>
 
 ## Technical documentation of the project
-[https://msf-ocg.github.io/LIME-EMR-project-demo](https://msf-ocg.github.io/LIME-EMR-project-demo)
+[https://msf-ocg.github.io/LIME-EMR-project-demo](https://msf-ocg.github.io/LIME-EMR)
 
 
 ## Quick Start
