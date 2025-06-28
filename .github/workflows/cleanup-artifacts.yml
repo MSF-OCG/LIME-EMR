@@ -1,0 +1,40 @@
+name: Delete Old Artifacts
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # every Sunday at 00:00 UTC
+  workflow_dispatch:     # allow manual triggering
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install GitHub CLI
+        run: |
+          sudo apt update
+          sudo apt install gh -y
+
+      - name: Authenticate GitHub CLI
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
+      - name: Delete Artifacts Older Than 14 Days
+        run: |
+          REPO="${{ github.repository }}"
+          TODAY=$(date -u +%s)
+          CUTOFF=$(date -u -d '14 days ago' +%s)
+
+          echo "Fetching artifacts for $REPO..."
+          gh api -H "Accept: application/vnd.github+json" /repos/$REPO/actions/artifacts |
+          jq -c '.artifacts[]' | while read -r artifact; do
+            ID=$(echo "$artifact" | jq -r '.id')
+            NAME=$(echo "$artifact" | jq -r '.name')
+            CREATED_AT=$(echo "$artifact" | jq -r '.created_at')
+            CREATED_EPOCH=$(date -d "$CREATED_AT" +%s)
+
+            if [ "$CREATED_EPOCH" -lt "$CUTOFF" ]; then
+              echo "🗑 Deleting artifact: $NAME (ID: $ID, Created: $CREATED_AT)"
+              gh api -X DELETE /repos/$REPO/actions/artifacts/$ID
+            else
+              echo "✅ Skipping recent artifact: $NAME (Created: $CREATED_AT)"
+            fi
+          done
