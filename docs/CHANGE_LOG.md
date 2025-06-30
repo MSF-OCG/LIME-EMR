@@ -1,5 +1,32 @@
 # LIME CHANGE LOG 🚀
 
+## Release 26th June, 2025
+
+### Features & Improvements
+
+- Feeding form - change symbol to represent intake [LIME2-730](https://msf-ocg.atlassian.net/browse/LIME2-730)
+- Update Ozone to Alpha 13 - [LIME2-664](https://msf-ocg.atlassian.net/browse/LIME2-664)
+- Fix minified react error in Nutrition feeding form - [LIME2-779](https://msf-ocg.atlassian.net/browse/LIME2-779)
+- Family planning - messages appearing according to contra-indication - [LIME2-586](https://msf-ocg.atlassian.net/browse/LIME2-586)
+- Laboratory - LabSets added - [LIME2-746](https://msf-ocg.atlassian.net/browse/LIME2-746)
+- Create roles with different accesses for nutrition team - [LIME2-623](https://msf-ocg.atlassian.net/browse/LIME2-623)
+- Allow for multiple prescriptions in nutrition feeding monitoring form - [LIME2-707](https://msf-ocg.atlassian.net/browse/LIME2-707)
+- Add support for order, multiple conditions, unique questionID with prefix, and decimal to FormGen - [LIME2-774](https://msf-ocg.atlassian.net/browse/LIME2-774)
+- Verify all labtests in the MSF - [LIME2-754](https://msf-ocg.atlassian.net/browse/LIME2-754)
+
+### Bug Fixes
+
+- Fix environment variable for running OpenMRS on 4001 - [LIME2-780](https://msf-ocg.atlassian.net/browse/LIME2-780)
+- Duplicated visits - [LIME2-766](https://msf-ocg.atlassian.net/browse/LIME2-766)
+- Some drug orders will not save - ?problem with prefilled units - [LIME2-769](https://msf-ocg.atlassian.net/browse/LIME2-769)
+- Medication - Import OCG Medical Standard List - [LIME2-298](https://msf-ocg.atlassian.net/browse/LIME2-298)
+
+### Investigations
+
+- Investigate: All forms - changes not allowed after 24h - [LIME2-762](https://msf-ocg.atlassian.net/browse/LIME2-762)
+- Investigate: Workspaces - mandatory fields optional - [LIME2-764](https://msf-ocg.atlassian.net/browse/LIME2-764)
+- Investigate: Lab - allow corrections - [LIME2-763](https://msf-ocg.atlassian.net/browse/LIME2-763)
+
 ## Release 30th May, 2025
 
 ### Features & Improvements
