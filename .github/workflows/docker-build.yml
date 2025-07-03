@@ -53,7 +53,7 @@ jobs:
           cache: 'maven'
 
       - name: Set settings.xml
-        uses: s4u/maven-settings-action@v3.0.0
+        uses: s4u/maven-settings-action@v3.1.0
         with:
           servers: |
             [
@@ -61,11 +61,6 @@ jobs:
                 "id": "msf-ocg-github-lime-emr",
                 "username": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}",
                 "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
-              },
-              {
-                "id": "github",
-                "username": "${{ github.actor }}",
-                "password": "${{ secrets.GITHUB_TOKEN }}"
               }
             ]
             
