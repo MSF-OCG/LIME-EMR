@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Get full history for version detection
-      
+
       - name: Set up JDK ${{ matrix.java }}
         uses: actions/setup-java@v4
         with:
@@ -55,14 +55,12 @@ jobs:
         uses: s4u/maven-settings-action@v3.0.0
         with:
           servers: |
-            [
-              {
-                "id": "msf-ocg-github-lime-emr",
-                "username": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}",
-                "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
-              }
-            ]
-
+            [{
+              "id": "msf-ocg-github-lime-emr",
+              "username": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}",
+              "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
+            }]
+            
       - name: Build and Test
         id: build
         run: |
@@ -71,7 +69,6 @@ jobs:
             echo "::error::Maven wrapper not found or not executable"
             exit 1
           fi
-
           # Get Mugamba version and artifact ID
           echo "Fetching Mugamba project info..."
           cd site/mugamba
@@ -108,12 +105,11 @@ jobs:
             echo "build-artifacts=failed" >> $GITHUB_OUTPUT
             exit 1
           fi
-
           echo "Maven build successful - bundled-docker-build-tmp generated"
           echo "build-artifacts=success" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "artifactid=$ARTIFACTID" >> $GITHUB_OUTPUT
-
+          
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -153,7 +149,7 @@ jobs:
           fi
           
           echo "Build artifacts verified successfully"
-
+          
       - name: Read docker-build.txt
         id: read-config
         run: |
@@ -195,7 +191,7 @@ jobs:
             echo "proxy" >> $GITHUB_OUTPUT
             echo "EOF" >> $GITHUB_OUTPUT
           fi
-
+          
       - name: Set matrix strategy
         id: set-matrix
         run: |
@@ -295,7 +291,7 @@ jobs:
           echo "Matrix configuration:"
           echo "${{ steps.set-matrix.outputs.matrix }}"
           echo "Build list: ${{ steps.set-matrix.outputs.build_list }}"
-
+          
   # Build and push Docker images using matrix strategy
   build:
     runs-on: ubuntu-latest
@@ -325,7 +321,7 @@ jobs:
             echo "::error::Dockerfile not found in context directory"
             exit 1
           fi
-
+          
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -347,7 +343,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=raw,value=latest,enable={{is_default_branch}}
-
+            
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -364,13 +360,16 @@ jobs:
         run: |
           echo "Built and pushed: ${{ env.REGISTRY }}/${{ env.IMAGE_PREFIX }}-${{ matrix.image }}"
           echo "Tags: ${{ steps.meta.outputs.tags }}"
-
+          
   # Summary job to report build status
   summary:
     runs-on: ubuntu-latest
     needs: [maven-build, setup, build]
     if: always()
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Build Summary
         run: |
           echo "## Docker Build Summary" >> $GITHUB_STEP_SUMMARY
@@ -404,27 +403,22 @@ jobs:
           
           # Get the build list from setup job
           BUILD_LIST="${{ needs.setup.outputs.build_list }}"
+          BUILD_RESULT="${{ needs.build.result }}"
           
           if [ -n "$BUILD_LIST" ]; then
-            # Parse build list and check each job
+            # Parse build list and show status
             IFS=',' read -ra IMAGES <<< "$BUILD_LIST"
             for image in "${IMAGES[@]}"; do
               if [ -n "$image" ]; then
-                # Find the corresponding build job
-                JOB_STATUS="skipped"
-                for job in ${{ toJson(needs.build) }}; do
-                  if [ "$job.matrix.image" = "$image" ]; then
-                    JOB_STATUS="$job.result"
-                    break
-                  fi
-                done
-                
-                case "$JOB_STATUS" in
+                case "$BUILD_RESULT" in
                   "success")
                     echo "| $image | ✅ Success |" >> $GITHUB_STEP_SUMMARY
                     ;;
                   "skipped")
                     echo "| $image | ⚠️ Skipped |" >> $GITHUB_STEP_SUMMARY
+                    ;;
+                  "cancelled")
+                    echo "| $image | ⚠️ Cancelled |" >> $GITHUB_STEP_SUMMARY
                     ;;
                   *)
                     echo "| $image | ❌ Failed |" >> $GITHUB_STEP_SUMMARY
