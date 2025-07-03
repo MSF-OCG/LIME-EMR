@@ -24,7 +24,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_PREFIX: ${{ github.repository_owner }}/ozone-uvl-mugamba
+  IMAGE_PREFIX: ${{ github.repository_owner }}/ozone-msf-mosul
 
 jobs:
   # Maven build job to generate bundled-docker-build-tmp
@@ -55,11 +55,13 @@ jobs:
         uses: s4u/maven-settings-action@v3.0.0
         with:
           servers: |
-            [{
-              "id": "msf-ocg-github-lime-emr",
-              "username": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}",
-              "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
-            }]
+            [
+              {
+                "id": "msf-ocg-github-lime-emr",
+                "username": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}",
+                "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
+              }
+            ]
             
       - name: Build and Test
         id: build
@@ -69,14 +71,14 @@ jobs:
             echo "::error::Maven wrapper not found or not executable"
             exit 1
           fi
-          # Get Mugamba version and artifact ID
-          echo "Fetching Mugamba project info..."
-          cd site/mugamba
+          # Get Mosul version and artifact ID
+          echo "Fetching Mosul project info..."
+          cd site/mosul
           VERSION=$(./../../scripts/mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)
           ARTIFACTID=$(./../../scripts/mvnw help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
           cd ../..
           
-          echo "Mugamba Artifact: $ARTIFACTID, Version: $VERSION"
+          echo "Mosul Artifact: $ARTIFACTID, Version: $VERSION"
           
           # Run build with better error handling
           if ! ./scripts/mvnw --batch-mode --update-snapshots --activate-profiles validator -Pbundled-docker -Pazure clean package; then
@@ -85,19 +87,19 @@ jobs:
             exit 1
           fi
           
-          # Verify and copy Mugamba distro
-          MUGAMBA_DISTRO="site/mugamba/target/$ARTIFACTID-$VERSION/distro"
+          # Verify and copy Mosul distro
+          MOSUL_DISTRO="site/mosul/target/$ARTIFACTID-$VERSION/distro"
           TARGET_DIR="distro/target/bundled-docker-build-tmp/distro"
           
-          if [ ! -d "$MUGAMBA_DISTRO" ]; then
-            echo "::error::Mugamba distro directory not found at $MUGAMBA_DISTRO"
+          if [ ! -d "$MOSUL_DISTRO" ]; then
+            echo "::error::Mosul distro directory not found at $MOSUL_DISTRO"
             echo "build-artifacts=failed" >> $GITHUB_OUTPUT
             exit 1
           fi
           
-          echo "Copying Mugamba distro to $TARGET_DIR"
+          echo "Copying Mosul distro to $TARGET_DIR"
           mkdir -p "$TARGET_DIR"
-          cp -R "$MUGAMBA_DISTRO"/* "$TARGET_DIR"/
+          cp -R "$MOSUL_DISTRO"/* "$TARGET_DIR"/
           
           # Verify final build output
           if [ ! -d "distro/target/bundled-docker-build-tmp" ]; then
@@ -376,11 +378,44 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Show Maven build status
-          if [ "${{ needs.maven-build.result }}" = "success" ]; then
-            echo "**Maven Build**: ✅ Success" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "**Maven Build**: ❌ Failed" >> $GITHUB_STEP_SUMMARY
-          fi
+          MAVEN_RESULT="${{ needs.maven-build.result }}"
+          case "$MAVEN_RESULT" in
+            "success")
+              echo "**Maven Build**: ✅ Success" >> $GITHUB_STEP_SUMMARY
+              ;;
+            "failure")
+              echo "**Maven Build**: ❌ Failed" >> $GITHUB_STEP_SUMMARY
+              ;;
+            "cancelled")
+              echo "**Maven Build**: ⚠️ Cancelled" >> $GITHUB_STEP_SUMMARY
+              ;;
+            "skipped")
+              echo "**Maven Build**: ⚠️ Skipped" >> $GITHUB_STEP_SUMMARY
+              ;;
+            *)
+              echo "**Maven Build**: ❓ Unknown ($MAVEN_RESULT)" >> $GITHUB_STEP_SUMMARY
+              ;;
+          esac
+          
+          # Show Setup job status
+          SETUP_RESULT="${{ needs.setup.result }}"
+          case "$SETUP_RESULT" in
+            "success")
+              echo "**Setup**: ✅ Success" >> $GITHUB_STEP_SUMMARY
+              ;;
+            "failure")
+              echo "**Setup**: ❌ Failed" >> $GITHUB_STEP_SUMMARY
+              ;;
+            "cancelled")
+              echo "**Setup**: ⚠️ Cancelled" >> $GITHUB_STEP_SUMMARY
+              ;;
+            "skipped")
+              echo "**Setup**: ⚠️ Skipped" >> $GITHUB_STEP_SUMMARY
+              ;;
+            *)
+              echo "**Setup**: ❓ Unknown ($SETUP_RESULT)" >> $GITHUB_STEP_SUMMARY
+              ;;
+          esac
           
           echo "" >> $GITHUB_STEP_SUMMARY
           
@@ -401,33 +436,43 @@ jobs:
           echo "| Image | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|------|--------|" >> $GITHUB_STEP_SUMMARY
           
-          # Get the build list from setup job
-          BUILD_LIST="${{ needs.setup.outputs.build_list }}"
-          BUILD_RESULT="${{ needs.build.result }}"
-          
-          if [ -n "$BUILD_LIST" ]; then
-            # Parse build list and show status
-            IFS=',' read -ra IMAGES <<< "$BUILD_LIST"
-            for image in "${IMAGES[@]}"; do
-              if [ -n "$image" ]; then
-                case "$BUILD_RESULT" in
-                  "success")
-                    echo "| $image | ✅ Success |" >> $GITHUB_STEP_SUMMARY
-                    ;;
-                  "skipped")
-                    echo "| $image | ⚠️ Skipped |" >> $GITHUB_STEP_SUMMARY
-                    ;;
-                  "cancelled")
-                    echo "| $image | ⚠️ Cancelled |" >> $GITHUB_STEP_SUMMARY
-                    ;;
-                  *)
-                    echo "| $image | ❌ Failed |" >> $GITHUB_STEP_SUMMARY
-                    ;;
-                esac
-              fi
-            done
+          # Check if previous jobs failed
+          if [ "$MAVEN_RESULT" != "success" ]; then
+            echo "| All images | ❌ Maven build failed |" >> $GITHUB_STEP_SUMMARY
+          elif [ "$SETUP_RESULT" != "success" ]; then
+            echo "| All images | ❌ Setup failed |" >> $GITHUB_STEP_SUMMARY
           else
-            echo "| No images configured | ⚠️ No builds |" >> $GITHUB_STEP_SUMMARY
+            # Get the build list from setup job and show individual results
+            BUILD_LIST="${{ needs.setup.outputs.build_list }}"
+            BUILD_RESULT="${{ needs.build.result }}"
+            
+            if [ -n "$BUILD_LIST" ]; then
+              # Parse build list and show status
+              IFS=',' read -ra IMAGES <<< "$BUILD_LIST"
+              for image in "${IMAGES[@]}"; do
+                if [ -n "$image" ]; then
+                  case "$BUILD_RESULT" in
+                    "success")
+                      echo "| $image | ✅ Success |" >> $GITHUB_STEP_SUMMARY
+                      ;;
+                    "failure")
+                      echo "| $image | ❌ Failed |" >> $GITHUB_STEP_SUMMARY
+                      ;;
+                    "cancelled")
+                      echo "| $image | ⚠️ Cancelled |" >> $GITHUB_STEP_SUMMARY
+                      ;;
+                    "skipped")
+                      echo "| $image | ⚠️ Skipped |" >> $GITHUB_STEP_SUMMARY
+                      ;;
+                    *)
+                      echo "| $image | ❓ Unknown ($BUILD_RESULT) |" >> $GITHUB_STEP_SUMMARY
+                      ;;
+                  esac
+                fi
+              done
+            else
+              echo "| No images configured | ⚠️ No builds |" >> $GITHUB_STEP_SUMMARY
+            fi
           fi
           
           echo "" >> $GITHUB_STEP_SUMMARY
