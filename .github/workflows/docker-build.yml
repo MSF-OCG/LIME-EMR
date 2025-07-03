@@ -55,7 +55,7 @@ jobs:
       - name: Set settings.xml
         uses: s4u/maven-settings-action@v3.1.0
         with:
-          servers: '[{"id": "github", "username": "${{ github.actor }}", "password": "${{ secrets.GITHUB_TOKEN }}"}]'
+          servers: '[{"id": "msf-ocg-github-lime-emr", "username": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}", "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"}]'
             
       - name: Build and Test
         id: build
@@ -70,7 +70,7 @@ jobs:
 
           # Get Mosul version and artifact ID
           echo "Fetching Mosul project info..."
-          cd site/mosul
+          cd sites/mosul
           VERSION=$(./../../scripts/mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)
           ARTIFACTID=$(./../../scripts/mvnw help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
           cd ../..
@@ -81,7 +81,7 @@ jobs:
           ./scripts/mvnw --batch-mode --update-snapshots --activate-profiles validator -Pbundled-docker -Pazure clean package
           
           # Verify and copy Mosul distro
-          MOSUL_DISTRO="site/mosul/target/$ARTIFACTID-$VERSION/distro"
+          MOSUL_DISTRO="sites/mosul/target/$ARTIFACTID-$VERSION/distro"
           TARGET_DIR="distro/target/bundled-docker-build-tmp/distro"
           
           if [ ! -d "$MOSUL_DISTRO" ]; then
