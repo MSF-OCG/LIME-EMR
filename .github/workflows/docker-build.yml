@@ -55,11 +55,10 @@ jobs:
         uses: s4u/maven-settings-action@v3.0.0
         with:
           servers: |
-            [{
-              "id": "msf-ocg-github-lime-emr",
-              "username": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}",
-              "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
-            }]
+            - id: msf-ocg-github-lime-emr
+            username: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}
+            password: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
+
       
       - name: Build and Test
         id: build
