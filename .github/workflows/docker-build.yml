@@ -4,7 +4,8 @@ on:
   push:
     branches: [ main ]
     tags: [ 'v*' ]
-  pull_request:
+  pull_request_target:
+    types: [assigned, opened, synchronize, reopened]
     branches: [ main ]
   workflow_dispatch:
     inputs:
