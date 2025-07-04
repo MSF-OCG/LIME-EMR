@@ -2,11 +2,8 @@ name: Build and Push Docker Images
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, LIME2-666 ]
     tags: [ 'v*' ]
-  pull_request_target:
-    types: [assigned, opened, synchronize, reopened]
-    branches: [ main ]
   workflow_dispatch:
     inputs:
       image:
