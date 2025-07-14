@@ -57,8 +57,8 @@
     <changeSet id="update_patient_id_sticker_renderer-202405261300" author="jnsereko">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END 
-                FROM reporting_report_design 
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM reporting_report_design
                 WHERE renderer_type = 'org.openmrs.module.commonreports.renderer.PatientIdStickerXmlReportRenderer';
             </sqlCheck>
         </preConditions>
@@ -66,6 +66,68 @@
             UPDATE reporting_report_design
             SET renderer_type = 'org.openmrs.module.patientdocuments.renderer.PatientIdStickerXmlReportRenderer'
             WHERE renderer_type = 'org.openmrs.module.commonreports.renderer.PatientIdStickerXmlReportRenderer';
+        </sql>
+    </changeSet>
+
+    <!-- Retire CIEL concept for Nystatin -->
+    <changeSet id="retire_ciel_nystatin" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT COUNT(*) FROM concept WHERE concept_id=1882 AND uuid="163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            </sqlCheck>
+        </preConditions>
+
+         <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND concept_id = 1882;
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete duplicate CIEL Unknown concept
+        </comment>
+
+        <sql>
+            <!-- Handling references and foreign key constraints -->
+            DELETE FROM concept_answer WHERE answer_concept = 1882;
+            DELETE FROM concept_name WHERE concept_id = 1882;
+            DELETE FROM concept_description WHERE concept_id = 1882;
+            DELETE FROM concept_reference_map WHERE concept_id = 1882;
+
+            <!-- Only running this to remove previously recorded obs -->
+            DELETE FROM obs WHERE value_coded = 1882;
+
+            <!-- Delete concept -->
+            DELETE FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND concept_id = 1882;
+        </sql>
+    </changeSet>
+    <changeSet id="retire_ciel_nystatin" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT COUNT(*) FROM concept WHERE concept_id=1684 AND uuid="80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            </sqlCheck>
+        </preConditions>
+
+         <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND concept_id = 1684;
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete duplicate CIEL Unknown concept
+        </comment>
+
+        <sql>
+            <!-- Handling references and foreign key constraints -->
+            DELETE FROM concept_answer WHERE answer_concept = 1684;
+            DELETE FROM concept_name WHERE concept_id = 1684;
+            DELETE FROM concept_description WHERE concept_id = 1684;
+            DELETE FROM concept_reference_map WHERE concept_id = 1684;
+
+            <!-- Only running this to remove previously recorded obs -->
+            DELETE FROM obs WHERE value_coded = 1684;
+
+            <!-- Delete concept -->
+            DELETE FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND concept_id = 1684;
         </sql>
     </changeSet>
 
