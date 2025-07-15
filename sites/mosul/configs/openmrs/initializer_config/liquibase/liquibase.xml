@@ -68,4 +68,29 @@
         </sql>
     </changeSet>
 
+    <changeSet id="remove-ciel-nystatin" author="vasharma05">
+        <sql>
+          <!-- Remove concept name -->
+          DELETE FROM concept_name
+          WHERE concept_id = (
+            SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+          );
+
+          <!-- Remove drug -->
+          DELETE FROM drug
+          WHERE concept_id = (
+            SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+          );
+
+          DELETE FROM concept
+          WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+        </sql>
+    </changeSet>
+
+    <changeSet id="remove-unwanted-drugs" author="vasharma05">
+        <sql>
+            DELETE FROM drug
+            WHERE uuid IN ("ff9d0e64-4c3b-4856-83b7-d4e90c6cf51c","9d9f2fa1-0139-4440-99fc-e5caf4e3d05e","98a2be3c-70ce-4f8f-9513-b1d1d2977b77","1f49a024-6569-4740-9b5b-2f8dc05b1d4a","3554cf31-2669-4add-9433-4f8dfc8d3544","c95216b3-ef44-4f3a-b53e-f0603158ce70","a3bd05b0-9cad-4d00-97d7-070d98bd1f6d","e278c3e1-ed95-42c2-b9c0-a83bd99e6588","556d869c-e2e3-4635-ab69-c6737a8721c8","507354fe-321d-493f-888b-efee07ad9eb2");
+        </sql>
+    </changeSet>
 </databaseChangeLog>
