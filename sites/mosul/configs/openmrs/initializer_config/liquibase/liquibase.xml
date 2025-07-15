@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!-- Delete from concept_answer -->
+    <changeSet id="delete-concept-answer-001" author="vasharma05">
+        <sql>
+            DELETE ca 
+            FROM concept c 
+            JOIN concept_answer ca 
+              ON c.concept_id = ca.concept_id
+            WHERE c.uuid = "15f35c9d-3328-478b-a6e8-f3846fdc274a";
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
