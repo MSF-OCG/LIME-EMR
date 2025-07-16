@@ -1,16 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- Add admin as provider -->
+    <changeSet id="add_admin_provider-202407101630" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 0 ELSE 1 END FROM provider WHERE person_id = 1;
+            </sqlCheck>
+        </preConditions>
+        <insert tableName="provider">
+            <column name="provider_id" value="1" />
+            <column name="person_id" value="1" />
+            <column name="name" value="Super User" />
+            <column name="identifier" value="admin" />
+            <column name="uuid" value="361ebccc-0992-46c5-a99f-ac523bed386e" />
+            <column name="creator" value="1" />
+            <column name="date_created" value="2024-07-11 11:30:00" />
+        </insert>
+    </changeSet>
+
+    <!-- Unvoid arabic translations voided by Initializer -->
+    <changeSet id="unvoid_arabic_translations-202411261121" author="michaelbontyes">
+        <sql>
+            UPDATE concept_name
+            SET voided = 0
+            WHERE voided = 1
+              AND void_reason = 'Voided by module Initializer'
+              AND locale = 'ar';
+        </sql>
+    </changeSet>
+
+    <!-- Remove the C-reactive Protien () from the Tests Orderability concept -->
+    <changeSet id="remove_crp_from_tests_orderability" author="vasharma05">
+        <sql>
+            DELETE FROM concept_set
+                WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'fbc2647a-caef-4c3e-bc22-6109efefe70e' LIMIT 1)
+                AND concept_set = (SELECT concept_id FROM concept WHERE uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77' LIMIT 1);
+        </sql>
+    </changeSet>
+
+    <!-- Schedule auto-close OPD visits -->
+    <changeSet id="unvoid_arabic_translations-202411271458" author="michaelbontyes">
+        <sql>
+            INSERT INTO openmrs.scheduler_task_config (name,description,schedulable_class,start_time,start_time_pattern,repeat_interval,start_on_startup,started,created_by,date_created,changed_by,date_changed,last_execution_time,uuid) VALUES
+	            ('Auto Close Visits Task','Stops all active visits that match the visit type(s) specified by the value of the global property ''visits.autoCloseVisitType''','org.openmrs.scheduler.tasks.AutoCloseVisitsTask','2024-11-28 00:00:00','MM/dd/yyyy HH:mm:ss',86400,1,1,1,'2018-06-04 18:30:16',1,'2024-11-27 11:54:11','2024-11-27 11:49:00','8c17b376-1a2b-11e1-a51a-00248140a5eb')
+        </sql>
+    </changeSet>
+
+    <!-- Update PatientIdStickerXmlReportRenderer class path -->
+    <changeSet id="update_patient_id_sticker_renderer-202405261300" author="jnsereko">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM reporting_report_design
+                WHERE renderer_type = 'org.openmrs.module.commonreports.renderer.PatientIdStickerXmlReportRenderer';
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            UPDATE reporting_report_design
+            SET renderer_type = 'org.openmrs.module.patientdocuments.renderer.PatientIdStickerXmlReportRenderer'
+            WHERE renderer_type = 'org.openmrs.module.commonreports.renderer.PatientIdStickerXmlReportRenderer';
+        </sql>
+    </changeSet>
+
+    <!-- Retire CIEL concept for Nystatin -->
+    <changeSet id="delete_ciel_concept_nystatin" author="vasharma05">
+         <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND concept_id = 1684;
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete duplicate CIEL Nystatin concept
+        </comment>
+
+        <sql>
+            <!-- Handling references and foreign key constraints -->
+            DELETE FROM concept_answer WHERE answer_concept = 1684;
+            DELETE FROM concept_name WHERE concept_id = 1684;
+            DELETE FROM concept_description WHERE concept_id = 1684;
+            DELETE FROM concept_reference_map WHERE concept_id = 1684;
+
+            <!-- Only running this to remove previously recorded obs -->
+            DELETE FROM obs WHERE value_coded = 1684;
+
+            <!-- Delete concept -->
+            DELETE FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND concept_id = 1684;
+        </sql>
+    </changeSet>
+
+    <!-- DELETE Severe Pain CIEL concept -->
+    <changeSet id="delete_ciel_concept_severe_pain" author="pirupius">
+         <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND concept_id = 1882;
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete duplicate CIEL Severe Pain concept
+        </comment>
+
+        <sql>
+            <!-- Handling references and foreign key constraints -->
+            DELETE FROM concept_answer WHERE answer_concept = 1882;
+            DELETE FROM concept_name WHERE concept_id = 1882;
+            DELETE FROM concept_description WHERE concept_id = 1882;
+            DELETE FROM concept_reference_map WHERE concept_id = 1882;
+
+            <!-- Only running this to remove previously recorded obs -->
+            DELETE FROM obs WHERE value_coded = 1882;
+
+            <!-- Delete concept -->
+            DELETE FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND concept_id = 1882;
+        </sql>
+    </changeSet>
 
     <!-- Delete from concept_answer -->
-    <changeSet id="delete-concept-answer-001" author="vasharma05">
+    <changeSet id="delete-serum_glutamic_concept-answer" author="vasharma05">
         <sql>
-            DELETE ca 
-            FROM concept c 
-            JOIN concept_answer ca 
+            DELETE ca
+            FROM concept c
+            JOIN concept_answer ca
               ON c.concept_id = ca.concept_id
             WHERE c.uuid = "15f35c9d-3328-478b-a6e8-f3846fdc274a";
         </sql>
@@ -50,10 +166,10 @@
     <!-- RENAL FUNCTION: Delete Urine routine and microscopy -->
     <changeSet id="delete-concept-set-renal-function" author="vasharma05">
         <sql>
-            DELETE cs 
-            FROM concept_set cs 
-            JOIN concept c1 ON cs.concept_id = c1.concept_id 
-            JOIN concept c2 ON cs.concept_set = c2.concept_id 
+            DELETE cs
+            FROM concept_set cs
+            JOIN concept c1 ON cs.concept_id = c1.concept_id
+            JOIN concept c2 ON cs.concept_set = c2.concept_id
             WHERE c2.uuid = 'fb13459b-72f4-4d53-8f5e-dff86adf82cb'
               AND c1.uuid IN ('11027b26-7e8b-4b0a-a5cf-355f9e725d35', '8db2d994-2635-4ec2-8552-ad33e0a2c8ea');
         </sql>
