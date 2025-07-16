@@ -16,4 +16,56 @@
         </sql>
     </changeSet>
 
+    <!-- Combined delete from concept_set for multiple concept UUIDs with same set UUID -->
+    <changeSet id="delete-concept-set-tests-orderability" author="vasharma05">
+        <!-- Removing the following concepts
+            'Serum magnesium',
+            'Reticulocytes (%)',
+            'Direct bilirubin',
+            'Indirect bilirubin',
+            'Ionized calcium',
+            'Red blood cells',
+            'Mean corpuscular hemoglobin',
+            'Urobilinogen in urine by test strip'
+                -->
+        <sql>
+            DELETE cs
+            FROM concept_set cs
+            JOIN concept c1 ON cs.concept_id = c1.concept_id
+            JOIN concept c2 ON cs.concept_set = c2.concept_id
+            WHERE c2.uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77'
+              AND c1.uuid IN (
+                'add9cf99-9b28-44db-80bd-cc6eba22b6c8',
+                'abc13cdd-16b1-4bc0-86a3-588531d50da5',
+                '37c3b841-9959-4d1b-b952-0444f98d72a4',
+                '1cbc3383-088d-408c-9933-bb00fd0cfb6f',
+                '39ba3592-b4ef-4e2f-968a-b5f82d5ceb59',
+                'ff00d86d-69e5-4c9e-beea-ce642e6c4643',
+                '83eaf4f6-0508-4c1c-87c5-b61b66a66135',
+                '867e50a0-f749-4952-8769-1f301e157f8b'
+              );
+        </sql>
+    </changeSet>
+
+    <!-- RENAL FUNCTION: Delete Urine routine and microscopy -->
+    <changeSet id="delete-concept-set-renal-function" author="vasharma05">
+        <sql>
+            DELETE cs 
+            FROM concept_set cs 
+            JOIN concept c1 ON cs.concept_id = c1.concept_id 
+            JOIN concept c2 ON cs.concept_set = c2.concept_id 
+            WHERE c2.uuid = 'fb13459b-72f4-4d53-8f5e-dff86adf82cb'
+              AND c1.uuid IN ('11027b26-7e8b-4b0a-a5cf-355f9e725d35', '8db2d994-2635-4ec2-8552-ad33e0a2c8ea');
+        </sql>
+    </changeSet>
+
+    <!-- Retire Urine routine and microscopy concept -->
+    <changeSet id="retire-concept-urine-001" author="vasharma05">
+        <sql>
+            UPDATE concept
+            SET retired = 1
+            WHERE uuid = "11027b26-7e8b-4b0a-a5cf-355f9e725d35";
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
