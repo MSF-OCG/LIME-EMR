@@ -11,7 +11,7 @@
     <changeSet id="add_admin_provider-202407101630" author="pirupius">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 0 ELSE 1 END FROM provider WHERE person_id = 1;
+                SELECT CASE WHEN EXISTS (SELECT 1 FROM provider WHERE person_id = 1) THEN 0 ELSE 1 END;
             </sqlCheck>
         </preConditions>
         <insert tableName="provider">
@@ -38,10 +38,14 @@
 
     <!-- Remove the C-reactive Protien () from the Tests Orderability concept -->
     <changeSet id="remove_crp_from_tests_orderability" author="vasharma05">
+        <comment>
+            Remove C-reactive Protien () from the Tests Orderability concept set
+        </comment>
+
         <sql>
             DELETE FROM concept_set
-                WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'fbc2647a-caef-4c3e-bc22-6109efefe70e' LIMIT 1)
-                AND concept_set = (SELECT concept_id FROM concept WHERE uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77' LIMIT 1);
+            WHERE concept_id IN (SELECT concept_id FROM concept WHERE uuid = 'fbc2647a-caef-4c3e-bc22-6109efefe70e')
+                AND concept_set IN (SELECT concept_id FROM concept WHERE uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77');
         </sql>
     </changeSet>
 
@@ -71,58 +75,53 @@
 
     <!-- Retire CIEL concept for Nystatin -->
     <changeSet id="delete_ciel_concept_nystatin" author="vasharma05">
-         <preConditions onFail="MARK_RAN">
-            <sqlCheck expectedResult="1">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND concept_id = 1684;
-            </sqlCheck>
-        </preConditions>
         <comment>
             Delete duplicate CIEL Nystatin concept
         </comment>
 
         <sql>
             <!-- Handling references and foreign key constraints -->
-            DELETE FROM concept_answer WHERE answer_concept = 1684;
-            DELETE FROM concept_name WHERE concept_id = 1684;
-            DELETE FROM concept_description WHERE concept_id = 1684;
-            DELETE FROM concept_reference_map WHERE concept_id = 1684;
+            DELETE FROM concept_answer WHERE answer_concept = (SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+            DELETE FROM concept_name WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+            DELETE FROM concept_description WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+            DELETE FROM concept_reference_map WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
 
             <!-- Only running this to remove previously recorded obs -->
-            DELETE FROM obs WHERE value_coded = 1684;
+            DELETE FROM obs WHERE value_coded = (SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
 
             <!-- Delete concept -->
-            DELETE FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND concept_id = 1684;
+            DELETE FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
         </sql>
     </changeSet>
 
     <!-- DELETE Severe Pain CIEL concept -->
     <changeSet id="delete_ciel_concept_severe_pain" author="pirupius">
-         <preConditions onFail="MARK_RAN">
-            <sqlCheck expectedResult="1">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND concept_id = 1882;
-            </sqlCheck>
-        </preConditions>
         <comment>
             Delete duplicate CIEL Severe Pain concept
         </comment>
 
         <sql>
             <!-- Handling references and foreign key constraints -->
-            DELETE FROM concept_answer WHERE answer_concept = 1882;
-            DELETE FROM concept_name WHERE concept_id = 1882;
-            DELETE FROM concept_description WHERE concept_id = 1882;
-            DELETE FROM concept_reference_map WHERE concept_id = 1882;
+            DELETE FROM concept_answer WHERE answer_concept = (SELECT concept_id FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+            DELETE FROM concept_name WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+            DELETE FROM concept_description WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+            DELETE FROM concept_reference_map WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
 
             <!-- Only running this to remove previously recorded obs -->
-            DELETE FROM obs WHERE value_coded = 1882;
+            DELETE FROM obs WHERE value_coded = (SELECT concept_id FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
 
             <!-- Delete concept -->
-            DELETE FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND concept_id = 1882;
+            DELETE FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
         </sql>
     </changeSet>
 
     <!-- Delete from concept_answer -->
     <changeSet id="delete-serum_glutamic_concept-answer" author="vasharma05">
+        <comment>
+            Delete Serum glutamic-oxaloacetic transaminase (SGOT) concept answer
+            The concept UUID is '15f35c9d-3328-478b-a6e8-f3846fdc274a'
+        </comment>
+
         <sql>
             DELETE ca
             FROM concept c
@@ -134,7 +133,10 @@
 
     <!-- Combined delete from concept_set for multiple concept UUIDs with same set UUID -->
     <changeSet id="delete-concept-set-tests-orderability" author="vasharma05">
-        <!-- Removing the following concepts
+        <comment>
+            Delete multiple concepts from Tests Orderability concept set
+            The concept set UUID is 'a781d229-0de6-44c0-86ab-2194aae85f77'
+            The concepts to be removed are:
             'Serum magnesium',
             'Reticulocytes (%)',
             'Direct bilirubin',
@@ -143,7 +145,8 @@
             'Red blood cells',
             'Mean corpuscular hemoglobin',
             'Urobilinogen in urine by test strip'
-                -->
+        </comment>
+
         <sql>
             DELETE cs
             FROM concept_set cs
@@ -165,6 +168,10 @@
 
     <!-- RENAL FUNCTION: Delete Urine routine and microscopy -->
     <changeSet id="delete-concept-set-renal-function" author="vasharma05">
+        <comment>
+            Delete Urine routine and microscopy from concept_set
+        </comment>
+
         <sql>
             DELETE cs
             FROM concept_set cs
@@ -176,7 +183,11 @@
     </changeSet>
 
     <!-- Retire Urine routine and microscopy concept -->
-    <changeSet id="retire-concept-urine-001" author="vasharma05">
+    <changeSet id="retire-urine-routine-and-microscopy-concept" author="vasharma05">
+        <comment>
+            Retire Urine routine and microscopy concept
+        </comment>
+
         <sql>
             UPDATE concept
             SET retired = 1
@@ -184,11 +195,25 @@
         </sql>
     </changeSet>
 
+    <changeSet id="remove-deprecated-drugs-from-mosul" author="vasharma05">
+        <comment>
+            Remove deprecated drugs from Mosul
+        </comment>
 
-    <changeSet id="remove-unwanted-drugs" author="vasharma05">
         <sql>
             DELETE FROM drug
-            WHERE uuid IN ("ff9d0e64-4c3b-4856-83b7-d4e90c6cf51c","9d9f2fa1-0139-4440-99fc-e5caf4e3d05e","98a2be3c-70ce-4f8f-9513-b1d1d2977b77","1f49a024-6569-4740-9b5b-2f8dc05b1d4a","3554cf31-2669-4add-9433-4f8dfc8d3544","c95216b3-ef44-4f3a-b53e-f0603158ce70","a3bd05b0-9cad-4d00-97d7-070d98bd1f6d","e278c3e1-ed95-42c2-b9c0-a83bd99e6588","556d869c-e2e3-4635-ab69-c6737a8721c8","507354fe-321d-493f-888b-efee07ad9eb2");
+            WHERE uuid IN (
+                "ff9d0e64-4c3b-4856-83b7-d4e90c6cf51c",
+                "9d9f2fa1-0139-4440-99fc-e5caf4e3d05e",
+                "98a2be3c-70ce-4f8f-9513-b1d1d2977b77",
+                "1f49a024-6569-4740-9b5b-2f8dc05b1d4a",
+                "3554cf31-2669-4add-9433-4f8dfc8d3544",
+                "c95216b3-ef44-4f3a-b53e-f0603158ce70",
+                "a3bd05b0-9cad-4d00-97d7-070d98bd1f6d",
+                "e278c3e1-ed95-42c2-b9c0-a83bd99e6588",
+                "556d869c-e2e3-4635-ab69-c6737a8721c8",
+                "507354fe-321d-493f-888b-efee07ad9eb2"
+            );
         </sql>
     </changeSet>
 </databaseChangeLog>
