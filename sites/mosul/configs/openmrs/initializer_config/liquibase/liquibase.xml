@@ -68,24 +68,6 @@
         </sql>
     </changeSet>
 
-    <changeSet id="remove-ciel-nystatin" author="vasharma05">
-        <sql>
-          <!-- Remove concept name -->
-          DELETE FROM concept_name
-          WHERE concept_id = (
-            SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
-          );
-
-          <!-- Remove drug -->
-          DELETE FROM drug
-          WHERE concept_id = (
-            SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
-          );
-
-          DELETE FROM concept
-          WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
-        </sql>
-    </changeSet>
 
     <changeSet id="remove-unwanted-drugs" author="vasharma05">
         <sql>
