@@ -180,8 +180,8 @@
     <!-- Combined delete from concept_set for multiple concept UUIDs with same set UUID -->
     <changeSet id="delete-concept-set-tests-orderability" author="vasharma05">
         <preConditions onFail="MARK_RAN">
-            <sqlCheck expectedResult="true">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 'true' ELSE 'false' END
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
                 FROM concept_set cs
                 JOIN concept c1 ON cs.concept_id = c1.concept_id
                 JOIN concept c2 ON cs.concept_set = c2.concept_id
@@ -234,8 +234,8 @@
     <!-- RENAL FUNCTION: Delete Urine routine and microscopy -->
     <changeSet id="delete-concept-set-renal-function" author="vasharma05">
         <preConditions onFail="MARK_RAN">
-            <sqlCheck expectedResult="true">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 'true' ELSE 'false' END
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
                 FROM concept_set cs
                 JOIN concept c1 ON cs.concept_id = c1.concept_id
                 JOIN concept c2 ON cs.concept_set = c2.concept_id
@@ -273,8 +273,8 @@
 
     <changeSet id="remove-deprecated-drugs-from-mosul" author="vasharma05">
         <preConditions onFail="MARK_RAN">
-            <sqlCheck expectedResult="true">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 'true' ELSE 'false' END
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
                 FROM drug d
                 WHERE d.uuid IN (
                     "ff9d0e64-4c3b-4856-83b7-d4e90c6cf51c",
