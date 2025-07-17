@@ -37,7 +37,7 @@
     </changeSet>
 
     <!-- Remove the C-reactive Protien (CRP) from the Tests Orderability concept -->
-    <changeSet id="remove_crp_from_tests_orderability" author="vasharma05">
+    <changeSet id="remove_crp_from_tests_orderability-20250717" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
@@ -153,7 +153,16 @@
     </changeSet>
 
     <!-- Delete from concept_answer -->
-    <changeSet id="delete-serum_glutamic_concept-answer" author="vasharma05">
+    <changeSet id="delete-serum_glutamic_pyruvic_concept-answer" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept c
+                JOIN concept_answer ca
+                ON c.concept_id = ca.concept_id
+                WHERE c.uuid = "15f35c9d-3328-478b-a6e8-f3846fdc274a";
+            </sqlCheck>
+        </preConditions>
         <comment>
             Delete Serum glutamic-oxaloacetic transaminase (SGOT) concept answer
             The concept UUID is '15f35c9d-3328-478b-a6e8-f3846fdc274a'
