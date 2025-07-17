@@ -36,10 +36,16 @@
         </sql>
     </changeSet>
 
-    <!-- Remove the C-reactive Protien () from the Tests Orderability concept -->
-    <changeSet id="remove_crp_from_tests_orderability" author="vasharma05">
+    <!-- Remove the C-reactive Protien (CRP) from the Tests Orderability concept -->
+    <changeSet id="remove_crp_from_tests_orderability-1" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN EXISTS (SELECT 1 FROM concept_set WHERE concept_id IN (SELECT concept_id FROM concept WHERE uuid = 'fbc2647a-caef-4c3e-bc22-6109efefe70e')
+                    AND concept_set IN (SELECT concept_id FROM concept WHERE uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77')) THEN 0 ELSE 1 END;
+            </sqlCheck>
+        </preConditions>
         <comment>
-            Remove C-reactive Protien () from the Tests Orderability concept set
+            Remove C-reactive Protien (CRP) from the Tests Orderability concept set
         </comment>
 
         <sql>
@@ -88,6 +94,11 @@
 
     <!-- Retire CIEL concept for Nystatin -->
     <changeSet id="delete_ciel_concept_nystatin" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN EXISTS (SELECT 1 FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA') THEN 0 ELSE 1 END;
+            </sqlCheck>
+        </preConditions>
         <comment>
             Delete duplicate CIEL Nystatin concept
         </comment>
@@ -102,6 +113,8 @@
             <!-- Only running this to remove previously recorded obs -->
             DELETE FROM obs WHERE value_coded = (SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
 
+            DELETE FROM drug WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+
             <!-- Delete concept -->
             DELETE FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
         </sql>
@@ -109,6 +122,11 @@
 
     <!-- DELETE Severe Pain CIEL concept -->
     <changeSet id="delete_ciel_concept_severe_pain" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN EXISTS (SELECT 1 FROM concept WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA') THEN 0 ELSE 1 END;
+            </sqlCheck>
+        </preConditions>
         <comment>
             Delete duplicate CIEL Severe Pain concept
         </comment>
