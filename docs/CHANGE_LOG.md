@@ -1,10 +1,50 @@
 # LIME CHANGE LOG 🚀
 
+## Release 11th July, 2025
+
+### Features & Improvements
+
+- MH - partial display of tooltip - [LIME2-463](https://msf-ocg.atlassian.net/browse/LIME2-463)
+- Move away patient stickers from banner esm to patient sticker esm for product release in June - [LIME2-726](https://msf-ocg.atlassian.net/browse/LIME2-726)
+
+- Update Ozone to Alpha 13 - [LIME2-664](https://msf-ocg.atlassian.net/browse/LIME2-664)
+- Update to OpenMRS 2.7 - [LIME2-668](https://msf-ocg.atlassian.net/browse/LIME2-668)
+- Unable to login after openMRS version upgrade from 2.6 to 2.7 - [LIME2-775](https://msf-ocg.atlassian.net/browse/LIME2-775)
+- Laboratory - LabSets added - [LIME2-746](https://msf-ocg.atlassian.net/browse/LIME2-746)
+- Resolve shorten OMRS IDs in DHIS2 - List of patient IDs + UUIDs - [LIME2-773](https://msf-ocg.atlassian.net/browse/LIME2-773)
+- Import list of MSF diagnosis in Conditions workspace - [LIME2-671](https://msf-ocg.atlassian.net/browse/LIME2-671)
+
+### Bug Fixes
+
+- Extra characters in patient age / date of birth on patient dashboard - [LIME2-783](https://msf-ocg.atlassian.net/browse/LIME2-783)
+- FormGen - error on rendering preview - [LIME2-787](https://msf-ocg.atlassian.net/browse/LIME2-787)
+- Concepts are not being updated by initializer - [LIME2-781](https://msf-ocg.atlassian.net/browse/LIME2-781)
+- ITFC discharge - not able to save - [LIME2-728](https://msf-ocg.atlassian.net/browse/LIME2-728)
+- Verify all labtests in the MSF - [LIME2-754](https://msf-ocg.atlassian.net/browse/LIME2-754)
+- Fix infinite recursive rendering of `creator` property for the concept's datatype when opening the lab results form - [LIME2-786](https://msf-ocg.atlassian.net/browse/LIME2-786)
+- More improvements to duplicated visits issue with the patient search- [LIME2-766](https://msf-ocg.atlassian.net/browse/LIME2-766)
+- Fix issue when adding lab results to tests - [LIME2-770](https://msf-ocg.atlassian.net/browse/LIME2-770)
+
+### House Keeping
+
+- Investigate: Move Complex_obs in separated volume + Restic backup (Ozone 13 upgrades) - [LIME2-767](https://msf-ocg.atlassian.net/browse/LIME2-767)
+- Investigate: Lab - allow corrections - [LIME2-763](https://msf-ocg.atlassian.net/browse/LIME2-763)
+- Investigate: Workspaces - mandatory fields optional - [LIME2-764](https://msf-ocg.atlassian.net/browse/LIME2-764)
+- Investigate: All forms - changes not allowed after 24h - [LIME2-762](https://msf-ocg.atlassian.net/browse/LIME2-762)
+- Investigate some tests not showing enter results in labs - [LIME2-725](https://msf-ocg.atlassian.net/browse/LIME2-725)
+
+### Experimental
+
+- Fix LIME-EMR CI workflow - [LIME2-790](https://msf-ocg.atlassian.net/browse/LIME2-790)
+- Try Ozone Bundled Docker for UAT/Prod - [LIME2-666](https://msf-ocg.atlassian.net/browse/LIME2-666)
+- Medication - Import OCG Medical Standard List - [LIME2-298](https://msf-ocg.atlassian.net/browse/LIME2-298)
+- Laboratory - corrections applied to OCL - [LIME2-788](https://msf-ocg.atlassian.net/browse/LIME2-788)
+
 ## Release 26th June, 2025
 
 ### Features & Improvements
 
-- Feeding form - change symbol to represent intake [LIME2-730](https://msf-ocg.atlassian.net/browse/LIME2-730)
+- Feeding form - change symbol to represent intake - [LIME2-730](https://msf-ocg.atlassian.net/browse/LIME2-730)
 - Update Ozone to Alpha 13 - [LIME2-664](https://msf-ocg.atlassian.net/browse/LIME2-664)
 - Fix minified react error in Nutrition feeding form - [LIME2-779](https://msf-ocg.atlassian.net/browse/LIME2-779)
 - Family planning - messages appearing according to contra-indication - [LIME2-586](https://msf-ocg.atlassian.net/browse/LIME2-586)
