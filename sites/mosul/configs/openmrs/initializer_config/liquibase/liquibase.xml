@@ -37,11 +37,13 @@
     </changeSet>
 
     <!-- Remove the C-reactive Protien (CRP) from the Tests Orderability concept -->
-    <changeSet id="remove_crp_from_tests_orderability-1" author="vasharma05">
+    <changeSet id="remove_crp_from_tests_orderability" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT CASE WHEN EXISTS (SELECT 1 FROM concept_set WHERE concept_id IN (SELECT concept_id FROM concept WHERE uuid = 'fbc2647a-caef-4c3e-bc22-6109efefe70e')
-                    AND concept_set IN (SELECT concept_id FROM concept WHERE uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77')) THEN 0 ELSE 1 END;
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept_set
+                WHERE concept_id IN (SELECT concept_id FROM concept WHERE uuid = 'fbc2647a-caef-4c3e-bc22-6109efefe70e')
+                    AND concept_set IN (SELECT concept_id FROM concept WHERE uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77');
             </sqlCheck>
         </preConditions>
         <comment>
