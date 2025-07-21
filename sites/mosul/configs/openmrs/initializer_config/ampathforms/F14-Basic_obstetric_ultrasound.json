@@ -1,0 +1,1476 @@
+{
+  "name": "F14-Basic obstetric ultrasound",
+  "description": "MSF Form - F14-Basic obstetric ultrasound",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Consultation",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Clinical information",
+      "sections": [
+        {
+          "label": "Clinical information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "indicationForUltrasound",
+              "label": "Indication for ultrasound",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d156c917-3a09-4d80-bb0f-adc0b117ad9d"
+              }
+            },
+            {
+              "id": "para",
+              "label": "Para",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "76a96d44-00f5-469f-9329-5a53409a87eb",
+                "min": 0,
+                "max": 20,
+                "step": 1
+              }
+            },
+            {
+              "id": "gravida",
+              "label": "Gravida",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "00df1796-a090-447d-8904-3d6e0d9e5948",
+                "min": 0,
+                "max": 20,
+                "step": 1
+              }
+            },
+            {
+              "id": "lastMenstrualPeriod",
+              "label": "Last menstrual period (LMP)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "e5f9e8be-5a5f-4468-b714-16cbb70c6021"
+              }
+            },
+            {
+              "id": "status",
+              "label": "Status",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "933ab405-34f1-4d86-900d-bed9b5ba8d05",
+                "answers": [
+                  {
+                    "label": "1st trimester",
+                    "concept": "dab6d94c-03b1-4206-aae3-008707a1e512"
+                  },
+                  {
+                    "label": "2nd trimester",
+                    "concept": "e2f31018-0e71-42be-83dd-31623c6e8647"
+                  },
+                  {
+                    "label": "3rd trimester",
+                    "concept": "b1cd4356-a9bb-4e46-9403-257549c0078c"
+                  },
+                  {
+                    "label": "Pregnancy unclear",
+                    "concept": "dd9387d2-22d9-464d-9075-422f5e946177"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "1st trimester pregnancy",
+      "sections": [
+        {
+          "label": "1st trimester pregnancy",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "freeFluid",
+              "label": "Free fluid",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "25243251-c3c1-4b34-bb9f-b77ea9408663",
+                "answers": [
+                  {
+                    "label": "In pelvis",
+                    "concept": "0bd085f4-10b1-4c47-bcf9-30dd94786843"
+                  },
+                  {
+                    "label": "In right upper quadrant (RUQ)",
+                    "concept": "9beef921-b85b-4bd1-8e00-61e2e4591989"
+                  },
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
+              }
+            },
+            {
+              "id": "uterus",
+              "label": "Uterus",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4e7dba73-c180-4697-bfc3-fdb005efe693",
+                "answers": [
+                  {
+                    "label": "Empty",
+                    "concept": "d1c87d86-a42a-42be-b2d9-699be8a5b102"
+                  },
+                  {
+                    "label": "Fetal pole or embryo seen",
+                    "concept": "61324435-1c54-416b-b2f0-da385e1d8f08"
+                  },
+                  {
+                    "label": "Gestational sac seen",
+                    "concept": "ed3bee1c-d072-4720-bbc4-405c9a45d0e6"
+                  },
+                  {
+                    "label": "Retained product seen",
+                    "concept": "f29be094-cb96-4f79-a300-05374aacc057"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  },
+                  {
+                    "label": "Yolk sac seen",
+                    "concept": "36b53091-c35c-4687-8677-3b78a3c4e1b5"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
+              }
+            },
+            {
+              "id": "numberOfFetuses",
+              "label": "Number of fetuses",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0c02b7bf-fa58-4ff9-9c31-a353a40f0ab1",
+                "answers": [
+                  {
+                    "label": 1,
+                    "concept": "9c407911-f329-4761-b27a-bbbe24cc0332"
+                  },
+                  {
+                    "label": 2,
+                    "concept": "42965304-8abb-4a57-b7c2-b3eff5cbe9c7"
+                  },
+                  {
+                    "label": 3,
+                    "concept": "168e35f0-9866-4b13-98f2-4ecd2f538117"
+                  },
+                  {
+                    "label": 4,
+                    "concept": "6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91"
+                  },
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Fetus 1",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "fetalHeartBeat",
+              "label": "Fetal heart beat",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "83b492a2-4701-406e-89b9-d71a8ef69890",
+                "answers": [
+                  {
+                    "label": "Detectable",
+                    "concept": "75635392-0934-4e1e-b5e5-c9b4a32c185b"
+                  },
+                  {
+                    "label": "Not detectable",
+                    "concept": "9615d915-b870-4af9-8c9a-0787151d872c"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses !== 'f000aaab-8b72-4ef2-b123-a595930f7941'"
+              }
+            },
+            {
+              "id": "beatsOrMinute",
+              "label": "Beats/minute",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "675a31c5-497d-4fdc-a4e9-37bd0f43d03e",
+                "min": 0,
+                "max": 350,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b'"
+              }
+            },
+            {
+              "id": "crownRumpLenght",
+              "label": "Crown-rump lenght (CRL - mm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1ac57b11-90ab-4c52-8663-620680e5b8f9",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses !== 'dfbe25a4-30e3-4a3e-9516-05ca4fff7d9b'"
+              }
+            },
+            {
+              "id": "estimatedGestationalAge",
+              "label": "Estimated gestational age (EGA - weeks)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9bb70227-da20-491b-b73f-71626d2c1a3b",
+                "min": 0,
+                "max": 50,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses !== '065a4690-d876-42e4-b683-b90726fee0be'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Fetus 2",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "fetalHeartBeat",
+              "label": "Fetal heart beat",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "83b492a2-4701-406e-89b9-d71a8ef69890",
+                "answers": [
+                  {
+                    "label": "Detectable",
+                    "concept": "75635392-0934-4e1e-b5e5-c9b4a32c185b"
+                  },
+                  {
+                    "label": "Not detectable",
+                    "concept": "9615d915-b870-4af9-8c9a-0787151d872c"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses !== '9fdffdc9-783c-4404-855a-5bb5e8e8e6cc'"
+              }
+            },
+            {
+              "id": "beatsOrMinute",
+              "label": "Beats/minute",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "675a31c5-497d-4fdc-a4e9-37bd0f43d03e",
+                "min": 0,
+                "max": 350,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "fetalHeartBeat2 !== 'detectable'"
+              }
+            },
+            {
+              "id": "crownRumpLenght",
+              "label": "Crown-rump lenght (mm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1ac57b11-90ab-4c52-8663-620680e5b8f9",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses !== 'b973107c-d78f-4e61-9e04-f5f0b0a55e09'"
+              }
+            },
+            {
+              "id": "estimatedGestationalAge",
+              "label": "Estimated gestational age (EGA - weeks)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9bb70227-da20-491b-b73f-71626d2c1a3b",
+                "min": 0,
+                "max": 50,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses !== '0ea9e718-7683-44c3-bbd4-21162bf97a5a'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Fetus 3",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "fetalHeartBeat",
+              "label": "Fetal heart beat",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "83b492a2-4701-406e-89b9-d71a8ef69890",
+                "answers": [
+                  {
+                    "label": "Detectable",
+                    "concept": "75635392-0934-4e1e-b5e5-c9b4a32c185b"
+                  },
+                  {
+                    "label": "Not detectable",
+                    "concept": "9615d915-b870-4af9-8c9a-0787151d872c"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses !== '33d2e461-0034-498b-ba1e-59eaf1b97e31'"
+              }
+            },
+            {
+              "id": "beatsOrMinute",
+              "label": "Beats/minute",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "675a31c5-497d-4fdc-a4e9-37bd0f43d03e",
+                "min": 0,
+                "max": 350,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "fetalHeartBeat3 !== 'detectable'"
+              }
+            },
+            {
+              "id": "crownRumpLenght",
+              "label": "Crown-rump lenght (mm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1ac57b11-90ab-4c52-8663-620680e5b8f9",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses !== '2d92db70-b639-462c-82f7-f55c2b50a155'"
+              }
+            },
+            {
+              "id": "estimatedGestationalAge",
+              "label": "Estimated gestational age (EGA - weeks)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9bb70227-da20-491b-b73f-71626d2c1a3b",
+                "min": 0,
+                "max": 50,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses !== '853a7cb2-39f6-46c4-a3c7-989fc46ea8e4'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Fetus 4",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "fetalHeartBeat",
+              "label": "Fetal heart beat",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "83b492a2-4701-406e-89b9-d71a8ef69890",
+                "answers": [
+                  {
+                    "label": "Detectable",
+                    "concept": "75635392-0934-4e1e-b5e5-c9b4a32c185b"
+                  },
+                  {
+                    "label": "Not detectable",
+                    "concept": "9615d915-b870-4af9-8c9a-0787151d872c"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses !== '2ec17609-d6be-4ece-bc87-e5de53ae6ee6'"
+              }
+            },
+            {
+              "id": "beatsOrMinute",
+              "label": "Beats/minute",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "675a31c5-497d-4fdc-a4e9-37bd0f43d03e",
+                "min": 0,
+                "max": 350,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "fetalHeartBeat4 !== 'detectable'"
+              }
+            },
+            {
+              "id": "crownRumpLenght",
+              "label": "Crown-rump lenght (mm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1ac57b11-90ab-4c52-8663-620680e5b8f9",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses !== 'fcf0212d-dfba-44da-be8d-1fb8fa7105c1'"
+              }
+            },
+            {
+              "id": "estimatedGestationalAge",
+              "label": "Estimated gestational age (EGA - weeks)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9bb70227-da20-491b-b73f-71626d2c1a3b",
+                "min": 0,
+                "max": 50,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses !== '533981c4-fd5a-47bd-b46e-560ec7dcc65b'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "2nd/3rd trimester pregnancy",
+      "sections": [
+        {
+          "label": "Results",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "placentalLocation",
+              "label": "Placental location",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0c990c79-cb1c-4812-8a51-c215064ea641",
+                "answers": [
+                  {
+                    "label": "Anterior",
+                    "concept": "a9bbbac3-46a8-4b5e-aa5a-c37391d6a86a"
+                  },
+                  {
+                    "label": "Fundal",
+                    "concept": "bbb7f878-a92d-4822-8dc4-c8d27354e0f3"
+                  },
+                  {
+                    "label": "Lateral",
+                    "concept": "d4e7387a-93df-49da-90fd-214acd70b9be"
+                  },
+                  {
+                    "label": "Placenta previa",
+                    "concept": "3fe02af2-57da-4b73-a3a6-a568a795a2c8"
+                  },
+                  {
+                    "label": "Posterior",
+                    "concept": "79402fab-45aa-45a5-9f14-52dd93e311f8"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647'"
+              }
+            },
+            {
+              "id": "amnioticFluidLevel",
+              "label": "Amniotic fluid level (maximal vertical pocket)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c4403888-ae1a-4af0-b636-e9be57b72d97",
+                "answers": [
+                  {
+                    "label": "<2cm",
+                    "concept": "3a839245-7f6e-4cd8-9838-d9e1c45f2ad0"
+                  },
+                  {
+                    "label": ">8cm",
+                    "concept": "ddd5787f-975a-4db0-9c2b-25c9e2c2d4e2"
+                  },
+                  {
+                    "label": "Normal (2-8cm)",
+                    "concept": "625fdb80-60f8-4a78-aad3-6bc3a4b94d60"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Fetus",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "numberOfFetuses",
+              "label": "Number of fetuses",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0c02b7bf-fa58-4ff9-9c31-a353a40f0ab1",
+                "answers": [
+                  {
+                    "label": 1,
+                    "concept": "9c407911-f329-4761-b27a-bbbe24cc0332"
+                  },
+                  {
+                    "label": 2,
+                    "concept": "42965304-8abb-4a57-b7c2-b3eff5cbe9c7"
+                  },
+                  {
+                    "label": 3,
+                    "concept": "168e35f0-9866-4b13-98f2-4ecd2f538117"
+                  },
+                  {
+                    "label": 4,
+                    "concept": "6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91"
+                  },
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Fetus 1",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "fetalHeartBeat",
+              "label": "Fetal heart beat",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "83b492a2-4701-406e-89b9-d71a8ef69890",
+                "answers": [
+                  {
+                    "label": "Detectable",
+                    "concept": "75635392-0934-4e1e-b5e5-c9b4a32c185b"
+                  },
+                  {
+                    "label": "Not detectable",
+                    "concept": "9615d915-b870-4af9-8c9a-0787151d872c"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '3accf844-5900-4cce-8018-1c1504f0a0fe'"
+              }
+            },
+            {
+              "id": "beatsOrMinute",
+              "label": "Beats/minute",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "675a31c5-497d-4fdc-a4e9-37bd0f43d03e",
+                "min": 0,
+                "max": 350,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "fetalHeartBeat23 !== 'detectable'"
+              }
+            },
+            {
+              "id": "fetalPresentation",
+              "label": "Fetal presentation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "21eeb0c6-9a36-42ef-9190-a64a9f245de8",
+                "answers": [
+                  {
+                    "label": "Breech",
+                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
+                  },
+                  {
+                    "label": "Cephalic",
+                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
+                  },
+                  {
+                    "label": "Transverse",
+                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== 'd6a23274-cfdf-484d-b578-c69af1f02cc5'"
+              }
+            },
+            {
+              "id": "fetalBiometryBpd",
+              "label": "Fetal biometry - BPD (biparietal diameter - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "8aaa19d4-9ff9-4bec-83f0-3caf1bf4ed87",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '5570fb20-5ae9-47e9-978d-f48c406c2cc8'"
+              }
+            },
+            {
+              "id": "fetalBiometryHc",
+              "label": "Fetal biometry - HC (head circumference - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== 'e12609bf-d53b-46e9-aee8-ee4498d4a314'"
+              }
+            },
+            {
+              "id": "fetalBiometryAc",
+              "label": "Fetal biometry - AC (abdominal circumference - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5a1781ca-aa08-463e-890b-2268649910f6",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '8b49c608-87c0-4a38-b0c1-3ea478db6545'"
+              }
+            },
+            {
+              "id": "fetalBiometryFl",
+              "label": "Fetal biometry - FL (femur length - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "17a081eb-eab8-46a6-8379-d47c6cde6afc",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '4d4140b7-ff08-4e54-b15e-28ac497c8dad'"
+              }
+            },
+            {
+              "id": "estimatedGestationalAge",
+              "label": "Estimated gestational age (EGA - weeks)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9bb70227-da20-491b-b73f-71626d2c1a3b",
+                "min": 0,
+                "max": 50,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '1151e12c-449e-4ace-b8c1-1f3b44509434'"
+              }
+            },
+            {
+              "id": "estimatedGestationalWeight",
+              "label": "Estimated gestational weight (EFW - g)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "57cd6e7f-2aba-46aa-866a-1aaf52573f3b",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== 'a5a174ad-e23d-4563-a649-663626ba8023'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Fetus 2",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "fetalHeartBeat",
+              "label": "Fetal heart beat",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "83b492a2-4701-406e-89b9-d71a8ef69890",
+                "answers": [
+                  {
+                    "label": "Detectable",
+                    "concept": "75635392-0934-4e1e-b5e5-c9b4a32c185b"
+                  },
+                  {
+                    "label": "Not detectable",
+                    "concept": "9615d915-b870-4af9-8c9a-0787151d872c"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== 'e4e9d2b4-a7ac-4d45-bc8c-0fdfbb760d94'"
+              }
+            },
+            {
+              "id": "beatsOrMinute",
+              "label": "Beats/minute",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "675a31c5-497d-4fdc-a4e9-37bd0f43d03e",
+                "min": 0,
+                "max": 350,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "fetalHeartBeat223 !== 'detectable'"
+              }
+            },
+            {
+              "id": "fetalPresentation",
+              "label": "Fetal presentation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "21eeb0c6-9a36-42ef-9190-a64a9f245de8",
+                "answers": [
+                  {
+                    "label": "Breech",
+                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
+                  },
+                  {
+                    "label": "Cephalic",
+                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
+                  },
+                  {
+                    "label": "Transverse",
+                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '55916857-3c42-439a-aba2-683832e35ec6'"
+              }
+            },
+            {
+              "id": "fetalBiometryBpd",
+              "label": "Fetal biometry - BPD (biparietal diameter - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "8aaa19d4-9ff9-4bec-83f0-3caf1bf4ed87",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '1d1a5abf-2b1c-40b1-a4e2-a9063358204c'"
+              }
+            },
+            {
+              "id": "fetalBiometryHc",
+              "label": "Fetal biometry - HC (head circumference - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== 'a63af201-b748-4902-a0c3-f53f23965755'"
+              }
+            },
+            {
+              "id": "fetalBiometryAc",
+              "label": "Fetal biometry - AC (abdominal circumference - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5a1781ca-aa08-463e-890b-2268649910f6",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '19d32486-edfe-4c1d-824b-dda76ea2ee57'"
+              }
+            },
+            {
+              "id": "fetalBiometryFl",
+              "label": "Fetal biometry - FL (femur length - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "17a081eb-eab8-46a6-8379-d47c6cde6afc",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '2ec58c3d-ce2f-4b80-a394-829642ed363a'"
+              }
+            },
+            {
+              "id": "estimatedGestationalAge",
+              "label": "Estimated gestational age (EGA - weeks)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9bb70227-da20-491b-b73f-71626d2c1a3b",
+                "min": 0,
+                "max": 50,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== 'e190f9b2-540d-4c18-92db-83ece5c8f4e2'"
+              }
+            },
+            {
+              "id": "estimatedGestationalWeight",
+              "label": "Estimated gestational weight (EFW - g)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "57cd6e7f-2aba-46aa-866a-1aaf52573f3b",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '77df8af1-236f-4315-b911-1ca3f6778720'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Fetus 3",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "fetalHeartBeat",
+              "label": "Fetal heart beat",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "83b492a2-4701-406e-89b9-d71a8ef69890",
+                "answers": [
+                  {
+                    "label": "Detectable",
+                    "concept": "75635392-0934-4e1e-b5e5-c9b4a32c185b"
+                  },
+                  {
+                    "label": "Not detectable",
+                    "concept": "9615d915-b870-4af9-8c9a-0787151d872c"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '198ee153-9fd9-499d-ad9e-d9a63756e00f'"
+              }
+            },
+            {
+              "id": "beatsOrMinute",
+              "label": "Beats/minute",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "675a31c5-497d-4fdc-a4e9-37bd0f43d03e",
+                "min": 0,
+                "max": 350,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "fetalHeartBeat323 !== 'detectable'"
+              }
+            },
+            {
+              "id": "fetalPresentation",
+              "label": "Fetal presentation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "21eeb0c6-9a36-42ef-9190-a64a9f245de8",
+                "answers": [
+                  {
+                    "label": "Breech",
+                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
+                  },
+                  {
+                    "label": "Cephalic",
+                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
+                  },
+                  {
+                    "label": "Transverse",
+                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== 'da5c3bac-6897-44bc-8423-c87cf4447925'"
+              }
+            },
+            {
+              "id": "fetalBiometryBpd",
+              "label": "Fetal biometry - BPD (biparietal diameter - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "8aaa19d4-9ff9-4bec-83f0-3caf1bf4ed87",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '98008d0b-976e-4deb-9ef5-7e764e31069c'"
+              }
+            },
+            {
+              "id": "fetalBiometryHc",
+              "label": "Fetal biometry - HC (head circumference - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== 'a5bbb021-4462-48a2-847d-be8c6167fc45'"
+              }
+            },
+            {
+              "id": "fetalBiometryAc",
+              "label": "Fetal biometry - AC (abdominal circumference - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5a1781ca-aa08-463e-890b-2268649910f6",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '97cf1918-2ead-4335-a84c-999ec2973600'"
+              }
+            },
+            {
+              "id": "fetalBiometryFl",
+              "label": "Fetal biometry - FL (femur length - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "17a081eb-eab8-46a6-8379-d47c6cde6afc",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== 'bfece427-ad02-48f7-8c3d-7f4a33c4505e'"
+              }
+            },
+            {
+              "id": "estimatedGestationalAge",
+              "label": "Estimated gestational age (EGA - weeks)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9bb70227-da20-491b-b73f-71626d2c1a3b",
+                "min": 0,
+                "max": 50,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '7d3f590a-ce41-494e-be7a-f744718698e4'"
+              }
+            },
+            {
+              "id": "estimatedGestationalWeight",
+              "label": "Estimated gestational weight (EFW - g)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "57cd6e7f-2aba-46aa-866a-1aaf52573f3b",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '662a0874-ee70-463d-8bbf-0add530b7ed6'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Fetus 4",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "fetalHeartBeat",
+              "label": "Fetal heart beat",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "83b492a2-4701-406e-89b9-d71a8ef69890",
+                "answers": [
+                  {
+                    "label": "Detectable",
+                    "concept": "75635392-0934-4e1e-b5e5-c9b4a32c185b"
+                  },
+                  {
+                    "label": "Not detectable",
+                    "concept": "9615d915-b870-4af9-8c9a-0787151d872c"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== 'd60051ae-3a1c-4382-87f9-4560174727cc'"
+              }
+            },
+            {
+              "id": "beatsOrMinute",
+              "label": "Beats/minute",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "675a31c5-497d-4fdc-a4e9-37bd0f43d03e",
+                "min": 0,
+                "max": 350,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "fetalHeartBeat423 !== 'detectable'"
+              }
+            },
+            {
+              "id": "fetalPresentation",
+              "label": "Fetal presentation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "21eeb0c6-9a36-42ef-9190-a64a9f245de8",
+                "answers": [
+                  {
+                    "label": "Breech",
+                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
+                  },
+                  {
+                    "label": "Cephalic",
+                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
+                  },
+                  {
+                    "label": "Transverse",
+                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '752cbe14-64c7-4b66-83bd-8085302a846c'"
+              }
+            },
+            {
+              "id": "fetalBiometryBpd",
+              "label": "Fetal biometry - BPD (biparietal diameter - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "8aaa19d4-9ff9-4bec-83f0-3caf1bf4ed87",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '5cc83643-c041-45e1-a482-026de49d7c1a'"
+              }
+            },
+            {
+              "id": "fetalBiometryHc",
+              "label": "Fetal biometry - HC (head circumference - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '84d3f175-b656-4104-89a4-641b548021f8'"
+              }
+            },
+            {
+              "id": "fetalBiometryAc",
+              "label": "Fetal biometry - AC (abdominal circumference - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5a1781ca-aa08-463e-890b-2268649910f6",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '027cdf24-662f-42db-85b0-5f9747f91022'"
+              }
+            },
+            {
+              "id": "fetalBiometryFl",
+              "label": "Fetal biometry - FL (femur length - cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "17a081eb-eab8-46a6-8379-d47c6cde6afc",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '8aa4f8cb-8925-4f7f-926d-e72eac1d10b7'"
+              }
+            },
+            {
+              "id": "estimatedGestationalAge",
+              "label": "Estimated gestational age (EGA - weeks)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9bb70227-da20-491b-b73f-71626d2c1a3b",
+                "min": 0,
+                "max": 50,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '412a25c1-3120-4327-bad1-0bf28ebcbbf7'"
+              }
+            },
+            {
+              "id": "estimatedGestationalWeight",
+              "label": "Estimated gestational weight (EFW - g)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "57cd6e7f-2aba-46aa-866a-1aaf52573f3b",
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "numberOfFetuses23 !== '62686887-dd5e-4f05-8840-ccb0beeeb06b'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Results",
+      "sections": [
+        {
+          "label": "Results",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "otherFinding",
+              "label": "Other finding(s)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "e08d532b-e56c-43dc-b831-af705654d2dc"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Conclusion",
+      "sections": [
+        {
+          "label": "Impressions",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "abnormalitiesDetected",
+              "label": "Abnormalities detected",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "92ba9cb2-c8c4-4967-8ad9-9d80892854e1"
+              }
+            },
+            {
+              "id": "diagnosis",
+              "label": "Diagnosis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "4e9224c3-dc56-4dd4-a1ae-2d3109c410cc"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Outcome",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "viablePregnancy",
+              "label": "Viable pregnancy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1ac889c4-5384-469f-a711-59d3d0391ceb",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "patientManagement",
+              "label": "Patient management",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "d30db8b8-f8fb-450c-9562-629195212a45",
+                "answers": [
+                  {
+                    "label": "Continue (no change)",
+                    "concept": "01f59bf8-13f0-4fb2-900b-37d03f133a4d"
+                  },
+                  {
+                    "label": "Modify treatment",
+                    "concept": "49ff20e7-fc78-4593-8b18-26c355d44ae9"
+                  },
+                  {
+                    "label": "Referral",
+                    "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11"
+                  },
+                  {
+                    "label": "Repeat ultrassound",
+                    "concept": "286211a7-1e21-46f1-bde1-6b5ad16ab91d"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Conclusion\t",
+      "sections": [
+        {
+          "label": "Outcome",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalNotes",
+              "label": "Additional notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

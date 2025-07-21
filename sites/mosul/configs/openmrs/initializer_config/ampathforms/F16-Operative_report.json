@@ -1,0 +1,2295 @@
+{
+  "name": "F16-Operative report",
+  "description": "MSF Form - F16-Operative report",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Consultation",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Medical team",
+      "sections": [
+        {
+          "label": "Medical team",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "surgeon",
+              "label": "Surgeon",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "f64889f4-7841-44f2-9d62-73188e66a18c"
+              }
+            },
+            {
+              "id": "assistant",
+              "label": "Assistant",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "3a1b0fd2-c74c-49db-b1bb-4f9c8ca459c7"
+              }
+            },
+            {
+              "id": "anesthetist",
+              "label": "Anesthetist",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "da657549-c79c-485a-a223-6e829f0f0424"
+              }
+            },
+            {
+              "id": "others",
+              "label": "Others",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "f2c5fefe-be45-4269-acf2-a2b832e15fb6"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis",
+      "sections": [
+        {
+          "label": "Diagnosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "preoperative",
+              "label": "Preoperative",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
+                "answers": [
+                  {
+                    "label": "Abortion / miscarriage",
+                    "concept": "5b087c45-04a1-4149-bb79-8875a6e0f960"
+                  },
+                  {
+                    "label": "Acute appendicitis",
+                    "concept": "fd4f2bfd-da11-410a-8f8d-36a651e132de"
+                  },
+                  {
+                    "label": "Acute cholecystitis",
+                    "concept": "96b93ec3-cbc2-4e37-9354-e489fa7a9bd8"
+                  },
+                  {
+                    "label": "Acute compartment syndrome (limb)",
+                    "concept": "854f9ca8-3fe8-40f0-a98f-37d565a3e242"
+                  },
+                  {
+                    "label": "Acute peritonitis",
+                    "concept": "f277697b-2f67-4bd9-87cf-19f589eaba83"
+                  },
+                  {
+                    "label": "Breast abscess",
+                    "concept": "e592e8c6-99bc-4655-b641-fbd233f3399d"
+                  },
+                  {
+                    "label": "Burns / major",
+                    "concept": "b0d0a019-7af4-49f7-86cb-99d9dccd1807"
+                  },
+                  {
+                    "label": "Burns / minor deep",
+                    "concept": "66660626-0209-4927-b70b-407adbdc176e"
+                  },
+                  {
+                    "label": "Burns / minor superficial",
+                    "concept": "5dab7064-d6c5-4229-b276-6e2b6d5e1c5c"
+                  },
+                  {
+                    "label": "Cataract",
+                    "concept": "436982a0-6bf1-44ab-9e8f-aff36f9787a5"
+                  },
+                  {
+                    "label": "Delivery / foetal distress",
+                    "concept": "639b0e7f-496e-4f43-bda0-5d689f3224f3"
+                  },
+                  {
+                    "label": "Delivery / umbilical cord complications",
+                    "concept": "f506a96f-6d63-4d85-ad06-5ff643b15bc0"
+                  },
+                  {
+                    "label": "Delivery multiple / all by caesarean section",
+                    "concept": "d8fb4c14-71ce-4d4e-bdd7-da40a8918c1c"
+                  },
+                  {
+                    "label": "Delivery single / by caesarean section",
+                    "concept": "373f41e4-3bbd-423b-bab8-190d4643b1a7"
+                  },
+                  {
+                    "label": "Ectopic pregnancy",
+                    "concept": "10f3449c-05fd-4a3d-9dca-1de634fd2366"
+                  },
+                  {
+                    "label": "Endometritis - inflammatory disease of uterus",
+                    "concept": "3fe12df7-4eae-45fb-8610-a5c25cd2ec97"
+                  },
+                  {
+                    "label": "Failure of labor induction",
+                    "concept": "526c2822-1499-413b-8fe0-84012473c1fe"
+                  },
+                  {
+                    "label": "Fracture / closed / cervical spine",
+                    "concept": "89bf9158-5160-41a5-a88e-2749b4faa5f9"
+                  },
+                  {
+                    "label": "Fracture / closed / hands and feet",
+                    "concept": "776340eb-7707-4e2f-b56f-5375d307ec3b"
+                  },
+                  {
+                    "label": "Fracture / closed / long bones limb",
+                    "concept": "5edc8f11-2b39-4cb5-980c-742504f18317"
+                  },
+                  {
+                    "label": "Fracture / closed / pelvis",
+                    "concept": "839f42dd-e343-4899-b027-e03cfa00af77"
+                  },
+                  {
+                    "label": "Fracture / closed / skull",
+                    "concept": "4dfe3517-96b5-4437-ad1c-486f6bd28524"
+                  },
+                  {
+                    "label": "Fracture / closed / thoracic and lumbar spine",
+                    "concept": "8b0276a9-272b-4988-89f9-3b3c5893c813"
+                  },
+                  {
+                    "label": "Fracture / malunion",
+                    "concept": "fc87b56c-0669-4d3c-9dd4-67491048f1d4"
+                  },
+                  {
+                    "label": "Fracture / nonunion",
+                    "concept": "fc87b56c-0669-4d3c-9dd4-67491048f1d4"
+                  },
+                  {
+                    "label": "Fracture / open / long bones limbs",
+                    "concept": "d9613f0d-47b4-4b26-9f65-31b74e4029ed"
+                  },
+                  {
+                    "label": "Fracture / open / skull open head injury",
+                    "concept": "4b3bf84b-bb58-4e76-9186-ae9762efd19f"
+                  },
+                  {
+                    "label": "Gestation / complication / placenta praevia",
+                    "concept": "3fe02af2-57da-4b73-a3a6-a568a795a2c8"
+                  },
+                  {
+                    "label": "Gestation / complication / postpartum haemorrhage",
+                    "concept": "f586985a-2700-4958-8cb1-f426675f0d8d"
+                  },
+                  {
+                    "label": "Gestation / complication / postpartum inversion of uterus",
+                    "concept": "b0cda050-44e3-4d55-9add-65e2d61844e9"
+                  },
+                  {
+                    "label": "Gestation / complication / premature separation of placenta",
+                    "concept": "3bdfefdd-3687-4ca3-99c6-443a121e2144"
+                  },
+                  {
+                    "label": "Gestation / complication / retained placenta without haemorrhage",
+                    "concept": "2a36f78f-2f16-4355-a13d-fc650330490b"
+                  },
+                  {
+                    "label": "Gestation / complication / rupture of uterus",
+                    "concept": "f6ce685d-28a8-4674-8160-f98c4f77ded2"
+                  },
+                  {
+                    "label": "Gestation / multiple",
+                    "concept": "ab5e0123-e789-4440-a71f-33c54e69b30b"
+                  },
+                  {
+                    "label": "Gestation / Previous history of more than 2 CS or atypical CS",
+                    "concept": "421d8948-3369-44bc-82d0-00290dca66f2"
+                  },
+                  {
+                    "label": "Hernia/symptomatic",
+                    "concept": "52ef1832-1bde-439a-a027-f0a8446b2a1d"
+                  },
+                  {
+                    "label": "Hydrocele",
+                    "concept": "46cb40e8-38b7-4fe5-836a-65b9a0a9633c"
+                  },
+                  {
+                    "label": "Intestinal obstruction / mechanical",
+                    "concept": "f854d339-8aa9-4548-96ff-a5f1a35fef2c"
+                  },
+                  {
+                    "label": "Intestinal obstruction / paralytic ileus",
+                    "concept": "a8aecb5c-bb1a-408a-9950-707dcb34ad86"
+                  },
+                  {
+                    "label": "Non traumatic wounds/ chronic soft tissue ulcer",
+                    "concept": "6f2abacf-9d58-46d7-87a0-a1ecd3990c99"
+                  },
+                  {
+                    "label": "Obstetric fistula/rectovaginal",
+                    "concept": "224d5798-a0e4-432a-bb7d-d30916cb07e8"
+                  },
+                  {
+                    "label": "Obstetric fistula/vesicovaginal",
+                    "concept": "33072233-4552-4596-9120-6ed195fd1d0c"
+                  },
+                  {
+                    "label": "Obstetric lacerations/tears",
+                    "concept": "71365d8e-2982-41b5-bc5a-382caa0fb8a4"
+                  },
+                  {
+                    "label": "Obstructed labour due to maternal pelvic abnormality, fetal malposition and fetal malpresentation",
+                    "concept": "cc2ea51a-5041-4ba2-b164-e031ba33d527"
+                  },
+                  {
+                    "label": "Osteomyelitis / non-traumatic",
+                    "concept": "1bfd5bdd-26a6-41a3-a94c-c5753f423b44"
+                  },
+                  {
+                    "label": "Osteomyelitis / post-traumatic",
+                    "concept": "835821f3-d264-4a07-916c-62ef7d81adeb"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Ovarian cysts",
+                    "concept": "736e1112-af12-44f7-921b-ff282da27763"
+                  },
+                  {
+                    "label": "Peripheral vascular disease",
+                    "concept": "d149c447-b34f-422a-bcdf-251bc6fcbecb"
+                  },
+                  {
+                    "label": "Prolonged labor",
+                    "concept": "f80dbec7-880a-4699-aa9d-4c6364892fd0"
+                  },
+                  {
+                    "label": "Pyothorax",
+                    "concept": "b77d540d-2927-44b4-aec9-d4e4ffa02f50"
+                  },
+                  {
+                    "label": "Septic arthritis",
+                    "concept": "1bf4bdde-d42a-4b41-a7f4-51571b68e78c"
+                  },
+                  {
+                    "label": "Soft tissue infection / absces",
+                    "concept": "7b4cb209-a120-4ea9-85cf-aba5ffae4dee"
+                  },
+                  {
+                    "label": "Soft tissue infection / cellulitis",
+                    "concept": "63f1620b-817d-414f-becc-99325eb62a8e"
+                  },
+                  {
+                    "label": "Soft tissue infection / Necrotising fasciatis",
+                    "concept": "0d3664ef-c537-4410-9335-235c60aff7f8"
+                  },
+                  {
+                    "label": "Soft tissue infection / pyomyositis",
+                    "concept": "207ff468-4882-421f-9ced-3352dcfb31ae"
+                  },
+                  {
+                    "label": "Surgical site infection SSI / Incision - space or organ",
+                    "concept": "abdd4c7f-d9b0-49c7-a4de-c87b312d0351"
+                  },
+                  {
+                    "label": "Trauma / abdomen / blunt",
+                    "concept": "add93045-69e8-4722-816d-2b6af8dc0576"
+                  },
+                  {
+                    "label": "Trauma / abdomen / penetrating",
+                    "concept": "414f84ab-ba73-4004-9024-524c01e82f26"
+                  },
+                  {
+                    "label": "Trauma / chest / blunt",
+                    "concept": "ef8b86ff-12db-4887-9ee9-7a7c9951613e"
+                  },
+                  {
+                    "label": "Trauma / chest / penetrating",
+                    "concept": "1f496e52-1bc1-4d4b-bed3-950a3c52bf13"
+                  },
+                  {
+                    "label": "Trauma / eye injury",
+                    "concept": "ee127d8e-5224-4fe6-aa1c-dff29f63cb85"
+                  },
+                  {
+                    "label": "Trauma / face - facial bones",
+                    "concept": "a23e187a-167a-4595-a72c-6a2d7f6487f3"
+                  },
+                  {
+                    "label": "Trauma / joint dislocation",
+                    "concept": "1ef0b48a-3146-486a-9838-78d64a920b83"
+                  },
+                  {
+                    "label": "Trauma / penetrating neck injury",
+                    "concept": "ebe67dc6-8026-41d5-a4d2-39a1d8385b09"
+                  },
+                  {
+                    "label": "Trauma / vascular injury",
+                    "concept": "95b094ec-7db9-4a5e-9f6b-0ebac0f43091"
+                  },
+                  {
+                    "label": "Trauma/soft tissue/ complicated",
+                    "concept": "a77cea77-ab50-48e2-bc23-9cbc75554bce"
+                  },
+                  {
+                    "label": "Trauma/wound or laceration / simple",
+                    "concept": "1dbec5a2-13fd-4454-bac3-aeaa978846f5"
+                  },
+                  {
+                    "label": "Traumatic amputation / all types",
+                    "concept": "909fe492-1ec6-488b-90af-af31ef537f50"
+                  },
+                  {
+                    "label": "Traumatic brain injury / mild",
+                    "concept": "ccb6b2bf-03a3-46b8-bcae-044e3fef8c77"
+                  },
+                  {
+                    "label": "Traumatic brain injury / moderate",
+                    "concept": "b9b82f75-77c9-466d-8684-554cad59e1f8"
+                  },
+                  {
+                    "label": "Traumatic brain injury / severe",
+                    "concept": "c41461dd-30ec-4e01-b7fb-325001ed0e97"
+                  },
+                  {
+                    "label": "Tubo‐ovarian abscesses",
+                    "concept": "df483b17-518a-4d89-bf6a-80e564cb518b"
+                  },
+                  {
+                    "label": "Urolithiasis / bladder",
+                    "concept": "3406771a-a35a-4a1c-b0ee-2c7dd38c4f6f"
+                  },
+                  {
+                    "label": "Urolithiasis / kidney and Ureter",
+                    "concept": "aa799acc-0273-46d3-bc24-0fc38a65a761"
+                  },
+                  {
+                    "label": "Urolithiasis / urethra",
+                    "concept": "ebbfa407-b349-4bdc-b484-8c9df59fe280"
+                  },
+                  {
+                    "label": "Visceral hollow organ perforation (non-traumatic)",
+                    "concept": "79712333-e94d-420c-b994-fc48fc457735"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
+              },
+              "hide": {
+                "hideWhenExpression": "preoperativeDiagnosis !== 'other'"
+              }
+            },
+            {
+              "id": "postoperative",
+              "label": "Postoperative",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
+                "answers": [
+                  {
+                    "label": "Abortion / miscarriage",
+                    "concept": "5b087c45-04a1-4149-bb79-8875a6e0f960"
+                  },
+                  {
+                    "label": "Acute appendicitis",
+                    "concept": "fd4f2bfd-da11-410a-8f8d-36a651e132de"
+                  },
+                  {
+                    "label": "Acute cholecystitis",
+                    "concept": "96b93ec3-cbc2-4e37-9354-e489fa7a9bd8"
+                  },
+                  {
+                    "label": "Acute compartment syndrome (limb)",
+                    "concept": "854f9ca8-3fe8-40f0-a98f-37d565a3e242"
+                  },
+                  {
+                    "label": "Acute peritonitis",
+                    "concept": "f277697b-2f67-4bd9-87cf-19f589eaba83"
+                  },
+                  {
+                    "label": "Breast abscess",
+                    "concept": "e592e8c6-99bc-4655-b641-fbd233f3399d"
+                  },
+                  {
+                    "label": "Burns / major",
+                    "concept": "b0d0a019-7af4-49f7-86cb-99d9dccd1807"
+                  },
+                  {
+                    "label": "Burns / minor deep",
+                    "concept": "66660626-0209-4927-b70b-407adbdc176e"
+                  },
+                  {
+                    "label": "Burns / minor superficial",
+                    "concept": "5dab7064-d6c5-4229-b276-6e2b6d5e1c5c"
+                  },
+                  {
+                    "label": "Cataract",
+                    "concept": "436982a0-6bf1-44ab-9e8f-aff36f9787a5"
+                  },
+                  {
+                    "label": "Delivery / foetal distress",
+                    "concept": "639b0e7f-496e-4f43-bda0-5d689f3224f3"
+                  },
+                  {
+                    "label": "Delivery / umbilical cord complications",
+                    "concept": "f506a96f-6d63-4d85-ad06-5ff643b15bc0"
+                  },
+                  {
+                    "label": "Delivery multiple / all by caesarean section",
+                    "concept": "d8fb4c14-71ce-4d4e-bdd7-da40a8918c1c"
+                  },
+                  {
+                    "label": "Delivery single / by caesarean section",
+                    "concept": "373f41e4-3bbd-423b-bab8-190d4643b1a7"
+                  },
+                  {
+                    "label": "Ectopic pregnancy",
+                    "concept": "10f3449c-05fd-4a3d-9dca-1de634fd2366"
+                  },
+                  {
+                    "label": "Endometritis - inflammatory disease of uterus",
+                    "concept": "3fe12df7-4eae-45fb-8610-a5c25cd2ec97"
+                  },
+                  {
+                    "label": "Failure of labor induction",
+                    "concept": "526c2822-1499-413b-8fe0-84012473c1fe"
+                  },
+                  {
+                    "label": "Fracture / closed / cervical spine",
+                    "concept": "89bf9158-5160-41a5-a88e-2749b4faa5f9"
+                  },
+                  {
+                    "label": "Fracture / closed / hands and feet",
+                    "concept": "776340eb-7707-4e2f-b56f-5375d307ec3b"
+                  },
+                  {
+                    "label": "Fracture / closed / long bones limb",
+                    "concept": "5edc8f11-2b39-4cb5-980c-742504f18317"
+                  },
+                  {
+                    "label": "Fracture / closed / pelvis",
+                    "concept": "839f42dd-e343-4899-b027-e03cfa00af77"
+                  },
+                  {
+                    "label": "Fracture / closed / skull",
+                    "concept": "4dfe3517-96b5-4437-ad1c-486f6bd28524"
+                  },
+                  {
+                    "label": "Fracture / closed / thoracic and lumbar spine",
+                    "concept": "8b0276a9-272b-4988-89f9-3b3c5893c813"
+                  },
+                  {
+                    "label": "Fracture / malunion",
+                    "concept": "fc87b56c-0669-4d3c-9dd4-67491048f1d4"
+                  },
+                  {
+                    "label": "Fracture / nonunion",
+                    "concept": "fc87b56c-0669-4d3c-9dd4-67491048f1d4"
+                  },
+                  {
+                    "label": "Fracture / open / long bones limbs",
+                    "concept": "d9613f0d-47b4-4b26-9f65-31b74e4029ed"
+                  },
+                  {
+                    "label": "Fracture / open / skull open head injury",
+                    "concept": "4b3bf84b-bb58-4e76-9186-ae9762efd19f"
+                  },
+                  {
+                    "label": "Gestation / complication / placenta praevia",
+                    "concept": "3fe02af2-57da-4b73-a3a6-a568a795a2c8"
+                  },
+                  {
+                    "label": "Gestation / complication / postpartum haemorrhage",
+                    "concept": "f586985a-2700-4958-8cb1-f426675f0d8d"
+                  },
+                  {
+                    "label": "Gestation / complication / postpartum inversion of uterus",
+                    "concept": "b0cda050-44e3-4d55-9add-65e2d61844e9"
+                  },
+                  {
+                    "label": "Gestation / complication / premature separation of placenta",
+                    "concept": "3bdfefdd-3687-4ca3-99c6-443a121e2144"
+                  },
+                  {
+                    "label": "Gestation / complication / retained placenta without haemorrhage",
+                    "concept": "2a36f78f-2f16-4355-a13d-fc650330490b"
+                  },
+                  {
+                    "label": "Gestation / complication / rupture of uterus",
+                    "concept": "f6ce685d-28a8-4674-8160-f98c4f77ded2"
+                  },
+                  {
+                    "label": "Gestation / multiple",
+                    "concept": "ab5e0123-e789-4440-a71f-33c54e69b30b"
+                  },
+                  {
+                    "label": "Gestation / Previous history of more than 2 CS or atypical CS",
+                    "concept": "421d8948-3369-44bc-82d0-00290dca66f2"
+                  },
+                  {
+                    "label": "Hernia/symptomatic",
+                    "concept": "52ef1832-1bde-439a-a027-f0a8446b2a1d"
+                  },
+                  {
+                    "label": "Hydrocele",
+                    "concept": "46cb40e8-38b7-4fe5-836a-65b9a0a9633c"
+                  },
+                  {
+                    "label": "Intestinal obstruction / mechanical",
+                    "concept": "f854d339-8aa9-4548-96ff-a5f1a35fef2c"
+                  },
+                  {
+                    "label": "Intestinal obstruction / paralytic ileus",
+                    "concept": "a8aecb5c-bb1a-408a-9950-707dcb34ad86"
+                  },
+                  {
+                    "label": "Non traumatic wounds/ chronic soft tissue ulcer",
+                    "concept": "6f2abacf-9d58-46d7-87a0-a1ecd3990c99"
+                  },
+                  {
+                    "label": "Obstetric fistula/rectovaginal",
+                    "concept": "224d5798-a0e4-432a-bb7d-d30916cb07e8"
+                  },
+                  {
+                    "label": "Obstetric fistula/vesicovaginal",
+                    "concept": "33072233-4552-4596-9120-6ed195fd1d0c"
+                  },
+                  {
+                    "label": "Obstetric lacerations/tears",
+                    "concept": "71365d8e-2982-41b5-bc5a-382caa0fb8a4"
+                  },
+                  {
+                    "label": "Obstructed labour due to maternal pelvic abnormality, fetal malposition and fetal malpresentation",
+                    "concept": "cc2ea51a-5041-4ba2-b164-e031ba33d527"
+                  },
+                  {
+                    "label": "Osteomyelitis / non-traumatic",
+                    "concept": "1bfd5bdd-26a6-41a3-a94c-c5753f423b44"
+                  },
+                  {
+                    "label": "Osteomyelitis / post-traumatic",
+                    "concept": "835821f3-d264-4a07-916c-62ef7d81adeb"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Ovarian cysts",
+                    "concept": "736e1112-af12-44f7-921b-ff282da27763"
+                  },
+                  {
+                    "label": "Peripheral vascular disease",
+                    "concept": "d149c447-b34f-422a-bcdf-251bc6fcbecb"
+                  },
+                  {
+                    "label": "Prolonged labor",
+                    "concept": "f80dbec7-880a-4699-aa9d-4c6364892fd0"
+                  },
+                  {
+                    "label": "Pyothorax",
+                    "concept": "b77d540d-2927-44b4-aec9-d4e4ffa02f50"
+                  },
+                  {
+                    "label": "Septic arthritis",
+                    "concept": "1bf4bdde-d42a-4b41-a7f4-51571b68e78c"
+                  },
+                  {
+                    "label": "Soft tissue infection / absces",
+                    "concept": "7b4cb209-a120-4ea9-85cf-aba5ffae4dee"
+                  },
+                  {
+                    "label": "Soft tissue infection / cellulitis",
+                    "concept": "63f1620b-817d-414f-becc-99325eb62a8e"
+                  },
+                  {
+                    "label": "Soft tissue infection / Necrotising fasciatis",
+                    "concept": "0d3664ef-c537-4410-9335-235c60aff7f8"
+                  },
+                  {
+                    "label": "Soft tissue infection / pyomyositis",
+                    "concept": "207ff468-4882-421f-9ced-3352dcfb31ae"
+                  },
+                  {
+                    "label": "Surgical site infection SSI / Incision - space or organ",
+                    "concept": "abdd4c7f-d9b0-49c7-a4de-c87b312d0351"
+                  },
+                  {
+                    "label": "Trauma / abdomen / blunt",
+                    "concept": "add93045-69e8-4722-816d-2b6af8dc0576"
+                  },
+                  {
+                    "label": "Trauma / abdomen / penetrating",
+                    "concept": "414f84ab-ba73-4004-9024-524c01e82f26"
+                  },
+                  {
+                    "label": "Trauma / chest / blunt",
+                    "concept": "ef8b86ff-12db-4887-9ee9-7a7c9951613e"
+                  },
+                  {
+                    "label": "Trauma / chest / penetrating",
+                    "concept": "1f496e52-1bc1-4d4b-bed3-950a3c52bf13"
+                  },
+                  {
+                    "label": "Trauma / eye injury",
+                    "concept": "ee127d8e-5224-4fe6-aa1c-dff29f63cb85"
+                  },
+                  {
+                    "label": "Trauma / face - facial bones",
+                    "concept": "a23e187a-167a-4595-a72c-6a2d7f6487f3"
+                  },
+                  {
+                    "label": "Trauma / joint dislocation",
+                    "concept": "1ef0b48a-3146-486a-9838-78d64a920b83"
+                  },
+                  {
+                    "label": "Trauma / penetrating neck injury",
+                    "concept": "ebe67dc6-8026-41d5-a4d2-39a1d8385b09"
+                  },
+                  {
+                    "label": "Trauma / vascular injury",
+                    "concept": "95b094ec-7db9-4a5e-9f6b-0ebac0f43091"
+                  },
+                  {
+                    "label": "Trauma/soft tissue/ complicated",
+                    "concept": "a77cea77-ab50-48e2-bc23-9cbc75554bce"
+                  },
+                  {
+                    "label": "Trauma/wound or laceration / simple",
+                    "concept": "1dbec5a2-13fd-4454-bac3-aeaa978846f5"
+                  },
+                  {
+                    "label": "Traumatic amputation / all types",
+                    "concept": "909fe492-1ec6-488b-90af-af31ef537f50"
+                  },
+                  {
+                    "label": "Traumatic brain injury / mild",
+                    "concept": "ccb6b2bf-03a3-46b8-bcae-044e3fef8c77"
+                  },
+                  {
+                    "label": "Traumatic brain injury / moderate",
+                    "concept": "b9b82f75-77c9-466d-8684-554cad59e1f8"
+                  },
+                  {
+                    "label": "Traumatic brain injury / severe",
+                    "concept": "c41461dd-30ec-4e01-b7fb-325001ed0e97"
+                  },
+                  {
+                    "label": "Tubo‐ovarian abscesses",
+                    "concept": "df483b17-518a-4d89-bf6a-80e564cb518b"
+                  },
+                  {
+                    "label": "Urolithiasis / bladder",
+                    "concept": "3406771a-a35a-4a1c-b0ee-2c7dd38c4f6f"
+                  },
+                  {
+                    "label": "Urolithiasis / kidney and Ureter",
+                    "concept": "aa799acc-0273-46d3-bc24-0fc38a65a761"
+                  },
+                  {
+                    "label": "Urolithiasis / urethra",
+                    "concept": "ebbfa407-b349-4bdc-b484-8c9df59fe280"
+                  },
+                  {
+                    "label": "Visceral hollow organ perforation (non-traumatic)",
+                    "concept": "79712333-e94d-420c-b994-fc48fc457735"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
+              },
+              "hide": {
+                "hideWhenExpression": "postoperativeDiagnosis !== 'other'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Time",
+      "sections": [
+        {
+          "label": "Start",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "startOfOperation",
+              "label": "Start  of operation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "877aa979-c02f-4890-8156-836d52696f09"
+              }
+            }
+          ]
+        },
+        {
+          "label": "End",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "endOfOperation",
+              "label": "End of operation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "9348af6a-35dc-4459-b639-c498740065b6"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Duration",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "durationOfIntervention",
+              "label": "Duration of intervention (min)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "7692e68b-dec4-47e7-a5c6-e002780fb634",
+                "min": 10,
+                "step": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Anaesthesia",
+      "sections": [
+        {
+          "label": "Anaesthesia",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "asaScore",
+              "label": "ASA score",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "10ef102a-04d6-45ac-8471-2cec34b87a03",
+                "answers": [
+                  {
+                    "label": "1",
+                    "concept": "9c407911-f329-4761-b27a-bbbe24cc0332"
+                  },
+                  {
+                    "label": "2",
+                    "concept": "42965304-8abb-4a57-b7c2-b3eff5cbe9c7"
+                  },
+                  {
+                    "label": "3",
+                    "concept": "168e35f0-9866-4b13-98f2-4ecd2f538117"
+                  },
+                  {
+                    "label": "4",
+                    "concept": "6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91"
+                  },
+                  {
+                    "label": "5",
+                    "concept": "ce1af250-6125-47b9-89d7-dc5e88f69528"
+                  },
+                  {
+                    "label": "6",
+                    "concept": "fbb3a8af-6cca-4642-8649-677fd917191c"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "typeOfAnesthesia",
+              "label": "Type of anesthesia",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "84cc236e-90fa-4eec-acf5-d0cd6b713dc4",
+                "answers": [
+                  {
+                    "label": "Combined anesthesia",
+                    "concept": "196fc1d8-f306-4a00-b167-c8c9962eeb5a"
+                  },
+                  {
+                    "label": "General anesthesia with endotracheal intubation",
+                    "concept": "df6c87ea-6e5d-4d37-b74e-7ef07ec07e20"
+                  },
+                  {
+                    "label": "General anesthesia with laryngeal mask",
+                    "concept": "ca8b293a-b570-4f9c-9184-6a18c1fc37b2"
+                  },
+                  {
+                    "label": "General anesthesia with or without oxygen mask, cannula",
+                    "concept": "9e2374c3-067f-463e-8949-fdfe4eb04254"
+                  },
+                  {
+                    "label": "Local anesthesia",
+                    "concept": "d55cc5f0-b014-4c00-ab13-dfb81835e26b"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Peripheral nerve blocks",
+                    "concept": "65b535d3-eced-484c-8433-9ff9f0e5e514"
+                  },
+                  {
+                    "label": "Sedation",
+                    "concept": "ae4b74af-18d6-4574-9de8-a9371b961449"
+                  },
+                  {
+                    "label": "Spinal anesthesia",
+                    "concept": "c47adaf8-7e0a-495a-bf39-ae42e56f416f"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfAnesthesia !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Intervention",
+      "sections": [
+        {
+          "label": "Intervention",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "typeOfIntervention",
+              "label": "Type of intervention",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2470a73b-697f-414a-8c0f-fff66c6ec895",
+                "answers": [
+                  {
+                    "label": "Obstetric",
+                    "concept": "c1f0b04b-7e24-4f34-bc74-10c18d5219a5"
+                  },
+                  {
+                    "label": "Pathology (non-trauma)",
+                    "concept": "67ed6b20-c69f-4569-8bef-277cb337eed9"
+                  },
+                  {
+                    "label": "Trauma",
+                    "concept": "e2b94a46-6868-4148-b5eb-e75ab3bc1651"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "obstetricalInterventionType",
+              "label": "Obstetrical intervention type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b111aa3c-b23a-4aa5-a0d2-c6963414985b",
+                "answers": [
+                  {
+                    "label": "Foetomaternal",
+                    "concept": "1639a2f9-730f-4fc7-b8de-9dce4e148707"
+                  },
+                  {
+                    "label": "Post-partum",
+                    "concept": "a5e817c4-7cca-4bb1-a1d6-31c34993ba88"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== 'c1f0b04b-7e24-4f34-bc74-10c18d5219a5'"
+              }
+            },
+            {
+              "id": "pathologyInterventionType",
+              "label": "Pathology intervention type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "24f26269-18df-43bf-9124-ad1ae99de9d0",
+                "answers": [
+                  {
+                    "label": "Infection",
+                    "concept": "b204570f-cbe0-46f0-b789-a1b8369730ea"
+                  },
+                  {
+                    "label": "Tumour",
+                    "concept": "6cd6ee08-1d99-47f3-bdbc-da2de317f4fb"
+                  },
+                  {
+                    "label": "Various",
+                    "concept": "56220d8d-c379-4775-9401-fb6741a4dc25"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== '67ed6b20-c69f-4569-8bef-277cb337eed9'"
+              }
+            },
+            {
+              "id": "traumatologyInterventionType",
+              "label": "Traumatology intervention type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "04b20c21-3bf1-4272-a8dc-5b8ac6aa9e5f",
+                "answers": [
+                  {
+                    "label": "Accident",
+                    "concept": "c8925224-611e-4c17-80e1-f75cbc52d287"
+                  },
+                  {
+                    "label": "Violence",
+                    "concept": "0d56f886-875b-4932-a0c2-cde2886a286c"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfIntervention !== 'e2b94a46-6868-4148-b5eb-e75ab3bc1651'"
+              }
+            },
+            {
+              "id": "obstetricalFoetomaternalInterventionType",
+              "label": "Obstetrical foetomaternal intervention type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bcccb3f1-84e1-4e8f-998c-7b931d2b9ba3",
+                "answers": [
+                  {
+                    "label": "Foetal",
+                    "concept": "e63b6295-a316-4d38-996d-7b8cb46b15b8"
+                  },
+                  {
+                    "label": "Foetomaternal",
+                    "concept": "1639a2f9-730f-4fc7-b8de-9dce4e148707"
+                  },
+                  {
+                    "label": "Gyne-obstetrical",
+                    "concept": "e36f92e1-5093-4249-85d6-0a89e1327a47"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "obstetricalInterventionType !== '1639a2f9-730f-4fc7-b8de-9dce4e148707'"
+              }
+            },
+            {
+              "id": "obstetricalPostPartumComplicationsInterventionType",
+              "label": "Obstetrical Post-partum complications intervention type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "18278451-5c44-4cd1-9255-f6c7754489e8",
+                "answers": [
+                  {
+                    "label": "Haemorrhagic complications",
+                    "concept": "8c74c00f-af41-4d10-8057-7dba42f02edd"
+                  },
+                  {
+                    "label": "Other complications",
+                    "concept": "eae26e64-c363-4435-aa47-8faceaddfdc6"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "obstetricalInterventionType !== 'a5e817c4-7cca-4bb1-a1d6-31c34993ba88'"
+              }
+            },
+            {
+              "id": "obstetricalPuerperiumInterventionType",
+              "label": "Obstetrical puerperium intervention type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b401c003-2ec4-46e5-b0cb-1260d4638036",
+                "answers": [
+                  {
+                    "label": "Infection",
+                    "concept": "b204570f-cbe0-46f0-b789-a1b8369730ea"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "obstetricalInterventionType !== 'puerperium'"
+              }
+            },
+            {
+              "id": "pathologyInfectionInterventionType",
+              "label": "Pathology infection intervention type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3a293313-15c7-4ae4-ba41-1f48af34632a",
+                "answers": [
+                  {
+                    "label": "Abscess",
+                    "concept": "14a23f94-6b92-4014-81e9-af9c65b2a070"
+                  },
+                  {
+                    "label": "Tropical",
+                    "concept": "1b35a827-8bf4-4817-a9f5-8cb0dcfa884e"
+                  },
+                  {
+                    "label": "Vascular",
+                    "concept": "ac11060f-6580-45df-b716-0a6c29204a8c"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "pathologyInterventionType !== 'b204570f-cbe0-46f0-b789-a1b8369730ea'"
+              }
+            },
+            {
+              "id": "pathologyTumourInterventionType",
+              "label": "Pathology tumour intervention type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "09a7668f-609e-41f2-9493-fd290ead461d",
+                "answers": [
+                  {
+                    "label": "Benign",
+                    "concept": "43714604-7966-48ea-b403-90e11ee5693c"
+                  },
+                  {
+                    "label": "Malignant",
+                    "concept": "819f604b-e06b-4ae7-bf7d-938a3a0ed40b"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "pathologyInterventionType !== '6cd6ee08-1d99-47f3-bdbc-da2de317f4fb'"
+              }
+            },
+            {
+              "id": "pathologyVariousInterventionType",
+              "label": "Pathology various intervention type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2e8127cf-271d-4821-9203-ab72efadf7b8",
+                "answers": [
+                  {
+                    "label": "Congenital",
+                    "concept": "4f9c663d-e7b2-460d-adc2-14e2b455daa7"
+                  },
+                  {
+                    "label": "Haemorrhage",
+                    "concept": "d14d3774-1595-479d-829a-6c81f98a32d0"
+                  },
+                  {
+                    "label": "Iatrogenic",
+                    "concept": "d51458c7-5a69-4f08-80f0-48ab5dad5960"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "pathologyInterventionType !== '56220d8d-c379-4775-9401-fb6741a4dc25'"
+              }
+            },
+            {
+              "id": "traumatologyAccidentInterventionType",
+              "label": "Traumatology accident intervention type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "529f1a05-6dc4-4991-a085-09676ef325f3",
+                "answers": [
+                  {
+                    "label": "Animal",
+                    "concept": "61cc784e-0243-4967-b8bc-e722c2074ad8"
+                  },
+                  {
+                    "label": "Burn",
+                    "concept": "719ea0d7-98fd-4e86-84be-451b8c0f6f54"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Traffic",
+                    "concept": "83358f45-77a3-4c2e-baf3-8fe98d1b4972"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "traumatologyInterventionType !== 'c8925224-611e-4c17-80e1-f75cbc52d287'"
+              }
+            },
+            {
+              "id": "traumatologyViolenceInterventionType",
+              "label": "Traumatology violence intervention type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "24486823-98bc-4487-8dab-d22fe50a2d43",
+                "answers": [
+                  {
+                    "label": "Bomb",
+                    "concept": "90194518-aff7-4084-89c7-096bd0f76183"
+                  },
+                  {
+                    "label": "Domestic violence",
+                    "concept": "e25f9ca1-0b33-4765-a8c4-5da48289bda7"
+                  },
+                  {
+                    "label": "Gunshot",
+                    "concept": "9a4d5499-1b1e-43c7-b5e9-e44adc178bf5"
+                  },
+                  {
+                    "label": "Knife",
+                    "concept": "5f9d25cb-14b2-4f4f-af7d-3df464400153"
+                  },
+                  {
+                    "label": "Mine",
+                    "concept": "a4229623-1125-4340-975c-6c7bc356fe6a"
+                  },
+                  {
+                    "label": "Torture",
+                    "concept": "8fcfb3f7-218a-4879-a708-43bccfcf4fae"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "traumatologyInterventionType !== '0d56f886-875b-4932-a0c2-cde2886a286c'"
+              }
+            },
+            {
+              "id": "urgencyOfIntervention",
+              "label": "Urgency of intervention",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e3998a4e-c57d-4b95-a7d1-82897cf906a7",
+                "answers": [
+                  {
+                    "label": "Elective",
+                    "concept": "b97b33f4-a2d4-46ee-afaf-bc2aaa5646eb"
+                  },
+                  {
+                    "label": "Semi-urgent",
+                    "concept": "fa2ee847-7657-4a7f-b9ad-ef8c2664de27"
+                  },
+                  {
+                    "label": "Urgent",
+                    "concept": "87274dc0-3be1-4d16-ab63-75094f7dcd4f"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "sequenceOfIntervention",
+              "label": "Sequence of intervention",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "440ae489-6e5d-48c4-944f-f1fd3531f13a",
+                "answers": [
+                  {
+                    "label": "Planned re-intervention",
+                    "concept": "3d96bfa3-5f92-472b-8fe9-3eb29c922247"
+                  },
+                  {
+                    "label": "Primary intervention",
+                    "concept": "1779e667-a13a-4634-ab40-40ac41d17b54"
+                  },
+                  {
+                    "label": "Unplanned re-intervention",
+                    "concept": "8f4273eb-8cb8-4253-aa75-eb9b01ff5060"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Procedure",
+      "sections": [
+        {
+          "label": "Procedure",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "safetyChecklistCompleted",
+              "label": "Safety checklist completed?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "98d2973b-6b41-4f58-a1f7-c19d8233cf9b",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "type1",
+              "label": "Type - 1",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ad18ffd8-7ae7-4a44-b3b8-758b4a743072",
+                "answers": [
+                  {
+                    "label": "Gynaecology",
+                    "concept": "50b1cca9-5c58-479b-9bb9-5e546355fb4a"
+                  },
+                  {
+                    "label": "Minor",
+                    "concept": "bd977427-2b5e-4ff0-bae0-40fa55cbc6d4"
+                  },
+                  {
+                    "label": "Orthopaedics",
+                    "concept": "967c1999-880e-4137-bf4d-51a69421a4ae"
+                  },
+                  {
+                    "label": "Specialized",
+                    "concept": "5c286216-367f-4285-a78a-7a2fe2114c87"
+                  },
+                  {
+                    "label": "Visceral",
+                    "concept": "db365ee8-7697-4ed8-a606-7a165f9ab3e8"
+                  },
+                  {
+                    "label": "Wound",
+                    "concept": "824c3c4e-5698-43f2-a235-d2a1404dfe07"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "visceral",
+              "label": "Visceral",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0a03168b-9ad2-4cc0-9ec6-bb8578b9acb3",
+                "answers": [
+                  {
+                    "label": "Exploratory laparotomy",
+                    "concept": "0079d0c7-decb-4e79-ad7c-a4e5a7e75e94"
+                  },
+                  {
+                    "label": "Gut: resection or repair",
+                    "concept": "35d74460-0939-4c8b-a98b-be122c18344c"
+                  },
+                  {
+                    "label": "Hernia, hydrocoele, haemorrhoids,…",
+                    "concept": "a18abe2d-246a-4095-b17e-1131276d5289"
+                  },
+                  {
+                    "label": "Internal organ: resection or repair",
+                    "concept": "eb92626f-1d0b-4e5b-8691-4828086cd31d"
+                  },
+                  {
+                    "label": "Other general/visceral surgery",
+                    "concept": "c49529b2-cd9f-454e-9347-63c394240e9b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type1 !== 'db365ee8-7697-4ed8-a606-7a165f9ab3e8'"
+              }
+            },
+            {
+              "id": "wound",
+              "label": "Wound",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "29285b70-a636-4b72-bc79-abeec42bf9d3",
+                "answers": [
+                  {
+                    "label": "Burns dressings",
+                    "concept": "1b996765-a881-4d6e-85dc-411d0618ff28"
+                  },
+                  {
+                    "label": "Debridement (extensive), fasciotomy",
+                    "concept": "183c0a32-82ea-41d1-9a92-e399a8969eb3"
+                  },
+                  {
+                    "label": "Foreign body removal",
+                    "concept": "acc8596e-bcb8-420e-b0b8-5c0e539efd3c"
+                  },
+                  {
+                    "label": "Grafting of skin or muscle",
+                    "concept": "6a912a40-0883-4dfa-884a-a7deeeac0ef1"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type1 !== '824c3c4e-5698-43f2-a235-d2a1404dfe07'"
+              }
+            },
+            {
+              "id": "specialized",
+              "label": "Specialized",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "de12df77-c58a-4e7b-a9f2-2f4734b7b0b7",
+                "answers": [
+                  {
+                    "label": "Ear-nose-throat",
+                    "concept": "68f13e57-3f21-4745-aecc-1bd20f81ef42"
+                  },
+                  {
+                    "label": "Genito urinary",
+                    "concept": "cd6bc8b3-d716-4c67-a46b-316ec17490fb"
+                  },
+                  {
+                    "label": "Maxillo-facial",
+                    "concept": "38592189-180d-4ab1-8681-580e4ca5da5b"
+                  },
+                  {
+                    "label": "Neurosurgery",
+                    "concept": "e70e657a-16ff-4acd-a48b-c38758ba395c"
+                  },
+                  {
+                    "label": "Ophthalmology",
+                    "concept": "d071bee8-5cb4-42bb-8790-8d0d64025ecb"
+                  },
+                  {
+                    "label": "Plastic & reconstructive",
+                    "concept": "0c78f48d-fc2f-4b16-b82d-df7d22bf7918"
+                  },
+                  {
+                    "label": "Thoracotomy",
+                    "concept": "86921582-c4d2-47b8-8642-d758ed18e576"
+                  },
+                  {
+                    "label": "Various",
+                    "concept": "56220d8d-c379-4775-9401-fb6741a4dc25"
+                  },
+                  {
+                    "label": "Vascular surgery",
+                    "concept": "b9ea2195-b509-4d5e-8605-44366f480b6b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type1 !== '5c286216-367f-4285-a78a-7a2fe2114c87'"
+              }
+            },
+            {
+              "id": "orthopaedics",
+              "label": "Orthopaedics",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f39a957f-0fc1-4571-85cd-ac4609707fca",
+                "answers": [
+                  {
+                    "label": "Amputation of limb",
+                    "concept": "1e7c9285-8d09-420d-9a25-85055c18ea4a"
+                  },
+                  {
+                    "label": "Bone graft",
+                    "concept": "e3243eba-4d4c-4922-ab77-ad108c9c950c"
+                  },
+                  {
+                    "label": "Curettage for osteomyelitis",
+                    "concept": "8a8ba3d0-78e3-439c-b336-b05beaddd0f0"
+                  },
+                  {
+                    "label": "Fixator external",
+                    "concept": "460232d5-8495-4485-8e29-91465b028279"
+                  },
+                  {
+                    "label": "Internal fixation",
+                    "concept": "ec54ff00-256f-4e4d-9e9b-3f8c71a9e0b8"
+                  },
+                  {
+                    "label": "Internal fixation removed",
+                    "concept": "7520a433-ef18-4af2-a294-0ac49bc2109b"
+                  },
+                  {
+                    "label": "Ortho joint surgery",
+                    "concept": "ae70e64d-0f87-4949-9695-bc50e8f627e0"
+                  },
+                  {
+                    "label": "Ortho nerve",
+                    "concept": "6aff833f-439e-4517-b55d-829faa8e3b55"
+                  },
+                  {
+                    "label": "Orthopaedics (others)",
+                    "concept": "488b6e7e-38c9-4c54-86f0-6b049f78e6b4"
+                  },
+                  {
+                    "label": "Reduction of fractures and luxations",
+                    "concept": "3edfcc04-0b40-4ea4-b75b-659d2ac10987"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type1 !== '967c1999-880e-4137-bf4d-51a69421a4ae'"
+              }
+            },
+            {
+              "id": "minor",
+              "label": "Minor",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4d6ac9c6-d885-4491-b651-3b5414df341a",
+                "answers": [
+                  {
+                    "label": "Dressings under sedation, drains, insertion or removal",
+                    "concept": "903d9881-7e28-41b1-ad5a-ed7a57f5d626"
+                  },
+                  {
+                    "label": "Simple suturing, abscess, circumcision",
+                    "concept": "c5b873fc-5b78-41b0-b754-aef0193b503d"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type1 !== 'bd977427-2b5e-4ff0-bae0-40fa55cbc6d4'"
+              }
+            },
+            {
+              "id": "gynaecology",
+              "label": "Gynaecology",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b5556225-c2c6-4663-a96f-e9e94d777c05",
+                "answers": [
+                  {
+                    "label": "Caesarean section",
+                    "concept": "580f5ec5-cb55-4451-9939-45f76565f6f8"
+                  },
+                  {
+                    "label": "Curettage",
+                    "concept": "0ad93561-40b9-4e3f-b0a6-76ce3df1ab4f"
+                  },
+                  {
+                    "label": "Ectopic pregnancy",
+                    "concept": "10f3449c-05fd-4a3d-9dca-1de634fd2366"
+                  },
+                  {
+                    "label": "Hysterectomy oopharectomy",
+                    "concept": "35620745-174a-4c92-ad21-b52c73727183"
+                  },
+                  {
+                    "label": "Other gyn/obstetric",
+                    "concept": "0c62846f-902f-407a-ad18-4498d7e429e9"
+                  },
+                  {
+                    "label": "Vesicovaginal fistula",
+                    "concept": "e734b3ce-d203-4ea3-b137-bd44721c3a9f"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type1 !== '50b1cca9-5c58-479b-9bb9-5e546355fb4a'"
+              }
+            },
+            {
+              "id": "type2",
+              "label": "Type - 2",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "529deaa9-1a6f-490e-bb2b-a9e1e0aec52b",
+                "answers": [
+                  {
+                    "label": "Gynaecology",
+                    "concept": "50b1cca9-5c58-479b-9bb9-5e546355fb4a"
+                  },
+                  {
+                    "label": "Minor",
+                    "concept": "bd977427-2b5e-4ff0-bae0-40fa55cbc6d4"
+                  },
+                  {
+                    "label": "Orthopaedics",
+                    "concept": "967c1999-880e-4137-bf4d-51a69421a4ae"
+                  },
+                  {
+                    "label": "Specialized",
+                    "concept": "5c286216-367f-4285-a78a-7a2fe2114c87"
+                  },
+                  {
+                    "label": "Visceral",
+                    "concept": "db365ee8-7697-4ed8-a606-7a165f9ab3e8"
+                  },
+                  {
+                    "label": "Wound",
+                    "concept": "824c3c4e-5698-43f2-a235-d2a1404dfe07"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "specialized",
+              "label": "Specialized",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "de12df77-c58a-4e7b-a9f2-2f4734b7b0b7",
+                "answers": [
+                  {
+                    "label": "Ear-nose-throat",
+                    "concept": "68f13e57-3f21-4745-aecc-1bd20f81ef42"
+                  },
+                  {
+                    "label": "Genito urinary",
+                    "concept": "cd6bc8b3-d716-4c67-a46b-316ec17490fb"
+                  },
+                  {
+                    "label": "Maxillo-facial",
+                    "concept": "38592189-180d-4ab1-8681-580e4ca5da5b"
+                  },
+                  {
+                    "label": "Neurosurgery",
+                    "concept": "e70e657a-16ff-4acd-a48b-c38758ba395c"
+                  },
+                  {
+                    "label": "Ophthalmology",
+                    "concept": "d071bee8-5cb4-42bb-8790-8d0d64025ecb"
+                  },
+                  {
+                    "label": "Plastic & reconstructive",
+                    "concept": "0c78f48d-fc2f-4b16-b82d-df7d22bf7918"
+                  },
+                  {
+                    "label": "Thoracotomy",
+                    "concept": "86921582-c4d2-47b8-8642-d758ed18e576"
+                  },
+                  {
+                    "label": "Various",
+                    "concept": "56220d8d-c379-4775-9401-fb6741a4dc25"
+                  },
+                  {
+                    "label": "Vascular surgery",
+                    "concept": "b9ea2195-b509-4d5e-8605-44366f480b6b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type2 !== '5c286216-367f-4285-a78a-7a2fe2114c87'"
+              }
+            },
+            {
+              "id": "visceral",
+              "label": "Visceral",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0a03168b-9ad2-4cc0-9ec6-bb8578b9acb3",
+                "answers": [
+                  {
+                    "label": "Exploratory laparotomy",
+                    "concept": "0079d0c7-decb-4e79-ad7c-a4e5a7e75e94"
+                  },
+                  {
+                    "label": "Gut: resection or repair",
+                    "concept": "35d74460-0939-4c8b-a98b-be122c18344c"
+                  },
+                  {
+                    "label": "Hernia, hydrocoele, haemorrhoids,…",
+                    "concept": "a18abe2d-246a-4095-b17e-1131276d5289"
+                  },
+                  {
+                    "label": "Internal organ: resection or repair",
+                    "concept": "eb92626f-1d0b-4e5b-8691-4828086cd31d"
+                  },
+                  {
+                    "label": "Other general/visceral surgery",
+                    "concept": "c49529b2-cd9f-454e-9347-63c394240e9b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type2 !== 'db365ee8-7697-4ed8-a606-7a165f9ab3e8'"
+              }
+            },
+            {
+              "id": "wound",
+              "label": "Wound",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "29285b70-a636-4b72-bc79-abeec42bf9d3",
+                "answers": [
+                  {
+                    "label": "Burns dressings",
+                    "concept": "1b996765-a881-4d6e-85dc-411d0618ff28"
+                  },
+                  {
+                    "label": "Debridement (extensive), fasciotomy",
+                    "concept": "183c0a32-82ea-41d1-9a92-e399a8969eb3"
+                  },
+                  {
+                    "label": "Foreign body removal",
+                    "concept": "acc8596e-bcb8-420e-b0b8-5c0e539efd3c"
+                  },
+                  {
+                    "label": "Grafting of skin or muscle",
+                    "concept": "6a912a40-0883-4dfa-884a-a7deeeac0ef1"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type2 !== '824c3c4e-5698-43f2-a235-d2a1404dfe07'"
+              }
+            },
+            {
+              "id": "orthopaedics",
+              "label": "Orthopaedics",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f39a957f-0fc1-4571-85cd-ac4609707fca",
+                "answers": [
+                  {
+                    "label": "Amputation of limb",
+                    "concept": "1e7c9285-8d09-420d-9a25-85055c18ea4a"
+                  },
+                  {
+                    "label": "Bone graft",
+                    "concept": "e3243eba-4d4c-4922-ab77-ad108c9c950c"
+                  },
+                  {
+                    "label": "Curettage for osteomyelitis",
+                    "concept": "8a8ba3d0-78e3-439c-b336-b05beaddd0f0"
+                  },
+                  {
+                    "label": "Fixator external",
+                    "concept": "460232d5-8495-4485-8e29-91465b028279"
+                  },
+                  {
+                    "label": "Internal fixation",
+                    "concept": "ec54ff00-256f-4e4d-9e9b-3f8c71a9e0b8"
+                  },
+                  {
+                    "label": "Internal fixation removed",
+                    "concept": "7520a433-ef18-4af2-a294-0ac49bc2109b"
+                  },
+                  {
+                    "label": "Ortho joint surgery",
+                    "concept": "ae70e64d-0f87-4949-9695-bc50e8f627e0"
+                  },
+                  {
+                    "label": "Ortho nerve",
+                    "concept": "6aff833f-439e-4517-b55d-829faa8e3b55"
+                  },
+                  {
+                    "label": "Orthopaedics (others)",
+                    "concept": "488b6e7e-38c9-4c54-86f0-6b049f78e6b4"
+                  },
+                  {
+                    "label": "Reduction of fractures and luxations",
+                    "concept": "3edfcc04-0b40-4ea4-b75b-659d2ac10987"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type2 !== '967c1999-880e-4137-bf4d-51a69421a4ae'"
+              }
+            },
+            {
+              "id": "minor",
+              "label": "Minor",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4d6ac9c6-d885-4491-b651-3b5414df341a",
+                "answers": [
+                  {
+                    "label": "Dressings under sedation, drains, insertion or removal",
+                    "concept": "903d9881-7e28-41b1-ad5a-ed7a57f5d626"
+                  },
+                  {
+                    "label": "Simple suturing, abscess, circumcision",
+                    "concept": "c5b873fc-5b78-41b0-b754-aef0193b503d"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type2 !== 'bd977427-2b5e-4ff0-bae0-40fa55cbc6d4'"
+              }
+            },
+            {
+              "id": "gynaecology",
+              "label": "Gynaecology",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b5556225-c2c6-4663-a96f-e9e94d777c05",
+                "answers": [
+                  {
+                    "label": "Caesarean section",
+                    "concept": "580f5ec5-cb55-4451-9939-45f76565f6f8"
+                  },
+                  {
+                    "label": "Curettage",
+                    "concept": "0ad93561-40b9-4e3f-b0a6-76ce3df1ab4f"
+                  },
+                  {
+                    "label": "Ectopic pregnancy",
+                    "concept": "10f3449c-05fd-4a3d-9dca-1de634fd2366"
+                  },
+                  {
+                    "label": "Hysterectomy oopharectomy",
+                    "concept": "35620745-174a-4c92-ad21-b52c73727183"
+                  },
+                  {
+                    "label": "Other gyn/obstetric",
+                    "concept": "0c62846f-902f-407a-ad18-4498d7e429e9"
+                  },
+                  {
+                    "label": "Vesicovaginal fistula",
+                    "concept": "e734b3ce-d203-4ea3-b137-bd44721c3a9f"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type2 !== '50b1cca9-5c58-479b-9bb9-5e546355fb4a'"
+              }
+            },
+            {
+              "id": "type3",
+              "label": "Type - 3",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f8e25b2e-9ea2-416b-9548-af4053eaffed",
+                "answers": [
+                  {
+                    "label": "Gynaecology",
+                    "concept": "50b1cca9-5c58-479b-9bb9-5e546355fb4a"
+                  },
+                  {
+                    "label": "Minor",
+                    "concept": "bd977427-2b5e-4ff0-bae0-40fa55cbc6d4"
+                  },
+                  {
+                    "label": "Orthopaedics",
+                    "concept": "967c1999-880e-4137-bf4d-51a69421a4ae"
+                  },
+                  {
+                    "label": "Specialized",
+                    "concept": "5c286216-367f-4285-a78a-7a2fe2114c87"
+                  },
+                  {
+                    "label": "Visceral",
+                    "concept": "db365ee8-7697-4ed8-a606-7a165f9ab3e8"
+                  },
+                  {
+                    "label": "Wound",
+                    "concept": "824c3c4e-5698-43f2-a235-d2a1404dfe07"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "visceral",
+              "label": "Visceral",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0a03168b-9ad2-4cc0-9ec6-bb8578b9acb3",
+                "answers": [
+                  {
+                    "label": "Exploratory laparotomy",
+                    "concept": "0079d0c7-decb-4e79-ad7c-a4e5a7e75e94"
+                  },
+                  {
+                    "label": "Gut: resection or repair",
+                    "concept": "35d74460-0939-4c8b-a98b-be122c18344c"
+                  },
+                  {
+                    "label": "Hernia, hydrocoele, haemorrhoids,…",
+                    "concept": "a18abe2d-246a-4095-b17e-1131276d5289"
+                  },
+                  {
+                    "label": "Internal organ: resection or repair",
+                    "concept": "eb92626f-1d0b-4e5b-8691-4828086cd31d"
+                  },
+                  {
+                    "label": "Other general/visceral surgery",
+                    "concept": "c49529b2-cd9f-454e-9347-63c394240e9b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type3 !== 'db365ee8-7697-4ed8-a606-7a165f9ab3e8'"
+              }
+            },
+            {
+              "id": "wound",
+              "label": "Wound",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "29285b70-a636-4b72-bc79-abeec42bf9d3",
+                "answers": [
+                  {
+                    "label": "Burns dressings",
+                    "concept": "1b996765-a881-4d6e-85dc-411d0618ff28"
+                  },
+                  {
+                    "label": "Debridement (extensive), fasciotomy",
+                    "concept": "183c0a32-82ea-41d1-9a92-e399a8969eb3"
+                  },
+                  {
+                    "label": "Foreign body removal",
+                    "concept": "acc8596e-bcb8-420e-b0b8-5c0e539efd3c"
+                  },
+                  {
+                    "label": "Grafting of skin or muscle",
+                    "concept": "6a912a40-0883-4dfa-884a-a7deeeac0ef1"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type3 !== '824c3c4e-5698-43f2-a235-d2a1404dfe07'"
+              }
+            },
+            {
+              "id": "orthopaedics",
+              "label": "Orthopaedics",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f39a957f-0fc1-4571-85cd-ac4609707fca",
+                "answers": [
+                  {
+                    "label": "Amputation of limb",
+                    "concept": "1e7c9285-8d09-420d-9a25-85055c18ea4a"
+                  },
+                  {
+                    "label": "Bone graft",
+                    "concept": "e3243eba-4d4c-4922-ab77-ad108c9c950c"
+                  },
+                  {
+                    "label": "Curettage for osteomyelitis",
+                    "concept": "8a8ba3d0-78e3-439c-b336-b05beaddd0f0"
+                  },
+                  {
+                    "label": "Fixator external",
+                    "concept": "460232d5-8495-4485-8e29-91465b028279"
+                  },
+                  {
+                    "label": "Internal fixation",
+                    "concept": "ec54ff00-256f-4e4d-9e9b-3f8c71a9e0b8"
+                  },
+                  {
+                    "label": "Internal fixation removed",
+                    "concept": "7520a433-ef18-4af2-a294-0ac49bc2109b"
+                  },
+                  {
+                    "label": "Ortho joint surgery",
+                    "concept": "ae70e64d-0f87-4949-9695-bc50e8f627e0"
+                  },
+                  {
+                    "label": "Ortho nerve",
+                    "concept": "6aff833f-439e-4517-b55d-829faa8e3b55"
+                  },
+                  {
+                    "label": "Orthopaedics (others)",
+                    "concept": "488b6e7e-38c9-4c54-86f0-6b049f78e6b4"
+                  },
+                  {
+                    "label": "Reduction of fractures and luxations",
+                    "concept": "3edfcc04-0b40-4ea4-b75b-659d2ac10987"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type3 !== '967c1999-880e-4137-bf4d-51a69421a4ae'"
+              }
+            },
+            {
+              "id": "specialized",
+              "label": "Specialized",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "de12df77-c58a-4e7b-a9f2-2f4734b7b0b7",
+                "answers": [
+                  {
+                    "label": "Ear-nose-throat",
+                    "concept": "68f13e57-3f21-4745-aecc-1bd20f81ef42"
+                  },
+                  {
+                    "label": "Genito urinary",
+                    "concept": "cd6bc8b3-d716-4c67-a46b-316ec17490fb"
+                  },
+                  {
+                    "label": "Maxillo-facial",
+                    "concept": "38592189-180d-4ab1-8681-580e4ca5da5b"
+                  },
+                  {
+                    "label": "Neurosurgery",
+                    "concept": "e70e657a-16ff-4acd-a48b-c38758ba395c"
+                  },
+                  {
+                    "label": "Ophthalmology",
+                    "concept": "d071bee8-5cb4-42bb-8790-8d0d64025ecb"
+                  },
+                  {
+                    "label": "Plastic & reconstructive",
+                    "concept": "0c78f48d-fc2f-4b16-b82d-df7d22bf7918"
+                  },
+                  {
+                    "label": "Thoracotomy",
+                    "concept": "86921582-c4d2-47b8-8642-d758ed18e576"
+                  },
+                  {
+                    "label": "Various",
+                    "concept": "56220d8d-c379-4775-9401-fb6741a4dc25"
+                  },
+                  {
+                    "label": "Vascular surgery",
+                    "concept": "b9ea2195-b509-4d5e-8605-44366f480b6b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type3 !== '5c286216-367f-4285-a78a-7a2fe2114c87'"
+              }
+            },
+            {
+              "id": "minor",
+              "label": "Minor",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4d6ac9c6-d885-4491-b651-3b5414df341a",
+                "answers": [
+                  {
+                    "label": "Dressings under sedation, drains, insertion or removal",
+                    "concept": "903d9881-7e28-41b1-ad5a-ed7a57f5d626"
+                  },
+                  {
+                    "label": "Simple suturing, abscess, circumcision",
+                    "concept": "c5b873fc-5b78-41b0-b754-aef0193b503d"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type3 !== 'bd977427-2b5e-4ff0-bae0-40fa55cbc6d4'"
+              }
+            },
+            {
+              "id": "gynaecology",
+              "label": "Gynaecology",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b5556225-c2c6-4663-a96f-e9e94d777c05",
+                "answers": [
+                  {
+                    "label": "Caesarean section",
+                    "concept": "580f5ec5-cb55-4451-9939-45f76565f6f8"
+                  },
+                  {
+                    "label": "Curettage",
+                    "concept": "0ad93561-40b9-4e3f-b0a6-76ce3df1ab4f"
+                  },
+                  {
+                    "label": "Ectopic pregnancy",
+                    "concept": "10f3449c-05fd-4a3d-9dca-1de634fd2366"
+                  },
+                  {
+                    "label": "Hysterectomy oopharectomy",
+                    "concept": "35620745-174a-4c92-ad21-b52c73727183"
+                  },
+                  {
+                    "label": "Other gyn/obstetric",
+                    "concept": "0c62846f-902f-407a-ad18-4498d7e429e9"
+                  },
+                  {
+                    "label": "Vesicovaginal fistula",
+                    "concept": "e734b3ce-d203-4ea3-b137-bd44721c3a9f"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "type3 !== '50b1cca9-5c58-479b-9bb9-5e546355fb4a'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Evaluation",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "findingsAndTechnique",
+              "label": "Findings and technique",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "c9ef1b01-3b12-4a95-abb7-4bcd38069100"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Transfusion",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "bloodTransfusion",
+              "label": "Blood transfusion",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "550f0ba6-b763-4501-9e24-19607031110f",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "bloodTransfusionQuantity",
+              "label": "Blood transfusion - Quantity (ml)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "df246541-c6d7-4775-8b07-7e84cccc1bc5",
+                "min": 50,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "bloodTransfusion !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Contamination",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "degreeOfContamination",
+              "label": "Degree of contamination (Altemeier classification)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a0f66576-a6f3-4074-9ed1-d65918013c2c",
+                "answers": [
+                  {
+                    "label": "Clean",
+                    "concept": "8c6ca7e0-1267-48e9-a80d-767c9e63ce8a"
+                  },
+                  {
+                    "label": "Clean-contaminated",
+                    "concept": "ba8edea5-26f2-4308-aa8a-c1ea2edd125d"
+                  },
+                  {
+                    "label": "Contaminated",
+                    "concept": "d28eeae1-b7fe-431a-b426-e3c2864d78c4"
+                  },
+                  {
+                    "label": "Dirty",
+                    "concept": "a5e63386-5770-4f8b-a0a5-e232771c71ca"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Post-op",
+      "sections": [
+        {
+          "label": "Post-op",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "patientCondition",
+              "label": "Patient condition",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0a51dcf7-ea6d-45ca-8986-6abb91793f5c"
+              }
+            },
+            {
+              "id": "newbornCondition",
+              "label": "Newborn condition",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "5112aeb3-3b52-44b7-86fa-86023220e033"
+              },
+              "questionInfo": "Capture relevant information from Neonatal delivery form"
+            },
+            {
+              "id": "neonatalStatus",
+              "label": "Neonatal status",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "2a1e38d9-da79-446b-8975-0b810cce7888",
+                "answers": [
+                  {
+                    "label": "Alive",
+                    "concept": "da0a023f-789a-484a-a736-5e0ca25b2e9e"
+                  },
+                  {
+                    "label": "Congenital malformation",
+                    "concept": "2c8cc5c6-ba1c-488b-b7ed-5159c907c1d0"
+                  },
+                  {
+                    "label": "Dead",
+                    "concept": "dc1c7ac9-d9c3-4887-bc22-827c2db7689f"
+                  },
+                  {
+                    "label": "IUFD",
+                    "concept": "9bb58b6c-7995-40d1-b7b8-29452dc9a367"
+                  },
+                  {
+                    "label": "Stillbirth",
+                    "concept": "0971aca0-e47f-423d-9845-b445ac1bd2ff"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "plan",
+              "label": "Plan",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "78900dd0-228c-48ec-843f-81dae00cd454"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "name": "F15-Surgical safety checklist",
+  "description": "MSF Form - F15-Surgical safety checklist",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Consultation",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Before induction of anaesthesia",
+      "sections": [
+        {
+          "label": "Sign in",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "confirmWithPatient",
+              "label": "Confirm with patient",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "31b91d64-6c79-4999-9006-65ed3fc9dd3c",
+                "answers": [
+                  {
+                    "label": "Consent",
+                    "concept": "ab2fcfa5-4236-4b0f-8a42-860408a78812"
+                  },
+                  {
+                    "label": "Identity",
+                    "concept": "80df1d05-a1e6-4aaf-8744-8e8e40c9d13f"
+                  },
+                  {
+                    "label": "Procedure",
+                    "concept": "2385333d-6b3c-4278-bc27-8a65067fa373"
+                  },
+                  {
+                    "label": "Site",
+                    "concept": "60142b4c-554d-4453-8121-11f97ab8fecd"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "siteMarked",
+              "label": "Site marked",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "7f2255cb-b23d-4701-a08e-8813cd9a2156",
+                "answers": [
+                  {
+                    "label": "Not applicable",
+                    "concept": "8fb2f830-52b3-4593-8e8f-5db8e2be7668"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "surgicalInstrumentsAndNecessaryEquipmentCheckedAndReady",
+              "label": "Surgical instruments and necessary equipment checked and ready",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "fd43b960-9249-47f6-a3e8-0ca2dee11211",
+                "answers": [
+                  {
+                    "label": "No - check and confirm",
+                    "concept": "1869a734-13df-4099-97ef-1f1e7e34e24a"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              },
+              "questionInfo": "Including sterility when applicable"
+            },
+            {
+              "id": "anaesthesiaSafetyChecklistCompleted",
+              "label": "Anaesthesia safety checklist completed",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8e5351a8-b845-4072-8d10-88c9a846ee3b",
+                "answers": [
+                  {
+                    "label": "No - check and confirm",
+                    "concept": "1869a734-13df-4099-97ef-1f1e7e34e24a"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "knownAllergy",
+              "label": "Known allergy?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b9ddbe43-35a4-476b-a9dd-063c62286be4",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              },
+              "questionInfo": "Check and fill in 'Allergy' for any relevant information"
+            },
+            {
+              "id": "difficultAirwayOrAspirationRisk",
+              "label": "Difficult airway or aspiration risk",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8368b4e6-bd86-4315-91fa-e593ba97440f",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes, and equipment/assistance available",
+                    "concept": "fedefcfa-3180-415e-8ebc-478f01b82706"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "riskOfMoreThan500mlBloodLoss",
+              "label": "Risk of >500mL blood loss (or 7mL/Kg in children)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f02fe834-24c1-4ca1-8137-48b5f04e4cdf",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes, and an adequate IV/IO access, fluids and/or blood planned",
+                    "concept": "83b2c3e1-7664-4069-b07d-330f46ecb4c2"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "additionalNotes",
+              "label": "Additional notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Before skin incision",
+      "sections": [
+        {
+          "label": "Time out",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "confirmAllTeamMembersHaveIntroducedThemselvesByNameAndRole",
+              "label": "Confirm all team members have introduced themselves by name and role",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0e7087c4-3e47-4dd9-9023-ab8aaec065c8",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "surgeonAnesthesiaProfessionalAndNurseVerballyConfirm",
+              "label": "Surgeon, anesthesia professional and nurse verbally confirm",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "74a9cac4-85f4-44ba-8a44-cb30992625ba",
+                "answers": [
+                  {
+                    "label": "Patient",
+                    "concept": "80df1d05-a1e6-4aaf-8744-8e8e40c9d13f"
+                  },
+                  {
+                    "label": "Procedure",
+                    "concept": "2385333d-6b3c-4278-bc27-8a65067fa373"
+                  },
+                  {
+                    "label": "Site",
+                    "concept": "60142b4c-554d-4453-8121-11f97ab8fecd"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            }
+          ]
+        },
+        {
+          "label": "Anticipated critical events",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "surgeonHasAnticipatedAndStated",
+              "label": "Surgeon has anticipated and stated",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "ce10c3c0-5b5b-4bc7-a8e2-425d0202a42e",
+                "answers": [
+                  {
+                    "label": "Critical or non-routine steps",
+                    "concept": "2ca40167-e990-4fd8-9b02-009f7118310d"
+                  },
+                  {
+                    "label": "Expected blood loss",
+                    "concept": "3479f3f2-9296-466d-b863-b789aca68e69"
+                  },
+                  {
+                    "label": "How long will the case take",
+                    "concept": "ed97a052-73e4-4062-9f0e-1a4bcf84736c"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "questionInfo": "Share verbally with rest of the team"
+            },
+            {
+              "id": "anaesthesistHasConsideredAndStatedAnyPatientSpecificConcerns",
+              "label": "Anaesthesist has considered and stated any patient-specific concerns?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8bf99444-8c2f-4ab8-9101-23a43d602243",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              },
+              "questionInfo": "Share verbally with rest of the team"
+            },
+            {
+              "id": "nursingTeamHasCheckedAndStated",
+              "label": "Nursing team has checked and stated",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "08ba54d4-af90-443d-8675-367c83f982f6",
+                "answers": [
+                  {
+                    "label": "Equipment issues or any concerns",
+                    "concept": "ce50aa25-546e-4326-8682-5270368a924d"
+                  },
+                  {
+                    "label": "Sterility including indicator results",
+                    "concept": "2e70ed86-1fe8-4224-8fff-7f5f3455e48b"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "questionInfo": "Share verbally with rest of the team"
+            }
+          ]
+        },
+        {
+          "label": "Antibiotic prophylaxis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "givenWithinTheLast60Minutes",
+              "label": "Given within the last 60 minutes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "13d7ea46-d1d4-473b-acf6-e44afe44fcf2",
+                "answers": [
+                  {
+                    "label": "Not applicable",
+                    "concept": "8fb2f830-52b3-4593-8e8f-5db8e2be7668"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Notes",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalNotes",
+              "label": "Additional notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Before skin closure",
+      "sections": [
+        {
+          "label": "Sign out",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "nurseVerballyConfirmsWithSurgeon",
+              "label": "Nurse verbally confirms with surgeon",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "a794daa7-16f8-4e22-86fe-1f69511a6339",
+                "answers": [
+                  {
+                    "label": "Completion of instrument, sponge and needle counts (and none missing)",
+                    "concept": "3b4d8aa0-399f-4e3f-8294-eadebe3e2367"
+                  },
+                  {
+                    "label": "Number and position of drains/other foreign objects deliberately left inside surgical field (i.e: sponges, compresses, etc.)",
+                    "concept": "c8c2ff11-10bd-4df9-897e-28501dcd3fdb"
+                  },
+                  {
+                    "label": "Specimen labelling (if applicable)",
+                    "concept": "57fa0fbc-2f1f-4199-9bbb-e89b1b8531af"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "surgeonAnaesthetistAndNurseState",
+              "label": "Surgeon, anaesthetist and nurse state",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "55051c9c-583b-4a4d-9edf-f9707c70fff0",
+                "answers": [
+                  {
+                    "label": "What are the key concerns for recovery and management of this patient",
+                    "concept": "bc39e35c-cdc2-4ffc-abbe-41fb83241246"
+                  },
+                  {
+                    "label": "Whether there are any equipment problems to be addressed",
+                    "concept": "2c966988-5975-4e7b-9b51-b6e70336d98f"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "additionalNotes",
+              "label": "Additional notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
