@@ -60,7 +60,14 @@
               "questionOptions": {
                 "rendering": "date",
                 "concept": "e5f9e8be-5a5f-4468-b714-16cbb70c6021"
-              }
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "date > new Date()",
+                  "message": "Last menstrual period cannot be in the future"
+                }
+              ]
             },
             {
               "id": "status",
