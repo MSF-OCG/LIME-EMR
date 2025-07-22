@@ -64,7 +64,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "date > new Date()",
+                  "failsWhenExpression": "lastMenstrualPeriod > new Date()",
                   "message": "Last menstrual period cannot be in the future"
                 }
               ]
@@ -214,7 +214,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6'"
               }
             }
           ]
@@ -247,7 +247,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== 'f000aaab-8b72-4ef2-b123-a595930f7941'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -263,7 +263,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b'"
               }
             },
             {
@@ -278,7 +278,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== 'dfbe25a4-30e3-4a3e-9516-05ca4fff7d9b'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -294,7 +294,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== '065a4690-d876-42e4-b683-b90726fee0be'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -304,7 +304,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "fetalHeartBeat",
+              "id": "fetus2_fetalHeartBeat",
               "label": "Fetal heart beat",
               "type": "obs",
               "required": false,
@@ -327,11 +327,11 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== '9fdffdc9-783c-4404-855a-5bb5e8e8e6cc'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "beatsOrMinute",
+              "id": "fetus2_beatsOrMinute",
               "label": "Beats/minute",
               "type": "obs",
               "required": false,
@@ -343,11 +343,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "fetalHeartBeat2 !== 'detectable'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetus2_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b'"
               }
             },
             {
-              "id": "crownRumpLenght",
+              "id": "fetus2_crownRumpLenght",
               "label": "Crown-rump lenght (mm)",
               "type": "obs",
               "required": false,
@@ -358,11 +358,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== 'b973107c-d78f-4e61-9e04-f5f0b0a55e09'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "estimatedGestationalAge",
+              "id": "fetus2_estimatedGestationalAge",
               "label": "Estimated gestational age (EGA - weeks)",
               "type": "obs",
               "required": false,
@@ -374,7 +374,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== '0ea9e718-7683-44c3-bbd4-21162bf97a5a'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -384,7 +384,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "fetalHeartBeat",
+              "id": "fetus3_fetalHeartBeat",
               "label": "Fetal heart beat",
               "type": "obs",
               "required": false,
@@ -407,11 +407,11 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== '33d2e461-0034-498b-ba1e-59eaf1b97e31'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "beatsOrMinute",
+              "id": "fetus3_beatsOrMinute",
               "label": "Beats/minute",
               "type": "obs",
               "required": false,
@@ -423,11 +423,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "fetalHeartBeat3 !== 'detectable'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' ||fetus3_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b'"
               }
             },
             {
-              "id": "crownRumpLenght",
+              "id": "fetus3_crownRumpLenght",
               "label": "Crown-rump lenght (mm)",
               "type": "obs",
               "required": false,
@@ -438,11 +438,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== '2d92db70-b639-462c-82f7-f55c2b50a155'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "estimatedGestationalAge",
+              "id": "fetus3_estimatedGestationalAge",
               "label": "Estimated gestational age (EGA - weeks)",
               "type": "obs",
               "required": false,
@@ -454,7 +454,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== '853a7cb2-39f6-46c4-a3c7-989fc46ea8e4'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -464,7 +464,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "fetalHeartBeat",
+              "id": "fetus4_fetalHeartBeat",
               "label": "Fetal heart beat",
               "type": "obs",
               "required": false,
@@ -487,11 +487,11 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== '2ec17609-d6be-4ece-bc87-e5de53ae6ee6'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "beatsOrMinute",
+              "id": "fetus4_beatsOrMinute",
               "label": "Beats/minute",
               "type": "obs",
               "required": false,
@@ -503,11 +503,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "fetalHeartBeat4 !== 'detectable'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetus4_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b'"
               }
             },
             {
-              "id": "crownRumpLenght",
+              "id": "fetus4_crownRumpLenght",
               "label": "Crown-rump lenght (mm)",
               "type": "obs",
               "required": false,
@@ -518,11 +518,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== 'fcf0212d-dfba-44da-be8d-1fb8fa7105c1'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "estimatedGestationalAge",
+              "id": "fetus4_estimatedGestationalAge",
               "label": "Estimated gestational age (EGA - weeks)",
               "type": "obs",
               "required": false,
@@ -534,7 +534,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== '533981c4-fd5a-47bd-b46e-560ec7dcc65b'"
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' ||numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -584,7 +584,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
               }
             },
             {
@@ -615,7 +615,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
               }
             }
           ]
@@ -625,7 +625,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "numberOfFetuses",
+              "id": "fetus_numberOfFetuses",
               "label": "Number of fetuses",
               "type": "obs",
               "required": false,
@@ -660,7 +660,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
               }
             }
           ]
@@ -670,7 +670,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "fetalHeartBeat",
+              "id": "fetus1_fetalHeartBeat",
               "label": "Fetal heart beat",
               "type": "obs",
               "required": false,
@@ -693,11 +693,11 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '3accf844-5900-4cce-8018-1c1504f0a0fe'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "beatsOrMinute",
+              "id": "fetus1_beatsOrMinute",
               "label": "Beats/minute",
               "type": "obs",
               "required": false,
@@ -709,7 +709,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "fetalHeartBeat23 !== 'detectable'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' ||fetus1_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b'"
               }
             },
             {
@@ -740,7 +740,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== 'd6a23274-cfdf-484d-b578-c69af1f02cc5'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -755,7 +755,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '5570fb20-5ae9-47e9-978d-f48c406c2cc8'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -770,7 +770,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== 'e12609bf-d53b-46e9-aee8-ee4498d4a314'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -785,7 +785,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '8b49c608-87c0-4a38-b0c1-3ea478db6545'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -800,11 +800,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '4d4140b7-ff08-4e54-b15e-28ac497c8dad'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "estimatedGestationalAge",
+              "id": "fetus1_estimatedGestationalAge",
               "label": "Estimated gestational age (EGA - weeks)",
               "type": "obs",
               "required": false,
@@ -816,7 +816,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '1151e12c-449e-4ace-b8c1-1f3b44509434'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -831,7 +831,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== 'a5a174ad-e23d-4563-a649-663626ba8023'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -841,7 +841,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "fetalHeartBeat",
+              "id": "SecondThirdTrimesterPregnancy_fetus2_fetalHeartBeat",
               "label": "Fetal heart beat",
               "type": "obs",
               "required": false,
@@ -864,11 +864,11 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== 'e4e9d2b4-a7ac-4d45-bc8c-0fdfbb760d94'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "beatsOrMinute",
+              "id": "SecondThirdTrimesterPregnancy_fetus2_beatsOrMinute",
               "label": "Beats/minute",
               "type": "obs",
               "required": false,
@@ -880,11 +880,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "fetalHeartBeat223 !== 'detectable'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' ||SecondThirdTrimesterPregnancy_fetus2_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b'"
               }
             },
             {
-              "id": "fetalPresentation",
+              "id": "fetus2_fetalPresentation",
               "label": "Fetal presentation",
               "type": "obs",
               "required": false,
@@ -911,11 +911,11 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '55916857-3c42-439a-aba2-683832e35ec6'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "fetalBiometryBpd",
+              "id": "fetus2_fetalBiometryBpd",
               "label": "Fetal biometry - BPD (biparietal diameter - cm)",
               "type": "obs",
               "required": false,
@@ -926,11 +926,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '1d1a5abf-2b1c-40b1-a4e2-a9063358204c'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "fetalBiometryHc",
+              "id": "fetus2_fetalBiometryHc",
               "label": "Fetal biometry - HC (head circumference - cm)",
               "type": "obs",
               "required": false,
@@ -941,11 +941,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== 'a63af201-b748-4902-a0c3-f53f23965755'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "fetalBiometryAc",
+              "id": "fetus2_fetalBiometryAc",
               "label": "Fetal biometry - AC (abdominal circumference - cm)",
               "type": "obs",
               "required": false,
@@ -956,11 +956,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '19d32486-edfe-4c1d-824b-dda76ea2ee57'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "fetalBiometryFl",
+              "id": "fetus2_fetalBiometryFl",
               "label": "Fetal biometry - FL (femur length - cm)",
               "type": "obs",
               "required": false,
@@ -971,11 +971,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '2ec58c3d-ce2f-4b80-a394-829642ed363a'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "estimatedGestationalAge",
+              "id": "SecondThirdTrimesterPregnancy_fetus2_estimatedGestationalAge",
               "label": "Estimated gestational age (EGA - weeks)",
               "type": "obs",
               "required": false,
@@ -987,11 +987,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== 'e190f9b2-540d-4c18-92db-83ece5c8f4e2'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "estimatedGestationalWeight",
+              "id": "fetus2_estimatedGestationalWeight",
               "label": "Estimated gestational weight (EFW - g)",
               "type": "obs",
               "required": false,
@@ -1002,7 +1002,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '77df8af1-236f-4315-b911-1ca3f6778720'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -1012,7 +1012,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "fetalHeartBeat",
+              "id": "SecondThirdTrimesterPregnancy_fetus3_fetalHeartBeat",
               "label": "Fetal heart beat",
               "type": "obs",
               "required": false,
@@ -1035,11 +1035,11 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '198ee153-9fd9-499d-ad9e-d9a63756e00f'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "beatsOrMinute",
+              "id": "SecondThirdTrimesterPregnancy_fetus3_beatsOrMinute",
               "label": "Beats/minute",
               "type": "obs",
               "required": false,
@@ -1051,11 +1051,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "fetalHeartBeat323 !== 'detectable'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' ||SecondThirdTrimesterPregnancy_fetus3_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b'"
               }
             },
             {
-              "id": "fetalPresentation",
+              "id": "fetus3_fetalPresentation",
               "label": "Fetal presentation",
               "type": "obs",
               "required": false,
@@ -1082,11 +1082,11 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== 'da5c3bac-6897-44bc-8423-c87cf4447925'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "fetalBiometryBpd",
+              "id": "fetus3_fetalBiometryBpd",
               "label": "Fetal biometry - BPD (biparietal diameter - cm)",
               "type": "obs",
               "required": false,
@@ -1097,11 +1097,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '98008d0b-976e-4deb-9ef5-7e764e31069c'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "fetalBiometryHc",
+              "id": "fetus3_fetalBiometryHc",
               "label": "Fetal biometry - HC (head circumference - cm)",
               "type": "obs",
               "required": false,
@@ -1112,11 +1112,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== 'a5bbb021-4462-48a2-847d-be8c6167fc45'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "fetalBiometryAc",
+              "id": "fetus3_fetalBiometryAc",
               "label": "Fetal biometry - AC (abdominal circumference - cm)",
               "type": "obs",
               "required": false,
@@ -1127,11 +1127,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '97cf1918-2ead-4335-a84c-999ec2973600'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "fetalBiometryFl",
+              "id": "fetus3_fetalBiometryFl",
               "label": "Fetal biometry - FL (femur length - cm)",
               "type": "obs",
               "required": false,
@@ -1142,11 +1142,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== 'bfece427-ad02-48f7-8c3d-7f4a33c4505e'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "estimatedGestationalAge",
+              "id": "SecondThirdTrimesterPregnancy_fetus3_estimatedGestationalAge",
               "label": "Estimated gestational age (EGA - weeks)",
               "type": "obs",
               "required": false,
@@ -1158,11 +1158,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '7d3f590a-ce41-494e-be7a-f744718698e4'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "estimatedGestationalWeight",
+              "id": "fetus3_estimatedGestationalWeight",
               "label": "Estimated gestational weight (EFW - g)",
               "type": "obs",
               "required": false,
@@ -1173,7 +1173,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '662a0874-ee70-463d-8bbf-0add530b7ed6'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -1183,7 +1183,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "fetalHeartBeat",
+              "id": "SecondThirdTrimesterPregnancy_fetus4_fetalHeartBeat",
               "label": "Fetal heart beat",
               "type": "obs",
               "required": false,
@@ -1206,11 +1206,11 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== 'd60051ae-3a1c-4382-87f9-4560174727cc'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "beatsOrMinute",
+              "id": "SecondThirdTrimesterPregnancy_fetus4_beatsOrMinute",
               "label": "Beats/minute",
               "type": "obs",
               "required": false,
@@ -1222,11 +1222,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "fetalHeartBeat423 !== 'detectable'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' ||SecondThirdTrimesterPregnancy_fetus4_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b'"
               }
             },
             {
-              "id": "fetalPresentation",
+              "id": "fetus4_fetalPresentation",
               "label": "Fetal presentation",
               "type": "obs",
               "required": false,
@@ -1253,11 +1253,11 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '752cbe14-64c7-4b66-83bd-8085302a846c'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "fetalBiometryBpd",
+              "id": "fetus4_fetalBiometryBpd",
               "label": "Fetal biometry - BPD (biparietal diameter - cm)",
               "type": "obs",
               "required": false,
@@ -1268,11 +1268,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '5cc83643-c041-45e1-a482-026de49d7c1a'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "fetalBiometryHc",
+              "id": "fetus4_fetalBiometryHc",
               "label": "Fetal biometry - HC (head circumference - cm)",
               "type": "obs",
               "required": false,
@@ -1283,11 +1283,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '84d3f175-b656-4104-89a4-641b548021f8'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "fetalBiometryAc",
+              "id": "fetus4_fetalBiometryAc",
               "label": "Fetal biometry - AC (abdominal circumference - cm)",
               "type": "obs",
               "required": false,
@@ -1298,11 +1298,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '027cdf24-662f-42db-85b0-5f9747f91022'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "fetalBiometryFl",
+              "id": "fetus4_fetalBiometryFl",
               "label": "Fetal biometry - FL (femur length - cm)",
               "type": "obs",
               "required": false,
@@ -1313,11 +1313,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '8aa4f8cb-8925-4f7f-926d-e72eac1d10b7'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "estimatedGestationalAge",
+              "id": "SecondThirdTrimesterPregnancy_fetus4_estimatedGestationalAge",
               "label": "Estimated gestational age (EGA - weeks)",
               "type": "obs",
               "required": false,
@@ -1329,11 +1329,11 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '412a25c1-3120-4327-bad1-0bf28ebcbbf7'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
-              "id": "estimatedGestationalWeight",
+              "id": "fetus4_estimatedGestationalWeight",
               "label": "Estimated gestational weight (EFW - g)",
               "type": "obs",
               "required": false,
@@ -1344,7 +1344,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses23 !== '62686887-dd5e-4f05-8840-ccb0beeeb06b'"
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c' || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
