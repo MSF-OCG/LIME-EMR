@@ -3,7 +3,7 @@
   "description": "MSF Form - F16-Operative report",
   "version": "1",
   "published": true,
-  "uuid": "",
+  "uuid": "2abc93af-7a0d-48ae-bc46-b2f82d805d88",
   "processor": "EncounterFormProcessor",
   "encounter": "Consultation",
   "retired": false,
@@ -397,7 +397,7 @@
                 "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
               },
               "hide": {
-                "hideWhenExpression": "preoperativeDiagnosis !== 'other'"
+                "hideWhenExpression": "!includes(preoperative, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             },
             {
@@ -721,7 +721,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "diagnosis_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -730,7 +730,7 @@
                 "concept": "819f79e7-b9af-4afd-85d4-2ab677223113"
               },
               "hide": {
-                "hideWhenExpression": "postoperativeDiagnosis !== 'other'"
+                "hideWhenExpression": "!includes(postoperative, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             }
           ]
@@ -884,7 +884,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "anaesthesia_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -893,7 +893,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "typeOfAnesthesia !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "!includes(typeOfAnesthesia, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             }
           ]
@@ -1028,7 +1028,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "obstetricalInterventionType !== '1639a2f9-730f-4fc7-b8de-9dce4e148707'"
+                "hideWhenExpression": "typeOfIntervention !== 'c1f0b04b-7e24-4f34-bc74-10c18d5219a5' || obstetricalInterventionType !== '1639a2f9-730f-4fc7-b8de-9dce4e148707'"
               }
             },
             {
@@ -1051,7 +1051,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "obstetricalInterventionType !== 'a5e817c4-7cca-4bb1-a1d6-31c34993ba88'"
+                "hideWhenExpression": "typeOfIntervention !== 'c1f0b04b-7e24-4f34-bc74-10c18d5219a5' || obstetricalInterventionType !== 'a5e817c4-7cca-4bb1-a1d6-31c34993ba88'"
               }
             },
             {
@@ -1074,7 +1074,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "obstetricalInterventionType !== 'puerperium'"
+                "hideWhenExpression": "typeOfIntervention !== 'c1f0b04b-7e24-4f34-bc74-10c18d5219a5'|| obstetricalInterventionType !== 'puerperium'"
               }
             },
             {
@@ -1101,7 +1101,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "pathologyInterventionType !== 'b204570f-cbe0-46f0-b789-a1b8369730ea'"
+                "hideWhenExpression": "typeOfIntervention !== '67ed6b20-c69f-4569-8bef-277cb337eed9' || pathologyInterventionType !== 'b204570f-cbe0-46f0-b789-a1b8369730ea'"
               }
             },
             {
@@ -1128,7 +1128,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "pathologyInterventionType !== '6cd6ee08-1d99-47f3-bdbc-da2de317f4fb'"
+                "hideWhenExpression": "typeOfIntervention !== '67ed6b20-c69f-4569-8bef-277cb337eed9' || pathologyInterventionType !== '6cd6ee08-1d99-47f3-bdbc-da2de317f4fb'"
               }
             },
             {
@@ -1159,7 +1159,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "pathologyInterventionType !== '56220d8d-c379-4775-9401-fb6741a4dc25'"
+                "hideWhenExpression": "typeOfIntervention !== '67ed6b20-c69f-4569-8bef-277cb337eed9' || pathologyInterventionType !== '56220d8d-c379-4775-9401-fb6741a4dc25'"
               }
             },
             {
@@ -1190,7 +1190,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "traumatologyInterventionType !== 'c8925224-611e-4c17-80e1-f75cbc52d287'"
+                "hideWhenExpression": "typeOfIntervention !== 'e2b94a46-6868-4148-b5eb-e75ab3bc1651' || traumatologyInterventionType !== 'c8925224-611e-4c17-80e1-f75cbc52d287'"
               }
             },
             {
@@ -1229,7 +1229,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "traumatologyInterventionType !== '0d56f886-875b-4932-a0c2-cde2886a286c'"
+                "hideWhenExpression": "typeOfIntervention !== 'e2b94a46-6868-4148-b5eb-e75ab3bc1651' || traumatologyInterventionType !== '0d56f886-875b-4932-a0c2-cde2886a286c'"
               }
             },
             {
@@ -1618,7 +1618,7 @@
               }
             },
             {
-              "id": "specialized",
+              "id": "procedure_specialized",
               "label": "Specialized",
               "type": "obs",
               "required": false,
@@ -1669,7 +1669,7 @@
               }
             },
             {
-              "id": "visceral",
+              "id": "procedure_visceral",
               "label": "Visceral",
               "type": "obs",
               "required": false,
@@ -1704,7 +1704,7 @@
               }
             },
             {
-              "id": "wound",
+              "id": "procedure_wound",
               "label": "Wound",
               "type": "obs",
               "required": false,
@@ -1735,7 +1735,7 @@
               }
             },
             {
-              "id": "orthopaedics",
+              "id": "procedure_orthopaedics",
               "label": "Orthopaedics",
               "type": "obs",
               "required": false,
@@ -1790,7 +1790,7 @@
               }
             },
             {
-              "id": "minor",
+              "id": "procedure_minor",
               "label": "Minor",
               "type": "obs",
               "required": false,
@@ -1813,7 +1813,7 @@
               }
             },
             {
-              "id": "gynaecology",
+              "id": "procedure_gynaecology",
               "label": "Gynaecology",
               "type": "obs",
               "required": false,
@@ -1888,7 +1888,7 @@
               }
             },
             {
-              "id": "visceral",
+              "id": "procedure_procedure_visceral",
               "label": "Visceral",
               "type": "obs",
               "required": false,
@@ -1923,7 +1923,7 @@
               }
             },
             {
-              "id": "wound",
+              "id": "procedure_procedure_wound",
               "label": "Wound",
               "type": "obs",
               "required": false,
@@ -1954,7 +1954,7 @@
               }
             },
             {
-              "id": "orthopaedics",
+              "id": "procedure_procedure_orthopaedics",
               "label": "Orthopaedics",
               "type": "obs",
               "required": false,
@@ -2009,7 +2009,7 @@
               }
             },
             {
-              "id": "specialized",
+              "id": "procedure_procedure_specialized",
               "label": "Specialized",
               "type": "obs",
               "required": false,
@@ -2060,7 +2060,7 @@
               }
             },
             {
-              "id": "minor",
+              "id": "procedure_procedure_minor",
               "label": "Minor",
               "type": "obs",
               "required": false,
@@ -2083,7 +2083,7 @@
               }
             },
             {
-              "id": "gynaecology",
+              "id": "procedure_procedure_gynaecology",
               "label": "Gynaecology",
               "type": "obs",
               "required": false,
@@ -2291,5 +2291,6 @@
         }
       ]
     }
-  ]
+  ],
+  "encounterType": "dd528487-82a5-4082-9c72-ed246bd49591"
 }
