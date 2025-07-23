@@ -336,6 +336,14 @@
 
             DELETE FROM concept_name WHERE concept_id IN (SELECT id FROM to_delete);
 
+            DELETE FROM conditions WHERE condition_coded in (select id from to_delete);
+
+            DELETE FROM encounter_diagnosis WHERE diagnosis_coded IN (SELECT id FROM to_delete);
+
+            DELETE FROM obs WHERE value_coded IN (SELECT id FROM to_delete);
+
+            DELETE FROM allergy_reaction WHERE reaction_concept_id IN (SELECT id FROM to_delete);
+
             DELETE FROM concept WHERE concept_id IN (SELECT id FROM to_delete);
 
             DROP TEMPORARY TABLE to_delete;
