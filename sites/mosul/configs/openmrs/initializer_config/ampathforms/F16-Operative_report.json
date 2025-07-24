@@ -174,7 +174,7 @@
                   },
                   {
                     "label": "Fracture / nonunion",
-                    "concept": "fc87b56c-0669-4d3c-9dd4-67491048f1d4"
+                    "concept": "d86c3c4b-3b55-4e30-9dc4-6968ca9d0439"
                   },
                   {
                     "label": "Fracture / open / long bones limbs",
@@ -507,7 +507,7 @@
                   },
                   {
                     "label": "Fracture / nonunion",
-                    "concept": "fc87b56c-0669-4d3c-9dd4-67491048f1d4"
+                    "concept": "d86c3c4b-3b55-4e30-9dc4-6968ca9d0439"
                   },
                   {
                     "label": "Fracture / open / long bones limbs",
@@ -783,7 +783,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "7692e68b-dec4-47e7-a5c6-e002780fb634",
+                "concept": "19931b39-6774-4ef9-a31a-0c85cde5b86a",
                 "min": 10,
                 "step": 1
               }
@@ -947,6 +947,10 @@
                   {
                     "label": "Post-partum",
                     "concept": "a5e817c4-7cca-4bb1-a1d6-31c34993ba88"
+                  },
+                  {
+                    "label": "Puerperium",
+                    "concept": "4b51216b-64ac-4852-8adf-286051c49f07"
                   }
                 ]
               },
@@ -1074,7 +1078,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfIntervention !== 'c1f0b04b-7e24-4f34-bc74-10c18d5219a5'|| obstetricalInterventionType !== 'puerperium'"
+                "hideWhenExpression": "typeOfIntervention !== 'c1f0b04b-7e24-4f34-bc74-10c18d5219a5'|| obstetricalInterventionType !== '4b51216b-64ac-4852-8adf-286051c49f07'"
               }
             },
             {
@@ -1230,6 +1234,16 @@
               },
               "hide": {
                 "hideWhenExpression": "typeOfIntervention !== 'e2b94a46-6868-4148-b5eb-e75ab3bc1651' || traumatologyInterventionType !== '0d56f886-875b-4932-a0c2-cde2886a286c'"
+              }
+            },
+            {
+              "id": "otherInterventionTypeAndDescription",
+              "label": "Other intervention type and description",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               }
             },
             {
