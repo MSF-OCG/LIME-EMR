@@ -200,7 +200,7 @@
               "questionOptions": {
                 "rendering": "workspace-launcher",
                 "buttonLabel": "Active medications",
-                "workspaceName": "medications-form-workspace"
+                "workspaceName": "order-basket"
               }
             },
             {
@@ -211,9 +211,7 @@
               "questionOptions": {
                 "rendering": "markdown"
               },
-              "value": [
-                "Use the order basket if adding new drugs"
-              ]
+              "value": ["Use the order basket if adding new drugs"]
             },
             {
               "id": "orderMedications",
@@ -361,9 +359,15 @@
                 "rendering": "datetime",
                 "concept": "5aab05d2-be86-4437-9b8e-7868654ad0fd"
               },
-              "default": "Current date",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "startFeedingAt < new Date()",
+                  "message": "Feeding start date time cannot be in the past"
+                }
+              ],
               "hide": {
-                "hideWhenExpression": "feeding !== '55538df1-6e14-40bc-9a59-d0f3a49a6ab9'"
+                "hideWhenExpression": "feeding !== '55538df1-6e14-40bc-9a59-d0f3a49a6ab9' && feeding !== '71486e76-56c3-4a47-b0cf-293eea7257b5' && feeding !== '84044f98-4416-4bca-b26f-be0ed44a355b'"
               }
             }
           ]
@@ -401,6 +405,13 @@
                 "rendering": "datetime",
                 "concept": "2ac8dcf7-ea26-45dc-860e-eb74de75397f"
               },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "startMobilizationAt < new Date()",
+                  "message": "Mobilization start date time cannot be in the past"
+                }
+              ],
               "default": "Current date",
               "hide": {
                 "hideWhenExpression": "mobilization !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -434,7 +445,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "comments",
+              "id": "comments_comments",
               "label": "Comments",
               "type": "obs",
               "required": false,
