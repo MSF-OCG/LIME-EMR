@@ -25,7 +25,13 @@
                 "rendering": "date",
                 "concept": "13cea1c8-e426-411f-95b4-33651fc4325d"
               },
-              "default": "Current date"
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "dischargeDate > new Date()",
+                  "message": "Discharge date cannot be in the future"
+                }
+              ]
             }
           ]
         }
@@ -692,7 +698,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "diagnosis_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -1025,7 +1031,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "diagnosis_diagnosis_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -1358,7 +1364,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "diagnosis_diagnosis_ifOtherSpecify_1",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -1512,7 +1518,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "outcome_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -1521,7 +1527,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "referralPlace !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "outcome !== '93eb9716-6866-4d13-9b8f-59c0a7605a11' || referralPlace !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -1546,7 +1552,13 @@
                 "rendering": "datetime",
                 "concept": "43b7abef-6d6a-43eb-a67a-dd0d7f012ddc"
               },
-              "default": "Current date",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "dateOfDeath > new Date()",
+                  "message": "Date of death cannot be in the future"
+                }
+              ],
               "hide": {
                 "hideWhenExpression": "outcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f'"
               }
@@ -1636,7 +1648,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "outcome_outcome_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -1645,7 +1657,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "transferSpecifyTheUnit !== 'other'"
+                "hideWhenExpression": "outcome !== '18c795cb-7197-46da-926f-e4d1848b8c36' || specifyTheUnit !== 'other' && specifyTheUnit !== 'Other'"
               }
             },
             {
@@ -1693,11 +1705,11 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "outcome !== '0036b696-c6a8-413f-8c87-733dea22c284'"
+                "hideWhenExpression": "outcome !== 'c3b2f54d-a5d1-4767-92c2-79fd4e7283b2' && outcome !== '0036b696-c6a8-413f-8c87-733dea22c284'"
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "outcome_outcome_ifOtherSpecify_1",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -1706,7 +1718,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "whoWillFollowUpPatient !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "outcome !== 'c3b2f54d-a5d1-4767-92c2-79fd4e7283b2' && outcome !== '0036b696-c6a8-413f-8c87-733dea22c284' ||whoWillFollowUpPatient !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
