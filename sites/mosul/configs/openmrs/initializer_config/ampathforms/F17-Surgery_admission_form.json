@@ -122,7 +122,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "byWhomOrFromWhere !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "referredToMsf !== '681cf0bc-5213-492a-8470-0a0b3cc324dd' || byWhomOrFromWhere !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -165,7 +165,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "admissionFrom_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -174,7 +174,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "patientComingFrom !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "referredToMsf !== 'a5c5563e-df0e-4742-a335-b24fb63664ee' || patientComingFrom !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -197,9 +197,8 @@
                 "rendering": "number",
                 "concept": "13d4d6b8-0cd3-46c5-be7b-c3a7565aaca7",
                 "min": 0,
-                "step": 0.01
-              },
-              "disallowDecimals": false
+                "step": 1
+              }
             },
             {
               "id": "weightAtAdmission",
@@ -212,7 +211,6 @@
                 "min": 0,
                 "step": 0.01
               },
-              "disallowDecimals": false,
               "questionInfo": "Check in 'Vitals & Biometrics' and fill with updated measurement"
             },
             {
