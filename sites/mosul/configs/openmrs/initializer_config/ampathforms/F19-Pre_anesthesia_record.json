@@ -25,7 +25,14 @@
                 "rendering": "date",
                 "concept": "d329cd4b-a10f-4a4d-96b5-c907bf87e721"
               },
-              "default": "Current date"
+              "default": "Current date",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "dateOfAssessment > new Date()",
+                  "message": "Date of assessment cannot be in the future"
+                }
+              ]
             },
             {
               "id": "diagnosis",
@@ -357,7 +364,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "diagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "!includes(diagnosis, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             },
             {
@@ -469,11 +476,11 @@
                 "rendering": "number",
                 "concept": "423e6012-dddd-4aa4-9dce-3090f15cd40d",
                 "min": 0,
-                "step": 0.01
+                "step": 1
               },
               "disallowDecimals": false,
               "hide": {
-                "hideWhenExpression": "respiratory !== '5924c369-7328-4832-b387-a2e2b6b5d8ee'"
+                "hideWhenExpression": "!includes(respiratory, '5924c369-7328-4832-b387-a2e2b6b5d8ee')"
               }
             },
             {
@@ -710,7 +717,7 @@
               }
             },
             {
-              "id": "type",
+              "id": "surgical_type",
               "label": "Type",
               "type": "obs",
               "required": false,
@@ -723,7 +730,7 @@
               }
             },
             {
-              "id": "anesthesia",
+              "id": "surgical_anesthesia",
               "label": "Anesthesia",
               "type": "obs",
               "required": false,
@@ -736,7 +743,7 @@
               }
             },
             {
-              "id": "complications",
+              "id": "surgical_complications",
               "label": "Complications",
               "type": "obs",
               "required": false,
@@ -765,7 +772,7 @@
               }
             },
             {
-              "id": "type",
+              "id": "history_surgical_type",
               "label": "Type",
               "type": "obs",
               "required": false,
@@ -778,7 +785,7 @@
               }
             },
             {
-              "id": "anesthesia",
+              "id": "history_surgical_anesthesia",
               "label": "Anesthesia",
               "type": "obs",
               "required": false,
@@ -791,7 +798,7 @@
               }
             },
             {
-              "id": "complications",
+              "id": "history_surgical_complications",
               "label": "Complications",
               "type": "obs",
               "required": false,
@@ -924,9 +931,7 @@
               "questionOptions": {
                 "rendering": "markdown"
               },
-              "value": [
-                "Fill in 'Allergy' for any relevant information"
-              ]
+              "value": ["Fill in 'Allergy' for any relevant information"]
             },
             {
               "id": "openAllergies",
@@ -952,9 +957,7 @@
               "questionOptions": {
                 "rendering": "markdown"
               },
-              "value": [
-                "Fill in 'Medication' for any relevant information"
-              ]
+              "value": ["Fill in 'Medication' for any relevant information"]
             },
             {
               "id": "orderMedications",
@@ -1130,7 +1133,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "notes",
+              "id": "additionalInformation_notes",
               "label": "Notes",
               "type": "obs",
               "required": false,
@@ -1395,7 +1398,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "anesthesia_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -1404,7 +1407,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "anestheticPlan !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "!includes(anestheticPlan, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             },
             {
@@ -1420,13 +1423,13 @@
               ]
             },
             {
-              "id": "orderMedications",
+              "id": "anesthesia_orderMedications",
               "label": "Order medications",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
                 "buttonLabel": "Active medications",
-                "workspaceName": "medications-form-workspace"
+                "workspaceName": "order-basket"
               }
             },
             {
