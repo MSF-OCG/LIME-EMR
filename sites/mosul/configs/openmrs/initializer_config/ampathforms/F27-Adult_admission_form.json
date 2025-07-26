@@ -1,6 +1,6 @@
 {
-  "name": "F25-Pediatrics admission form",
-  "description": "MSF Form - F25-Pediatrics admission form",
+  "name": "F27-Adult admission form",
+  "description": "MSF Form - F27-Adult admission form",
   "version": "1",
   "published": true,
   "uuid": "",
@@ -24,8 +24,7 @@
               "questionOptions": {
                 "rendering": "datetime",
                 "concept": "7f00c65d-de60-467a-8964-fe80c7a85ef0"
-              },
-              "default": "Current date"
+              }
             },
             {
               "id": "admissionType",
@@ -69,7 +68,7 @@
                     "concept": "0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d"
                   },
                   {
-                    "label": "Operating theater",
+                    "label": "Operating theatre",
                     "concept": "4d688780-019e-40fd-9004-044b69d9283f"
                   },
                   {
@@ -94,47 +93,6 @@
               },
               "hide": {
                 "hideWhenExpression": "(patientComingFrom !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
-              }
-            },
-            {
-              "id": "reasonForAdmission",
-              "label": "Reason for admission",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "65a0f171-8c4f-4f69-acee-79e73b896a0f",
-                "answers": [
-                  {
-                    "label": "Neonatal / prematurity pathology",
-                    "concept": "fa4f2533-6cc2-436a-9329-4f4b1014bc27"
-                  },
-                  {
-                    "label": "Nutritional problem",
-                    "concept": "982dd6ec-23f9-40b2-ac8e-1f5a1db96a5c"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
-                    "label": "Unknown",
-                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "reasonIfOtherSpecify",
-              "label": "If other, specify",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "text",
-                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-              },
-              "hide": {
-                "hideWhenExpression": "(reasonForAdmission !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             }
           ]
@@ -175,63 +133,55 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "previousIllness",
-              "label": "Previous illness",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "ab12a49c-19fa-4162-a679-4593c7a3d512"
-              }
-            },
-            {
-              "id": "familyHistory",
-              "label": "Family history",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "a072fee0-ca76-4ac6-9543-a4f3b0efc831"
-              }
-            },
-            {
-              "id": "antenatalHistory",
-              "label": "Antenatal history",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "96cf9dc2-087a-4257-a171-391334c6398a"
-              }
-            },
-            {
-              "id": "developmentMilestones",
-              "label": "Development milestones",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "41bb3de7-efe1-4132-9adc-8a567fd974c7"
-              }
-            },
-            {
-              "id": "pleaseCheckInallergies",
-              "label": "Please check in 'Allergies' (update it if necessary)",
+              "id": "checkAlsoInconditionsAndUpdateThemWheneverNecessary",
+              "label": "Check also in 'Conditions' and update them whenever necessary",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
-                "buttonLabel": "Open Workspace",
+                "buttonLabel": "Open workspace",
+                "workspaceName": "conditions-form-workspace"
+              }
+            },
+            {
+              "id": "surgicalProcedures",
+              "label": "Surgical procedures",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "8aa1b6a4-e056-424b-9b02-4374758bba9e"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Allergies",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "fillInallergyForAnyRelevantInformation",
+              "label": "Fill in 'Allergy' for any relevant information",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open workspace",
                 "workspaceName": "patient-allergy-form-workspace"
               }
-            },
+            }
+          ]
+        },
+        {
+          "label": "Medication",
+          "isExpanded": false,
+          "questions": [
             {
-              "id": "pleaseCheckInimmunizations",
-              "label": "Please check in 'Immunizations' (update it if necessary)",
+              "id": "fillInmedicationForAnyRelevantInformation",
+              "label": "Fill in 'Medication' for any relevant information",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
-                "buttonLabel": "Capture patient immunizations",
-                "workspaceName": "immunization-form-workspace"
+                "buttonLabel": "Active medications",
+                "workspaceName": "medications-form-workspace"
               }
             }
           ]
@@ -242,12 +192,12 @@
       "label": "Physical exam",
       "sections": [
         {
-          "label": "Vitals & Biometrics",
+          "label": "Physical exam",
           "isExpanded": false,
           "questions": [
             {
-              "id": "updatetemperaturerRatespo2pulseAndbp",
-              "label": "Update 'Temperature', 'R. rate', 'SpO2', 'Pulse' and 'BP'",
+              "id": "checkInvitalsBiometricsAndFillWithUpdatedMeasurementsWheneverNecessary",
+              "label": "Check in 'Vitals & Biometrics' and fill with updated measurements whenever necessary",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -256,183 +206,13 @@
               }
             },
             {
-              "id": "weight",
-              "label": "Weight (kg)",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "number",
-                "concept": "9e3c4083-21bd-42d4-a2b5-657bc0b8a4a5",
-                "min": 0.0,
-                "disallowDecimals": false
-              }
-            },
-            {
-              "id": "height",
-              "label": "Height (cm)",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "number",
-                "concept": "3fbf0612-8343-4fcd-bc20-7e9d3cb85d6f",
-                "min": 0.0,
-                "disallowDecimals": true,
-                "step": 1
-              }
-            },
-            {
-              "id": "weightOrHeight",
-              "label": "Weight / height",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "2651145f-c10c-4c04-9735-791537a1fa2c",
-                "answers": [
-                  {
-                    "label": "[-3 ; -2 Zs[",
-                    "concept": "6a48b558-b61d-4be7-9c13-c9279f396bbc"
-                  },
-                  {
-                    "label": "< -3 Zs",
-                    "concept": "a456ad55-006a-4f90-b03e-8d608e85194b"
-                  },
-                  {
-                    "label": ">= -2 Zs",
-                    "concept": "4eca905b-97ca-4c48-9408-2dece451ab2a"
-                  },
-                  {
-                    "label": "Not relevant",
-                    "concept": "66ee2fdd-b54c-4456-80f0-6987f572a6b8"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "muac",
-              "label": "MUAC (mm)",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "number",
-                "concept": "60b409cc-0fff-4eb3-8a1d-1b2112728021",
-                "min": 0.0,
-                "disallowDecimals": true,
-                "step": 1
-              }
-            },
-            {
-              "id": "oedema",
-              "label": "Oedema",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "80469ebc-e769-4edd-a9b6-ecb5c517e2db",
-                "answers": [
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  },
-                  {
-                    "label": "+",
-                    "concept": "382578c2-91b4-4235-a02d-d20fbe9f8044"
-                  },
-                  {
-                    "label": "++",
-                    "concept": "709e4a07-af9f-432b-8711-b3caed41998c"
-                  },
-                  {
-                    "label": "+++",
-                    "concept": "9e6f2ae1-4aa3-4cbc-bd8d-98515b76cc15"
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "label": "Review of systems",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "generalExam",
-              "label": "General exam",
+              "id": "findingsInThePhysicalExamination",
+              "label": "Findings in the physical examination",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "textarea",
-                "concept": "ab6eff03-9119-474b-9a4c-d740761d61ca"
-              }
-            },
-            {
-              "id": "skin",
-              "label": "Skin",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "9faa36a9-afeb-4cbc-b9ae-5be4c965db51"
-              }
-            },
-            {
-              "id": "headAndNeck",
-              "label": "Head and neck",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "d6405ed1-e1bc-460f-8a1d-0d837e929b51"
-              }
-            },
-            {
-              "id": "respiratorySystem",
-              "label": "Respiratory system",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "7925f3f5-3e62-4181-8534-a3e2132f1444"
-              }
-            },
-            {
-              "id": "cardiovascularSystem",
-              "label": "Cardiovascular system",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "1e69a561-5601-4c98-b2dc-17893d4bd9e6"
-              }
-            },
-            {
-              "id": "abdomen",
-              "label": "Abdomen",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "1282939b-fed6-4bbf-b0ba-23f32651a087"
-              }
-            },
-            {
-              "id": "extremities",
-              "label": "Extremities",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "f50b37d1-1833-4ae5-9197-b0acd7c8fb05"
-              }
-            },
-            {
-              "id": "genitalia",
-              "label": "Genitalia",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "textarea",
-                "concept": "06df0cd0-0ea6-4447-9b42-cfaeaf826311"
+                "concept": "0dd28dfa-fa10-4dbd-bf6a-4f5ad6868c64"
               }
             }
           ]
@@ -501,24 +281,8 @@
                     "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
                   },
                   {
-                    "label": "Apnoea of prematurity",
-                    "concept": "ed87a574-6181-4dec-8449-ac4e23c3deaa"
-                  },
-                  {
                     "label": "Bacterial meningitis",
                     "concept": "23c733cd-808d-4d23-b58c-78028e66528f"
-                  },
-                  {
-                    "label": "Birth injury",
-                    "concept": "b5d24e8d-e499-4152-9933-90407e7213b9"
-                  },
-                  {
-                    "label": "Bronchiolitis obstructive bronchitis",
-                    "concept": "b7e10d5e-e8d4-4fbf-a3bd-905df49de45d"
-                  },
-                  {
-                    "label": "Bronchospasm",
-                    "concept": "fad26123-2928-47d8-99e6-dd2d6bde4c05"
                   },
                   {
                     "label": "Burns",
@@ -529,8 +293,8 @@
                     "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
                   },
                   {
-                    "label": "Cerebral palsy - Neuro disability",
-                    "concept": "e13baf3a-df54-404e-b53c-454810c7cbd4"
+                    "label": "Cardiovascular disease",
+                    "concept": "6541ddce-0e3c-4b7d-ad52-2bfe18e24dd5"
                   },
                   {
                     "label": "Chikungunya confirmed",
@@ -557,20 +321,12 @@
                     "concept": "fde22fd6-1351-4675-bb24-326a68a9b99b"
                   },
                   {
-                    "label": "Congenital herpes virus infection",
-                    "concept": "7d93eaf2-c0af-4bd9-9879-1cb14cf746b5"
-                  },
-                  {
-                    "label": "Congenital malaria",
-                    "concept": "4522f6b8-36ac-4c78-b250-07a4ba4daa46"
-                  },
-                  {
                     "label": "Congenital or acquired cardiac pathology",
                     "concept": "425fcf58-1110-4eb3-8485-ba950f56890f"
                   },
                   {
-                    "label": "Congenital syphilis",
-                    "concept": "2e62aaa6-bf40-4a3c-9d05-a7d4e539c837"
+                    "label": "Congenital pathology",
+                    "concept": "6229ba1a-a44d-4930-a740-40f5d41c493e"
                   },
                   {
                     "label": "Congestive Heart Failure",
@@ -581,7 +337,15 @@
                     "concept": "0d9a7323-b54a-4d2b-a231-e34fa54e3a54"
                   },
                   {
-                    "label": "Cutaneous leishmaniosis",
+                    "label": "Covid-19 confirmed",
+                    "concept": "a70fdf0e-87d4-4219-9763-d3d4fdf9d6dc"
+                  },
+                  {
+                    "label": "Covid-19 probable",
+                    "concept": "163727b7-0c90-4a14-83fa-707c4f28860f"
+                  },
+                  {
+                    "label": "Cutaneous leishmaniasis",
                     "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
                   },
                   {
@@ -625,8 +389,12 @@
                     "concept": "af6cb265-7afd-47d2-98b4-600a4a5f19b0"
                   },
                   {
-                    "label": "Febrile convulsions",
-                    "concept": "3996fcd4-f8a5-4f69-9ecc-f53944e35867"
+                    "label": "Gastric ulcer",
+                    "concept": "03e87992-b1e3-4a4c-97a8-f78f670aa772"
+                  },
+                  {
+                    "label": "Gastritis",
+                    "concept": "2748d2ac-2c6e-4d76-884b-8ba9f952012f"
                   },
                   {
                     "label": "Gynaecological cases",
@@ -657,8 +425,12 @@
                     "concept": "f4b8e92b-94eb-40ed-a4cc-f072cb62b764"
                   },
                   {
-                    "label": "Hyperreactive splenomegaly due to malaria",
-                    "concept": "011da844-01d2-4840-b3e1-663d3ad11e15"
+                    "label": "Hypertension",
+                    "concept": "10f3b49c-c3dc-4aa7-857f-3f9bb7df8dd0"
+                  },
+                  {
+                    "label": "Hypertensive crisis",
+                    "concept": "3d7fe91d-2153-45cb-983c-9712d81a3cd1"
                   },
                   {
                     "label": "Hypoglycemia",
@@ -717,52 +489,12 @@
                     "concept": "4e3f379e-18bf-4c64-bef3-4c6be004baf7"
                   },
                   {
-                    "label": "Neonatal conjunctivitis",
-                    "concept": "ab7f2fa6-ab47-43ed-882d-71821024aaf0"
-                  },
-                  {
-                    "label": "Neonatal convulsions",
-                    "concept": "b2b47f30-ba2f-49cc-850e-0c842839488c"
-                  },
-                  {
-                    "label": "Neonatal jaundice",
-                    "concept": "2061726f-aa58-4600-a197-36c7114697b7"
-                  },
-                  {
-                    "label": "Neonatal meconial aspiration",
-                    "concept": "6c457d77-d370-414e-b125-8f6eb8a34800"
-                  },
-                  {
-                    "label": "Neonatal Necrotizing Enterocolitis",
-                    "concept": "7627c248-a9f9-40fc-a573-c125c8a0761b"
-                  },
-                  {
-                    "label": "Neonatal pneumonia",
-                    "concept": "9145a74f-f905-4119-9ca5-2ef1477c3ae3"
-                  },
-                  {
-                    "label": "Neonatal pneumothorax",
-                    "concept": "8c729f2a-d341-4188-afb9-fb9a5524b3d7"
-                  },
-                  {
-                    "label": "Neonatal tetanus",
-                    "concept": "7ee30a7d-57de-4f03-9b52-79471717df13"
-                  },
-                  {
-                    "label": "Neonatal tuberculosis",
-                    "concept": "e43b1ffc-b558-4b31-a01b-7340d16dbab2"
-                  },
-                  {
                     "label": "Nephrotic Syndrome & Acute Glomerulonephritis",
                     "concept": "96fb9345-0260-4a54-82ce-4c30e1ce8d1c"
                   },
                   {
-                    "label": "Newborn to an HIV+ mother",
-                    "concept": "8f5229a3-99c9-40b0-a951-67340a28d472"
-                  },
-                  {
-                    "label": "Non cardiac congenital pathology",
-                    "concept": "1efb3c70-da5f-4a32-81f0-3fae6768b406"
+                    "label": "Neuro disability of any cause",
+                    "concept": "a1acbf76-8182-436f-8933-b6b39b11082b"
                   },
                   {
                     "label": "Non urgent surgical conditions",
@@ -773,28 +505,12 @@
                     "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
                   },
                   {
-                    "label": "Observation",
-                    "concept": "d9f335fd-153f-4125-b615-a526f77d31ed"
-                  },
-                  {
                     "label": "Obstetric cases",
                     "concept": "19737e4d-6324-411b-8ed9-fe09c0d16832"
                   },
                   {
-                    "label": "Oral and digestive severe candidiasis",
-                    "concept": "a3eecae0-8ad4-4458-aab6-f3aa818979c5"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
                     "label": "Other bites and stings",
                     "concept": "f5a93496-81fa-441f-a09c-3899b0fb2a1c"
-                  },
-                  {
-                    "label": "Other neonatal conditions",
-                    "concept": "8216ea0d-fa4b-4873-b716-c147d1276a3e"
                   },
                   {
                     "label": "Other neurological conditions",
@@ -809,8 +525,8 @@
                     "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   },
                   {
-                    "label": "Perinatal asphyxia and complications",
-                    "concept": "3fcb4f1c-68be-4adb-b0e9-1cf7138933c4"
+                    "label": "Others",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
@@ -825,10 +541,6 @@
                     "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
                   },
                   {
-                    "label": "Prematurity and or low birth weight",
-                    "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
-                  },
-                  {
                     "label": "Pulmonary tuberculosis",
                     "concept": "b6aec37b-8990-48c3-9ece-2e3edd5dbfe9"
                   },
@@ -839,26 +551,6 @@
                   {
                     "label": "Rheumatic heart disease",
                     "concept": "d4fa7b29-7228-4810-a7d3-784e825ea259"
-                  },
-                  {
-                    "label": "Risk of sepsis",
-                    "concept": "a1eb6c76-ceec-4d5b-81ef-f125ea7d2eab"
-                  },
-                  {
-                    "label": "Septic shock",
-                    "concept": "8ea542b2-d6ce-442c-8817-c64716394dc9"
-                  },
-                  {
-                    "label": "Severe Acute Malnutrition (Kwashiorkor)",
-                    "concept": "1fc04050-6ebd-432b-9519-63c5d14f8f0e"
-                  },
-                  {
-                    "label": "Severe Acute Malnutrition (Marasmus - Kwashiorkor)",
-                    "concept": "decc099e-4022-4e35-95f7-6f0485551fa7"
-                  },
-                  {
-                    "label": "Severe Acute Malnutrition (Marasmus)",
-                    "concept": "d5e64667-5e9d-41aa-b6bf-76821db16144"
                   },
                   {
                     "label": "Severe anaemia",
@@ -885,7 +577,7 @@
                     "concept": "720c9b5d-f661-4a4c-9397-dd802283ed20"
                   },
                   {
-                    "label": "Shock unspecified",
+                    "label": "Shock uspecified",
                     "concept": "07a94109-a545-4d44-a14e-69caeffe1aea"
                   },
                   {
@@ -905,6 +597,10 @@
                     "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
                   },
                   {
+                    "label": "Stroke / CVA",
+                    "concept": "bff16ef7-3429-4cff-bda0-5cc13a77ae39"
+                  },
+                  {
                     "label": "Substance abuse / dependency",
                     "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
                   },
@@ -919,10 +615,6 @@
                   {
                     "label": "Toxicity / poisoning",
                     "concept": "3a5b3971-6cef-4a54-82bc-8f897858bd00"
-                  },
-                  {
-                    "label": "Transient tachypnoea of the newborn",
-                    "concept": "38a912c2-09c2-4085-85ad-899eaa98eada"
                   },
                   {
                     "label": "Typhoid fever",
@@ -1034,44 +726,16 @@
                     "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
                   },
                   {
-                    "label": "Apnoea of prematurity",
-                    "concept": "ed87a574-6181-4dec-8449-ac4e23c3deaa"
-                  },
-                  {
                     "label": "Bacterial meningitis",
                     "concept": "23c733cd-808d-4d23-b58c-78028e66528f"
-                  },
-                  {
-                    "label": "Birth injury",
-                    "concept": "b5d24e8d-e499-4152-9933-90407e7213b9"
-                  },
-                  {
-                    "label": "Bronchiolitis obstructive bronchitis",
-                    "concept": "b7e10d5e-e8d4-4fbf-a3bd-905df49de45d"
-                  },
-                  {
-                    "label": "Bronchospasm",
-                    "concept": "fad26123-2928-47d8-99e6-dd2d6bde4c05"
                   },
                   {
                     "label": "Burns",
                     "concept": "719ea0d7-98fd-4e86-84be-451b8c0f6f54"
                   },
                   {
-                    "label": "Cardiogenic shock",
-                    "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
-                  },
-                  {
-                    "label": "Cerebral palsy - Neuro disability",
-                    "concept": "e13baf3a-df54-404e-b53c-454810c7cbd4"
-                  },
-                  {
-                    "label": "Chikungunya confirmed",
-                    "concept": "46cbb6fa-7db6-4a5e-bcf4-d9ada1479ccc"
-                  },
-                  {
-                    "label": "Chikungunya suspected",
-                    "concept": "3fba4292-e70f-4c0a-b84f-208559dccbbc"
+                    "label": "Cardiovascular disease",
+                    "concept": "6541ddce-0e3c-4b7d-ad52-2bfe18e24dd5"
                   },
                   {
                     "label": "Cholera (suspected)",
@@ -1086,44 +750,28 @@
                     "concept": "d5eebff7-d2aa-4b08-8653-9bcc35b9ae51"
                   },
                   {
-                    "label": "Complications of SCD",
-                    "concept": "fde22fd6-1351-4675-bb24-326a68a9b99b"
-                  },
-                  {
-                    "label": "Congenital herpes virus infection",
-                    "concept": "7d93eaf2-c0af-4bd9-9879-1cb14cf746b5"
-                  },
-                  {
-                    "label": "Congenital malaria",
-                    "concept": "4522f6b8-36ac-4c78-b250-07a4ba4daa46"
-                  },
-                  {
                     "label": "Congenital or acquired cardiac pathology",
                     "concept": "425fcf58-1110-4eb3-8485-ba950f56890f"
-                  },
-                  {
-                    "label": "Congenital syphilis",
-                    "concept": "2e62aaa6-bf40-4a3c-9d05-a7d4e539c837"
                   },
                   {
                     "label": "Congestive Heart Failure",
                     "concept": "6a7a9d6a-e8b6-4ffb-8321-a56e9e4473e0"
                   },
                   {
-                    "label": "COPD",
-                    "concept": "0d9a7323-b54a-4d2b-a231-e34fa54e3a54"
+                    "label": "Covid-19 confirmed",
+                    "concept": "a70fdf0e-87d4-4219-9763-d3d4fdf9d6dc"
                   },
                   {
-                    "label": "Cutaneous leishmaniosis",
+                    "label": "Covid-19 probable",
+                    "concept": "163727b7-0c90-4a14-83fa-707c4f28860f"
+                  },
+                  {
+                    "label": "Cutaneous leishmaniasis",
                     "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
                   },
                   {
                     "label": "Dengue confirmed",
                     "concept": "4b01305f-ca82-454b-ab06-ab98a53eaaae"
-                  },
-                  {
-                    "label": "Dengue suspected",
-                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
                   },
                   {
                     "label": "Diabetes type 2 and complications",
@@ -1142,12 +790,8 @@
                     "concept": "2425bb5d-e9df-4e64-b119-ae42eaae1a35"
                   },
                   {
-                    "label": "Dog bite",
-                    "concept": "087fd7f9-816c-4f1b-80b2-a949c83554f2"
-                  },
-                  {
-                    "label": "Epilepsy - Seizures",
-                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                    "label": "Epilepsy",
+                    "concept": "221d041d-1c52-49aa-a370-d0c763893b8f"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
@@ -1158,8 +802,12 @@
                     "concept": "af6cb265-7afd-47d2-98b4-600a4a5f19b0"
                   },
                   {
-                    "label": "Febrile convulsions",
-                    "concept": "3996fcd4-f8a5-4f69-9ecc-f53944e35867"
+                    "label": "Gastric ulcer",
+                    "concept": "03e87992-b1e3-4a4c-97a8-f78f670aa772"
+                  },
+                  {
+                    "label": "Gastritis",
+                    "concept": "2748d2ac-2c6e-4d76-884b-8ba9f952012f"
                   },
                   {
                     "label": "Gynaecological cases",
@@ -1186,20 +834,12 @@
                     "concept": "38162348-f696-4a53-9c1d-d2690cb52c99"
                   },
                   {
-                    "label": "Hyperglycemia",
-                    "concept": "f4b8e92b-94eb-40ed-a4cc-f072cb62b764"
+                    "label": "Hypertension",
+                    "concept": "10f3b49c-c3dc-4aa7-857f-3f9bb7df8dd0"
                   },
                   {
-                    "label": "Hyperreactive splenomegaly due to malaria",
-                    "concept": "011da844-01d2-4840-b3e1-663d3ad11e15"
-                  },
-                  {
-                    "label": "Hypoglycemia",
-                    "concept": "7e848f32-6afd-4e14-8cb9-cc8402f42363"
-                  },
-                  {
-                    "label": "Hypovolemic shock",
-                    "concept": "d8c5769e-b090-4bcb-8942-4a3d7c4f58ff"
+                    "label": "Hypertensive crisis",
+                    "concept": "3d7fe91d-2153-45cb-983c-9712d81a3cd1"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
@@ -1250,56 +890,12 @@
                     "concept": "4e3f379e-18bf-4c64-bef3-4c6be004baf7"
                   },
                   {
-                    "label": "Neonatal conjunctivitis",
-                    "concept": "ab7f2fa6-ab47-43ed-882d-71821024aaf0"
-                  },
-                  {
-                    "label": "Neonatal convulsions",
-                    "concept": "b2b47f30-ba2f-49cc-850e-0c842839488c"
-                  },
-                  {
-                    "label": "Neonatal infectious diseases",
-                    "concept": "f5bdd2d4-48c1-41ce-a93f-760e39d9bcf7"
-                  },
-                  {
-                    "label": "Neonatal jaundice",
-                    "concept": "2061726f-aa58-4600-a197-36c7114697b7"
-                  },
-                  {
-                    "label": "Neonatal meconial aspiration",
-                    "concept": "6c457d77-d370-414e-b125-8f6eb8a34800"
-                  },
-                  {
-                    "label": "Neonatal Necrotizing Enterocolitis",
-                    "concept": "7627c248-a9f9-40fc-a573-c125c8a0761b"
-                  },
-                  {
-                    "label": "Neonatal pneumonia",
-                    "concept": "9145a74f-f905-4119-9ca5-2ef1477c3ae3"
-                  },
-                  {
-                    "label": "Neonatal pneumothorax",
-                    "concept": "8c729f2a-d341-4188-afb9-fb9a5524b3d7"
-                  },
-                  {
-                    "label": "Neonatal tetanus",
-                    "concept": "7ee30a7d-57de-4f03-9b52-79471717df13"
-                  },
-                  {
-                    "label": "Neonatal tuberculosis",
-                    "concept": "e43b1ffc-b558-4b31-a01b-7340d16dbab2"
-                  },
-                  {
                     "label": "Nephrotic Syndrome & Acute Glomerulonephritis",
                     "concept": "96fb9345-0260-4a54-82ce-4c30e1ce8d1c"
                   },
                   {
-                    "label": "Newborn to an HIV+ mother",
-                    "concept": "8f5229a3-99c9-40b0-a951-67340a28d472"
-                  },
-                  {
-                    "label": "Non cardiac congenital pathology",
-                    "concept": "1efb3c70-da5f-4a32-81f0-3fae6768b406"
+                    "label": "Neuro disability of any cause",
+                    "concept": "a1acbf76-8182-436f-8933-b6b39b11082b"
                   },
                   {
                     "label": "Non urgent surgical conditions",
@@ -1310,28 +906,12 @@
                     "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
                   },
                   {
-                    "label": "Observation",
-                    "concept": "d9f335fd-153f-4125-b615-a526f77d31ed"
-                  },
-                  {
                     "label": "Obstetric cases",
                     "concept": "19737e4d-6324-411b-8ed9-fe09c0d16832"
                   },
                   {
-                    "label": "Oral and digestive severe candidiasis",
-                    "concept": "a3eecae0-8ad4-4458-aab6-f3aa818979c5"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
                     "label": "Other bites and stings",
                     "concept": "f5a93496-81fa-441f-a09c-3899b0fb2a1c"
-                  },
-                  {
-                    "label": "Other neonatal conditions",
-                    "concept": "8216ea0d-fa4b-4873-b716-c147d1276a3e"
                   },
                   {
                     "label": "Other neurological conditions",
@@ -1346,8 +926,8 @@
                     "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   },
                   {
-                    "label": "Perinatal asphyxia and complications",
-                    "concept": "3fcb4f1c-68be-4adb-b0e9-1cf7138933c4"
+                    "label": "Others",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
@@ -1362,48 +942,12 @@
                     "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
                   },
                   {
-                    "label": "Prematurity and or low birth weight",
-                    "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
-                  },
-                  {
                     "label": "Pulmonary tuberculosis",
                     "concept": "b6aec37b-8990-48c3-9ece-2e3edd5dbfe9"
                   },
                   {
                     "label": "Rabies",
                     "concept": "2f07701b-95b2-4235-8c81-448da7f1aaa3"
-                  },
-                  {
-                    "label": "Rheumatic heart disease",
-                    "concept": "d4fa7b29-7228-4810-a7d3-784e825ea259"
-                  },
-                  {
-                    "label": "Risk of sepsis",
-                    "concept": "a1eb6c76-ceec-4d5b-81ef-f125ea7d2eab"
-                  },
-                  {
-                    "label": "Septic shock",
-                    "concept": "8ea542b2-d6ce-442c-8817-c64716394dc9"
-                  },
-                  {
-                    "label": "Severe Acute Malnutrition (Kwashiorkor)",
-                    "concept": "1fc04050-6ebd-432b-9519-63c5d14f8f0e"
-                  },
-                  {
-                    "label": "Severe Acute Malnutrition (Marasmus - Kwashiorkor)",
-                    "concept": "decc099e-4022-4e35-95f7-6f0485551fa7"
-                  },
-                  {
-                    "label": "Severe Acute Malnutrition (Marasmus)",
-                    "concept": "d5e64667-5e9d-41aa-b6bf-76821db16144"
-                  },
-                  {
-                    "label": "Severe anaemia",
-                    "concept": "cf6cd6c9-cc7d-4bb6-aa0d-4471cf163357"
-                  },
-                  {
-                    "label": "Severe dehydration",
-                    "concept": "a38a73a5-e324-49ba-9e0c-4c4e0fde3556"
                   },
                   {
                     "label": "Severe malaria",
@@ -1422,11 +966,11 @@
                     "concept": "720c9b5d-f661-4a4c-9397-dd802283ed20"
                   },
                   {
-                    "label": "Shock unspecified",
-                    "concept": "07a94109-a545-4d44-a14e-69caeffe1aea"
+                    "label": "Sickle cell disease",
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
                   },
                   {
-                    "label": "Sickle cell disease",
+                    "label": "Sickle cell disease and complications",
                     "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
                   },
                   {
@@ -1440,6 +984,10 @@
                   {
                     "label": "Snake bite",
                     "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
+                  },
+                  {
+                    "label": "Stroke / CVA",
+                    "concept": "bff16ef7-3429-4cff-bda0-5cc13a77ae39"
                   },
                   {
                     "label": "Substance abuse / dependency",
@@ -1456,10 +1004,6 @@
                   {
                     "label": "Toxicity / poisoning",
                     "concept": "3a5b3971-6cef-4a54-82bc-8f897858bd00"
-                  },
-                  {
-                    "label": "Transient tachypnoea of the newborn",
-                    "concept": "38a912c2-09c2-4085-85ad-899eaa98eada"
                   },
                   {
                     "label": "Typhoid fever",
@@ -1482,16 +1026,12 @@
                     "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
                   },
                   {
-                    "label": "Varicella",
-                    "concept": "2fbe199d-fc82-4853-81da-8b63c1205d17"
-                  },
-                  {
                     "label": "Violence-related injuries",
                     "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
                     "label": "Viral haemorrhagic fever",
-                    "concept": "c2ddc071-9590-4b24-b797-1e1769662a5b"
+                    "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
                   },
                   {
                     "label": "Visceral leishmaniasis",
