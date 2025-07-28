@@ -1,0 +1,2530 @@
+{
+  "name": "F28-Adult discharge form",
+  "description": "MSF Form - F28-Adult discharge form",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Consultation",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Discharge",
+      "sections": [
+        {
+          "label": "Discharge",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "dischargeDate",
+              "label": "Discharge date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "13cea1c8-e426-411f-95b4-33651fc4325d"
+              },
+              "default": "Current date"
+            },
+            {
+              "id": "conditionOnDischarge",
+              "label": "Condition on discharge",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0a51dcf7-ea6d-45ca-8986-6abb91793f5c"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis",
+      "sections": [
+        {
+          "label": "Diagnosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "finalDiagnosisMain",
+              "label": "Final Diagnosis - Main",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9da302ed-948f-4030-8f0a-a294dd3dff21",
+                "answers": [
+                  {
+                    "label": "Acute asthma",
+                    "concept": "e1b51c42-041f-4a3f-9a31-0337642f42b6"
+                  },
+                  {
+                    "label": "Acute diarrhea (bloody)",
+                    "concept": "1b4d955d-e703-484d-8bfd-0c90b2a39285"
+                  },
+                  {
+                    "label": "Acute diarrhea (non-bloody)",
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
+                  },
+                  {
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "42c9bc49-ac4d-4b86-8753-48d378075c59"
+                  },
+                  {
+                    "label": "Acute flaccid paralysis",
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
+                  },
+                  {
+                    "label": "Acute jaundice syndrome",
+                    "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
+                  },
+                  {
+                    "label": "Bacterial meningitis",
+                    "concept": "23c733cd-808d-4d23-b58c-78028e66528f"
+                  },
+                  {
+                    "label": "Burns",
+                    "concept": "719ea0d7-98fd-4e86-84be-451b8c0f6f54"
+                  },
+                  {
+                    "label": "Cardiogenic shock",
+                    "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
+                  },
+                  {
+                    "label": "Cardiovascular disease",
+                    "concept": "6541ddce-0e3c-4b7d-ad52-2bfe18e24dd5"
+                  },
+                  {
+                    "label": "Chikungunya confirmed",
+                    "concept": "46cbb6fa-7db6-4a5e-bcf4-d9ada1479ccc"
+                  },
+                  {
+                    "label": "Chikungunya suspected",
+                    "concept": "3fba4292-e70f-4c0a-b84f-208559dccbbc"
+                  },
+                  {
+                    "label": "Cholera (suspected)",
+                    "concept": "0e8565a1-f02c-4981-a8b3-47c312f7ca5d"
+                  },
+                  {
+                    "label": "Cholera confirmed",
+                    "concept": "1de0008f-ca3d-4dda-80c5-a71c5039445e"
+                  },
+                  {
+                    "label": "Complicated ear infection",
+                    "concept": "d5eebff7-d2aa-4b08-8653-9bcc35b9ae51"
+                  },
+                  {
+                    "label": "Complications of SCD",
+                    "concept": "fde22fd6-1351-4675-bb24-326a68a9b99b"
+                  },
+                  {
+                    "label": "Congenital or acquired cardiac pathology",
+                    "concept": "425fcf58-1110-4eb3-8485-ba950f56890f"
+                  },
+                  {
+                    "label": "Congenital pathology",
+                    "concept": "6229ba1a-a44d-4930-a740-40f5d41c493e"
+                  },
+                  {
+                    "label": "Congestive heart failure",
+                    "concept": "6a7a9d6a-e8b6-4ffb-8321-a56e9e4473e0"
+                  },
+                  {
+                    "label": "COPD",
+                    "concept": "0d9a7323-b54a-4d2b-a231-e34fa54e3a54"
+                  },
+                  {
+                    "label": "Covid-19 confirmed",
+                    "concept": "a70fdf0e-87d4-4219-9763-d3d4fdf9d6dc"
+                  },
+                  {
+                    "label": "Covid-19 probable",
+                    "concept": "163727b7-0c90-4a14-83fa-707c4f28860f"
+                  },
+                  {
+                    "label": "Cutaneous leishmaniasis",
+                    "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
+                  },
+                  {
+                    "label": "Dengue confirmed",
+                    "concept": "4b01305f-ca82-454b-ab06-ab98a53eaaae"
+                  },
+                  {
+                    "label": "Dengue suspected",
+                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
+                  },
+                  {
+                    "label": "Diabetes type 2 and complications",
+                    "concept": "27dd79e6-2e3c-4687-8ef9-d8ab0adb81b4"
+                  },
+                  {
+                    "label": "Diabetes type 1 and complications",
+                    "concept": "d10c2b41-593a-414f-8f7e-a445e9d4f22e"
+                  },
+                  {
+                    "label": "Diarrhea (persistent)",
+                    "concept": "d3ea64b2-7587-4497-b5d9-dd55ccc6b0f1"
+                  },
+                  {
+                    "label": "Diphtheria",
+                    "concept": "2425bb5d-e9df-4e64-b119-ae42eaae1a35"
+                  },
+                  {
+                    "label": "Dog bite",
+                    "concept": "087fd7f9-816c-4f1b-80b2-a949c83554f2"
+                  },
+                  {
+                    "label": "Epilepsy/Seizures",
+                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                  },
+                  {
+                    "label": "Extra pulmonary tuberculosis",
+                    "concept": "17ca2ee9-e8a5-48da-bb44-2a8988acee51"
+                  },
+                  {
+                    "label": "Eye diseases (including trachoma)",
+                    "concept": "af6cb265-7afd-47d2-98b4-600a4a5f19b0"
+                  },
+                  {
+                    "label": "Gastric ulcer",
+                    "concept": "03e87992-b1e3-4a4c-97a8-f78f670aa772"
+                  },
+                  {
+                    "label": "Gastritis",
+                    "concept": "2748d2ac-2c6e-4d76-884b-8ba9f952012f"
+                  },
+                  {
+                    "label": "Gynaecological cases",
+                    "concept": "8671b930-d5cf-417b-8717-9812a2fe0f99"
+                  },
+                  {
+                    "label": "Hepatitis A",
+                    "concept": "0f4f2114-7c52-466f-ae8f-7e62ff9aa273"
+                  },
+                  {
+                    "label": "Hepatitis B",
+                    "concept": "9a3979c9-a92f-4a74-adb0-353a56d0d0e7"
+                  },
+                  {
+                    "label": "Hepatitis delta",
+                    "concept": "78c7cf86-ea33-4f82-baec-fcc3bfe41d93"
+                  },
+                  {
+                    "label": "Hepatitis E",
+                    "concept": "0687435a-d6f5-4a8e-be93-26fd0d43afa5"
+                  },
+                  {
+                    "label": "HIV Infection confirmed",
+                    "concept": "38162348-f696-4a53-9c1d-d2690cb52c99"
+                  },
+                  {
+                    "label": "Hyperglycemia",
+                    "concept": "f4b8e92b-94eb-40ed-a4cc-f072cb62b764"
+                  },
+                  {
+                    "label": "Hypertension",
+                    "concept": "10f3b49c-c3dc-4aa7-857f-3f9bb7df8dd0"
+                  },
+                  {
+                    "label": "Hypertensive crisis",
+                    "concept": "3d7fe91d-2153-45cb-983c-9712d81a3cd1"
+                  },
+                  {
+                    "label": "Hypoglycemia",
+                    "concept": "7e848f32-6afd-4e14-8cb9-cc8402f42363"
+                  },
+                  {
+                    "label": "Hypovolemic shock",
+                    "concept": "d8c5769e-b090-4bcb-8942-4a3d7c4f58ff"
+                  },
+                  {
+                    "label": "Infectious diseases not otherwise classified",
+                    "concept": "d661ddfe-f807-41aa-ae46-a4c2f9f4203f"
+                  },
+                  {
+                    "label": "Lower respiratory tract infection",
+                    "concept": "ea03ce93-7c26-47a3-af09-5a21b7371db3"
+                  },
+                  {
+                    "label": "Measles (complicated)",
+                    "concept": "d3be30c3-bd87-4015-a8e2-823ac12f1d65"
+                  },
+                  {
+                    "label": "Measles (uncomplicated)",
+                    "concept": "07b53338-1a68-4826-bc7a-3fb5db76a4b2"
+                  },
+                  {
+                    "label": "Meningeal TB",
+                    "concept": "7477e7a3-d6b4-46c0-b7cf-b973c0c0584d"
+                  },
+                  {
+                    "label": "Meningitis unspecified",
+                    "concept": "a4b63517-6046-4279-b0ca-86409f3b7e63"
+                  },
+                  {
+                    "label": "Mental and psychiatric conditions",
+                    "concept": "e51bba88-1954-4803-9762-8840ab5ae205"
+                  },
+                  {
+                    "label": "Moderate acute malnutrition",
+                    "concept": "c284603a-988f-4a55-a634-82c681424ab4"
+                  },
+                  {
+                    "label": "Musculoskeletal conditions (infectious origin)",
+                    "concept": "d98a4da0-68ef-4ae5-8128-9498f5421eb2"
+                  },
+                  {
+                    "label": "Musculoskeletal conditions (non-infectious)",
+                    "concept": "3d4196dc-a985-4123-b13f-9f4de0e9c598"
+                  },
+                  {
+                    "label": "Necrotizing & bullous skin infections",
+                    "concept": "6f609690-822a-41a6-aa01-e9bc60ab7906"
+                  },
+                  {
+                    "label": "Neglected tropical diseases",
+                    "concept": "4e3f379e-18bf-4c64-bef3-4c6be004baf7"
+                  },
+                  {
+                    "label": "Nephrotic Syndrome & Acute Glomerulonephritis",
+                    "concept": "96fb9345-0260-4a54-82ce-4c30e1ce8d1c"
+                  },
+                  {
+                    "label": "Neuro disability of any cause",
+                    "concept": "a1acbf76-8182-436f-8933-b6b39b11082b"
+                  },
+                  {
+                    "label": "Non urgent surgical conditions",
+                    "concept": "b17fa4c4-9f75-4f21-8a0b-c0579f923573"
+                  },
+                  {
+                    "label": "Non violence-related injuries",
+                    "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
+                  },
+                  {
+                    "label": "Obstetric cases",
+                    "concept": "19737e4d-6324-411b-8ed9-fe09c0d16832"
+                  },
+                  {
+                    "label": "Other bites and stings",
+                    "concept": "f5a93496-81fa-441f-a09c-3899b0fb2a1c"
+                  },
+                  {
+                    "label": "Other neurological conditions",
+                    "concept": "15f74297-77dc-405a-b060-42611063c604"
+                  },
+                  {
+                    "label": "Other non communicable diseases",
+                    "concept": "6b98ea27-b486-4d1c-a57c-73f7423c1814"
+                  },
+                  {
+                    "label": "Other symptoms and abnor. clinical / lab findings",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Others",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Persistent fever ( >7 days)",
+                    "concept": "cdbeb45d-4a1f-4893-a9ef-aca653597fd3"
+                  },
+                  {
+                    "label": "Poliomyelitis confirmed",
+                    "concept": "2deaaf7c-eab8-4acc-9728-301fd9e58062"
+                  },
+                  {
+                    "label": "Post surgical infection",
+                    "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
+                  },
+                  {
+                    "label": "Pulmonary tuberculosis",
+                    "concept": "b6aec37b-8990-48c3-9ece-2e3edd5dbfe9"
+                  },
+                  {
+                    "label": "Rabies",
+                    "concept": "2f07701b-95b2-4235-8c81-448da7f1aaa3"
+                  },
+                  {
+                    "label": "Rheumatic heart disease",
+                    "concept": "d4fa7b29-7228-4810-a7d3-784e825ea259"
+                  },
+                  {
+                    "label": "Severe anaemia",
+                    "concept": "cf6cd6c9-cc7d-4bb6-aa0d-4471cf163357"
+                  },
+                  {
+                    "label": "Severe dehydration",
+                    "concept": "a38a73a5-e324-49ba-9e0c-4c4e0fde3556"
+                  },
+                  {
+                    "label": "Severe malaria",
+                    "concept": "e9f02d62-a180-4a3e-813a-c210ec7364a6"
+                  },
+                  {
+                    "label": "Sexual violence / rape",
+                    "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
+                  },
+                  {
+                    "label": "Sexually transmitted disease (STI)",
+                    "concept": "799c78cc-8c8f-44e2-9223-0c8e607677a1"
+                  },
+                  {
+                    "label": "Shigellosis or Salmonellosis",
+                    "concept": "720c9b5d-f661-4a4c-9397-dd802283ed20"
+                  },
+                  {
+                    "label": "Shock uspecified",
+                    "concept": "07a94109-a545-4d44-a14e-69caeffe1aea"
+                  },
+                  {
+                    "label": "Sickle cell disease",
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
+                  },
+                  {
+                    "label": "Simple malaria",
+                    "concept": "f9cb0dac-1b8f-442c-94cb-4bde52a2a979"
+                  },
+                  {
+                    "label": "Skin and soft tissue conditions",
+                    "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
+                  },
+                  {
+                    "label": "Snake bite",
+                    "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
+                  },
+                  {
+                    "label": "Stroke / CVA",
+                    "concept": "bff16ef7-3429-4cff-bda0-5cc13a77ae39"
+                  },
+                  {
+                    "label": "Substance abuse / dependency",
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                  },
+                  {
+                    "label": "Suspected or confirmed malignancy",
+                    "concept": "be1800cf-19cd-4074-9398-f0962fc3db8c"
+                  },
+                  {
+                    "label": "Tetanus",
+                    "concept": "ac66146e-5919-428c-8ed6-6a5a764ab06a"
+                  },
+                  {
+                    "label": "Toxicity / poisoning",
+                    "concept": "3a5b3971-6cef-4a54-82bc-8f897858bd00"
+                  },
+                  {
+                    "label": "Typhoid fever",
+                    "concept": "a1a7f04a-997b-4914-8f32-4546c2554519"
+                  },
+                  {
+                    "label": "Upper respiratory tract infection",
+                    "concept": "bbfb753f-578c-4c57-8118-4e82857acd76"
+                  },
+                  {
+                    "label": "Urgent surgical conditions",
+                    "concept": "3fc5539b-7975-443a-86c1-2300d1755237"
+                  },
+                  {
+                    "label": "Urolithiasis / Renal colic",
+                    "concept": "47900991-2835-48e2-8208-9698446ef178"
+                  },
+                  {
+                    "label": "UTI and renal tract acute pathology",
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
+                  },
+                  {
+                    "label": "Varicella",
+                    "concept": "2fbe199d-fc82-4853-81da-8b63c1205d17"
+                  },
+                  {
+                    "label": "Violence-related injuries",
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
+                  },
+                  {
+                    "label": "Viral haemorrhagic fever",
+                    "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
+                  },
+                  {
+                    "label": "Visceral leishmaniasis",
+                    "concept": "c2ddc071-9590-4b24-b797-1e1769662a5b"
+                  },
+                  {
+                    "label": "Vit A deficiency",
+                    "concept": "bc84fbf4-f216-43d0-8501-73572496635c"
+                  },
+                  {
+                    "label": "Vit B complex deficiency",
+                    "concept": "530acec6-b269-410e-89b1-abc15dac02e9"
+                  },
+                  {
+                    "label": "Vit C deficiency (scurvy)",
+                    "concept": "a54e6856-8c64-4d1f-a2a0-1f916eb413bb"
+                  },
+                  {
+                    "label": "Vit D deficiency (rickets)",
+                    "concept": "899c74ff-c155-4263-aa2c-587dac49635f"
+                  },
+                  {
+                    "label": "Whooping cough",
+                    "concept": "c3d7e630-1a84-481a-ba12-e21c089bbb35"
+                  },
+                  {
+                    "label": "Yellow fever",
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "mainIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(finalDiagnosisMain !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "finalDiagnosisSecondary1",
+              "label": "Final Diagnosis - Secondary 1",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "3a03bdb4-4b3f-45c3-966a-97843ec88680",
+                "answers": [
+                  {
+                    "label": "Acute asthma",
+                    "concept": "e1b51c42-041f-4a3f-9a31-0337642f42b6"
+                  },
+                  {
+                    "label": "Acute diarrhea (bloody)",
+                    "concept": "1b4d955d-e703-484d-8bfd-0c90b2a39285"
+                  },
+                  {
+                    "label": "Acute diarrhea (non-bloody)",
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
+                  },
+                  {
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "42c9bc49-ac4d-4b86-8753-48d378075c59"
+                  },
+                  {
+                    "label": "Acute flaccid paralysis",
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
+                  },
+                  {
+                    "label": "Acute jaundice syndrome",
+                    "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
+                  },
+                  {
+                    "label": "Bacterial meningitis",
+                    "concept": "23c733cd-808d-4d23-b58c-78028e66528f"
+                  },
+                  {
+                    "label": "Burns",
+                    "concept": "719ea0d7-98fd-4e86-84be-451b8c0f6f54"
+                  },
+                  {
+                    "label": "Cardiovascular disease",
+                    "concept": "6541ddce-0e3c-4b7d-ad52-2bfe18e24dd5"
+                  },
+                  {
+                    "label": "Cholera (suspected)",
+                    "concept": "0e8565a1-f02c-4981-a8b3-47c312f7ca5d"
+                  },
+                  {
+                    "label": "Cholera confirmed",
+                    "concept": "1de0008f-ca3d-4dda-80c5-a71c5039445e"
+                  },
+                  {
+                    "label": "Complicated ear infection",
+                    "concept": "d5eebff7-d2aa-4b08-8653-9bcc35b9ae51"
+                  },
+                  {
+                    "label": "Congenital or acquired cardiac pathology",
+                    "concept": "425fcf58-1110-4eb3-8485-ba950f56890f"
+                  },
+                  {
+                    "label": "Congestive heart failure",
+                    "concept": "6a7a9d6a-e8b6-4ffb-8321-a56e9e4473e0"
+                  },
+                  {
+                    "label": "Covid-19 confirmed",
+                    "concept": "a70fdf0e-87d4-4219-9763-d3d4fdf9d6dc"
+                  },
+                  {
+                    "label": "Covid-19 probable",
+                    "concept": "163727b7-0c90-4a14-83fa-707c4f28860f"
+                  },
+                  {
+                    "label": "Cutaneous leishmaniasis",
+                    "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
+                  },
+                  {
+                    "label": "Dengue confirmed",
+                    "concept": "4b01305f-ca82-454b-ab06-ab98a53eaaae"
+                  },
+                  {
+                    "label": "Diabetes type 2 and complications",
+                    "concept": "27dd79e6-2e3c-4687-8ef9-d8ab0adb81b4"
+                  },
+                  {
+                    "label": "Diabetes type 1 and complications",
+                    "concept": "d10c2b41-593a-414f-8f7e-a445e9d4f22e"
+                  },
+                  {
+                    "label": "Diarrhea (persistent)",
+                    "concept": "d3ea64b2-7587-4497-b5d9-dd55ccc6b0f1"
+                  },
+                  {
+                    "label": "Diphtheria",
+                    "concept": "2425bb5d-e9df-4e64-b119-ae42eaae1a35"
+                  },
+                  {
+                    "label": "Epilepsy",
+                    "concept": "221d041d-1c52-49aa-a370-d0c763893b8f"
+                  },
+                  {
+                    "label": "Extra pulmonary tuberculosis",
+                    "concept": "17ca2ee9-e8a5-48da-bb44-2a8988acee51"
+                  },
+                  {
+                    "label": "Eye diseases (including trachoma)",
+                    "concept": "af6cb265-7afd-47d2-98b4-600a4a5f19b0"
+                  },
+                  {
+                    "label": "Gastric ulcer",
+                    "concept": "03e87992-b1e3-4a4c-97a8-f78f670aa772"
+                  },
+                  {
+                    "label": "Gastritis",
+                    "concept": "2748d2ac-2c6e-4d76-884b-8ba9f952012f"
+                  },
+                  {
+                    "label": "Gynaecological cases",
+                    "concept": "8671b930-d5cf-417b-8717-9812a2fe0f99"
+                  },
+                  {
+                    "label": "Hepatitis A",
+                    "concept": "0f4f2114-7c52-466f-ae8f-7e62ff9aa273"
+                  },
+                  {
+                    "label": "Hepatitis B",
+                    "concept": "9a3979c9-a92f-4a74-adb0-353a56d0d0e7"
+                  },
+                  {
+                    "label": "Hepatitis delta",
+                    "concept": "78c7cf86-ea33-4f82-baec-fcc3bfe41d93"
+                  },
+                  {
+                    "label": "Hepatitis E",
+                    "concept": "0687435a-d6f5-4a8e-be93-26fd0d43afa5"
+                  },
+                  {
+                    "label": "HIV Infection confirmed",
+                    "concept": "38162348-f696-4a53-9c1d-d2690cb52c99"
+                  },
+                  {
+                    "label": "Hypertension",
+                    "concept": "10f3b49c-c3dc-4aa7-857f-3f9bb7df8dd0"
+                  },
+                  {
+                    "label": "Hypertensive crisis",
+                    "concept": "3d7fe91d-2153-45cb-983c-9712d81a3cd1"
+                  },
+                  {
+                    "label": "Infectious diseases not otherwise classified",
+                    "concept": "d661ddfe-f807-41aa-ae46-a4c2f9f4203f"
+                  },
+                  {
+                    "label": "Lower respiratory tract infection",
+                    "concept": "ea03ce93-7c26-47a3-af09-5a21b7371db3"
+                  },
+                  {
+                    "label": "Measles (complicated)",
+                    "concept": "d3be30c3-bd87-4015-a8e2-823ac12f1d65"
+                  },
+                  {
+                    "label": "Measles (uncomplicated)",
+                    "concept": "07b53338-1a68-4826-bc7a-3fb5db76a4b2"
+                  },
+                  {
+                    "label": "Meningeal TB",
+                    "concept": "7477e7a3-d6b4-46c0-b7cf-b973c0c0584d"
+                  },
+                  {
+                    "label": "Meningitis unspecified",
+                    "concept": "a4b63517-6046-4279-b0ca-86409f3b7e63"
+                  },
+                  {
+                    "label": "Mental and psychiatric conditions",
+                    "concept": "e51bba88-1954-4803-9762-8840ab5ae205"
+                  },
+                  {
+                    "label": "Moderate acute malnutrition",
+                    "concept": "c284603a-988f-4a55-a634-82c681424ab4"
+                  },
+                  {
+                    "label": "Musculoskeletal conditions (infectious origin)",
+                    "concept": "d98a4da0-68ef-4ae5-8128-9498f5421eb2"
+                  },
+                  {
+                    "label": "Musculoskeletal conditions (non-infectious)",
+                    "concept": "3d4196dc-a985-4123-b13f-9f4de0e9c598"
+                  },
+                  {
+                    "label": "Necrotizing & bullous skin infections",
+                    "concept": "6f609690-822a-41a6-aa01-e9bc60ab7906"
+                  },
+                  {
+                    "label": "Neglected tropical diseases",
+                    "concept": "4e3f379e-18bf-4c64-bef3-4c6be004baf7"
+                  },
+                  {
+                    "label": "Nephrotic Syndrome & Acute Glomerulonephritis",
+                    "concept": "96fb9345-0260-4a54-82ce-4c30e1ce8d1c"
+                  },
+                  {
+                    "label": "Neuro disability of any cause",
+                    "concept": "a1acbf76-8182-436f-8933-b6b39b11082b"
+                  },
+                  {
+                    "label": "Non urgent surgical conditions",
+                    "concept": "b17fa4c4-9f75-4f21-8a0b-c0579f923573"
+                  },
+                  {
+                    "label": "Non violence-related injuries",
+                    "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
+                  },
+                  {
+                    "label": "Obstetric cases",
+                    "concept": "19737e4d-6324-411b-8ed9-fe09c0d16832"
+                  },
+                  {
+                    "label": "Other bites and stings",
+                    "concept": "f5a93496-81fa-441f-a09c-3899b0fb2a1c"
+                  },
+                  {
+                    "label": "Other neurological conditions",
+                    "concept": "15f74297-77dc-405a-b060-42611063c604"
+                  },
+                  {
+                    "label": "Other non communicable diseases",
+                    "concept": "6b98ea27-b486-4d1c-a57c-73f7423c1814"
+                  },
+                  {
+                    "label": "Other symptoms and abnor. clinical / lab findings",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Others",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Persistent fever ( >7 days)",
+                    "concept": "cdbeb45d-4a1f-4893-a9ef-aca653597fd3"
+                  },
+                  {
+                    "label": "Poliomyelitis confirmed",
+                    "concept": "2deaaf7c-eab8-4acc-9728-301fd9e58062"
+                  },
+                  {
+                    "label": "Post surgical infection",
+                    "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
+                  },
+                  {
+                    "label": "Pulmonary tuberculosis",
+                    "concept": "b6aec37b-8990-48c3-9ece-2e3edd5dbfe9"
+                  },
+                  {
+                    "label": "Rabies",
+                    "concept": "2f07701b-95b2-4235-8c81-448da7f1aaa3"
+                  },
+                  {
+                    "label": "Severe malaria",
+                    "concept": "e9f02d62-a180-4a3e-813a-c210ec7364a6"
+                  },
+                  {
+                    "label": "Sexual violence / rape",
+                    "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
+                  },
+                  {
+                    "label": "Sexually transmitted disease (STI)",
+                    "concept": "799c78cc-8c8f-44e2-9223-0c8e607677a1"
+                  },
+                  {
+                    "label": "Shigellosis or Salmonellosis",
+                    "concept": "720c9b5d-f661-4a4c-9397-dd802283ed20"
+                  },
+                  {
+                    "label": "Sickle cell disease",
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
+                  },
+                  {
+                    "label": "Sickle cell disease and complications",
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
+                  },
+                  {
+                    "label": "Simple malaria",
+                    "concept": "f9cb0dac-1b8f-442c-94cb-4bde52a2a979"
+                  },
+                  {
+                    "label": "Skin and soft tissue conditions",
+                    "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
+                  },
+                  {
+                    "label": "Snake bite",
+                    "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
+                  },
+                  {
+                    "label": "Stroke / CVA",
+                    "concept": "bff16ef7-3429-4cff-bda0-5cc13a77ae39"
+                  },
+                  {
+                    "label": "Substance abuse / dependency",
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                  },
+                  {
+                    "label": "Suspected or confirmed malignancy",
+                    "concept": "be1800cf-19cd-4074-9398-f0962fc3db8c"
+                  },
+                  {
+                    "label": "Tetanus",
+                    "concept": "ac66146e-5919-428c-8ed6-6a5a764ab06a"
+                  },
+                  {
+                    "label": "Toxicity / poisoning",
+                    "concept": "3a5b3971-6cef-4a54-82bc-8f897858bd00"
+                  },
+                  {
+                    "label": "Typhoid fever",
+                    "concept": "a1a7f04a-997b-4914-8f32-4546c2554519"
+                  },
+                  {
+                    "label": "Upper respiratory tract infection",
+                    "concept": "bbfb753f-578c-4c57-8118-4e82857acd76"
+                  },
+                  {
+                    "label": "Urgent surgical conditions",
+                    "concept": "3fc5539b-7975-443a-86c1-2300d1755237"
+                  },
+                  {
+                    "label": "Urolithiasis / Renal colic",
+                    "concept": "47900991-2835-48e2-8208-9698446ef178"
+                  },
+                  {
+                    "label": "UTI and renal tract acute pathology",
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
+                  },
+                  {
+                    "label": "Violence-related injuries",
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
+                  },
+                  {
+                    "label": "Viral haemorrhagic fever",
+                    "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
+                  },
+                  {
+                    "label": "Visceral leishmaniasis",
+                    "concept": "c2ddc071-9590-4b24-b797-1e1769662a5b"
+                  },
+                  {
+                    "label": "Vit A deficiency",
+                    "concept": "bc84fbf4-f216-43d0-8501-73572496635c"
+                  },
+                  {
+                    "label": "Vit B complex deficiency",
+                    "concept": "530acec6-b269-410e-89b1-abc15dac02e9"
+                  },
+                  {
+                    "label": "Vit C deficiency (scurvy)",
+                    "concept": "a54e6856-8c64-4d1f-a2a0-1f916eb413bb"
+                  },
+                  {
+                    "label": "Vit D deficiency (rickets)",
+                    "concept": "899c74ff-c155-4263-aa2c-587dac49635f"
+                  },
+                  {
+                    "label": "Whooping cough",
+                    "concept": "c3d7e630-1a84-481a-ba12-e21c089bbb35"
+                  },
+                  {
+                    "label": "Yellow fever",
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "secondary1IfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(finalDiagnosisSecondary1 !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "finalDiagnosisSecondary2",
+              "label": "Final Diagnosis - Secondary 2",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "e9ff5084-8d17-48e8-a1b7-890d1b4e14b1",
+                "answers": [
+                  {
+                    "label": "Acute asthma",
+                    "concept": "e1b51c42-041f-4a3f-9a31-0337642f42b6"
+                  },
+                  {
+                    "label": "Acute diarrhea (bloody)",
+                    "concept": "1b4d955d-e703-484d-8bfd-0c90b2a39285"
+                  },
+                  {
+                    "label": "Acute diarrhea (non-bloody)",
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
+                  },
+                  {
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "42c9bc49-ac4d-4b86-8753-48d378075c59"
+                  },
+                  {
+                    "label": "Acute flaccid paralysis",
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
+                  },
+                  {
+                    "label": "Acute jaundice syndrome",
+                    "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
+                  },
+                  {
+                    "label": "Bacterial meningitis",
+                    "concept": "23c733cd-808d-4d23-b58c-78028e66528f"
+                  },
+                  {
+                    "label": "Burns",
+                    "concept": "719ea0d7-98fd-4e86-84be-451b8c0f6f54"
+                  },
+                  {
+                    "label": "Cardiovascular disease",
+                    "concept": "6541ddce-0e3c-4b7d-ad52-2bfe18e24dd5"
+                  },
+                  {
+                    "label": "Cholera (suspected)",
+                    "concept": "0e8565a1-f02c-4981-a8b3-47c312f7ca5d"
+                  },
+                  {
+                    "label": "Cholera confirmed",
+                    "concept": "1de0008f-ca3d-4dda-80c5-a71c5039445e"
+                  },
+                  {
+                    "label": "Complicated ear infection",
+                    "concept": "d5eebff7-d2aa-4b08-8653-9bcc35b9ae51"
+                  },
+                  {
+                    "label": "Congenital or acquired cardiac pathology",
+                    "concept": "425fcf58-1110-4eb3-8485-ba950f56890f"
+                  },
+                  {
+                    "label": "Congestive heart failure",
+                    "concept": "6a7a9d6a-e8b6-4ffb-8321-a56e9e4473e0"
+                  },
+                  {
+                    "label": "Covid-19 confirmed",
+                    "concept": "a70fdf0e-87d4-4219-9763-d3d4fdf9d6dc"
+                  },
+                  {
+                    "label": "Covid-19 probable",
+                    "concept": "163727b7-0c90-4a14-83fa-707c4f28860f"
+                  },
+                  {
+                    "label": "Cutaneous leishmaniasis",
+                    "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
+                  },
+                  {
+                    "label": "Dengue confirmed",
+                    "concept": "4b01305f-ca82-454b-ab06-ab98a53eaaae"
+                  },
+                  {
+                    "label": "Diabetes type 2 and complications",
+                    "concept": "27dd79e6-2e3c-4687-8ef9-d8ab0adb81b4"
+                  },
+                  {
+                    "label": "Diabetes type 1 and complications",
+                    "concept": "d10c2b41-593a-414f-8f7e-a445e9d4f22e"
+                  },
+                  {
+                    "label": "Diarrhea (persistent)",
+                    "concept": "d3ea64b2-7587-4497-b5d9-dd55ccc6b0f1"
+                  },
+                  {
+                    "label": "Diphtheria",
+                    "concept": "2425bb5d-e9df-4e64-b119-ae42eaae1a35"
+                  },
+                  {
+                    "label": "Epilepsy",
+                    "concept": "221d041d-1c52-49aa-a370-d0c763893b8f"
+                  },
+                  {
+                    "label": "Extra pulmonary tuberculosis",
+                    "concept": "17ca2ee9-e8a5-48da-bb44-2a8988acee51"
+                  },
+                  {
+                    "label": "Eye diseases (including trachoma)",
+                    "concept": "af6cb265-7afd-47d2-98b4-600a4a5f19b0"
+                  },
+                  {
+                    "label": "Gastric ulcer",
+                    "concept": "03e87992-b1e3-4a4c-97a8-f78f670aa772"
+                  },
+                  {
+                    "label": "Gastritis",
+                    "concept": "2748d2ac-2c6e-4d76-884b-8ba9f952012f"
+                  },
+                  {
+                    "label": "Gynaecological cases",
+                    "concept": "8671b930-d5cf-417b-8717-9812a2fe0f99"
+                  },
+                  {
+                    "label": "Hepatitis A",
+                    "concept": "0f4f2114-7c52-466f-ae8f-7e62ff9aa273"
+                  },
+                  {
+                    "label": "Hepatitis B",
+                    "concept": "9a3979c9-a92f-4a74-adb0-353a56d0d0e7"
+                  },
+                  {
+                    "label": "Hepatitis delta",
+                    "concept": "78c7cf86-ea33-4f82-baec-fcc3bfe41d93"
+                  },
+                  {
+                    "label": "Hepatitis E",
+                    "concept": "0687435a-d6f5-4a8e-be93-26fd0d43afa5"
+                  },
+                  {
+                    "label": "HIV Infection confirmed",
+                    "concept": "38162348-f696-4a53-9c1d-d2690cb52c99"
+                  },
+                  {
+                    "label": "Hypertension",
+                    "concept": "10f3b49c-c3dc-4aa7-857f-3f9bb7df8dd0"
+                  },
+                  {
+                    "label": "Hypertensive crisis",
+                    "concept": "3d7fe91d-2153-45cb-983c-9712d81a3cd1"
+                  },
+                  {
+                    "label": "Infectious diseases not otherwise classified",
+                    "concept": "d661ddfe-f807-41aa-ae46-a4c2f9f4203f"
+                  },
+                  {
+                    "label": "Lower respiratory tract infection",
+                    "concept": "ea03ce93-7c26-47a3-af09-5a21b7371db3"
+                  },
+                  {
+                    "label": "Measles (complicated)",
+                    "concept": "d3be30c3-bd87-4015-a8e2-823ac12f1d65"
+                  },
+                  {
+                    "label": "Measles (uncomplicated)",
+                    "concept": "07b53338-1a68-4826-bc7a-3fb5db76a4b2"
+                  },
+                  {
+                    "label": "Meningeal TB",
+                    "concept": "7477e7a3-d6b4-46c0-b7cf-b973c0c0584d"
+                  },
+                  {
+                    "label": "Meningitis unspecified",
+                    "concept": "a4b63517-6046-4279-b0ca-86409f3b7e63"
+                  },
+                  {
+                    "label": "Mental and psychiatric conditions",
+                    "concept": "e51bba88-1954-4803-9762-8840ab5ae205"
+                  },
+                  {
+                    "label": "Moderate acute malnutrition",
+                    "concept": "c284603a-988f-4a55-a634-82c681424ab4"
+                  },
+                  {
+                    "label": "Musculoskeletal conditions (infectious origin)",
+                    "concept": "d98a4da0-68ef-4ae5-8128-9498f5421eb2"
+                  },
+                  {
+                    "label": "Musculoskeletal conditions (non-infectious)",
+                    "concept": "3d4196dc-a985-4123-b13f-9f4de0e9c598"
+                  },
+                  {
+                    "label": "Necrotizing & bullous skin infections",
+                    "concept": "6f609690-822a-41a6-aa01-e9bc60ab7906"
+                  },
+                  {
+                    "label": "Neglected tropical diseases",
+                    "concept": "4e3f379e-18bf-4c64-bef3-4c6be004baf7"
+                  },
+                  {
+                    "label": "Nephrotic Syndrome & Acute Glomerulonephritis",
+                    "concept": "96fb9345-0260-4a54-82ce-4c30e1ce8d1c"
+                  },
+                  {
+                    "label": "Neuro disability of any cause",
+                    "concept": "a1acbf76-8182-436f-8933-b6b39b11082b"
+                  },
+                  {
+                    "label": "Non urgent surgical conditions",
+                    "concept": "b17fa4c4-9f75-4f21-8a0b-c0579f923573"
+                  },
+                  {
+                    "label": "Non violence-related injuries",
+                    "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
+                  },
+                  {
+                    "label": "Obstetric cases",
+                    "concept": "19737e4d-6324-411b-8ed9-fe09c0d16832"
+                  },
+                  {
+                    "label": "Other bites and stings",
+                    "concept": "f5a93496-81fa-441f-a09c-3899b0fb2a1c"
+                  },
+                  {
+                    "label": "Other neurological conditions",
+                    "concept": "15f74297-77dc-405a-b060-42611063c604"
+                  },
+                  {
+                    "label": "Other non communicable diseases",
+                    "concept": "6b98ea27-b486-4d1c-a57c-73f7423c1814"
+                  },
+                  {
+                    "label": "Other symptoms and abnor. clinical / lab findings",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Others",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Persistent fever ( >7 days)",
+                    "concept": "cdbeb45d-4a1f-4893-a9ef-aca653597fd3"
+                  },
+                  {
+                    "label": "Poliomyelitis confirmed",
+                    "concept": "2deaaf7c-eab8-4acc-9728-301fd9e58062"
+                  },
+                  {
+                    "label": "Post surgical infection",
+                    "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
+                  },
+                  {
+                    "label": "Pulmonary tuberculosis",
+                    "concept": "b6aec37b-8990-48c3-9ece-2e3edd5dbfe9"
+                  },
+                  {
+                    "label": "Rabies",
+                    "concept": "2f07701b-95b2-4235-8c81-448da7f1aaa3"
+                  },
+                  {
+                    "label": "Severe malaria",
+                    "concept": "e9f02d62-a180-4a3e-813a-c210ec7364a6"
+                  },
+                  {
+                    "label": "Sexual violence / rape",
+                    "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
+                  },
+                  {
+                    "label": "Sexually transmitted disease (STI)",
+                    "concept": "799c78cc-8c8f-44e2-9223-0c8e607677a1"
+                  },
+                  {
+                    "label": "Shigellosis or Salmonellosis",
+                    "concept": "720c9b5d-f661-4a4c-9397-dd802283ed20"
+                  },
+                  {
+                    "label": "Sickle cell disease",
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
+                  },
+                  {
+                    "label": "Sickle cell disease and complications",
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
+                  },
+                  {
+                    "label": "Simple malaria",
+                    "concept": "f9cb0dac-1b8f-442c-94cb-4bde52a2a979"
+                  },
+                  {
+                    "label": "Skin and soft tissue conditions",
+                    "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
+                  },
+                  {
+                    "label": "Snake bite",
+                    "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
+                  },
+                  {
+                    "label": "Stroke / CVA",
+                    "concept": "bff16ef7-3429-4cff-bda0-5cc13a77ae39"
+                  },
+                  {
+                    "label": "Substance abuse / dependency",
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                  },
+                  {
+                    "label": "Suspected or confirmed malignancy",
+                    "concept": "be1800cf-19cd-4074-9398-f0962fc3db8c"
+                  },
+                  {
+                    "label": "Tetanus",
+                    "concept": "ac66146e-5919-428c-8ed6-6a5a764ab06a"
+                  },
+                  {
+                    "label": "Toxicity / poisoning",
+                    "concept": "3a5b3971-6cef-4a54-82bc-8f897858bd00"
+                  },
+                  {
+                    "label": "Typhoid fever",
+                    "concept": "a1a7f04a-997b-4914-8f32-4546c2554519"
+                  },
+                  {
+                    "label": "Upper respiratory tract infection",
+                    "concept": "bbfb753f-578c-4c57-8118-4e82857acd76"
+                  },
+                  {
+                    "label": "Urgent surgical conditions",
+                    "concept": "3fc5539b-7975-443a-86c1-2300d1755237"
+                  },
+                  {
+                    "label": "Urolithiasis / Renal colic",
+                    "concept": "47900991-2835-48e2-8208-9698446ef178"
+                  },
+                  {
+                    "label": "UTI and renal tract acute pathology",
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
+                  },
+                  {
+                    "label": "Violence-related injuries",
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
+                  },
+                  {
+                    "label": "Viral haemorrhagic fever",
+                    "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
+                  },
+                  {
+                    "label": "Visceral leishmaniasis",
+                    "concept": "c2ddc071-9590-4b24-b797-1e1769662a5b"
+                  },
+                  {
+                    "label": "Vit A deficiency",
+                    "concept": "bc84fbf4-f216-43d0-8501-73572496635c"
+                  },
+                  {
+                    "label": "Vit B complex deficiency",
+                    "concept": "530acec6-b269-410e-89b1-abc15dac02e9"
+                  },
+                  {
+                    "label": "Vit C deficiency (scurvy)",
+                    "concept": "a54e6856-8c64-4d1f-a2a0-1f916eb413bb"
+                  },
+                  {
+                    "label": "Vit D deficiency (rickets)",
+                    "concept": "899c74ff-c155-4263-aa2c-587dac49635f"
+                  },
+                  {
+                    "label": "Whooping cough",
+                    "concept": "c3d7e630-1a84-481a-ba12-e21c089bbb35"
+                  },
+                  {
+                    "label": "Yellow fever",
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "secondary2IfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(finalDiagnosisSecondary2 !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "finalDiagnosisSecondary3",
+              "label": "Final Diagnosis - Secondary 3",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "d1e43f55-4432-4a19-bf17-5a1c97b2226f",
+                "answers": [
+                  {
+                    "label": "Acute asthma",
+                    "concept": "e1b51c42-041f-4a3f-9a31-0337642f42b6"
+                  },
+                  {
+                    "label": "Acute diarrhea (bloody)",
+                    "concept": "1b4d955d-e703-484d-8bfd-0c90b2a39285"
+                  },
+                  {
+                    "label": "Acute diarrhea (non-bloody)",
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
+                  },
+                  {
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "42c9bc49-ac4d-4b86-8753-48d378075c59"
+                  },
+                  {
+                    "label": "Acute flaccid paralysis",
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
+                  },
+                  {
+                    "label": "Acute jaundice syndrome",
+                    "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
+                  },
+                  {
+                    "label": "Bacterial meningitis",
+                    "concept": "23c733cd-808d-4d23-b58c-78028e66528f"
+                  },
+                  {
+                    "label": "Burns",
+                    "concept": "719ea0d7-98fd-4e86-84be-451b8c0f6f54"
+                  },
+                  {
+                    "label": "Cardiogenic shock",
+                    "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
+                  },
+                  {
+                    "label": "Cardiovascular disease",
+                    "concept": "6541ddce-0e3c-4b7d-ad52-2bfe18e24dd5"
+                  },
+                  {
+                    "label": "Chikungunya confirmed",
+                    "concept": "46cbb6fa-7db6-4a5e-bcf4-d9ada1479ccc"
+                  },
+                  {
+                    "label": "Chikungunya suspected",
+                    "concept": "3fba4292-e70f-4c0a-b84f-208559dccbbc"
+                  },
+                  {
+                    "label": "Cholera (suspected)",
+                    "concept": "0e8565a1-f02c-4981-a8b3-47c312f7ca5d"
+                  },
+                  {
+                    "label": "Cholera confirmed",
+                    "concept": "1de0008f-ca3d-4dda-80c5-a71c5039445e"
+                  },
+                  {
+                    "label": "Complicated ear infection",
+                    "concept": "d5eebff7-d2aa-4b08-8653-9bcc35b9ae51"
+                  },
+                  {
+                    "label": "Congenital or acquired cardiac pathology",
+                    "concept": "425fcf58-1110-4eb3-8485-ba950f56890f"
+                  },
+                  {
+                    "label": "Congenital pathology",
+                    "concept": "6229ba1a-a44d-4930-a740-40f5d41c493e"
+                  },
+                  {
+                    "label": "Congestive heart failure",
+                    "concept": "6a7a9d6a-e8b6-4ffb-8321-a56e9e4473e0"
+                  },
+                  {
+                    "label": "COPD",
+                    "concept": "0d9a7323-b54a-4d2b-a231-e34fa54e3a54"
+                  },
+                  {
+                    "label": "Covid-19 confirmed",
+                    "concept": "a70fdf0e-87d4-4219-9763-d3d4fdf9d6dc"
+                  },
+                  {
+                    "label": "Covid-19 probable",
+                    "concept": "163727b7-0c90-4a14-83fa-707c4f28860f"
+                  },
+                  {
+                    "label": "Cutaneous leishmaniasis",
+                    "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
+                  },
+                  {
+                    "label": "Dengue confirmed",
+                    "concept": "4b01305f-ca82-454b-ab06-ab98a53eaaae"
+                  },
+                  {
+                    "label": "Dengue suspected",
+                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
+                  },
+                  {
+                    "label": "Diabetes type 2 and complications",
+                    "concept": "27dd79e6-2e3c-4687-8ef9-d8ab0adb81b4"
+                  },
+                  {
+                    "label": "Diabetes type 1 and complications",
+                    "concept": "d10c2b41-593a-414f-8f7e-a445e9d4f22e"
+                  },
+                  {
+                    "label": "Diarrhea (persistent)",
+                    "concept": "d3ea64b2-7587-4497-b5d9-dd55ccc6b0f1"
+                  },
+                  {
+                    "label": "Diphtheria",
+                    "concept": "2425bb5d-e9df-4e64-b119-ae42eaae1a35"
+                  },
+                  {
+                    "label": "Dog bite",
+                    "concept": "087fd7f9-816c-4f1b-80b2-a949c83554f2"
+                  },
+                  {
+                    "label": "Epilepsy/Seizures",
+                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                  },
+                  {
+                    "label": "Extra pulmonary tuberculosis",
+                    "concept": "17ca2ee9-e8a5-48da-bb44-2a8988acee51"
+                  },
+                  {
+                    "label": "Eye diseases (including trachoma)",
+                    "concept": "af6cb265-7afd-47d2-98b4-600a4a5f19b0"
+                  },
+                  {
+                    "label": "Gastric ulcer",
+                    "concept": "03e87992-b1e3-4a4c-97a8-f78f670aa772"
+                  },
+                  {
+                    "label": "Gastritis",
+                    "concept": "2748d2ac-2c6e-4d76-884b-8ba9f952012f"
+                  },
+                  {
+                    "label": "Gynaecological cases",
+                    "concept": "8671b930-d5cf-417b-8717-9812a2fe0f99"
+                  },
+                  {
+                    "label": "Hepatitis A",
+                    "concept": "0f4f2114-7c52-466f-ae8f-7e62ff9aa273"
+                  },
+                  {
+                    "label": "Hepatitis B",
+                    "concept": "9a3979c9-a92f-4a74-adb0-353a56d0d0e7"
+                  },
+                  {
+                    "label": "Hepatitis delta",
+                    "concept": "78c7cf86-ea33-4f82-baec-fcc3bfe41d93"
+                  },
+                  {
+                    "label": "Hepatitis E",
+                    "concept": "0687435a-d6f5-4a8e-be93-26fd0d43afa5"
+                  },
+                  {
+                    "label": "HIV Infection confirmed",
+                    "concept": "38162348-f696-4a53-9c1d-d2690cb52c99"
+                  },
+                  {
+                    "label": "Hyperglycemia",
+                    "concept": "f4b8e92b-94eb-40ed-a4cc-f072cb62b764"
+                  },
+                  {
+                    "label": "Hypertension",
+                    "concept": "10f3b49c-c3dc-4aa7-857f-3f9bb7df8dd0"
+                  },
+                  {
+                    "label": "Hypertensive crisis",
+                    "concept": "3d7fe91d-2153-45cb-983c-9712d81a3cd1"
+                  },
+                  {
+                    "label": "Hypoglycemia",
+                    "concept": "7e848f32-6afd-4e14-8cb9-cc8402f42363"
+                  },
+                  {
+                    "label": "Hypovolemic shock",
+                    "concept": "d8c5769e-b090-4bcb-8942-4a3d7c4f58ff"
+                  },
+                  {
+                    "label": "Infectious diseases not otherwise classified",
+                    "concept": "d661ddfe-f807-41aa-ae46-a4c2f9f4203f"
+                  },
+                  {
+                    "label": "Lower respiratory tract infection",
+                    "concept": "ea03ce93-7c26-47a3-af09-5a21b7371db3"
+                  },
+                  {
+                    "label": "Measles (complicated)",
+                    "concept": "d3be30c3-bd87-4015-a8e2-823ac12f1d65"
+                  },
+                  {
+                    "label": "Measles (uncomplicated)",
+                    "concept": "07b53338-1a68-4826-bc7a-3fb5db76a4b2"
+                  },
+                  {
+                    "label": "Meningeal TB",
+                    "concept": "7477e7a3-d6b4-46c0-b7cf-b973c0c0584d"
+                  },
+                  {
+                    "label": "Meningitis unspecified",
+                    "concept": "a4b63517-6046-4279-b0ca-86409f3b7e63"
+                  },
+                  {
+                    "label": "Mental and psychiatric conditions",
+                    "concept": "e51bba88-1954-4803-9762-8840ab5ae205"
+                  },
+                  {
+                    "label": "Moderate acute malnutrition",
+                    "concept": "c284603a-988f-4a55-a634-82c681424ab4"
+                  },
+                  {
+                    "label": "Musculoskeletal conditions (infectious origin)",
+                    "concept": "d98a4da0-68ef-4ae5-8128-9498f5421eb2"
+                  },
+                  {
+                    "label": "Musculoskeletal conditions (non-infectious)",
+                    "concept": "3d4196dc-a985-4123-b13f-9f4de0e9c598"
+                  },
+                  {
+                    "label": "Necrotizing & bullous skin infections",
+                    "concept": "6f609690-822a-41a6-aa01-e9bc60ab7906"
+                  },
+                  {
+                    "label": "Neglected tropical diseases",
+                    "concept": "4e3f379e-18bf-4c64-bef3-4c6be004baf7"
+                  },
+                  {
+                    "label": "Nephrotic Syndrome & Acute Glomerulonephritis",
+                    "concept": "96fb9345-0260-4a54-82ce-4c30e1ce8d1c"
+                  },
+                  {
+                    "label": "Neuro disability of any cause",
+                    "concept": "a1acbf76-8182-436f-8933-b6b39b11082b"
+                  },
+                  {
+                    "label": "Non urgent surgical conditions",
+                    "concept": "b17fa4c4-9f75-4f21-8a0b-c0579f923573"
+                  },
+                  {
+                    "label": "Non violence-related injuries",
+                    "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
+                  },
+                  {
+                    "label": "Obstetric cases",
+                    "concept": "19737e4d-6324-411b-8ed9-fe09c0d16832"
+                  },
+                  {
+                    "label": "Other bites and stings",
+                    "concept": "f5a93496-81fa-441f-a09c-3899b0fb2a1c"
+                  },
+                  {
+                    "label": "Other neurological conditions",
+                    "concept": "15f74297-77dc-405a-b060-42611063c604"
+                  },
+                  {
+                    "label": "Other non communicable diseases",
+                    "concept": "6b98ea27-b486-4d1c-a57c-73f7423c1814"
+                  },
+                  {
+                    "label": "Other symptoms and abnor. clinical / lab findings",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Others",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Persistent fever ( >7 days)",
+                    "concept": "cdbeb45d-4a1f-4893-a9ef-aca653597fd3"
+                  },
+                  {
+                    "label": "Poliomyelitis confirmed",
+                    "concept": "2deaaf7c-eab8-4acc-9728-301fd9e58062"
+                  },
+                  {
+                    "label": "Post surgical infection",
+                    "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
+                  },
+                  {
+                    "label": "Pulmonary tuberculosis",
+                    "concept": "b6aec37b-8990-48c3-9ece-2e3edd5dbfe9"
+                  },
+                  {
+                    "label": "Rabies",
+                    "concept": "2f07701b-95b2-4235-8c81-448da7f1aaa3"
+                  },
+                  {
+                    "label": "Rheumatic heart disease",
+                    "concept": "d4fa7b29-7228-4810-a7d3-784e825ea259"
+                  },
+                  {
+                    "label": "Severe anaemia",
+                    "concept": "cf6cd6c9-cc7d-4bb6-aa0d-4471cf163357"
+                  },
+                  {
+                    "label": "Severe dehydration",
+                    "concept": "a38a73a5-e324-49ba-9e0c-4c4e0fde3556"
+                  },
+                  {
+                    "label": "Severe malaria",
+                    "concept": "e9f02d62-a180-4a3e-813a-c210ec7364a6"
+                  },
+                  {
+                    "label": "Sexual violence / rape",
+                    "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
+                  },
+                  {
+                    "label": "Sexually transmitted disease (STI)",
+                    "concept": "799c78cc-8c8f-44e2-9223-0c8e607677a1"
+                  },
+                  {
+                    "label": "Shigellosis or Salmonellosis",
+                    "concept": "720c9b5d-f661-4a4c-9397-dd802283ed20"
+                  },
+                  {
+                    "label": "Shock uspecified",
+                    "concept": "07a94109-a545-4d44-a14e-69caeffe1aea"
+                  },
+                  {
+                    "label": "Sickle cell disease",
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
+                  },
+                  {
+                    "label": "Sickle cell disease and complications",
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
+                  },
+                  {
+                    "label": "Simple malaria",
+                    "concept": "f9cb0dac-1b8f-442c-94cb-4bde52a2a979"
+                  },
+                  {
+                    "label": "Skin and soft tissue conditions",
+                    "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
+                  },
+                  {
+                    "label": "Snake bite",
+                    "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
+                  },
+                  {
+                    "label": "Stroke / CVA",
+                    "concept": "bff16ef7-3429-4cff-bda0-5cc13a77ae39"
+                  },
+                  {
+                    "label": "Substance abuse / dependency",
+                    "concept": "fcc01124-3d7b-4e6f-be35-50233a7f64cb"
+                  },
+                  {
+                    "label": "Suspected or confirmed malignancy",
+                    "concept": "be1800cf-19cd-4074-9398-f0962fc3db8c"
+                  },
+                  {
+                    "label": "Tetanus",
+                    "concept": "ac66146e-5919-428c-8ed6-6a5a764ab06a"
+                  },
+                  {
+                    "label": "Toxicity / poisoning",
+                    "concept": "3a5b3971-6cef-4a54-82bc-8f897858bd00"
+                  },
+                  {
+                    "label": "Typhoid fever",
+                    "concept": "a1a7f04a-997b-4914-8f32-4546c2554519"
+                  },
+                  {
+                    "label": "Upper respiratory tract infection",
+                    "concept": "bbfb753f-578c-4c57-8118-4e82857acd76"
+                  },
+                  {
+                    "label": "Urgent surgical conditions",
+                    "concept": "3fc5539b-7975-443a-86c1-2300d1755237"
+                  },
+                  {
+                    "label": "Urolithiasis / Renal colic",
+                    "concept": "47900991-2835-48e2-8208-9698446ef178"
+                  },
+                  {
+                    "label": "UTI and renal tract acute pathology",
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
+                  },
+                  {
+                    "label": "Varicella",
+                    "concept": "2fbe199d-fc82-4853-81da-8b63c1205d17"
+                  },
+                  {
+                    "label": "Violence-related injuries",
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
+                  },
+                  {
+                    "label": "Viral haemorrhagic fever",
+                    "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
+                  },
+                  {
+                    "label": "Visceral leishmaniasis",
+                    "concept": "c2ddc071-9590-4b24-b797-1e1769662a5b"
+                  },
+                  {
+                    "label": "Vit A deficiency",
+                    "concept": "bc84fbf4-f216-43d0-8501-73572496635c"
+                  },
+                  {
+                    "label": "Vit B complex deficiency",
+                    "concept": "530acec6-b269-410e-89b1-abc15dac02e9"
+                  },
+                  {
+                    "label": "Vit C deficiency (scurvy)",
+                    "concept": "a54e6856-8c64-4d1f-a2a0-1f916eb413bb"
+                  },
+                  {
+                    "label": "Vit D deficiency (rickets)",
+                    "concept": "899c74ff-c155-4263-aa2c-587dac49635f"
+                  },
+                  {
+                    "label": "Whooping cough",
+                    "concept": "c3d7e630-1a84-481a-ba12-e21c089bbb35"
+                  },
+                  {
+                    "label": "Yellow fever",
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "secondary3IfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(finalDiagnosisSecondary3 !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Hospitalization",
+      "sections": [
+        {
+          "label": "Treatment",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "stayInIntensiveCare",
+              "label": "Stay in intensive care?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "361331ca-5d7f-4e70-86ec-4125d1069554",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "stayInIntensiveCareNumberOfDays",
+              "label": "Number of days",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "899a2fea-ba57-4744-9fcf-94f3e0d8d71f",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(stayInIntensiveCare !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "stayInIsolationUnit",
+              "label": "Stay in isolation unit?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "01ea9cdc-6bf0-4576-947a-96e505b2561a",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "stayInIsolationUnitNumberOfDays",
+              "label": "Number of days",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "c73a45d1-5953-4303-9fc1-1889076da122",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(stayInIsolationUnit !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "oxygenTherapy",
+              "label": "Oxygen therapy?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "775a4895-fdbd-4409-9292-6044972eca83",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "oxygenTherapyDurationInHours",
+              "label": "Duration in hours",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "dfd75194-5e4c-4cfd-9fa3-2bbb9a8ac9f8",
+                "min": 0.0,
+                "disallowDecimals": false
+              },
+              "hide": {
+                "hideWhenExpression": "(oxygenTherapy !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "antibiotherapy",
+              "label": "Antibiotherapy?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6551dc1e-f8db-469c-9929-93c334178390",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "antibiotherapyDurationInDays",
+              "label": "Duration in days",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5eb49967-40a5-44ea-b816-fab4f79b203a",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(antibiotherapy !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "arv",
+              "label": "ARV?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c539228e-8f92-4d14-bf9d-340d1e4a5f77",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "cotrimoxazoleProphylaxis",
+              "label": "Cotrimoxazole prophylaxis?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f649df63-e5d4-4de8-bdcc-d2f48f9fba95",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "bloodTransfusion",
+              "label": "Blood transfusion?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "550f0ba6-b763-4501-9e24-19607031110f",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "numberOfBloodTransfusions",
+              "label": "Number of blood transfusions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "45ce07f1-7151-4eca-a681-b3f1384faa27",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(bloodTransfusion !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Tests",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "hb",
+              "label": "Hb (g/dl)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
+                "min": 0.0,
+                "disallowDecimals": false
+              }
+            },
+            {
+              "id": "hivTest",
+              "label": "HIV test?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f8ebd933-c186-4612-8f93-1ff4741386be",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hivTestResult",
+              "label": "HIV test result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "49b4650e-fd14-48ac-8458-c502a96152d2",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Undetermined",
+                    "concept": "a8f6df4c-dc78-4f6d-87b5-69b43a796245"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hivTest !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "tbScreening",
+              "label": "TB screening?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "22e10033-1dea-497c-924a-35e87fd4954e",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "tbResult",
+              "label": "TB result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6f193c82-83d2-411f-90d7-0a18bf3dca2f",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(tbScreening !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Outcome",
+      "sections": [
+        {
+          "label": "Outcome",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "outcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a6441766-3a82-40c7-9028-d08f2757da02",
+                "answers": [
+                  {
+                    "label": "Dead",
+                    "concept": "dc1c7ac9-d9c3-4887-bc22-827c2db7689f"
+                  },
+                  {
+                    "label": "Defaulter",
+                    "concept": "81cbc44a-ac84-4458-ab99-feab4d64c691"
+                  },
+                  {
+                    "label": "Discharged",
+                    "concept": "1fbf752b-536b-486b-bfd1-70325ccdea1a"
+                  },
+                  {
+                    "label": "Referred",
+                    "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11"
+                  },
+                  {
+                    "label": "Transferred",
+                    "concept": "18c795cb-7197-46da-926f-e4d1848b8c36"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "referralPlace",
+              "label": "Referral place",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f3d5264e-eabe-493d-b9cf-df84c5adf519",
+                "answers": [
+                  {
+                    "label": "MoH",
+                    "concept": "b0e5066f-047b-441c-b428-2517035e7ad0"
+                  },
+                  {
+                    "label": "MSF",
+                    "concept": "74c9a7c6-e64d-4f49-b8a6-f10999eb25bc"
+                  },
+                  {
+                    "label": "NGO",
+                    "concept": "80ea94ed-44ea-40fa-b697-98523b62df36"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== '93eb9716-6866-4d13-9b8f-59c0a7605a11')"
+              }
+            },
+            {
+              "id": "referralPlaceIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(referralPlace !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "causeOfReferral",
+              "label": "Cause of referral",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== '93eb9716-6866-4d13-9b8f-59c0a7605a11')"
+              }
+            },
+            {
+              "id": "dateOfDeath",
+              "label": "Date of death",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "68f91879-5f00-4168-82eb-785c6bece077"
+              },
+              "default": "Current date",
+              "hide": {
+                "hideWhenExpression": "(outcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            },
+            {
+              "id": "deathCause",
+              "label": "Death cause",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "778b70b5-c6de-4459-a101-6bf02f77d5c7",
+                "answers": [
+                  {
+                    "label": "Acute asthma",
+                    "concept": "e1b51c42-041f-4a3f-9a31-0337642f42b6"
+                  },
+                  {
+                    "label": "Acute diarrhea (bloody)",
+                    "concept": "1b4d955d-e703-484d-8bfd-0c90b2a39285"
+                  },
+                  {
+                    "label": "Acute diarrhea (non-bloody)",
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
+                  },
+                  {
+                    "label": "Acute jaundice syndrome",
+                    "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
+                  },
+                  {
+                    "label": "Anaphylaxis",
+                    "concept": "d3be2062-c6f8-4bc7-b7e4-34f668f6729a"
+                  },
+                  {
+                    "label": "Arrhythmia",
+                    "concept": "26722ca1-acf1-4e1e-ba43-a571a99c76e0"
+                  },
+                  {
+                    "label": "Bacterial meningitis",
+                    "concept": "23c733cd-808d-4d23-b58c-78028e66528f"
+                  },
+                  {
+                    "label": "Central nervous system failure",
+                    "concept": "30f268e8-b630-4487-8c71-0553da32120a"
+                  },
+                  {
+                    "label": "Cholera (suspected)",
+                    "concept": "0e8565a1-f02c-4981-a8b3-47c312f7ca5d"
+                  },
+                  {
+                    "label": "Cholera confirmed",
+                    "concept": "1de0008f-ca3d-4dda-80c5-a71c5039445e"
+                  },
+                  {
+                    "label": "Complications of HIV",
+                    "concept": "bb4ea2ba-8869-459a-ab99-4b95c6b41025"
+                  },
+                  {
+                    "label": "Complications of sickle cell disease",
+                    "concept": "fde22fd6-1351-4675-bb24-326a68a9b99b"
+                  },
+                  {
+                    "label": "Congenital malformation",
+                    "concept": "2c8cc5c6-ba1c-488b-b7ed-5159c907c1d0"
+                  },
+                  {
+                    "label": "Dengue",
+                    "concept": "27a73e7c-c9f8-4d87-90f4-8ce7bc654e8e"
+                  },
+                  {
+                    "label": "Diabetes and complications",
+                    "concept": "28d17413-ffae-4ed4-a46b-62f8b4deb6d7"
+                  },
+                  {
+                    "label": "Diphtheria",
+                    "concept": "2425bb5d-e9df-4e64-b119-ae42eaae1a35"
+                  },
+                  {
+                    "label": "Epilepsy",
+                    "concept": "221d041d-1c52-49aa-a370-d0c763893b8f"
+                  },
+                  {
+                    "label": "Hepatitis B",
+                    "concept": "9a3979c9-a92f-4a74-adb0-353a56d0d0e7"
+                  },
+                  {
+                    "label": "Hepatitis C",
+                    "concept": "16c5703c-e06c-4ee0-b01f-16c33ef46532"
+                  },
+                  {
+                    "label": "Lower respiratory tract infection",
+                    "concept": "ea03ce93-7c26-47a3-af09-5a21b7371db3"
+                  },
+                  {
+                    "label": "Measles and complications",
+                    "concept": "3deca046-7e9a-4e15-b80b-84d9b99a6543"
+                  },
+                  {
+                    "label": "Meningeal TB",
+                    "concept": "7477e7a3-d6b4-46c0-b7cf-b973c0c0584d"
+                  },
+                  {
+                    "label": "Meningitis unspecified",
+                    "concept": "a4b63517-6046-4279-b0ca-86409f3b7e63"
+                  },
+                  {
+                    "label": "Non violence-related injuries",
+                    "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
+                  },
+                  {
+                    "label": "Others",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Perinatal asphyxia",
+                    "concept": "a13fe3f7-3828-4ade-8a92-cc2c79033d63"
+                  },
+                  {
+                    "label": "Poliomyelitis confirmed",
+                    "concept": "2deaaf7c-eab8-4acc-9728-301fd9e58062"
+                  },
+                  {
+                    "label": "Prematurity and/or low birth weight",
+                    "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
+                  },
+                  {
+                    "label": "Pulmonary tuberculosis",
+                    "concept": "b6aec37b-8990-48c3-9ece-2e3edd5dbfe9"
+                  },
+                  {
+                    "label": "Rabies",
+                    "concept": "2f07701b-95b2-4235-8c81-448da7f1aaa3"
+                  },
+                  {
+                    "label": "Renal failure",
+                    "concept": "91a1f6cc-a86f-4c1e-8d7d-9901a40b0327"
+                  },
+                  {
+                    "label": "Respiratory failure",
+                    "concept": "0c38d7d7-b74e-461a-99a6-1aebaccc42be"
+                  },
+                  {
+                    "label": "Sepsis",
+                    "concept": "fb42b25e-155d-4711-86c4-4b27c1bdd8a9"
+                  },
+                  {
+                    "label": "Severe acute malnutrition",
+                    "concept": "ece0907c-092d-466d-8e82-2f101fe67f19"
+                  },
+                  {
+                    "label": "Severe malaria",
+                    "concept": "e9f02d62-a180-4a3e-813a-c210ec7364a6"
+                  },
+                  {
+                    "label": "Shock: cardiogenic",
+                    "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
+                  },
+                  {
+                    "label": "Shock: haemorrhagic",
+                    "concept": "e7e1991d-9a20-4ba3-9c53-45464689a72c"
+                  },
+                  {
+                    "label": "Shock: hypovolaemic",
+                    "concept": "d8c5769e-b090-4bcb-8942-4a3d7c4f58ff"
+                  },
+                  {
+                    "label": "Snake bite",
+                    "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
+                  },
+                  {
+                    "label": "Stroke / CVA",
+                    "concept": "bff16ef7-3429-4cff-bda0-5cc13a77ae39"
+                  },
+                  {
+                    "label": "Suspected or confirmed malignancy",
+                    "concept": "be1800cf-19cd-4074-9398-f0962fc3db8c"
+                  },
+                  {
+                    "label": "Tetanus",
+                    "concept": "ac66146e-5919-428c-8ed6-6a5a764ab06a"
+                  },
+                  {
+                    "label": "Toxicity / poisoning",
+                    "concept": "3a5b3971-6cef-4a54-82bc-8f897858bd00"
+                  },
+                  {
+                    "label": "Traumatic brain injury",
+                    "concept": "952d4753-7f1c-40fc-94e4-0dd98fdfdbba"
+                  },
+                  {
+                    "label": "Typhoid fever",
+                    "concept": "a1a7f04a-997b-4914-8f32-4546c2554519"
+                  },
+                  {
+                    "label": "Violence-related injuries",
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
+                  },
+                  {
+                    "label": "Viral haemorrhagic fever",
+                    "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
+                  },
+                  {
+                    "label": "Visceral leishmaniasis",
+                    "concept": "c2ddc071-9590-4b24-b797-1e1769662a5b"
+                  },
+                  {
+                    "label": "Whooping cough",
+                    "concept": "c3d7e630-1a84-481a-ba12-e21c089bbb35"
+                  },
+                  {
+                    "label": "Yellow fever",
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            },
+            {
+              "id": "deathCauseIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(deathCause !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "ifTransferSpecifyTheUnit",
+              "label": "Specify the unit",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "eef5efc1-4d6a-43fb-87e1-4cca9842678d",
+                "answers": [
+                  {
+                    "label": "ICU",
+                    "concept": "897751f5-b7a2-4e7c-90bb-986abb08b81b"
+                  },
+                  {
+                    "label": "Maternity",
+                    "concept": "ebd55c0c-819d-4898-b8f9-be1b05e09eab"
+                  },
+                  {
+                    "label": "Surgery",
+                    "concept": "4d688780-019e-40fd-9004-044b69d9283f"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== '18c795cb-7197-46da-926f-e4d1848b8c36')"
+              }
+            },
+            {
+              "id": "ifTransferSpecifyTheUnitIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(ifTransferSpecifyTheUnit !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Comments",
+      "sections": [
+        {
+          "label": "Comments",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Prescription",
+      "sections": [
+        {
+          "label": "Prescription",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "prescribeNewExamsAndMedicationWithTheOrderBasketWheneverNecessary",
+              "label": "Prescribe new exams and medication with the order basket whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Active medications",
+                "workspaceName": "medications-form-workspace"
+              }
+            },
+            {
+              "id": "dischargeInstructions",
+              "label": "Discharge instructions (medication, diet, activity to home/nursing facility, etc)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "fe872ef2-1df1-40e8-8da6-2f08dd26d72e"
+              }
+            },
+            {
+              "id": "inappointmentsSetTheNextDateForFollowUpWheneverNecessary",
+              "label": "In \"Appointments\" set the next date for follow up whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "None",
+      "sections": []
+    }
+  ]
+}
