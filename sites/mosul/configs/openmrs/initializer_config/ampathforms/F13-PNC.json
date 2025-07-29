@@ -23,7 +23,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11",
+                "concept": "0b9cfc0a-3b84-4deb-968d-441b09b44381",
                 "answers": [
                   {
                     "label": "1st consultation",
@@ -58,7 +58,10 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "00df1796-a090-447d-8904-3d6e0d9e5948"
+                "concept": "00df1796-a090-447d-8904-3d6e0d9e5948",
+                "disallowDecimals": true,
+                "min": 0,
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
@@ -71,7 +74,10 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "76a96d44-00f5-469f-9329-5a53409a87eb"
+                "concept": "76a96d44-00f5-469f-9329-5a53409a87eb",
+                "disallowDecimals": true,
+                "min": 0,
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
@@ -85,6 +91,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "aa296b81-5599-4076-8e53-e47d6e96159e",
+                "disallowDecimals": true,
                 "min": 0,
                 "step": 1
               },
@@ -107,6 +114,8 @@
                 "rendering": "number",
                 "concept": "c44456a4-0b06-49d0-8211-1ea5fbcedcc2",
                 "min": 0,
+                "max": 18,
+                "disallowDecimals": true,
                 "step": 1
               },
               "hide": {
@@ -120,7 +129,11 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "e7b3eace-ebac-4fc2-98f1-1f20e573683b"
+                "concept": "e7b3eace-ebac-4fc2-98f1-1f20e573683b",
+                "min": 0,
+                "max": 18,
+                "disallowDecimals": true,
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
@@ -135,6 +148,8 @@
                 "rendering": "number",
                 "concept": "7aa02b6f-8644-48b6-8a05-c7188281de28",
                 "min": 0,
+                "max": 18,
+                "disallowDecimals": true,
                 "step": 1
               },
               "hide": {
@@ -150,6 +165,8 @@
                 "rendering": "number",
                 "concept": "22674d48-c1df-4f7d-9fc1-2203dbfb5def",
                 "min": 0,
+                "max": 18,
+                "disallowDecimals": true,
                 "step": 1
               },
               "hide": {
@@ -165,6 +182,8 @@
                 "rendering": "number",
                 "concept": "aa296b81-5599-4076-8e53-e47d6e96159e",
                 "min": 0,
+                "max": 18,
+                "disallowDecimals": true,
                 "step": 1
               },
               "hide": {
@@ -196,7 +215,7 @@
               }
             },
             {
-              "id": "placeOfDelivery",
+              "id": "latestDeliveryPlaceOfDelivery",
               "label": "Place of delivery",
               "type": "obs",
               "required": false,
@@ -239,7 +258,7 @@
               }
             },
             {
-              "id": "dateOfDischarge",
+              "id": "latestDeliveryDateOfDischarge",
               "label": "Date of discharge",
               "type": "obs",
               "required": false,
@@ -280,12 +299,12 @@
           ]
         },
         {
-          "label": "Latest delivery - Infant 1",
+          "label": "Infant 1",
           "isExpanded": false,
           "questions": [
             {
-              "id": "infant1Name",
-              "label": "Latest delivery - Infant 1 name",
+              "id": "latestDeliveryInfant1Name",
+              "label": "Infant 1 name",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -298,8 +317,8 @@
               }
             },
             {
-              "id": "infant1GestationalAge",
-              "label": "Latest delivery - Infant 1 - Gestational age",
+              "id": "latestDeliveryInfant1GestationalAge",
+              "label": "Gestational age",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -321,13 +340,14 @@
               }
             },
             {
-              "id": "infant1BirthWeight",
-              "label": "Latest delivery - Infant 1 - Birth weight (g)",
+              "id": "latestDeliveryInfant1BirthWeight",
+              "label": "Birth weight (g)",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "d2c5f664-b415-4376-8e7e-3efb44fc5896",
+                "disallowDecimals": true,
                 "min": 0,
                 "step": 1
               },
@@ -336,17 +356,17 @@
               }
             },
             {
-              "id": "latestPregnancyInfant1HeadCircumference",
-              "label": "Latest delivery - Infant 1 - Head circumference (cm)",
+              "id": "latestDeliveryInfant1HeadCircumference",
+              "label": "Head circumference (cm)",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
+                "disallowDecimals": false,
                 "min": 0,
-                "step": 0.01
+                "step": 0.1
               },
-              "disallowDecimals": false,
               "hide": {
                 "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 1 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
@@ -354,12 +374,12 @@
           ]
         },
         {
-          "label": "Latest delivery - Infant 2",
+          "label": "Infant 2",
           "isExpanded": false,
           "questions": [
             {
-              "id": "infant2Name",
-              "label": "Latest delivery - Infant 2 name",
+              "id": "latestDeliveryInfant2Name",
+              "label": "Infant 2 name",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -371,8 +391,8 @@
               }
             },
             {
-              "id": "infant2GestationalAge",
-              "label": "Latest delivery - Infant 2 - Gestational age",
+              "id": "latestDeliveryInfant2GestationalAge",
+              "label": "Gestational age",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -394,8 +414,8 @@
               }
             },
             {
-              "id": "infant2BirthWeight",
-              "label": "Latest delivery - Infant 2 - Birth weight (g)",
+              "id": "latestDeliveryInfant2BirthWeight",
+              "label": "Birth weight (g)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -409,17 +429,17 @@
               }
             },
             {
-              "id": "latestPregnancyInfant2HeadCircumference",
-              "label": "Latest delivery - Infant 2 - Head circumference (cm)",
+              "id": "latestDeliveryInfant2HeadCircumference",
+              "label": "Head circumference (cm)",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
+                "disallowDecimals": false,
                 "min": 0,
-                "step": 0.01
+                "step": 0.1
               },
-              "disallowDecimals": false,
               "hide": {
                 "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 2 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
               }
@@ -432,7 +452,7 @@
           "questions": [
             {
               "id": "latestDeliveryProblems",
-              "label": "Latest delivery - Problems",
+              "label": "Problems",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -503,22 +523,23 @@
             },
             {
               "id": "latestDeliveryHb",
-              "label": "Latest delivery - Hb (g/dl)",
+              "label": "Hb (g/dl)",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
+                "disallowDecimals": true,
                 "min": 0,
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "!includes(latestDeliveryProblems, 'a116ddd7-46af-4183-8b76-babcf2029ed6')"
+                "hideWhenExpression": "!includes(latestDeliveryProblems, 'a116ddd7-46af-4183-8b76-babcf2029ed6'"
               }
             },
             {
               "id": "latestDeliveryFistulaPresentManagement",
-              "label": "Latest delivery - Fistula management",
+              "label": "Fistula management",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -526,12 +547,12 @@
                 "concept": "61b8c9e7-4fce-48e1-a68d-229992d40faa"
               },
               "hide": {
-                "hideWhenExpression": "!includes(latestDeliveryProblems, 'a9252163-4673-4aba-bf37-b9e72b86f8a5')"
+                "hideWhenExpression": "!includes(latestDeliveryProblems, 'a9252163-4673-4aba-bf37-b9e72b86f8a5'"
               }
             },
             {
               "id": "latestDeliveryProblemsIfOtherSpecify",
-              "label": "Latest delivery Problems - If other, specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -539,7 +560,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "!includes(latestDeliveryProblems, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                "hideWhenExpression": "!includes(latestDeliveryProblems, '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -619,7 +640,7 @@
             },
             {
               "id": "medicalHistoryIfOtherSpecify",
-              "label": "Medical history - If other, specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -627,7 +648,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "!includes(anyOfSelectedItemsShouldAlsoBeAddedInconditions, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                "hideWhenExpression": "!includes(anyOfSelectedItemsShouldAlsoBeAddedInconditions, '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -643,7 +664,7 @@
           "questions": [
             {
               "id": "motherPresentAtConsultation",
-              "label": "Mother - Present at consultation",
+              "label": "Present at consultation",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -664,6 +685,21 @@
             {
               "id": "checkInvitalBiometricsAndFillWithUpdatedMeasurementsForbloodPressuretemperatureAndmuac",
               "label": "Check in 'Vital & Biometrics' and fill with updated measurements for 'Blood pressure', 'Temperature' and 'MUAC'",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Check in 'Vital & Biometrics' and fill with updated measurements for 'Blood pressure', 'Temperature' and 'MUAC'"
+              ],
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "capturePatientVitals",
+              "label": "Capture patient vitals",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -744,6 +780,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
+                "disallowDecimals": true,
                 "min": 0,
                 "step": 1
               },
@@ -1014,7 +1051,7 @@
                 "rendering": "number",
                 "concept": "bdd0d8ec-722f-4755-8c9d-a46fa2f6850b",
                 "calculate": {
-                  "calculateExpression": "(phq2OverTheLastTwoWeeksHowOftenHaveYouHadLittleInterestOrPleasureInDoingThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : phq2OverTheLastTwoWeeksHowOftenHaveYouHadLittleInterestOrPleasureInDoingThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : phq2OverTheLastTwoWeeksHowOftenHaveYouHadLittleInterestOrPleasureInDoingThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (phq2OverTheLastTwoWeeksHowOftenHaveYouBeenFeelingDownDepressedOrHopeless === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : phq2OverTheLastTwoWeeksHowOftenHaveYouBeenFeelingDownDepressedOrHopeless === '234259ec-5368-4488-8482-4f261cc76714' ? 2 :  phq2OverTheLastTwoWeeksHowOftenHaveYouBeenFeelingDownDepressedOrHopeless==='8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0)"
+                  "calculateExpression": "phq2OverTheLastTwoWeeksHowOftenHaveYouHadLittleInterestOrPleasureInDoingThings === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : phq2OverTheLastTwoWeeksHowOftenHaveYouHadLittleInterestOrPleasureInDoingThings === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : phq2OverTheLastTwoWeeksHowOftenHaveYouHadLittleInterestOrPleasureInDoingThings === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (phq2OverTheLastTwoWeeksHowOftenHaveYouBeenFeelingDownDepressedOrHopeless === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : phq2OverTheLastTwoWeeksHowOftenHaveYouBeenFeelingDownDepressedOrHopeless === '234259ec-5368-4488-8482-4f261cc76714' ? 2 :  phq2OverTheLastTwoWeeksHowOftenHaveYouBeenFeelingDownDepressedOrHopeless==='8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0)"
                 }
               },
               "questionInfo": "Sum of all points from answers above",
@@ -1025,6 +1062,19 @@
             {
               "id": "checkInimmunizationsForTetanusVaccine",
               "label": "Check in 'Immunizations' for tetanus vaccine",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["Check in 'Immunizations' for tetanus vaccine"],
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "capturePatientImmunizations",
+              "label": "Capture patient immunizations",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -1038,6 +1088,21 @@
             {
               "id": "checkInresultsViewerForLatestLaboratoryTestResults",
               "label": "Check in 'Results Viewer' for latest laboratory test results",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Check in 'Results Viewer' for latest laboratory test results"
+              ],
+              "hide": {
+                "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "openWorkspace",
+              "label": "Open Workspace",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -1114,13 +1179,108 @@
               }
             },
             {
-              "id": "infant1CheckVitalsBiometrics",
-              "label": "Check in 'Vitals & Biometrics' and fill with updated measurements for 'Temperature', 'Pulse', 'R. rate', and 'Weight'",
+              "id": "infant1Temperature",
+              "label": "Temperature",
+              "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Capture patient vitals",
-                "workspaceName": "patient-vitals-biometrics-form-workspace"
+                "rendering": "radio",
+                "concept": "82752e2e-d6fe-4042-8250-d5d233342b53",
+                "answers": [
+                  {
+                    "label": "Abnormal",
+                    "concept": "7beb61a4-2665-4326-a666-5cb4bea7a6ae"
+                  },
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infant1PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "infant1HeartRate",
+              "label": "Heart rate",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "7e2640de-5729-41b2-8ccd-79903e06d050",
+                "answers": [
+                  {
+                    "label": "Abnormal",
+                    "concept": "7beb61a4-2665-4326-a666-5cb4bea7a6ae"
+                  },
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infant1PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "infant1RespiratoryRate",
+              "label": "Respiratory rate",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4708f437-e713-4d06-999e-f3d95d1e51ee",
+                "answers": [
+                  {
+                    "label": "Abnormal",
+                    "concept": "7beb61a4-2665-4326-a666-5cb4bea7a6ae"
+                  },
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infant1PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "infant1Weight",
+              "label": "Weight (kg)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "e355de0a-6a46-4bce-ae59-6e66faaa25ee",
+                "disallowDecimals": true,
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "infant1PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "infant1WeightGainFinding",
+              "label": "Weight gain finding",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8bbce68f-a835-4813-8b6d-1c50ab19349a",
+                "answers": [
+                  {
+                    "label": "Weight gain",
+                    "concept": "1ec67f06-1b6e-4a52-bb4f-e8860ae579cf"
+                  },
+                  {
+                    "label": "Weight loss",
+                    "concept": "9fd21796-c064-47c2-8ec7-0f070a7a3ff8"
+                  }
+                ]
               },
               "hide": {
                 "hideWhenExpression": "infant1PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -1128,7 +1288,7 @@
             },
             {
               "id": "infant1HeadCircumference",
-              "label": "Infant 1 - Head circumference (cm)",
+              "label": "Head circumference (cm)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1143,7 +1303,7 @@
             },
             {
               "id": "infant1HeadToToeExam",
-              "label": "Infant 1 - Head-to-toe exam (if not done at birth)",
+              "label": "Head-to-toe exam (if not done at birth)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1166,11 +1326,11 @@
             },
             {
               "id": "infant1HeadToToeExamResult",
-              "label": "Infant 1 - Head-to-toe exam - Result",
+              "label": "Result",
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "textarea",
+                "rendering": "radio",
                 "concept": "c94efb06-9bd4-43f7-bed6-5168c0fdf3ae",
                 "answers": [
                   {
@@ -1189,7 +1349,7 @@
             },
             {
               "id": "infant1Appearance",
-              "label": "Infant 1 - Appearance (colour, breathing, activity)",
+              "label": "Appearance (colour, breathing, activity)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1212,7 +1372,7 @@
             },
             {
               "id": "infant1CordCondition",
-              "label": "Infant 1 - Cord condition",
+              "label": "Cord condition",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1239,7 +1399,7 @@
             },
             {
               "id": "infant1Feeding",
-              "label": "Infant 1 - Feeding",
+              "label": "Feeding (observe)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1266,7 +1426,7 @@
             },
             {
               "id": "infant1PassingUrineAndStool",
-              "label": "Infant 1 - Passing urine and stool",
+              "label": "Passing urine and stool",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1289,7 +1449,7 @@
             },
             {
               "id": "infant1PassingUrineAndStoolDescribe",
-              "label": "Infant 1 - Passing urine and stool - Describe",
+              "label": "Describe",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1301,34 +1461,38 @@
               }
             },
             {
-              "id": "infant1checkiImmunizations",
-              "label": "Check in 'Immunizations' for Hepatitis B and other birth dose vaccines",
+              "id": "checkInTheChildsFileForimmunizationsForHepatitisBAndOtherBirthDoseVaccinesAndAdministerIfNecessary",
+              "label": "Check in the child's file for 'Immunizations' for Hepatitis B and other birth dose vaccines  and administer if necessary",
+              "type": "markdown",
               "required": false,
               "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Capture patient immunizations",
-                "workspaceName": "immunization-form-workspace"
+                "rendering": "markdown"
               },
+              "value": [
+                "Check in the child's file for 'Immunizations' for Hepatitis B and other birth dose vaccines  and administer if necessary"
+              ],
               "hide": {
                 "hideWhenExpression": "infant1PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
             },
             {
-              "id": "infant1CheckMedicationsForTetracyclineEyeOintmentAndVitamin",
-              "label": "Check in 'Medications' for Tetracycline eye ointment and Vitamin",
+              "id": "checkInTheChildsFileFormedicationsForTetracyclineEyeOintmentAndVitaminAndPrescribeIfNecessary",
+              "label": "Check in the child's file for 'Medications' for Tetracycline eye ointment and Vitamin and prescribe if necessary",
+              "type": "markdown",
               "required": false,
               "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Active medications",
-                "workspaceName": "add-drug-order"
+                "rendering": "markdown"
               },
+              "value": [
+                "Check in the child's file for 'Medications' for Tetracycline eye ointment and Vitamin and prescribe if necessary"
+              ],
               "hide": {
                 "hideWhenExpression": "infant1PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
             },
             {
               "id": "infant1AdditionalRemarks",
-              "label": "Infant 1 - Additional remarks",
+              "label": "Additional remarks",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1352,7 +1516,7 @@
           "questions": [
             {
               "id": "infant2PresentAtConsultation",
-              "label": "Infant 2 - Present at consultation",
+              "label": "Present at consultation",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1375,7 +1539,7 @@
             },
             {
               "id": "infant2HealthStatus",
-              "label": "Infant 2 - Health status",
+              "label": "Health status",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1405,13 +1569,108 @@
               }
             },
             {
-              "id": "infant2CheckVitalsBiometrics",
-              "label": "Check in 'Vitals & Biometrics' and fill with updated measurements for 'Temperature', 'Pulse', 'R. rate', and 'Weight'",
+              "id": "infant2Temperature",
+              "label": "Temperature",
+              "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Capture patient vitals",
-                "workspaceName": "patient-vitals-biometrics-form-workspace"
+                "rendering": "radio",
+                "concept": "82752e2e-d6fe-4042-8250-d5d233342b53",
+                "answers": [
+                  {
+                    "label": "Abnormal",
+                    "concept": "7beb61a4-2665-4326-a666-5cb4bea7a6ae"
+                  },
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infant2PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "infant2HeartRate",
+              "label": "Heart rate",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "7e2640de-5729-41b2-8ccd-79903e06d050",
+                "answers": [
+                  {
+                    "label": "Abnormal",
+                    "concept": "7beb61a4-2665-4326-a666-5cb4bea7a6ae"
+                  },
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infant2PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "infant2RespiratoryRate",
+              "label": "Respiratory rate",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4708f437-e713-4d06-999e-f3d95d1e51ee",
+                "answers": [
+                  {
+                    "label": "Abnormal",
+                    "concept": "7beb61a4-2665-4326-a666-5cb4bea7a6ae"
+                  },
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "infant2PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "infant2Weight",
+              "label": "Weight (kg)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "e355de0a-6a46-4bce-ae59-6e66faaa25ee",
+                "disallowDecimals": true,
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "infant2PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "infant2WeightGainFinding",
+              "label": "Weight gain finding",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8bbce68f-a835-4813-8b6d-1c50ab19349a",
+                "answers": [
+                  {
+                    "label": "Weight gain",
+                    "concept": "1ec67f06-1b6e-4a52-bb4f-e8860ae579cf"
+                  },
+                  {
+                    "label": "Weight loss",
+                    "concept": "9fd21796-c064-47c2-8ec7-0f070a7a3ff8"
+                  }
+                ]
               },
               "hide": {
                 "hideWhenExpression": "infant2PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -1419,13 +1678,15 @@
             },
             {
               "id": "infant2HeadCircumference",
-              "label": "Infant 2 - Head circumference (cm)",
+              "label": "Head circumference (cm)",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "number",
                 "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
-                "min": 0
+                "disallowDecimals": true,
+                "min": 0,
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "infant2PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -1433,7 +1694,7 @@
             },
             {
               "id": "infant2HeadToToeExam",
-              "label": "Infant 2 - Head-to-toe exam (if not done at birth)",
+              "label": "Head-to-toe exam (if not done at birth)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1456,11 +1717,11 @@
             },
             {
               "id": "infant2HeadToToeExamResult",
-              "label": "Infant 2 - Head-to-toe exam - Result",
+              "label": "Result",
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "textarea",
+                "rendering": "radio",
                 "concept": "c94efb06-9bd4-43f7-bed6-5168c0fdf3ae",
                 "answers": [
                   {
@@ -1479,7 +1740,7 @@
             },
             {
               "id": "infant2Appearance",
-              "label": "Infant 2 - Appearance (colour, breathing, activity)",
+              "label": "Appearance (colour, breathing, activity)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1502,7 +1763,7 @@
             },
             {
               "id": "infant2CordCondition",
-              "label": "Infant 2 - Cord condition",
+              "label": "Cord condition",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1529,7 +1790,7 @@
             },
             {
               "id": "infant2Feeding",
-              "label": "Infant 2 - Feeding (observe/gaining weight?)",
+              "label": "Feeding (observe)",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1556,7 +1817,7 @@
             },
             {
               "id": "infant2PassingUrineAndStool",
-              "label": "Infant 2 - Passing urine and stool",
+              "label": "Passing urine and stool",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1578,7 +1839,7 @@
               }
             },
             {
-              "id": "describe",
+              "id": "infant2PassingUrineAndStoolDescribe",
               "label": "Describe",
               "type": "obs",
               "required": false,
@@ -1591,34 +1852,38 @@
               }
             },
             {
-              "id": "infant2checkiImmunizations",
-              "label": "Check in 'Immunizations' for Hepatitis B and other birth dose vaccines",
+              "id": "checkInTheChildsFileForimmunizationsForHepatitisBAndOtherBirthDoseVaccinesAndAdministerIfNecessary_1",
+              "label": "Check in the child's file for 'Immunizations' for Hepatitis B and other birth dose vaccines  and administer if necessary",
+              "type": "markdown",
               "required": false,
               "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Capture patient immunizations",
-                "workspaceName": "immunization-form-workspace"
+                "rendering": "markdown"
               },
+              "value": [
+                "Check in the child's file for 'Immunizations' for Hepatitis B and other birth dose vaccines  and administer if necessary"
+              ],
               "hide": {
                 "hideWhenExpression": "infant2PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
             },
             {
-              "id": "infant2CheckMedicationsForTetracyclineEyeOintmentAndVitamin",
-              "label": "Check in 'Medications' for Tetracycline eye ointment and Vitamin",
+              "id": "checkInTheChildsFileFormedicationsForTetracyclineEyeOintmentAndVitaminAndPrescribeIfNecessary_1",
+              "label": "Check in the child's file for 'Medications' for Tetracycline eye ointment and Vitamin and prescribe if necessary",
+              "type": "markdown",
               "required": false,
               "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Active medications",
-                "workspaceName": "add-drug-order"
+                "rendering": "markdown"
               },
+              "value": [
+                "Check in the child's file for 'Medications' for Tetracycline eye ointment and Vitamin and prescribe if necessary"
+              ],
               "hide": {
                 "hideWhenExpression": "infant2PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
             },
             {
               "id": "infant2AdditionalRemarks",
-              "label": "Infant 2 - Additional remarks",
+              "label": "Additional remarks",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1641,7 +1906,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "informationGivenAbout",
+              "id": "healthEducationGiven",
               "label": "Information given about\u2026",
               "type": "obs",
               "required": false,
@@ -1688,7 +1953,7 @@
           "isExpanded": false,
           "questions": [
             {
-              "id": "notes",
+              "id": "observationsOrExaminations",
               "label": "Notes",
               "type": "obs",
               "required": false,
@@ -1877,6 +2142,19 @@
             {
               "id": "setTheNextConsultationDateInappointments",
               "label": "Set the next consultation date in 'Appointments'",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["Set the next consultation date in 'Appointments'"],
+              "hide": {
+                "hideWhenExpression": "isThereAFollowUpVisitPlanned !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "setTheNextAppointmentDate",
+              "label": "Set the next appointment date",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -1939,7 +2217,7 @@
             },
             {
               "id": "referralIfOtherSpecify",
-              "label": "Referral - If other, specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1947,12 +2225,12 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "!includes(referral, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                "hideWhenExpression": "!includes(referral, '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
               "id": "referralReason",
-              "label": "Referral - Reason",
+              "label": "Reason",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -1960,19 +2238,30 @@
                 "concept": "b7fdcd18-fc30-4b5d-82b2-bb0eec31f0e4"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(referral) || includes(referral, 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+                "hideWhenExpression": "isEmpty(referral) || includes(referral, 'a5c5563e-df0e-4742-a335-b24fb63664ee'"
               }
             },
             {
               "id": "prescribeNewExamsAndMedicationWithTheOrderBasketIfNecessary",
               "label": "Prescribe new exams and medication with the order basket if necessary (after closing this form)",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Prescribe new exams and medication with the order basket if necessary (after closing this form)"
+              ]
+            },
+            {
+              "id": "orderMedications",
+              "label": "Order medications",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
                 "buttonLabel": "Order medications",
                 "workspaceName": "order-basket"
-              },
-              "questionInfo": "Consider prescription of ferrous salts"
+              }
             }
           ]
         }
