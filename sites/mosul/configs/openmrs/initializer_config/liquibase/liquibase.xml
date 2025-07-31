@@ -15,7 +15,6 @@
             </sqlCheck>
         </preConditions>
         <insert tableName="provider">
-            <column name="provider_id" value="1" />
             <column name="person_id" value="1" />
             <column name="name" value="Super User" />
             <column name="identifier" value="admin" />
@@ -81,6 +80,12 @@
     <!-- Update PatientIdStickerXmlReportRenderer class path -->
     <changeSet id="update_patient_id_sticker_renderer-202405261300" author="jnsereko">
         <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM information_schema.tables 
+                WHERE table_schema = DATABASE()
+                AND table_name = 'reporting_report_design'
+            </sqlCheck>
             <sqlCheck expectedResult="1">
                 SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
                 FROM reporting_report_design
