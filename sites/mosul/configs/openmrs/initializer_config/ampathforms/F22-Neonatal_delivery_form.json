@@ -71,6 +71,12 @@
                 "rendering": "datetime",
                 "concept": "e56eb9ea-91a2-4761-bf47-e5971436d1d8"
               },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
               "default": "Current date and time"
             },
             {
@@ -350,7 +356,8 @@
                 "max": 10.0,
                 "disallowDecimals": true,
                 "step": 1
-              }
+              },
+              "questionInfo": "Sum of all points"
             }
           ]
         },
@@ -506,6 +513,7 @@
                 "disallowDecimals": true,
                 "step": 1
               },
+              "questionInfo": "Sum of all points",
               "idModified": true,
               "originalLabel": "Apgar score",
               "warning": "Question ID was modified from 'Apgar score' to ensure uniqueness"
@@ -664,6 +672,7 @@
                 "disallowDecimals": true,
                 "step": 1
               },
+              "questionInfo": "Sum of all points",
               "idModified": true,
               "originalLabel": "Apgar score",
               "warning": "Question ID was modified from 'Apgar score' to ensure uniqueness"
@@ -1228,6 +1237,12 @@
                 "rendering": "date",
                 "concept": "13cea1c8-e426-411f-95b4-33651fc4325d"
               },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
               "default": "Current date and time",
               "hide": {
                 "hideWhenExpression": "(outcome !== '1fbf752b-536b-486b-bfd1-70325ccdea1a')"
@@ -1295,6 +1310,12 @@
                 "rendering": "datetime",
                 "concept": "68f91879-5f00-4168-82eb-785c6bece077"
               },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
               "default": "Current date",
               "hide": {
                 "hideWhenExpression": "(outcome !== '91b678ba-9027-41d1-a3bc-a6d2dc1ed3de')"
