@@ -3,7 +3,8 @@ name: Build all configurations and deploy
 on:
   workflow_dispatch:
   push:
-    branches: [ main, test-mekom ]
+    branches:
+      - main
   
 jobs:
   build-and-publish:
