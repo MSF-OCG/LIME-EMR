@@ -8,7 +8,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <!-- Add admin as provider -->
-    <changeSet id="add_admin_provider-202407101630" author="pirupius">
+    <changeSet id="add_admin_provider-20250808" author="pirupius">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 SELECT CASE WHEN EXISTS (SELECT 1 FROM provider WHERE person_id = 1) THEN 0 ELSE 1 END;
