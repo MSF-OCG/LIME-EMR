@@ -1,5 +1,27 @@
 # LIME CHANGE LOG 🚀
 
+## Release 6th August, 2025
+
+### Features & Improvements
+
+- Family Planning - Translations v1 update - [LIME2-778](https://msf-ocg.atlassian.net/browse/LIME2-778)
+- PNC - value limits added - [LIME2-731](https://msf-ocg.atlassian.net/browse/LIME2-731)
+- ITFC - Translations v1 update - [LIME2-777](https://msf-ocg.atlassian.net/browse/LIME2-777)
+- PNC - Translations v1 update - [LIME2-776](https://msf-ocg.atlassian.net/browse/LIME2-776)
+- PNC - changes related to children's examination - [LIME2-782](https://msf-ocg.atlassian.net/browse/LIME2-782)
+- Adults forms (Adult Admission and Discharge forms) - [LIME2-802](https://msf-ocg.atlassian.net/browse/LIME2-802)
+- Neonatology forms (Neonatology Admission, Delivery and Discharge forms) - [LIME2-800](https://msf-ocg.atlassian.net/browse/LIME2-800)
+- Pediatrics forms (Pediatrics Admission and Discharge forms) - [LIME2-801](https://msf-ocg.atlassian.net/browse/LIME2-801)
+- Emergency Room forms (Emergency Room Triage, Consultation and Exit forms) - [LIME2-803](https://msf-ocg.atlassian.net/browse/LIME2-803)
+- Surgery and Anesthesia forms (Basic Obstetric ultrasound, Surgical safety checklist, Operative report, Surgery Admission, Surgery Discharge, Pre-Anesthesia record, Recovery and Anesthesia transfer forms) - [LIME2-794](https://msf-ocg.atlassian.net/browse/LIME2-794)
+- Backup improvement - Ozone 13 update - [LIME2-810](https://msf-ocg.atlassian.net/browse/LIME2-810)
+
+### Bug Fixes & Improvements
+
+- Cleaning of conditions list - [LIME2-797](https://msf-ocg.atlassian.net/browse/LIME2-797)
+- Fix all initializer and OCL related issues when running Mosul on clean - [LIME2-866](https://msf-ocg.atlassian.net/browse/LIME2-866)
+- Laboratory - normal ranges not showing - [LIME2-768](https://msf-ocg.atlassian.net/browse/LIME2-768)
+
 ## Release 11th July, 2025
 
 ### Features & Improvements

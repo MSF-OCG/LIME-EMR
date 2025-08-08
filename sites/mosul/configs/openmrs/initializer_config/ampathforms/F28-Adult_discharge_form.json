@@ -497,7 +497,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "(finalDiagnosisMain !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                "hideWhenExpression": "finalDiagnosisMain !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -882,7 +882,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "(finalDiagnosisSecondary1 !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                "hideWhenExpression": "finalDiagnosisSecondary1 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -1267,7 +1267,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "(finalDiagnosisSecondary2 !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                "hideWhenExpression": "finalDiagnosisSecondary2 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -1712,7 +1712,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "(finalDiagnosisSecondary3 !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                "hideWhenExpression": "finalDiagnosisSecondary3 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -2148,7 +2148,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(outcome !== '93eb9716-6866-4d13-9b8f-59c0a7605a11')"
+                "hideWhenExpression": "outcome !== '93eb9716-6866-4d13-9b8f-59c0a7605a11'"
               }
             },
             {
@@ -2161,7 +2161,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "(referralPlace !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                "hideWhenExpression": "isEmpty(referralPlace) || referralPlace !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -2174,7 +2174,7 @@
                 "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
               },
               "hide": {
-                "hideWhenExpression": "(outcome !== '93eb9716-6866-4d13-9b8f-59c0a7605a11')"
+                "hideWhenExpression": "outcome !== '93eb9716-6866-4d13-9b8f-59c0a7605a11'"
               }
             },
             {
@@ -2186,9 +2186,15 @@
                 "rendering": "datetime",
                 "concept": "68f91879-5f00-4168-82eb-785c6bece077"
               },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
               "default": "Current date",
               "hide": {
-                "hideWhenExpression": "(outcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+                "hideWhenExpression": "outcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f'"
               }
             },
             {
@@ -2403,7 +2409,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(outcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+                "hideWhenExpression": "outcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f'"
               }
             },
             {
@@ -2416,7 +2422,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "(deathCause !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                "hideWhenExpression": "isEmpty(deathCause) || deathCause !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -2447,7 +2453,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(outcome !== '18c795cb-7197-46da-926f-e4d1848b8c36')"
+                "hideWhenExpression": "outcome !== '18c795cb-7197-46da-926f-e4d1848b8c36'"
               }
             },
             {
@@ -2460,7 +2466,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "(ifTransferSpecifyTheUnit !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+                "hideWhenExpression": "isEmpty(ifTransferSpecifyTheUnit) || ifTransferSpecifyTheUnit !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -2502,7 +2508,7 @@
               "questionOptions": {
                 "rendering": "workspace-launcher",
                 "buttonLabel": "Active medications",
-                "workspaceName": "medications-form-workspace"
+                "workspaceName": "add-drug-order"
               }
             },
             {
@@ -2528,10 +2534,6 @@
           ]
         }
       ]
-    },
-    {
-      "label": "None",
-      "sections": []
     }
   ]
 }
