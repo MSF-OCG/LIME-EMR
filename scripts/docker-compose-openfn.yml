@@ -3,12 +3,31 @@ networks:
     external: true
 
 services:
-  postgresql:
+  openfn-postgresql:
+    command: postgres -c wal_level=logical -c max_wal_senders=10 -c max_replication_slots=10 -c max_connections=200
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
     stop_grace_period: '3s'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    image: postgres:13
+    networks:
+      - ozone
+    ports:
+      - "${OPENFN_POSTGRES_PORT:-5433}:5432"
+    restart: unless-stopped
     volumes:
+      - openfn-postgres-data:/var/lib/postgresql/data
+      - "${SQL_SCRIPTS_PATH}/postgresql/create_db.sh:/docker-entrypoint-initdb.d/create_db.sh"
       - "${SQL_SCRIPTS_PATH}/postgresql/create_openfn_db.sh:/docker-entrypoint-initdb.d/create_openfn_db.sh"
+
   migrations:
     platform: linux/x86_64/v8
     image: 'openfn/lightning:v2.11.0'
@@ -16,7 +35,7 @@ services:
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
     depends_on:
-      postgresql:
+      openfn-postgresql:
         condition: service_healthy
     networks:
       - ozone
@@ -38,7 +57,7 @@ services:
     depends_on:
       migrations:
         condition: service_completed_successfully
-      postgresql:
+      openfn-postgresql:
         condition: service_started
     labels:
       traefik.enable: "true"
@@ -82,3 +101,6 @@ services:
     networks:
       - ozone
       - web
+
+volumes:
+  openfn-postgres-data:
