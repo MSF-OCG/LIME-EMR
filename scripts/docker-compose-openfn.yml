@@ -30,7 +30,7 @@ services:
 
   migrations:
     platform: linux/x86_64/v8
-    image: 'openfn/lightning:v2.11.0'
+    image: 'openfn/lightning:v2.14.0'
     command: ["/app/bin/lightning", "eval", "Lightning.Release.migrate"]
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
@@ -43,7 +43,7 @@ services:
 
   web:
     platform: linux/x86_64/v8
-    image: 'openfn/lightning:v2.11.0'
+    image: 'openfn/lightning:v2.14.0'
     command: ["/app/bin/server"]
     deploy:
       resources:
@@ -81,7 +81,7 @@ services:
 
   worker:
     platform: linux/x86_64/v8
-    image: 'openfn/ws-worker:v1.13.0'
+    image: 'openfn/ws-worker:v1.14.1'
     deploy:
       resources:
         limits:
