@@ -3,7 +3,7 @@
 echo ""
 
 # Check if MSF OpenFn super user exists in the database
-user_exists=$(docker exec $PROJECT_NAME-postgresql-1 bash -c "
+user_exists=$(docker exec $PROJECT_NAME-openfn-postgresql-1 bash -c "
     psql -U \${OPENFN_DB_USER} -d \${OPENFN_DB_NAME} -t -c \"
         SELECT * FROM users
         WHERE role = 'superuser'
