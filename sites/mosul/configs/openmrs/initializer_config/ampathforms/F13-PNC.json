@@ -244,12 +244,12 @@
                     "concept": "f3306412-ce1a-41df-8a68-426b1d1a51e8"
                   },
                   {
-                    "label": "Private Health Centre",
-                    "concept": "a318c58d-7e74-4e8c-887b-ac9c8a700963"
-                  },
-                  {
                     "label": "Other",
                     "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Private Health Centre",
+                    "concept": "a318c58d-7e74-4e8c-887b-ac9c8a700963"
                   }
                 ]
               },
@@ -293,9 +293,10 @@
                 "concept": "b6ce8062-3381-4019-a974-a254bc3e1d4c",
                 "min": 0,
                 "max": 18,
+                "disallowDecimals": true,
                 "step": 1
               },
-              "default": "Value entered in the first PNC form "
+              "default": "Value entered in the first PNC form"
             }
           ]
         },
@@ -364,9 +365,9 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
-                "disallowDecimals": false,
+                "disallowDecimals": true,
                 "min": 0,
-                "step": 0.1
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 1 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
@@ -422,6 +423,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "d2c5f664-b415-4376-8e7e-3efb44fc5896",
+                "disallowDecimals": true,
                 "min": 0,
                 "step": 1
               },
@@ -437,9 +439,9 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
-                "disallowDecimals": false,
+                "disallowDecimals": true,
                 "min": 0,
-                "step": 0.1
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "numberOfLiveBirthsInTheLatestPregnancy < 2 || numberOfPnConsultation !== '428825e2-73ec-407e-9988-e9646f1d1f14'"
@@ -467,10 +469,6 @@
                   {
                     "label": "Antepartum hemorrhage",
                     "concept": "d7d5b96b-ef2f-4ea3-9664-d99fbcebf8d2"
-                  },
-                  {
-                    "label": "Caesarean section",
-                    "concept": "580f5ec5-cb55-4451-9939-45f76565f6f8"
                   },
                   {
                     "label": "Episiotomy",
@@ -501,6 +499,10 @@
                     "concept": "e7cfc3e4-c0ba-4c2d-8056-84e66fbfd833"
                   },
                   {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
                     "label": "Perineal laceration (tear)",
                     "concept": "c58a3606-4eaa-47f2-86f2-b22f2dc9a59a"
                   },
@@ -509,12 +511,12 @@
                     "concept": "f586985a-2700-4958-8cb1-f426675f0d8d"
                   },
                   {
-                    "label": "Prolonged/obstructed labor",
-                    "concept": "f80dbec7-880a-4699-aa9d-4c6364892fd0"
+                    "label": "Caesarean section",
+                    "concept": "580f5ec5-cb55-4451-9939-45f76565f6f8"
                   },
                   {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                    "label": "Prolonged/obstructed labor",
+                    "concept": "f80dbec7-880a-4699-aa9d-4c6364892fd0"
                   }
                 ]
               },
@@ -530,9 +532,9 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
-                "disallowDecimals": true,
+                "disallowDecimals": false,
                 "min": 0,
-                "step": 1
+                "step": 0.1
               },
               "hide": {
                 "hideWhenExpression": "!includes(latestDeliveryProblems, 'a116ddd7-46af-4183-8b76-babcf2029ed6')"
@@ -609,16 +611,16 @@
                     "concept": "10f3b49c-c3dc-4aa7-857f-3f9bb7df8dd0"
                   },
                   {
-                    "label": "Sexually transmitted infection",
-                    "concept": "799c78cc-8c8f-44e2-9223-0c8e607677a1"
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   },
                   {
                     "label": "Tuberculosis",
                     "concept": "ed41ba0d-7410-4374-9fae-c357cd8a8971"
                   },
                   {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                    "label": "Sexually transmitted infection",
+                    "concept": "799c78cc-8c8f-44e2-9223-0c8e607677a1"
                   }
                 ]
               },
@@ -781,9 +783,9 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
-                "disallowDecimals": true,
+                "disallowDecimals": false,
                 "min": 0,
-                "step": 1
+                "step": 0.1
               },
               "hide": {
                 "hideWhenExpression": "motherPresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -1256,9 +1258,9 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "e355de0a-6a46-4bce-ae59-6e66faaa25ee",
-                "disallowDecimals": true,
+                "disallowDecimals": false,
                 "min": 0,
-                "step": 1
+                "step": 0.1
               },
               "hide": {
                 "hideWhenExpression": "infant1PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -1295,6 +1297,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "73f0b937-2d06-4eae-855c-1086777132fc",
+                "disallowDecimals": true,
                 "min": 0,
                 "step": 1
               },
@@ -1408,16 +1411,16 @@
                 "concept": "f6e95c03-ba4d-4263-b768-34f05c617a47",
                 "answers": [
                   {
+                    "label": "Formula only",
+                    "concept": "5febb22d-ff13-412c-934f-acc2d70937f3"
+                  },
+                  {
                     "label": "Breastfeeding and formula",
                     "concept": "13b4d9f6-ea47-43d3-adb0-8e80993e0988"
                   },
                   {
                     "label": "Breastfeeding only",
                     "concept": "df2b1efe-7552-4d68-99e0-dd49400ca46f"
-                  },
-                  {
-                    "label": "Formula only",
-                    "concept": "5febb22d-ff13-412c-934f-acc2d70937f3"
                   }
                 ]
               },
@@ -1646,9 +1649,9 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "e355de0a-6a46-4bce-ae59-6e66faaa25ee",
-                "disallowDecimals": true,
+                "disallowDecimals": false,
                 "min": 0,
-                "step": 1
+                "step": 0.1
               },
               "hide": {
                 "hideWhenExpression": "infant2PresentAtConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -1799,16 +1802,16 @@
                 "concept": "f6e95c03-ba4d-4263-b768-34f05c617a47",
                 "answers": [
                   {
+                    "label": "Formula only",
+                    "concept": "5febb22d-ff13-412c-934f-acc2d70937f3"
+                  },
+                  {
                     "label": "Breastfeeding and formula",
                     "concept": "13b4d9f6-ea47-43d3-adb0-8e80993e0988"
                   },
                   {
                     "label": "Breastfeeding only",
                     "concept": "df2b1efe-7552-4d68-99e0-dd49400ca46f"
-                  },
-                  {
-                    "label": "Formula only",
-                    "concept": "5febb22d-ff13-412c-934f-acc2d70937f3"
                   }
                 ]
               },
@@ -1916,14 +1919,6 @@
                 "concept": "270b4992-235a-46a3-8eff-e73f11f57355",
                 "answers": [
                   {
-                    "label": "Birth spacing and family planning",
-                    "concept": "f241267d-b85e-4168-91a3-4539784fd5dc"
-                  },
-                  {
-                    "label": "Breastfeeding support",
-                    "concept": "159c5773-0cb1-4cb6-a3cb-7612d95e67fd"
-                  },
-                  {
                     "label": "Danger signs for mother and infant",
                     "concept": "e6a8f1b6-e910-44e6-a254-d19d5f0ef4b5"
                   },
@@ -1938,6 +1933,14 @@
                   {
                     "label": "Self and infant care",
                     "concept": "4028703b-7b3f-45be-849d-13736fae4b60"
+                  },
+                  {
+                    "label": "Breastfeeding support",
+                    "concept": "159c5773-0cb1-4cb6-a3cb-7612d95e67fd"
+                  },
+                  {
+                    "label": "Birth spacing and family planning",
+                    "concept": "f241267d-b85e-4168-91a3-4539784fd5dc"
                   }
                 ]
               }
@@ -1992,10 +1995,6 @@
                     "concept": "a116ddd7-46af-4183-8b76-babcf2029ed6"
                   },
                   {
-                    "label": "Breast / Breastfeeding problem",
-                    "concept": "21915a6e-0cce-4edf-b11a-c528af07bbb1"
-                  },
-                  {
                     "label": "Genital infection",
                     "concept": "c53293b2-42f6-4c28-a60d-e17a64917584"
                   },
@@ -2018,6 +2017,10 @@
                   {
                     "label": "Routine visit - no complaint",
                     "concept": "b4cae859-fb9f-4873-8ebf-d68da431c6b6"
+                  },
+                  {
+                    "label": "Breast / Breastfeeding problem",
+                    "concept": "21915a6e-0cce-4edf-b11a-c528af07bbb1"
                   }
                 ]
               }
@@ -2190,6 +2193,10 @@
                 "concept": "6d3876be-0a27-466d-ad58-92edcc8c31fb",
                 "answers": [
                   {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
                     "label": "Emergency",
                     "concept": "87274dc0-3be1-4d16-ab63-75094f7dcd4f"
                   },
@@ -2200,10 +2207,6 @@
                   {
                     "label": "Mental health",
                     "concept": "ab0d230d-65f2-406c-9f95-c1b08433267b"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   },
                   {
                     "label": "Nutrition",
