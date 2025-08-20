@@ -508,16 +508,18 @@
     </changeSet>
 
     <changeSet id="delete-duplicate-deprecated-concepts-from-msfocg-20250818" author="pirupius">
-        <preConditions expectedResult="1">
-            SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
-            FROM concept WHERE uuid IN (
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
-            );
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept WHERE uuid IN (
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
+                );
+            </sqlCheck>
         </preConditions>
         <comment>
             Delete duplicate deprecated concepts from MSF-OCG
