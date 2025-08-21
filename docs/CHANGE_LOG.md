@@ -1,5 +1,28 @@
 # LIME CHANGE LOG 🚀
 
+## Release 21st August, 2025
+
+### Features & Improvements
+
+- Cleaning of conditions list - [LIME2-797](https://msf-ocg.atlassian.net/browse/LIME2-797)
+- Change questions that redirect to dashboards (ER, Anesthesia and Adult forms) - [LIME2-923](https://msf-ocg.atlassian.net/browse/LIME2-923)
+- Medication - Import OCG Medical Standard List - [LIME2-298](https://msf-ocg.atlassian.net/browse/LIME2-298)
+- Surgery admission form - correction of page/section name - [LIME2-930](https://msf-ocg.atlassian.net/browse/LIME2-930)
+- Add nutrition clinical view translations - [LIME2-915](https://msf-ocg.atlassian.net/browse/LIME2-915)
+- Replace MSFOCG form concepts with MSF concepts - [LIME2-914](https://msf-ocg.atlassian.net/browse/LIME2-914)
+- PNC - changes in rendering of numeric questions - [LIME2-928](https://msf-ocg.atlassian.net/browse/LIME2-928)
+
+### Bug Fixes
+
+- Increase get patient API to Return more that 1000 patients in OpenFn - [LIME2-898](https://msf-ocg.atlassian.net/browse/LIME2-898)
+- FP - Translations v1 update - [LIME2-778](https://msf-ocg.atlassian.net/browse/LIME2-778)
+- Investigate Concept test data for Post Natal Care forms on OpenMRS UAT - [LIME2-899](https://msf-ocg.atlassian.net/browse/LIME2-899)
+- ITFC - Translations update - [LIME2-777](https://msf-ocg.atlassian.net/browse/LIME2-777)
+- ER exit form - skip logic not working - [LIME2-920](https://msf-ocg.atlassian.net/browse/LIME2-920)
+- ER triage - order of answers not following metadata - [LIME2-916](https://msf-ocg.atlassian.net/browse/LIME2-916)
+- Recovery form - skip logic issues - [LIME2-931](https://msf-ocg.atlassian.net/browse/LIME2-931)
+- Anesthesia transfer form - skip logic issues - [LIME2-932](https://msf-ocg.atlassian.net/browse/LIME2-932)
+
 ## Release 6th August, 2025
 
 ### Features & Improvements
@@ -16,7 +39,7 @@
 - Surgery and Anesthesia forms (Basic Obstetric ultrasound, Surgical safety checklist, Operative report, Surgery Admission, Surgery Discharge, Pre-Anesthesia record, Recovery and Anesthesia transfer forms) - [LIME2-794](https://msf-ocg.atlassian.net/browse/LIME2-794)
 - Backup improvement - Ozone 13 update - [LIME2-810](https://msf-ocg.atlassian.net/browse/LIME2-810)
 
-### Bug Fixes & Improvements
+### Bug Fixes
 
 - Cleaning of conditions list - [LIME2-797](https://msf-ocg.atlassian.net/browse/LIME2-797)
 - Fix all initializer and OCL related issues when running Mosul on clean - [LIME2-866](https://msf-ocg.atlassian.net/browse/LIME2-866)
