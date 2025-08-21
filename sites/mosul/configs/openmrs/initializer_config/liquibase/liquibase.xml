@@ -507,6 +507,41 @@
         </sql>
     </changeSet>
 
+    <changeSet id="rename-deprecated-msfocg-concepts" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT COUNT(*)
+                FROM concept c
+                JOIN concept_name cn ON c.concept_id = cn.concept_id
+                WHERE c.uuid IN (
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
+                ) AND cn.name NOT LIKE '% RETIRED';
+        </preConditions>
+        <comment>
+            Rename deprecated MSF-OCG concepts
+        </comment>
+        <sql>
+            UPDATE concept_name
+            SET name = CONCAT(name, ' RETIRED')
+            WHERE concept_id IN (
+                SELECT concept_id FROM concept WHERE uuid IN (
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
+                )
+            )
+            AND name NOT LIKE '% RETIRED';
+        </sql>
+    </changeSet>
+
     <changeSet id="delete-duplicate-deprecated-concepts-from-msfocg-20250818" author="pirupius">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
@@ -548,6 +583,18 @@
             UPDATE obs SET concept_id = (
                 SELECT concept_id FROM concept WHERE uuid = '8c729f2a-d341-4188-afb9-fb9a5524b3d7'
             ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0088');
+
+            DELETE FROM concept_name
+            WHERE concept_id IN (
+                SELECT concept_id FROM concept WHERE uuid IN (
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
+                )
+            );
 
             DELETE FROM concept
             WHERE uuid IN (
