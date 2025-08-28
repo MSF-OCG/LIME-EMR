@@ -1064,11 +1064,14 @@
             {
               "id": "prescribeWithTheFeedingFormIfNecessary",
               "label": "Prescribe with the feeding form if necessary",
+              "type": "markdown",
               "required": false,
               "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Open workspace",
-                "workspaceName": "feeding-form-workspace"
+                "rendering": "markdown"
+              },
+              "value": ["Prescribe with the feeding form if necessary"],
+              "hide": {
+                "hideWhenExpression": "isEmpty(feedingMethod) || !includes(feedingMethod, 'a8a1ebb5-52a4-4165-ac15-8b05805a9586')"
               }
             }
           ]
