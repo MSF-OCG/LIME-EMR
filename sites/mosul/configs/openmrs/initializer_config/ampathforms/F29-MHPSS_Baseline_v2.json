@@ -95,6 +95,7 @@
                 "concept": "b87a93ff-a4a1-4601-b35d-1e42bfa7e194",
                 "min": 0,
                 "max": 99,
+                "disallowDecimals": true,
                 "step": 1
               },
               "hide": {
@@ -231,16 +232,16 @@
                 "concept": "ce98fb42-1576-4168-892f-6d316ae22495",
                 "answers": [
                   {
-                    "label": "By Phone",
-                    "concept": "d5ab08f5-a88b-4d6c-a3cf-1ba3c078b71e"
-                  },
-                  {
                     "label": "F2F",
                     "concept": "d735f17d-c34d-444b-b235-a49b067be72d"
                   },
                   {
                     "label": "No permission",
                     "concept": "86452166-6550-420e-a1d0-ae83dbd7d4f0"
+                  },
+                  {
+                    "label": "By Phone",
+                    "concept": "d5ab08f5-a88b-4d6c-a3cf-1ba3c078b71e"
                   }
                 ]
               }
@@ -321,6 +322,43 @@
                     "concept": "1ec282b7-604f-4691-ba29-2557b9f39684"
                   }
                 ]
+              }
+            },
+            {
+              "id": "ifTheMaritalStatusIsMarriedOrCohabitationHasThePartnerLeftOrIsMissing",
+              "label": "If the marital status is Married/Cohabitation, has the partner left or is missing?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "783a300d-5624-4202-90c6-91660a779cab",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Not disclosed",
+                    "concept": "58099680-d0dd-4524-899d-b1f3d2a6c337"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "howManyPeopleLiveWithThePatient",
+              "label": "How many people live with the patient?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "58dec757-38d5-4c7b-9bd3-713d965f4883",
+                "min": 0,
+                "disallowDecimals": true,
+                "step": 1
               }
             },
             {
