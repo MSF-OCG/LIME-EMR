@@ -61,9 +61,9 @@
                 "rendering": "number",
                 "concept": "9e3c4083-21bd-42d4-a2b5-657bc0b8a4a5",
                 "min": 0.0,
-                "step": 0.01
-              },
-              "disallowDecimals": false
+                "step": 0.1,
+                "disallowDecimals": false
+              }
             },
             {
               "id": "heightAtAdmission",
@@ -172,9 +172,9 @@
                 "rendering": "number",
                 "concept": "cdb8c5f1-1afd-41d0-ba30-714440441555",
                 "min": 0.0,
-                "step": 0.1
-              },
-              "disallowDecimals": false
+                "step": 0.1,
+                "disallowDecimals": false
+              }
             },
             {
               "id": "heightAtDischarge",
@@ -185,6 +185,7 @@
                 "rendering": "number",
                 "concept": "558ca939-16b2-45eb-9306-520bd88f461b",
                 "min": 0,
+                "disallowDecimals": true,
                 "step": 1
               }
             },
@@ -999,7 +1000,7 @@
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   },
                   {
-                    "label": "NA",
+                    "label": "N/A",
                     "concept": "8fb2f830-52b3-4593-8e8f-5db8e2be7668"
                   }
                 ]
@@ -1038,9 +1039,9 @@
                 "rendering": "number",
                 "concept": "fddad97c-1b48-46b3-afe0-eac4eabfd764",
                 "min": 0.0,
-                "step": 0.01
-              },
-              "disallowDecimals": false
+                "disallowDecimals": false,
+                "step": 0.1
+              }
             }
           ]
         }
@@ -1082,6 +1083,7 @@
                 "rendering": "number",
                 "concept": "899a2fea-ba57-4744-9fcf-94f3e0d8d71f",
                 "min": 0,
+                "disallowDecimals": true,
                 "step": 1
               },
               "hide": {
@@ -1117,6 +1119,7 @@
                 "rendering": "number",
                 "concept": "c73a45d1-5953-4303-9fc1-1889076da122",
                 "min": 0,
+                "disallowDecimals": true,
                 "step": 1
               },
               "hide": {
@@ -1152,9 +1155,9 @@
                 "rendering": "number",
                 "concept": "dfd75194-5e4c-4cfd-9fa3-2bbb9a8ac9f8",
                 "min": 0.0,
+                "disallowDecimals": false,
                 "step": 0.1
               },
-              "disallowDecimals": false,
               "hide": {
                 "hideWhenExpression": "oxygenTherapy !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
@@ -1188,6 +1191,7 @@
                 "rendering": "number",
                 "concept": "5eb49967-40a5-44ea-b816-fab4f79b203a",
                 "min": 0,
+                "disallowDecimals": true,
                 "step": 1
               },
               "hide": {
@@ -1318,6 +1322,7 @@
                 "rendering": "number",
                 "concept": "45ce07f1-7151-4eca-a681-b3f1384faa27",
                 "min": 0,
+                "disallowDecimals": true,
                 "step": 1
               },
               "hide": {
@@ -1333,9 +1338,9 @@
                 "rendering": "number",
                 "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
                 "min": 0,
-                "step": 0.01
+                "disallowDecimals": false,
+                "step": 0.1
               },
-              "disallowDecimals": false,
               "hide": {
                 "hideWhenExpression": "bloodTransfusion !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
@@ -1835,7 +1840,7 @@
                     "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
                   },
                   {
-                    "label": "Prematurity and or low birth weight",
+                    "label": "Prematurity and/or low birth weight",
                     "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
                   },
                   {
@@ -1993,10 +1998,6 @@
                   {
                     "label": "Yellow fever",
                     "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
               }
@@ -2244,6 +2245,10 @@
                     "concept": "e51bba88-1954-4803-9762-8840ab5ae205"
                   },
                   {
+                    "label": "Moderate acute malnutrition",
+                    "concept": "c284603a-988f-4a55-a634-82c681424ab4"
+                  },
+                  {
                     "label": "Musculoskeletal conditions (infectious origin)",
                     "concept": "d98a4da0-68ef-4ae5-8128-9498f5421eb2"
                   },
@@ -2328,10 +2333,6 @@
                     "concept": "a3eecae0-8ad4-4458-aab6-f3aa818979c5"
                   },
                   {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
                     "label": "Other bites and stings",
                     "concept": "f5a93496-81fa-441f-a09c-3899b0fb2a1c"
                   },
@@ -2368,7 +2369,7 @@
                     "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
                   },
                   {
-                    "label": "Prematurity and or low birth weight",
+                    "label": "Prematurity and/or low birth weight",
                     "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
                   },
                   {
@@ -2861,10 +2862,6 @@
                     "concept": "a3eecae0-8ad4-4458-aab6-f3aa818979c5"
                   },
                   {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  },
-                  {
                     "label": "Other bites and stings",
                     "concept": "f5a93496-81fa-441f-a09c-3899b0fb2a1c"
                   },
@@ -2901,7 +2898,7 @@
                     "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
                   },
                   {
-                    "label": "Prematurity and or low birth weight",
+                    "label": "Prematurity and/or low birth weight",
                     "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
                   },
                   {
@@ -3378,16 +3375,16 @@
                     "concept": "b17fa4c4-9f75-4f21-8a0b-c0579f923573"
                   },
                   {
+                    "label": "Observation",
+                    "concept": "d9f335fd-153f-4125-b615-a526f77d31ed"
+                  },
+                  {
                     "label": "Obstetric cases",
                     "concept": "19737e4d-6324-411b-8ed9-fe09c0d16832"
                   },
                   {
                     "label": "Oral and digestive severe candidiasis",
                     "concept": "a3eecae0-8ad4-4458-aab6-f3aa818979c5"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   },
                   {
                     "label": "Other bites and stings",
@@ -3749,10 +3746,10 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
-                "min": 0,
-                "step": 0.01
-              },
-              "disallowDecimals": false
+                "min": 0.0,
+                "disallowDecimals": false,
+                "step": 0.1
+              }
             }
           ]
         }
