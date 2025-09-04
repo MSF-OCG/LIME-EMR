@@ -37,11 +37,11 @@
                 "concept": "4dae5b12-070f-4153-b1ca-fbec906106e1",
                 "answers": [
                   {
-                    "label": "New admission",
+                    "label": "New admission to ER",
                     "concept": "9f2fe30f-a8f0-49ba-82e4-71c232259130"
                   },
                   {
-                    "label": "Readmission",
+                    "label": "Readmission to ER",
                     "concept": "e4e42ecd-196b-4aa8-a265-bfbed09d77cf"
                   }
                 ]
@@ -64,8 +64,8 @@
               }
             },
             {
-              "id": "relatedSymptomsOrFactors",
-              "label": "Related symptoms/factors",
+              "id": "relatedSignsOrSymptoms",
+              "label": "Signs / symptoms",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -83,14 +83,6 @@
                   {
                     "label": "Vaginal bleeding",
                     "concept": "ca03f83e-907d-4433-b4b5-24dd4716940f"
-                  },
-                  {
-                    "label": "Pregnancy (current or recent)",
-                    "concept": "5d613449-f33b-4bd5-82b0-85e59b63b676"
-                  },
-                  {
-                    "label": "Recent delivery",
-                    "concept": "b1f88172-5ee3-4626-bab6-ad0941677176"
                   },
                   {
                     "label": "Missed menstrual periods",
@@ -111,34 +103,6 @@
                   {
                     "label": "Altered mental status or unusual sleepiness",
                     "concept": "7257b382-618d-4822-b7c0-2fdb537e1502"
-                  },
-                  {
-                    "label": "Allergies to medications",
-                    "concept": "e92ccc2a-2980-4ee8-8c28-04c761085cfb"
-                  },
-                  {
-                    "label": "New medications or recent dose changes",
-                    "concept": "1cd7198b-edcd-4a07-8954-fc45e5dcf03f"
-                  },
-                  {
-                    "label": "Recent surgery",
-                    "concept": "0e86a195-8fd9-4b8d-af18-1b9c4e504224"
-                  },
-                  {
-                    "label": "History of heart disease",
-                    "concept": "51b68234-5681-4d90-b467-9c3e4b541c95"
-                  },
-                  {
-                    "label": "HIV",
-                    "concept": "70e10845-7405-4de1-a283-c95326a90eb5"
-                  },
-                  {
-                    "label": "Recent trauma",
-                    "concept": "e240358b-7fce-43a3-ba85-e9b28a27f484"
-                  },
-                  {
-                    "label": "Recent illness",
-                    "concept": "d6db1366-e05d-4aeb-9716-31b481705c1c"
                   },
                   {
                     "label": "Not eating or drinking for long",
@@ -174,10 +138,65 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "textarea",
-                "concept": "f8883168-4a8d-432b-8812-6dcdfbf5b13a"
+                "rendering": "multiCheckbox",
+                "inlineMultiCheckbox": true,
+                "concept": "c0c600b8-7b28-4a2b-bc76-87c79d21bf4b",
+                "answers": [
+                  {
+                    "label": "Allergies to medications",
+                    "concept": "e92ccc2a-2980-4ee8-8c28-04c761085cfb"
+                  },
+                  {
+                    "label": "Pregnancy (current or recent)",
+                    "concept": "5d613449-f33b-4bd5-82b0-85e59b63b676"
+                  },
+                  {
+                    "label": "Recent delivery",
+                    "concept": "b1f88172-5ee3-4626-bab6-ad0941677176"
+                  },
+                  {
+                    "label": "Recent illness",
+                    "concept": "d6db1366-e05d-4aeb-9716-31b481705c1c"
+                  },
+                  {
+                    "label": "Recent trauma",
+                    "concept": "e240358b-7fce-43a3-ba85-e9b28a27f484"
+                  },
+                  {
+                    "label": "Recent surgery",
+                    "concept": "0e86a195-8fd9-4b8d-af18-1b9c4e504224"
+                  },
+                  {
+                    "label": "History of heart disease",
+                    "concept": "51b68234-5681-4d90-b467-9c3e4b541c95"
+                  },
+                  {
+                    "label": "HIV",
+                    "concept": "70e10845-7405-4de1-a283-c95326a90eb5"
+                  },
+                  {
+                    "label": "New medications or recent dose changes",
+                    "concept": "1cd7198b-edcd-4a07-8954-fc45e5dcf03f"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pastMedicalAndSurgicalHistoryIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
-              "questionInfo": "Check in 'Conditions', 'Medications' and 'Visits'"
+              "hide": {
+                "hideWhenExpression": "!includes(pastMedicalAndSurgicalHistory, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
             },
             {
               "id": "checkInallergies",
@@ -367,10 +386,66 @@
                   }
                 ]
               }
+            }
+          ]
+        },
+        {
+          "label": "Review of systems",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "headAndNeck",
+              "label": "Head and neck",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "d6405ed1-e1bc-460f-8a1d-0d837e929b51"
+              }
             },
             {
-              "id": "detailsAndOrOrOtherFindings",
-              "label": "Details and/or other findings",
+              "id": "chest",
+              "label": "Chest",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "7925f3f5-3e62-4181-8534-a3e2132f1444"
+              }
+            },
+            {
+              "id": "abdomenAndPelvis",
+              "label": "Abdomen and Pelvis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "1282939b-fed6-4bbf-b0ba-23f32651a087"
+              }
+            },
+            {
+              "id": "extremities",
+              "label": "Extremities",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "f50b37d1-1833-4ae5-9197-b0acd7c8fb05"
+              }
+            },
+            {
+              "id": "skin",
+              "label": "Skin",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "9faa36a9-afeb-4cbc-b9ae-5be4c965db51"
+              }
+            },
+            {
+              "id": "rfeFormsDetailsandororotherfindings",
+              "label": "Other findings",
               "type": "obs",
               "required": false,
               "questionOptions": {
