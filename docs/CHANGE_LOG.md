@@ -1,5 +1,25 @@
 # LIME CHANGE LOG 🚀
 
+## Release 4th September, 2025
+
+### Features & Improvements
+
+- Replace feeding form workspace with markdown - [LIME2-939](https://msf-ocg.atlassian.net/browse/LIME2-939)
+- Remove duplicate other concepts from ITFC forms - [LIME2-927](https://msf-ocg.atlassian.net/browse/LIME2-927)
+- Adult forms - change in "Other" related data in Diagnosis - [LIME2-942](https://msf-ocg.atlassian.net/browse/LIME2-942)
+- MHPSS baseline - missing questions - [LIME2-948](https://msf-ocg.atlassian.net/browse/LIME2-948)
+- Create and use a new concept for "Other symptoms and abnor. clinical / lab findings" - [LIME2-952](https://msf-ocg.atlassian.net/browse/LIME2-952)
+- Pre-anesthesia record - change of question name - [LIME2-943](https://msf-ocg.atlassian.net/browse/LIME2-943)
+- Anesthesia transfer form - change question for workspace - [LIME2-944](https://msf-ocg.atlassian.net/browse/LIME2-944)
+- Allow for multiple prescriptions in nutrition feeding monitoring form - UI changes - [LIME2-785](https://msf-ocg.atlassian.net/browse/LIME2-785)
+- Testing embedded forms on local and UAT (SolDevelo PRs) - [LIME2-953](https://msf-ocg.atlassian.net/browse/LIME2-953)
+- Calendar for date selection not working on tablets - [LIME2-748](https://msf-ocg.atlassian.net/browse/LIME2-748)
+- Meal data not transferring from feeding form to table - [LIME2-905](https://msf-ocg.atlassian.net/browse/LIME2-905)
+- ER consultation form - change in options names - [LIME2-954](https://msf-ocg.atlassian.net/browse/LIME2-954)
+- ER consultation form - changes in questions - [LIME2-955](https://msf-ocg.atlassian.net/browse/LIME2-955)
+- ER consultation form - section/questions added - [LIME2-956](https://msf-ocg.atlassian.net/browse/LIME2-956)
+- Test Restic backups on UAT - [LIME2-911](https://msf-ocg.atlassian.net/browse/LIME2-911)
+
 ## Release 21st August, 2025
 
 ### Features & Improvements
