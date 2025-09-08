@@ -1,0 +1,295 @@
+{
+  "name": "F36-Maternity triage form",
+  "description": "MSF Form - F36-Maternity triage form",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Maternity",
+  "encounterType": "729223d7-faae-43ff-9018-7aeee022b98f",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Triage",
+      "sections": [
+        {
+          "label": "Triage",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "date",
+              "label": "Date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "7f00c65d-de60-467a-8964-fe80c7a85ef0"
+              },
+              "default": "Current date and time"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "History",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "lastMenstruationPeriodLmp",
+              "label": "Last menstruation period - LMP",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "e5f9e8be-5a5f-4468-b714-16cbb70c6021"
+              }
+            },
+            {
+              "id": "estimatedDateOfDeliveryEdd",
+              "label": "Estimated date of delivery - EDD",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "4cc41121-74da-42ac-ab89-e8878db66020"
+              }
+            },
+            {
+              "id": "trimester",
+              "label": "Trimester",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2eef5c85-cfb9-4e8d-ad3e-0fbb98e08fa5",
+                "answers": [
+                  {
+                    "label": "First",
+                    "concept": "6b9e4b16-5f7d-493d-9cd9-231163611082"
+                  },
+                  {
+                    "label": "Second",
+                    "concept": "2862c9e1-2dfc-4a8d-90d5-f764a4fb0a53"
+                  },
+                  {
+                    "label": "Third",
+                    "concept": "eeecf514-82e4-4bda-91d0-69fd4c754e13"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "gravida",
+              "label": "Gravida",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "00df1796-a090-447d-8904-3d6e0d9e5948",
+                "min": 0.0,
+                "max": 20.0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            },
+            {
+              "id": "para",
+              "label": "Para",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "76a96d44-00f5-469f-9329-5a53409a87eb",
+                "min": 0.0,
+                "max": 20.0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            },
+            {
+              "id": "abortion",
+              "label": "Abortion",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "aa296b81-5599-4076-8e53-e47d6e96159e",
+                "min": 0.0,
+                "max": 20.0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            },
+            {
+              "id": "complain",
+              "label": "Complain",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "8125eeb6-9aa0-48a6-8b38-4343c4692aa8"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Physical exam",
+      "sections": [
+        {
+          "label": "Physical exam",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "updatetemperaturerRatespo2pulsebpAndweight",
+              "label": "Update 'Temperature', 'R. rate', 'SpO2', 'Pulse', 'BP' and 'Weight'",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "contraction",
+              "label": "Contraction (/10min)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b8a2dd3a-fe0b-448b-bc8c-ef28963d23df",
+                "min": 0.0,
+                "max": 10.0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            },
+            {
+              "id": "fundalHeight",
+              "label": "Fundal height (cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "30800fbb-9ebc-46fc-8f61-44bc008f5952",
+                "min": 0.0,
+                "max": 40.0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            },
+            {
+              "id": "vaginalExamination",
+              "label": "Vaginal examination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "8984db1f-8f1c-4e14-bf34-92c4a4bd0f42"
+              }
+            },
+            {
+              "id": "fetalHeartRateFhr",
+              "label": "Fetal heart rate - FHR (beats/min)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "675a31c5-497d-4fdc-a4e9-37bd0f43d03e",
+                "min": 0.0,
+                "max": 250.0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis",
+      "sections": [
+        {
+          "label": "Diagnosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "triageDiagnosis",
+              "label": "Triage diagnosis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "4e9224c3-dc56-4dd4-a1ae-2d3109c410cc"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Treatment",
+      "sections": [
+        {
+          "label": "Management",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "describeTheManagementPlan",
+              "label": "Describe the management plan",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "78900dd0-228c-48ec-843f-81dae00cd454"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Prescription",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "prescribeExamsAndMedicationWithTheOrderBasketWheneverNecessary",
+              "label": "Prescribe exams and medication with the order basket whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Active medications",
+                "workspaceName": "medications-form-workspace"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Comments",
+      "sections": [
+        {
+          "label": "Comments",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

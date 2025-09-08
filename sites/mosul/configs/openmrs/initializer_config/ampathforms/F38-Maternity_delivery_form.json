@@ -1,0 +1,521 @@
+{
+  "name": "F38-Maternity delivery form",
+  "description": "MSF Form - F38-Maternity delivery form",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Maternity",
+  "encounterType": "729223d7-faae-43ff-9018-7aeee022b98f",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Delivery",
+      "sections": [
+        {
+          "label": "Delivery",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "deliveryDate",
+              "label": "Delivery date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "da8a31e5-df0b-454d-a194-553c9fd25fda"
+              },
+              "default": "Current date and time"
+            },
+            {
+              "id": "deliveryService",
+              "label": "Delivery service",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11",
+                "answers": [
+                  {
+                    "label": "Delivery room",
+                    "concept": "d952abab-48fa-4920-9f73-a1f3abcdcf93"
+                  },
+                  {
+                    "label": "Operating theater",
+                    "concept": "4d688780-019e-40fd-9004-044b69d9283f"
+                  },
+                  {
+                    "label": "ER",
+                    "concept": "c709f78b-5787-4c7e-b5bd-66aad28f7ff4"
+                  },
+                  {
+                    "label": "Maternity ward",
+                    "concept": "f11b3a39-3860-478e-9f00-f525d4b39732"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "deliveryServiceIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(deliveryService !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "conductedBy",
+              "label": "Conducted by (name / position)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "9d42af2e-fb53-422e-ba4a-d3f02e082adb"
+              }
+            },
+            {
+              "id": "typeOfDelivery",
+              "label": "Type of delivery",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "93a9fbb2-ad00-4462-8ae8-ace6c3516464",
+                "answers": [
+                  {
+                    "label": "Vaginal - spontaneous",
+                    "concept": "cfb270ab-700b-4c28-bfff-8a6b90410a38"
+                  },
+                  {
+                    "label": "Vaginal - instrumental",
+                    "concept": "c5efb2b2-6b94-4507-b84d-ae9210f485df"
+                  },
+                  {
+                    "label": "Caesarean section",
+                    "concept": "580f5ec5-cb55-4451-9939-45f76565f6f8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "typeOfDeliveryTypeOfCSection",
+              "label": "Type of c-section",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2f3f5e43-0a0b-42a1-9344-fffd8b7af475",
+                "answers": [
+                  {
+                    "label": "Planned",
+                    "concept": "5cfdc42b-0295-4394-b141-94c6e6b91d69"
+                  },
+                  {
+                    "label": "Emergency",
+                    "concept": "be6654c2-ae13-4039-8b64-9b4f7fd64660"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(typeOfDelivery !== '580f5ec5-cb55-4451-9939-45f76565f6f8')"
+              }
+            },
+            {
+              "id": "typeOfDeliverySpecifyIndicationForCSection",
+              "label": "Specify reason for c-section",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "057d8cb7-08e9-401a-823d-47d47071efbe"
+              },
+              "hide": {
+                "hideWhenExpression": "(typeOfDelivery !== '580f5ec5-cb55-4451-9939-45f76565f6f8')"
+              }
+            },
+            {
+              "id": "typeOfDeliveryWhichInstrument",
+              "label": "Which instrument",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "7066523c-9901-410a-92b0-b2ca8cdf1df4",
+                "answers": [
+                  {
+                    "label": "Vacuum",
+                    "concept": "f6cdd585-8eab-4e83-bff5-f85b0a5b5dbf"
+                  },
+                  {
+                    "label": "Forceps",
+                    "concept": "60163d6e-ae79-44e8-b2bf-d83aa8def12c"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(typeOfDelivery !== 'c5efb2b2-6b94-4507-b84d-ae9210f485df')"
+              }
+            },
+            {
+              "id": "presentation",
+              "label": "Presentation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "467c2b7c-467a-47dc-bdff-f6073b6bddea",
+                "answers": [
+                  {
+                    "label": "Cephalic",
+                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
+                  },
+                  {
+                    "label": "Breech",
+                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
+                  },
+                  {
+                    "label": "Transverse",
+                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "presentationIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(presentation !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "anaesthesia",
+              "label": "Anaesthesia",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "84cc236e-90fa-4eec-acf5-d0cd6b713dc4",
+                "answers": [
+                  {
+                    "label": "Local",
+                    "concept": "d55cc5f0-b014-4c00-ab13-dfb81835e26b"
+                  },
+                  {
+                    "label": "Spinal",
+                    "concept": "c47adaf8-7e0a-495a-bf39-ae42e56f416f"
+                  },
+                  {
+                    "label": "General",
+                    "concept": "9e2374c3-067f-463e-8949-fdfe4eb04254"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "perineum",
+              "label": "Perineum",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "3f0937ff-2777-483f-a7dd-027527b8f2a0",
+                "answers": [
+                  {
+                    "label": "Intact",
+                    "concept": "de3ae5c7-977a-452c-8422-ecbb1298e287"
+                  },
+                  {
+                    "label": "Episiotomy",
+                    "concept": "8cd42318-3c6f-46f8-af99-d12719b56517"
+                  },
+                  {
+                    "label": "Tear",
+                    "concept": "c58a3606-4eaa-47f2-86f2-b22f2dc9a59a"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            }
+          ]
+        },
+        {
+          "label": "3rd stage",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "startOfThirdLaborStage",
+              "label": "Start of third labor stage",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "9fac693a-696a-4cbd-a14b-441d895d9922"
+              },
+              "default": "Current date and time"
+            },
+            {
+              "id": "placentaDelivery",
+              "label": "Placenta delivery",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c608bfd9-c432-4c01-80ba-1fad8256ad15",
+                "answers": [
+                  {
+                    "label": "Spontaneous",
+                    "concept": "92d9dc90-3f00-4b73-856e-5da0c9704a12"
+                  },
+                  {
+                    "label": "Manual removal of placenta",
+                    "concept": "e7cfc3e4-c0ba-4c2d-8056-84e66fbfd833"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "placentaIntegrity",
+              "label": "Placenta integrity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "aae91236-9fb8-4a8d-b60d-9fd9d6ca8aad",
+                "answers": [
+                  {
+                    "label": "Complete",
+                    "concept": "33a99b30-6075-4e20-88d5-b40db9f5b925"
+                  },
+                  {
+                    "label": "Incomplete",
+                    "concept": "c72093e1-b0cf-4eb0-8789-4a4cf149a32f"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "describeManagementIfPostPartumHaemorrhage",
+              "label": "Describe management if post partum haemorrhage",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "0072db36-60dc-499e-838d-7d578a310a65"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Procedures",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "deliveryWithPartograph",
+              "label": "Delivery with partograph?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9b8a2d36-7a92-4919-87f8-6aea26be2498",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "specialProcedures",
+              "label": "Special procedures",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "482af9e6-795d-42d9-be5b-64f4df54a63e",
+                "answers": [
+                  {
+                    "label": "FGM / female circumcision management (deinfibulation, e.g.)",
+                    "concept": "6d7744a1-4d4f-4218-8fe1-79d6c1245585"
+                  },
+                  {
+                    "label": "Episiotomy",
+                    "concept": "8cd42318-3c6f-46f8-af99-d12719b56517"
+                  },
+                  {
+                    "label": "Induction of labor",
+                    "concept": "af82af53-b877-4ceb-bf89-de9027577e5c"
+                  },
+                  {
+                    "label": "Oxytocin for augmentation of labour",
+                    "concept": "44fdabdb-a7cf-400b-b44f-bf246dc4fb97"
+                  },
+                  {
+                    "label": "VBAC (Vaginal birth after Caesearan)",
+                    "concept": "dd229e81-c5a3-4175-9109-bb3b17404cd7"
+                  },
+                  {
+                    "label": "Vaginal breech delivery",
+                    "concept": "34df1c01-0199-40b0-a271-a393b4cc4a6c"
+                  },
+                  {
+                    "label": "Twins / triplets vaginal delivery",
+                    "concept": "ab5e0123-e789-4440-a71f-33c54e69b30b"
+                  },
+                  {
+                    "label": "Maneuver",
+                    "concept": "316674f8-e7c1-4e0c-8cc2-eda6997c748d"
+                  },
+                  {
+                    "label": "Manual exploration of uterus",
+                    "concept": "e532e0b2-d78f-4e02-96a7-3f2b0d2bedc4"
+                  },
+                  {
+                    "label": "Curettage",
+                    "concept": "0ad93561-40b9-4e3f-b0a6-76ce3df1ab4f"
+                  },
+                  {
+                    "label": "Laceration (perineal tear) repaired",
+                    "concept": "e334ae74-caa3-4b30-ae40-7085b7f47bbb"
+                  },
+                  {
+                    "label": "Cervical tear repair",
+                    "concept": "2408b961-d14f-46a8-8cc3-04854b57bb73"
+                  },
+                  {
+                    "label": "Tubal ligation (sterilization)",
+                    "concept": "5939ffb8-257c-4b16-9f6c-f961289b747c"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Post partum",
+      "sections": [
+        {
+          "label": "Monitoring",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "describeUterusToneVaginalBleedingUrineAbnormalVitalSigns",
+              "label": "Describe: uterus tone, vaginal bleeding, urine, abnormal vital signs",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "7df49f95-af61-443f-b80d-fae2a586219d"
+              }
+            },
+            {
+              "id": "frequencyForCheckingRRateBpPulseTemperatureUterusVaginalBleedingOralOrIvInputAndUrineOutput",
+              "label": "Frequency for checking R. rate, BP, pulse, temperature, uterus, vaginal bleeding, oral/IV input and urine output",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "6381a814-a2b9-491d-b950-856632f35690"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Prescription",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "medication",
+              "label": "Medication",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "ae1e4603-7ab4-4ed1-902e-eee33a9c5eef",
+                "answers": [
+                  {
+                    "label": "Paracetamol (1g PO x4 - x3 days)",
+                    "concept": "15f39fab-3a22-498d-afd9-601399854ef0"
+                  },
+                  {
+                    "label": "Ferrous sulphate + folic acid (1tab/day PO - x1 month)",
+                    "concept": "c83b25b4-573a-4d05-966b-525756ab3465"
+                  },
+                  {
+                    "label": "Vitamin A (1tab PO once - stat)",
+                    "concept": "02944b8f-8716-4122-818d-27b338eb07d3"
+                  },
+                  {
+                    "label": "Cabergoline if stillbirth > 25 weeks GA (1g)",
+                    "concept": "5a8f1a0f-8f1f-4043-a3df-6ad5f53e3a82"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "prescribeExamsAndMedicationWithTheOrderBasketWheneverNecessary",
+              "label": "Prescribe exams and medication with the order basket whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Comments",
+      "sections": [
+        {
+          "label": "Comments",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
