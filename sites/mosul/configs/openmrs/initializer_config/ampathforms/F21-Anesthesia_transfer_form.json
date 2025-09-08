@@ -1,0 +1,431 @@
+{
+  "name": "F21-Anesthesia transfer form",
+  "description": "MSF Form - F21-Anesthesia transfer form",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Surgery and Anesthesia",
+  "encounterType": "5ae0b122-0f2e-44c7-b824-f52e027e3561",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Parameters",
+      "sections": [
+        {
+          "label": "Parameters",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "oxygenSaturationMoreThan90",
+              "label": "Oxygen saturation >90% (room air)?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2019a063-8c83-45b4-b518-84357771807b",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "painControl",
+              "label": "Pain control (VAS<4)?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "dc8036cc-de89-4d6f-b6d1-18db36f8b23a",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "extremityMovement",
+              "label": "Extremity movement (moves all four limbs)?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "51583e5d-db53-431d-8640-c0558834a0c1",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ponvControl",
+              "label": "PONV control?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8997260f-acfb-4e5e-9a14-0254c042bf0a",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "dialogue",
+              "label": "Dialogue (oriented person/place)?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8d8785a4-9abc-4571-b3a6-6f419b2f50ff",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "stableVitalSignsOrPlusOrPreOperativeLevel",
+              "label": "Stable vital signs (SBP>90 and <180, HR>50 and >110) or +/- pre-operative level?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "24f8cc8e-4676-4c1b-acf9-3e0a640c8eb4",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              },
+              "questionInfo": "Check in 'Vitals' and fill with updated measurements"
+            },
+            {
+              "id": "comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Transfer",
+      "sections": [
+        {
+          "label": "Transfer to ward",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "transferToWardAt",
+              "label": "Transfer to ward at",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "359dea03-3cba-4ec2-98d8-2dfcf99f62cd"
+              },
+              "default": "Current date",
+              "questionInfo": "Consider transfer only when all above answers are 'Yes'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Prescription",
+      "sections": [
+        {
+          "label": "Medication",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "orderMedications",
+              "label": "Check in 'Medications' and change or discontinue any previous medication if needed, or add new medication with the order basket",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Oxygen",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "oxygen",
+              "label": "Oxygen?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "775a4895-fdbd-4409-9292-6044972eca83",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "concentration",
+              "label": "Concentration (L/min)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "263150b1-20c0-46dc-90f8-915692a6ccf3",
+                "min": 0,
+                "step": 0.1
+              },
+              "disallowDecimals": false,
+              "hide": {
+                "hideWhenExpression": "oxygen !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "by",
+              "label": "By",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0264c686-ea8d-4e97-b801-843f4269fd29",
+                "answers": [
+                  {
+                    "label": "Mask",
+                    "concept": "ac167065-e5ff-4b85-b68d-d889874782b7"
+                  },
+                  {
+                    "label": "Nasal canula",
+                    "concept": "fb60473d-f63f-4a93-b01d-a654d7bcf1cb"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "oxygen !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Instructions",
+      "sections": [
+        {
+          "label": "Feeding",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "feeding",
+              "label": "Feeding",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f6e95c03-ba4d-4263-b768-34f05c617a47",
+                "answers": [
+                  {
+                    "label": "Food",
+                    "concept": "4c933d68-fda6-4343-b52b-1021c5e5182a"
+                  },
+                  {
+                    "label": "Liquids",
+                    "concept": "55538df1-6e14-40bc-9a59-d0f3a49a6ab9"
+                  },
+                  {
+                    "label": "Milk",
+                    "concept": "71486e76-56c3-4a47-b0cf-293eea7257b5"
+                  },
+                  {
+                    "label": "NPO",
+                    "concept": "84044f98-4416-4bca-b26f-be0ed44a355b"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "feedFoodBy",
+              "label": "Feed food by",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "30a1083f-39b0-4ca4-9612-28d455a5733b",
+                "answers": [
+                  {
+                    "label": "NGT",
+                    "concept": "8b92f604-8c1f-457c-8eff-93ae46acb29a"
+                  },
+                  {
+                    "label": "PO",
+                    "concept": "11139589-45e7-45fd-a933-408b55e5ef76"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "feeding !== '4c933d68-fda6-4343-b52b-1021c5e5182a'"
+              }
+            },
+            {
+              "id": "startFeedingAt",
+              "label": "Start feeding at",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "5aab05d2-be86-4437-9b8e-7868654ad0fd"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "startFeedingAt < new Date()",
+                  "message": "Feeding start date time cannot be in the past"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "feeding !== '55538df1-6e14-40bc-9a59-d0f3a49a6ab9' && feeding !== '71486e76-56c3-4a47-b0cf-293eea7257b5' && feeding !== '4c933d68-fda6-4343-b52b-1021c5e5182a'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Mobilization",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "mobilization",
+              "label": "Mobilization?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a53c38e3-eed7-45d7-bfe2-0446cb08179d",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "startMobilizationAt",
+              "label": "Start mobilization - at",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "2ac8dcf7-ea26-45dc-860e-eb74de75397f"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "startMobilizationAt < new Date()",
+                  "message": "Mobilization start date time cannot be in the past"
+                }
+              ],
+              "default": "Current date",
+              "hide": {
+                "hideWhenExpression": "mobilization !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Others",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalInstructions",
+              "label": "Additional instructions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "34d6495c-03d3-4d9b-9bec-eedd31dbd240"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Comments",
+      "sections": [
+        {
+          "label": "Comments",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "comments_comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1495 @@
+{
+  "name": "F19-Pre anesthesia record",
+  "description": "MSF Form - F19-Pre anesthesia record",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Surgery and Anesthesia",
+  "encounterType": "5ae0b122-0f2e-44c7-b824-f52e027e3561",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "General information",
+      "sections": [
+        {
+          "label": "General information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "dateOfAssessment",
+              "label": "Date of assessment",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "d329cd4b-a10f-4a4d-96b5-c907bf87e721"
+              },
+              "default": "Current date",
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "dateOfAssessment > new Date()",
+                  "message": "Date of assessment cannot be in the future"
+                }
+              ]
+            },
+            {
+              "id": "diagnosis",
+              "label": "Diagnosis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
+                "answers": [
+                  {
+                    "label": "Abortion / miscarriage",
+                    "concept": "5b087c45-04a1-4149-bb79-8875a6e0f960"
+                  },
+                  {
+                    "label": "Acute appendicitis",
+                    "concept": "fd4f2bfd-da11-410a-8f8d-36a651e132de"
+                  },
+                  {
+                    "label": "Acute cholecystitis",
+                    "concept": "96b93ec3-cbc2-4e37-9354-e489fa7a9bd8"
+                  },
+                  {
+                    "label": "Acute compartment syndrome (limb)",
+                    "concept": "854f9ca8-3fe8-40f0-a98f-37d565a3e242"
+                  },
+                  {
+                    "label": "Acute peritonitis",
+                    "concept": "f277697b-2f67-4bd9-87cf-19f589eaba83"
+                  },
+                  {
+                    "label": "Breast abscess",
+                    "concept": "e592e8c6-99bc-4655-b641-fbd233f3399d"
+                  },
+                  {
+                    "label": "Burns / major",
+                    "concept": "b0d0a019-7af4-49f7-86cb-99d9dccd1807"
+                  },
+                  {
+                    "label": "Burns / minor deep",
+                    "concept": "66660626-0209-4927-b70b-407adbdc176e"
+                  },
+                  {
+                    "label": "Burns / minor superficial",
+                    "concept": "5dab7064-d6c5-4229-b276-6e2b6d5e1c5c"
+                  },
+                  {
+                    "label": "Cataract",
+                    "concept": "436982a0-6bf1-44ab-9e8f-aff36f9787a5"
+                  },
+                  {
+                    "label": "Delivery / foetal distress",
+                    "concept": "639b0e7f-496e-4f43-bda0-5d689f3224f3"
+                  },
+                  {
+                    "label": "Delivery / umbilical cord complications",
+                    "concept": "f506a96f-6d63-4d85-ad06-5ff643b15bc0"
+                  },
+                  {
+                    "label": "Delivery multiple / all by caesarean section",
+                    "concept": "d8fb4c14-71ce-4d4e-bdd7-da40a8918c1c"
+                  },
+                  {
+                    "label": "Delivery single / by caesarean section",
+                    "concept": "373f41e4-3bbd-423b-bab8-190d4643b1a7"
+                  },
+                  {
+                    "label": "Ectopic pregnancy",
+                    "concept": "10f3449c-05fd-4a3d-9dca-1de634fd2366"
+                  },
+                  {
+                    "label": "Endometritis - inflammatory disease of uterus",
+                    "concept": "3fe12df7-4eae-45fb-8610-a5c25cd2ec97"
+                  },
+                  {
+                    "label": "Failure of labor induction",
+                    "concept": "526c2822-1499-413b-8fe0-84012473c1fe"
+                  },
+                  {
+                    "label": "Fracture / closed / cervical spine",
+                    "concept": "89bf9158-5160-41a5-a88e-2749b4faa5f9"
+                  },
+                  {
+                    "label": "Fracture / closed / hands and feet",
+                    "concept": "776340eb-7707-4e2f-b56f-5375d307ec3b"
+                  },
+                  {
+                    "label": "Fracture / closed / long bones limb",
+                    "concept": "5edc8f11-2b39-4cb5-980c-742504f18317"
+                  },
+                  {
+                    "label": "Fracture / closed / pelvis",
+                    "concept": "839f42dd-e343-4899-b027-e03cfa00af77"
+                  },
+                  {
+                    "label": "Fracture / closed / skull",
+                    "concept": "4dfe3517-96b5-4437-ad1c-486f6bd28524"
+                  },
+                  {
+                    "label": "Fracture / closed / thoracic and lumbar spine",
+                    "concept": "8b0276a9-272b-4988-89f9-3b3c5893c813"
+                  },
+                  {
+                    "label": "Fracture / malunion",
+                    "concept": "fc87b56c-0669-4d3c-9dd4-67491048f1d4"
+                  },
+                  {
+                    "label": "Fracture / nonunion",
+                    "concept": "d86c3c4b-3b55-4e30-9dc4-6968ca9d0439"
+                  },
+                  {
+                    "label": "Fracture / open / long bones limbs",
+                    "concept": "d9613f0d-47b4-4b26-9f65-31b74e4029ed"
+                  },
+                  {
+                    "label": "Fracture / open / skull open head injury",
+                    "concept": "4b3bf84b-bb58-4e76-9186-ae9762efd19f"
+                  },
+                  {
+                    "label": "Gestation / complication / placenta praevia",
+                    "concept": "3fe02af2-57da-4b73-a3a6-a568a795a2c8"
+                  },
+                  {
+                    "label": "Gestation / complication / postpartum haemorrhage",
+                    "concept": "f586985a-2700-4958-8cb1-f426675f0d8d"
+                  },
+                  {
+                    "label": "Gestation / complication / postpartum inversion of uterus",
+                    "concept": "b0cda050-44e3-4d55-9add-65e2d61844e9"
+                  },
+                  {
+                    "label": "Gestation / complication / premature separation of placenta",
+                    "concept": "3bdfefdd-3687-4ca3-99c6-443a121e2144"
+                  },
+                  {
+                    "label": "Gestation / complication / retained placenta without haemorrhage",
+                    "concept": "2a36f78f-2f16-4355-a13d-fc650330490b"
+                  },
+                  {
+                    "label": "Gestation / complication / rupture of uterus",
+                    "concept": "f6ce685d-28a8-4674-8160-f98c4f77ded2"
+                  },
+                  {
+                    "label": "Gestation / multiple",
+                    "concept": "ab5e0123-e789-4440-a71f-33c54e69b30b"
+                  },
+                  {
+                    "label": "Gestation / Previous history of more than 2 CS or atypical CS",
+                    "concept": "421d8948-3369-44bc-82d0-00290dca66f2"
+                  },
+                  {
+                    "label": "Hernia/symptomatic",
+                    "concept": "52ef1832-1bde-439a-a027-f0a8446b2a1d"
+                  },
+                  {
+                    "label": "Hydrocele",
+                    "concept": "46cb40e8-38b7-4fe5-836a-65b9a0a9633c"
+                  },
+                  {
+                    "label": "Intestinal obstruction / mechanical",
+                    "concept": "f854d339-8aa9-4548-96ff-a5f1a35fef2c"
+                  },
+                  {
+                    "label": "Intestinal obstruction / paralytic ileus",
+                    "concept": "a8aecb5c-bb1a-408a-9950-707dcb34ad86"
+                  },
+                  {
+                    "label": "Non traumatic wounds/ chronic soft tissue ulcer",
+                    "concept": "6f2abacf-9d58-46d7-87a0-a1ecd3990c99"
+                  },
+                  {
+                    "label": "Obstetric fistula/rectovaginal",
+                    "concept": "224d5798-a0e4-432a-bb7d-d30916cb07e8"
+                  },
+                  {
+                    "label": "Obstetric fistula/vesicovaginal",
+                    "concept": "33072233-4552-4596-9120-6ed195fd1d0c"
+                  },
+                  {
+                    "label": "Obstetric lacerations/tears",
+                    "concept": "71365d8e-2982-41b5-bc5a-382caa0fb8a4"
+                  },
+                  {
+                    "label": "Obstructed labour due to maternal pelvic abnormality, fetal malposition and fetal malpresentation",
+                    "concept": "cc2ea51a-5041-4ba2-b164-e031ba33d527"
+                  },
+                  {
+                    "label": "Osteomyelitis / non-traumatic",
+                    "concept": "1bfd5bdd-26a6-41a3-a94c-c5753f423b44"
+                  },
+                  {
+                    "label": "Osteomyelitis / post-traumatic",
+                    "concept": "835821f3-d264-4a07-916c-62ef7d81adeb"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Ovarian cysts",
+                    "concept": "736e1112-af12-44f7-921b-ff282da27763"
+                  },
+                  {
+                    "label": "Peripheral vascular disease",
+                    "concept": "d149c447-b34f-422a-bcdf-251bc6fcbecb"
+                  },
+                  {
+                    "label": "Prolonged labor",
+                    "concept": "f80dbec7-880a-4699-aa9d-4c6364892fd0"
+                  },
+                  {
+                    "label": "Pyothorax",
+                    "concept": "b77d540d-2927-44b4-aec9-d4e4ffa02f50"
+                  },
+                  {
+                    "label": "Septic arthritis",
+                    "concept": "1bf4bdde-d42a-4b41-a7f4-51571b68e78c"
+                  },
+                  {
+                    "label": "Soft tissue infection / absces",
+                    "concept": "7b4cb209-a120-4ea9-85cf-aba5ffae4dee"
+                  },
+                  {
+                    "label": "Soft tissue infection / cellulitis",
+                    "concept": "63f1620b-817d-414f-becc-99325eb62a8e"
+                  },
+                  {
+                    "label": "Soft tissue infection / Necrotising fasciatis",
+                    "concept": "0d3664ef-c537-4410-9335-235c60aff7f8"
+                  },
+                  {
+                    "label": "Soft tissue infection / pyomyositis",
+                    "concept": "207ff468-4882-421f-9ced-3352dcfb31ae"
+                  },
+                  {
+                    "label": "Surgical site infection SSI / Incision - space or organ",
+                    "concept": "abdd4c7f-d9b0-49c7-a4de-c87b312d0351"
+                  },
+                  {
+                    "label": "Trauma / abdomen / blunt",
+                    "concept": "add93045-69e8-4722-816d-2b6af8dc0576"
+                  },
+                  {
+                    "label": "Trauma / abdomen / penetrating",
+                    "concept": "414f84ab-ba73-4004-9024-524c01e82f26"
+                  },
+                  {
+                    "label": "Trauma / chest / blunt",
+                    "concept": "ef8b86ff-12db-4887-9ee9-7a7c9951613e"
+                  },
+                  {
+                    "label": "Trauma / chest / penetrating",
+                    "concept": "1f496e52-1bc1-4d4b-bed3-950a3c52bf13"
+                  },
+                  {
+                    "label": "Trauma / eye injury",
+                    "concept": "ee127d8e-5224-4fe6-aa1c-dff29f63cb85"
+                  },
+                  {
+                    "label": "Trauma / face - facial bones",
+                    "concept": "a23e187a-167a-4595-a72c-6a2d7f6487f3"
+                  },
+                  {
+                    "label": "Trauma / joint dislocation",
+                    "concept": "1ef0b48a-3146-486a-9838-78d64a920b83"
+                  },
+                  {
+                    "label": "Trauma / penetrating neck injury",
+                    "concept": "ebe67dc6-8026-41d5-a4d2-39a1d8385b09"
+                  },
+                  {
+                    "label": "Trauma / vascular injury",
+                    "concept": "95b094ec-7db9-4a5e-9f6b-0ebac0f43091"
+                  },
+                  {
+                    "label": "Trauma/soft tissue/ complicated",
+                    "concept": "a77cea77-ab50-48e2-bc23-9cbc75554bce"
+                  },
+                  {
+                    "label": "Trauma/wound or laceration / simple",
+                    "concept": "1dbec5a2-13fd-4454-bac3-aeaa978846f5"
+                  },
+                  {
+                    "label": "Traumatic amputation / all types",
+                    "concept": "909fe492-1ec6-488b-90af-af31ef537f50"
+                  },
+                  {
+                    "label": "Traumatic brain injury / mild",
+                    "concept": "ccb6b2bf-03a3-46b8-bcae-044e3fef8c77"
+                  },
+                  {
+                    "label": "Traumatic brain injury / moderate",
+                    "concept": "b9b82f75-77c9-466d-8684-554cad59e1f8"
+                  },
+                  {
+                    "label": "Traumatic brain injury / severe",
+                    "concept": "c41461dd-30ec-4e01-b7fb-325001ed0e97"
+                  },
+                  {
+                    "label": "Tubo-ovarian abscesses",
+                    "concept": "df483b17-518a-4d89-bf6a-80e564cb518b"
+                  },
+                  {
+                    "label": "Urolithiasis / bladder",
+                    "concept": "3406771a-a35a-4a1c-b0ee-2c7dd38c4f6f"
+                  },
+                  {
+                    "label": "Urolithiasis / kidney and Ureter",
+                    "concept": "aa799acc-0273-46d3-bc24-0fc38a65a761"
+                  },
+                  {
+                    "label": "Urolithiasis / urethra",
+                    "concept": "ebbfa407-b349-4bdc-b484-8c9df59fe280"
+                  },
+                  {
+                    "label": "Visceral hollow organ perforation (non-traumatic)",
+                    "concept": "79712333-e94d-420c-b994-fc48fc457735"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(diagnosis, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "procedure",
+              "label": "Procedure",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "8aa1b6a4-e056-424b-9b02-4374758bba9e"
+              }
+            },
+            {
+              "id": "dateOfSurgery",
+              "label": "Date of surgery",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "219d2efb-01c9-430b-93fb-99a45d27523e"
+              },
+              "default": "Current date"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "History",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "checkAlsoInconditionsAndUpdateThemWheneverNecessary",
+              "label": "Check also in 'Conditions' and update them whenever necessary",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Check also in 'Conditions' and update them whenever necessary"
+            },
+            {
+              "id": "openConditions",
+              "label": "Open Conditions",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open workspace",
+                "workspaceName": "conditions-form-workspace"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Medical",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "respiratory",
+              "label": "Respiratory",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "4345e0fc-39b3-4cb6-9cb5-6a95a314d8b4",
+                "answers": [
+                  {
+                    "label": "Asthma",
+                    "concept": "c10a05bc-e814-4693-a789-1eb884270381"
+                  },
+                  {
+                    "label": "COPD",
+                    "concept": "0d9a7323-b54a-4d2b-a231-e34fa54e3a54"
+                  },
+                  {
+                    "label": "Respiratory infection",
+                    "concept": "74510e0a-eb5a-4c6b-8133-c7f04887ce41"
+                  },
+                  {
+                    "label": "Sleep apnea",
+                    "concept": "505eca4c-cf85-451b-82d3-3828b34e8149"
+                  },
+                  {
+                    "label": "Smoking",
+                    "concept": "5924c369-7328-4832-b387-a2e2b6b5d8ee"
+                  },
+                  {
+                    "label": "Tuberculosis",
+                    "concept": "ed41ba0d-7410-4374-9fae-c357cd8a8971"
+                  },
+                  {
+                    "label": "Unremarkable",
+                    "concept": "76d2aae0-6f53-41b2-97b2-b427fed58959"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "packsOrYear",
+              "label": "Packs/year",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "423e6012-dddd-4aa4-9dce-3090f15cd40d",
+                "min": 0,
+                "step": 1
+              },
+              "disallowDecimals": false,
+              "hide": {
+                "hideWhenExpression": "!includes(respiratory, '5924c369-7328-4832-b387-a2e2b6b5d8ee')"
+              }
+            },
+            {
+              "id": "cardiovascular",
+              "label": "Cardiovascular",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "6541ddce-0e3c-4b7d-ad52-2bfe18e24dd5",
+                "answers": [
+                  {
+                    "label": "Arrhythmia",
+                    "concept": "26722ca1-acf1-4e1e-ba43-a571a99c76e0"
+                  },
+                  {
+                    "label": "Congenital heart disease",
+                    "concept": "3735615f-c334-4b0c-bb34-9a30f65e8cf1"
+                  },
+                  {
+                    "label": "Congestive heart failure",
+                    "concept": "6a7a9d6a-e8b6-4ffb-8321-a56e9e4473e0"
+                  },
+                  {
+                    "label": "Coronary artery disease",
+                    "concept": "17f8d329-46f5-42ae-8d94-3b4e5727ab4b"
+                  },
+                  {
+                    "label": "Hypertension",
+                    "concept": "10f3b49c-c3dc-4aa7-857f-3f9bb7df8dd0"
+                  },
+                  {
+                    "label": "Peripheral vascular disease",
+                    "concept": "d149c447-b34f-422a-bcdf-251bc6fcbecb"
+                  },
+                  {
+                    "label": "Unremarkable",
+                    "concept": "76d2aae0-6f53-41b2-97b2-b427fed58959"
+                  },
+                  {
+                    "label": "Valve disease",
+                    "concept": "07f0df01-26ac-428d-b386-df58671b465c"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "neurological",
+              "label": "Neurological",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "19323ae3-53e4-4a5b-9f62-69bb454aa159",
+                "answers": [
+                  {
+                    "label": "Altered mental status",
+                    "concept": "d7290cda-f52c-4fde-9bef-3b1fb41b2e58"
+                  },
+                  {
+                    "label": "Cerebrovascular disease",
+                    "concept": "aafdb266-821a-44a7-ad19-914fda45630c"
+                  },
+                  {
+                    "label": "Neuromuscular disease",
+                    "concept": "3284a339-427a-4af0-b06b-364438b792e4"
+                  },
+                  {
+                    "label": "Psych/Depression",
+                    "concept": "c8fb6188-40b9-4a90-a751-1548ce919e06"
+                  },
+                  {
+                    "label": "Seizures",
+                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                  },
+                  {
+                    "label": "Unremarkable",
+                    "concept": "76d2aae0-6f53-41b2-97b2-b427fed58959"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "systemic",
+              "label": "Systemic",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "3ac1ab2f-47e6-46a9-a46b-63321d7170d1",
+                "answers": [
+                  {
+                    "label": "Anemia",
+                    "concept": "a116ddd7-46af-4183-8b76-babcf2029ed6"
+                  },
+                  {
+                    "label": "Coagulopathy",
+                    "concept": "97f2e92b-3552-43dc-8d90-f78d6fe49674"
+                  },
+                  {
+                    "label": "Diabetes",
+                    "concept": "4930dcb4-1f94-42b8-8406-1d4c575c6327"
+                  },
+                  {
+                    "label": "Gastroesophageal reflux/Ulcer",
+                    "concept": "72081cd2-3500-44de-aa63-edf43fef5103"
+                  },
+                  {
+                    "label": "Liver disease",
+                    "concept": "260459c8-ca4e-47a3-bf9e-51cd14a1ee51"
+                  },
+                  {
+                    "label": "Malnutrition",
+                    "concept": "05cd25b0-bbf3-4434-9cf7-54082d52683a"
+                  },
+                  {
+                    "label": "Obesity BMI > 30",
+                    "concept": "af8021ad-37b5-464f-87fb-7affce46a700"
+                  },
+                  {
+                    "label": "Renal disease",
+                    "concept": "1a16cb77-52ba-415e-a6a0-73e2fd11f57c"
+                  },
+                  {
+                    "label": "Substance use",
+                    "concept": "30837713-453e-4456-ac48-b3886acf02ac"
+                  },
+                  {
+                    "label": "Thyroid disease",
+                    "concept": "cb9b825a-e338-4ce6-b587-3c10fc5a2e32"
+                  },
+                  {
+                    "label": "Unremarkable",
+                    "concept": "76d2aae0-6f53-41b2-97b2-b427fed58959"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Surgical",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "anyRemarkablePastIntervention",
+              "label": "Any remarkable past intervention?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a598c067-7efb-4c11-8694-7ac3bcec571b",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "intervention1Year",
+              "label": "Intervention 1 - Year",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "3953ddf8-ad2d-4ed8-9111-5ab7084170a0",
+                "min": 1900,
+                "max": 2999,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "anyRemarkablePastIntervention !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "type",
+              "label": "Type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ffc2c6cf-757e-4201-8b52-96293e813724"
+              },
+              "hide": {
+                "hideWhenExpression": "anyRemarkablePastIntervention !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "anesthesia",
+              "label": "Anesthesia",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "672b6a9b-4268-45f0-84d9-10063c9759cf"
+              },
+              "hide": {
+                "hideWhenExpression": "anyRemarkablePastIntervention !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "complications",
+              "label": "Complications",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "956b9767-b235-4df0-a9d7-3312b83927a2"
+              },
+              "hide": {
+                "hideWhenExpression": "anyRemarkablePastIntervention !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "intervention2Year",
+              "label": "Intervention 2 - Year",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "3953ddf8-ad2d-4ed8-9111-5ab7084170a0",
+                "min": 1900,
+                "max": 2999,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "anyRemarkablePastIntervention !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "surgical_type",
+              "label": "Type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ffc2c6cf-757e-4201-8b52-96293e813724"
+              },
+              "hide": {
+                "hideWhenExpression": "anyRemarkablePastIntervention !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "surgical_anesthesia",
+              "label": "Anesthesia",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "672b6a9b-4268-45f0-84d9-10063c9759cf"
+              },
+              "hide": {
+                "hideWhenExpression": "anyRemarkablePastIntervention !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "surgical_complications",
+              "label": "Complications",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "956b9767-b235-4df0-a9d7-3312b83927a2"
+              },
+              "hide": {
+                "hideWhenExpression": "anyRemarkablePastIntervention !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "intervention3Year",
+              "label": "Intervention 3 - Year",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "3953ddf8-ad2d-4ed8-9111-5ab7084170a0",
+                "min": 1900,
+                "max": 2999,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "anyRemarkablePastIntervention !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "history_surgical_type",
+              "label": "Type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ffc2c6cf-757e-4201-8b52-96293e813724"
+              },
+              "hide": {
+                "hideWhenExpression": "anyRemarkablePastIntervention !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "history_surgical_anesthesia",
+              "label": "Anesthesia",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "672b6a9b-4268-45f0-84d9-10063c9759cf"
+              },
+              "hide": {
+                "hideWhenExpression": "anyRemarkablePastIntervention !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "history_surgical_complications",
+              "label": "Complications",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "956b9767-b235-4df0-a9d7-3312b83927a2"
+              },
+              "hide": {
+                "hideWhenExpression": "anyRemarkablePastIntervention !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Obstetrical",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "gravida",
+              "label": "Gravida",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "00df1796-a090-447d-8904-3d6e0d9e5948",
+                "min": 0,
+                "max": 18,
+                "step": 1
+              }
+            },
+            {
+              "id": "parity",
+              "label": "Parity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "76a96d44-00f5-469f-9329-5a53409a87eb",
+                "min": 0,
+                "max": 18,
+                "step": 1
+              }
+            },
+            {
+              "id": "currentlyPregnant",
+              "label": "Currently pregnant?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "af80c954-b62f-43f8-b54f-9b434a3dc43d",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "term",
+              "label": "Term (weeks)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1d2003cb-4b14-4391-8f90-37a74976676a",
+                "min": 1,
+                "max": 50,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "currentlyPregnant !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Tranfusion",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "hadThePatientEverReceivedTransfusion",
+              "label": "Had the patient ever received transfusion?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5734f19c-08e7-4c12-871e-75968e682881",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "historyOrReactions",
+              "label": "History/reactions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e7f57d92-180e-49ea-9c0a-97a28780ccd7"
+              },
+              "hide": {
+                "hideWhenExpression": "hadThePatientEverReceivedTransfusion !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Allergies",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "fillInallergyForAnyRelevantInformation",
+              "label": "Fill in 'Allergy' for any relevant information",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Fill in 'Allergy' for any relevant information"
+            },
+            {
+              "id": "openAllergies",
+              "label": "Open Allergies",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open workspace",
+                "workspaceName": "patient-allergy-form-workspace"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Medication",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "fillInmedicationForAnyRelevantInformation",
+              "label": "Fill in 'Medication' for any relevant information",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Fill in 'Medication' for any relevant information"
+            },
+            {
+              "id": "orderMedications",
+              "label": "Add medication patient is currently using but not yet listed",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Additional information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "notes",
+              "label": "Notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "c13f9fb3-6890-4e13-b13c-8c09fef6ba93"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Physical exam",
+      "sections": [
+        {
+          "label": "Physical exam",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "mentalStatusExam",
+              "label": "Mental status exam",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "cb4974ca-ddac-4662-8b0a-2861f1e50569"
+              }
+            },
+            {
+              "id": "respiratoryExam",
+              "label": "Respiratory exam",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "7925f3f5-3e62-4181-8534-a3e2132f1444"
+              }
+            },
+            {
+              "id": "cardiovascularExam",
+              "label": "Cardiovascular exam",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "1e69a561-5601-4c98-b2dc-17893d4bd9e6"
+              }
+            },
+            {
+              "id": "spineExam",
+              "label": "Spine exam",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "7bf6c725-d635-47af-8a8e-fc043962b1fe"
+              }
+            },
+            {
+              "id": "interIncisorDistanceLessThan3xm",
+              "label": "Inter-incisor distance <3xm",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "250bdf20-7500-4f1e-9eea-561bb4b40889",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "thyromentalDistanceLessThan6cm",
+              "label": "Thyromental distance <6cm",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "71dd4920-979d-4e6d-a787-2f4cf79fdd1f",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "mallampatiClass",
+              "label": "Mallampati class",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8f3c4c7c-a093-4ef6-a5a7-faa9edd61a63",
+                "answers": [
+                  {
+                    "label": "1",
+                    "concept": "9c407911-f329-4761-b27a-bbbe24cc0332"
+                  },
+                  {
+                    "label": "2",
+                    "concept": "42965304-8abb-4a57-b7c2-b3eff5cbe9c7"
+                  },
+                  {
+                    "label": "3",
+                    "concept": "168e35f0-9866-4b13-98f2-4ecd2f538117"
+                  },
+                  {
+                    "label": "4",
+                    "concept": "6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "checkInvitalsBiometricsAndFillWithUpdatedMeasurementsForweightheightbloodPressurepulseSpo2RrateAndtemperature",
+              "label": "Check in 'Vitals & Biometrics' and fill with updated measurements for 'Weight', 'Height', 'Blood pressure', 'Pulse', SpO2', R.rate' and 'Temperature'",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Check in 'Vitals & Biometrics' and fill with updated measurements for 'Weight', 'Height', 'Blood pressure', 'Pulse', SpO2', R.rate' and 'Temperature'"
+            },
+            {
+              "id": "capturePatientVitals",
+              "label": "Capture patient vitals",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Additional information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalInformation_notes",
+              "label": "Notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "c13f9fb3-6890-4e13-b13c-8c09fef6ba93"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Additional exams",
+      "sections": [
+        {
+          "label": "Imaging",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "ekg",
+              "label": "EKG",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "1eb3b596-367a-4347-a568-d1284beb8b5b"
+              }
+            },
+            {
+              "id": "cxr",
+              "label": "CXR",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "bc8d2326-883c-4a7a-84e5-98def4a3c684"
+              }
+            },
+            {
+              "id": "other",
+              "label": "Other",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Laboratory",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInresultsViewerAndConsiderOrderingUsingorderBasketForTheFollowingExamsBloodGroupHbHctPltsGlyNaPlusKPlusUreaCreat",
+              "label": "Please check in 'Results viewer' and consider ordering using 'order basket' for the following exams: Blood group, Hb, Hct, Plts, Gly, Na+, K+, Urea, Creat",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Please check in 'Results viewer' and consider ordering using 'order basket' for the following exams: Blood group, Hb, Hct, Plts, Gly, Na+, K+, Urea, Creat"
+            },
+            {
+              "id": "openWorkspace",
+              "label": "Open workspace",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open workspace",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Evaluation",
+      "sections": [
+        {
+          "label": "Evaluation",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "asaClass",
+              "label": "ASA class",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "10ef102a-04d6-45ac-8471-2cec34b87a03",
+                "answers": [
+                  {
+                    "label": "1",
+                    "concept": "9c407911-f329-4761-b27a-bbbe24cc0332"
+                  },
+                  {
+                    "label": "2",
+                    "concept": "42965304-8abb-4a57-b7c2-b3eff5cbe9c7"
+                  },
+                  {
+                    "label": "3",
+                    "concept": "168e35f0-9866-4b13-98f2-4ecd2f538117"
+                  },
+                  {
+                    "label": "4",
+                    "concept": "6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91"
+                  },
+                  {
+                    "label": "5",
+                    "concept": "ce1af250-6125-47b9-89d7-dc5e88f69528"
+                  },
+                  {
+                    "label": "6",
+                    "concept": "fbb3a8af-6cca-4642-8649-677fd917191c"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "difficultMaskVentilationRisk",
+              "label": "Difficult mask ventilation risk?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2acb3bc6-2464-4026-81e4-0170ba9d8aed",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "difficultIntubationRisk",
+              "label": "Difficult intubation risk?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "543edf4a-a22b-4256-8547-095c60493d56",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "regurgitationOrAspirationRisk",
+              "label": "Regurgitation/aspiration risk?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e089e7f1-7e3d-4244-a56f-2e8e75e4bcd9",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "bleedingRisk",
+              "label": "Bleeding risk?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f9517cd8-d701-4cca-8db8-d1d85a5908e8",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Planning",
+      "sections": [
+        {
+          "label": "Anesthesia",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "anestheticPlan",
+              "label": "Anesthetic plan",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "6571b827-3bb4-489f-80ff-1816abcc5d68",
+                "answers": [
+                  {
+                    "label": "Combined anesthesia",
+                    "concept": "196fc1d8-f306-4a00-b167-c8c9962eeb5a"
+                  },
+                  {
+                    "label": "General anesthesia with endotracheal intubation",
+                    "concept": "df6c87ea-6e5d-4d37-b74e-7ef07ec07e20"
+                  },
+                  {
+                    "label": "General anesthesia with laryngeal mask",
+                    "concept": "ca8b293a-b570-4f9c-9184-6a18c1fc37b2"
+                  },
+                  {
+                    "label": "General anesthesia with or without oxygen mask, cannula",
+                    "concept": "9e2374c3-067f-463e-8949-fdfe4eb04254"
+                  },
+                  {
+                    "label": "Local anesthesia",
+                    "concept": "d55cc5f0-b014-4c00-ab13-dfb81835e26b"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Peripheral nerve blocks",
+                    "concept": "65b535d3-eced-484c-8433-9ff9f0e5e514"
+                  },
+                  {
+                    "label": "Sedation",
+                    "concept": "ae4b74af-18d6-4574-9de8-a9371b961449"
+                  },
+                  {
+                    "label": "Spinal anesthesia",
+                    "concept": "c47adaf8-7e0a-495a-bf39-ae42e56f416f"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "anesthesia_ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(anestheticPlan, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "premedication",
+              "label": "Premedication (please prescribe using the 'order basket')",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Premedication (please prescribe using the 'order basket')"
+            },
+            {
+              "id": "anesthesia_orderMedications",
+              "label": "Order medications",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            },
+            {
+              "id": "additionalInvestigations",
+              "label": "Additional investigations (please order laboratory tests using the 'order basket')",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Additional investigations (please order laboratory tests using the 'order basket')"
+            },
+            {
+              "id": "orderInvestigations",
+              "label": "Order investigations",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Fasting",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "canEatUntil",
+              "label": "Can eat until",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "63a9c295-e17f-4a71-95f9-bb2189565892"
+              }
+            },
+            {
+              "id": "canDrinkUntil",
+              "label": "Can drink until",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "f91596a2-53a5-42f4-8c2c-4a5992bb40ad"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Other",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalInstructions",
+              "label": "Additional instructions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

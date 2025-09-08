@@ -1,0 +1,1714 @@
+{
+  "name": "F24-Neonatal discharge form",
+  "description": "MSF Form - F24-Neonatal discharge form",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Neonatology",
+  "encounterType": "48410309-917d-451f-adeb-0c50f11ca829",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Discharge",
+      "sections": [
+        {
+          "label": "Discharge data",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "daysSinceAdmission",
+              "label": "Days since admission",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "8a5feead-bafe-44fa-8976-65d8c527fe64",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            },
+            {
+              "id": "dischargeDate",
+              "label": "Discharge date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "13cea1c8-e426-411f-95b4-33651fc4325d"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
+              "default": "Current date"
+            }
+          ]
+        },
+        {
+          "label": "Vitals & Biometrics",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "updatetemperaturerRatespo2pulseAndheight",
+              "label": "Update 'Temperature', 'R. rate', 'SpO2', 'Pulse' and 'Height'",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "weight",
+              "label": "Weight (kg)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "cdb8c5f1-1afd-41d0-ba30-714440441555",
+                "min": 0.0,
+                "disallowDecimals": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis",
+      "sections": [
+        {
+          "label": "Diagnosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "finalDiagnosisMain",
+              "label": "Final Diagnosis - Main",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9da302ed-948f-4030-8f0a-a294dd3dff21",
+                "answers": [
+                  {
+                    "label": "Apnoea of prematurity",
+                    "concept": "ed87a574-6181-4dec-8449-ac4e23c3deaa"
+                  },
+                  {
+                    "label": "Birth injury",
+                    "concept": "b5d24e8d-e499-4152-9933-90407e7213b9"
+                  },
+                  {
+                    "label": "Bronchiolitis obstructive bronchitis",
+                    "concept": "b7e10d5e-e8d4-4fbf-a3bd-905df49de45d"
+                  },
+                  {
+                    "label": "Congenital cardiac condition",
+                    "concept": "3735615f-c334-4b0c-bb34-9a30f65e8cf1"
+                  },
+                  {
+                    "label": "Congenital herpes virus infection",
+                    "concept": "7d93eaf2-c0af-4bd9-9879-1cb14cf746b5"
+                  },
+                  {
+                    "label": "Congenital malaria",
+                    "concept": "4522f6b8-36ac-4c78-b250-07a4ba4daa46"
+                  },
+                  {
+                    "label": "Congenital malformation",
+                    "concept": "2c8cc5c6-ba1c-488b-b7ed-5159c907c1d0"
+                  },
+                  {
+                    "label": "Congenital syphilis",
+                    "concept": "2e62aaa6-bf40-4a3c-9d05-a7d4e539c837"
+                  },
+                  {
+                    "label": "Diarrhoea without fever",
+                    "concept": "4b10e044-1d42-4b1a-9b90-582e7b53bf21"
+                  },
+                  {
+                    "label": "Meningitis unspecified",
+                    "concept": "a4b63517-6046-4279-b0ca-86409f3b7e63"
+                  },
+                  {
+                    "label": "Neonatal anaemia",
+                    "concept": "11e0d841-9d0b-48da-9d27-6f80fe57d377"
+                  },
+                  {
+                    "label": "Neonatal conjunctivitis",
+                    "concept": "ab7f2fa6-ab47-43ed-882d-71821024aaf0"
+                  },
+                  {
+                    "label": "Neonatal convulsions",
+                    "concept": "b2b47f30-ba2f-49cc-850e-0c842839488c"
+                  },
+                  {
+                    "label": "Neonatal jaundice",
+                    "concept": "2061726f-aa58-4600-a197-36c7114697b7"
+                  },
+                  {
+                    "label": "Neonatal meconial aspiration",
+                    "concept": "6c457d77-d370-414e-b125-8f6eb8a34800"
+                  },
+                  {
+                    "label": "Neonatal Necrotizing Enterocolitis",
+                    "concept": "7627c248-a9f9-40fc-a573-c125c8a0761b"
+                  },
+                  {
+                    "label": "Neonatal pneumonia",
+                    "concept": "9145a74f-f905-4119-9ca5-2ef1477c3ae3"
+                  },
+                  {
+                    "label": "Neonatal pneumothorax",
+                    "concept": "8c729f2a-d341-4188-afb9-fb9a5524b3d7"
+                  },
+                  {
+                    "label": "Neonatal sepsis/septic shock",
+                    "concept": "b30d2825-c1ef-4223-8735-fe8c85756c14"
+                  },
+                  {
+                    "label": "Neonatal severe hypoglycemia",
+                    "concept": "fbd4161f-4e9d-4acd-a91b-cf1ba666b501"
+                  },
+                  {
+                    "label": "Neonatal tetanus",
+                    "concept": "7ee30a7d-57de-4f03-9b52-79471717df13"
+                  },
+                  {
+                    "label": "Neonatal tuberculosis",
+                    "concept": "e43b1ffc-b558-4b31-a01b-7340d16dbab2"
+                  },
+                  {
+                    "label": "Newborn to an HIV+ mother",
+                    "concept": "8f5229a3-99c9-40b0-a951-67340a28d472"
+                  },
+                  {
+                    "label": "Observation",
+                    "concept": "d9f335fd-153f-4125-b615-a526f77d31ed"
+                  },
+                  {
+                    "label": "Omphalitis/skin infection",
+                    "concept": "88ac8d11-3d09-47a1-87cb-4a9e4a1b93c4"
+                  },
+                  {
+                    "label": "Other neonatal conditions",
+                    "concept": "8216ea0d-fa4b-4873-b716-c147d1276a3e"
+                  },
+                  {
+                    "label": "Perinatal asphyxia and complications",
+                    "concept": "3fcb4f1c-68be-4adb-b0e9-1cf7138933c4"
+                  },
+                  {
+                    "label": "Prematurity and/or low birth weight",
+                    "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
+                  },
+                  {
+                    "label": "Respiratory distress syndrome of the newborn",
+                    "concept": "88b16a71-8664-4782-8f09-68869fb2dedd"
+                  },
+                  {
+                    "label": "Risk of sepsis",
+                    "concept": "a1eb6c76-ceec-4d5b-81ef-f125ea7d2eab"
+                  },
+                  {
+                    "label": "Transient tachypnoea of the newborn",
+                    "concept": "38a912c2-09c2-4085-85ad-899eaa98eada"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "mainIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(finalDiagnosisMain !== '8216ea0d-fa4b-4873-b716-c147d1276a3e')"
+              }
+            },
+            {
+              "id": "finalDiagnosisSecondary1",
+              "label": "Final Diagnosis - Secondary 1",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "3a03bdb4-4b3f-45c3-966a-97843ec88680",
+                "answers": [
+                  {
+                    "label": "Apnoea of prematurity",
+                    "concept": "ed87a574-6181-4dec-8449-ac4e23c3deaa"
+                  },
+                  {
+                    "label": "Birth injury",
+                    "concept": "b5d24e8d-e499-4152-9933-90407e7213b9"
+                  },
+                  {
+                    "label": "Bronchiolitis obstructive bronchitis",
+                    "concept": "b7e10d5e-e8d4-4fbf-a3bd-905df49de45d"
+                  },
+                  {
+                    "label": "Congenital cardiac condition",
+                    "concept": "3735615f-c334-4b0c-bb34-9a30f65e8cf1"
+                  },
+                  {
+                    "label": "Congenital herpes virus infection",
+                    "concept": "7d93eaf2-c0af-4bd9-9879-1cb14cf746b5"
+                  },
+                  {
+                    "label": "Congenital malaria",
+                    "concept": "4522f6b8-36ac-4c78-b250-07a4ba4daa46"
+                  },
+                  {
+                    "label": "Congenital malformation",
+                    "concept": "2c8cc5c6-ba1c-488b-b7ed-5159c907c1d0"
+                  },
+                  {
+                    "label": "Congenital syphilis",
+                    "concept": "2e62aaa6-bf40-4a3c-9d05-a7d4e539c837"
+                  },
+                  {
+                    "label": "Diarrhoea without fever",
+                    "concept": "4b10e044-1d42-4b1a-9b90-582e7b53bf21"
+                  },
+                  {
+                    "label": "Meningitis unspecified",
+                    "concept": "a4b63517-6046-4279-b0ca-86409f3b7e63"
+                  },
+                  {
+                    "label": "Neonatal anaemia",
+                    "concept": "11e0d841-9d0b-48da-9d27-6f80fe57d377"
+                  },
+                  {
+                    "label": "Neonatal conjunctivitis",
+                    "concept": "ab7f2fa6-ab47-43ed-882d-71821024aaf0"
+                  },
+                  {
+                    "label": "Neonatal convulsions",
+                    "concept": "b2b47f30-ba2f-49cc-850e-0c842839488c"
+                  },
+                  {
+                    "label": "Neonatal jaundice",
+                    "concept": "2061726f-aa58-4600-a197-36c7114697b7"
+                  },
+                  {
+                    "label": "Neonatal meconial aspiration",
+                    "concept": "6c457d77-d370-414e-b125-8f6eb8a34800"
+                  },
+                  {
+                    "label": "Neonatal Necrotizing Enterocolitis",
+                    "concept": "7627c248-a9f9-40fc-a573-c125c8a0761b"
+                  },
+                  {
+                    "label": "Neonatal pneumonia",
+                    "concept": "9145a74f-f905-4119-9ca5-2ef1477c3ae3"
+                  },
+                  {
+                    "label": "Neonatal pneumothorax",
+                    "concept": "8c729f2a-d341-4188-afb9-fb9a5524b3d7"
+                  },
+                  {
+                    "label": "Neonatal sepsis/septic shock",
+                    "concept": "b30d2825-c1ef-4223-8735-fe8c85756c14"
+                  },
+                  {
+                    "label": "Neonatal severe hypoglycemia",
+                    "concept": "fbd4161f-4e9d-4acd-a91b-cf1ba666b501"
+                  },
+                  {
+                    "label": "Neonatal tetanus",
+                    "concept": "7ee30a7d-57de-4f03-9b52-79471717df13"
+                  },
+                  {
+                    "label": "Neonatal tuberculosis",
+                    "concept": "e43b1ffc-b558-4b31-a01b-7340d16dbab2"
+                  },
+                  {
+                    "label": "Newborn to an HIV+ mother",
+                    "concept": "8f5229a3-99c9-40b0-a951-67340a28d472"
+                  },
+                  {
+                    "label": "Observation",
+                    "concept": "d9f335fd-153f-4125-b615-a526f77d31ed"
+                  },
+                  {
+                    "label": "Omphalitis/skin infection",
+                    "concept": "88ac8d11-3d09-47a1-87cb-4a9e4a1b93c4"
+                  },
+                  {
+                    "label": "Other neonatal conditions",
+                    "concept": "8216ea0d-fa4b-4873-b716-c147d1276a3e"
+                  },
+                  {
+                    "label": "Perinatal asphyxia and complications",
+                    "concept": "3fcb4f1c-68be-4adb-b0e9-1cf7138933c4"
+                  },
+                  {
+                    "label": "Prematurity and/or low birth weight",
+                    "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
+                  },
+                  {
+                    "label": "Respiratory distress syndrome of the newborn",
+                    "concept": "88b16a71-8664-4782-8f09-68869fb2dedd"
+                  },
+                  {
+                    "label": "Risk of sepsis",
+                    "concept": "a1eb6c76-ceec-4d5b-81ef-f125ea7d2eab"
+                  },
+                  {
+                    "label": "Transient tachypnoea of the newborn",
+                    "concept": "38a912c2-09c2-4085-85ad-899eaa98eada"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "secondary1IfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(finalDiagnosisSecondary1 !== '8216ea0d-fa4b-4873-b716-c147d1276a3e')"
+              }
+            },
+            {
+              "id": "finalDiagnosisSecondary2",
+              "label": "Final Diagnosis - Secondary 2",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "e9ff5084-8d17-48e8-a1b7-890d1b4e14b1",
+                "answers": [
+                  {
+                    "label": "Apnoea of prematurity",
+                    "concept": "ed87a574-6181-4dec-8449-ac4e23c3deaa"
+                  },
+                  {
+                    "label": "Birth injury",
+                    "concept": "b5d24e8d-e499-4152-9933-90407e7213b9"
+                  },
+                  {
+                    "label": "Bronchiolitis obstructive bronchitis",
+                    "concept": "b7e10d5e-e8d4-4fbf-a3bd-905df49de45d"
+                  },
+                  {
+                    "label": "Congenital cardiac condition",
+                    "concept": "3735615f-c334-4b0c-bb34-9a30f65e8cf1"
+                  },
+                  {
+                    "label": "Congenital herpes virus infection",
+                    "concept": "7d93eaf2-c0af-4bd9-9879-1cb14cf746b5"
+                  },
+                  {
+                    "label": "Congenital malaria",
+                    "concept": "4522f6b8-36ac-4c78-b250-07a4ba4daa46"
+                  },
+                  {
+                    "label": "Congenital malformation",
+                    "concept": "2c8cc5c6-ba1c-488b-b7ed-5159c907c1d0"
+                  },
+                  {
+                    "label": "Congenital syphilis",
+                    "concept": "2e62aaa6-bf40-4a3c-9d05-a7d4e539c837"
+                  },
+                  {
+                    "label": "Diarrhoea without fever",
+                    "concept": "4b10e044-1d42-4b1a-9b90-582e7b53bf21"
+                  },
+                  {
+                    "label": "Meningitis unspecified",
+                    "concept": "a4b63517-6046-4279-b0ca-86409f3b7e63"
+                  },
+                  {
+                    "label": "Neonatal anaemia",
+                    "concept": "11e0d841-9d0b-48da-9d27-6f80fe57d377"
+                  },
+                  {
+                    "label": "Neonatal conjunctivitis",
+                    "concept": "ab7f2fa6-ab47-43ed-882d-71821024aaf0"
+                  },
+                  {
+                    "label": "Neonatal convulsions",
+                    "concept": "b2b47f30-ba2f-49cc-850e-0c842839488c"
+                  },
+                  {
+                    "label": "Neonatal jaundice",
+                    "concept": "2061726f-aa58-4600-a197-36c7114697b7"
+                  },
+                  {
+                    "label": "Neonatal meconial aspiration",
+                    "concept": "6c457d77-d370-414e-b125-8f6eb8a34800"
+                  },
+                  {
+                    "label": "Neonatal Necrotizing Enterocolitis",
+                    "concept": "7627c248-a9f9-40fc-a573-c125c8a0761b"
+                  },
+                  {
+                    "label": "Neonatal pneumonia",
+                    "concept": "9145a74f-f905-4119-9ca5-2ef1477c3ae3"
+                  },
+                  {
+                    "label": "Neonatal pneumothorax",
+                    "concept": "8c729f2a-d341-4188-afb9-fb9a5524b3d7"
+                  },
+                  {
+                    "label": "Neonatal sepsis/septic shock",
+                    "concept": "b30d2825-c1ef-4223-8735-fe8c85756c14"
+                  },
+                  {
+                    "label": "Neonatal severe hypoglycemia",
+                    "concept": "fbd4161f-4e9d-4acd-a91b-cf1ba666b501"
+                  },
+                  {
+                    "label": "Neonatal tetanus",
+                    "concept": "7ee30a7d-57de-4f03-9b52-79471717df13"
+                  },
+                  {
+                    "label": "Neonatal tuberculosis",
+                    "concept": "e43b1ffc-b558-4b31-a01b-7340d16dbab2"
+                  },
+                  {
+                    "label": "Newborn to an HIV+ mother",
+                    "concept": "8f5229a3-99c9-40b0-a951-67340a28d472"
+                  },
+                  {
+                    "label": "Observation",
+                    "concept": "d9f335fd-153f-4125-b615-a526f77d31ed"
+                  },
+                  {
+                    "label": "Omphalitis/skin infection",
+                    "concept": "88ac8d11-3d09-47a1-87cb-4a9e4a1b93c4"
+                  },
+                  {
+                    "label": "Other neonatal conditions",
+                    "concept": "8216ea0d-fa4b-4873-b716-c147d1276a3e"
+                  },
+                  {
+                    "label": "Perinatal asphyxia and complications",
+                    "concept": "3fcb4f1c-68be-4adb-b0e9-1cf7138933c4"
+                  },
+                  {
+                    "label": "Prematurity and/or low birth weight",
+                    "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
+                  },
+                  {
+                    "label": "Respiratory distress syndrome of the newborn",
+                    "concept": "88b16a71-8664-4782-8f09-68869fb2dedd"
+                  },
+                  {
+                    "label": "Risk of sepsis",
+                    "concept": "a1eb6c76-ceec-4d5b-81ef-f125ea7d2eab"
+                  },
+                  {
+                    "label": "Transient tachypnoea of the newborn",
+                    "concept": "38a912c2-09c2-4085-85ad-899eaa98eada"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "secondary2IfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(finalDiagnosisSecondary2 !== '8216ea0d-fa4b-4873-b716-c147d1276a3e')"
+              }
+            },
+            {
+              "id": "finalDiagnosisSecondary3",
+              "label": "Final Diagnosis - Secondary 3",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "d1e43f55-4432-4a19-bf17-5a1c97b2226f",
+                "answers": [
+                  {
+                    "label": "Apnoea of prematurity",
+                    "concept": "ed87a574-6181-4dec-8449-ac4e23c3deaa"
+                  },
+                  {
+                    "label": "Birth injury",
+                    "concept": "b5d24e8d-e499-4152-9933-90407e7213b9"
+                  },
+                  {
+                    "label": "Bronchiolitis obstructive bronchitis",
+                    "concept": "b7e10d5e-e8d4-4fbf-a3bd-905df49de45d"
+                  },
+                  {
+                    "label": "Congenital cardiac condition",
+                    "concept": "3735615f-c334-4b0c-bb34-9a30f65e8cf1"
+                  },
+                  {
+                    "label": "Congenital herpes virus infection",
+                    "concept": "7d93eaf2-c0af-4bd9-9879-1cb14cf746b5"
+                  },
+                  {
+                    "label": "Congenital malaria",
+                    "concept": "4522f6b8-36ac-4c78-b250-07a4ba4daa46"
+                  },
+                  {
+                    "label": "Congenital malformation",
+                    "concept": "2c8cc5c6-ba1c-488b-b7ed-5159c907c1d0"
+                  },
+                  {
+                    "label": "Congenital syphilis",
+                    "concept": "2e62aaa6-bf40-4a3c-9d05-a7d4e539c837"
+                  },
+                  {
+                    "label": "Diarrhoea without fever",
+                    "concept": "4b10e044-1d42-4b1a-9b90-582e7b53bf21"
+                  },
+                  {
+                    "label": "Meningitis unspecified",
+                    "concept": "a4b63517-6046-4279-b0ca-86409f3b7e63"
+                  },
+                  {
+                    "label": "Neonatal anaemia",
+                    "concept": "11e0d841-9d0b-48da-9d27-6f80fe57d377"
+                  },
+                  {
+                    "label": "Neonatal conjunctivitis",
+                    "concept": "ab7f2fa6-ab47-43ed-882d-71821024aaf0"
+                  },
+                  {
+                    "label": "Neonatal convulsions",
+                    "concept": "b2b47f30-ba2f-49cc-850e-0c842839488c"
+                  },
+                  {
+                    "label": "Neonatal jaundice",
+                    "concept": "2061726f-aa58-4600-a197-36c7114697b7"
+                  },
+                  {
+                    "label": "Neonatal meconial aspiration",
+                    "concept": "6c457d77-d370-414e-b125-8f6eb8a34800"
+                  },
+                  {
+                    "label": "Neonatal Necrotizing Enterocolitis",
+                    "concept": "7627c248-a9f9-40fc-a573-c125c8a0761b"
+                  },
+                  {
+                    "label": "Neonatal pneumonia",
+                    "concept": "9145a74f-f905-4119-9ca5-2ef1477c3ae3"
+                  },
+                  {
+                    "label": "Neonatal pneumothorax",
+                    "concept": "8c729f2a-d341-4188-afb9-fb9a5524b3d7"
+                  },
+                  {
+                    "label": "Neonatal sepsis/septic shock",
+                    "concept": "b30d2825-c1ef-4223-8735-fe8c85756c14"
+                  },
+                  {
+                    "label": "Neonatal severe hypoglycemia",
+                    "concept": "fbd4161f-4e9d-4acd-a91b-cf1ba666b501"
+                  },
+                  {
+                    "label": "Neonatal tetanus",
+                    "concept": "7ee30a7d-57de-4f03-9b52-79471717df13"
+                  },
+                  {
+                    "label": "Neonatal tuberculosis",
+                    "concept": "e43b1ffc-b558-4b31-a01b-7340d16dbab2"
+                  },
+                  {
+                    "label": "Newborn to an HIV+ mother",
+                    "concept": "8f5229a3-99c9-40b0-a951-67340a28d472"
+                  },
+                  {
+                    "label": "Observation",
+                    "concept": "d9f335fd-153f-4125-b615-a526f77d31ed"
+                  },
+                  {
+                    "label": "Omphalitis/skin infection",
+                    "concept": "88ac8d11-3d09-47a1-87cb-4a9e4a1b93c4"
+                  },
+                  {
+                    "label": "Other neonatal conditions",
+                    "concept": "8216ea0d-fa4b-4873-b716-c147d1276a3e"
+                  },
+                  {
+                    "label": "Perinatal asphyxia and complications",
+                    "concept": "3fcb4f1c-68be-4adb-b0e9-1cf7138933c4"
+                  },
+                  {
+                    "label": "Prematurity and/or low birth weight",
+                    "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
+                  },
+                  {
+                    "label": "Respiratory distress syndrome of the newborn",
+                    "concept": "88b16a71-8664-4782-8f09-68869fb2dedd"
+                  },
+                  {
+                    "label": "Risk of sepsis",
+                    "concept": "a1eb6c76-ceec-4d5b-81ef-f125ea7d2eab"
+                  },
+                  {
+                    "label": "Transient tachypnoea of the newborn",
+                    "concept": "38a912c2-09c2-4085-85ad-899eaa98eada"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "secondary3IfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(finalDiagnosisSecondary3 !== '8216ea0d-fa4b-4873-b716-c147d1276a3e')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Immunization",
+      "sections": [
+        {
+          "label": "Immunization",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "vaccinationCard",
+              "label": "Vaccination card",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e78e5eab-1db7-46b4-a87a-65d1453705f3",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "checkimmunizationToCompleteAndUpdatePossibleMissingVaccines",
+              "label": "Check 'Immunization' to complete and update possible missing vaccines",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient immunizations",
+                "workspaceName": "immunization-form-workspace"
+              }
+            },
+            {
+              "id": "bcg",
+              "label": "BCG",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1b235207-e71a-4119-aa0a-6f632e7d8749",
+                "answers": [
+                  {
+                    "label": "Dose 1",
+                    "concept": "3117845c-23f7-42b0-a64a-b2fd2ec13965"
+                  },
+                  {
+                    "label": "Not vaccinated",
+                    "concept": "5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "lastBcgDoseGivenOnSite",
+              "label": "Last BCG dose given on site",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "543fce17-3cd8-49af-8e72-604fbf33171c",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(bcg !== '3117845c-23f7-42b0-a64a-b2fd2ec13965')"
+              }
+            },
+            {
+              "id": "hepatitisB0",
+              "label": "Hepatitis B 0",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e68c1c38-4feb-4436-814b-fc1ab77dddb1",
+                "answers": [
+                  {
+                    "label": "Dose 1",
+                    "concept": "3117845c-23f7-42b0-a64a-b2fd2ec13965"
+                  },
+                  {
+                    "label": "Not vaccinated",
+                    "concept": "5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "lastHepatitisB0DoseGivenOnSite",
+              "label": "Last Hepatitis B 0 dose given on site",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "260e4e04-9b60-4919-aa30-b86b9e5a0fa6",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hepatitisB0 !== '3117845c-23f7-42b0-a64a-b2fd2ec13965')"
+              }
+            },
+            {
+              "id": "polio0",
+              "label": "Polio 0",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ec7f2e09-633d-4fcb-828b-8763e1cb25f1",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "lastPolio0GivenOnSite",
+              "label": "Last Polio 0 given on site",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "fbac9d83-5e85-4171-8535-1e6efbbf0efa",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(polio0 !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Mother",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "antitetanusVaccinationOfTheMother",
+              "label": "Antitetanus vaccination of the mother",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a8085d5e-0d12-4c68-b4c9-318efa21b347",
+                "answers": [
+                  {
+                    "label": "TT1",
+                    "concept": "df890b6d-ec6f-4041-8a77-f36cfb87d30a"
+                  },
+                  {
+                    "label": "TT2",
+                    "concept": "fe632fa3-c7b8-4665-aae1-5e2aa9671cb5"
+                  },
+                  {
+                    "label": "TT3",
+                    "concept": "66c5e98e-0e46-4d37-853d-eed01cb803d4"
+                  },
+                  {
+                    "label": "TT4",
+                    "concept": "65df6859-cbdc-47b4-a7ec-9c615a70a724"
+                  },
+                  {
+                    "label": "\u2265TT5",
+                    "concept": "a8924fbf-06dd-43d1-b9bb-74b412a6750a"
+                  },
+                  {
+                    "label": "Not vaccinated",
+                    "concept": "5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "lastAntitetanusDoseGivenOnSite",
+              "label": "Last Antitetanus dose given on site",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "41747362-04b6-4c9b-97b4-6422ff2a250f",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(antitetanusVaccinationOfTheMother !== 'df890b6d-ec6f-4041-8a77-f36cfb87d30a' && antitetanusVaccinationOfTheMother !== 'fe632fa3-c7b8-4665-aae1-5e2aa9671cb5' && antitetanusVaccinationOfTheMother !== '66c5e98e-0e46-4d37-853d-eed01cb803d4' && antitetanusVaccinationOfTheMother !== '65df6859-cbdc-47b4-a7ec-9c615a70a724' && antitetanusVaccinationOfTheMother !== 'a8924fbf-06dd-43d1-b9bb-74b412a6750a')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Other children",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "accompanyingChildrenStatusChecked",
+              "label": "Accompanying children status checked",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3fce5b4e-a1c7-4f0a-99ca-ee8095eb9aac",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "accompanyingChildrenVaccinated",
+              "label": "Accompanying children vaccinated",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bf4246bf-cc1b-4471-b321-36cc5a62ebd0",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "N/A",
+                    "concept": "8fb2f830-52b3-4593-8e8f-5db8e2be7668"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(accompanyingChildrenStatusChecked !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Hospitalization",
+      "sections": [
+        {
+          "label": "Treatment",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "stayInIsolationUnit",
+              "label": "Stay in isolation unit?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "01ea9cdc-6bf0-4576-947a-96e505b2561a",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "stayInIsolationUnitDurationInHours",
+              "label": "Duration in hours",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "c73a45d1-5953-4303-9fc1-1889076da122",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(stayInIsolationUnit !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "oxygenTherapy",
+              "label": "Oxygen therapy?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "775a4895-fdbd-4409-9292-6044972eca83",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "oxygenTherapyDurationInHours",
+              "label": "Duration in hours",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "dfd75194-5e4c-4cfd-9fa3-2bbb9a8ac9f8",
+                "min": 0.0,
+                "disallowDecimals": false
+              },
+              "hide": {
+                "hideWhenExpression": "(oxygenTherapy !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "antibiotherapy",
+              "label": "Antibiotherapy?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6551dc1e-f8db-469c-9929-93c334178390",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "antibiotherapyDurationInDays",
+              "label": "Duration in days",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "5eb49967-40a5-44ea-b816-fab4f79b203a",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(antibiotherapy !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "phototherapy",
+              "label": "Phototherapy?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "eb12bc66-ca56-4cf9-a851-b95b14e295b5",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "cafeine",
+              "label": "Cafeine?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "733cf4e2-f6a0-44a6-8f5d-370130e588c6",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "bloodTransfusion",
+              "label": "Blood transfusion?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "550f0ba6-b763-4501-9e24-19607031110f",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Feeding",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "iv",
+              "label": "IV",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6ce3a865-e191-49cb-8ddb-7566c900cbc8",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ogOrNg",
+              "label": "OG/NG",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f9f0ced4-8ac0-4ab3-b9f3-d5744b407521",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "po",
+              "label": "PO",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bb74c14f-a693-43af-90ac-92b5fabc9494",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "milkOfMother",
+              "label": "Milk of mother",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "66df1751-8f66-4c8b-8f8d-142c6fa7518d",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "formulaMilk",
+              "label": "Formula milk",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "94f017fa-41b2-4654-a593-4c33e00176f6",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "dilutedF100",
+              "label": "Diluted F100",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d9db0be4-e01b-4520-8837-bc4dab724c78",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "otherMilk",
+              "label": "Other milk",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9cacff31-b968-46f7-95b3-675fb0cffdae",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Mother",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "motherTestedForHiv",
+              "label": "Mother tested for HIV?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "dd54dd88-de7c-42ed-8cfe-bf8e61758e7b",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hivMotherResult",
+              "label": "HIV mother - Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "992c05f7-daa6-442c-abc8-edcf2411b4e5",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(motherTestedForHiv !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "pmtctMother",
+              "label": "PMTCT mother",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c6f0c3f3-ccde-4b31-973b-99223c5feefb",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(motherTestedForHiv !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Outcome",
+      "sections": [
+        {
+          "label": "Outcome",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "outcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a6441766-3a82-40c7-9028-d08f2757da02",
+                "answers": [
+                  {
+                    "label": "Discharged",
+                    "concept": "1fbf752b-536b-486b-bfd1-70325ccdea1a"
+                  },
+                  {
+                    "label": "Transferred",
+                    "concept": "18c795cb-7197-46da-926f-e4d1848b8c36"
+                  },
+                  {
+                    "label": "Referred",
+                    "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11"
+                  },
+                  {
+                    "label": "Dead",
+                    "concept": "dc1c7ac9-d9c3-4887-bc22-827c2db7689f"
+                  },
+                  {
+                    "label": "Defaulter",
+                    "concept": "81cbc44a-ac84-4458-ab99-feab4d64c691"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "referralPlace",
+              "label": "Referral place",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f3d5264e-eabe-493d-b9cf-df84c5adf519",
+                "answers": [
+                  {
+                    "label": "MoH",
+                    "concept": "b0e5066f-047b-441c-b428-2517035e7ad0"
+                  },
+                  {
+                    "label": "MSF",
+                    "concept": "74c9a7c6-e64d-4f49-b8a6-f10999eb25bc"
+                  },
+                  {
+                    "label": "NGO",
+                    "concept": "80ea94ed-44ea-40fa-b697-98523b62df36"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== '93eb9716-6866-4d13-9b8f-59c0a7605a11')"
+              }
+            },
+            {
+              "id": "referralPlaceIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(referralPlace !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "causeOfReferral",
+              "label": "Cause of referral",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== '93eb9716-6866-4d13-9b8f-59c0a7605a11')"
+              }
+            },
+            {
+              "id": "dateOfDeath",
+              "label": "Date of death",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "68f91879-5f00-4168-82eb-785c6bece077"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
+              "default": "Current date",
+              "hide": {
+                "hideWhenExpression": "(outcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            },
+            {
+              "id": "deathCause",
+              "label": "Death cause",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "778b70b5-c6de-4459-a101-6bf02f77d5c7",
+                "answers": [
+                  {
+                    "label": "Birth injury",
+                    "concept": "b5d24e8d-e499-4152-9933-90407e7213b9"
+                  },
+                  {
+                    "label": "Congenital cardiac condition",
+                    "concept": "3735615f-c334-4b0c-bb34-9a30f65e8cf1"
+                  },
+                  {
+                    "label": "Congenital malaria",
+                    "concept": "4522f6b8-36ac-4c78-b250-07a4ba4daa46"
+                  },
+                  {
+                    "label": "Lower respiratory tract infection",
+                    "concept": "ea03ce93-7c26-47a3-af09-5a21b7371db3"
+                  },
+                  {
+                    "label": "Neonatal anaemia",
+                    "concept": "11e0d841-9d0b-48da-9d27-6f80fe57d377"
+                  },
+                  {
+                    "label": "Neonatal conjunctivitis",
+                    "concept": "ab7f2fa6-ab47-43ed-882d-71821024aaf0"
+                  },
+                  {
+                    "label": "Neonatal convulsions",
+                    "concept": "b2b47f30-ba2f-49cc-850e-0c842839488c"
+                  },
+                  {
+                    "label": "Neonatal jaundice",
+                    "concept": "2061726f-aa58-4600-a197-36c7114697b7"
+                  },
+                  {
+                    "label": "Neonatal sepsis/septic shock",
+                    "concept": "b30d2825-c1ef-4223-8735-fe8c85756c14"
+                  },
+                  {
+                    "label": "Neonatal tetanus",
+                    "concept": "7ee30a7d-57de-4f03-9b52-79471717df13"
+                  },
+                  {
+                    "label": "Non violence-related injuries",
+                    "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
+                  },
+                  {
+                    "label": "Other neonatal conditions",
+                    "concept": "8216ea0d-fa4b-4873-b716-c147d1276a3e"
+                  },
+                  {
+                    "label": "Perinatal asphyxia and complications",
+                    "concept": "3fcb4f1c-68be-4adb-b0e9-1cf7138933c4"
+                  },
+                  {
+                    "label": "Prematurity and/or low birth weight",
+                    "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
+                  },
+                  {
+                    "label": "Respiratory distress syndrome of the newborn",
+                    "concept": "88b16a71-8664-4782-8f09-68869fb2dedd"
+                  },
+                  {
+                    "label": "Traumatic brain injury",
+                    "concept": "952d4753-7f1c-40fc-94e4-0dd98fdfdbba"
+                  },
+                  {
+                    "label": "Violence-related injuries",
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            },
+            {
+              "id": "deathCauseIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(deathCause !== '8216ea0d-fa4b-4873-b716-c147d1276a3e')"
+              }
+            },
+            {
+              "id": "ifTransferSpecifyTheUnit",
+              "label": "Specify the unit",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "eef5efc1-4d6a-43fb-87e1-4cca9842678d",
+                "answers": [
+                  {
+                    "label": "ICU",
+                    "concept": "897751f5-b7a2-4e7c-90bb-986abb08b81b"
+                  },
+                  {
+                    "label": "ITFC",
+                    "concept": "344d7889-0fc4-4843-b695-cd08c7bdc73e"
+                  },
+                  {
+                    "label": "Pediatrics",
+                    "concept": "a599cf2b-6568-493f-954c-c7229fee2e7f"
+                  },
+                  {
+                    "label": "Surgery",
+                    "concept": "4d688780-019e-40fd-9004-044b69d9283f"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== '18c795cb-7197-46da-926f-e4d1848b8c36')"
+              }
+            },
+            {
+              "id": "ifTransferSpecifyTheUnitIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(ifTransferSpecifyTheUnit !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Comments",
+      "sections": [
+        {
+          "label": "Comments",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Prescription",
+      "sections": [
+        {
+          "label": "Prescription",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "prescribeNewExamsAndMedicationWithTheOrderBasketWheneverNecessary",
+              "label": "Prescribe new exams and medication with the order basket whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            },
+            {
+              "id": "inappointmentsSetTheNextDateForFollowUpWheneverNecessary",
+              "label": "In 'Appointments' set the next date for follow up whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -630,6 +630,31 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>com.bekioui.maven.plugin</groupId>
+        <artifactId>merge-maven-plugin</artifactId>
+        <version>1.2.0</version>
+        <executions>
+            <execution>
+                <id>Merge env files</id>
+                <phase>prepare-package</phase>
+                <goals>
+                    <goal>merge</goal>
+                </goals>
+                <configuration>
+                    <merges>
+                        <merge>
+                            <target>${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env</target>
+                            <searchDir>${project.build.directory}/${project.artifactId}-${project.version}/run/docker</searchDir>
+                            <!-- Modified pattern to exclude concatenated.env -->
+                            <pattern>^(?!ozone-dir\.env$|concatenated\.env$).*\.env</pattern>
+                            <override>true</override>
+                        </merge>
+                    </merges>
+                </configuration>
+            </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 

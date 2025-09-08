@@ -8,14 +8,13 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <!-- Add admin as provider -->
-    <changeSet id="add_admin_provider-202407101630" author="pirupius">
+    <changeSet id="add_admin_provider-20250808" author="pirupius">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 SELECT CASE WHEN EXISTS (SELECT 1 FROM provider WHERE person_id = 1) THEN 0 ELSE 1 END;
             </sqlCheck>
         </preConditions>
         <insert tableName="provider">
-            <column name="provider_id" value="1" />
             <column name="person_id" value="1" />
             <column name="name" value="Super User" />
             <column name="identifier" value="admin" />
@@ -36,10 +35,18 @@
         </sql>
     </changeSet>
 
-    <!-- Remove the C-reactive Protien () from the Tests Orderability concept -->
-    <changeSet id="remove_crp_from_tests_orderability" author="vasharma05">
+    <!-- Remove the C-reactive Protien (CRP) from the Tests Orderability concept -->
+    <changeSet id="remove_crp_from_tests_orderability-20250717" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept_set
+                WHERE concept_id IN (SELECT concept_id FROM concept WHERE uuid = 'fbc2647a-caef-4c3e-bc22-6109efefe70e')
+                    AND concept_set IN (SELECT concept_id FROM concept WHERE uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77');
+            </sqlCheck>
+        </preConditions>
         <comment>
-            Remove C-reactive Protien () from the Tests Orderability concept set
+            Remove C-reactive Protien (CRP) from the Tests Orderability concept set
         </comment>
 
         <sql>
@@ -51,15 +58,34 @@
 
     <!-- Schedule auto-close OPD visits -->
     <changeSet id="unvoid_arabic_translations-202411271458" author="michaelbontyes">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) FROM scheduler_task_config WHERE uuid = '8c17b376-1a2b-11e1-a51a-00248140a5eb';
+            </sqlCheck>
+        </preConditions>
+
+        <comment>
+            Schedule auto-close OPD visits task
+            This task will stop all active visits that match the visit type(s) specified by the value
+            of the global property 'visits.autoCloseVisitType'.
+            The task will run daily at midnight.
+        </comment>
+
         <sql>
             INSERT INTO openmrs.scheduler_task_config (name,description,schedulable_class,start_time,start_time_pattern,repeat_interval,start_on_startup,started,created_by,date_created,changed_by,date_changed,last_execution_time,uuid) VALUES
-	            ('Auto Close Visits Task','Stops all active visits that match the visit type(s) specified by the value of the global property ''visits.autoCloseVisitType''','org.openmrs.scheduler.tasks.AutoCloseVisitsTask','2024-11-28 00:00:00','MM/dd/yyyy HH:mm:ss',86400,1,1,1,'2018-06-04 18:30:16',1,'2024-11-27 11:54:11','2024-11-27 11:49:00','8c17b376-1a2b-11e1-a51a-00248140a5eb')
+                ('Auto Close Visits Task','Stops all active visits that match the visit type(s) specified by the value of the global property ''visits.autoCloseVisitType''','org.openmrs.scheduler.tasks.AutoCloseVisitsTask','2024-11-28 00:00:00','MM/dd/yyyy HH:mm:ss',86400,1,1,1,'2018-06-04 18:30:16',1,'2024-11-27 11:54:11','2024-11-27 11:49:00','8c17b376-1a2b-11e1-a51a-00248140a5eb')
         </sql>
     </changeSet>
 
     <!-- Update PatientIdStickerXmlReportRenderer class path -->
     <changeSet id="update_patient_id_sticker_renderer-202405261300" author="jnsereko">
         <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM information_schema.tables
+                WHERE table_schema = DATABASE()
+                AND table_name = 'reporting_report_design'
+            </sqlCheck>
             <sqlCheck expectedResult="1">
                 SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
                 FROM reporting_report_design
@@ -75,6 +101,13 @@
 
     <!-- Retire CIEL concept for Nystatin -->
     <changeSet id="delete_ciel_concept_nystatin" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept
+                WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+            </sqlCheck>
+        </preConditions>
         <comment>
             Delete duplicate CIEL Nystatin concept
         </comment>
@@ -89,6 +122,8 @@
             <!-- Only running this to remove previously recorded obs -->
             DELETE FROM obs WHERE value_coded = (SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
 
+            DELETE FROM drug WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+
             <!-- Delete concept -->
             DELETE FROM concept WHERE uuid = '80945AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
         </sql>
@@ -96,6 +131,13 @@
 
     <!-- DELETE Severe Pain CIEL concept -->
     <changeSet id="delete_ciel_concept_severe_pain" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept
+                WHERE uuid = '163477AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+            </sqlCheck>
+        </preConditions>
         <comment>
             Delete duplicate CIEL Severe Pain concept
         </comment>
@@ -116,7 +158,16 @@
     </changeSet>
 
     <!-- Delete from concept_answer -->
-    <changeSet id="delete-serum_glutamic_concept-answer" author="vasharma05">
+    <changeSet id="delete-serum_glutamic_pyruvic_concept-answer" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept c
+                JOIN concept_answer ca
+                ON c.concept_id = ca.concept_id
+                WHERE c.uuid = "15f35c9d-3328-478b-a6e8-f3846fdc274a";
+            </sqlCheck>
+        </preConditions>
         <comment>
             Delete Serum glutamic-oxaloacetic transaminase (SGOT) concept answer
             The concept UUID is '15f35c9d-3328-478b-a6e8-f3846fdc274a'
@@ -133,6 +184,25 @@
 
     <!-- Combined delete from concept_set for multiple concept UUIDs with same set UUID -->
     <changeSet id="delete-concept-set-tests-orderability" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept_set cs
+                JOIN concept c1 ON cs.concept_id = c1.concept_id
+                JOIN concept c2 ON cs.concept_set = c2.concept_id
+                WHERE c2.uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77'
+                AND c1.uuid IN (
+                    'add9cf99-9b28-44db-80bd-cc6eba22b6c8',
+                    'abc13cdd-16b1-4bc0-86a3-588531d50da5',
+                    '37c3b841-9959-4d1b-b952-0444f98d72a4',
+                    '1cbc3383-088d-408c-9933-bb00fd0cfb6f',
+                    '39ba3592-b4ef-4e2f-968a-b5f82d5ceb59',
+                    'ff00d86d-69e5-4c9e-beea-ce642e6c4643',
+                    '83eaf4f6-0508-4c1c-87c5-b61b66a66135',
+                    '867e50a0-f749-4952-8769-1f301e157f8b'
+                )
+            </sqlCheck>
+        </preConditions>
         <comment>
             Delete multiple concepts from Tests Orderability concept set
             The concept set UUID is 'a781d229-0de6-44c0-86ab-2194aae85f77'
@@ -168,6 +238,17 @@
 
     <!-- RENAL FUNCTION: Delete Urine routine and microscopy -->
     <changeSet id="delete-concept-set-renal-function" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept_set cs
+                JOIN concept c1 ON cs.concept_id = c1.concept_id
+                JOIN concept c2 ON cs.concept_set = c2.concept_id
+                WHERE c2.uuid = 'fb13459b-72f4-4d53-8f5e-dff86adf82cb'
+                AND c1.uuid IN ('11027b26-7e8b-4b0a-a5cf-355f9e725d35', '8db2d994-2635-4ec2-8552-ad33e0a2c8ea');
+            </sqlCheck>
+        </preConditions>
+
         <comment>
             Delete Urine routine and microscopy from concept_set
         </comment>
@@ -195,7 +276,25 @@
         </sql>
     </changeSet>
 
-    <changeSet id="remove-deprecated-drugs-from-mosul" author="vasharma05">
+    <changeSet id="remove-deprecated-drugs-from-mosul-20250820" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM drug d
+                WHERE d.uuid IN (
+                    "ff9d0e64-4c3b-4856-83b7-d4e90c6cf51c",
+                    "9d9f2fa1-0139-4440-99fc-e5caf4e3d05e",
+                    "98a2be3c-70ce-4f8f-9513-b1d1d2977b77",
+                    "1f49a024-6569-4740-9b5b-2f8dc05b1d4a",
+                    "3554cf31-2669-4add-9433-4f8dfc8d3544",
+                    "c95216b3-ef44-4f3a-b53e-f0603158ce70",
+                    "a3bd05b0-9cad-4d00-97d7-070d98bd1f6d",
+                    "e278c3e1-ed95-42c2-b9c0-a83bd99e6588",
+                    "556d869c-e2e3-4635-ab69-c6737a8721c8",
+                    "507354fe-321d-493f-888b-efee07ad9eb2"
+                )
+            </sqlCheck>
+        </preConditions>
         <comment>
             Remove deprecated drugs from Mosul
         </comment>
@@ -216,4 +315,297 @@
             );
         </sql>
     </changeSet>
+
+    <changeSet id="retire-no-longer-needed-diagnosis-concepts" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept WHERE retired != 1 AND uuid IN (
+                    '87b9ca2c-9bc7-4a2c-b073-8da3447bb658',
+                    'e18cd6a4-e01d-413e-baac-e223f2bde6f8',
+                    '6ca5c950-56d8-4d15-b7ec-08c455d4ef1b',
+                    '796c49e7-32e0-46d0-af07-1faa4d6f3a7d',
+                    '93b099ab-f4e7-450b-b135-9eb87cc08db7',
+                    'b82db9d8-b0b2-4810-b333-b56147be8ca3',
+                    '92b89271-e6be-43bb-a00b-7cc8fa29672a',
+                    'a2a2dff3-1790-412a-98fb-eafaad1020a8',
+                    '40958ac3-2c6d-4ec0-9372-10bd5915ab59',
+                    '61395583-115c-49f9-bf02-20a598b5fae8',
+                    '73e2d90b-2dd8-485e-afc9-10b99efdacba',
+                    '84fc5a0d-0158-4c41-b6e5-8ac7ebfccc0c',
+                    'd9483b20-cd09-47ab-bd65-901036f27af1',
+                    'aa63c034-aab0-4275-8a12-bd48eb5b1ea3',
+                    'cb17ea3f-4291-47c9-9b9b-524405eca510',
+                    '0b3fca23-a2fd-4637-a736-8e9889f0576c',
+                    'a474ba3e-a042-4188-a85f-3f6ada330766',
+                    'ed1150fd-278f-4012-b3d7-a795ac9fac82',
+                    'f1ee73b2-08cb-4373-80ac-357a704d3608',
+                    '1361c31f-e817-4e8f-84cc-6ffab48bdeef',
+                    '3b44664a-3aef-4301-ae10-e3f97e4f0c93',
+                    'f692e669-e099-46ed-9983-85c280fe00cb',
+                    '17a480f9-3062-4335-8f39-894c00044c4c',
+                    '65235d61-4922-4f5e-85e0-c5cfbc3b1326',
+                    '63403633-b8e9-4b7c-930f-8efb52f4d7a1',
+                    '66a39234-6b00-474f-9f12-e21fce6a1905',
+                    'c3b90a66-dff3-40c1-8621-139832bac677',
+                    'fa3973b1-9151-46e1-a9e5-898fb56204bf',
+                    'e089b554-67d4-49df-9fe9-6e2028d9cdeb',
+                    '2853bc0b-d973-44b5-be5a-1776951f1378',
+                    '930856cf-a96d-4568-8f6c-e86b368a3ec1',
+                    'aecac536-6eea-4de8-a450-a9ad9608514a',
+                    'dc14d4a8-3366-4ac9-b0df-6dbcbde7feb2',
+                    '33412ef6-d3c7-490e-aa6b-71acabc6f2ae',
+                    '7c15ad84-7ad4-4807-a361-52bdee5a778f',
+                    'c482fce5-e69c-492b-8687-77e5b53ef92e',
+                    '2c3f61b0-c994-456e-93ea-f7d4fb530645',
+                    'da5d6946-ab1d-4f17-b4c3-8d22b0f0a770',
+                    'dd1ee9b8-6ce4-42c5-b171-4471e337b07d',
+                    '6544d829-2665-4011-889c-b527a4501727',
+                    '417859fb-caba-4ea6-b5fd-7d26dedea47b',
+                    '2e32e3a3-960c-40be-b5d1-fe498ca1594b',
+                    '56a2bcc8-2eac-436e-9322-405ddef56576',
+                    '1f0f64e6-7577-4aa7-aea0-5de259a73458',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088',
+                    '37045dd7-f085-40bd-9e93-f6e21d60f7bd',
+                    '8389caa2-ec54-4a28-81da-96af0220ba30',
+                    '785629c1-7d82-4ec2-b8df-d71106380a37',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0109',
+                    '84580e9d-2dd6-4e9f-a3ac-c46bd5980d44',
+                    '6bc28f08-0436-4916-bc47-05f2b67aa860',
+                    '1cd28ff9-9f68-487c-ab5f-52bcac61ad5b',
+                    '10336195-ecd9-45bc-b6b4-b08ff1498e1b',
+                    'dde4bb83-ed29-49f6-9a48-0fadb0b82698',
+                    '4fd13cdc-17c3-4248-86b2-115447b628bf',
+                    'bdeeefd6-a13b-48ad-87f8-72b466e39a40',
+                    '7aac5027-56ff-43a2-aa01-139841f10db4',
+                    '2af36380-37bb-4428-af43-3439c1e1ed39',
+                    'c7e12ff9-a8fa-4170-b196-ca9aefdb0509',
+                    '1e92e6bb-e7e2-4aae-a929-2751d25575d0',
+                    'f77070aa-ebf0-48d5-8714-47f92fe70a81',
+                    '9cfb95bf-76f3-449c-a4a9-f23539169ebc',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0122',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0124',
+                    'c0fa9189-df21-43de-be64-308ff2248b07',
+                    '4f837b88-53dd-4599-a163-858bf73ce123',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0128',
+                    '5a50da1a-6b5a-4234-beee-8c09c6760cd0',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0134',
+                    'ddd5f71c-d145-4152-9d2e-202c47880b9d',
+                    '224b3e82-96b2-49df-bc00-b2c0cfd24264',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0135',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0136',
+                    '2817d265-96db-4c49-bdd0-09100674f1b1',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0137',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
+                    '717cfe5c-419c-4304-bff8-03442a9006f9',
+                    '41c4d277-2a40-4fd0-910f-5d302ad43e33',
+                    'd34a575b-e7c6-4f2c-9a66-56f3259e2efc',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0153',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0154',
+                    '8a91cfc0-271e-48f4-a5f3-4dcbfa0dd26f',
+                    'd1ec5c34-1488-47b6-bf01-c15b6aa57c47'
+                );
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Retire unwanted diagnosis concepts
+        </comment>
+
+        <sql>
+            UPDATE concept SET retired=1 WHERE uuid IN (
+                '87b9ca2c-9bc7-4a2c-b073-8da3447bb658',
+                'e18cd6a4-e01d-413e-baac-e223f2bde6f8',
+                '6ca5c950-56d8-4d15-b7ec-08c455d4ef1b',
+                '796c49e7-32e0-46d0-af07-1faa4d6f3a7d',
+                '93b099ab-f4e7-450b-b135-9eb87cc08db7',
+                'b82db9d8-b0b2-4810-b333-b56147be8ca3',
+                '92b89271-e6be-43bb-a00b-7cc8fa29672a',
+                'a2a2dff3-1790-412a-98fb-eafaad1020a8',
+                '40958ac3-2c6d-4ec0-9372-10bd5915ab59',
+                '61395583-115c-49f9-bf02-20a598b5fae8',
+                '73e2d90b-2dd8-485e-afc9-10b99efdacba',
+                '84fc5a0d-0158-4c41-b6e5-8ac7ebfccc0c',
+                'd9483b20-cd09-47ab-bd65-901036f27af1',
+                'aa63c034-aab0-4275-8a12-bd48eb5b1ea3',
+                'cb17ea3f-4291-47c9-9b9b-524405eca510',
+                '0b3fca23-a2fd-4637-a736-8e9889f0576c',
+                'a474ba3e-a042-4188-a85f-3f6ada330766',
+                'ed1150fd-278f-4012-b3d7-a795ac9fac82',
+                'f1ee73b2-08cb-4373-80ac-357a704d3608',
+                '1361c31f-e817-4e8f-84cc-6ffab48bdeef',
+                '3b44664a-3aef-4301-ae10-e3f97e4f0c93',
+                'f692e669-e099-46ed-9983-85c280fe00cb',
+                '17a480f9-3062-4335-8f39-894c00044c4c',
+                '65235d61-4922-4f5e-85e0-c5cfbc3b1326',
+                '63403633-b8e9-4b7c-930f-8efb52f4d7a1',
+                '66a39234-6b00-474f-9f12-e21fce6a1905',
+                'c3b90a66-dff3-40c1-8621-139832bac677',
+                'fa3973b1-9151-46e1-a9e5-898fb56204bf',
+                'e089b554-67d4-49df-9fe9-6e2028d9cdeb',
+                '2853bc0b-d973-44b5-be5a-1776951f1378',
+                '930856cf-a96d-4568-8f6c-e86b368a3ec1',
+                'aecac536-6eea-4de8-a450-a9ad9608514a',
+                'dc14d4a8-3366-4ac9-b0df-6dbcbde7feb2',
+                '33412ef6-d3c7-490e-aa6b-71acabc6f2ae',
+                '7c15ad84-7ad4-4807-a361-52bdee5a778f',
+                'c482fce5-e69c-492b-8687-77e5b53ef92e',
+                '2c3f61b0-c994-456e-93ea-f7d4fb530645',
+                'da5d6946-ab1d-4f17-b4c3-8d22b0f0a770',
+                'dd1ee9b8-6ce4-42c5-b171-4471e337b07d',
+                '6544d829-2665-4011-889c-b527a4501727',
+                '417859fb-caba-4ea6-b5fd-7d26dedea47b',
+                '2e32e3a3-960c-40be-b5d1-fe498ca1594b',
+                '56a2bcc8-2eac-436e-9322-405ddef56576',
+                '1f0f64e6-7577-4aa7-aea0-5de259a73458',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0088',
+                '37045dd7-f085-40bd-9e93-f6e21d60f7bd',
+                '8389caa2-ec54-4a28-81da-96af0220ba30',
+                '785629c1-7d82-4ec2-b8df-d71106380a37',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0109',
+                '84580e9d-2dd6-4e9f-a3ac-c46bd5980d44',
+                '6bc28f08-0436-4916-bc47-05f2b67aa860',
+                '1cd28ff9-9f68-487c-ab5f-52bcac61ad5b',
+                '10336195-ecd9-45bc-b6b4-b08ff1498e1b',
+                'dde4bb83-ed29-49f6-9a48-0fadb0b82698',
+                '4fd13cdc-17c3-4248-86b2-115447b628bf',
+                'bdeeefd6-a13b-48ad-87f8-72b466e39a40',
+                '7aac5027-56ff-43a2-aa01-139841f10db4',
+                '2af36380-37bb-4428-af43-3439c1e1ed39',
+                'c7e12ff9-a8fa-4170-b196-ca9aefdb0509',
+                '1e92e6bb-e7e2-4aae-a929-2751d25575d0',
+                'f77070aa-ebf0-48d5-8714-47f92fe70a81',
+                '9cfb95bf-76f3-449c-a4a9-f23539169ebc',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0122',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0124',
+                'c0fa9189-df21-43de-be64-308ff2248b07',
+                '4f837b88-53dd-4599-a163-858bf73ce123',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0128',
+                '5a50da1a-6b5a-4234-beee-8c09c6760cd0',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0134',
+                'ddd5f71c-d145-4152-9d2e-202c47880b9d',
+                '224b3e82-96b2-49df-bc00-b2c0cfd24264',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0135',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0136',
+                '2817d265-96db-4c49-bdd0-09100674f1b1',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0137',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
+                '717cfe5c-419c-4304-bff8-03442a9006f9',
+                '41c4d277-2a40-4fd0-910f-5d302ad43e33',
+                'd34a575b-e7c6-4f2c-9a66-56f3259e2efc',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0153',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0154',
+                '8a91cfc0-271e-48f4-a5f3-4dcbfa0dd26f',
+                'd1ec5c34-1488-47b6-bf01-c15b6aa57c47'
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="rename-deprecated-msfocg-concepts" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT COUNT(*)
+                FROM concept c
+                JOIN concept_name cn ON c.concept_id = cn.concept_id
+                WHERE c.uuid IN (
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
+                ) AND cn.name NOT LIKE '% RETIRED';
+        </preConditions>
+        <comment>
+            Rename deprecated MSF-OCG concepts
+        </comment>
+        <sql>
+            UPDATE concept_name
+            SET name = CONCAT(name, ' RETIRED')
+            WHERE concept_id IN (
+                SELECT concept_id FROM concept WHERE uuid IN (
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
+                )
+            )
+            AND name NOT LIKE '% RETIRED';
+        </sql>
+    </changeSet>
+
+    <changeSet id="delete-duplicate-deprecated-concepts-from-msfocg-20250818" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept WHERE uuid IN (
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
+                );
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete duplicate deprecated concepts from MSF-OCG
+        </comment>
+        <sql>
+            UPDATE obs SET concept_id = (
+                SELECT concept_id FROM concept WHERE uuid = 'f9cb0dac-1b8f-442c-94cb-4bde52a2a979'
+            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0131');
+
+            UPDATE obs SET concept_id = (
+                SELECT concept_id FROM concept WHERE uuid = '530acec6-b269-410e-89b1-abc15dac02e9'
+            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0152');
+
+            UPDATE obs SET concept_id = (
+                SELECT concept_id FROM concept WHERE uuid = '6b624ce0-f6f0-455e-a542-bbaaba8f1dbb'
+            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0132');
+
+            UPDATE obs SET concept_id = (
+                SELECT concept_id FROM concept WHERE uuid = 'bc84fbf4-f216-43d0-8501-73572496635c'
+            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0151');
+
+            UPDATE obs SET concept_id = (
+                SELECT concept_id FROM concept WHERE uuid = '3fc5539b-7975-443a-86c1-2300d1755237'
+            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0144');
+
+            UPDATE obs SET concept_id = (
+                SELECT concept_id FROM concept WHERE uuid = '8c729f2a-d341-4188-afb9-fb9a5524b3d7'
+            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0088');
+
+            DELETE FROM concept_name
+            WHERE concept_id IN (
+                SELECT concept_id FROM concept WHERE uuid IN (
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
+                )
+            );
+
+            DELETE FROM concept
+            WHERE uuid IN (
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
+                'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
+            );
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
