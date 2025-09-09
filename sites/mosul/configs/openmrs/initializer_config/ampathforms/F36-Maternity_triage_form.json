@@ -24,8 +24,17 @@
               "required": false,
               "questionOptions": {
                 "rendering": "datetime",
-                "concept": "7f00c65d-de60-467a-8964-fe80c7a85ef0"
+                "concept": "7f00c65d-de60-467a-8964-fe80c7a85ef0",
+                "calculate": {
+                  "calculateExpression": "parseDate(new Date())"
+                }
               },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
               "default": "Current date and time"
             }
           ]
@@ -91,8 +100,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "00df1796-a090-447d-8904-3d6e0d9e5948",
-                "min": 0.0,
-                "max": 20.0,
+                "min": 0,
+                "max": 20,
                 "disallowDecimals": true,
                 "step": 1
               }
@@ -105,8 +114,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "76a96d44-00f5-469f-9329-5a53409a87eb",
-                "min": 0.0,
-                "max": 20.0,
+                "min": 0,
+                "max": 20,
                 "disallowDecimals": true,
                 "step": 1
               }
@@ -119,8 +128,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "aa296b81-5599-4076-8e53-e47d6e96159e",
-                "min": 0.0,
-                "max": 20.0,
+                "min": 0,
+                "max": 20,
                 "disallowDecimals": true,
                 "step": 1
               }
@@ -164,8 +173,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "b8a2dd3a-fe0b-448b-bc8c-ef28963d23df",
-                "min": 0.0,
-                "max": 10.0,
+                "min": 0,
+                "max": 10,
                 "disallowDecimals": true,
                 "step": 1
               }
@@ -178,8 +187,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "30800fbb-9ebc-46fc-8f61-44bc008f5952",
-                "min": 0.0,
-                "max": 40.0,
+                "min": 0,
+                "max": 40,
                 "disallowDecimals": true,
                 "step": 1
               }
@@ -202,8 +211,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "675a31c5-497d-4fdc-a4e9-37bd0f43d03e",
-                "min": 0.0,
-                "max": 250.0,
+                "min": 0,
+                "max": 250,
                 "disallowDecimals": true,
                 "step": 1
               }

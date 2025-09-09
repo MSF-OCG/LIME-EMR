@@ -25,7 +25,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "8a5feead-bafe-44fa-8976-65d8c527fe64",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": true,
                 "step": 1
               }
@@ -373,8 +373,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "30800fbb-9ebc-46fc-8f61-44bc008f5952",
-                "min": 0.0,
-                "max": 40.0,
+                "min": 0,
+                "max": 40,
                 "disallowDecimals": true,
                 "step": 1
               }
@@ -444,7 +444,8 @@
                 "rendering": "number",
                 "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
                 "min": 0.0,
-                "disallowDecimals": false
+                "disallowDecimals": false,
+                "step": 0.1
               },
               "hide": {
                 "hideWhenExpression": "(!includes(procedures, '550f0ba6-b763-4501-9e24-19607031110f'))"
@@ -637,8 +638,17 @@
               "required": false,
               "questionOptions": {
                 "rendering": "datetime",
-                "concept": "68f91879-5f00-4168-82eb-785c6bece077"
+                "concept": "68f91879-5f00-4168-82eb-785c6bece077",
+                "calculate": {
+                  "calculateExpression": "parseDate(new Date())"
+                }
               },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
               "default": "Current date",
               "hide": {
                 "hideWhenExpression": "(outcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"

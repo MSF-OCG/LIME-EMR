@@ -24,8 +24,17 @@
               "required": false,
               "questionOptions": {
                 "rendering": "datetime",
-                "concept": "da8a31e5-df0b-454d-a194-553c9fd25fda"
+                "concept": "da8a31e5-df0b-454d-a194-553c9fd25fda",
+                "calculate": {
+                  "calculateExpression": "parseDate(new Date())"
+                }
               },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
               "default": "Current date and time"
             },
             {
@@ -271,8 +280,17 @@
               "required": false,
               "questionOptions": {
                 "rendering": "datetime",
-                "concept": "9fac693a-696a-4cbd-a14b-441d895d9922"
+                "concept": "9fac693a-696a-4cbd-a14b-441d895d9922",
+                "calculate": {
+                  "calculateExpression": "parseDate(new Date())"
+                }
               },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
               "default": "Current date and time"
             },
             {
