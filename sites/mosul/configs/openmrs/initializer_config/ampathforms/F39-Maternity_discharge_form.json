@@ -1,0 +1,786 @@
+{
+  "name": "F39-Maternity discharge form",
+  "description": "MSF Form - F39-Maternity discharge form",
+  "version": "1",
+  "published": true,
+  "uuid": "",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Maternity",
+  "encounterType": "729223d7-faae-43ff-9018-7aeee022b98f",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Discharge",
+      "sections": [
+        {
+          "label": "Discharge",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "daysSinceAdmission",
+              "label": "Days since admission",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "8a5feead-bafe-44fa-8976-65d8c527fe64",
+                "min": 0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            },
+            {
+              "id": "dischargeDate",
+              "label": "Discharge date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "13cea1c8-e426-411f-95b4-33651fc4325d"
+              },
+              "default": "Current date"
+            },
+            {
+              "id": "conditionOnDischarge",
+              "label": "Condition on discharge",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0a51dcf7-ea6d-45ca-8986-6abb91793f5c"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis",
+      "sections": [
+        {
+          "label": "Diagnosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "mainDiagnosis",
+              "label": "Main Diagnosis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9da302ed-948f-4030-8f0a-a294dd3dff21",
+                "answers": [
+                  {
+                    "label": "Antepartum haemorrhage",
+                    "concept": "d7d5b96b-ef2f-4ea3-9664-d99fbcebf8d2"
+                  },
+                  {
+                    "label": "Born before arrival",
+                    "concept": "ce7deb42-3943-4457-9837-ba96fafcd76d"
+                  },
+                  {
+                    "label": "Chorioamnionitis during labor",
+                    "concept": "920d92e4-906d-47cb-8397-6e4acd5a74bf"
+                  },
+                  {
+                    "label": "Eclampsia",
+                    "concept": "90152dfb-1e9f-4e06-9b78-f02f166b7168"
+                  },
+                  {
+                    "label": "False labor",
+                    "concept": "642487ea-a7d3-4490-8448-db27fa3db9ff"
+                  },
+                  {
+                    "label": "FGM/C Type I",
+                    "concept": "d5f1113c-595f-43ee-b9ca-1d0ddd930169"
+                  },
+                  {
+                    "label": "FGM/C Type II",
+                    "concept": "679354b5-3440-4deb-bc62-325c3c1d6e35"
+                  },
+                  {
+                    "label": "FGM/C Type III",
+                    "concept": "10ace789-ec53-4578-b01f-ef332d38040d"
+                  },
+                  {
+                    "label": "FGM/C Type IV",
+                    "concept": "21b0cbfc-cd0f-4252-af4a-b7a3fcd643ba"
+                  },
+                  {
+                    "label": "Malaria",
+                    "concept": "141fb5f1-fa2f-4934-9a22-e0a318633a10"
+                  },
+                  {
+                    "label": "Malpresentation (breech, transverse)",
+                    "concept": "27c24365-cf62-41bb-a8e5-2cba378a0b0a"
+                  },
+                  {
+                    "label": "Management of labor due to foetal distress",
+                    "concept": "c4c0cf38-022b-4062-8aef-91dbb7078c3f"
+                  },
+                  {
+                    "label": "Multiple pregnancy (twins, triplets...)",
+                    "concept": "ab5e0123-e789-4440-a71f-33c54e69b30b"
+                  },
+                  {
+                    "label": "Normal uncomplicated delivery",
+                    "concept": "cfb270ab-700b-4c28-bfff-8a6b90410a38"
+                  },
+                  {
+                    "label": "Obstetrical complications due to FGM/C",
+                    "concept": "196de34a-4b01-4112-b380-2108d15cbc44"
+                  },
+                  {
+                    "label": "Obstructed labour",
+                    "concept": "f80dbec7-880a-4699-aa9d-4c6364892fd0"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Post-Caesarean Infection",
+                    "concept": "1ae6e532-5703-4778-855d-75cee756529e"
+                  },
+                  {
+                    "label": "Postpartum haemorrhage",
+                    "concept": "f586985a-2700-4958-8cb1-f426675f0d8d"
+                  },
+                  {
+                    "label": "Post-partum infection after vaginal delivery",
+                    "concept": "d89778c8-ff6a-4f92-8ac0-6aefd1946b93"
+                  },
+                  {
+                    "label": "Pre-Eclampsia",
+                    "concept": "cd697b66-cbbe-4e2d-aa3a-29c122d21858"
+                  },
+                  {
+                    "label": "Preterm delivery",
+                    "concept": "a19ebad9-576d-4b8b-b571-ff30fe1bdbf2"
+                  },
+                  {
+                    "label": "Prolonged labour",
+                    "concept": "f80dbec7-880a-4699-aa9d-4c6364892fd0"
+                  },
+                  {
+                    "label": "Retained placenta",
+                    "concept": "687b92c6-9b01-4780-803d-7d22be513909"
+                  },
+                  {
+                    "label": "Scarred uterus (previous CS)",
+                    "concept": "83d329db-766a-46d9-8bdf-627e49731bb4"
+                  },
+                  {
+                    "label": "Severe anaemia",
+                    "concept": "cf6cd6c9-cc7d-4bb6-aa0d-4471cf163357"
+                  },
+                  {
+                    "label": "Threatened abortion",
+                    "concept": "b2ace060-aacc-487c-b161-ad44369b7125"
+                  },
+                  {
+                    "label": "Threatened preterm labour (no delivery)",
+                    "concept": "fd1dfd2b-dfc4-4771-9a15-a4d89e344f44"
+                  },
+                  {
+                    "label": "UTI/pyelonephritis",
+                    "concept": "5c5bad8b-4de1-4c55-aec4-0bfd90de1d29"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "mainDiagnosisIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(mainDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "secondaryDiagnosis",
+              "label": "Secondary Diagnosis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "3a03bdb4-4b3f-45c3-966a-97843ec88680",
+                "answers": [
+                  {
+                    "label": "Antepartum haemorrhage",
+                    "concept": "d7d5b96b-ef2f-4ea3-9664-d99fbcebf8d2"
+                  },
+                  {
+                    "label": "Born before arrival",
+                    "concept": "ce7deb42-3943-4457-9837-ba96fafcd76d"
+                  },
+                  {
+                    "label": "Chorioamnionitis during labor",
+                    "concept": "920d92e4-906d-47cb-8397-6e4acd5a74bf"
+                  },
+                  {
+                    "label": "Eclampsia",
+                    "concept": "90152dfb-1e9f-4e06-9b78-f02f166b7168"
+                  },
+                  {
+                    "label": "False labor",
+                    "concept": "642487ea-a7d3-4490-8448-db27fa3db9ff"
+                  },
+                  {
+                    "label": "FGM/C Type I",
+                    "concept": "d5f1113c-595f-43ee-b9ca-1d0ddd930169"
+                  },
+                  {
+                    "label": "FGM/C Type II",
+                    "concept": "679354b5-3440-4deb-bc62-325c3c1d6e35"
+                  },
+                  {
+                    "label": "FGM/C Type III",
+                    "concept": "10ace789-ec53-4578-b01f-ef332d38040d"
+                  },
+                  {
+                    "label": "FGM/C Type IV",
+                    "concept": "21b0cbfc-cd0f-4252-af4a-b7a3fcd643ba"
+                  },
+                  {
+                    "label": "Malaria",
+                    "concept": "141fb5f1-fa2f-4934-9a22-e0a318633a10"
+                  },
+                  {
+                    "label": "Malpresentation (breech, transverse)",
+                    "concept": "27c24365-cf62-41bb-a8e5-2cba378a0b0a"
+                  },
+                  {
+                    "label": "Management of labor due to foetal distress",
+                    "concept": "c4c0cf38-022b-4062-8aef-91dbb7078c3f"
+                  },
+                  {
+                    "label": "Multiple pregnancy (twins, triplets...)",
+                    "concept": "ab5e0123-e789-4440-a71f-33c54e69b30b"
+                  },
+                  {
+                    "label": "Normal uncomplicated delivery",
+                    "concept": "cfb270ab-700b-4c28-bfff-8a6b90410a38"
+                  },
+                  {
+                    "label": "Obstetrical complications due to FGM/C",
+                    "concept": "196de34a-4b01-4112-b380-2108d15cbc44"
+                  },
+                  {
+                    "label": "Obstructed labour",
+                    "concept": "f80dbec7-880a-4699-aa9d-4c6364892fd0"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Post-Caesarean Infection",
+                    "concept": "1ae6e532-5703-4778-855d-75cee756529e"
+                  },
+                  {
+                    "label": "Postpartum haemorrhage",
+                    "concept": "f586985a-2700-4958-8cb1-f426675f0d8d"
+                  },
+                  {
+                    "label": "Post-partum infection after vaginal delivery",
+                    "concept": "d89778c8-ff6a-4f92-8ac0-6aefd1946b93"
+                  },
+                  {
+                    "label": "Pre-Eclampsia",
+                    "concept": "cd697b66-cbbe-4e2d-aa3a-29c122d21858"
+                  },
+                  {
+                    "label": "Preterm delivery",
+                    "concept": "a19ebad9-576d-4b8b-b571-ff30fe1bdbf2"
+                  },
+                  {
+                    "label": "Prolonged labour",
+                    "concept": "f80dbec7-880a-4699-aa9d-4c6364892fd0"
+                  },
+                  {
+                    "label": "Retained placenta",
+                    "concept": "687b92c6-9b01-4780-803d-7d22be513909"
+                  },
+                  {
+                    "label": "Scarred uterus (previous CS)",
+                    "concept": "83d329db-766a-46d9-8bdf-627e49731bb4"
+                  },
+                  {
+                    "label": "Severe anaemia",
+                    "concept": "cf6cd6c9-cc7d-4bb6-aa0d-4471cf163357"
+                  },
+                  {
+                    "label": "Threatened abortion",
+                    "concept": "b2ace060-aacc-487c-b161-ad44369b7125"
+                  },
+                  {
+                    "label": "Threatened preterm labour (no delivery)",
+                    "concept": "fd1dfd2b-dfc4-4771-9a15-a4d89e344f44"
+                  },
+                  {
+                    "label": "UTI/pyelonephritis",
+                    "concept": "5c5bad8b-4de1-4c55-aec4-0bfd90de1d29"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "secondaryDiagnosisIfOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(secondaryDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Physical exam",
+      "sections": [
+        {
+          "label": "Physical exam",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "checkAndUpdatetemperaturerRatepulseAndbp",
+              "label": "Check and update 'Temperature', 'R. rate', 'Pulse' and 'BP'",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "fundusHeight",
+              "label": "Fundus height (cm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "30800fbb-9ebc-46fc-8f61-44bc008f5952",
+                "min": 0,
+                "max": 40,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            },
+            {
+              "id": "pOrVBleedingOrLochia",
+              "label": "P/V (per vagina) bleeding / lochia",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d574dd14-a400-4ec5-9c41-04c936b1e5b3"
+              }
+            },
+            {
+              "id": "wounds",
+              "label": "Wounds (perinium / c-section scar)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "978cc79e-3daa-4ac1-a893-92ffa88b68cf"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Hospitalization",
+      "sections": [
+        {
+          "label": "Hospitalization",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "procedures",
+              "label": "Procedures",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "482af9e6-795d-42d9-be5b-64f4df54a63e",
+                "answers": [
+                  {
+                    "label": "Blood transfusion",
+                    "concept": "550f0ba6-b763-4501-9e24-19607031110f"
+                  },
+                  {
+                    "label": "Management to prevent fistula (placing catheter postpartum, etc.)",
+                    "concept": "f61bedf8-e37a-4322-9271-f7921662892b"
+                  },
+                  {
+                    "label": "PMTCT management (medication to mother / baby)",
+                    "concept": "e2f56b5d-0144-4f0e-a347-29a027a8c80d"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "hbFromLastExam",
+              "label": "Hb (g/dl) from last exam",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
+                "min": 0.0,
+                "disallowDecimals": false,
+                "step": 0.1
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(procedures, '550f0ba6-b763-4501-9e24-19607031110f'))"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Outcome",
+      "sections": [
+        {
+          "label": "Outcome",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "outcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a6441766-3a82-40c7-9028-d08f2757da02",
+                "answers": [
+                  {
+                    "label": "Discharged",
+                    "concept": "1fbf752b-536b-486b-bfd1-70325ccdea1a"
+                  },
+                  {
+                    "label": "Defaulter (Absconded)",
+                    "concept": "81cbc44a-ac84-4458-ab99-feab4d64c691"
+                  },
+                  {
+                    "label": "Referred",
+                    "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11"
+                  },
+                  {
+                    "label": "Dead",
+                    "concept": "dc1c7ac9-d9c3-4887-bc22-827c2db7689f"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "checklist",
+              "label": "Checklist",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "2d8a5986-5946-44a7-a4aa-5603971d3595",
+                "answers": [
+                  {
+                    "label": "Uterus contracted",
+                    "concept": "cab8d742-3e74-4a3e-aa24-af9d63ee901f"
+                  },
+                  {
+                    "label": "Lochia normal",
+                    "concept": "e5a58fba-0e83-4c16-a624-26096d68775e"
+                  },
+                  {
+                    "label": "Passed urine",
+                    "concept": "eebf5d69-13ab-4585-b892-f3646368ad51"
+                  },
+                  {
+                    "label": "Vitamin A",
+                    "concept": "02944b8f-8716-4122-818d-27b338eb07d3"
+                  },
+                  {
+                    "label": "Vaginal packs removed (if any)",
+                    "concept": "8fbee96e-e3e2-4c0a-b880-0145d9909f17"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(outcome !== '1fbf752b-536b-486b-bfd1-70325ccdea1a')"
+              }
+            },
+            {
+              "id": "healthEducation",
+              "label": "Health education",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "270b4992-235a-46a3-8eff-e73f11f57355",
+                "answers": [
+                  {
+                    "label": "Exclusive breastfeeding for 6 months",
+                    "concept": "f935fc2c-47c0-48ab-a39b-85d443a193d4"
+                  },
+                  {
+                    "label": "Newborn hygiene, cord care, skin to skin and warmth",
+                    "concept": "fd827d76-91d6-4e43-8a26-b1008c994fe9"
+                  },
+                  {
+                    "label": "Special advice if low birth weight",
+                    "concept": "fbe0ae3d-521b-475c-8fc2-4372d2c70b1c"
+                  },
+                  {
+                    "label": "Hygiene, shower",
+                    "concept": "8f7c8e53-b242-4dbd-afcf-9b2d4cc048b1"
+                  },
+                  {
+                    "label": "Follow-up visits (removal of sutures)",
+                    "concept": "18c10f79-0bd7-429a-a809-3225bebf4bc7"
+                  },
+                  {
+                    "label": "Nutrition",
+                    "concept": "3736aa64-2f92-4eeb-8385-6a6e55c46cd3"
+                  },
+                  {
+                    "label": "Vaccinations",
+                    "concept": "8c5fd89b-edac-49f4-98b4-b67e77012aa7"
+                  },
+                  {
+                    "label": "Birth spacing/family planning/contraception method",
+                    "concept": "f241267d-b85e-4168-91a3-4539784fd5dc"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(outcome !== '1fbf752b-536b-486b-bfd1-70325ccdea1a')"
+              }
+            },
+            {
+              "id": "dangerSigns",
+              "label": "Danger signs",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "270b4992-235a-46a3-8eff-e73f11f57355",
+                "answers": [
+                  {
+                    "label": "Fever",
+                    "concept": "e15e7405-8aad-474d-a09c-bcf40da2fe84"
+                  },
+                  {
+                    "label": "Convulsions",
+                    "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
+                  },
+                  {
+                    "label": "Excessive vaginal bleeding i.e. more than menstruation",
+                    "concept": "a58a9d18-c9ca-40ff-9ee7-6cc12fd27982"
+                  },
+                  {
+                    "label": "Foul smelling vaginal discharge",
+                    "concept": "d3f156c1-db81-427a-a689-84c0690f9d24"
+                  },
+                  {
+                    "label": "Abdominal pain that does not get better with medication",
+                    "concept": "9c4b9848-95dd-4061-a37d-afa4a9cd3956"
+                  },
+                  {
+                    "label": "Severe headache with blurred vision",
+                    "concept": "ca51a6f4-a435-4120-8877-387c7b932301"
+                  },
+                  {
+                    "label": "Edema and high BP",
+                    "concept": "bd4d4e8d-0a0a-4a75-81f2-54bc29131d9b"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(outcome !== '1fbf752b-536b-486b-bfd1-70325ccdea1a')"
+              }
+            },
+            {
+              "id": "referralPlaceAndReason",
+              "label": "Referral place and reason",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== '93eb9716-6866-4d13-9b8f-59c0a7605a11')"
+              }
+            },
+            {
+              "id": "dateOfDeath",
+              "label": "Date of death",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "68f91879-5f00-4168-82eb-785c6bece077",
+                "calculate": {
+                  "calculateExpression": "parseDate(new Date())"
+                }
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
+              "default": "Current date",
+              "hide": {
+                "hideWhenExpression": "(outcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Family planning",
+      "sections": [
+        {
+          "label": "Family planning",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "contraceptiveServiceOffered",
+              "label": "Contraceptive service offered",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "30b2d692-6a05-401f-8ede-13e027b8a436",
+                "answers": [
+                  {
+                    "label": "Contraceptive counselling was not offered",
+                    "concept": "0f7d5ff6-702b-4d2e-9fd8-42d24055b935"
+                  },
+                  {
+                    "label": "Contraceptive counselling was offered, and the patient chose not to receive it",
+                    "concept": "af53a1d1-f95c-44d5-9e5b-396704e78462"
+                  },
+                  {
+                    "label": "Contraceptive counselling provided, and method accepted but not given",
+                    "concept": "b7dd9578-ecc9-4919-b198-dd2492876a41"
+                  },
+                  {
+                    "label": "Counselling provided- injection provided (Depo-Provera or Sayana press)",
+                    "concept": "90b603c9-c79d-4318-b595-7fe72372bfa2"
+                  },
+                  {
+                    "label": "Counselling provided- implant provided",
+                    "concept": "8fec7f38-8360-434b-a2fc-d4e7c7dd615d"
+                  },
+                  {
+                    "label": "Counselling provided- IUD provided",
+                    "concept": "0edaf760-51e6-46f2-b99f-e170f06e7745"
+                  },
+                  {
+                    "label": "Counselling provided- combined oral contraceptive pills provided",
+                    "concept": "0874db0d-ac40-4c8a-9546-85b774c85fde"
+                  },
+                  {
+                    "label": "Counselling provided- progestin-only pills provided",
+                    "concept": "33265ba0-157f-4168-8563-9a821527576d"
+                  },
+                  {
+                    "label": "Counselling provided- condoms provided",
+                    "concept": "840b8c53-5d7c-4874-a872-48b10b7a87a7"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== '1fbf752b-536b-486b-bfd1-70325ccdea1a' && outcome !== '93eb9716-6866-4d13-9b8f-59c0a7605a11')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Comments",
+      "sections": [
+        {
+          "label": "Comments",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Prescription",
+      "sections": [
+        {
+          "label": "Prescription",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalInstructions",
+              "label": "Additional instructions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "34d6495c-03d3-4d9b-9bec-eedd31dbd240"
+              }
+            },
+            {
+              "id": "prescribeExamsAndMedicationWithTheOrderBasketWheneverNecessary",
+              "label": "Prescribe exams and medication with the order basket whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            },
+            {
+              "id": "inappointmentsSetTheNextDateForFollowUp",
+              "label": "In 'Appointments' set the next date for follow up",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
