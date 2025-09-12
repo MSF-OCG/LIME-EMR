@@ -510,7 +510,7 @@
     <changeSet id="rename-deprecated-msfocg-concepts" author="pirupius">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT COUNT(*)
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
                 FROM concept c
                 JOIN concept_name cn ON c.concept_id = cn.concept_id
                 WHERE c.uuid IN (
@@ -521,6 +521,7 @@
                     'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
                     'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
                 ) AND cn.name NOT LIKE '% RETIRED';
+            </sqlCheck>
         </preConditions>
         <comment>
             Rename deprecated MSF-OCG concepts
@@ -542,76 +543,11 @@
         </sql>
     </changeSet>
 
-    <changeSet id="delete-duplicate-deprecated-concepts-from-msfocg-20250818" author="pirupius">
+    <changeSet id="rename-forms-in-mosul-20250912" author="pirupius">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
-                FROM concept WHERE uuid IN (
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
-                );
-            </sqlCheck>
-        </preConditions>
-        <comment>
-            Delete duplicate deprecated concepts from MSF-OCG
-        </comment>
-        <sql>
-            UPDATE obs SET concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = 'f9cb0dac-1b8f-442c-94cb-4bde52a2a979'
-            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0131');
-
-            UPDATE obs SET concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = '530acec6-b269-410e-89b1-abc15dac02e9'
-            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0152');
-
-            UPDATE obs SET concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = '6b624ce0-f6f0-455e-a542-bbaaba8f1dbb'
-            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0132');
-
-            UPDATE obs SET concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = 'bc84fbf4-f216-43d0-8501-73572496635c'
-            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0151');
-
-            UPDATE obs SET concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = '3fc5539b-7975-443a-86c1-2300d1755237'
-            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0144');
-
-            UPDATE obs SET concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = '8c729f2a-d341-4188-afb9-fb9a5524b3d7'
-            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0088');
-
-            DELETE FROM concept_name
-            WHERE concept_id IN (
-                SELECT concept_id FROM concept WHERE uuid IN (
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
-                )
-            );
-
-            DELETE FROM concept
-            WHERE uuid IN (
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
-            );
-        </sql>
-    </changeSet>
-
-    <changeSet id="rename-forms-in-mosul-20250820" author="pirupius">`
-        <preConditions onFail="MARK_RAN">
-            <sqlCheck expectedResult="1">
-                SELECT COUNT(*) FROM form WHERE name like '%MSF%';
+                FROM form WHERE name like '%MSF%';
             </sqlCheck>
         </preConditions>
         <comment>
@@ -653,10 +589,11 @@
         </sql>
     </changeSet>
 
-    <changeSet id="update-form-names-in-form-resource-20250820" author="pirupius">
+    <changeSet id="update-form-names-in-form-resource-20250912" author="pirupius">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT COUNT(*) FROM form_resource WHERE name like '%MSF%';
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM form_resource WHERE name like '%MSF%';
             </sqlCheck>
         </preConditions>
         <comment>
