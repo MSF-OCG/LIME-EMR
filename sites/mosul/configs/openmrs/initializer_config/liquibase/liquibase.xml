@@ -510,7 +510,7 @@
     <changeSet id="rename-deprecated-msfocg-concepts" author="pirupius">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT COUNT(*)
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
                 FROM concept c
                 JOIN concept_name cn ON c.concept_id = cn.concept_id
                 WHERE c.uuid IN (
@@ -521,6 +521,7 @@
                     'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
                     'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
                 ) AND cn.name NOT LIKE '% RETIRED';
+            </sqlCheck>
         </preConditions>
         <comment>
             Rename deprecated MSF-OCG concepts
@@ -542,69 +543,95 @@
         </sql>
     </changeSet>
 
-    <changeSet id="delete-duplicate-deprecated-concepts-from-msfocg-20250818" author="pirupius">
+    <changeSet id="rename-forms-in-mosul-20250912" author="pirupius">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
-                FROM concept WHERE uuid IN (
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
-                );
+                FROM form WHERE name like '%MSF%';
             </sqlCheck>
         </preConditions>
         <comment>
-            Delete duplicate deprecated concepts from MSF-OCG
+            Rename forms to follow cronological order
         </comment>
         <sql>
-            UPDATE obs SET concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = 'f9cb0dac-1b8f-442c-94cb-4bde52a2a979'
-            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0131');
+            UPDATE form SET name = 'F08-ITFC Admission' WHERE name = 'MSF Nutrition - ITFC Admission';
+            UPDATE form SET name = 'F09-ITFC Discharge' WHERE name = 'MSF Nutrition - ITFC Discharge form';
+            UPDATE form SET name = 'F10-Feeding' WHERE name = 'MSF Nutrition - Feeding Form';
+            UPDATE form SET name = 'F11-Family Planning Assessment' WHERE name = 'MSF Family Planning - Assessment';
+            UPDATE form SET name = 'F12-Family Planning Follow-up' WHERE name = 'MSF Family Planning - Follow-up';
+            UPDATE form SET name = 'F13-PNC' WHERE name = 'Post Natal Care';
+            UPDATE form SET name = 'F14-Basic Obstetric Ultrasound' WHERE name = 'F14-Basic obstetric ultrasound';
+            UPDATE form SET name = 'F15-Surgical Safety Checklist' WHERE name = 'F15-Surgical safety checklist';
+            UPDATE form SET name = 'F16-Operative Report' WHERE name = 'F16-Operative report';
+            UPDATE form SET name = 'F17-Surgery Admission' WHERE name = 'F17-Surgery admission form';
+            UPDATE form SET name = 'F18-Surgery Discharge' WHERE name = 'F18-Surgery discharge form';
+            UPDATE form SET name = 'F19-Pre-anesthesia Record' WHERE name = 'F19-Pre anesthesia record';
+            UPDATE form SET name = 'F20-Recovery' WHERE name = 'F20-Recovery form';
+            UPDATE form SET name = 'F21-Anesthesia Transfer' WHERE name = 'F21-Anesthesia transfer form';
+            UPDATE form SET name = 'F22-Neonatal Delivery' WHERE name = 'F22-Neonatal delivery form';
+            UPDATE form SET name = 'F23-Neonatal Admission' WHERE name = 'F23-Neonatal admission form';
+            UPDATE form SET name = 'F24-Neonatal Discharge' WHERE name = 'F24-Neonatal discharge form';
+            UPDATE form SET name = 'F25-Pediatrics Admission' WHERE name = 'F25-Pediatrics admission form';
+            UPDATE form SET name = 'F26-Pediatrics Discharge' WHERE name = 'F26-Pediatrics discharge form';
+            UPDATE form SET name = 'F27-Adult Admission' WHERE name = 'F27-Adult admission form';
+            UPDATE form SET name = 'F28-Adult Discharge' WHERE name = 'F28-Adult discharge form';
+            UPDATE form SET name = 'F29-MHPSS Baseline' WHERE name = 'MSF Mental Health - MHPSS Baseline v2';
+            UPDATE form SET name = 'F30-MHPSS Follow-up' WHERE name = 'MSF Mental Health - MHPSS Follow-up v2';
+            UPDATE form SET name = 'F31-mhGAP Baseline' WHERE name = 'MSF Mental Health - mhGAP Baseline v2';
+            UPDATE form SET name = 'F32-mhGAP Follow-up' WHERE name = 'MSF Mental Health - mhGAP Follow-up v2';
+            UPDATE form SET name = 'F33-MHPSS Closure' WHERE name = 'MSF Mental Health - MHPSS Closure v2';
+            UPDATE form SET name = 'F34-mhGAP Closure' WHERE name = 'MSF Mental Health - mhGAP Closure v2';
+            UPDATE form SET name = 'F35-MH-PHQ-9' WHERE name = 'MSF Mental Health - PHQ-9 v2';
+            UPDATE form SET name = 'F45-ATFC' WHERE name = 'MSF Nutrition - ATFC form';
+            UPDATE form SET name = 'F41-ER Triage' WHERE name = 'F41-ER triage form';
+            UPDATE form SET name = 'F42-ER Consultation' WHERE name = 'F42-ER consultation form';
+            UPDATE form SET name = 'F43-ER Exit' WHERE name = 'F43-ER exit form';
+        </sql>
+    </changeSet>
 
-            UPDATE obs SET concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = '530acec6-b269-410e-89b1-abc15dac02e9'
-            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0152');
-
-            UPDATE obs SET concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = '6b624ce0-f6f0-455e-a542-bbaaba8f1dbb'
-            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0132');
-
-            UPDATE obs SET concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = 'bc84fbf4-f216-43d0-8501-73572496635c'
-            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0151');
-
-            UPDATE obs SET concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = '3fc5539b-7975-443a-86c1-2300d1755237'
-            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0144');
-
-            UPDATE obs SET concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = '8c729f2a-d341-4188-afb9-fb9a5524b3d7'
-            ) WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'da33d74e-33b3-495a-9d7c-aa00a-aa0088');
-
-            DELETE FROM concept_name
-            WHERE concept_id IN (
-                SELECT concept_id FROM concept WHERE uuid IN (
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
-                    'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
-                )
-            );
-
-            DELETE FROM concept
-            WHERE uuid IN (
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0131',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0152',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0132',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0151',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0144',
-                'da33d74e-33b3-495a-9d7c-aa00a-aa0088'
-            );
+    <changeSet id="update-form-names-in-form-resource-20250912" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM form_resource WHERE name like '%MSF%';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Update form names in form_resource table to follow cronological order
+        </comment>
+        <sql>
+            UPDATE form_resource SET name = 'F08-ITFC Admission' WHERE name = 'MSF Nutrition - ITFC Admission';
+            UPDATE form_resource SET name = 'F09-ITFC Discharge' WHERE name = 'MSF Nutrition - ITFC Discharge form';
+            UPDATE form_resource SET name = 'F10-Feeding' WHERE name = 'MSF Nutrition - Feeding Form';
+            UPDATE form_resource SET name = 'F11-Family Planning Assessment' WHERE name = 'MSF Family Planning - Assessment';
+            UPDATE form_resource SET name = 'F12-Family Planning Follow-up' WHERE name = 'MSF Family Planning - Follow-up';
+            UPDATE form_resource SET name = 'F13-PNC' WHERE name = 'Post Natal Care';
+            UPDATE form_resource SET name = 'F14-Basic Obstetric Ultrasound' WHERE name = 'F14-Basic obstetric ultrasound';
+            UPDATE form_resource SET name = 'F15-Surgical Safety Checklist' WHERE name = 'F15-Surgical safety checklist';
+            UPDATE form_resource SET name = 'F16-Operative Report' WHERE name = 'F16-Operative report';
+            UPDATE form_resource SET name = 'F17-Surgery Admission' WHERE name = 'F17-Surgery admission form';
+            UPDATE form_resource SET name = 'F18-Surgery Discharge' WHERE name = 'F18-Surgery discharge form';
+            UPDATE form_resource SET name = 'F19-Pre-anesthesia Record' WHERE name = 'F19-Pre anesthesia record';
+            UPDATE form_resource SET name = 'F20-Recovery' WHERE name = 'F20-Recovery form';
+            UPDATE form_resource SET name = 'F21-Anesthesia Transfer' WHERE name = 'F21-Anesthesia transfer form';
+            UPDATE form_resource SET name = 'F22-Neonatal Delivery' WHERE name = 'F22-Neonatal delivery form';
+            UPDATE form_resource SET name = 'F23-Neonatal Admission' WHERE name = 'F23-Neonatal admission form';
+            UPDATE form_resource SET name = 'F24-Neonatal Discharge' WHERE name = 'F24-Neonatal discharge form';
+            UPDATE form_resource SET name = 'F25-Pediatrics Admission' WHERE name = 'F25-Pediatrics admission form';
+            UPDATE form_resource SET name = 'F26-Pediatrics Discharge' WHERE name = 'F26-Pediatrics discharge form';
+            UPDATE form_resource SET name = 'F27-Adult Admission' WHERE name = 'F27-Adult admission form';
+            UPDATE form_resource SET name = 'F28-Adult Discharge' WHERE name = 'F28-Adult discharge form';
+            UPDATE form_resource SET name = 'F29-MHPSS Baseline' WHERE name = 'MSF Mental Health - MHPSS Baseline v2';
+            UPDATE form_resource SET name = 'F30-MHPSS Follow-up' WHERE name = 'MSF Mental Health - MHPSS Follow-up v2';
+            UPDATE form_resource SET name = 'F31-mhGAP Baseline' WHERE name = 'MSF Mental Health - mhGAP Baseline v2';
+            UPDATE form_resource SET name = 'F32-mhGAP Follow-up' WHERE name = 'MSF Mental Health - mhGAP Follow-up v2';
+            UPDATE form_resource SET name = 'F33-MHPSS Closure' WHERE name = 'MSF Mental Health - MHPSS Closure v2';
+            UPDATE form_resource SET name = 'F34-mhGAP Closure' WHERE name = 'MSF Mental Health - mhGAP Closure v2';
+            UPDATE form_resource SET name = 'F35-MH-PHQ-9' WHERE name = 'MSF Mental Health - PHQ-9 v2';
+            UPDATE form_resource SET name = 'F45-ATFC' WHERE name = 'MSF Nutrition - ATFC form';
+            UPDATE form_resource SET name = 'F41-ER Triage' WHERE name = 'F41-ER triage form';
+            UPDATE form_resource SET name = 'F42-ER Consultation' WHERE name = 'F42-ER consultation form';
+            UPDATE form_resource SET name = 'F43-ER Exit' WHERE name = 'F43-ER exit form';
         </sql>
     </changeSet>
 
