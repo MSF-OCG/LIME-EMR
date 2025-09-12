@@ -608,4 +608,94 @@
         </sql>
     </changeSet>
 
+    <changeSet id="rename-forms-in-mosul-20250820" author="pirupius">`
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT COUNT(*) FROM form WHERE name like '%MSF%';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Rename forms to follow cronological order
+        </comment>
+        <sql>
+            UPDATE form SET name = 'F08-ITFC Admission' WHERE name = 'MSF Nutrition - ITFC Admission';
+            UPDATE form SET name = 'F09-ITFC Discharge' WHERE name = 'MSF Nutrition - ITFC Discharge form';
+            UPDATE form SET name = 'F10-Feeding' WHERE name = 'MSF Nutrition - Feeding Form';
+            UPDATE form SET name = 'F11-Family Planning Assessment' WHERE name = 'MSF Family Planning - Assessment';
+            UPDATE form SET name = 'F12-Family Planning Follow-up' WHERE name = 'MSF Family Planning - Follow-up';
+            UPDATE form SET name = 'F13-PNC' WHERE name = 'Post Natal Care';
+            UPDATE form SET name = 'F14-Basic Obstetric Ultrasound' WHERE name = 'F14-Basic obstetric ultrasound';
+            UPDATE form SET name = 'F15-Surgical Safety Checklist' WHERE name = 'F15-Surgical safety checklist';
+            UPDATE form SET name = 'F16-Operative Report' WHERE name = 'F16-Operative report';
+            UPDATE form SET name = 'F17-Surgery Admission' WHERE name = 'F17-Surgery admission form';
+            UPDATE form SET name = 'F18-Surgery Discharge' WHERE name = 'F18-Surgery discharge form';
+            UPDATE form SET name = 'F19-Pre-anesthesia Record' WHERE name = 'F19-Pre anesthesia record';
+            UPDATE form SET name = 'F20-Recovery' WHERE name = 'F20-Recovery form';
+            UPDATE form SET name = 'F21-Anesthesia Transfer' WHERE name = 'F21-Anesthesia transfer form';
+            UPDATE form SET name = 'F22-Neonatal Delivery' WHERE name = 'F22-Neonatal delivery form';
+            UPDATE form SET name = 'F23-Neonatal Admission' WHERE name = 'F23-Neonatal admission form';
+            UPDATE form SET name = 'F24-Neonatal Discharge' WHERE name = 'F24-Neonatal discharge form';
+            UPDATE form SET name = 'F25-Pediatrics Admission' WHERE name = 'F25-Pediatrics admission form';
+            UPDATE form SET name = 'F26-Pediatrics Discharge' WHERE name = 'F26-Pediatrics discharge form';
+            UPDATE form SET name = 'F27-Adult Admission' WHERE name = 'F27-Adult admission form';
+            UPDATE form SET name = 'F28-Adult Discharge' WHERE name = 'F28-Adult discharge form';
+            UPDATE form SET name = 'F29-MHPSS Baseline' WHERE name = 'MSF Mental Health - MHPSS Baseline v2';
+            UPDATE form SET name = 'F30-MHPSS Follow-up' WHERE name = 'MSF Mental Health - MHPSS Follow-up v2';
+            UPDATE form SET name = 'F31-mhGAP Baseline' WHERE name = 'MSF Mental Health - mhGAP Baseline v2';
+            UPDATE form SET name = 'F32-mhGAP Follow-up' WHERE name = 'MSF Mental Health - mhGAP Follow-up v2';
+            UPDATE form SET name = 'F33-MHPSS Closure' WHERE name = 'MSF Mental Health - MHPSS Closure v2';
+            UPDATE form SET name = 'F34-mhGAP Closure' WHERE name = 'MSF Mental Health - mhGAP Closure v2';
+            UPDATE form SET name = 'F35-MH-PHQ-9' WHERE name = 'MSF Mental Health - PHQ-9 v2';
+            UPDATE form SET name = 'F45-ATFC' WHERE name = 'MSF Nutrition - ATFC form';
+            UPDATE form SET name = 'F41-ER Triage' WHERE name = 'F41-ER triage form';
+            UPDATE form SET name = 'F42-ER Consultation' WHERE name = 'F42-ER consultation form';
+            UPDATE form SET name = 'F43-ER Exit' WHERE name = 'F43-ER exit form';
+        </sql>
+    </changeSet>
+
+    <changeSet id="update-form-names-in-form-resource-20250820" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT COUNT(*) FROM form_resource WHERE name like '%MSF%';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Update form names in form_resource table to follow cronological order
+        </comment>
+        <sql>
+            UPDATE form_resource SET name = 'F08-ITFC Admission' WHERE name = 'MSF Nutrition - ITFC Admission';
+            UPDATE form_resource SET name = 'F09-ITFC Discharge' WHERE name = 'MSF Nutrition - ITFC Discharge form';
+            UPDATE form_resource SET name = 'F10-Feeding' WHERE name = 'MSF Nutrition - Feeding Form';
+            UPDATE form_resource SET name = 'F11-Family Planning Assessment' WHERE name = 'MSF Family Planning - Assessment';
+            UPDATE form_resource SET name = 'F12-Family Planning Follow-up' WHERE name = 'MSF Family Planning - Follow-up';
+            UPDATE form_resource SET name = 'F13-PNC' WHERE name = 'Post Natal Care';
+            UPDATE form_resource SET name = 'F14-Basic Obstetric Ultrasound' WHERE name = 'F14-Basic obstetric ultrasound';
+            UPDATE form_resource SET name = 'F15-Surgical Safety Checklist' WHERE name = 'F15-Surgical safety checklist';
+            UPDATE form_resource SET name = 'F16-Operative Report' WHERE name = 'F16-Operative report';
+            UPDATE form_resource SET name = 'F17-Surgery Admission' WHERE name = 'F17-Surgery admission form';
+            UPDATE form_resource SET name = 'F18-Surgery Discharge' WHERE name = 'F18-Surgery discharge form';
+            UPDATE form_resource SET name = 'F19-Pre-anesthesia Record' WHERE name = 'F19-Pre anesthesia record';
+            UPDATE form_resource SET name = 'F20-Recovery' WHERE name = 'F20-Recovery form';
+            UPDATE form_resource SET name = 'F21-Anesthesia Transfer' WHERE name = 'F21-Anesthesia transfer form';
+            UPDATE form_resource SET name = 'F22-Neonatal Delivery' WHERE name = 'F22-Neonatal delivery form';
+            UPDATE form_resource SET name = 'F23-Neonatal Admission' WHERE name = 'F23-Neonatal admission form';
+            UPDATE form_resource SET name = 'F24-Neonatal Discharge' WHERE name = 'F24-Neonatal discharge form';
+            UPDATE form_resource SET name = 'F25-Pediatrics Admission' WHERE name = 'F25-Pediatrics admission form';
+            UPDATE form_resource SET name = 'F26-Pediatrics Discharge' WHERE name = 'F26-Pediatrics discharge form';
+            UPDATE form_resource SET name = 'F27-Adult Admission' WHERE name = 'F27-Adult admission form';
+            UPDATE form_resource SET name = 'F28-Adult Discharge' WHERE name = 'F28-Adult discharge form';
+            UPDATE form_resource SET name = 'F29-MHPSS Baseline' WHERE name = 'MSF Mental Health - MHPSS Baseline v2';
+            UPDATE form_resource SET name = 'F30-MHPSS Follow-up' WHERE name = 'MSF Mental Health - MHPSS Follow-up v2';
+            UPDATE form_resource SET name = 'F31-mhGAP Baseline' WHERE name = 'MSF Mental Health - mhGAP Baseline v2';
+            UPDATE form_resource SET name = 'F32-mhGAP Follow-up' WHERE name = 'MSF Mental Health - mhGAP Follow-up v2';
+            UPDATE form_resource SET name = 'F33-MHPSS Closure' WHERE name = 'MSF Mental Health - MHPSS Closure v2';
+            UPDATE form_resource SET name = 'F34-mhGAP Closure' WHERE name = 'MSF Mental Health - mhGAP Closure v2';
+            UPDATE form_resource SET name = 'F35-MH-PHQ-9' WHERE name = 'MSF Mental Health - PHQ-9 v2';
+            UPDATE form_resource SET name = 'F45-ATFC' WHERE name = 'MSF Nutrition - ATFC form';
+            UPDATE form_resource SET name = 'F41-ER Triage' WHERE name = 'F41-ER triage form';
+            UPDATE form_resource SET name = 'F42-ER Consultation' WHERE name = 'F42-ER consultation form';
+            UPDATE form_resource SET name = 'F43-ER Exit' WHERE name = 'F43-ER exit form';
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
