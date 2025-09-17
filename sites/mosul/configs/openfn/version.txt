@@ -1,15 +1,13 @@
 Changes included in this version:
-- Handle erraneous mappings caused by duplicate external ids
-- Introduced the concept of question-ids in the mappings generated from the metadata file 
-- Use the question ids throughout WF2 to uniquely identify an external in OMRS
-- WF1 and WF2 are using LIME EMR - Iraq Metadata - Release 1 - v2025-09-05.xls metadata file
+- Fix a bug on WF1 where some attributes were being sent in `patient.person.attributes[]` and in `patient.person` causing an error in OpenMRS because some of those attributes did not exist
+- Optimize the metadata.json to remove unused properties and reduce the size of the metadata file
+- Remove unused properties in the `encounter` and `patient` objects passed to downstream jobs
 
 This YAML addresses the following github issues: 
-https://github.com/OpenFn/msf-lime-mosul/issues/139
-https://github.com/OpenFn/msf-lime-mosul/issues/135
-https://github.com/OpenFn/msf-lime-metadata/issues/21
+https://github.com/OpenFn/msf-lime-mosul/issues/149
+https://github.com/OpenFn/msf-lime-mosul/issues/142
 
 Supported OMRS Versions:
 - F29-MHPSS Baseline v2, F30-MHPSS Follow-up v2, F31-mhGAP Baseline v2, F32-mhGAP Follow-up v2, F33-MHPSS Closure v2, F34-mhGAP Closure v2, F00-Registration
 
-Yaml version: v1.3
+Yaml version: v1.4
