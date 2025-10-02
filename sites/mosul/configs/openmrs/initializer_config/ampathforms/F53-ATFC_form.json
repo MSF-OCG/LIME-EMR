@@ -24,19 +24,19 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "typeOfConsultation",
+                "concept": "4dae5b12-070f-4153-b1ca-fbec906106e1",
                 "answers": [
                   {
                     "label": "Admission",
-                    "concept": "admission"
+                    "concept": "871b2167-4024-4983-a881-9893b6a8460b"
                   },
                   {
                     "label": "Follow up",
-                    "concept": "followUp"
+                    "concept": "18c10f79-0bd7-429a-a809-3225bebf4bc7"
                   },
                   {
                     "label": "Discharge",
-                    "concept": "discharge"
+                    "concept": "74731cd1-4b07-4905-9f6e-e2b1c65649d1"
                   }
                 ]
               }
@@ -48,7 +48,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "caretakersName"
+                "concept": "3d039785-f0f6-4a52-bd96-e8362ec6c55f"
               }
             }
           ]
@@ -68,26 +68,12 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "date",
-                "concept": "admissionDate"
-              },
-              "default": "Current date",
-              "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'admission'"
-              }
-            },
-            {
-              "id": "admissionTime",
-              "label": "Admission time",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
                 "rendering": "datetime",
-                "concept": "admissionTime"
+                "concept": "7f00c65d-de60-467a-8964-fe80c7a85ef0"
               },
               "default": "Current time",
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'admission'"
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b'"
               }
             },
             {
@@ -97,11 +83,11 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "admissionType",
+                "concept": "4dae5b12-070f-4153-b1ca-fbec906106e1",
                 "answers": [
                   {
                     "label": "New spontaneous case",
-                    "concept": "9f2fe30f-a8f0-49ba-82e4-71c232259130"
+                    "concept": "22649b00-679d-49e1-935d-37a978c90046"
                   },
                   {
                     "label": "Relapse",
@@ -113,16 +99,16 @@
                   },
                   {
                     "label": "Internal movement",
-                    "concept": "internalMovement"
+                    "concept": "341376b1-c152-4f53-b784-ab1d5afc7799"
                   },
                   {
                     "label": "Patient referred",
-                    "concept": "patientReferred"
+                    "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'admission'"
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b'"
               }
             },
             {
@@ -132,23 +118,23 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "admissionCriteria",
+                "concept": "65a0f171-8c4f-4f69-acee-79e73b896a0f",
                 "answers": [
                   {
                     "label": "MUAC AND Weight/Height",
-                    "concept": "muacAndWeightOrHeight"
+                    "concept": "f45bb65d-0b93-40c9-94a0-7e243ba7b76f"
                   },
                   {
                     "label": "MUAC only",
-                    "concept": "muacOnly"
+                    "concept": "90f963bc-cd77-4a1e-8a7e-8b4c4c6a96b3"
                   },
                   {
                     "label": "Weight/Height only",
-                    "concept": "weightOrHeightOnly"
+                    "concept": "fa4f8779-9ef9-4a46-945f-cce2a0bcb5d5"
                   },
                   {
                     "label": "Oedema",
-                    "concept": "oedema"
+                    "concept": "754d677f-316c-4c31-999d-a328fb8b17e1"
                   },
                   {
                     "label": "Other",
@@ -157,17 +143,17 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'admission'"
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b'"
               }
             },
             {
               "id": "ifOtherSpecify",
-              "label": "If other specify",
+              "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "ifOtherSpecify"
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
                 "hideWhenExpression": "admissionCriteria !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
@@ -180,10 +166,10 @@
               "required": false,
               "questionOptions": {
                 "rendering": "date",
-                "concept": "referralDate"
+                "concept": "6ee723cf-4d3f-40a3-9e4c-c9aad9722ced"
               },
               "hide": {
-                "hideWhenExpression": "admissionType !== 'patientReferred'"
+                "hideWhenExpression": "admissionType !== '93eb9716-6866-4d13-9b8f-59c0a7605a11'"
               }
             },
             {
@@ -193,7 +179,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "referralFrom",
+                "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11",
                 "answers": [
                   {
                     "label": "Parent MUAC",
@@ -218,7 +204,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "admissionType !== 'patientReferred'"
+                "hideWhenExpression": "admissionType !== '93eb9716-6866-4d13-9b8f-59c0a7605a11'"
               }
             },
             {
@@ -228,7 +214,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "ifOtherSpecify"
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
                 "hideWhenExpression": "referralFrom !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
@@ -252,7 +238,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "alert",
+                "concept": "01d17f23-922d-43ef-8720-aae13c9a4cd1",
                 "answers": [
                   {
                     "label": "Yes",
@@ -272,7 +258,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "cough",
+                "concept": "cb17ea3f-4291-47c9-9b9b-524405eca510",
                 "answers": [
                   {
                     "label": "Yes",
@@ -292,7 +278,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "diarrhoea",
+                "concept": "1361c31f-e817-4e8f-84cc-6ffab48bdeef",
                 "answers": [
                   {
                     "label": "Yes",
@@ -312,8 +298,9 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "numberOfTimesPerDay",
+                "concept": "e5eff6e8-42ac-48e6-8e25-1610c9ac9ea3",
                 "min": 0,
+                "disallowDecimals": true,
                 "step": 1
               },
               "hide": {
@@ -327,7 +314,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "vomiting",
+                "concept": "2314bb39-ed30-4332-b77c-2ac59f79f355",
                 "answers": [
                   {
                     "label": "Yes",
@@ -347,23 +334,23 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "dehydration",
+                "concept": "b46ac478-5518-47b1-ae8b-570cbcf18af1",
                 "answers": [
                   {
                     "label": "+",
-                    "concept": "plus"
+                    "concept": "382578c2-91b4-4235-a02d-d20fbe9f8044"
                   },
                   {
                     "label": "++",
-                    "concept": "plusPlus"
+                    "concept": "709e4a07-af9f-432b-8711-b3caed41998c"
                   },
                   {
                     "label": "+++",
-                    "concept": "plusPlusPlus"
+                    "concept": "9e6f2ae1-4aa3-4cbc-bd8d-98515b76cc15"
                   },
                   {
                     "label": "None",
-                    "concept": "none"
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
                   }
                 ]
               }
@@ -375,23 +362,23 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "anaemia",
+                "concept": "e0c0e914-cde1-41d9-b11f-3ebcebf441a8",
                 "answers": [
                   {
                     "label": "+",
-                    "concept": "plus"
+                    "concept": "382578c2-91b4-4235-a02d-d20fbe9f8044"
                   },
                   {
                     "label": "++",
-                    "concept": "plusPlus"
+                    "concept": "709e4a07-af9f-432b-8711-b3caed41998c"
                   },
                   {
                     "label": "+++",
-                    "concept": "plusPlusPlus"
+                    "concept": "9e6f2ae1-4aa3-4cbc-bd8d-98515b76cc15"
                   },
                   {
                     "label": "None",
-                    "concept": "none"
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
                   }
                 ]
               }
@@ -403,23 +390,23 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "oedema",
+                "concept": "80469ebc-e769-4edd-a9b6-ecb5c517e2db",
                 "answers": [
                   {
                     "label": "+",
-                    "concept": "plus"
+                    "concept": "382578c2-91b4-4235-a02d-d20fbe9f8044"
                   },
                   {
                     "label": "++",
-                    "concept": "plusPlus"
+                    "concept": "709e4a07-af9f-432b-8711-b3caed41998c"
                   },
                   {
                     "label": "+++",
-                    "concept": "plusPlusPlus"
+                    "concept": "9e6f2ae1-4aa3-4cbc-bd8d-98515b76cc15"
                   },
                   {
                     "label": "None",
-                    "concept": "none"
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
                   }
                 ]
               }
@@ -431,7 +418,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "xerophtalmia",
+                "concept": "7d90a7ed-88f3-485c-b1db-6531ee7f9939",
                 "answers": [
                   {
                     "label": "Yes",
@@ -451,7 +438,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "appetite",
+                "concept": "1f12d9c5-03e2-42b5-b9cb-3aecf0088b21",
                 "answers": [
                   {
                     "label": "Yes",
@@ -471,17 +458,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "rutf",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
+                "concept": "1bcf28cd-65cb-45e1-abcc-8d0af64a19ca"
               }
             }
           ]
@@ -497,7 +474,17 @@
               "required": false,
               "questionOptions": {
                 "rendering": "textarea",
-                "concept": "chestAbdomenLymphNodesMouthEyesNeck"
+                "concept": "0dd28dfa-fa10-4dbd-bf6a-4f5ad6868c64"
+              }
+            },
+            {
+              "id": "fillInvitalsBiometricsWithTheMeasurementsOfWeightHeightMuacTemperatureAndRRate",
+              "label": "Fill in 'Vitals & Biometrics' with the measurements of Weight, Height, MUAC, Temperature and R. rate",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
               }
             },
             {
@@ -507,12 +494,149 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "targetWeight",
-                "min": 0
+                "concept": "ce5a7242-4c0d-4301-b5f5-296d6f45c6c4",
+                "min": 0,
+                "disallowDecimals": false
               },
-              "disallowDecimals": false,
               "default": "Value of last ATFC form (but keep editable)",
               "questionInfo": "-2 Zscore"
+            }
+          ]
+        },
+        {
+          "label": "Admission",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "weightAtAdmission",
+              "label": "Weight (kg)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9e3c4083-21bd-42d4-a2b5-657bc0b8a4a5",
+                "min": 0.0,
+                "disallowDecimals": false
+              },
+              "default": "Value of first ATFC form (but keep editable)",
+              "hide": {
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b'"
+              }
+            },
+            {
+              "id": "weightOrHeightAtAdmission",
+              "label": "Weight / height at admission",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2651145f-c10c-4c04-9735-791537a1fa2c",
+                "answers": [
+                  {
+                    "label": "[-3 ; -2 Zs[",
+                    "concept": "6a48b558-b61d-4be7-9c13-c9279f396bbc"
+                  },
+                  {
+                    "label": "< -3 Zs",
+                    "concept": "a456ad55-006a-4f90-b03e-8d608e85194b"
+                  },
+                  {
+                    "label": ">= -2 Zs",
+                    "concept": "4eca905b-97ca-4c48-9408-2dece451ab2a"
+                  },
+                  {
+                    "label": "Not relevant",
+                    "concept": "66ee2fdd-b54c-4456-80f0-6987f572a6b8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b'"
+              }
+            },
+            {
+              "id": "admissionMuac",
+              "label": "MUAC (mm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "60b409cc-0fff-4eb3-8a1d-1b2112728021",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Discharge",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "weightAtDischarge",
+              "label": "Weight (kg)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "cdb8c5f1-1afd-41d0-ba30-714440441555",
+                "min": 0.0,
+                "disallowDecimals": false
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
+              }
+            },
+            {
+              "id": "weightOrHeightAtDischarge",
+              "label": "Weight / height",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "7907d1e5-5da7-4978-8905-983f5c11b2f6",
+                "answers": [
+                  {
+                    "label": "[-3 ; -2 Zs[",
+                    "concept": "6a48b558-b61d-4be7-9c13-c9279f396bbc"
+                  },
+                  {
+                    "label": "< -3 Zs",
+                    "concept": "a456ad55-006a-4f90-b03e-8d608e85194b"
+                  },
+                  {
+                    "label": ">= -2 Zs",
+                    "concept": "4eca905b-97ca-4c48-9408-2dece451ab2a"
+                  },
+                  {
+                    "label": "Not relevant",
+                    "concept": "66ee2fdd-b54c-4456-80f0-6987f572a6b8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
+              }
+            },
+            {
+              "id": "dischargeMuac",
+              "label": "MUAC (mm)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "27802b51-f480-416a-b08f-696bab915663",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
+              }
             }
           ]
         },
@@ -527,7 +651,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "malariaTestDone",
+                "concept": "1fc54f92-c324-49c4-aba1-21ade7663ba0",
                 "answers": [
                   {
                     "label": "Yes",
@@ -540,17 +664,17 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'admission'"
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b'"
               }
             },
             {
-              "id": "malariaTestDone",
-              "label": "Malaria test done",
+              "id": "hivTest",
+              "label": "HIV test",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "malariaTestDone",
+                "concept": "f8ebd933-c186-4612-8f93-1ff4741386be",
                 "answers": [
                   {
                     "label": "Yes",
@@ -570,7 +694,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "malariaTestResult",
+                "concept": "49b4650e-fd14-48ac-8458-c502a96152d2",
                 "answers": [
                   {
                     "label": "Positive",
@@ -581,46 +705,9 @@
                     "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
                   }
                 ]
-              }
-            },
-            {
-              "id": "hivTest",
-              "label": "HIV test",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "hivTest",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
-              }
-            },
-            {
-              "id": "hivTestResult",
-              "label": "Result",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "hivTestResult",
-                "answers": [
-                  {
-                    "label": "Positive",
-                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
-                  },
-                  {
-                    "label": "Negative",
-                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
-                  }
-                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hivTest !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
             },
             {
@@ -630,9 +717,10 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b"
-              },
-              "disallowDecimals": false
+                "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
+                "min": 0.0,
+                "disallowDecimals": false
+              }
             }
           ]
         },
@@ -647,83 +735,83 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "comorbidity",
+                "concept": "3a03bdb4-4b3f-45c3-966a-97843ec88680",
                 "answers": [
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "1b4d955d-e703-484d-8bfd-0c90b2a39285"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
                   },
                   {
                     "label": "Acute febrile illness (=<7 days)",
-                    "concept": "acuteFebrileIllness"
+                    "concept": "42c9bc49-ac4d-4b86-8753-48d378075c59"
                   },
                   {
                     "label": "Acute flaccid paralysis",
-                    "concept": "acuteFlaccidParalysis"
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
                   },
                   {
                     "label": "Cutaneous leishmaniosis",
-                    "concept": "cutaneousLeishmaniosis"
+                    "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
                   },
                   {
                     "label": "Dengue suspected",
-                    "concept": "dengueSuspected"
+                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
                   },
                   {
                     "label": "Diabetes and complications",
-                    "concept": "diabetesAndComplications"
+                    "concept": "28d17413-ffae-4ed4-a46b-62f8b4deb6d7"
                   },
                   {
                     "label": "Diarrhea (persistent)",
-                    "concept": "diarrhea"
+                    "concept": "d3ea64b2-7587-4497-b5d9-dd55ccc6b0f1"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
-                    "concept": "extraPulmonaryTuberculosis"
+                    "concept": "17ca2ee9-e8a5-48da-bb44-2a8988acee51"
                   },
                   {
                     "label": "Eye diseases (including trachoma)",
-                    "concept": "eyeDiseases"
+                    "concept": "af6cb265-7afd-47d2-98b4-600a4a5f19b0"
                   },
                   {
                     "label": "HIV Infection suspected",
-                    "concept": "hivInfectionSuspected"
+                    "concept": "b97081fb-40c7-4fdf-8b14-d88857ba710f"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
-                    "concept": "infectiousDiseasesNotOtherwiseClassified"
+                    "concept": "d661ddfe-f807-41aa-ae46-a4c2f9f4203f"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "ea03ce93-7c26-47a3-af09-5a21b7371db3"
                   },
                   {
                     "label": "Measles (suspected)",
-                    "concept": "measles"
+                    "concept": "8427a950-087d-45e3-993f-810a896bc4a8"
                   },
                   {
                     "label": "Mental and psychiatric conditions",
-                    "concept": "mentalAndPsychiatricConditions"
+                    "concept": "e51bba88-1954-4803-9762-8840ab5ae205"
                   },
                   {
                     "label": "Neglected tropical diseases",
-                    "concept": "neglectedTropicalDiseases"
+                    "concept": "4e3f379e-18bf-4c64-bef3-4c6be004baf7"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
                   },
                   {
                     "label": "Other neurological conditions",
-                    "concept": "otherNeurologicalConditions"
+                    "concept": "15f74297-77dc-405a-b060-42611063c604"
                   },
                   {
                     "label": "Other symptoms and abnor. clinical / lab findings",
@@ -731,48 +819,48 @@
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
-                    "concept": "persistentFever"
+                    "concept": "cdbeb45d-4a1f-4893-a9ef-aca653597fd3"
                   },
                   {
                     "label": "Pulmonary tuberculosis (suspected)",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "3e74ac4d-e22e-4b46-8603-bbacf738c544"
                   },
                   {
                     "label": "Sexually transmitted disease (STI)",
-                    "concept": "sexuallyTransmittedDisease"
+                    "concept": "799c78cc-8c8f-44e2-9223-0c8e607677a1"
                   },
                   {
                     "label": "Sickle cell disease",
-                    "concept": "sickleCellDisease"
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
                   },
                   {
                     "label": "Simple malaria",
-                    "concept": "simpleMalaria"
+                    "concept": "f9cb0dac-1b8f-442c-94cb-4bde52a2a979"
                   },
                   {
                     "label": "Skin and soft tissue conditions",
-                    "concept": "skinAndSoftTissueConditions"
+                    "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
                   },
                   {
                     "label": "Upper respiratory tract infection",
-                    "concept": "upperRespiratoryTractInfection"
+                    "concept": "bbfb753f-578c-4c57-8118-4e82857acd76"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "utiAndRenalTractAcutePathology"
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "c3d7e630-1a84-481a-ba12-e21c089bbb35"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' && typeOfConsultation !== '18c10f79-0bd7-429a-a809-3225bebf4bc7'"
               }
             },
             {
@@ -782,83 +870,83 @@
               "required": false,
               "questionOptions": {
                 "rendering": "select",
-                "concept": "mostSerious",
+                "concept": "c6b74470-1b70-47df-902c-0d415be1157e",
                 "answers": [
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "1b4d955d-e703-484d-8bfd-0c90b2a39285"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
                   },
                   {
                     "label": "Acute febrile illness (=<7 days)",
-                    "concept": "acuteFebrileIllness"
+                    "concept": "42c9bc49-ac4d-4b86-8753-48d378075c59"
                   },
                   {
                     "label": "Acute flaccid paralysis",
-                    "concept": "acuteFlaccidParalysis"
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
                   },
                   {
                     "label": "Cutaneous leishmaniosis",
-                    "concept": "cutaneousLeishmaniosis"
+                    "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
                   },
                   {
                     "label": "Dengue suspected",
-                    "concept": "dengueSuspected"
+                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
                   },
                   {
                     "label": "Diabetes and complications",
-                    "concept": "diabetesAndComplications"
+                    "concept": "28d17413-ffae-4ed4-a46b-62f8b4deb6d7"
                   },
                   {
                     "label": "Diarrhea (persistent)",
-                    "concept": "diarrhea"
+                    "concept": "d3ea64b2-7587-4497-b5d9-dd55ccc6b0f1"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
-                    "concept": "extraPulmonaryTuberculosis"
+                    "concept": "17ca2ee9-e8a5-48da-bb44-2a8988acee51"
                   },
                   {
                     "label": "Eye diseases (including trachoma)",
-                    "concept": "eyeDiseases"
+                    "concept": "af6cb265-7afd-47d2-98b4-600a4a5f19b0"
                   },
                   {
                     "label": "HIV Infection suspected",
-                    "concept": "hivInfectionSuspected"
+                    "concept": "b97081fb-40c7-4fdf-8b14-d88857ba710f"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
-                    "concept": "infectiousDiseasesNotOtherwiseClassified"
+                    "concept": "d661ddfe-f807-41aa-ae46-a4c2f9f4203f"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "ea03ce93-7c26-47a3-af09-5a21b7371db3"
                   },
                   {
                     "label": "Measles (suspected)",
-                    "concept": "measles"
+                    "concept": "8427a950-087d-45e3-993f-810a896bc4a8"
                   },
                   {
                     "label": "Mental and psychiatric conditions",
-                    "concept": "mentalAndPsychiatricConditions"
+                    "concept": "e51bba88-1954-4803-9762-8840ab5ae205"
                   },
                   {
                     "label": "Neglected tropical diseases",
-                    "concept": "neglectedTropicalDiseases"
+                    "concept": "4e3f379e-18bf-4c64-bef3-4c6be004baf7"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
                   },
                   {
                     "label": "Other neurological conditions",
-                    "concept": "otherNeurologicalConditions"
+                    "concept": "15f74297-77dc-405a-b060-42611063c604"
                   },
                   {
                     "label": "Other symptoms and abnor. clinical / lab findings",
@@ -866,48 +954,48 @@
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
-                    "concept": "persistentFever"
+                    "concept": "cdbeb45d-4a1f-4893-a9ef-aca653597fd3"
                   },
                   {
                     "label": "Pulmonary tuberculosis (suspected)",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "3e74ac4d-e22e-4b46-8603-bbacf738c544"
                   },
                   {
                     "label": "Sexually transmitted disease (STI)",
-                    "concept": "sexuallyTransmittedDisease"
+                    "concept": "799c78cc-8c8f-44e2-9223-0c8e607677a1"
                   },
                   {
                     "label": "Sickle cell disease",
-                    "concept": "sickleCellDisease"
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
                   },
                   {
                     "label": "Simple malaria",
-                    "concept": "simpleMalaria"
+                    "concept": "f9cb0dac-1b8f-442c-94cb-4bde52a2a979"
                   },
                   {
                     "label": "Skin and soft tissue conditions",
-                    "concept": "skinAndSoftTissueConditions"
+                    "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
                   },
                   {
                     "label": "Upper respiratory tract infection",
-                    "concept": "upperRespiratoryTractInfection"
+                    "concept": "bbfb753f-578c-4c57-8118-4e82857acd76"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "utiAndRenalTractAcutePathology"
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "c3d7e630-1a84-481a-ba12-e21c089bbb35"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -917,10 +1005,10 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "ifOtherSpecify"
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "diseasesTreatedDuringTheStayMostSerious !== 'other'"
+                "hideWhenExpression": "isEmpty(mostSerious) && mostSerious !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -930,10 +1018,132 @@
               "required": false,
               "questionOptions": {
                 "rendering": "select",
-                "concept": "secondary1"
+                "concept": "cea50bbb-482d-4009-861b-a2a43eb2911d",
+                "answers": [
+                  {
+                    "label": "Acute diarrhea (bloody)",
+                    "concept": "1b4d955d-e703-484d-8bfd-0c90b2a39285"
+                  },
+                  {
+                    "label": "Acute diarrhea (non-bloody)",
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
+                  },
+                  {
+                    "label": "Acute febrile illness (=<7 days)",
+                    "concept": "42c9bc49-ac4d-4b86-8753-48d378075c59"
+                  },
+                  {
+                    "label": "Acute flaccid paralysis",
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
+                  },
+                  {
+                    "label": "Acute jaundice syndrome",
+                    "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
+                  },
+                  {
+                    "label": "Cutaneous leishmaniosis",
+                    "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
+                  },
+                  {
+                    "label": "Dengue suspected",
+                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
+                  },
+                  {
+                    "label": "Diabetes and complications",
+                    "concept": "28d17413-ffae-4ed4-a46b-62f8b4deb6d7"
+                  },
+                  {
+                    "label": "Diarrhea (persistent)",
+                    "concept": "d3ea64b2-7587-4497-b5d9-dd55ccc6b0f1"
+                  },
+                  {
+                    "label": "Extra pulmonary tuberculosis",
+                    "concept": "17ca2ee9-e8a5-48da-bb44-2a8988acee51"
+                  },
+                  {
+                    "label": "Eye diseases (including trachoma)",
+                    "concept": "af6cb265-7afd-47d2-98b4-600a4a5f19b0"
+                  },
+                  {
+                    "label": "HIV Infection suspected",
+                    "concept": "b97081fb-40c7-4fdf-8b14-d88857ba710f"
+                  },
+                  {
+                    "label": "Infectious diseases not otherwise classified",
+                    "concept": "d661ddfe-f807-41aa-ae46-a4c2f9f4203f"
+                  },
+                  {
+                    "label": "Lower respiratory tract infection",
+                    "concept": "ea03ce93-7c26-47a3-af09-5a21b7371db3"
+                  },
+                  {
+                    "label": "Measles (suspected)",
+                    "concept": "8427a950-087d-45e3-993f-810a896bc4a8"
+                  },
+                  {
+                    "label": "Mental and psychiatric conditions",
+                    "concept": "e51bba88-1954-4803-9762-8840ab5ae205"
+                  },
+                  {
+                    "label": "Neglected tropical diseases",
+                    "concept": "4e3f379e-18bf-4c64-bef3-4c6be004baf7"
+                  },
+                  {
+                    "label": "Non violence-related injuries",
+                    "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
+                  },
+                  {
+                    "label": "Other neurological conditions",
+                    "concept": "15f74297-77dc-405a-b060-42611063c604"
+                  },
+                  {
+                    "label": "Other symptoms and abnor. clinical / lab findings",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Persistent fever ( >7 days)",
+                    "concept": "cdbeb45d-4a1f-4893-a9ef-aca653597fd3"
+                  },
+                  {
+                    "label": "Pulmonary tuberculosis (suspected)",
+                    "concept": "3e74ac4d-e22e-4b46-8603-bbacf738c544"
+                  },
+                  {
+                    "label": "Sexually transmitted disease (STI)",
+                    "concept": "799c78cc-8c8f-44e2-9223-0c8e607677a1"
+                  },
+                  {
+                    "label": "Sickle cell disease",
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
+                  },
+                  {
+                    "label": "Simple malaria",
+                    "concept": "f9cb0dac-1b8f-442c-94cb-4bde52a2a979"
+                  },
+                  {
+                    "label": "Skin and soft tissue conditions",
+                    "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
+                  },
+                  {
+                    "label": "Upper respiratory tract infection",
+                    "concept": "bbfb753f-578c-4c57-8118-4e82857acd76"
+                  },
+                  {
+                    "label": "UTI and renal tract acute pathology",
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
+                  },
+                  {
+                    "label": "Violence-related injuries",
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
+                  },
+                  {
+                    "label": "Whooping cough",
+                    "concept": "c3d7e630-1a84-481a-ba12-e21c089bbb35"
+                  }
+                ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -943,10 +1153,10 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "ifOtherSpecify"
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "diseasesTreatedDuringTheStaySecondary1 !== 'other'"
+                "hideWhenExpression": "secondary1 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -956,83 +1166,83 @@
               "required": false,
               "questionOptions": {
                 "rendering": "select",
-                "concept": "secondary2",
+                "concept": "d2cae92f-c6db-4228-b068-464c1a51f077",
                 "answers": [
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "1b4d955d-e703-484d-8bfd-0c90b2a39285"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
                   },
                   {
                     "label": "Acute febrile illness (=<7 days)",
-                    "concept": "acuteFebrileIllness"
+                    "concept": "42c9bc49-ac4d-4b86-8753-48d378075c59"
                   },
                   {
                     "label": "Acute flaccid paralysis",
-                    "concept": "acuteFlaccidParalysis"
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
                   },
                   {
                     "label": "Cutaneous leishmaniosis",
-                    "concept": "cutaneousLeishmaniosis"
+                    "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
                   },
                   {
                     "label": "Dengue suspected",
-                    "concept": "dengueSuspected"
+                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
                   },
                   {
                     "label": "Diabetes and complications",
-                    "concept": "diabetesAndComplications"
+                    "concept": "28d17413-ffae-4ed4-a46b-62f8b4deb6d7"
                   },
                   {
                     "label": "Diarrhea (persistent)",
-                    "concept": "diarrhea"
+                    "concept": "d3ea64b2-7587-4497-b5d9-dd55ccc6b0f1"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
-                    "concept": "extraPulmonaryTuberculosis"
+                    "concept": "17ca2ee9-e8a5-48da-bb44-2a8988acee51"
                   },
                   {
                     "label": "Eye diseases (including trachoma)",
-                    "concept": "eyeDiseases"
+                    "concept": "af6cb265-7afd-47d2-98b4-600a4a5f19b0"
                   },
                   {
                     "label": "HIV Infection suspected",
-                    "concept": "hivInfectionSuspected"
+                    "concept": "b97081fb-40c7-4fdf-8b14-d88857ba710f"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
-                    "concept": "infectiousDiseasesNotOtherwiseClassified"
+                    "concept": "d661ddfe-f807-41aa-ae46-a4c2f9f4203f"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "ea03ce93-7c26-47a3-af09-5a21b7371db3"
                   },
                   {
                     "label": "Measles (suspected)",
-                    "concept": "measles"
+                    "concept": "8427a950-087d-45e3-993f-810a896bc4a8"
                   },
                   {
                     "label": "Mental and psychiatric conditions",
-                    "concept": "mentalAndPsychiatricConditions"
+                    "concept": "e51bba88-1954-4803-9762-8840ab5ae205"
                   },
                   {
                     "label": "Neglected tropical diseases",
-                    "concept": "neglectedTropicalDiseases"
+                    "concept": "4e3f379e-18bf-4c64-bef3-4c6be004baf7"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
                   },
                   {
                     "label": "Other neurological conditions",
-                    "concept": "otherNeurologicalConditions"
+                    "concept": "15f74297-77dc-405a-b060-42611063c604"
                   },
                   {
                     "label": "Other symptoms and abnor. clinical / lab findings",
@@ -1040,48 +1250,48 @@
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
-                    "concept": "persistentFever"
+                    "concept": "cdbeb45d-4a1f-4893-a9ef-aca653597fd3"
                   },
                   {
                     "label": "Pulmonary tuberculosis (suspected)",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "3e74ac4d-e22e-4b46-8603-bbacf738c544"
                   },
                   {
                     "label": "Sexually transmitted disease (STI)",
-                    "concept": "sexuallyTransmittedDisease"
+                    "concept": "799c78cc-8c8f-44e2-9223-0c8e607677a1"
                   },
                   {
                     "label": "Sickle cell disease",
-                    "concept": "sickleCellDisease"
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
                   },
                   {
                     "label": "Simple malaria",
-                    "concept": "simpleMalaria"
+                    "concept": "f9cb0dac-1b8f-442c-94cb-4bde52a2a979"
                   },
                   {
                     "label": "Skin and soft tissue conditions",
-                    "concept": "skinAndSoftTissueConditions"
+                    "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
                   },
                   {
                     "label": "Upper respiratory tract infection",
-                    "concept": "upperRespiratoryTractInfection"
+                    "concept": "bbfb753f-578c-4c57-8118-4e82857acd76"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "utiAndRenalTractAcutePathology"
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "c3d7e630-1a84-481a-ba12-e21c089bbb35"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -1091,10 +1301,10 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "ifOtherSpecify"
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "diseasesTreatedDuringTheStaySecondary2 !== 'other'"
+                "hideWhenExpression": "secondary2 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -1104,83 +1314,83 @@
               "required": false,
               "questionOptions": {
                 "rendering": "select",
-                "concept": "secondary3",
+                "concept": "b43a57ac-b020-4c44-8946-e9d3c5151e58",
                 "answers": [
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "1b4d955d-e703-484d-8bfd-0c90b2a39285"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
                   },
                   {
                     "label": "Acute febrile illness (=<7 days)",
-                    "concept": "acuteFebrileIllness"
+                    "concept": "42c9bc49-ac4d-4b86-8753-48d378075c59"
                   },
                   {
                     "label": "Acute flaccid paralysis",
-                    "concept": "acuteFlaccidParalysis"
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
                   },
                   {
                     "label": "Cutaneous leishmaniosis",
-                    "concept": "cutaneousLeishmaniosis"
+                    "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
                   },
                   {
                     "label": "Dengue suspected",
-                    "concept": "dengueSuspected"
+                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
                   },
                   {
                     "label": "Diabetes and complications",
-                    "concept": "diabetesAndComplications"
+                    "concept": "28d17413-ffae-4ed4-a46b-62f8b4deb6d7"
                   },
                   {
                     "label": "Diarrhea (persistent)",
-                    "concept": "diarrhea"
+                    "concept": "d3ea64b2-7587-4497-b5d9-dd55ccc6b0f1"
                   },
                   {
                     "label": "Extra pulmonary tuberculosis",
-                    "concept": "extraPulmonaryTuberculosis"
+                    "concept": "17ca2ee9-e8a5-48da-bb44-2a8988acee51"
                   },
                   {
                     "label": "Eye diseases (including trachoma)",
-                    "concept": "eyeDiseases"
+                    "concept": "af6cb265-7afd-47d2-98b4-600a4a5f19b0"
                   },
                   {
                     "label": "HIV Infection suspected",
-                    "concept": "hivInfectionSuspected"
+                    "concept": "b97081fb-40c7-4fdf-8b14-d88857ba710f"
                   },
                   {
                     "label": "Infectious diseases not otherwise classified",
-                    "concept": "infectiousDiseasesNotOtherwiseClassified"
+                    "concept": "d661ddfe-f807-41aa-ae46-a4c2f9f4203f"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "ea03ce93-7c26-47a3-af09-5a21b7371db3"
                   },
                   {
                     "label": "Measles (suspected)",
-                    "concept": "measles"
+                    "concept": "8427a950-087d-45e3-993f-810a896bc4a8"
                   },
                   {
                     "label": "Mental and psychiatric conditions",
-                    "concept": "mentalAndPsychiatricConditions"
+                    "concept": "e51bba88-1954-4803-9762-8840ab5ae205"
                   },
                   {
                     "label": "Neglected tropical diseases",
-                    "concept": "neglectedTropicalDiseases"
+                    "concept": "4e3f379e-18bf-4c64-bef3-4c6be004baf7"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
                   },
                   {
                     "label": "Other neurological conditions",
-                    "concept": "otherNeurologicalConditions"
+                    "concept": "15f74297-77dc-405a-b060-42611063c604"
                   },
                   {
                     "label": "Other symptoms and abnor. clinical / lab findings",
@@ -1188,48 +1398,48 @@
                   },
                   {
                     "label": "Persistent fever ( >7 days)",
-                    "concept": "persistentFever"
+                    "concept": "cdbeb45d-4a1f-4893-a9ef-aca653597fd3"
                   },
                   {
                     "label": "Pulmonary tuberculosis (suspected)",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "3e74ac4d-e22e-4b46-8603-bbacf738c544"
                   },
                   {
                     "label": "Sexually transmitted disease (STI)",
-                    "concept": "sexuallyTransmittedDisease"
+                    "concept": "799c78cc-8c8f-44e2-9223-0c8e607677a1"
                   },
                   {
                     "label": "Sickle cell disease",
-                    "concept": "sickleCellDisease"
+                    "concept": "e8a1ffbd-9575-4f94-b396-0575c3fcd186"
                   },
                   {
                     "label": "Simple malaria",
-                    "concept": "simpleMalaria"
+                    "concept": "f9cb0dac-1b8f-442c-94cb-4bde52a2a979"
                   },
                   {
                     "label": "Skin and soft tissue conditions",
-                    "concept": "skinAndSoftTissueConditions"
+                    "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
                   },
                   {
                     "label": "Upper respiratory tract infection",
-                    "concept": "upperRespiratoryTractInfection"
+                    "concept": "bbfb753f-578c-4c57-8118-4e82857acd76"
                   },
                   {
                     "label": "UTI and renal tract acute pathology",
-                    "concept": "utiAndRenalTractAcutePathology"
+                    "concept": "15db3bab-c3a6-45a5-a92f-0a5e5f951395"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "c3d7e630-1a84-481a-ba12-e21c089bbb35"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -1242,7 +1452,7 @@
                 "concept": "ifOtherSpecify"
               },
               "hide": {
-                "hideWhenExpression": "diseasesTreatedDuringTheStaySecondary3 !== 'other'"
+                "hideWhenExpression": "secondary3 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -1258,7 +1468,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "textarea",
-                "concept": "observation"
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
               }
             }
           ]
@@ -1279,11 +1489,11 @@
               "required": false,
               "questionOptions": {
                 "rendering": "date",
-                "concept": "dischargeDate"
+                "concept": "13cea1c8-e426-411f-95b4-33651fc4325d"
               },
               "default": "Current date (but keep editable)",
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -1293,7 +1503,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "outcomeOfTheStayInAtfc",
+                "concept": "f943cbed-442c-4595-bb59-68df5be47f4f",
                 "answers": [
                   {
                     "label": "Cured",
@@ -1301,7 +1511,7 @@
                   },
                   {
                     "label": "Deceased",
-                    "concept": "deceased"
+                    "concept": "dc1c7ac9-d9c3-4887-bc22-827c2db7689f"
                   },
                   {
                     "label": "Defaulter",
@@ -1309,11 +1519,11 @@
                   },
                   {
                     "label": "Discharge on demand",
-                    "concept": "dischargeOnDemand"
+                    "concept": "45726885-2605-4469-b7e1-306fd853ee7a"
                   },
                   {
                     "label": "Non-responding",
-                    "concept": "nonResponding"
+                    "concept": "e27bf740-edfd-40c7-802a-5d50fc69e464"
                   },
                   {
                     "label": "Other",
@@ -1321,28 +1531,28 @@
                   },
                   {
                     "label": "Referal to another structure",
-                    "concept": "referalToAnotherStructure"
+                    "concept": "16dd7799-c0c3-4f1b-b170-59f455cb31d7"
                   },
                   {
                     "label": "Stabilized and referred to MSF ATFC",
-                    "concept": "stabilizedAndReferredToMsfAtfc"
+                    "concept": "3c9e328b-9e8c-4c15-865e-9227644682da"
                   },
                   {
                     "label": "Referred to non-MSF ATFC",
-                    "concept": "referredToNonMsfAtfc"
+                    "concept": "113a9020-e429-4686-8d16-a696665479ee"
                   },
                   {
                     "label": "Transferred to ITFC (severe pathology)",
-                    "concept": "transferredToItfc"
+                    "concept": "43a17545-13a3-4f1f-badf-14e28199ef48"
                   },
                   {
                     "label": "Transferred to ITFC (stagnant weight)",
-                    "concept": "transferredToItfc"
+                    "concept": "999706de-a20d-409b-aae3-78b03f027952"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -1352,9 +1562,9 @@
               "required": false,
               "questionOptions": {
                 "rendering": "number",
-                "concept": "averageWeightGain"
+                "concept": "1d464088-1da9-4eca-a64c-39f7a47eb538",
+                "disallowDecimals": false
               },
-              "disallowDecimals": false,
               "hide": {
                 "hideWhenExpression": "outcomeOfTheStayInAtfc !== '4afad5ca-6b49-4fc2-9dca-4468f5f3a3f6'"
               }
@@ -1366,7 +1576,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "datetime",
-                "concept": "timeOfDeath"
+                "concept": "68f91879-5f00-4168-82eb-785c6bece077"
               },
               "hide": {
                 "hideWhenExpression": "outcomeOfTheStayInAtfc !== 'deceased'"
@@ -1379,103 +1589,103 @@
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "deathCause",
+                "concept": "e364431c-0eee-4acc-a1e6-d9c4484903f2",
                 "answers": [
                   {
                     "label": "Acute asthma",
-                    "concept": "acuteAsthma"
+                    "concept": "e1b51c42-041f-4a3f-9a31-0337642f42b6"
                   },
                   {
                     "label": "Acute diarrhea (bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "1b4d955d-e703-484d-8bfd-0c90b2a39285"
                   },
                   {
                     "label": "Acute diarrhea (non-bloody)",
-                    "concept": "acuteDiarrhea"
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
                   },
                   {
                     "label": "Acute jaundice syndrome",
-                    "concept": "acuteJaundiceSyndrome"
+                    "concept": "1123853b-0a4d-46f7-89e3-60a8bc21df14"
                   },
                   {
                     "label": "Anaphylaxis",
-                    "concept": "anaphylaxis"
+                    "concept": "d3be2062-c6f8-4bc7-b7e4-34f668f6729a"
                   },
                   {
                     "label": "Arythmia",
-                    "concept": "arythmia"
+                    "concept": "26722ca1-acf1-4e1e-ba43-a571a99c76e0"
                   },
                   {
                     "label": "Bacterial meningitis",
-                    "concept": "bacterialMeningitis"
+                    "concept": "23c733cd-808d-4d23-b58c-78028e66528f"
                   },
                   {
                     "label": "Central nervous system failure",
-                    "concept": "centralNervousSystemFailure"
+                    "concept": "30f268e8-b630-4487-8c71-0553da32120a"
                   },
                   {
                     "label": "Cholera (suspected)",
-                    "concept": "cholera"
+                    "concept": "0e8565a1-f02c-4981-a8b3-47c312f7ca5d"
                   },
                   {
                     "label": "Cholera confirmed",
-                    "concept": "choleraConfirmed"
+                    "concept": "1de0008f-ca3d-4dda-80c5-a71c5039445e"
                   },
                   {
                     "label": "Complications of HIV",
-                    "concept": "complicationsOfHiv"
+                    "concept": "bb4ea2ba-8869-459a-ab99-4b95c6b41025"
                   },
                   {
-                    "label": "Complications of sickle cell disease",
-                    "concept": "complicationsOfSickleCellDisease"
+                    "label": "Complications of SCD",
+                    "concept": "fde22fd6-1351-4675-bb24-326a68a9b99b"
                   },
                   {
                     "label": "Congenital malformation",
-                    "concept": "congenitalMalformation"
+                    "concept": "2c8cc5c6-ba1c-488b-b7ed-5159c907c1d0"
                   },
                   {
                     "label": "Dengue",
-                    "concept": "dengue"
+                    "concept": "27a73e7c-c9f8-4d87-90f4-8ce7bc654e8e"
                   },
                   {
                     "label": "Diabetes and complications",
-                    "concept": "diabetesAndComplications"
+                    "concept": "28d17413-ffae-4ed4-a46b-62f8b4deb6d7"
                   },
                   {
                     "label": "Diphtheria",
-                    "concept": "diphtheria"
+                    "concept": "2425bb5d-e9df-4e64-b119-ae42eaae1a35"
                   },
                   {
                     "label": "Epilepsy",
-                    "concept": "epilepsy"
+                    "concept": "221d041d-1c52-49aa-a370-d0c763893b8f"
                   },
                   {
                     "label": "Hepatitis B",
-                    "concept": "hepatitisB"
+                    "concept": "9a3979c9-a92f-4a74-adb0-353a56d0d0e7"
                   },
                   {
                     "label": "Hepatitis C",
-                    "concept": "hepatitisC"
+                    "concept": "16c5703c-e06c-4ee0-b01f-16c33ef46532"
                   },
                   {
                     "label": "Lower respiratory tract infection",
-                    "concept": "lowerRespiratoryTractInfection"
+                    "concept": "ea03ce93-7c26-47a3-af09-5a21b7371db3"
                   },
                   {
                     "label": "Measles and complications",
-                    "concept": "measlesAndComplications"
+                    "concept": "3deca046-7e9a-4e15-b80b-84d9b99a6543"
                   },
                   {
                     "label": "Meningeal TB",
-                    "concept": "meningealTb"
+                    "concept": "7477e7a3-d6b4-46c0-b7cf-b973c0c0584d"
                   },
                   {
                     "label": "Meningitis unspecified",
-                    "concept": "meningitisUnspecified"
+                    "concept": "a4b63517-6046-4279-b0ca-86409f3b7e63"
                   },
                   {
                     "label": "Non violence-related injuries",
-                    "concept": "nonViolenceRelatedInjuries"
+                    "concept": "fdff6a8c-b71c-472d-b8f8-5171ceb625c4"
                   },
                   {
                     "label": "Other",
@@ -1483,108 +1693,108 @@
                   },
                   {
                     "label": "Perinatal asphyxia",
-                    "concept": "perinatalAsphyxia"
+                    "concept": "a13fe3f7-3828-4ade-8a92-cc2c79033d63"
                   },
                   {
                     "label": "Poliomyelitis confirmed",
-                    "concept": "poliomyelitisConfirmed"
+                    "concept": "2deaaf7c-eab8-4acc-9728-301fd9e58062"
                   },
                   {
                     "label": "Prematurity and/or low birth weight",
-                    "concept": "prematurityAndOrOrLowBirthWeight"
+                    "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
                   },
                   {
                     "label": "Pulmonary tuberculosis",
-                    "concept": "pulmonaryTuberculosis"
+                    "concept": "b6aec37b-8990-48c3-9ece-2e3edd5dbfe9"
                   },
                   {
                     "label": "Rabies",
-                    "concept": "rabies"
+                    "concept": "2f07701b-95b2-4235-8c81-448da7f1aaa3"
                   },
                   {
                     "label": "Renal failure",
-                    "concept": "renalFailure"
+                    "concept": "91a1f6cc-a86f-4c1e-8d7d-9901a40b0327"
                   },
                   {
                     "label": "Respiratory failure",
-                    "concept": "respiratoryFailure"
+                    "concept": "0c38d7d7-b74e-461a-99a6-1aebaccc42be"
                   },
                   {
                     "label": "Sepsis",
-                    "concept": "sepsis"
+                    "concept": "fb42b25e-155d-4711-86c4-4b27c1bdd8a9"
                   },
                   {
                     "label": "Severe acute malnutrition",
-                    "concept": "severeAcuteMalnutrition"
+                    "concept": "ece0907c-092d-466d-8e82-2f101fe67f19"
                   },
                   {
                     "label": "Severe malaria",
-                    "concept": "severeMalaria"
+                    "concept": "e9f02d62-a180-4a3e-813a-c210ec7364a6"
                   },
                   {
-                    "label": "Shock: cardiogenic",
-                    "concept": "shockCardiogenic"
+                    "label": "Cardiogenic shock",
+                    "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
                   },
                   {
                     "label": "Shock: haemorrhagic",
-                    "concept": "shockHaemorrhagic"
+                    "concept": "e7e1991d-9a20-4ba3-9c53-45464689a72c"
                   },
                   {
                     "label": "Shock: hypovolaemic",
-                    "concept": "shockHypovolaemic"
+                    "concept": "d8c5769e-b090-4bcb-8942-4a3d7c4f58ff"
                   },
                   {
-                    "label": "Snake bite",
-                    "concept": "snakeBites"
+                    "label": "Snake bites",
+                    "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
                   },
                   {
                     "label": "Stroke / CVA",
-                    "concept": "strokeOrCva"
+                    "concept": "bff16ef7-3429-4cff-bda0-5cc13a77ae39"
                   },
                   {
                     "label": "Suspected or confirmed malignancy",
-                    "concept": "suspectedOrConfirmedMalignancy"
+                    "concept": "be1800cf-19cd-4074-9398-f0962fc3db8c"
                   },
                   {
                     "label": "Tetanus",
-                    "concept": "tetanus"
+                    "concept": "ac66146e-5919-428c-8ed6-6a5a764ab06a"
                   },
                   {
                     "label": "Toxicity / poisoning",
-                    "concept": "toxicityOrPoisoning"
-                  },
-                  {
-                    "label": "Typhoid fever",
-                    "concept": "typhoidFever"
+                    "concept": "3a5b3971-6cef-4a54-82bc-8f897858bd00"
                   },
                   {
                     "label": "Traumatic brain injury",
-                    "concept": "traumaticBrainInjury"
+                    "concept": "952d4753-7f1c-40fc-94e4-0dd98fdfdbba"
+                  },
+                  {
+                    "label": "Typhoid fever",
+                    "concept": "a1a7f04a-997b-4914-8f32-4546c2554519"
                   },
                   {
                     "label": "Violence-related injuries",
-                    "concept": "violenceRelatedInjuries"
+                    "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
-                    "label": "Viral haemorrhagic fever",
-                    "concept": "viralHaemorrhagicFevers"
+                    "label": "Viral haemorrhagic fevers",
+                    "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
                   },
                   {
                     "label": "Visceral leishmaniasis",
-                    "concept": "visceralLeishmaniasis"
+                    "concept": "c2ddc071-9590-4b24-b797-1e1769662a5b"
                   },
                   {
                     "label": "Whooping cough",
-                    "concept": "whoopingCough"
+                    "concept": "c3d7e630-1a84-481a-ba12-e21c089bbb35"
                   },
                   {
                     "label": "Yellow fever",
-                    "concept": "yellowFever"
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
                   }
                 ]
               },
               "hide": {
-                "hideWhenExpression": "outcomeOfTheStayInAtfc !== 'deceased'"
+                "hideWhenExpression": "outcomeOfTheStayInAtfc !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f'"
               }
             }
           ]
@@ -1603,7 +1813,7 @@
                 "workspaceName": "immunization-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -1613,7 +1823,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "hepatitisB",
+                "concept": "e68c1c38-4feb-4436-814b-fc1ab77dddb1",
                 "answers": [
                   {
                     "label": "Dose 1",
@@ -1630,17 +1840,17 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
               "id": "lastHepatitisB0DoseGivenOnSite",
-              "label": "Last Hepatitis B 0 dose given on site",
+              "label": "Last Hepatitis B dose given on site",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "lastHepatitisB0DoseGivenOnSite",
+                "concept": "260e4e04-9b60-4919-aa30-b86b9e5a0fa6",
                 "answers": [
                   {
                     "label": "Yes",
@@ -1653,7 +1863,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(hepatitisB !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') && (hepatitisB !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
+                "hideWhenExpression": "hepatitisB !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && hepatitisB !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -1663,7 +1873,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "bcg",
+                "concept": "1b235207-e71a-4119-aa0a-6f632e7d8749",
                 "answers": [
                   {
                     "label": "Dose 1",
@@ -1671,7 +1881,7 @@
                   },
                   {
                     "label": "Not vaccinated",
-                    "concept": "0a3295a9-33c9-4898-966f-5109b146d2d7"
+                    "concept": "5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf"
                   },
                   {
                     "label": "Unknown",
@@ -1680,7 +1890,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -1690,7 +1900,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "lastBcgDoseGivenOnSite",
+                "concept": "543fce17-3cd8-49af-8e72-604fbf33171c",
                 "answers": [
                   {
                     "label": "Yes",
@@ -1703,7 +1913,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(bcg !== '0a3295a9-33c9-4898-966f-5109b146d2d7') && (bcg !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
+                "hideWhenExpression": "bcg !== '0a3295a9-33c9-4898-966f-5109b146d2d7' && bcg !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -1713,7 +1923,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "pentavalent",
+                "concept": "33687b5e-832e-4fa6-93d1-a2be0f83c24c",
                 "answers": [
                   {
                     "label": "Dose 1",
@@ -1742,7 +1952,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -1752,7 +1962,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "lastPentavalentDoseGivenOnSite",
+                "concept": "f057a05e-fd06-4702-ac96-5a971bda327a",
                 "answers": [
                   {
                     "label": "Yes",
@@ -1765,7 +1975,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(pentavalent !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') && (pentavalent !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
+                "hideWhenExpression": "pentavalent !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && pentavalent !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -1775,7 +1985,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "afp",
+                "concept": "13a9ea9e-6880-4e13-baaf-81fc9dc0e218",
                 "answers": [
                   {
                     "label": "Dose 0",
@@ -1808,7 +2018,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -1818,7 +2028,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "lastAfpDoseGivenOnSite",
+                "concept": "105e0184-8f04-48b4-98cf-96f62328193e",
                 "answers": [
                   {
                     "label": "Yes",
@@ -1831,7 +2041,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(afp !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') && (afp !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
+                "hideWhenExpression": "afp !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && afp !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -1841,7 +2051,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "measles",
+                "concept": "3deca046-7e9a-4e15-b80b-84d9b99a6543",
                 "answers": [
                   {
                     "label": "Dose 1",
@@ -1862,7 +2072,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -1872,7 +2082,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "lastMeaslesDoseGivenOnSite",
+                "concept": "ee622857-c11d-4835-9101-b33a1d6d2bd0",
                 "answers": [
                   {
                     "label": "Yes",
@@ -1885,7 +2095,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(measles !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') && (measles !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
+                "hideWhenExpression": "measles !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && measles !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -1895,7 +2105,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "pcv",
+                "concept": "532d4105-32ec-469c-98de-a58c1eaef5eb",
                 "answers": [
                   {
                     "label": "Dose 1",
@@ -1924,7 +2134,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -1934,7 +2144,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "lastPcvDoseGivenOnSite",
+                "concept": "e5f71a03-da40-44b5-a62b-a65f499f54b1",
                 "answers": [
                   {
                     "label": "Yes",
@@ -1947,7 +2157,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(pcv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') && (pcv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
+                "hideWhenExpression": "pcv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && pcv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -1957,7 +2167,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "rotavirus",
+                "concept": "23f964db-79ea-4d7a-858e-e3618f92b95e",
                 "answers": [
                   {
                     "label": "Dose 1",
@@ -1982,7 +2192,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -1992,7 +2202,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "lastRotavirusDoseGivenOnSite",
+                "concept": "088500cb-3ca4-432a-a03c-30a5e9a5cbe5",
                 "answers": [
                   {
                     "label": "Yes",
@@ -2005,7 +2215,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(rotavirus !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') && (rotavirus !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
+                "hideWhenExpression": "rotavirus !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && rotavirus !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -2015,7 +2225,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "yellowFever",
+                "concept": "beada794-1e19-4c1d-af5a-8918ca43563d",
                 "answers": [
                   {
                     "label": "Dose 1",
@@ -2032,7 +2242,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -2042,7 +2252,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "lastYellowFeverDoseGivenOnSite",
+                "concept": "b859b170-10a8-4be6-a783-35993bf9dbc1",
                 "answers": [
                   {
                     "label": "Yes",
@@ -2055,7 +2265,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(yellowFever !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') && (yellowFever !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
+                "hideWhenExpression": "yellowFever !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && yellowFever !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -2065,7 +2275,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "ipv",
+                "concept": "214623a9-5df8-4719-a8f4-dbc90a439752",
                 "answers": [
                   {
                     "label": "Dose 1",
@@ -2090,7 +2300,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -2100,7 +2310,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "lastIpvDoseGivenOnSite",
+                "concept": "3af21f9f-a97a-47e7-955e-768e360fb472",
                 "answers": [
                   {
                     "label": "Yes",
@@ -2113,7 +2323,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(ipv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') && (ipv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
+                "hideWhenExpression": "ipv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && ipv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -2123,7 +2333,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "meningitisA",
+                "concept": "3059023b-bbcc-47f6-b01f-335cb53ba6a2",
                 "answers": [
                   {
                     "label": "Dose 1",
@@ -2144,7 +2354,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -2154,7 +2364,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "lastMeningitisDoseGivenOnSite",
+                "concept": "e489eee8-df16-4c16-8efe-64dd58430f20",
                 "answers": [
                   {
                     "label": "Yes",
@@ -2167,7 +2377,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(meningitisA !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf') && (meningitisA !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8')"
+                "hideWhenExpression": "meningitisA !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && meningitisA !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             }
           ]
@@ -2183,7 +2393,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "st",
+                "concept": "124e7427-f7b8-439c-bca4-b1cee021d8a3",
                 "answers": [
                   {
                     "label": "Yes",
@@ -2196,7 +2406,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -2206,7 +2416,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "nd",
+                "concept": "3b0148a8-565d-4120-8518-3b9786a80c0c",
                 "answers": [
                   {
                     "label": "Yes",
@@ -2219,7 +2429,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -2229,7 +2439,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "rd",
+                "concept": "8aa4ecee-a7d4-4a06-8090-f44339fbacc5",
                 "answers": [
                   {
                     "label": "Yes",
@@ -2242,7 +2452,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -2252,7 +2462,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "th",
+                "concept": "73d7ba86-696d-4013-b6a4-5b5a021bfeb3",
                 "answers": [
                   {
                     "label": "Yes",
@@ -2265,7 +2475,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -2275,7 +2485,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "notThisYear",
+                "concept": "ba853f90-d747-45e8-9c6e-e90c7a548dee",
                 "answers": [
                   {
                     "label": "Yes",
@@ -2288,7 +2498,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             },
             {
@@ -2298,7 +2508,7 @@
               "required": false,
               "questionOptions": {
                 "rendering": "radio",
-                "concept": "smcUnknown",
+                "concept": "d76e493d-cac1-4c22-9092-3d1422ce17ef",
                 "answers": [
                   {
                     "label": "Yes",
@@ -2311,7 +2521,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1'"
               }
             }
           ]
@@ -2335,25 +2545,12 @@
                 "workspaceName": "immunization-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' && typeOfConsultation !== '18c10f79-0bd7-429a-a809-3225bebf4bc7'"
               }
             },
             {
               "id": "pleaseCheckInmedications",
-              "label": "Please check in 'Medications' (update it if necessary)",
-              "required": false,
-              "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Active medications",
-                "workspaceName": "add-drug-order"
-              },
-              "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
-              }
-            },
-            {
-              "id": "prescribeNewExamsAndMedicationWithTheOrderBasketIfNecessary",
-              "label": "Prescribe new exams and medication with the order basket if necessary",
+              "label": "Check in 'Medications', update it and prescribe new exams and medication with the order basket if necessary",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -2371,7 +2568,7 @@
                 "workspaceName": "appointments-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== 'discharge'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' && typeOfConsultation !== '18c10f79-0bd7-429a-a809-3225bebf4bc7'"
               }
             }
           ]
