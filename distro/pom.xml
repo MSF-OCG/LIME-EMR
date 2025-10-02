@@ -1,742 +1,734 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.ozonehis</groupId>
-    <artifactId>maven-parent</artifactId>
-    <version>1.0.0-alpha.13</version>
-    <relativePath />
-  </parent>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ozonehis</groupId>
+		<artifactId>maven-parent</artifactId>
+		<version>1.0.0-alpha.13</version>
+		<relativePath />
+	</parent>
 
-  <groupId>com.ozonemsf</groupId>
-  <artifactId>ozone-msf-distro</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<groupId>com.ozonemsf</groupId>
+	<artifactId>ozone-msf-distro</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+  
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>8</maven.compiler.source>
+		<maven.compiler.target>8</maven.compiler.target>
+		<limeEmrVersion>0.1.0</limeEmrVersion>
+		<datafilterVersion>2.3.0-SNAPSHOT</datafilterVersion>
+    
+		<!--RefApp 3.5.0 modules -->
+		<openmrs.version>2.7.6</openmrs.version>
+		<initializer.version>2.9.0</initializer.version>
+		<fhir2.version>2.7.0</fhir2.version>
+		<webservices.rest.version>2.50.0</webservices.rest.version>
+		<addresshierarchy.version>2.21.0</addresshierarchy.version>
+		<idgen.version>4.14.0</idgen.version>
+		<legacyui.version>1.23.0</legacyui.version>
+		<metadatamapping.version>1.6.0</metadatamapping.version>
+		<openconceptlab.version>2.4.0</openconceptlab.version>
+		<attachments.version>3.7.0</attachments.version>
+		<queue.version>2.9.0</queue.version>
+		<appointments.version>2.1.0-20250318.070530-1</appointments.version>
+		<teleconsultation.version>2.1.0-20250318.154145-1</teleconsultation.version>
+		<cohort.version>3.7.3</cohort.version>
+		<authentication.version>2.0.0</authentication.version>
+		<reporting.version>1.28.0</reporting.version>
+		<reportingrest.version>1.15.0</reportingrest.version>
+		<calculation.version>1.3.0</calculation.version>
+		<htmlwidgets.version>1.11.0</htmlwidgets.version>
+		<serialization-xstream.version>0.2.16</serialization-xstream.version>
+		<ordertemplates.version>1.0.2</ordertemplates.version>
+		<patientflags.version>3.0.8</patientflags.version>
+		<o3forms.version>2.3.0</o3forms.version>
+		<emrapi.version>2.3.0</emrapi.version>
+		<event.version>3.0.0</event.version>
+		<bedmanagement.version>6.2.0-20250806.164740-6</bedmanagement.version>
+		<stockmanagement.version>2.0.3</stockmanagement.version>
+		<billing.version>1.3.2</billing.version>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>8</maven.compiler.source>
-    <maven.compiler.target>8</maven.compiler.target>
-    <limeEmrVersion>0.1.0</limeEmrVersion>
-    <datafilterVersion>2.3.0-SNAPSHOT</datafilterVersion>
+		<!-- Ozone alpha 13 modules -->
+		<oauth2loginVersion>1.6.0-SNAPSHOT</oauth2loginVersion>
+		<fhirproxyVersion>1.1.0-SNAPSHOT</fhirproxyVersion>
+		<patientsummaryVersion>2.2.0</patientsummaryVersion>
+	</properties>
+  
+	<dependencies>
+		<dependency>
+			<groupId>org.openmrs.web</groupId>
+			<artifactId>openmrs-webapp</artifactId>
+			<version>${openmrs.version}</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>lime-emr-omod</artifactId>
+			<version>${limeEmrVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>datafilter-omod</artifactId>
+			<version>${datafilterVersion}</version>
+		</dependency>
+		<!--RefApp 3.4.0 module overrides -->
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>initializer-omod</artifactId>
+			<version>${initializer.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>authentication-omod</artifactId>
+			<version>${authentication.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>fhir2-omod</artifactId>
+			<version>${fhir2.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>webservices.rest-omod</artifactId>
+			<version>${webservices.rest.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>idgen-omod</artifactId>
+			<version>${idgen.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>legacyui-omod</artifactId>
+			<version>${legacyui.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>addresshierarchy-omod</artifactId>
+			<version>${addresshierarchy.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>metadatamapping-omod</artifactId>
+			<version>${metadatamapping.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>openconceptlab-omod</artifactId>
+			<version>${openconceptlab.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>attachments-omod</artifactId>
+			<version>${attachments.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>queue-omod</artifactId>
+			<version>${queue.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.bahmni.module</groupId>
+			<artifactId>appointments-omod</artifactId>
+			<version>${appointments.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.bahmni.module</groupId>
+			<artifactId>teleconsultation-omod</artifactId>
+			<version>${teleconsultation.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>cohort-omod</artifactId>
+			<version>${cohort.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>reporting-omod</artifactId>
+			<version>${reporting.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>reportingrest-omod</artifactId>
+			<version>${reportingrest.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>calculation-omod</artifactId>
+			<version>${calculation.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>htmlwidgets-omod</artifactId>
+			<version>${htmlwidgets.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>serialization.xstream-api</artifactId>
+			<version>${serialization-xstream.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>patientflags-omod</artifactId>
+			<version>${patientflags.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>o3forms-omod</artifactId>
+			<version>${o3forms.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>emrapi-omod</artifactId>
+			<version>${emrapi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs</groupId>
+			<artifactId>event-omod</artifactId>
+			<version>${event.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>bedmanagement-omod</artifactId>
+			<version>${bedmanagement.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>stockmanagement-omod</artifactId>
+			<version>${stockmanagement.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>billing-omod</artifactId>
+			<version>${billing.version}</version>
+			<scope>provided</scope>
+		</dependency>
 
-    <!--RefApp 3.4.0 modules -->
-    <openmrs.version>2.7.4</openmrs.version>
-    <initializer.version>2.9.0</initializer.version>
-    <fhir2.version>2.5.0</fhir2.version>
-    <webservices.rest.version>2.49.0</webservices.rest.version>
-    <addresshierarchy.version>2.21.0</addresshierarchy.version>
-    <idgen.version>4.14.0</idgen.version>
-    <legacyui.version>1.23.0</legacyui.version>
-    <metadatamapping.version>1.6.0</metadatamapping.version>
-    <openconceptlab.version>2.4.0</openconceptlab.version>
-    <attachments.version>3.7.0</attachments.version>
-    <queue.version>2.6.0</queue.version>
-    <appointments.version>2.1.0-20250318.070530-1</appointments.version>
-    <teleconsultation.version>2.1.0-20250318.154145-1</teleconsultation.version>
-    <cohort.version>3.7.3</cohort.version>
-    <authentication.version>1.1.0</authentication.version>
-    <reporting.version>1.27.0</reporting.version>
-    <reportingrest.version>1.15.0</reportingrest.version>
-    <calculation.version>1.3.0</calculation.version>
-    <htmlwidgets.version>1.11.0</htmlwidgets.version>
-    <serialization-xstream.version>0.2.16</serialization-xstream.version>
-    <ordertemplates.version>1.0.2</ordertemplates.version>
-    <patientflags.version>3.0.8</patientflags.version>
-    <o3forms.version>2.3.0</o3forms.version>
-    <emrapi.version>2.3.0</emrapi.version>
-    <event.version>2.10.0</event.version>
-    <bedmanagement.version>6.1.0</bedmanagement.version>
-    <stockmanagement.version>2.0.3</stockmanagement.version>
-    <billing.version>1.3.0</billing.version>
+		<!-- Ozone alpha 13 modules -->
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>patientsummary-omod</artifactId>
+			<version>${patientsummaryVersion}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>fhirproxy-omod</artifactId>
+			<version>${fhirproxyVersion}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>oauth2login-omod</artifactId>
+			<version>${oauth2loginVersion}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 
-    <!-- Ozone alpha 13 modules -->
-    <oauth2loginVersion>1.6.0-SNAPSHOT</oauth2loginVersion>
-    <fhirproxyVersion>1.1.0-SNAPSHOT</fhirproxyVersion>
-    <fhir2Version>2.3.0</fhir2Version>
-    <patientsummaryVersion>2.2.0</patientsummaryVersion>
-  </properties>
+	<scm>
+		<connection>scm:git:git@github.com:MSF-OCG/LIME-EMR.git</connection>
+		<developerConnection>${project.scm.connection}</developerConnection>
+		<url>https://github.com/MSF-OCG/LIME-EMR</url>
+		<tag>HEAD</tag>
+	</scm>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.openmrs.web</groupId>
-      <artifactId>openmrs-webapp</artifactId>
-      <version>${openmrs.version}</version>
-      <type>war</type>
-      <scope>provided</scope>
-    </dependency>
+	<build>
+		<plugins>
+			<!-- packaging the distro as a installable/deployable file -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>Package distro artifacts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<appendAssemblyId>false</appendAssemblyId>
+							<descriptors>
+								<descriptor>assembly.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>lime-emr-omod</artifactId>
-      <version>${limeEmrVersion}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>datafilter-omod</artifactId>
-      <version>${datafilterVersion}</version>
-    </dependency>
-
-    <!--RefApp 3.4.0 module overrides -->
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>initializer-omod</artifactId>
-      <version>${initializer.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>authentication-omod</artifactId>
-      <version>${authentication.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>fhir2-omod</artifactId>
-      <version>${fhir2.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>webservices.rest-omod</artifactId>
-      <version>${webservices.rest.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>idgen-omod</artifactId>
-      <version>${idgen.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>legacyui-omod</artifactId>
-      <version>${legacyui.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>addresshierarchy-omod</artifactId>
-      <version>${addresshierarchy.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>metadatamapping-omod</artifactId>
-      <version>${metadatamapping.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>openconceptlab-omod</artifactId>
-      <version>${openconceptlab.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>attachments-omod</artifactId>
-      <version>${attachments.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>queue-omod</artifactId>
-      <version>${queue.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.bahmni.module</groupId>
-      <artifactId>appointments-omod</artifactId>
-      <version>${appointments.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.bahmni.module</groupId>
-      <artifactId>teleconsultation-omod</artifactId>
-      <version>${teleconsultation.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>cohort-omod</artifactId>
-      <version>${cohort.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>reporting-omod</artifactId>
-      <version>${reporting.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>reportingrest-omod</artifactId>
-      <version>${reportingrest.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>calculation-omod</artifactId>
-      <version>${calculation.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>htmlwidgets-omod</artifactId>
-      <version>${htmlwidgets.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>serialization.xstream-api</artifactId>
-      <version>${serialization-xstream.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>patientflags-omod</artifactId>
-      <version>${patientflags.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>o3forms-omod</artifactId>
-      <version>${o3forms.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>emrapi-omod</artifactId>
-      <version>${emrapi.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs</groupId>
-      <artifactId>event-omod</artifactId>
-      <version>${event.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>bedmanagement-omod</artifactId>
-      <version>${bedmanagement.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>stockmanagement-omod</artifactId>
-      <version>${stockmanagement.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>billing-omod</artifactId>
-      <version>${billing.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <!-- Ozone alpha 13 modules -->
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>patientsummary-omod</artifactId>
-      <version>${patientsummaryVersion}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>fhirproxy-omod</artifactId>
-      <version>${fhirproxyVersion}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>oauth2login-omod</artifactId>
-      <version>${oauth2loginVersion}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>fhir2-omod</artifactId>
-      <version>${fhir2Version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-  </dependencies>
-
-  <scm>
-    <connection>scm:git:git@github.com:MSF-OCG/LIME-EMR.git</connection>
-    <developerConnection>${project.scm.connection}</developerConnection>
-    <url>https://github.com/MSF-OCG/LIME-EMR</url>
-    <tag>HEAD</tag>
-  </scm>
-
-  <build>
-    <plugins>
-      <!-- packaging the distro as a installable/deployable file -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>Package distro artifacts</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-            <configuration>
-              <appendAssemblyId>false</appendAssemblyId>
-              <descriptors>
-                <descriptor>assembly.xml</descriptor>
-              </descriptors>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <executions>
-          <execution>
-            <!-- Override the Ozone files exclusion execution so to inherit all O3 Ref App files -->
-            <id>Exclude unneeded Ozone files</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<!-- Override the Ozone files exclusion execution so to inherit all O3 Ref App files -->
+						<id>Exclude unneeded Ozone files</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
                 ${project.build.directory}/${project.artifactId}-${project.version}</outputDirectory>
-              <overwrite>true</overwrite>
-              <resources>
-                <resource>
-                  <directory>${project.build.directory}/ozone</directory>
-                  <excludes>
-                    <exclude>distro/configs/**/concepts/*.*</exclude>
-                    <exclude>distro/configs/**/drugs/*.*</exclude>
-                    <exclude>distro/configs/**/autogenerationoptions/*.*</exclude>
-                    <exclude>distro/configs/**/globalproperties/*i18n*.*</exclude>
-                    <exclude>distro/configs/**/globalproperties/*drugorder*.*</exclude>
-                    <exclude>distro/configs/**/idgen/*.*</exclude>
-                    <exclude>distro/configs/**/ocl/*.*</exclude>                    
-                    <exclude>distro/configs/**/patientidentifiertypes/*.*</exclude>
-                    <!-- Temporarily remove Ozone -->
-                    <exclude>distro/binaries/openmrs/modules/referencedemodata*.omod</exclude>
-                    <!-- Remove Ozone frontend config -->
-                    <exclude>distro/configs/openmrs/frontend_config/ozone*.*</exclude>
-                  </excludes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>${project.build.directory}/ozone</directory>
+									<excludes>
+										<exclude>distro/configs/**/concepts/*.*</exclude>
+										<exclude>distro/configs/**/drugs/*.*</exclude>
+										<exclude>distro/configs/**/autogenerationoptions/*.*</exclude>
+										<exclude>distro/configs/**/globalproperties/*i18n*.*</exclude>
+										<exclude>distro/configs/**/globalproperties/*drugorder*.*</exclude>
+										<exclude>distro/configs/**/idgen/*.*</exclude>
+										<exclude>distro/configs/**/ocl/*.*</exclude>
+										<exclude>distro/configs/**/patientidentifiertypes/*.*</exclude>
+										<!-- Temporarily remove Ozone -->
+										<exclude>distro/binaries/openmrs/modules/referencedemodata*.omod</exclude>
+										<!-- Remove Ozone frontend config -->
+										<exclude>distro/configs/openmrs/frontend_config/ozone*.*</exclude>
+									</excludes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
 
-          <execution>
-            <!-- Copy MSF Disto docker compose .txt file -->
-            <id>Copy MSF Disto docker compose .txt file</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>
+					<execution>
+						<!-- Copy MSF Disto docker compose .txt file -->
+						<id>Copy MSF Disto docker compose .txt file</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
                 ${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts</outputDirectory>
-              <overwrite>true</overwrite>
-              <resources>
-                <resource>
-                  <directory>${project.basedir}/../scripts</directory>
-                  <includes>
-                    <include>docker-compose-files.txt </include>
-                    <include>merge-openfn-yaml.groovy</include>
-                    <include>*.sh</include>
-                    <include>*.csv</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/../scripts</directory>
+									<includes>
+										<include>docker-compose-files.txt </include>
+										<include>merge-openfn-yaml.groovy</include>
+										<include>*.sh</include>
+										<include>*.csv</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
 
-          <execution>
-            <!-- Copy MSF OpenFn docker compose .yml file -->
-            <id>Copy MSF docker compose .yml file</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>
+					<execution>
+						<!-- Copy MSF OpenFn docker compose .yml file -->
+						<id>Copy MSF docker compose .yml file</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
                 ${project.build.directory}/${project.artifactId}-${project.version}/run/docker</outputDirectory>
-              <overwrite>true</overwrite>
-              <resources>
-                <resource>
-                  <directory>${project.basedir}/../scripts</directory>
-                  <includes>
-                    <include>docker-compose*.yml</include>
-                    <include>docker-compose*.yaml</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/../scripts</directory>
+									<includes>
+										<include>docker-compose*.yml</include>
+										<include>docker-compose*.yaml</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
 
-          <execution>
-            <!-- Copy MSF OpenFn database script files -->
-            <id>Copy MSF OpenFn database script files</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>
+					<execution>
+						<!-- Copy MSF OpenFn database script files -->
+						<id>Copy MSF OpenFn database script files</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
                 ${project.build.directory}/${project.artifactId}-${project.version}/distro/data</outputDirectory>
-              <overwrite>true</overwrite>
-              <resources>
-                <resource>
-                  <directory>${project.basedir}/../scripts/data</directory>
-                  <includes>
-                    <include>**/*.sh</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/../scripts/data</directory>
+									<includes>
+										<include>**/*.sh</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
 
-          <execution>
-            <id>Copy MSF environment variables</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>
+					<execution>
+						<id>Copy MSF environment variables</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
                 ${project.build.directory}/${project.artifactId}-${project.version}/run/docker</outputDirectory>
-              <overwrite>true</overwrite>
-              <resources>
-                <resource>
-                  <directory>${project.basedir}/../scripts/secrets</directory>
-                  <includes>
-                    <include>${envFileToInclude}</include>
-                  </includes>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>3.1.0</version>
-        <executions>
-          <execution>
-            <id>Add MSF-OCG LIME Frontend Configuration to ozone</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <target>
-                <echo level="info" message="Adding msf frontend config"/>
-                <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/../scripts/secrets</directory>
+									<includes>
+										<include>${envFileToInclude}</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>Add MSF-OCG LIME Frontend Configuration to ozone</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo level="info" message="Adding msf frontend config"/>
+								<replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
                               match="ozone-frontend-config.json" replace="msf-frontend-config.json" />
-              </target>
-            </configuration>
-          </execution>
-          <execution>
-            <id>Add MSF addons to ozone</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <target>
-                <echo level="info" message="remove ozone modules"/>
-                <delete>
-                    <fileset dir="${project.build.directory}/${project.artifactId}-${project.version}/distro/binaries/openmrs/modules" includes="*.omod" />
-                </delete>
-
-                <echo level="info" message="remove openmrs-core volume"/>
-                <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/docker-compose-openmrs.yml"
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>Add MSF addons to ozone</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo level="info" message="remove ozone modules"/>
+								<delete>
+									<fileset dir="${project.build.directory}/${project.artifactId}-${project.version}/distro/binaries/openmrs/modules">
+										<include name="*.omod" />
+										<exclude name="serialization*.omod" />
+									</fileset>
+								</delete>
+								<echo level="info" message="remove openmrs-core volume"/>
+								<replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/docker-compose-openmrs.yml"
                   match=".*OPENMRS_CORE_PATH:-openmrs-core.*" 
                   replace=""
                   flags="g" />
-                <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/docker-compose-openmrs.yml"
+								<replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/docker-compose-openmrs.yml"
                   match=".*openmrs-core: ~.*" 
                   replace=""
                   flags="g" />
-                  
-                <echo level="info" message="Adding msf core version"/>
-                <replaceregexp file="${project.build.directory}/openmrs/frontend_assembly/build-openmrs-frontend.groovy"
+
+								<echo level="info" message="Adding msf core version"/>
+								<replaceregexp file="${project.build.directory}/openmrs/frontend_assembly/build-openmrs-frontend.groovy"
                               match="openmrsVersion =.*" replace='openmrsVersion = slurper.parse(Paths.get("${project.build.directory}", "openmrs_frontend", "spa-assemble-config.json").toFile())["coreVersion"] ?: "next"'/>
 
-                <echo level="info" message="Adding OpenFn admin user" />
-                <replace
+								<echo level="info" message="Adding OpenFn admin user" />
+								<replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
                   token="displayAccessURLsWithCredentials">
-                  <replacevalue>
+									<replacevalue>
                     source run_msf_addons.sh&#10;displayAccessURLsWithCredentials
                   </replacevalue>
-                </replace>
+								</replace>
 
-                <echo level="info" message="Adding openFn server to ozone csv template" />
-                <replace
+								<echo level="info" message="Adding openFn server to ozone csv template" />
+								<replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/ozone-urls-template.csv"
                   token="OpenMRS 3,${O3_HOSTNAME}/openmrs/spa,admin,Admin123,openmrs">
-                  <replacevalue>
+									<replacevalue>
                     OpenFn,${OPENFN_HOSTNAME},michael.bontyes@geneva.msf.org,Admin1234567,openfn&#10;OpenMRS 3,${O3_HOSTNAME}/openmrs/spa,admin,Admin123,openmrs
                   </replacevalue>
-                </replace>
+								</replace>
 
-                <echo level="info" message="Adding MSF utils to ozone scripts" />
-                <replace
+								<echo level="info" message="Adding MSF utils to ozone scripts" />
+								<replace
                   dir="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts"
                   token='source utils.sh'>
-                  <include name="**/*.sh"/>
-                  <replacevalue>
+									<include name="**/*.sh"/>
+									<replacevalue>
                     source utils.sh&#10;&#10;source msf_utils.sh
                   </replacevalue>
-                </replace>
+								</replace>
 
-                <echo level="info" message="Adding MSF project Name to ozone" />
-                <replace
+								<echo level="info" message="Adding MSF project Name to ozone" />
+								<replace
                   dir="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts"
                   token='-p ozone'>
-                  <include name="**/*.sh"/>
-                  <replacevalue>
+									<include name="**/*.sh"/>
+									<replacevalue>
                     -p $PROJECT_NAME
                   </replacevalue>
-                </replace>
-                <replace
+								</replace>
+								<replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
                   token='export BOLD=`tput bold`'>
-                  <replacevalue>
+									<replacevalue>
                     export BOLD=`tput bold`&#10;export PROJECT_NAME="${project.artifactId}"
                   </replacevalue>
-                </replace>
-                <replace
+								</replace>
+								<replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
                   token='export O3_HOSTNAME="localhost"'>
-                  <replacevalue>
+									<replacevalue>
                     export O3_HOSTNAME="localhost:4001"
                   </replacevalue>
-                </replace>
+								</replace>
 
-                <echo level="info" message="Adding MSF environment variables to Ozone" />
-                <replace
+								<echo level="info" message="Adding MSF environment variables to Ozone" />
+								<replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
                   token='echo "→ ERPNEXT_SCRIPTS_PATH=$ERPNEXT_SCRIPTS_PATH"'>
-                  <replacevalue>
+									<replacevalue>
                     echo "→ ERPNEXT_SCRIPTS_PATH=$ERPNEXT_SCRIPTS_PATH"&#10;&#9;setMSFEnvironment
                   </replacevalue>
-                </replace>
-                <replace
+								</replace>
+								<replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
                   token='echo "→ DISTRO_PATH=$DISTRO_PATH"'>
-                  <replacevalue>
+									<replacevalue>
                     echo "→ DISTRO_PATH=$DISTRO_PATH"
                     export MSF_ENV_CONFIG_PATH=./
                     export MSF_SERVER_TYPE="${msfServerType}"
                     echo "→ MSF_SERVER_TYPE=$MSF_SERVER_TYPE"
                   </replacevalue>
-                </replace>
-                <replace
+								</replace>
+								<replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
                   token='echo "$INFO Exporting Traefik hostnames..."'>
-                  <replacevalue>
+									<replacevalue>
                     echo "$INFO Exporting Traefik hostnames..."
                     export OPENFN_HOSTNAME=openfn-"${IP_WITH_DASHES}.traefik.me"
                     echo "→ OPENFN_HOSTNAME=$OPENFN_HOSTNAME"
                     export TRAEFIK_HOSTNAME=api-"${IP_WITH_DASHES}.traefik.me"
                     echo "→ TRAEFIK_HOSTNAME=$TRAEFIK_HOSTNAME"
                   </replacevalue>
-                </replace>
-                <replace
+								</replace>
+								<replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
                   token='echo "-,-,-,-" >> .urls_1.txt'>
-                  <replacevalue>
+									<replacevalue>
                     echo "-,-,-,-" >> .urls_1.txt
                     echo "Traefik,${TRAEFIK_HOSTNAME},admin,Admin123" >> .urls_1.txt
                   </replacevalue>
-                </replace>
+								</replace>
 
-                <echo level="info" message="Adding traefik host access details Ozone start script" />
-                <replace
+								<echo level="info" message="Adding traefik host access details Ozone start script" />
+								<replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
                   token='displayAccessURLsWithCredentials'>
-                  <replacevalue>
+									<replacevalue>
                     displayAccessURLsWithCredentials&#10;&#10;displayMSFAccessURLsWithCredentials
                   </replacevalue>
-                </replace>
-                <replace
+								</replace>
+								<replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/start.sh"
                   token='echo "$INFO Skipping running Nginx proxy... (\$TRAEFIK=true)"'>
-                  <replacevalue>
+									<replacevalue>
                     runMSFServerTraefikAndNginxProxy
                   </replacevalue>
-                </replace>
+								</replace>
 
-                <echo level="info" message="Adding traefik server stop and destroy script" />
-                <replace
+								<echo level="info" message="Adding traefik server stop and destroy script" />
+								<replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/destroy-demo.sh"
                   token='docker compose -p $PROJECT_NAME $dockerComposeProxyCLIOptions down -v'>
-                  <replacevalue>
+									<replacevalue>
                     docker compose -p $PROJECT_NAME $dockerComposeProxyCLIOptions down -v&#10;&#9;echo "$INFO Destroying Traefik services..."&#10;&#9;docker compose -p $PROJECT_NAME --env-file $dockerComposeEnvFilePath -f ../docker-compose-traefik.yml down -v
                   </replacevalue>
-                </replace>
-                <replace
+								</replace>
+								<replace
                   file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/stop-demo.sh"
                   token='docker compose -p $PROJECT_NAME $dockerComposeProxyCLIOptions stop'>
-                  <replacevalue>
+									<replacevalue>
                     docker compose -p $PROJECT_NAME $dockerComposeProxyCLIOptions stop&#10;&#9;echo "$INFO stoping Traefik services..."&#10;&#9;docker compose -p $PROJECT_NAME --env-file $dockerComposeEnvFilePath -f ../docker-compose-traefik.yml stop
                   </replacevalue>
-                </replace>
+								</replace>
 
-                <echo level="info" message="Setting executable permissions for the Ozone start.sh script" />
-                <chmod file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/*.sh" perm="700"/>
-              </target>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.gmavenplus</groupId>
-        <artifactId>gmavenplus-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>combine openfn project.yaml files</id>
-            <goals>
-              <goal>execute</goal>
-            </goals>
-            <phase>process-resources</phase>
-            <configuration>
-              <scripts>
-                <script>file://${project.basedir}/../scripts/merge-openfn-yaml.groovy</script>
-              </scripts>
-            </configuration>
-          </execution>
-          <execution>
-            <id>apply-overrides</id>
-            <goals>
-              <goal>execute</goal>
-            </goals>
-            <phase>process-resources</phase>
-            <configuration>
-              <scripts>
-                <script>file://${project.basedir}/../scripts/apply-overrides.groovy</script>
-              </scripts>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>com.bekioui.maven.plugin</groupId>
-        <artifactId>merge-maven-plugin</artifactId>
-        <version>1.2.0</version>
-        <executions>
-            <execution>
-                <id>Merge env files</id>
-                <phase>prepare-package</phase>
-                <goals>
-                    <goal>merge</goal>
-                </goals>
-                <configuration>
-                    <merges>
-                        <merge>
-                            <target>${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env</target>
-                            <searchDir>${project.build.directory}/${project.artifactId}-${project.version}/run/docker</searchDir>
-                            <!-- Modified pattern to exclude concatenated.env -->
-                            <pattern>^(?!ozone-dir\.env$|concatenated\.env$).*\.env</pattern>
-                            <override>true</override>
-                        </merge>
-                    </merges>
-                </configuration>
-            </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+								<echo level="info" message="Setting executable permissions for the Ozone start.sh script" />
+								<chmod file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/*.sh" perm="700"/>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.gmavenplus</groupId>
+				<artifactId>gmavenplus-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>combine openfn project.yaml files</id>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<phase>process-resources</phase>
+						<configuration>
+							<scripts>
+								<script>file://${project.basedir}/../scripts/merge-openfn-yaml.groovy</script>
+							</scripts>
+						</configuration>
+					</execution>
+					<execution>
+						<id>apply-overrides</id>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<phase>process-resources</phase>
+						<configuration>
+							<scripts>
+								<script>file://${project.basedir}/../scripts/apply-overrides.groovy</script>
+							</scripts>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.bekioui.maven.plugin</groupId>
+				<artifactId>merge-maven-plugin</artifactId>
+				<version>1.2.0</version>
+				<executions>
+					<execution>
+						<id>Merge env files</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>merge</goal>
+						</goals>
+						<configuration>
+							<merges>
+								<merge>
+									<target>${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env</target>
+									<searchDir>${project.build.directory}/${project.artifactId}-${project.version}/run/docker</searchDir>
+									<!-- Modified pattern to exclude concatenated.env -->
+									<pattern>^(?!ozone-dir\.env$|concatenated\.env$).*\.env</pattern>
+									<override>true</override>
+								</merge>
+							</merges>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
-  <profiles>
-    <profile>
-      <id>validator</id>
-      <activation>
-        <jdk>1.8</jdk>
-        <property>
-          <name>env.CI</name>
-          <value>true</value>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <!-- hooking the OpenMRS config validation to the integration-test phase -->
-          <plugin>
-            <groupId>org.openmrs.maven.plugins</groupId>
-            <artifactId>openmrs-packager-maven-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>Validate OpenMRS configuration</id>
-                <phase>integration-test</phase>
-                <goals>
-                  <goal>validate-configurations</goal>
-                </goals>
-                <configuration>
-                  <sourceDir>
+	<profiles>
+		<profile>
+			<id>validator</id>
+			<activation>
+				<jdk>1.8</jdk>
+				<property>
+					<name>env.CI</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- hooking the OpenMRS config validation to the integration-test phase -->
+					<plugin>
+						<groupId>org.openmrs.maven.plugins</groupId>
+						<artifactId>openmrs-packager-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>Validate OpenMRS configuration</id>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>validate-configurations</goal>
+								</goals>
+								<configuration>
+									<sourceDir>
                     ${project.build.directory}/${project.artifactId}-${project.version}/distro/configs/openmrs/initializer_config</sourceDir>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>local</id>
-      <properties>
-        <envFileToInclude>local.msf.env</envFileToInclude>
-        <msfServerType>local</msfServerType>
-      </properties>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-    </profile>
-    <profile>
-      <id>azure</id>
-      <properties>
-        <envFileToInclude>azure.msf.env</envFileToInclude>
-        <msfServerType>azure</msfServerType>
-      </properties>
-    </profile>
-  </profiles>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>local</id>
+			<properties>
+				<envFileToInclude>local.msf.env</envFileToInclude>
+				<msfServerType>local</msfServerType>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>azure</id>
+			<properties>
+				<envFileToInclude>azure.msf.env</envFileToInclude>
+				<msfServerType>azure</msfServerType>
+			</properties>
+		</profile>
+	</profiles>
 
-  <repositories>
-    <repository>
-      <id>mks-nexus-public</id>
-      <url>https://nexus.mekomsolutions.net/repository/maven-public/</url>
-    </repository>
-    <repository>
-      <id>msf-ocg-github-lime-emr</id>
-      <url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR/</url>
-    </repository>
-    <repository>
-      <id>Sonatype-public</id>
-      <name>SnakeYAML repository</name>
-      <url>https://oss.sonatype.org/content/groups/public/</url>
-    </repository>
-  </repositories>
+	<repositories>
+		<repository>
+			<id>mks-nexus-public</id>
+			<url>https://nexus.mekomsolutions.net/repository/maven-public/</url>
+		</repository>
+		<repository>
+			<id>msf-ocg-github-lime-emr</id>
+			<url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR/</url>
+		</repository>
+		<repository>
+			<id>Sonatype-public</id>
+			<name>SnakeYAML repository</name>
+			<url>https://oss.sonatype.org/content/groups/public/</url>
+		</repository>
+	</repositories>
 
-  <distributionManagement>
-    <repository>
-      <name>MSF repo for releases</name>
-      <id>msf-ocg-github-lime-emr</id>
-      <url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR</url>
-    </repository>
-    <snapshotRepository>
-      <name>MSF repo for snapshots</name>
-      <id>msf-ocg-github-lime-emr</id>
-      <url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR</url>
-    </snapshotRepository>
-  </distributionManagement>
+	<distributionManagement>
+		<repository>
+			<name>MSF repo for releases</name>
+			<id>msf-ocg-github-lime-emr</id>
+			<url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR</url>
+		</repository>
+		<snapshotRepository>
+			<name>MSF repo for snapshots</name>
+			<id>msf-ocg-github-lime-emr</id>
+			<url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>
