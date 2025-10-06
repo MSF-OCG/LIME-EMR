@@ -305,7 +305,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: bundled-docker-build-tmp
-          path: .
+          path: distro/target/bundled-docker-build-tmp
         if: ${{ needs.maven-build.outputs.build-artifacts == 'success' }}
 
       - name: Verify Docker context exists
