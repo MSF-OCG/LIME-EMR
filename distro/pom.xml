@@ -534,35 +534,28 @@
                       </execution>
                   </executions>
               </plugin>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                  <execution>
+                    <id>Get bitman/keycloak docker image from mekom</id>
+                    <phase>package</phase>
+                    <goals>
+                      <goal>run</goal>
+                    </goals>
+                    <configuration>
+                      <target>
+                        <echo level="info" message="Changing bitnami/keycloak to mekomsolutions/keycloak"/>
+                        <replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/keycloak/Dockerfile"
+                                      match="bitnami/keycloak" 
+                                      replace="mekomsolutions/keycloak" />
+                      </target>
+                    </configuration>
+                  </execution>
+                </executions>
+              </plugin>
           </plugins>
-      </build>
-  </profile>
-  <profile>
-      <id>bundled-docker</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-antrun-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>Get bitman/keycloak docker image from mekom</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>run</goal>
-                </goals>
-                <configuration>
-                  <target>
-                    <echo level="info" message="Changing bitnami/keycloak to mekomsolutions/keycloak"/>
-                    <replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/keycloak/Dockerfile"
-                                  match="bitnami/keycloak" 
-                                  replace="mekomsolutions/keycloak" />
-                  </target>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
       </build>
     </profile>
   </profiles>
