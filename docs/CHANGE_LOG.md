@@ -1,5 +1,43 @@
 # LIME CHANGE LOG 🚀
 
+## Release 2nd October, 2025 (Sprint 35)
+
+### Features & Improvements
+
+- Build OPD forms - [LIME2-887](https://msf-ocg.atlassian.net/browse/LIME2-887)
+- Document deployment steps for Ozone analytics - [LIME2-827](https://msf-ocg.atlassian.net/browse/LIME2-827)
+- Fix unit tests for print sticker and attend to reviews from community (Daniel and Ian) - [LIME2-912](https://msf-ocg.atlassian.net/browse/LIME2-912)
+- Set openFn credentials to automatically pick the OpenMRS port - [LIME2-933](https://msf-ocg.atlassian.net/browse/LIME2-933)
+- Give access to all forms to medical advisors - [LIME2-934](https://msf-ocg.atlassian.net/browse/LIME2-934)
+- mhGAP closure - change in the 'Referred to' answers - [LIME2-970](https://msf-ocg.atlassian.net/browse/LIME2-970)
+- Maternity triage - error in rendering type of medication prescription - [LIME2-972](https://msf-ocg.atlassian.net/browse/LIME2-972)
+- Maternity admission - replace questions related to workspaces - [LIME2-974](https://msf-ocg.atlassian.net/browse/LIME2-974)
+- Maternity admission - change rendering of Investigations - [LIME2-976](https://msf-ocg.atlassian.net/browse/LIME2-976)
+- Issue with some users not being able to save forms - [LIME2-978](https://msf-ocg.atlassian.net/browse/LIME2-978)
+- OPD - "others" option to delete in diagnosis options - [LIME2-981](https://msf-ocg.atlassian.net/browse/LIME2-981)
+- OpenFN worker upgrades (version 1.15.0) - [LIME2-984](https://msf-ocg.atlassian.net/browse/LIME2-984)
+
+### Bug Fixes
+
+- OPD - tooltips not appearing - [LIME2-982](https://msf-ocg.atlassian.net/browse/LIME2-982)
+- Maternity admission - tooltips missing - [LIME2-973](https://msf-ocg.atlassian.net/browse/LIME2-973)
+- Maternity admission - error in spelling of option "None" - [LIME2-975](https://msf-ocg.atlassian.net/browse/LIME2-975)
+- F29-MHPSS baseline - Saving 'If other specify' issue - [LIME2-979](https://msf-ocg.atlassian.net/browse/LIME2-979)
+- Cancelling an order should cancel corresponding odoo quote - [LIME2-950](https://msf-ocg.atlassian.net/browse/LIME2-950)
+- Fix ozone analytics ports - [LIME2-828](https://msf-ocg.atlassian.net/browse/LIME2-828)
+
+## Release 18th September, 2025 (Sprint 34)
+
+### Features & Improvements
+
+- Build Maternity forms - [LIME2-881](https://msf-ocg.atlassian.net/browse/LIME2-881)
+- Maternity forms translations - [LIME2-882](https://msf-ocg.atlassian.net/browse/LIME2-882)
+- Investigate possible integration of embedded view for saved forms in visits - [LIME2-700](https://msf-ocg.atlassian.net/browse/LIME2-700)
+- OCL metadata forms concept check + release of newly updated/added concepts to iraq-mosul - [LIME2-963](https://msf-ocg.atlassian.net/browse/LIME2-963)
+- Testing embedded forms on local and UAT (SolDevelo PRs) - [LIME2-953](https://msf-ocg.atlassian.net/browse/LIME2-953)
+- Update forms names to match the F- format on metadata file - [LIME2-967](https://msf-ocg.atlassian.net/browse/LIME2-967)
+- OpenFN project update - [LIME2-784](https://msf-ocg.atlassian.net/browse/LIME2-784)
+
 ## Release 4th September, 2025
 
 ### Features & Improvements
