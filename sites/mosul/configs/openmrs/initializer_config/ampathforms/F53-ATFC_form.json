@@ -147,7 +147,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "admissionCriteria_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -156,7 +156,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "admissionCriteria !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b' || admissionCriteria !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -169,7 +169,7 @@
                 "concept": "6ee723cf-4d3f-40a3-9e4c-c9aad9722ced"
               },
               "hide": {
-                "hideWhenExpression": "admissionType !== '93eb9716-6866-4d13-9b8f-59c0a7605a11'"
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b' || admissionType !== '93eb9716-6866-4d13-9b8f-59c0a7605a11'"
               }
             },
             {
@@ -204,11 +204,11 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "admissionType !== '93eb9716-6866-4d13-9b8f-59c0a7605a11'"
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b' || admissionType !== '93eb9716-6866-4d13-9b8f-59c0a7605a11'"
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "referral_ifOtherSpecify",
               "label": "If other specify",
               "type": "obs",
               "required": false,
@@ -217,7 +217,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "referralFrom !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b' || referralFrom !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -515,7 +515,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "9e3c4083-21bd-42d4-a2b5-657bc0b8a4a5",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": false
               },
               "default": "Value of first ATFC form (but keep editable)",
@@ -562,7 +562,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "60b409cc-0fff-4eb3-8a1d-1b2112728021",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": true,
                 "step": 1
               },
@@ -584,7 +584,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "cdb8c5f1-1afd-41d0-ba30-714440441555",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": false
               },
               "hide": {
@@ -630,7 +630,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "27802b51-f480-416a-b08f-696bab915663",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": true,
                 "step": 1
               },
@@ -689,7 +689,7 @@
             },
             {
               "id": "malariaTestResult",
-              "label": "Result",
+              "label": "HIV test - result",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -718,7 +718,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": false
               }
             }
@@ -860,7 +860,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' && typeOfConsultation !== '18c10f79-0bd7-429a-a809-3225bebf4bc7'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || typeOfConsultation !== '18c10f79-0bd7-429a-a809-3225bebf4bc7'"
               }
             },
             {
@@ -999,7 +999,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "mostSerious_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -1008,7 +1008,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(mostSerious) && mostSerious !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || mostSerious !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -1147,7 +1147,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "secondary1_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -1156,7 +1156,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "secondary1 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b' || secondary1 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -1295,7 +1295,7 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "secondary2_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
@@ -1304,7 +1304,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "secondary2 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b' || secondary2 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -1443,16 +1443,16 @@
               }
             },
             {
-              "id": "ifOtherSpecify",
+              "id": "secondary3_ifOtherSpecify",
               "label": "If other, specify",
               "type": "obs",
               "required": false,
               "questionOptions": {
                 "rendering": "text",
-                "concept": "ifOtherSpecify"
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "secondary3 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+                "hideWhenExpression": "typeOfConsultation !== '871b2167-4024-4983-a881-9893b6a8460b' || secondary3 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -1579,7 +1579,7 @@
                 "concept": "68f91879-5f00-4168-82eb-785c6bece077"
               },
               "hide": {
-                "hideWhenExpression": "outcomeOfTheStayInAtfc !== 'deceased'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || outcomeOfTheStayInAtfc !== 'deceased'"
               }
             },
             {
@@ -1794,7 +1794,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "outcomeOfTheStayInAtfc !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || outcomeOfTheStayInAtfc !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f'"
               }
             }
           ]
@@ -1863,7 +1863,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "hepatitisB !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && hepatitisB !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || hepatitisB !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && hepatitisB !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -1913,7 +1913,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "bcg !== '0a3295a9-33c9-4898-966f-5109b146d2d7' && bcg !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || bcg !== '0a3295a9-33c9-4898-966f-5109b146d2d7' && bcg !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -1975,7 +1975,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "pentavalent !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && pentavalent !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || pentavalent !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && pentavalent !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -2041,7 +2041,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "afp !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && afp !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || afp !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && afp !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -2095,7 +2095,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "measles !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && measles !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || measles !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && measles !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -2157,7 +2157,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "pcv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && pcv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || pcv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && pcv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -2215,7 +2215,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "rotavirus !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && rotavirus !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || rotavirus !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && rotavirus !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -2265,7 +2265,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "yellowFever !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && yellowFever !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || yellowFever !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && yellowFever !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -2323,7 +2323,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "ipv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && ipv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || ipv !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && ipv !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             },
             {
@@ -2377,7 +2377,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "meningitisA !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && meningitisA !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || meningitisA !== '5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf' && meningitisA !== 'ccb4c50d-13e0-46a2-bd5e-51c86d042ad8'"
               }
             }
           ]
@@ -2545,7 +2545,7 @@
                 "workspaceName": "immunization-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' && typeOfConsultation !== '18c10f79-0bd7-429a-a809-3225bebf4bc7'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || typeOfConsultation !== '18c10f79-0bd7-429a-a809-3225bebf4bc7'"
               }
             },
             {
@@ -2568,7 +2568,7 @@
                 "workspaceName": "appointments-form-workspace"
               },
               "hide": {
-                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' && typeOfConsultation !== '18c10f79-0bd7-429a-a809-3225bebf4bc7'"
+                "hideWhenExpression": "typeOfConsultation !== '74731cd1-4b07-4905-9f6e-e2b1c65649d1' || typeOfConsultation !== '18c10f79-0bd7-429a-a809-3225bebf4bc7'"
               }
             }
           ]
