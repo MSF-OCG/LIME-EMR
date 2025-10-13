@@ -651,8 +651,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "2e80b77d-1042-40b2-a0db-075a8518a39b",
-                "min": 0.0,
-                "max": 20.0,
+                "min": 0,
+                "max": 20,
                 "disallowDecimals": false
               }
             },
@@ -664,7 +664,14 @@
               "questionOptions": {
                 "rendering": "date",
                 "concept": "5e06ab70-44e3-46de-9fb6-37f796e55e43"
-              }
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "date > new Date()",
+                  "message": "Date of Hb test cannot be in the future"
+                }
+              ]
             },
             {
               "id": "quatityOfBloodRequested",
@@ -674,7 +681,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "410ac06d-6140-4f1c-8010-4fee9560b02b",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": true,
                 "step": 1
               }
@@ -756,7 +763,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "41ec121b-9f99-4eea-8b77-0d59963fdfd5",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": true,
                 "step": 1
               }
@@ -876,7 +883,7 @@
                     "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   },
                   {
-                    "label": "nan",
+                    "label": "None",
                     "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
                   }
                 ]
@@ -896,7 +903,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(reactions, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+                "hideWhenExpression": "(crossMatch !== 'a3c06d32-8789-444e-a3aa-eec716554c91') || (!includes(reactions, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
               }
             },
             {
@@ -909,7 +916,7 @@
                 "concept": "3f197ab2-63f2-45ea-9a1f-83813f7a65f2"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(reactions, 'e15e7405-8aad-474d-a09c-bcf40da2fe84') && !includes(reactions, '8843b614-fc61-426b-9f79-fbef44afb300') && !includes(reactions, 'b95a4817-f83b-4025-816a-0cb00ea24796') && !includes(reactions, 'bfbe06c9-c5db-4ef8-889b-e6ee47c0de18') && !includes(reactions, '2cde89e4-75f1-4765-a47b-1f39eacab6f9') && !includes(reactions, '55aab00e-a0c1-46ad-a63e-e17e5433f16f') && !includes(reactions, '241b3278-3803-478b-8484-70e2b17e5543') && !includes(reactions, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+                "hideWhenExpression": "(crossMatch !== 'a3c06d32-8789-444e-a3aa-eec716554c91') || (!includes(reactions, 'e15e7405-8aad-474d-a09c-bcf40da2fe84') && !includes(reactions, '8843b614-fc61-426b-9f79-fbef44afb300') && !includes(reactions, 'b95a4817-f83b-4025-816a-0cb00ea24796') && !includes(reactions, 'bfbe06c9-c5db-4ef8-889b-e6ee47c0de18') && !includes(reactions, '2cde89e4-75f1-4765-a47b-1f39eacab6f9') && !includes(reactions, '55aab00e-a0c1-46ad-a63e-e17e5433f16f') && !includes(reactions, '241b3278-3803-478b-8484-70e2b17e5543'))"
               }
             }
           ]
@@ -945,7 +952,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "6dae3326-0754-494a-b872-d6929af94e58",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": true,
                 "step": 1
               },
