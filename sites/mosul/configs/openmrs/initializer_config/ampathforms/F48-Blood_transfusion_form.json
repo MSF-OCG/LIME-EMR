@@ -669,7 +669,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "date > new Date()",
+                  "failsWhenExpression": "dateOfHbTest > new Date()",
                   "message": "Date of Hb test cannot be in the future"
                 }
               ]
@@ -943,7 +943,14 @@
               "default": "Current date",
               "hide": {
                 "hideWhenExpression": "(crossMatch !== 'a3c06d32-8789-444e-a3aa-eec716554c91')"
-              }
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "startDate > completionDate",
+                  "message": "Completion date cannot be before start date"
+                }
+              ]
             },
             {
               "id": "quatityOfBloodTransfused",

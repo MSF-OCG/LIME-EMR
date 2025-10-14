@@ -113,7 +113,14 @@
               "questionOptions": {
                 "rendering": "datetime",
                 "concept": "9348af6a-35dc-4459-b639-c498740065b6"
-              }
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "rfeFormsEndofoperation < rfeFormsStartofoperation",
+                  "message": "End date cannot be before start date"
+                }
+              ]
             }
           ]
         }
