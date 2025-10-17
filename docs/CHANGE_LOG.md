@@ -1,5 +1,29 @@
 # LIME CHANGE LOG 🚀
 
+## Release 15th October, 2025 (Sprint 36)
+
+### Features & Improvements
+
+- Build NCDs forms - [LIME2-989](https://msf-ocg.atlassian.net/browse/LIME2-989)
+- Build Small Procedure Report form - [LIME2-986](https://msf-ocg.atlassian.net/browse/LIME2-986)
+- Build Blood transfusion form - [LIME2-987](https://msf-ocg.atlassian.net/browse/LIME2-987)
+- Build Pre-donation form - [LIME2-988](https://msf-ocg.atlassian.net/browse/LIME2-988)
+- OpenFN worker upgrades (version 1.15.0) - [LIME2-984](https://msf-ocg.atlassian.net/browse/LIME2-984)
+- Maternity forms translations - [LIME2-882](https://msf-ocg.atlassian.net/browse/LIME2-882)
+- OPD forms translations - [LIME2-888](https://msf-ocg.atlassian.net/browse/LIME2-888)
+- Laboratory - additional changes in list of tests - [LIME2-929](https://msf-ocg.atlassian.net/browse/LIME2-929)
+- Upgrade LIME-EMR to 3.5.0 / Concept reference ranges API doesn't return the ranges for vital concepts - [LIME2-964](https://msf-ocg.atlassian.net/browse/LIME2-964)
+- PNC - eliminate inexistent workspace - [LIME2-968](https://msf-ocg.atlassian.net/browse/LIME2-968)
+- Drug order - items added - [LIME2-983](https://msf-ocg.atlassian.net/browse/LIME2-983)
+- Test Restic backups on UAT - [LIME2-911](https://msf-ocg.atlassian.net/browse/LIME2-911)
+<!-- - Maternity delivery - saving issue related to vacuum delivery - [LIME2-977](https://msf-ocg.atlassian.net/browse/LIME2-977) -->
+
+### Bug Fixes
+
+- Skip logic for F14-obstetric ultrasound form multiple items not working - [LIME2-917](https://msf-ocg.atlassian.net/browse/LIME2-917)
+- ATFC - skip logics not working - [LIME2-980](https://msf-ocg.atlassian.net/browse/LIME2-980)
+- Issue for mhGAP doctor to view the list of medication - [LIME2-760](https://msf-ocg.atlassian.net/browse/LIME2-760)
+
 ## Release 2nd October, 2025 (Sprint 35)
 
 ### Features & Improvements
