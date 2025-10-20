@@ -26,6 +26,11 @@
       "privileges": ["Patient Dashboard - View Patient Summary"]
     },
     "notesConceptUuids": ["a3380b6e-c41e-4c7e-a85b-11c1573ae70e"],
+    "encounterEditableDuration": 1440,
+    "encounterEditableDurationOverridePrivileges": [
+      "Delete Encounters",
+      "Delete Visits"
+    ],
     "extensionSlots": {
       "patient-chart-dashboard-slot": {
         "remove": [
@@ -594,5 +599,8 @@
       "allergyReactionUuid": "0973e794-741b-404e-ad46-97a4e7cdec52",
       "otherConceptUuid": "790b41ce-e1e7-11e8-b02f-0242ac130002"
     }
+  },
+  "@openmrs/esm-laboratory-app": {
+    "labTableColumns": ["name", "dob", "age", "sex", "totalOrders", "action"]
   }
 }
