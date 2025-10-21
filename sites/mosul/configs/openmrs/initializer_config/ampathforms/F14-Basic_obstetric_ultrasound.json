@@ -111,79 +111,9 @@
       },
       "sections": [
         {
-          "label": "1st trimester pregnancy",
+          "label": "Fetus",
           "isExpanded": false,
           "questions": [
-            {
-              "id": "freeFluid",
-              "label": "Free fluid",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "25243251-c3c1-4b34-bb9f-b77ea9408663",
-                "answers": [
-                  {
-                    "label": "None",
-                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
-                  },
-                  {
-                    "label": "In right upper quadrant (RUQ)",
-                    "concept": "9beef921-b85b-4bd1-8e00-61e2e4591989"
-                  },
-                  {
-                    "label": "In pelvis",
-                    "concept": "0bd085f4-10b1-4c47-bcf9-30dd94786843"
-                  },
-                  {
-                    "label": "Unclear",
-                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
-              }
-            },
-            {
-              "id": "uterus",
-              "label": "Uterus",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "4e7dba73-c180-4697-bfc3-fdb005efe693",
-                "answers": [
-                  {
-                    "label": "Empty",
-                    "concept": "d1c87d86-a42a-42be-b2d9-699be8a5b102"
-                  },
-                  {
-                    "label": "Gestational sac seen",
-                    "concept": "ed3bee1c-d072-4720-bbc4-405c9a45d0e6"
-                  },
-                  {
-                    "label": "Yolk sac seen",
-                    "concept": "36b53091-c35c-4687-8677-3b78a3c4e1b5"
-                  },
-                  {
-                    "label": "Fetal pole or embryo seen",
-                    "concept": "61324435-1c54-416b-b2f0-da385e1d8f08"
-                  },
-                  {
-                    "label": "Retained product seen",
-                    "concept": "f29be094-cb96-4f79-a300-05374aacc057"
-                  },
-                  {
-                    "label": "Unclear",
-                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
-              }
-            },
             {
               "id": "numberOfFetuses",
               "label": "Number of fetuses",
@@ -556,6 +486,82 @@
               }
             }
           ]
+        },
+        {
+          "label": "1st trimester pregnancy",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "freeFluid",
+              "label": "Free fluid",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "25243251-c3c1-4b34-bb9f-b77ea9408663",
+                "answers": [
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "In right upper quadrant (RUQ)",
+                    "concept": "9beef921-b85b-4bd1-8e00-61e2e4591989"
+                  },
+                  {
+                    "label": "In pelvis",
+                    "concept": "0bd085f4-10b1-4c47-bcf9-30dd94786843"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
+              }
+            },
+            {
+              "id": "uterus",
+              "label": "Uterus",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4e7dba73-c180-4697-bfc3-fdb005efe693",
+                "answers": [
+                  {
+                    "label": "Empty",
+                    "concept": "d1c87d86-a42a-42be-b2d9-699be8a5b102"
+                  },
+                  {
+                    "label": "Gestational sac seen",
+                    "concept": "ed3bee1c-d072-4720-bbc4-405c9a45d0e6"
+                  },
+                  {
+                    "label": "Yolk sac seen",
+                    "concept": "36b53091-c35c-4687-8677-3b78a3c4e1b5"
+                  },
+                  {
+                    "label": "Fetal pole or embryo seen",
+                    "concept": "61324435-1c54-416b-b2f0-da385e1d8f08"
+                  },
+                  {
+                    "label": "Retained product seen",
+                    "concept": "f29be094-cb96-4f79-a300-05374aacc057"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
+              }
+            }
+          ]
         }
       ]
     },
@@ -565,82 +571,6 @@
         "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
       },
       "sections": [
-        {
-          "label": "Results",
-          "isExpanded": false,
-          "questions": [
-            {
-              "id": "placentalLocation",
-              "label": "Placental location",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "0c990c79-cb1c-4812-8a51-c215064ea641",
-                "answers": [
-                  {
-                    "label": "Fundal",
-                    "concept": "bbb7f878-a92d-4822-8dc4-c8d27354e0f3"
-                  },
-                  {
-                    "label": "Anterior",
-                    "concept": "a9bbbac3-46a8-4b5e-aa5a-c37391d6a86a"
-                  },
-                  {
-                    "label": "Posterior",
-                    "concept": "79402fab-45aa-45a5-9f14-52dd93e311f8"
-                  },
-                  {
-                    "label": "Lateral",
-                    "concept": "d4e7387a-93df-49da-90fd-214acd70b9be"
-                  },
-                  {
-                    "label": "Placenta previa",
-                    "concept": "3fe02af2-57da-4b73-a3a6-a568a795a2c8"
-                  },
-                  {
-                    "label": "Unclear",
-                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
-              }
-            },
-            {
-              "id": "amnioticFluidLevel",
-              "label": "Amniotic fluid level (maximal vertical pocket)",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "c4403888-ae1a-4af0-b636-e9be57b72d97",
-                "answers": [
-                  {
-                    "label": "Normal (2-8cm)",
-                    "concept": "625fdb80-60f8-4a78-aad3-6bc3a4b94d60"
-                  },
-                  {
-                    "label": "<2cm",
-                    "concept": "3a839245-7f6e-4cd8-9838-d9e1c45f2ad0"
-                  },
-                  {
-                    "label": ">8cm",
-                    "concept": "ddd5787f-975a-4db0-9c2b-25c9e2c2d4e2"
-                  },
-                  {
-                    "label": "Unclear",
-                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
-              }
-            }
-          ]
-        },
         {
           "label": "Fetus",
           "isExpanded": false,
@@ -1394,6 +1324,82 @@
               },
               "hide": {
                 "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Results",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "placentalLocation",
+              "label": "Placental location",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0c990c79-cb1c-4812-8a51-c215064ea641",
+                "answers": [
+                  {
+                    "label": "Fundal",
+                    "concept": "bbb7f878-a92d-4822-8dc4-c8d27354e0f3"
+                  },
+                  {
+                    "label": "Anterior",
+                    "concept": "a9bbbac3-46a8-4b5e-aa5a-c37391d6a86a"
+                  },
+                  {
+                    "label": "Posterior",
+                    "concept": "79402fab-45aa-45a5-9f14-52dd93e311f8"
+                  },
+                  {
+                    "label": "Lateral",
+                    "concept": "d4e7387a-93df-49da-90fd-214acd70b9be"
+                  },
+                  {
+                    "label": "Placenta previa",
+                    "concept": "3fe02af2-57da-4b73-a3a6-a568a795a2c8"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
+              }
+            },
+            {
+              "id": "amnioticFluidLevel",
+              "label": "Amniotic fluid level (maximal vertical pocket)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c4403888-ae1a-4af0-b636-e9be57b72d97",
+                "answers": [
+                  {
+                    "label": "Normal (2-8cm)",
+                    "concept": "625fdb80-60f8-4a78-aad3-6bc3a4b94d60"
+                  },
+                  {
+                    "label": "<2cm",
+                    "concept": "3a839245-7f6e-4cd8-9838-d9e1c45f2ad0"
+                  },
+                  {
+                    "label": ">8cm",
+                    "concept": "ddd5787f-975a-4db0-9c2b-25c9e2c2d4e2"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
               }
             }
           ]
