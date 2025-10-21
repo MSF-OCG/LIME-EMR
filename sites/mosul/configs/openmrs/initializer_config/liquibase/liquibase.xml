@@ -635,4 +635,61 @@
         </sql>
     </changeSet>
 
+    <changeSet id="20251015-remove-tests-from-tests-orderability" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept_set cs
+                    JOIN concept c1 ON cs.concept_id = c1.concept_id
+                    JOIN concept c2 ON cs.concept_set = c2.concept_id
+                WHERE c2.uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77'
+                    AND c1.uuid IN (
+                        '241357d0-3a9c-4e68-a024-3c6ab9cf3d04',
+                        'c79fae7a-1e66-422e-87b0-537fd8f875bb',
+                        'debc71ff-554b-4cd8-b83d-8e6f42c5ec03',
+                        'a14cd892-8d6d-46f6-aa1a-307954711503',
+                        '51f23ff4-6ea9-453a-9932-d165f22199f9',
+                        '266458e8-1950-4509-9cc3-976e093fb603',
+                        '784591dc-4d3c-44cd-9a15-e2c70afeb3cb',
+                        '4740fb4c-bc7d-47ce-aefe-028e91b205dd',
+                        'd2b9b81f-1844-42df-8792-e588e8fcf665',
+                        '69914119-fc18-4d3d-b6b6-a0e4adeb07a4',
+                        'aa7e0d8c-0985-463e-9c10-723a66c15f1d',
+                        'd0ba3baf-b929-4678-b173-607895520233',
+                        '0d95404e-acf1-4d0e-b7c6-8f1ea2dfa08f',
+                        '33fbb1ba-4ed2-4d7f-a7a5-fba414bcb0ac',
+                        'c06e1e1e-bc11-49bf-89a1-e2a87d64b710',
+                        '10e923e0-0929-446a-a9a3-8012574f6bbb',
+                        '892701d6-3a4b-4eb4-936f-a43a41400117'
+                    );
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Remove test_orderability concept_sets with updated tests
+        </comment>
+        <sql>
+            DELETE FROM concept_set WHERE concept_id IN (
+                SELECT concept_id FROM concept WHERE uuid IN (
+                    '241357d0-3a9c-4e68-a024-3c6ab9cf3d04',
+                    'c79fae7a-1e66-422e-87b0-537fd8f875bb',
+                    'debc71ff-554b-4cd8-b83d-8e6f42c5ec03',
+                    'a14cd892-8d6d-46f6-aa1a-307954711503',
+                    '51f23ff4-6ea9-453a-9932-d165f22199f9',
+                    '266458e8-1950-4509-9cc3-976e093fb603',
+                    '784591dc-4d3c-44cd-9a15-e2c70afeb3cb',
+                    '4740fb4c-bc7d-47ce-aefe-028e91b205dd',
+                    'd2b9b81f-1844-42df-8792-e588e8fcf665',
+                    '69914119-fc18-4d3d-b6b6-a0e4adeb07a4',
+                    'aa7e0d8c-0985-463e-9c10-723a66c15f1d',
+                    'd0ba3baf-b929-4678-b173-607895520233',
+                    '0d95404e-acf1-4d0e-b7c6-8f1ea2dfa08f',
+                    '33fbb1ba-4ed2-4d7f-a7a5-fba414bcb0ac',
+                    'c06e1e1e-bc11-49bf-89a1-e2a87d64b710',
+                    '10e923e0-0929-446a-a9a3-8012574f6bbb',
+                    '892701d6-3a4b-4eb4-936f-a43a41400117'
+                )
+            );
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
