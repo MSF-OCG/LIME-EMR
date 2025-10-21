@@ -73,8 +73,8 @@
               ]
             },
             {
-              "id": "status",
-              "label": "Status",
+              "id": "stage",
+              "label": "Stage",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -82,7 +82,7 @@
                 "concept": "933ab405-34f1-4d86-900d-bed9b5ba8d05",
                 "answers": [
                   {
-                    "label": "Pregnancy unclear",
+                    "label": "LMP unknown",
                     "concept": "dd9387d2-22d9-464d-9075-422f5e946177"
                   },
                   {
@@ -107,7 +107,7 @@
     {
       "label": "1st trimester pregnancy",
       "hide": {
-        "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
+        "hideWhenExpression": "stage !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
       },
       "sections": [
         {
@@ -150,7 +150,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08'"
+                "hideWhenExpression": "stage !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08'"
               }
             }
           ]
@@ -519,7 +519,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
+                "hideWhenExpression": "stage !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
               }
             },
             {
@@ -558,7 +558,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "status !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
+                "hideWhenExpression": "stage !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
               }
             }
           ]
@@ -568,7 +568,7 @@
     {
       "label": "2nd/3rd trimester pregnancy",
       "hide": {
-        "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
+        "hideWhenExpression": "stage !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && stage !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
       },
       "sections": [
         {
@@ -611,7 +611,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
+                "hideWhenExpression": "stage !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && stage !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
               }
             }
           ]
@@ -1368,7 +1368,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
+                "hideWhenExpression": "stage !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && stage !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
               }
             },
             {
@@ -1399,7 +1399,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "status !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && status !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
+                "hideWhenExpression": "stage !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && stage !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
               }
             }
           ]
