@@ -691,6 +691,37 @@
           "isExpanded": false,
           "questions": [
             {
+              "id": "fetalPresentation",
+              "label": "Fetal presentation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "21eeb0c6-9a36-42ef-9190-a64a9f245de8",
+                "answers": [
+                  {
+                    "label": "Cephalic",
+                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
+                  },
+                  {
+                    "label": "Breech",
+                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
+                  },
+                  {
+                    "label": "Transverse",
+                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+              }
+            },
+            {
               "id": "fetus1_fetalHeartBeat",
               "label": "Fetal heart beat",
               "type": "obs",
@@ -732,37 +763,6 @@
               },
               "hide": {
                 "hideWhenExpression": "fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetus1_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && fetus1_fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
-              }
-            },
-            {
-              "id": "fetalPresentation",
-              "label": "Fetal presentation",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "21eeb0c6-9a36-42ef-9190-a64a9f245de8",
-                "answers": [
-                  {
-                    "label": "Cephalic",
-                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
-                  },
-                  {
-                    "label": "Breech",
-                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
-                  },
-                  {
-                    "label": "Transverse",
-                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
-                  },
-                  {
-                    "label": "Unclear",
-                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -869,6 +869,37 @@
           "isExpanded": false,
           "questions": [
             {
+              "id": "fetus2_fetalPresentation",
+              "label": "Fetal presentation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "21eeb0c6-9a36-42ef-9190-a64a9f245de8",
+                "answers": [
+                  {
+                    "label": "Cephalic",
+                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
+                  },
+                  {
+                    "label": "Breech",
+                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
+                  },
+                  {
+                    "label": "Transverse",
+                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+              }
+            },
+            {
               "id": "SecondThirdTrimesterPregnancy_fetus2_fetalHeartBeat",
               "label": "Fetal heart beat",
               "type": "obs",
@@ -910,37 +941,6 @@
               },
               "hide": {
                 "hideWhenExpression": "fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetus2_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && fetus2_fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
-              }
-            },
-            {
-              "id": "fetus2_fetalPresentation",
-              "label": "Fetal presentation",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "21eeb0c6-9a36-42ef-9190-a64a9f245de8",
-                "answers": [
-                  {
-                    "label": "Cephalic",
-                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
-                  },
-                  {
-                    "label": "Breech",
-                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
-                  },
-                  {
-                    "label": "Transverse",
-                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
-                  },
-                  {
-                    "label": "Unclear",
-                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1047,6 +1047,37 @@
           "isExpanded": false,
           "questions": [
             {
+              "id": "fetus3_fetalPresentation",
+              "label": "Fetal presentation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "21eeb0c6-9a36-42ef-9190-a64a9f245de8",
+                "answers": [
+                  {
+                    "label": "Cephalic",
+                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
+                  },
+                  {
+                    "label": "Breech",
+                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
+                  },
+                  {
+                    "label": "Transverse",
+                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+              }
+            },
+            {
               "id": "SecondThirdTrimesterPregnancy_fetus3_fetalHeartBeat",
               "label": "Fetal heart beat",
               "type": "obs",
@@ -1088,37 +1119,6 @@
               },
               "hide": {
                 "hideWhenExpression": "fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || SecondThirdTrimesterPregnancy_fetus3_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && SecondThirdTrimesterPregnancy_fetus3_fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
-              }
-            },
-            {
-              "id": "fetus3_fetalPresentation",
-              "label": "Fetal presentation",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "21eeb0c6-9a36-42ef-9190-a64a9f245de8",
-                "answers": [
-                  {
-                    "label": "Cephalic",
-                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
-                  },
-                  {
-                    "label": "Breech",
-                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
-                  },
-                  {
-                    "label": "Transverse",
-                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
-                  },
-                  {
-                    "label": "Unclear",
-                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1225,6 +1225,37 @@
           "isExpanded": false,
           "questions": [
             {
+              "id": "fetus4_fetalPresentation",
+              "label": "Fetal presentation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "21eeb0c6-9a36-42ef-9190-a64a9f245de8",
+                "answers": [
+                  {
+                    "label": "Cephalic",
+                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
+                  },
+                  {
+                    "label": "Breech",
+                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
+                  },
+                  {
+                    "label": "Transverse",
+                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+              }
+            },
+            {
               "id": "SecondThirdTrimesterPregnancy_fetus4_fetalHeartBeat",
               "label": "Fetal heart beat",
               "type": "obs",
@@ -1266,37 +1297,6 @@
               },
               "hide": {
                 "hideWhenExpression": "fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || SecondThirdTrimesterPregnancy_fetus4_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && SecondThirdTrimesterPregnancy_fetus4_fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
-              }
-            },
-            {
-              "id": "fetus4_fetalPresentation",
-              "label": "Fetal presentation",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "21eeb0c6-9a36-42ef-9190-a64a9f245de8",
-                "answers": [
-                  {
-                    "label": "Cephalic",
-                    "concept": "6f6a7512-b7de-41d0-9717-1fe139688566"
-                  },
-                  {
-                    "label": "Breech",
-                    "concept": "d66964bb-f03c-4709-be0e-e63b1ff6f03b"
-                  },
-                  {
-                    "label": "Transverse",
-                    "concept": "6ce64c6f-c575-457a-872f-4e3823f7b61e"
-                  },
-                  {
-                    "label": "Unclear",
-                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
