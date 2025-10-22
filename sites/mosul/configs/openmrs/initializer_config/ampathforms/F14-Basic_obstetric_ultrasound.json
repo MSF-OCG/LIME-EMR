@@ -111,9 +111,45 @@
       },
       "sections": [
         {
-          "label": "Fetus",
+          "label": "Evaluation",
           "isExpanded": false,
           "questions": [
+            {
+              "id": "uterus",
+              "label": "Uterus",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4e7dba73-c180-4697-bfc3-fdb005efe693",
+                "answers": [
+                  {
+                    "label": "Empty",
+                    "concept": "d1c87d86-a42a-42be-b2d9-699be8a5b102"
+                  },
+                  {
+                    "label": "Gestational sac seen",
+                    "concept": "ed3bee1c-d072-4720-bbc4-405c9a45d0e6"
+                  },
+                  {
+                    "label": "Yolk sac seen",
+                    "concept": "36b53091-c35c-4687-8677-3b78a3c4e1b5"
+                  },
+                  {
+                    "label": "Fetal pole or embryo seen",
+                    "concept": "61324435-1c54-416b-b2f0-da385e1d8f08"
+                  },
+                  {
+                    "label": "Retained product seen",
+                    "concept": "f29be094-cb96-4f79-a300-05374aacc057"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              }
+            },
             {
               "id": "numberOfFetuses",
               "label": "Number of fetuses",
@@ -150,7 +186,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "stage !== 'dab6d94c-03b1-4206-aae3-008707a1e512' || uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08'"
               }
             }
           ]
@@ -183,7 +219,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(numberOfFetuses) || numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -200,7 +236,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
               }
             },
             {
@@ -216,7 +252,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(numberOfFetuses) || numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' | numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -233,7 +269,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(numberOfFetuses) || numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -266,7 +302,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(numberOfFetuses) || numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -283,7 +319,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetus2_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && fetus2_fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetus2_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && fetus2_fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
               }
             },
             {
@@ -299,7 +335,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(numberOfFetuses) || numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -316,7 +352,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(numberOfFetuses) || numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -349,7 +385,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(numberOfFetuses) || numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -366,7 +402,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetus3_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && fetus3_fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetus3_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && fetus3_fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
               }
             },
             {
@@ -382,7 +418,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(numberOfFetuses) || numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -399,7 +435,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(numberOfFetuses) || numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -432,7 +468,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(numberOfFetuses) || numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -449,7 +485,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetus4_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && fetus4_fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetus4_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && fetus4_fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
               }
             },
             {
@@ -465,7 +501,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(numberOfFetuses) || numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -482,13 +518,13 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(numberOfFetuses) || numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "uterus !== 'ed3bee1c-d072-4720-bbc4-405c9a45d0e6' && uterus !== '36b53091-c35c-4687-8677-3b78a3c4e1b5' && uterus !== '61324435-1c54-416b-b2f0-da385e1d8f08' || numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
         },
         {
-          "label": "1st trimester pregnancy",
+          "label": "Other",
           "isExpanded": false,
           "questions": [
             {
@@ -517,48 +553,6 @@
                     "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
                   }
                 ]
-              },
-              "hide": {
-                "hideWhenExpression": "stage !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
-              }
-            },
-            {
-              "id": "uterus",
-              "label": "Uterus",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "radio",
-                "concept": "4e7dba73-c180-4697-bfc3-fdb005efe693",
-                "answers": [
-                  {
-                    "label": "Empty",
-                    "concept": "d1c87d86-a42a-42be-b2d9-699be8a5b102"
-                  },
-                  {
-                    "label": "Gestational sac seen",
-                    "concept": "ed3bee1c-d072-4720-bbc4-405c9a45d0e6"
-                  },
-                  {
-                    "label": "Yolk sac seen",
-                    "concept": "36b53091-c35c-4687-8677-3b78a3c4e1b5"
-                  },
-                  {
-                    "label": "Fetal pole or embryo seen",
-                    "concept": "61324435-1c54-416b-b2f0-da385e1d8f08"
-                  },
-                  {
-                    "label": "Retained product seen",
-                    "concept": "f29be094-cb96-4f79-a300-05374aacc057"
-                  },
-                  {
-                    "label": "Unclear",
-                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
-                  }
-                ]
-              },
-              "hide": {
-                "hideWhenExpression": "stage !== 'dab6d94c-03b1-4206-aae3-008707a1e512'"
               }
             }
           ]
@@ -568,7 +562,7 @@
     {
       "label": "2nd/3rd trimester pregnancy",
       "hide": {
-        "hideWhenExpression": "stage !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && stage !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
+        "hideWhenExpression": "stage !== 'dd9387d2-22d9-464d-9075-422f5e946177' && stage !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && stage !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
       },
       "sections": [
         {
@@ -611,7 +605,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "stage !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && stage !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
+                "hideWhenExpression": "stage !== 'dd9387d2-22d9-464d-9075-422f5e946177' && stage !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && stage !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
               }
             }
           ]
@@ -648,7 +642,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -675,7 +669,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -708,7 +702,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -724,7 +718,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -740,7 +734,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -756,7 +750,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -773,7 +767,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -789,7 +783,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '9c407911-f329-4761-b27a-bbbe24cc0332' && fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -826,7 +820,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -853,7 +847,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -870,7 +864,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || fetus2_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && fetus2_fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91' || SecondThirdTrimesterPregnancy_fetus2_fetalHeartBeat !== '75635392-0934-4e1e-b5e5-c9b4a32c185b' && SecondThirdTrimesterPregnancy_fetus2_fetalHeartBeat !== '55124917-bd42-4046-8d8f-dcd7f956647a'"
               }
             },
             {
@@ -886,7 +880,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -902,7 +896,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -918,7 +912,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -934,7 +928,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -951,7 +945,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -967,7 +961,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '42965304-8abb-4a57-b7c2-b3eff5cbe9c7' && fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -1004,7 +998,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1031,7 +1025,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1064,7 +1058,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1080,7 +1074,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1096,7 +1090,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1112,7 +1106,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1129,7 +1123,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1145,7 +1139,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '168e35f0-9866-4b13-98f2-4ecd2f538117' && fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -1182,7 +1176,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1209,7 +1203,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1242,7 +1236,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1258,7 +1252,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1274,7 +1268,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1290,7 +1284,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1307,7 +1301,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             },
             {
@@ -1323,7 +1317,7 @@
                 "step": 1
               },
               "hide": {
-                "hideWhenExpression": "isEmpty(fetus_numberOfFetuses) || fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
+                "hideWhenExpression": "fetus_numberOfFetuses !== '6bb1c6b4-3fa6-40ac-a7c6-7018bb07fd91'"
               }
             }
           ]
@@ -1368,7 +1362,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "stage !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && stage !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
+                "hideWhenExpression": "stage !== 'dd9387d2-22d9-464d-9075-422f5e946177' && stage !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && stage !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
               }
             },
             {
@@ -1399,7 +1393,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "stage !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && stage !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
+                "hideWhenExpression": "stage !== 'dd9387d2-22d9-464d-9075-422f5e946177' && stage !== 'e2f31018-0e71-42be-83dd-31623c6e8647' && stage !== 'b1cd4356-a9bb-4e46-9403-257549c0078c'"
               }
             }
           ]
