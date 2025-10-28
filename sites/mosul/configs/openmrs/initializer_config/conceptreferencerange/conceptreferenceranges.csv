@@ -6,7 +6,7 @@ Uuid,Concept Numeric uuid,Label,Criteria,Absolute low,Critical low,Normal low,No
 a1e1aa51-82ea-43d2-9fa1-a258b04ef7fa,2e80b77d-1042-40b2-a0db-075a8518a39b,Haemoglobin men,"$patient.getGender().equals(""M"")",,,12,15,,
 c24113b1-4d4d-4f40-ba99-5445f9b8332a,2e80b77d-1042-40b2-a0db-075a8518a39b,Haemoglobin women,"$patient.getGender().equals(""F"")",,,10.5,14,,
 2dfc1647-914a-4484-a810-04b1bda4776e,2e80b77d-1042-40b2-a0db-075a8518a39b,Haemoglobin pregnancy,"$patient.getGender().equals(""F"") && $patient.getLatestObs(""af80c954-b62f-43f8-b54f-9b434a3dc43d"").getValueCoded(""681cf0bc-5213-492a-8470-0a0b3cc324dd"")",,,44,54,,
-a53018db-2435-44ea-b3cf-5e4fefef8b2f,e563bc5e-0010-4ca5-84f1-fe1c81da7cd0,Hematocrit infant,$patient.getAgeInMonths() < 2,,,34,40,,
+a53018db-2435-44ea-b3cf-5e4fefef8b2f,e563bc5e-0010-4ca5-84f1-fe1c81da7cd0,Hematocrit infant,$patient.getAge() < 2,,,34,40,,
 9d8d940f-c9ae-42ae-9aea-f676bedfda59,e563bc5e-0010-4ca5-84f1-fe1c81da7cd0,Hematocrit 2-5yo,$patient.getAge() >= 2 && $patient.getAge() < 6,,,35,45,,
 cd6e2ac4-7fe2-42e1-a2e9-aea08d293074,e563bc5e-0010-4ca5-84f1-fe1c81da7cd0,Hematocrit 6-12yo,$patient.getAge() >= 6 && $patient.getAge() < 12,,,40,54,,
 689ea0ce-be40-4678-ab70-fee90bd66bd1,e563bc5e-0010-4ca5-84f1-fe1c81da7cd0,Hematocrit men,"$patient.getGender().equals(""M"")",,,36,46,,
