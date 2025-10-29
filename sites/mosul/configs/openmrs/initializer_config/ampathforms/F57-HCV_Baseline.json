@@ -1,0 +1,1936 @@
+{
+  "name": "F57-HCV Baseline",
+  "description": "MSF Form - F57-HCV Baseline",
+  "version": "1",
+  "published": true,
+  "uuid": "37fa1e64-b0dc-412c-97c5-e442bc05a1bf",
+  "processor": "EncounterFormProcessor",
+  "encounter": "HCV",
+  "encounterType": "3dda23a5-890d-4c10-9573-e87971130f02",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "Date",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "consultationDate",
+              "label": "Consultation date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "d329cd4b-a10f-4a4d-96b5-c907bf87e721"
+              },
+              "default": "current date"
+            }
+          ]
+        },
+        {
+          "label": "HCV",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "previousHcvTreatment",
+              "label": "Previous HCV treatment",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6b9ec3e0-e9e0-450e-9d24-6e4107778562",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "dateOfPreviousHcvTreatmentInitiation",
+              "label": "Date of previous HCV treatment initiation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "e290d074-9e4b-4440-bff5-ebedbefcca4d"
+              },
+              "hide": {
+                "hideWhenExpression": "(previousHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "dateOfPreviousHcvTreatmentInitiation > new Date()",
+                  "message": "Date of previous HCV treatment initiation cannot be in the future"
+                }
+              ]
+            },
+            {
+              "id": "previousHcvTreatmentSof",
+              "label": "Previous HCV treatment - SOF",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f9b9f8ad-19d2-4597-8191-348a32b48780",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(previousHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "previousHcvTreatmentDac",
+              "label": "Previous HCV treatment - DAC",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c99d444b-eea7-47b0-959c-5ac3465a92a2",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(previousHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "previousHcvTreatmentVel",
+              "label": "Previous HCV treatment - VEL",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e2cb557f-a874-48ea-b8c4-e990709866a3",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(previousHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "previousHcvTreatmentOther",
+              "label": "Previous HCV treatment - Other",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "309ded30-b62e-4c5e-b55f-5b2a44c56e68",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(previousHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "previousHcvTreatmentIfOtherSpecify",
+              "label": "Previous HCV treatment - If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(previousHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') ||(previousHcvTreatmentOther !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "hcvTreatmentOutcome",
+              "label": "HCV treatment outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9e861ef1-e07c-4955-9650-2ebac3138fc3",
+                "answers": [
+                  {
+                    "label": "Cure",
+                    "concept": "4afad5ca-6b49-4fc2-9dca-4468f5f3a3f6"
+                  },
+                  {
+                    "label": "Failure",
+                    "concept": "d2eb1634-64e3-4b0b-a185-44258e5d7273"
+                  },
+                  {
+                    "label": "LFU",
+                    "concept": "d305b208-354f-4bb7-b35a-df4f8d92c256"
+                  },
+                  {
+                    "label": "Discontinuation",
+                    "concept": "b9b5efdd-5585-457d-99f0-41d4fb8b24d0"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(previousHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ongoingHcvTreatment",
+              "label": "Ongoing HCV treatment",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6b9ec3e0-e9e0-450e-9d24-6e4107778562",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "dateOfOngoingHcvTreatmentInitiation",
+              "label": "Date of ongoing HCV treatment initiation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "e290d074-9e4b-4440-bff5-ebedbefcca4d"
+              },
+              "hide": {
+                "hideWhenExpression": "(ongoingHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "dateOfOngoingHcvTreatmentInitiation > new Date()",
+                  "message": "Date of ongoing HCV treatment initiation cannot be in the future"
+                }
+              ]
+            },
+            {
+              "id": "ongoingHcvTreatmentSof",
+              "label": "Ongoing HCV treatment - SOF",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f9b9f8ad-19d2-4597-8191-348a32b48780",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(ongoingHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ongoingHcvTreatmentDac",
+              "label": "Ongoing HCV treatment - DAC",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c99d444b-eea7-47b0-959c-5ac3465a92a2",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(ongoingHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ongoingHcvTreatmentVel",
+              "label": "Ongoing HCV treatment - VEL",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e2cb557f-a874-48ea-b8c4-e990709866a3",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(ongoingHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ongoingHcvTreatmentOther",
+              "label": "Ongoing HCV treatment - Other",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "309ded30-b62e-4c5e-b55f-5b2a44c56e68",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(ongoingHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ongoingHcvTreatmentIfOtherSpecify",
+              "label": "Ongoing HCV treatment - If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(ongoingHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') ||(ongoingHcvTreatmentOther !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Current comorbidities",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "hiv",
+              "label": "HIV",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "fb270cba-cdcf-470d-847f-ec8ab3b20a5e",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "art",
+              "label": "ART",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2b1dc697-1a53-4e85-871c-9fa938ffb70c",
+                "answers": [
+                  {
+                    "label": "Did not start",
+                    "concept": "59d7e999-b0c0-4a9e-8f01-1a365ed48640"
+                  },
+                  {
+                    "label": "ART initiated",
+                    "concept": "69832c37-a981-42e1-ad27-6565ed412405"
+                  },
+                  {
+                    "label": "ART Re-initiated",
+                    "concept": "8a6efe63-f5b7-4cf5-837f-3564f5a3b99b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hiv !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "tb",
+              "label": "TB",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6f193c82-83d2-411f-90d7-0a18bf3dca2f",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "tbTreatment",
+              "label": "TB treatment",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0bdf07ae-79c2-4789-b5b1-68b2c272b04c",
+                "answers": [
+                  {
+                    "label": "Did not start",
+                    "concept": "59d7e999-b0c0-4a9e-8f01-1a365ed48640"
+                  },
+                  {
+                    "label": "On DSTB Ttr",
+                    "concept": "e3734523-b1c8-4fcd-ab43-67e185a3e1c3"
+                  },
+                  {
+                    "label": "On DRTB Ttr",
+                    "concept": "bdc8e82c-50d2-4029-af9a-50e09576ac10"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(tb !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "hepatitisB",
+              "label": "Hepatitis B",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9a3979c9-a92f-4a74-adb0-353a56d0d0e7",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hepatitisBTreatment",
+              "label": "Hepatitis B treatment",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c85f554b-6d28-4445-99e5-983e71df6cec",
+                "answers": [
+                  {
+                    "label": "Did not start",
+                    "concept": "59d7e999-b0c0-4a9e-8f01-1a365ed48640"
+                  },
+                  {
+                    "label": "TDF",
+                    "concept": "01e33f3c-9cdf-4dd7-845c-6982f57b966b"
+                  },
+                  {
+                    "label": "Entecavir",
+                    "concept": "1d81e1f7-3993-4ed9-8e38-36617fe636b1"
+                  },
+                  {
+                    "label": "TAF",
+                    "concept": "e05bda51-3bf1-4a9d-9ee3-4176ddb7a3e3"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hepatitisB !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "renal",
+              "label": "Renal",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1a16cb77-52ba-415e-a6a0-73e2fd11f57c",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "diabetes",
+              "label": "Diabetes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "db973d66-e027-4238-87c9-fa6e53026d12",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "psychiatricConditions",
+              "label": "Psychiatric conditions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a257d08e-b90d-4505-91c3-e23ea040f61c",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hypertension",
+              "label": "Hypertension",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "fad7b56b-7633-4467-9e6a-17328278b580",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "epilepsy",
+              "label": "Epilepsy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "09334f94-5efd-49f0-b494-68b9192f2fd8",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "detailsOnComorbidities",
+              "label": "Details on comorbidities",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Other conditions",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pregnancy",
+              "label": "Pregnancy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "61d473d6-ab11-458e-b841-382bc183fd13",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "estimatedGestationalAge",
+              "label": "Estimated gestational age (weeks)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1d2003cb-4b14-4391-8f90-37a74976676a",
+                "min": 0.0,
+                "max": 50.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(pregnancy !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "checkAlsoInconditionsAndUpdateThemWheneverNecessary",
+              "label": "Check also in 'Conditions' and update them whenever necessary",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "## Check also in 'Conditions' and update them whenever necessary"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Vaccination",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "hbvVaccination",
+              "label": "HBV vaccination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "443d06ef-4923-4b94-9848-bb80825b49ff",
+                "answers": [
+                  {
+                    "label": "Yes completed",
+                    "concept": "617087a8-548b-4b48-b979-ad854de98bed"
+                  },
+                  {
+                    "label": "Yes not completed",
+                    "concept": "a6046f70-c731-4723-a736-24b99c9f61b8"
+                  },
+                  {
+                    "label": "No vaccine",
+                    "concept": "5ac4b7e2-7b92-4dc6-8378-e2b55c1da7bf"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "TB prophylactic",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "iptProphylaxis",
+              "label": "IPT prophylaxis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e3391607-e034-4613-80d3-001399ed5a4d",
+                "answers": [
+                  {
+                    "label": "Yes, completed",
+                    "concept": "617087a8-548b-4b48-b979-ad854de98bed"
+                  },
+                  {
+                    "label": "Yes, ongoing",
+                    "concept": "adc10d23-e680-48c7-b5fc-2e9c3231ff21"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(tb !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            },
+            {
+              "id": "regimen",
+              "label": "Regimen",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "94ece7fa-68f7-4069-9f2e-f2b5f8721507",
+                "answers": [
+                  {
+                    "label": "IPT",
+                    "concept": "e3391607-e034-4613-80d3-001399ed5a4d"
+                  },
+                  {
+                    "label": "3 HP",
+                    "concept": "e5de0722-5398-4dd1-9ee7-c7c7317de6ae"
+                  },
+                  {
+                    "label": "1 HP",
+                    "concept": "c503a2fd-04ff-424a-a478-890cdb579d9d"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(tb !== 'a5c5563e-df0e-4742-a335-b24fb63664ee') || (iptProphylaxis !== '617087a8-548b-4b48-b979-ad854de98bed' && iptProphylaxis !== 'adc10d23-e680-48c7-b5fc-2e9c3231ff21')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Alcohol",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "howOftenDoYouHaveADrinkContainingAlcohol",
+              "label": "How often do you have a drink containing alcohol?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b1795be0-ce2a-4e74-ac6f-ba62c8dc8e75",
+                "answers": [
+                  {
+                    "label": "Never (0 point)",
+                    "concept": "325f6695-deb3-4472-a9f4-69905efcdce4"
+                  },
+                  {
+                    "label": "Monthly or less (1 point)",
+                    "concept": "0e298528-7c8c-4724-a24f-d71ee7c1ebea"
+                  },
+                  {
+                    "label": "2 - 4 times a month (2 points)",
+                    "concept": "d545c4bf-8b01-4681-a6f8-c827baa2413c"
+                  },
+                  {
+                    "label": "2 - 3 times a week (3 points)",
+                    "concept": "029fd5c6-4b91-4c98-b527-aec0de5b1a83"
+                  },
+                  {
+                    "label": "4+ times a week (4 points)",
+                    "concept": "367ad49e-75b7-460f-bf88-9293ddde1c1c"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "howManyDrinksContainingAlcoholDoYouHaveOnATypicalDayWhenYouAreDrinking",
+              "label": "How many drinks containing alcohol do you have on a typical day when you are drinking?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "35204e71-4428-480f-a75a-ba53daf77636",
+                "answers": [
+                  {
+                    "label": "1 - 2 (0 point)",
+                    "concept": "5036a472-2667-46a9-b386-97e53f9c7fde"
+                  },
+                  {
+                    "label": "3 - 4 (1 point)",
+                    "concept": "14cdcc8c-2351-4b5e-90ab-5b31782e21c7"
+                  },
+                  {
+                    "label": "5 - 6 (2 points)",
+                    "concept": "551516cf-5de9-4411-b67e-7e822d90e02a"
+                  },
+                  {
+                    "label": "7 - 9 (3 points)",
+                    "concept": "7be7cd8b-d2b7-420a-ab95-22d6670a56bd"
+                  },
+                  {
+                    "label": "10 + (4 points)",
+                    "concept": "5900f7c0-3719-473a-b201-085bcdfce7f8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(howOftenDoYouHaveADrinkContainingAlcohol !== '0e298528-7c8c-4724-a24f-d71ee7c1ebea' && howOftenDoYouHaveADrinkContainingAlcohol !== 'd545c4bf-8b01-4681-a6f8-c827baa2413c' && howOftenDoYouHaveADrinkContainingAlcohol !== '029fd5c6-4b91-4c98-b527-aec0de5b1a83' && howOftenDoYouHaveADrinkContainingAlcohol !== '367ad49e-75b7-460f-bf88-9293ddde1c1c')"
+              }
+            },
+            {
+              "id": "howOftenDoYouHaveSixOrMoreDrinksOnOneOccasion",
+              "label": "How often do you have six or more drinks on one occasion?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4333358a-468d-488a-b0b7-6f9ecfbeee80",
+                "answers": [
+                  {
+                    "label": "Never (0 point)",
+                    "concept": "325f6695-deb3-4472-a9f4-69905efcdce4"
+                  },
+                  {
+                    "label": "Less than monthly (1 point)",
+                    "concept": "0e298528-7c8c-4724-a24f-d71ee7c1ebea"
+                  },
+                  {
+                    "label": "Monthly (2 points)",
+                    "concept": "84b15ce9-cd58-48ce-a54c-581a070a7f91"
+                  },
+                  {
+                    "label": "Weekly (3 points)",
+                    "concept": "45e84276-c85d-4293-8282-2236ff60a55c"
+                  },
+                  {
+                    "label": "Daily/ almost daily (4 points)",
+                    "concept": "33a17320-0356-46ea-a3b5-79e9364c20c6"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(howOftenDoYouHaveADrinkContainingAlcohol !== '0e298528-7c8c-4724-a24f-d71ee7c1ebea' && howOftenDoYouHaveADrinkContainingAlcohol !== 'd545c4bf-8b01-4681-a6f8-c827baa2413c' && howOftenDoYouHaveADrinkContainingAlcohol !== '029fd5c6-4b91-4c98-b527-aec0de5b1a83' && howOftenDoYouHaveADrinkContainingAlcohol !== '367ad49e-75b7-460f-bf88-9293ddde1c1c')"
+              }
+            },
+            {
+              "id": "howOftenDuringTheLastYearHaveYouFoundThatYouWereNotAbleToStopDrinkingOnceYouHadStarted",
+              "label": "How often during the last year have you found that you were not able to stop drinking once you had started?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0e7e2434-207e-468e-aa1c-4a70dca4ab9b",
+                "answers": [
+                  {
+                    "label": "Never (0 point)",
+                    "concept": "325f6695-deb3-4472-a9f4-69905efcdce4"
+                  },
+                  {
+                    "label": "Less than monthly (1 point)",
+                    "concept": "0e298528-7c8c-4724-a24f-d71ee7c1ebea"
+                  },
+                  {
+                    "label": "Monthly (2 points)",
+                    "concept": "84b15ce9-cd58-48ce-a54c-581a070a7f91"
+                  },
+                  {
+                    "label": "Weekly (3 points)",
+                    "concept": "45e84276-c85d-4293-8282-2236ff60a55c"
+                  },
+                  {
+                    "label": "Daily/ almost daily (4 points)",
+                    "concept": "33a17320-0356-46ea-a3b5-79e9364c20c6"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(howOftenDoYouHaveADrinkContainingAlcohol !== '0e298528-7c8c-4724-a24f-d71ee7c1ebea' && howOftenDoYouHaveADrinkContainingAlcohol !== 'd545c4bf-8b01-4681-a6f8-c827baa2413c' && howOftenDoYouHaveADrinkContainingAlcohol !== '029fd5c6-4b91-4c98-b527-aec0de5b1a83' && howOftenDoYouHaveADrinkContainingAlcohol !== '367ad49e-75b7-460f-bf88-9293ddde1c1c')"
+              }
+            },
+            {
+              "id": "howOftenDuringTheLastYearHaveYouFailedToDoWhatWasNormallyExpectedOfYouBecauseOfDrinking",
+              "label": "How often during the last year have you failed to do what was normally expected of you because of drinking?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3bd3f149-e5b9-4f45-88b9-e3ba4ead204f",
+                "answers": [
+                  {
+                    "label": "Never (0 point)",
+                    "concept": "325f6695-deb3-4472-a9f4-69905efcdce4"
+                  },
+                  {
+                    "label": "Less than monthly (1 point)",
+                    "concept": "0e298528-7c8c-4724-a24f-d71ee7c1ebea"
+                  },
+                  {
+                    "label": "Monthly (2 points)",
+                    "concept": "84b15ce9-cd58-48ce-a54c-581a070a7f91"
+                  },
+                  {
+                    "label": "Weekly (3 points)",
+                    "concept": "45e84276-c85d-4293-8282-2236ff60a55c"
+                  },
+                  {
+                    "label": "Daily/ almost daily (4 points)",
+                    "concept": "33a17320-0356-46ea-a3b5-79e9364c20c6"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(howOftenDoYouHaveADrinkContainingAlcohol !== '0e298528-7c8c-4724-a24f-d71ee7c1ebea' && howOftenDoYouHaveADrinkContainingAlcohol !== 'd545c4bf-8b01-4681-a6f8-c827baa2413c' && howOftenDoYouHaveADrinkContainingAlcohol !== '029fd5c6-4b91-4c98-b527-aec0de5b1a83' && howOftenDoYouHaveADrinkContainingAlcohol !== '367ad49e-75b7-460f-bf88-9293ddde1c1c')"
+              }
+            },
+            {
+              "id": "howOftenDuringTheLastYearHaveYouNeededAFirstDrinkInTheMorningToGetYourselfGoingAfterAHeavyDrinkingSession",
+              "label": "How often during the last year have you needed a first drink in the morning to get yourself going after a heavy drinking session?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d7e1cda8-c564-41ed-966d-488171b38ef0",
+                "answers": [
+                  {
+                    "label": "Never (0 point)",
+                    "concept": "325f6695-deb3-4472-a9f4-69905efcdce4"
+                  },
+                  {
+                    "label": "Less than monthly (1 point)",
+                    "concept": "0e298528-7c8c-4724-a24f-d71ee7c1ebea"
+                  },
+                  {
+                    "label": "Monthly (2 points)",
+                    "concept": "84b15ce9-cd58-48ce-a54c-581a070a7f91"
+                  },
+                  {
+                    "label": "Weekly (3 points)",
+                    "concept": "45e84276-c85d-4293-8282-2236ff60a55c"
+                  },
+                  {
+                    "label": "Daily/ almost daily (4 points)",
+                    "concept": "33a17320-0356-46ea-a3b5-79e9364c20c6"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(howOftenDoYouHaveADrinkContainingAlcohol !== '0e298528-7c8c-4724-a24f-d71ee7c1ebea' && howOftenDoYouHaveADrinkContainingAlcohol !== 'd545c4bf-8b01-4681-a6f8-c827baa2413c' && howOftenDoYouHaveADrinkContainingAlcohol !== '029fd5c6-4b91-4c98-b527-aec0de5b1a83' && howOftenDoYouHaveADrinkContainingAlcohol !== '367ad49e-75b7-460f-bf88-9293ddde1c1c')"
+              }
+            },
+            {
+              "id": "howOftenDuringTheLastYearHaveYouHadAFeelingOfGuiltOrRemorseAfterDrinking",
+              "label": "How often during the last year have you had a feeling of guilt or remorse after drinking?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3dd149ce-06ec-47e6-87df-1c2496f178a2",
+                "answers": [
+                  {
+                    "label": "Never (0 point)",
+                    "concept": "325f6695-deb3-4472-a9f4-69905efcdce4"
+                  },
+                  {
+                    "label": "Less than monthly (1 point)",
+                    "concept": "0e298528-7c8c-4724-a24f-d71ee7c1ebea"
+                  },
+                  {
+                    "label": "Monthly (2 points)",
+                    "concept": "84b15ce9-cd58-48ce-a54c-581a070a7f91"
+                  },
+                  {
+                    "label": "Weekly (3 points)",
+                    "concept": "45e84276-c85d-4293-8282-2236ff60a55c"
+                  },
+                  {
+                    "label": "Daily/ almost daily (4 points)",
+                    "concept": "33a17320-0356-46ea-a3b5-79e9364c20c6"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(howOftenDoYouHaveADrinkContainingAlcohol !== '0e298528-7c8c-4724-a24f-d71ee7c1ebea' && howOftenDoYouHaveADrinkContainingAlcohol !== 'd545c4bf-8b01-4681-a6f8-c827baa2413c' && howOftenDoYouHaveADrinkContainingAlcohol !== '029fd5c6-4b91-4c98-b527-aec0de5b1a83' && howOftenDoYouHaveADrinkContainingAlcohol !== '367ad49e-75b7-460f-bf88-9293ddde1c1c')"
+              }
+            },
+            {
+              "id": "howOftenDuringTheLastYearHaveYouBeenUnableToRememberWhatHappenedTheNightBeforeBecauseOfDrinking",
+              "label": "How often during the last year have you been unable to remember what happened the night before because of drinking?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "89ab231a-3d09-4a4c-84bb-367cfe31d658",
+                "answers": [
+                  {
+                    "label": "Never (0 point)",
+                    "concept": "325f6695-deb3-4472-a9f4-69905efcdce4"
+                  },
+                  {
+                    "label": "Less than monthly (1 point)",
+                    "concept": "0e298528-7c8c-4724-a24f-d71ee7c1ebea"
+                  },
+                  {
+                    "label": "Monthly (2 points)",
+                    "concept": "84b15ce9-cd58-48ce-a54c-581a070a7f91"
+                  },
+                  {
+                    "label": "Weekly (3 points)",
+                    "concept": "45e84276-c85d-4293-8282-2236ff60a55c"
+                  },
+                  {
+                    "label": "Daily/ almost daily (4 points)",
+                    "concept": "33a17320-0356-46ea-a3b5-79e9364c20c6"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(howOftenDoYouHaveADrinkContainingAlcohol !== '0e298528-7c8c-4724-a24f-d71ee7c1ebea' && howOftenDoYouHaveADrinkContainingAlcohol !== 'd545c4bf-8b01-4681-a6f8-c827baa2413c' && howOftenDoYouHaveADrinkContainingAlcohol !== '029fd5c6-4b91-4c98-b527-aec0de5b1a83' && howOftenDoYouHaveADrinkContainingAlcohol !== '367ad49e-75b7-460f-bf88-9293ddde1c1c')"
+              }
+            },
+            {
+              "id": "haveYouOrSomeoneElseBeenInjuredBecauseOfYourDrinking",
+              "label": "Have you or someone else been injured because of your drinking?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4b4b890c-0f61-4ca9-8670-3fcc6ec0de7f",
+                "answers": [
+                  {
+                    "label": "No (0 point)",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes, but not in the last year (2 points)",
+                    "concept": "4425c980-dd4c-4ddb-88b5-ddd3be55ac8b"
+                  },
+                  {
+                    "label": "Yes, but during the last year (4 points)",
+                    "concept": "cab2b572-200d-4470-8bbb-68236d5cb69a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(howOftenDoYouHaveADrinkContainingAlcohol !== '0e298528-7c8c-4724-a24f-d71ee7c1ebea' && howOftenDoYouHaveADrinkContainingAlcohol !== 'd545c4bf-8b01-4681-a6f8-c827baa2413c' && howOftenDoYouHaveADrinkContainingAlcohol !== '029fd5c6-4b91-4c98-b527-aec0de5b1a83' && howOftenDoYouHaveADrinkContainingAlcohol !== '367ad49e-75b7-460f-bf88-9293ddde1c1c')"
+              }
+            },
+            {
+              "id": "hasARelativeFriendOrHealthWorkerBeenConcernedAboutYourDrinkingOrSuggestedYouCutDown",
+              "label": "Has a relative, friend, or health worker been concerned about your drinking or suggested you cut down?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a67417a9-1e1b-4563-9a11-e2c5a7ff9444",
+                "answers": [
+                  {
+                    "label": "No (0 point)",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Yes, but not in the last year (2 points)",
+                    "concept": "4425c980-dd4c-4ddb-88b5-ddd3be55ac8b"
+                  },
+                  {
+                    "label": "Yes, but during the last year (4 points)",
+                    "concept": "cab2b572-200d-4470-8bbb-68236d5cb69a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(howOftenDoYouHaveADrinkContainingAlcohol !== '0e298528-7c8c-4724-a24f-d71ee7c1ebea' && howOftenDoYouHaveADrinkContainingAlcohol !== 'd545c4bf-8b01-4681-a6f8-c827baa2413c' && howOftenDoYouHaveADrinkContainingAlcohol !== '029fd5c6-4b91-4c98-b527-aec0de5b1a83' && howOftenDoYouHaveADrinkContainingAlcohol !== '367ad49e-75b7-460f-bf88-9293ddde1c1c')"
+              }
+            },
+            {
+              "id": "auditScore",
+              "label": "AUDIT score",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "f244085f-f412-4751-810b-5c12a6c2a503",
+                "min": 0.0,
+                "max": 40.0,
+                "disallowDecimals": true,
+                "step": 1,
+                "calculate": {
+                  "calculateExpression": "(howOftenDoYouHaveADrinkContainingAlcohol === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDoYouHaveADrinkContainingAlcohol === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDoYouHaveADrinkContainingAlcohol === 'd545c4bf-8b01-4681-a6f8-c827baa2413c' ? 2 : howOftenDoYouHaveADrinkContainingAlcohol === '029fd5c6-4b91-4c98-b527-aec0de5b1a83' ? 3 : howOftenDoYouHaveADrinkContainingAlcohol === '367ad49e-75b7-460f-bf88-9293ddde1c1c' ? 4 : 0) + (howManyDrinksContainingAlcoholDoYouHaveOnATypicalDayWhenYouAreDrinking === '5036a472-2667-46a9-b386-97e53f9c7fde' ? 0 : howManyDrinksContainingAlcoholDoYouHaveOnATypicalDayWhenYouAreDrinking === '14cdcc8c-2351-4b5e-90ab-5b31782e21c7' ? 1 : howManyDrinksContainingAlcoholDoYouHaveOnATypicalDayWhenYouAreDrinking === '551516cf-5de9-4411-b67e-7e822d90e02a' ? 2 : howManyDrinksContainingAlcoholDoYouHaveOnATypicalDayWhenYouAreDrinking === '7be7cd8b-d2b7-420a-ab95-22d6670a56bd' ? 3 : howManyDrinksContainingAlcoholDoYouHaveOnATypicalDayWhenYouAreDrinking === '5900f7c0-3719-473a-b201-085bcdfce7f8' ? 4 : 0) + (howOftenDoYouHaveSixOrMoreDrinksOnOneOccasion === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDoYouHaveSixOrMoreDrinksOnOneOccasion === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDoYouHaveSixOrMoreDrinksOnOneOccasion === '84b15ce9-cd58-48ce-a54c-581a070a7f91' ? 2 : howOftenDoYouHaveSixOrMoreDrinksOnOneOccasion === '45e84276-c85d-4293-8282-2236ff60a55c' ? 3 : howOftenDoYouHaveSixOrMoreDrinksOnOneOccasion === '33a17320-0356-46ea-a3b5-79e9364c20c6' ? 4 : 0) + (howOftenDuringTheLastYearHaveYouFoundThatYouWereNotAbleToStopDrinkingOnceYouHadStarted === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDuringTheLastYearHaveYouFoundThatYouWereNotAbleToStopDrinkingOnceYouHadStarted === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDuringTheLastYearHaveYouFoundThatYouWereNotAbleToStopDrinkingOnceYouHadStarted === '84b15ce9-cd58-48ce-a54c-581a070a7f91' ? 2 : howOftenDuringTheLastYearHaveYouFoundThatYouWereNotAbleToStopDrinkingOnceYouHadStarted === '45e84276-c85d-4293-8282-2236ff60a55c' ? 3 : howOftenDuringTheLastYearHaveYouFoundThatYouWereNotAbleToStopDrinkingOnceYouHadStarted === '33a17320-0356-46ea-a3b5-79e9364c20c6' ? 4 : 0) + (howOftenDuringTheLastYearHaveYouFailedToDoWhatWasNormallyExpectedOfYouBecauseOfDrinking === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDuringTheLastYearHaveYouFailedToDoWhatWasNormallyExpectedOfYouBecauseOfDrinking === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDuringTheLastYearHaveYouFailedToDoWhatWasNormallyExpectedOfYouBecauseOfDrinking === '84b15ce9-cd58-48ce-a54c-581a070a7f91' ? 2 : howOftenDuringTheLastYearHaveYouFailedToDoWhatWasNormallyExpectedOfYouBecauseOfDrinking === '45e84276-c85d-4293-8282-2236ff60a55c' ? 3 : howOftenDuringTheLastYearHaveYouFailedToDoWhatWasNormallyExpectedOfYouBecauseOfDrinking === '33a17320-0356-46ea-a3b5-79e9364c20c6' ? 4 : 0) + (howOftenDuringTheLastYearHaveYouNeededAFirstDrinkInTheMorningToGetYourselfGoingAfterAHeavyDrinkingSession === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDuringTheLastYearHaveYouNeededAFirstDrinkInTheMorningToGetYourselfGoingAfterAHeavyDrinkingSession === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDuringTheLastYearHaveYouNeededAFirstDrinkInTheMorningToGetYourselfGoingAfterAHeavyDrinkingSession === '84b15ce9-cd58-48ce-a54c-581a070a7f91' ? 2 : howOftenDuringTheLastYearHaveYouNeededAFirstDrinkInTheMorningToGetYourselfGoingAfterAHeavyDrinkingSession === '45e84276-c85d-4293-8282-2236ff60a55c' ? 3 : howOftenDuringTheLastYearHaveYouNeededAFirstDrinkInTheMorningToGetYourselfGoingAfterAHeavyDrinkingSession === '33a17320-0356-46ea-a3b5-79e9364c20c6' ? 4 : 0) + (howOftenDuringTheLastYearHaveYouHadAFeelingOfGuiltOrRemorseAfterDrinking === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDuringTheLastYearHaveYouHadAFeelingOfGuiltOrRemorseAfterDrinking === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDuringTheLastYearHaveYouHadAFeelingOfGuiltOrRemorseAfterDrinking === '84b15ce9-cd58-48ce-a54c-581a070a7f91' ? 2 : howOftenDuringTheLastYearHaveYouHadAFeelingOfGuiltOrRemorseAfterDrinking === '45e84276-c85d-4293-8282-2236ff60a55c' ? 3 : howOftenDuringTheLastYearHaveYouHadAFeelingOfGuiltOrRemorseAfterDrinking === '33a17320-0356-46ea-a3b5-79e9364c20c6' ? 4 : 0) + (howOftenDuringTheLastYearHaveYouBeenUnableToRememberWhatHappenedTheNightBeforeBecauseOfDrinking === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDuringTheLastYearHaveYouBeenUnableToRememberWhatHappenedTheNightBeforeBecauseOfDrinking === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDuringTheLastYearHaveYouBeenUnableToRememberWhatHappenedTheNightBeforeBecauseOfDrinking === '84b15ce9-cd58-48ce-a54c-581a070a7f91' ? 2 : howOftenDuringTheLastYearHaveYouBeenUnableToRememberWhatHappenedTheNightBeforeBecauseOfDrinking === '45e84276-c85d-4293-8282-2236ff60a55c' ? 3 : howOftenDuringTheLastYearHaveYouBeenUnableToRememberWhatHappenedTheNightBeforeBecauseOfDrinking === '33a17320-0356-46ea-a3b5-79e9364c20c6' ? 4 : 0) + (haveYouOrSomeoneElseBeenInjuredBecauseOfYourDrinking === 'a5c5563e-df0e-4742-a335-b24fb63664ee' ? 0 : haveYouOrSomeoneElseBeenInjuredBecauseOfYourDrinking === '4425c980-dd4c-4ddb-88b5-ddd3be55ac8b' ? 2 : haveYouOrSomeoneElseBeenInjuredBecauseOfYourDrinking === 'cab2b572-200d-4470-8bbb-68236d5cb69a' ? 4 : 0) + (hasARelativeFriendOrHealthWorkerBeenConcernedAboutYourDrinkingOrSuggestedYouCutDown === 'a5c5563e-df0e-4742-a335-b24fb63664ee' ? 0 : hasARelativeFriendOrHealthWorkerBeenConcernedAboutYourDrinkingOrSuggestedYouCutDown === '4425c980-dd4c-4ddb-88b5-ddd3be55ac8b' ? 2 : hasARelativeFriendOrHealthWorkerBeenConcernedAboutYourDrinkingOrSuggestedYouCutDown === 'cab2b572-200d-4470-8bbb-68236d5cb69a' ? 4 : 0)"
+                }
+              },
+              "questionInfo": "Sum of answers of alcohol consumption"
+            }
+          ]
+        },
+        {
+          "label": "Risk group information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "hasThePatientEverUsedAnyDrugOrSubstance",
+              "label": "Has the patient ever used any drug /substance",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "30837713-453e-4456-ac48-b3886acf02ac",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Past",
+                    "concept": "e81fa512-38d4-42d4-ae38-cc5fae8345d5"
+                  },
+                  {
+                    "label": "Currently",
+                    "concept": "53eaf1b5-6ff7-498f-b95c-7ce3f116f181"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "patternOfConsumption",
+              "label": "Pattern of consumption",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1a316392-d6f4-492b-ab02-84e569886e2b",
+                "answers": [
+                  {
+                    "label": "Inj",
+                    "concept": "07577837-33e4-495c-8878-791e027eaa7a"
+                  },
+                  {
+                    "label": "Non-inj",
+                    "concept": "bf08ff96-ca30-4943-9104-a9ba40f8593a"
+                  },
+                  {
+                    "label": "Both",
+                    "concept": "6b97c385-719a-4f3b-88cd-7557b490706e"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hasThePatientEverUsedAnyDrugOrSubstance !== 'e81fa512-38d4-42d4-ae38-cc5fae8345d5' && hasThePatientEverUsedAnyDrugOrSubstance !== '53eaf1b5-6ff7-498f-b95c-7ce3f116f181')"
+              }
+            },
+            {
+              "id": "lastIvDrugUse",
+              "label": "Last IV drug use",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "de8c306d-950d-4036-ad3f-44115b6b9ff9",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Past",
+                    "concept": "e81fa512-38d4-42d4-ae38-cc5fae8345d5"
+                  },
+                  {
+                    "label": "Currently",
+                    "concept": "53eaf1b5-6ff7-498f-b95c-7ce3f116f181"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hasThePatientEverUsedAnyDrugOrSubstance !== 'e81fa512-38d4-42d4-ae38-cc5fae8345d5' && hasThePatientEverUsedAnyDrugOrSubstance !== '53eaf1b5-6ff7-498f-b95c-7ce3f116f181')"
+              }
+            },
+            {
+              "id": "hasThePatientEverBeenOnOstProgramme",
+              "label": "Has the patient ever been on OST Programme",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bf78ddd9-b254-40a0-988e-0ed92ca67c32",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Past",
+                    "concept": "e81fa512-38d4-42d4-ae38-cc5fae8345d5"
+                  },
+                  {
+                    "label": "Currently",
+                    "concept": "53eaf1b5-6ff7-498f-b95c-7ce3f116f181"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hasThePatientEverUsedAnyDrugOrSubstance !== 'e81fa512-38d4-42d4-ae38-cc5fae8345d5' && hasThePatientEverUsedAnyDrugOrSubstance !== '53eaf1b5-6ff7-498f-b95c-7ce3f116f181')"
+              }
+            },
+            {
+              "id": "hasThePatientEverBeenOnNspProgramme",
+              "label": "Has the patient ever been on NSP Programme",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9ac1bb85-cc5e-4c80-89c2-b457b759b41a",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Past",
+                    "concept": "e81fa512-38d4-42d4-ae38-cc5fae8345d5"
+                  },
+                  {
+                    "label": "Currently",
+                    "concept": "53eaf1b5-6ff7-498f-b95c-7ce3f116f181"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hasThePatientEverUsedAnyDrugOrSubstance !== 'e81fa512-38d4-42d4-ae38-cc5fae8345d5' && hasThePatientEverUsedAnyDrugOrSubstance !== '53eaf1b5-6ff7-498f-b95c-7ce3f116f181')"
+              }
+            },
+            {
+              "id": "sexWorker",
+              "label": "Sex worker",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6b583dae-2646-45a8-8828-964b4957bef7",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Ocasionally",
+                    "concept": "582eb385-0913-4eb4-9739-0442f8141a18"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "msm",
+              "label": "MSM",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "695a04c4-4bca-43ad-bcf1-f63506a293d2",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "bdc8e82c-50d2-4029-af9a-50e09576ac10"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Bisexual",
+                    "concept": "41871ec2-29e3-4084-ad24-33a11f894289"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hasThePatientEverBeenInPrison",
+              "label": "Has the patient ever been in prison",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3596256f-4605-434d-b397-ae51d76f9173",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Past",
+                    "concept": "e81fa512-38d4-42d4-ae38-cc5fae8345d5"
+                  },
+                  {
+                    "label": "Currently",
+                    "concept": "53eaf1b5-6ff7-498f-b95c-7ce3f116f181"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hasThePatientEverDoneATattoo",
+              "label": "Has the patient ever done a tattoo",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "82575254-fc48-40b3-98ab-1ef51088a0ad",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "isThePatientOnHemodialysis",
+              "label": "Is the patient on Hemodialysis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "27fef5bf-5316-4e5b-ad43-940f318ed0e2",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hasThePatientEverBeenALabourMigrant",
+              "label": "Has the patient ever been a labour migrant",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1596255e-5703-4eb1-a96b-7dc8044d5af0",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Past",
+                    "concept": "e81fa512-38d4-42d4-ae38-cc5fae8345d5"
+                  },
+                  {
+                    "label": "Currently",
+                    "concept": "53eaf1b5-6ff7-498f-b95c-7ce3f116f181"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hasThePatientEverBeenAHealthCareWorker",
+              "label": "Has the patient ever been a health care worker",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b8ead936-2ae2-444d-b769-6e7ca2145825",
+                "answers": [
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Past",
+                    "concept": "e81fa512-38d4-42d4-ae38-cc5fae8345d5"
+                  },
+                  {
+                    "label": "Currently",
+                    "concept": "53eaf1b5-6ff7-498f-b95c-7ce3f116f181"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Physical examination",
+      "sections": [
+        {
+          "label": "Findings",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInvitalBiometricsForbppulseweightAndheightAndAddTodaysMeasurements",
+              "label": "Please check in 'Vital & Biometrics' for 'BP', 'Pulse', 'Weight' and 'Height' AND add today's measurements",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "findingsInThePhysicalExamination",
+              "label": "Findings in the physical examination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0dd28dfa-fa10-4dbd-bf6a-4f5ad6868c64"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Lab",
+      "sections": [
+        {
+          "label": "Lab",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "checkInresultsForHcvHivHbvAndAlphaFetoprotein",
+              "label": "Check in 'Results' for HCV, HIV, HBV and Alpha-fetoprotein",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "## Check in 'Results' for HCV, HIV, HBV and Alpha-fetoprotein"
+              ]
+            },
+            {
+              "id": "commentsOnLabTestsAndInvestigations",
+              "label": "Comments on lab tests and investigations",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        },
+        {
+          "label": "HCV",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "hcvRapidTest",
+              "label": "HCV rapid test",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0e15451c-c4fc-4fa6-a172-acea46b9ca7b",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Child Pugh score",
+      "sections": [
+        {
+          "label": "Child Pugh score",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "ascites",
+              "label": "Ascites",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b61b58fd-15d1-40e9-afdb-35c86c491647",
+                "answers": [
+                  {
+                    "label": "None (1 point)",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "Mild (2 points)",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate (3 points)",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe (3 points)",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "encephalopathy",
+              "label": "Encephalopathy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c469461c-9856-4184-98f1-06e4b426a4c7",
+                "answers": [
+                  {
+                    "label": "None (1 point)",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "Moderate (2 points)",
+                    "concept": "49e898fa-b5ff-428b-8569-9b82415d7b96"
+                  },
+                  {
+                    "label": "Severe (3 points)",
+                    "concept": "caa92982-f757-4c4c-b335-5f79c79a1b81"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "bilirubin",
+              "label": "Bilirubin (mg/dL)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "61df50db-ba69-4cb9-9b79-fbfc51f98aba",
+                "answers": [
+                  {
+                    "label": "<2 (1 point)",
+                    "concept": "9061c110-0cd3-4288-89a4-e6ebaa9d2806"
+                  },
+                  {
+                    "label": "2\u20133 (2 points)",
+                    "concept": "a40147ee-259f-4cbe-8ab2-65028633aed9"
+                  },
+                  {
+                    "label": ">3 (3 points)",
+                    "concept": "9ca376ff-1721-4cc6-b2d0-377d0c68e3fd"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "serumAlbumin",
+              "label": "Serum Albumin (g/dL)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "665155e1-9998-4f37-a763-4b2b27842478",
+                "answers": [
+                  {
+                    "label": ">3.5 (1 point)",
+                    "concept": "8e93bd8b-8c80-415b-a897-e49a15311021"
+                  },
+                  {
+                    "label": "2.8-3.5 (2 points)",
+                    "concept": "95841417-6f6d-4921-9ef4-46638d70d2dd"
+                  },
+                  {
+                    "label": "<2.8 (3 points)",
+                    "concept": "a4a3f828-6a12-4b8c-b6e1-ca7c7ee304e7"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "prothrombinTimeOrInr",
+              "label": "Prothrombin Time / INR",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "382d6a15-1e60-43a3-8ee5-bb0f7b11b17b",
+                "answers": [
+                  {
+                    "label": "PT <4 or INR <1.7 (1 point)",
+                    "concept": "b8c43ea6-63c4-4c69-b043-dd31bf2c3c77"
+                  },
+                  {
+                    "label": "PT 4-6 or INR 1.7-2.3 (2 points)",
+                    "concept": "f15fd347-dee2-4f9d-ab88-e47e5492673a"
+                  },
+                  {
+                    "label": "PT >6 or INR >2.3 (3 points)",
+                    "concept": "f9191af2-bce9-4a53-85ca-1bbdc9980d5b"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "childPughScore",
+              "label": "Child Pugh score",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b08a4bc9-3910-4665-847f-38a29d4b3cdf",
+                "answers": [
+                  {
+                    "label": "A (5-6 points)",
+                    "concept": "ef3f5d4b-9a9b-41e6-b18c-f90c475d47e5"
+                  },
+                  {
+                    "label": "B (7-9 points)",
+                    "concept": "78c71f5d-68f2-4103-b9ca-16e0397fa02d"
+                  },
+                  {
+                    "label": "C (10-15 points)",
+                    "concept": "4268bbca-81d8-4c64-af38-7e7131bbc997"
+                  },
+                  {
+                    "label": "NA/Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ],
+                "questionInfo": "Sum of answers of Child Pugh score"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Additional exams",
+      "sections": [
+        {
+          "label": "Additional exams",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pregnancyTest",
+              "label": "Pregnancy test",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "61d473d6-ab11-458e-b841-382bc183fd13",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "arrhythmia",
+              "label": "Arrhythmia (ECG)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f5b2b5ff-47bb-41e1-bbcc-3d7b2ecb373f",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "apriScore",
+              "label": "APRI score",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "04f523f6-1054-41a9-ace5-b70a5d7bab53",
+                "min": 0.0,
+                "disallowDecimals": false
+              }
+            },
+            {
+              "id": "fibroscan",
+              "label": "Fibroscan",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4f4af359-91d2-47da-b4be-76cd2da68abe",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "fibroscan_1",
+              "label": "Fibroscan (kPa)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b2d8fe65-9073-48f6-acbc-cd5634ae59d2",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(fibroscan !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              },
+              "idModified": true,
+              "originalLabel": "Fibroscan (kPa)",
+              "warning": "Question ID was modified from 'Fibroscan (kPa)' to ensure uniqueness"
+            },
+            {
+              "id": "fibroscanValidityIqr",
+              "label": "Fibroscan-Validity IQR (%)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "8b3502df-6da8-4c2e-be17-191f9eb1a07b",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(fibroscan !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "fibroscanStagingCategory",
+              "label": "Fibroscan-Staging Category",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "841e4f9b-0749-4b3b-bbaa-44d39446e7fa",
+                "answers": [
+                  {
+                    "label": "F0: no fibrosis",
+                    "concept": "787403f2-c3b7-44ec-8952-029bc1a36ee8"
+                  },
+                  {
+                    "label": "F1: mild fibrosis",
+                    "concept": "6166b4e5-a6b7-424e-bb81-f4399258483a"
+                  },
+                  {
+                    "label": "F2: moderate fibrosis",
+                    "concept": "9ead5bd2-172f-434b-b429-099002cc8f92"
+                  },
+                  {
+                    "label": "F3: severe or advanced fibrosis",
+                    "concept": "be2c180a-c6d9-42f9-a1d6-47c8fba7eb72"
+                  },
+                  {
+                    "label": "F4: cirrhosis",
+                    "concept": "aa2d042c-dae6-486f-b2d7-c38bb883f291"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(fibroscan !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "fibroscanDate",
+              "label": "Fibroscan-Date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "5e06ab70-44e3-46de-9fb6-37f796e55e43"
+              },
+              "hide": {
+                "hideWhenExpression": "(fibroscan !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "fibroscanDate > new Date()",
+                  "message": "Fibroscan date cannot be in the future"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Treatment",
+      "sections": [
+        {
+          "label": "Prescription",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "prescribeExamsAndMedicationWithTheOrderBasket",
+              "label": "Prescribe exams and medication with the order basket",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow up",
+      "sections": [
+        {
+          "label": "Follow up",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseScheduleNextVisitInappointments",
+              "label": "Please schedule next visit in 'Appointments'",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Notes",
+      "sections": [
+        {
+          "label": "Notes",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalNotes",
+              "label": "Additional notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
