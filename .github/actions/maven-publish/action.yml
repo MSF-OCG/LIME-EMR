@@ -1,0 +1,126 @@
+name: Publish artifact(s) to the Mekom Nexus Repository
+
+on:
+  workflow_call:
+    inputs:
+      java-version:
+        description: 'Java version to use for publishing'
+        required: false
+        type: string
+        default: '17'
+      java-distribution:
+        description: 'Java distribution to use for publishing'
+        required: false
+        type: string
+        default: 'temurin'
+      maven-args:
+        description: 'Additional arguments to pass to maven'
+        required: false
+        type: string
+        default: '-DskipTests=true'
+      upload-artifacts:
+        description: 'Whether to upload build artifacts or not'
+        required: false
+        type: boolean
+        default: false
+      artifact-path:
+        description: 'Path to the artifact(s) to upload'
+        required: false
+        type: string
+        default: ''
+      artifact-name:
+        description: 'Name of the artifact(s) to upload'
+        required: false
+        type: string
+        default: 'artifact'
+      free-disk-space:
+        description: 'Whether to free disk space before running the build'
+        required: false
+        type: boolean
+        default: false
+    secrets:
+      NEXUS_USERNAME:
+        required: true
+      NEXUS_PASSWORD:
+        required: true
+      DOCKER_HUB_USERNAME:
+        required: false
+      DOCKER_HUB_PASSWORD:
+        required: false
+
+
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free Disk Space (Ubuntu)
+        if: ${{ inputs.free-disk-space }}
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ inputs.java-version }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ inputs.java-version }}
+          distribution: ${{ inputs.java-distribution }}
+          cache: 'maven'
+
+      - name: Set settings.xml
+        uses: s4u/maven-settings-action@v3.0.0
+        with:
+          servers: |
+            [{
+              "id": "mks-private-repo",
+              "username": "${{ secrets.NEXUS_USERNAME }}",
+              "password": "${{ secrets.NEXUS_PASSWORD }}"
+            },
+            {
+              "id": "mks-nexus-private",
+              "username": "${{ secrets.NEXUS_USERNAME }}",
+              "password": "${{ secrets.NEXUS_PASSWORD }}"
+            },
+            {
+              "id": "mks-nexus-public-snapshots",
+              "username": "${{ secrets.NEXUS_USERNAME }}",
+              "password": "${{ secrets.NEXUS_PASSWORD }}"
+            },
+            {
+              "id": "mks-nexus-public-releases",
+              "username": "${{ secrets.NEXUS_USERNAME }}",
+              "password": "${{ secrets.NEXUS_PASSWORD }}"
+            },
+            {
+              "id": "mks-nexus-private-snapshots",
+              "username": "${{ secrets.NEXUS_USERNAME }}",
+              "password": "${{ secrets.NEXUS_PASSWORD }}"
+            },
+            {
+              "id": "mks-nexus-private-releases",
+              "username": "${{ secrets.NEXUS_USERNAME }}",
+              "password": "${{ secrets.NEXUS_PASSWORD }}"
+            },
+            {
+              "id": "docker.io",
+              "username": "${{ secrets.DOCKER_HUB_USERNAME || 'username'}}",
+              "password": "${{ secrets.DOCKER_HUB_PASSWORD || 'password'}}"
+            }]
+
+      - name: Publish maven artifacts
+        run: 'mvn --batch-mode --no-transfer-progress clean deploy ${{ inputs.maven-args }}'
+
+      - name: Upload artifacts to GitHub
+        if: ${{ inputs.upload-artifacts }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: ${{ inputs.artifact-path }}
+          overwrite: true
