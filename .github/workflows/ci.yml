@@ -10,7 +10,7 @@ on:
 
 jobs:
   validate:
-    uses: ./.github/actions/maven-build-test
+    uses: ./.github/workflows/maven-build-test.yml
     with:
       java-version: "8"
       maven-phase: "install"
@@ -23,7 +23,7 @@ jobs:
   release:
     if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'release' }}
     needs: validate
-    uses: ./.github/actions/maven-publish
+    uses: ./.github/workflows/maven-publish.yml
     with:
       free-disk-space: true
       maven-args: "-Pbundled-docker" # Build Docker images embedding the distro bins and configs
