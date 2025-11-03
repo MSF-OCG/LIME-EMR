@@ -480,35 +480,56 @@
       <id>bundled-docker</id>
       <build>
           <plugins>
-              <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-resources-plugin</artifactId>
-                  <version>3.3.0</version>
-                  <executions>
-                    <execution>
-                      <!-- Copy MSF Disto docker compose .txt file -->
-                      <id>Copy MSF Disto docker images file</id>
-                      <phase>prepare-package</phase>
-                      <goals>
-                        <goal>copy-resources</goal>
-                      </goals>
-                      <configuration>
-                        <outputDirectory>
-                          ${project.build.directory}/bundled-docker-build-tmp
-                        </outputDirectory>
-                        <overwrite>true</overwrite>
-                        <resources>
-                          <resource>
-                            <directory>${project.basedir}/../scripts</directory>
-                            <includes>
-                              <include>docker-images-build.txt</include>
-                            </includes>
-                          </resource>
-                        </resources>
-                      </configuration>
-                    </execution>
-                  </executions>
-              </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                  <execution>
+                    <!-- Copy MSF Disto docker compose .txt file -->
+                    <id>Copy MSF Disto docker images file</id>
+                    <phase>prepare-package</phase>
+                    <goals>
+                      <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                      <outputDirectory>
+                        ${project.build.directory}/bundled-docker-build-tmp
+                      </outputDirectory>
+                      <overwrite>true</overwrite>
+                      <resources>
+                        <resource>
+                          <directory>${project.basedir}/../scripts</directory>
+                          <includes>
+                            <include>docker-images-build.txt</include>
+                          </includes>
+                        </resource>
+                      </resources>
+                    </configuration>
+                  </execution>
+                </executions>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-antrun-plugin</artifactId>
+              <version>3.1.0</version>
+              <executions>
+                <execution>
+                  <id>Use mekomsolutions docker image for keycloak</id>
+                  <phase>process-resources</phase>
+                  <goals>
+                    <goal>run</goal>
+                  </goals>
+                  <configuration>
+                    <target>
+                      <echo level="info" message="Adding msf docker image version"/>
+                      <replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/keycloak/Dockerfile"
+                                    match="FROM docker.io/bitnami.*" replace="FROM docker.io/mekomsolutions/keycloak:22.0.5" />
+                    </target>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
           </plugins>
       </build>
   </profile>
