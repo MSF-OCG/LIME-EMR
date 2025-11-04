@@ -16,7 +16,8 @@ jobs:
       maven-phase: "install"
       free-disk-space: true
       use-secrets: true
-      maven-args: "-Pbundled-docker" # Build Docker images embedding the distro bins and configs (TODO: Add back -Pvalidator when it is fixed)
+      login-docker: true
+      maven-args: "-Pbundled-docker -Ddocker.buildx.platforms=linux/amd64" # Build Docker images embedding the distro bins and configs (TODO: Add back -Pvalidator when it is fixed)
     secrets:
       NEXUS_USERNAME: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}
       NEXUS_PASSWORD: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
