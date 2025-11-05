@@ -692,4 +692,34 @@
         </sql>
     </changeSet>
 
+    <!-- Retire CIEL concept for Community -->
+    <changeSet id="delete_ciel_concept_community" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept
+                WHERE uuid = '163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete duplicate CIEL Community concept
+        </comment>
+
+        <sql>
+            <!-- Handling references and foreign key constraints -->
+            DELETE FROM concept_answer WHERE answer_concept = (SELECT concept_id FROM concept WHERE uuid = '163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+            DELETE FROM concept_name WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+            DELETE FROM concept_description WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+            DELETE FROM concept_reference_map WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+
+            <!-- Only running this to remove previously recorded obs -->
+            DELETE FROM obs WHERE value_coded = (SELECT concept_id FROM concept WHERE uuid = '163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+
+            DELETE FROM drug WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+
+            <!-- Delete concept -->
+            DELETE FROM concept WHERE uuid = '163488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
