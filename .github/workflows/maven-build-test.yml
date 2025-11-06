@@ -92,4 +92,4 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
       
       - name: Build with Maven
-        run: 'mvn --batch-mode --no-transfer-progress --update-snapshots clean ${{ inputs.maven-phase }} ${{ inputs.maven-args }}'
+        run: './scripts/mvnw --batch-mode --no-transfer-progress --update-snapshots clean ${{ inputs.maven-phase }} ${{ inputs.maven-args }}'
