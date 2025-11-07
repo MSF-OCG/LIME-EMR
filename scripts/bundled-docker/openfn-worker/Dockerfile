@@ -16,7 +16,6 @@ RUN mkdir -p /app/packages/ws-worker/lime
 # Copy OpenFn configuration files
 COPY configs/openfn/config.json /app/packages/ws-worker/lime/
 COPY configs/openfn/openfn-project.yaml /app/packages/ws-worker/lime/
-COPY configs/openfn/projectState.json /app/packages/ws-worker/lime/
 
 # Set working directory
 WORKDIR /app/packages/ws-worker/lime

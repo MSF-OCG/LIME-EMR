@@ -374,6 +374,40 @@
             </executions>
           </plugin>
           <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+              <execution>
+                <id>Add OpenFn project state to OpenFn workeer image</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openfn-worker/Dockerfile"
+                      match="COPY configs/openfn/openfn-project\.yaml /app/packages/ws-worker/lime/"
+                      replace="COPY configs/openfn/openfn-project.yaml /app/packages/ws-worker/lime/&#10;COPY configs/openfn/projectState.json /app/packages/ws-worker/lime/"
+                      byline="false" />
+                  </target>
+                  </configuration>
+              </execution>
+              <execution>
+                <id>Add adaptor cache to openfn web image</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <echo file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openfn-web/Dockerfile" append="true" message="COPY configs/openfn/adaptor_registry_cache.json /app/priv/adaptor_registry_cache.json"/>
+                  </target>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
             <groupId>org.codehaus.gmavenplus</groupId>
             <artifactId>gmavenplus-plugin</artifactId>
             <executions>
