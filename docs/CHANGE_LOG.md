@@ -1,5 +1,29 @@
 # LIME CHANGE LOG 🚀
 
+## Release 30th October, 2025 (Sprint 37)
+
+### Features & Improvements
+
+- Build HBV program forms - [LIME2-994](https://msf-ocg.atlassian.net/browse/LIME2-994)
+- Build Social Work program forms - [LIME2-1000](https://msf-ocg.atlassian.net/browse/LIME2-1000)
+- Build HCV programs forms - [LIME2-1011](https://msf-ocg.atlassian.net/browse/LIME2-1011)
+- Build Palliative Care program forms - [LIME2-1013](https://msf-ocg.atlassian.net/browse/LIME2-1013)
+- Build Travel Medicine program form - [LIME2-1015](https://msf-ocg.atlassian.net/browse/LIME2-1015)
+- Obstetrics ultrasound - change Status question/optionset - [LIME2-1002](https://msf-ocg.atlassian.net/browse/LIME2-1002)
+- Obstetric ultrasound - skip logics referred to "Status" changed - [LIME2-1003](https://msf-ocg.atlassian.net/browse/LIME2-1003)
+- Obstetrics ultrasound - change questions orders - [LIME2-1004](https://msf-ocg.atlassian.net/browse/LIME2-1004)
+- Travel medicine - skip logic related to number rendering not working - [LIME2-1005](https://msf-ocg.atlassian.net/browse/LIME2-1005)
+- Add support for visit editable duration and birthdate on laboratory - [LIME2-1006](https://msf-ocg.atlassian.net/browse/LIME2-1006)
+- Standardize form uuids across deployments - [LIME2-1009](https://msf-ocg.atlassian.net/browse/LIME2-1009)
+- Laboratory - additional changes in list of tests - [LIME2-929](https://msf-ocg.atlassian.net/browse/LIME2-929)
+
+### Bug Fixes
+
+- Fixes to Pre-donation form - [LIME2-988](https://msf-ocg.atlassian.net/browse/LIME2-988)
+- Fixes to NCDs forms - [LIME2-989](https://msf-ocg.atlassian.net/browse/LIME2-989)
+- Maternity delivery - saving issue related to vacuum delivery - [LIME2-977](https://msf-ocg.atlassian.net/browse/LIME2-977)
+- Drug Order - Add items - [LIME2-983](https://msf-ocg.atlassian.net/browse/LIME2-983)
+
 ## Release 15th October, 2025 (Sprint 36)
 
 ### Features & Improvements
@@ -16,7 +40,6 @@
 - PNC - eliminate inexistent workspace - [LIME2-968](https://msf-ocg.atlassian.net/browse/LIME2-968)
 - Drug order - items added - [LIME2-983](https://msf-ocg.atlassian.net/browse/LIME2-983)
 - Test Restic backups on UAT - [LIME2-911](https://msf-ocg.atlassian.net/browse/LIME2-911)
-<!-- - Maternity delivery - saving issue related to vacuum delivery - [LIME2-977](https://msf-ocg.atlassian.net/browse/LIME2-977) -->
 
 ### Bug Fixes
 
