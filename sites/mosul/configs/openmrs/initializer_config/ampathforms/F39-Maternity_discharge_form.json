@@ -343,6 +343,77 @@
               "hide": {
                 "hideWhenExpression": "(secondaryDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
+            },
+            {
+              "id": "hivDiagnosis",
+              "label": "HIV diagnosis?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "fb270cba-cdcf-470d-847f-ec8ab3b20a5e",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "artStatus",
+              "label": "ART",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2b1dc697-1a53-4e85-871c-9fa938ffb70c",
+                "answers": [
+                  {
+                    "label": "Did not start",
+                    "concept": "59d7e999-b0c0-4a9e-8f01-1a365ed48640"
+                  },
+                  {
+                    "label": "ART initiated",
+                    "concept": "69832c37-a981-42e1-ad27-6565ed412405"
+                  },
+                  {
+                    "label": "ART re-initiated",
+                    "concept": "8a6efe63-f5b7-4cf5-837f-3564f5a3b99b"
+                  }
+                ]
+              },
+              "questionInfo": "Update in 'Conditions' and fill in 'Medications' with the treatment received",
+              "hide": {
+                "hideWhenExpression": "(hivDiagnosis !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "rfeFormsHivtest",
+              "label": "Newborn tested for HIV?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f8ebd933-c186-4612-8f93-1ff4741386be",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hivDiagnosis !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
             }
           ]
         }
