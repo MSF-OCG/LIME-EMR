@@ -63,6 +63,7 @@
                 "rendering": "date",
                 "concept": "e290d074-9e4b-4440-bff5-ebedbefcca4d"
               },
+              "questionInfo": "Fill in 'Medications' with the treatment received",
               "hide": {
                 "hideWhenExpression": "(previousHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
               },
@@ -176,7 +177,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "(previousHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') ||(previousHcvTreatmentOther !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+                "hideWhenExpression": "(previousHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') || (previousHcvTreatmentOther !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
               }
             },
             {
@@ -239,6 +240,7 @@
                 "rendering": "date",
                 "concept": "e290d074-9e4b-4440-bff5-ebedbefcca4d"
               },
+              "questionInfo": "Fill in 'Medications' with the treatment received",
               "hide": {
                 "hideWhenExpression": "(ongoingHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
               },
@@ -352,7 +354,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "(ongoingHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') ||(ongoingHcvTreatmentOther !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+                "hideWhenExpression": "(ongoingHcvTreatment !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') || (ongoingHcvTreatmentOther !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
               }
             }
           ]
@@ -379,7 +381,8 @@
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
-              }
+              },
+              "questionInfo": "Update in 'Conditions' and fill in 'Medications' with the treatment received"
             },
             {
               "id": "art",
@@ -426,7 +429,8 @@
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
-              }
+              },
+              "questionInfo": "Update in 'Conditions' and fill in 'Medications' with the treatment received"
             },
             {
               "id": "tbTreatment",
@@ -473,7 +477,8 @@
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
-              }
+              },
+              "questionInfo": "Update in 'Conditions' and fill in 'Medications' with the treatment received"
             },
             {
               "id": "hepatitisBTreatment",
@@ -605,7 +610,13 @@
                   }
                 ]
               }
-            },
+            }
+          ]
+        },
+        {
+          "label": "Current Comorbidities",
+          "isExpanded": false,
+          "questions": [
             {
               "id": "detailsOnComorbidities",
               "label": "Details on comorbidities",
@@ -703,7 +714,8 @@
                     "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
                   }
                 ]
-              }
+              },
+              "questionInfo": "Fill in 'Immunizations' with the vaccines received"
             }
           ]
         },
@@ -765,6 +777,7 @@
                   }
                 ]
               },
+              "questionInfo": "Fill in 'Medications' with the treatment received",
               "hide": {
                 "hideWhenExpression": "(tb !== 'a5c5563e-df0e-4742-a335-b24fb63664ee') || (iptProphylaxis !== '617087a8-548b-4b48-b979-ad854de98bed' && iptProphylaxis !== 'adc10d23-e680-48c7-b5fc-2e9c3231ff21')"
               }
@@ -1122,7 +1135,7 @@
                   "calculateExpression": "(howOftenDoYouHaveADrinkContainingAlcohol === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDoYouHaveADrinkContainingAlcohol === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDoYouHaveADrinkContainingAlcohol === 'd545c4bf-8b01-4681-a6f8-c827baa2413c' ? 2 : howOftenDoYouHaveADrinkContainingAlcohol === '029fd5c6-4b91-4c98-b527-aec0de5b1a83' ? 3 : howOftenDoYouHaveADrinkContainingAlcohol === '367ad49e-75b7-460f-bf88-9293ddde1c1c' ? 4 : 0) + (howManyDrinksContainingAlcoholDoYouHaveOnATypicalDayWhenYouAreDrinking === '5036a472-2667-46a9-b386-97e53f9c7fde' ? 0 : howManyDrinksContainingAlcoholDoYouHaveOnATypicalDayWhenYouAreDrinking === '14cdcc8c-2351-4b5e-90ab-5b31782e21c7' ? 1 : howManyDrinksContainingAlcoholDoYouHaveOnATypicalDayWhenYouAreDrinking === '551516cf-5de9-4411-b67e-7e822d90e02a' ? 2 : howManyDrinksContainingAlcoholDoYouHaveOnATypicalDayWhenYouAreDrinking === '7be7cd8b-d2b7-420a-ab95-22d6670a56bd' ? 3 : howManyDrinksContainingAlcoholDoYouHaveOnATypicalDayWhenYouAreDrinking === '5900f7c0-3719-473a-b201-085bcdfce7f8' ? 4 : 0) + (howOftenDoYouHaveSixOrMoreDrinksOnOneOccasion === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDoYouHaveSixOrMoreDrinksOnOneOccasion === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDoYouHaveSixOrMoreDrinksOnOneOccasion === '84b15ce9-cd58-48ce-a54c-581a070a7f91' ? 2 : howOftenDoYouHaveSixOrMoreDrinksOnOneOccasion === '45e84276-c85d-4293-8282-2236ff60a55c' ? 3 : howOftenDoYouHaveSixOrMoreDrinksOnOneOccasion === '33a17320-0356-46ea-a3b5-79e9364c20c6' ? 4 : 0) + (howOftenDuringTheLastYearHaveYouFoundThatYouWereNotAbleToStopDrinkingOnceYouHadStarted === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDuringTheLastYearHaveYouFoundThatYouWereNotAbleToStopDrinkingOnceYouHadStarted === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDuringTheLastYearHaveYouFoundThatYouWereNotAbleToStopDrinkingOnceYouHadStarted === '84b15ce9-cd58-48ce-a54c-581a070a7f91' ? 2 : howOftenDuringTheLastYearHaveYouFoundThatYouWereNotAbleToStopDrinkingOnceYouHadStarted === '45e84276-c85d-4293-8282-2236ff60a55c' ? 3 : howOftenDuringTheLastYearHaveYouFoundThatYouWereNotAbleToStopDrinkingOnceYouHadStarted === '33a17320-0356-46ea-a3b5-79e9364c20c6' ? 4 : 0) + (howOftenDuringTheLastYearHaveYouFailedToDoWhatWasNormallyExpectedOfYouBecauseOfDrinking === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDuringTheLastYearHaveYouFailedToDoWhatWasNormallyExpectedOfYouBecauseOfDrinking === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDuringTheLastYearHaveYouFailedToDoWhatWasNormallyExpectedOfYouBecauseOfDrinking === '84b15ce9-cd58-48ce-a54c-581a070a7f91' ? 2 : howOftenDuringTheLastYearHaveYouFailedToDoWhatWasNormallyExpectedOfYouBecauseOfDrinking === '45e84276-c85d-4293-8282-2236ff60a55c' ? 3 : howOftenDuringTheLastYearHaveYouFailedToDoWhatWasNormallyExpectedOfYouBecauseOfDrinking === '33a17320-0356-46ea-a3b5-79e9364c20c6' ? 4 : 0) + (howOftenDuringTheLastYearHaveYouNeededAFirstDrinkInTheMorningToGetYourselfGoingAfterAHeavyDrinkingSession === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDuringTheLastYearHaveYouNeededAFirstDrinkInTheMorningToGetYourselfGoingAfterAHeavyDrinkingSession === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDuringTheLastYearHaveYouNeededAFirstDrinkInTheMorningToGetYourselfGoingAfterAHeavyDrinkingSession === '84b15ce9-cd58-48ce-a54c-581a070a7f91' ? 2 : howOftenDuringTheLastYearHaveYouNeededAFirstDrinkInTheMorningToGetYourselfGoingAfterAHeavyDrinkingSession === '45e84276-c85d-4293-8282-2236ff60a55c' ? 3 : howOftenDuringTheLastYearHaveYouNeededAFirstDrinkInTheMorningToGetYourselfGoingAfterAHeavyDrinkingSession === '33a17320-0356-46ea-a3b5-79e9364c20c6' ? 4 : 0) + (howOftenDuringTheLastYearHaveYouHadAFeelingOfGuiltOrRemorseAfterDrinking === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDuringTheLastYearHaveYouHadAFeelingOfGuiltOrRemorseAfterDrinking === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDuringTheLastYearHaveYouHadAFeelingOfGuiltOrRemorseAfterDrinking === '84b15ce9-cd58-48ce-a54c-581a070a7f91' ? 2 : howOftenDuringTheLastYearHaveYouHadAFeelingOfGuiltOrRemorseAfterDrinking === '45e84276-c85d-4293-8282-2236ff60a55c' ? 3 : howOftenDuringTheLastYearHaveYouHadAFeelingOfGuiltOrRemorseAfterDrinking === '33a17320-0356-46ea-a3b5-79e9364c20c6' ? 4 : 0) + (howOftenDuringTheLastYearHaveYouBeenUnableToRememberWhatHappenedTheNightBeforeBecauseOfDrinking === '325f6695-deb3-4472-a9f4-69905efcdce4' ? 0 : howOftenDuringTheLastYearHaveYouBeenUnableToRememberWhatHappenedTheNightBeforeBecauseOfDrinking === '0e298528-7c8c-4724-a24f-d71ee7c1ebea' ? 1 : howOftenDuringTheLastYearHaveYouBeenUnableToRememberWhatHappenedTheNightBeforeBecauseOfDrinking === '84b15ce9-cd58-48ce-a54c-581a070a7f91' ? 2 : howOftenDuringTheLastYearHaveYouBeenUnableToRememberWhatHappenedTheNightBeforeBecauseOfDrinking === '45e84276-c85d-4293-8282-2236ff60a55c' ? 3 : howOftenDuringTheLastYearHaveYouBeenUnableToRememberWhatHappenedTheNightBeforeBecauseOfDrinking === '33a17320-0356-46ea-a3b5-79e9364c20c6' ? 4 : 0) + (haveYouOrSomeoneElseBeenInjuredBecauseOfYourDrinking === 'a5c5563e-df0e-4742-a335-b24fb63664ee' ? 0 : haveYouOrSomeoneElseBeenInjuredBecauseOfYourDrinking === '4425c980-dd4c-4ddb-88b5-ddd3be55ac8b' ? 2 : haveYouOrSomeoneElseBeenInjuredBecauseOfYourDrinking === 'cab2b572-200d-4470-8bbb-68236d5cb69a' ? 4 : 0) + (hasARelativeFriendOrHealthWorkerBeenConcernedAboutYourDrinkingOrSuggestedYouCutDown === 'a5c5563e-df0e-4742-a335-b24fb63664ee' ? 0 : hasARelativeFriendOrHealthWorkerBeenConcernedAboutYourDrinkingOrSuggestedYouCutDown === '4425c980-dd4c-4ddb-88b5-ddd3be55ac8b' ? 2 : hasARelativeFriendOrHealthWorkerBeenConcernedAboutYourDrinkingOrSuggestedYouCutDown === 'cab2b572-200d-4470-8bbb-68236d5cb69a' ? 4 : 0)"
                 }
               },
-              "questionInfo": "Sum of answers of alcohol consumption"
+              "questionInfo": "Sum of all points from answers above"
             }
           ]
         },
@@ -1663,6 +1676,9 @@
               "questionOptions": {
                 "rendering": "radio",
                 "concept": "b08a4bc9-3910-4665-847f-38a29d4b3cdf",
+                "calculate": {
+                  "calculateExpression": "Sum of answers of Child Pugh score"
+                },
                 "answers": [
                   {
                     "label": "A (5-6 points)",
@@ -1680,9 +1696,9 @@
                     "label": "NA/Unknown",
                     "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
                   }
-                ],
-                "questionInfo": "Sum of answers of Child Pugh score"
-              }
+                ]
+              },
+              "questionInfo": "Sum of all points from answers above"
             }
           ]
         }
@@ -1753,7 +1769,8 @@
                 "concept": "04f523f6-1054-41a9-ace5-b70a5d7bab53",
                 "min": 0.0,
                 "disallowDecimals": false
-              }
+              },
+              "questionInfo": "APRI = (AST/upper limit of normal) X 100/platelet count"
             },
             {
               "id": "fibroscan",
