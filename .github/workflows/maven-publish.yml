@@ -90,7 +90,7 @@ jobs:
             }]
 
       - name: Publish maven artifacts
-        run: './scripts/mvnw --batch-mode --no-transfer-progress clean deploy ${{ inputs.maven-args }}'
+        run: 'mvn --batch-mode --no-transfer-progress clean deploy ${{ inputs.maven-args }}'
 
       - name: Upload artifacts to GitHub
         if: ${{ inputs.upload-artifacts }}
