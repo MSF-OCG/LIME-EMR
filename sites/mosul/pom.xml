@@ -251,124 +251,17 @@
                 </goals>
                 <configuration>
                   <outputDirectory>
-                    ${project.build.directory}/bundled-docker-build-tmp</outputDirectory>
-                  <overwrite>true</overwrite>
-                  <resources>
-                    <resource>
-                      <directory>${project.basedir}/../../distro/target/bundled-docker-build-tmp</directory>
-                      <excludes>
-                        <exclude>.gitkeep</exclude>
-                      </excludes>
-                    </resource>
-                  </resources>
-                </configuration>
-              </execution>
-              <execution>
-                <!-- Override with local config files-->
-                <id>Copy scripts resources</id>
-                <phase>process-resources</phase>
-                <goals>
-                  <goal>copy-resources</goal>
-                </goals>
-                <configuration>
-                  <outputDirectory>
-                    ${project.build.directory}/scripts</outputDirectory>
-                  <overwrite>true</overwrite>
-                  <resources>
-                    <resource>
-                      <directory>${project.basedir}/../../distro/target/scripts</directory>
-                      <excludes>
-                        <exclude>.gitkeep</exclude>
-                      </excludes>
-                    </resource>
-                  </resources>
-                </configuration>
-              </execution>
-              <execution>
-                <!-- Copy Docker Bundled compose file to run directory -->
-                <id>Copy Docker compose file</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>copy-resources</goal>
-                </goals>
-                <configuration>
-                  <outputDirectory>
-                    ${project.build.directory}/${project.artifactId}-${project.version}/run/docker</outputDirectory>
-                  <overwrite>true</overwrite>
-                  <resources>
-                    <resource>
-                      <directory>
-                        ${project.build.directory}/bundled-docker-build-tmp/bundled-docker</directory>
-                      <filtering>true</filtering>
-                      <includes>
-                        <include>docker-compose-bundled.yml</include>
-                        <include>docker-compose-bundled-sso.yml</include>
-                      </includes>
-                    </resource>
-                  </resources>
-                </configuration>
-              </execution>
-              <execution>
-                <!-- Copy Distro to tmp folder-->
-                <id>Copy Distro</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>copy-resources</goal>
-                </goals>
-                <configuration>
-                  <outputDirectory>
-                    ${project.build.directory}/bundled-docker-build-tmp/distro</outputDirectory>
-                  <overwrite>true</overwrite>
-                  <resources>
-                    <resource>
-                      <directory>
-                        ${project.build.directory}/${project.artifactId}-${project.version}/distro</directory>
-                      <filtering>false</filtering>
-                    </resource>
-                  </resources>
-                </configuration>
-              </execution>
-              <execution>
-                <!-- Copy start-bundled.sh, start-bundled-sso.sh to scripts folder-->
-                <id>Copy bundled-docker helper scripts</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>copy-resources</goal>
-                </goals>
-                <configuration>
-                  <outputDirectory>
-                    ${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts
+                    ${project.build.directory}/bundled-docker-build-tmp
                   </outputDirectory>
                   <overwrite>true</overwrite>
                   <resources>
                     <resource>
-                      <directory>${project.build.directory}/bundled-docker-build-tmp/bundled-docker/scripts</directory>
-                      <filtering>true</filtering>
+                      <directory>${project.build.directory}/ozone-msf-iraq</directory>
                       <includes>
-                        <include>start-bundled.sh</include>
-                        <include>start-bundled-sso.sh</include>
+                        <include>bundled-docker/**</include>
                       </includes>
                     </resource>
                   </resources>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>Unpack Ozone Bundled Docker to a temporary location</id>
-                <phase>generate-resources</phase>
-                <goals>
-                  <goal>unpack-dependencies</goal>
-                </goals>
-                <configuration>
-                  <excludeTransitive>true</excludeTransitive>
-                  <outputDirectory>
-                    ${project.build.directory}/bundled-docker-build-tmp/bundled-docker</outputDirectory>
-                  <includeArtifactIds>bundled-docker</includeArtifactIds>
                 </configuration>
               </execution>
             </executions>
@@ -405,6 +298,21 @@
                   </target>
                 </configuration>
               </execution>
+              <execution>
+                <id>Copy MSF content to bundled docker</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <mkdir dir="${project.build.directory}/bundled-docker-build-tmp/distro"/>
+                    <copy todir="${project.build.directory}/bundled-docker-build-tmp/distro">
+                        <fileset dir="${project.build.directory}/${project.artifactId}-${project.version}/distro" includes="**/*" />
+                    </copy>
+                  </target>
+                </configuration>
+              </execution>
             </executions>
           </plugin>
           <plugin>
@@ -416,11 +324,11 @@
                 <goals>
                   <goal>execute</goal>
                 </goals>
-                <phase>process-resources</phase>
+                <phase>package</phase>
                 <configuration>
                   <scripts>
                     <script>
-                      file://${project.build.directory}/scripts/openmrs/bundled-docker/generate-bundled-docker-compose.groovy</script>
+                      file://${project.build.directory}/bundled-docker-build-tmp/bundled-docker/scripts/generate-bundled-docker-compose.groovy</script>
                   </scripts>
                 </configuration>
               </execution>
@@ -461,51 +369,6 @@
                   </build>
                 </image>
                 <image>
-                  <name>${docker.push.registry.username}/%a-odoo</name>
-                  <build>
-                    <dockerFile>
-                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/odoo/Dockerfile</dockerFile>
-                    <contextDir>
-                      ${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
-                  </build>
-                </image>
-                <image>
-                  <name>${docker.push.registry.username}/%a-senaite</name>
-                  <build>
-                    <dockerFile>
-                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/senaite/Dockerfile</dockerFile>
-                    <contextDir>
-                      ${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
-                  </build>
-                </image>
-                <image>
-                  <name>${docker.push.registry.username}/%a-senaite-sso</name>
-                  <build>
-                    <dockerFile>
-                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/senaite/Dockerfile-sso</dockerFile>
-                    <contextDir>
-                      ${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
-                  </build>
-                </image>
-                <image>
-                  <name>${docker.push.registry.username}/%a-eip-odoo-openmrs</name>
-                  <build>
-                    <dockerFile>
-                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/eip-odoo-openmrs/Dockerfile</dockerFile>
-                    <contextDir>
-                      ${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
-                  </build>
-                </image>
-                <image>
-                  <name>${docker.push.registry.username}/%a-eip-openmrs-senaite</name>
-                  <build>
-                    <dockerFile>
-                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/eip-openmrs-senaite/Dockerfile</dockerFile>
-                    <contextDir>
-                      ${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
-                  </build>
-                </image>
-                <image>
                   <name>${docker.push.registry.username}/%a-postgresql</name>
                   <build>
                     <dockerFile>
@@ -519,15 +382,6 @@
                   <build>
                     <dockerFile>
                       ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/mysql/Dockerfile</dockerFile>
-                    <contextDir>
-                      ${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
-                  </build>
-                </image>
-                <image>
-                  <name>${docker.push.registry.username}/%a-keycloak</name>
-                  <build>
-                    <dockerFile>
-                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/keycloak/Dockerfile</dockerFile>
                     <contextDir>
                       ${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
                   </build>
