@@ -725,11 +725,11 @@
     <changeSet id="remove-answer-from-urine-ketone-test-20251120" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END 
-                    FROM concept_answer ca 
-                        JOIN concept c1 ON ca.answer_concept = c1.concept_id 
-                        JOIN concept c2 ON ca.concept_id = c2.concept_id 
-                    WHERE c2.uuid = '5eef6049-d68c-4156-9bf3-09a167ebc822' 
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                    FROM concept_answer ca
+                        JOIN concept c1 ON ca.answer_concept = c1.concept_id
+                        JOIN concept c2 ON ca.concept_id = c2.concept_id
+                    WHERE c2.uuid = '5eef6049-d68c-4156-9bf3-09a167ebc822'
                         AND c1.uuid = '1696cd77-ce81-424b-8c1d-b8c23c922131';
             </sqlCheck>
         </preConditions>
@@ -740,7 +740,7 @@
             DELETE FROM concept_answer WHERE answer_concept = (
                 SELECT concept_id FROM concept WHERE uuid = '1696cd77-ce81-424b-8c1d-b8c23c922131'
             ) AND concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = '5eef6049-d68c-4156-9bf3-09a167ebc822' 
+                SELECT concept_id FROM concept WHERE uuid = '5eef6049-d68c-4156-9bf3-09a167ebc822'
             );
         </sql>
     </changeSet>
@@ -748,11 +748,11 @@
     <changeSet id="remove-answer-from-urine-bilirubin-test-20251120" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END 
-                    FROM concept_answer ca 
-                        JOIN concept c1 ON ca.answer_concept = c1.concept_id 
-                        JOIN concept c2 ON ca.concept_id = c2.concept_id 
-                    WHERE c2.uuid = 'bf6c398d-903e-40aa-bce7-021b280ee875' 
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                    FROM concept_answer ca
+                        JOIN concept c1 ON ca.answer_concept = c1.concept_id
+                        JOIN concept c2 ON ca.concept_id = c2.concept_id
+                    WHERE c2.uuid = 'bf6c398d-903e-40aa-bce7-021b280ee875'
                         AND c1.uuid = 'd11ec9e7-7dda-4d04-b1c4-ac40d3612d04'
             </sqlCheck>
         </preConditions>
@@ -763,7 +763,7 @@
             DELETE FROM concept_answer WHERE answer_concept = (
                 SELECT concept_id FROM concept WHERE uuid = 'd11ec9e7-7dda-4d04-b1c4-ac40d3612d04'
             ) AND concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = 'bf6c398d-903e-40aa-bce7-021b280ee875' 
+                SELECT concept_id FROM concept WHERE uuid = 'bf6c398d-903e-40aa-bce7-021b280ee875'
             );
         </sql>
     </changeSet>
@@ -771,11 +771,11 @@
     <changeSet id="remove-answer-from-urine-blood-test-20251120" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END 
-                    FROM concept_answer ca 
-                        JOIN concept c1 ON ca.answer_concept = c1.concept_id 
-                        JOIN concept c2 ON ca.concept_id = c2.concept_id 
-                    WHERE c2.uuid = 'd395165e-f2c8-4c58-b1ea-1e4d2400e58e' 
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                    FROM concept_answer ca
+                        JOIN concept c1 ON ca.answer_concept = c1.concept_id
+                        JOIN concept c2 ON ca.concept_id = c2.concept_id
+                    WHERE c2.uuid = 'd395165e-f2c8-4c58-b1ea-1e4d2400e58e'
                         AND c1.uuid = 'd11ec9e7-7dda-4d04-b1c4-ac40d3612d04'
             </sqlCheck>
         </preConditions>
@@ -786,11 +786,11 @@
             DELETE FROM concept_answer WHERE answer_concept = (
                 SELECT concept_id FROM concept WHERE uuid = 'd11ec9e7-7dda-4d04-b1c4-ac40d3612d04'
             ) AND concept_id = (
-                SELECT concept_id FROM concept WHERE uuid = 'd395165e-f2c8-4c58-b1ea-1e4d2400e58e' 
+                SELECT concept_id FROM concept WHERE uuid = 'd395165e-f2c8-4c58-b1ea-1e4d2400e58e'
             );
         </sql>
     </changeSet>
-    
+
     <changeSet id="delete_retired_names_for_occupation_msfocg" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
@@ -826,16 +826,16 @@
     <changeSet id="remove-tests-from-tests-orderability-20251119" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT  case when count(*) > 0 then 1 else 0 end 
-                    FROM concept_set cs 
-                        JOIN concept c1 ON cs.concept_id = c1.concept_id 
-                        JOIN concept c2 ON cs.concept_set = c2.concept_id 
-                    WHERE c2.uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77' 
-                        AND c1.uuid IN ( 
-                            'c5120e94-68c6-4434-bc45-9573e4808468', 
-                            'fb13459b-72f4-4d53-8f5e-dff86adf82cb', 
-                            '079d70a2-10e2-42cf-8317-e1661d3edf24', 
-                            'bce831d3-80c4-4161-a2c5-5dc0fbdb7347', 
+                SELECT  case when count(*) > 0 then 1 else 0 end
+                    FROM concept_set cs
+                        JOIN concept c1 ON cs.concept_id = c1.concept_id
+                        JOIN concept c2 ON cs.concept_set = c2.concept_id
+                    WHERE c2.uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77'
+                        AND c1.uuid IN (
+                            'c5120e94-68c6-4434-bc45-9573e4808468',
+                            'fb13459b-72f4-4d53-8f5e-dff86adf82cb',
+                            '079d70a2-10e2-42cf-8317-e1661d3edf24',
+                            'bce831d3-80c4-4161-a2c5-5dc0fbdb7347',
                             'd933de17-e168-465e-b696-2e70fdba7478'
                         );
             </sqlCheck>
@@ -844,13 +844,13 @@
             Remove tests from Tests Orderability concept set - Liver panel, Renal function panel, Complete blood count, Erythrocyte sedimentation rate, Prothrombin Time (with INR)
         </comment>
         <sql>
-            DELETE FROM concept_set 
+            DELETE FROM concept_set
                 WHERE concept_id IN (
-                    SELECT concept_id FROM concept WHERE uuid IN ( 
-                        'c5120e94-68c6-4434-bc45-9573e4808468', 
-                        'fb13459b-72f4-4d53-8f5e-dff86adf82cb', 
-                        '079d70a2-10e2-42cf-8317-e1661d3edf24', 
-                        'bce831d3-80c4-4161-a2c5-5dc0fbdb7347', 
+                    SELECT concept_id FROM concept WHERE uuid IN (
+                        'c5120e94-68c6-4434-bc45-9573e4808468',
+                        'fb13459b-72f4-4d53-8f5e-dff86adf82cb',
+                        '079d70a2-10e2-42cf-8317-e1661d3edf24',
+                        'bce831d3-80c4-4161-a2c5-5dc0fbdb7347',
                         'd933de17-e168-465e-b696-2e70fdba7478'
                     )
                 ) AND concept_set = (
@@ -862,12 +862,12 @@
     <changeSet id="remove-members-from-serum-electrolytes-20251119" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END 
-                    FROM concept_set cs 
-                        JOIN concept c1 ON cs.concept_id = c1.concept_id 
-                        JOIN concept c2 ON cs.concept_set = c2.concept_id 
-                    WHERE c2.uuid = '0d4d6398-e4a1-4c1f-87aa-429a51eeeffc' 
-                        AND c1.uuid IN ( 
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                    FROM concept_set cs
+                        JOIN concept c1 ON cs.concept_id = c1.concept_id
+                        JOIN concept c2 ON cs.concept_set = c2.concept_id
+                    WHERE c2.uuid = '0d4d6398-e4a1-4c1f-87aa-429a51eeeffc'
+                        AND c1.uuid IN (
                             '004c466b-567e-4b90-b9f1-7fcba62f2657',
                             '8c3e0041-c224-4672-897b-0996e488d96a',
                             '39ba3592-b4ef-4e2f-968a-b5f82d5ceb59',
@@ -891,4 +891,19 @@
             );
         </sql>
     </changeSet>
+
+    <changeSet id="delete_msf_answers_to_re_add_answers_for_occupation_msfocg" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select case when count(*) > 0 then 1 else 0 end from concept_answer where concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12');
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete MSF answers to re-add answers
+        </comment>
+        <sql>
+            DELETE FROM concept_answer WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12');
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
