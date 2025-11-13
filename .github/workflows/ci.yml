@@ -17,7 +17,7 @@ jobs:
       free-disk-space: true
       use-secrets: true
       login-docker: true
-      maven-args: "-Pbundled-docker -Ddocker.platforms=linux/amd64,linux/arm64" # Build Docker images embedding the distro bins and configs (TODO: Add back -Pvalidator when it is fixed)
+      maven-args: "-Pbundled-docker" # Build Docker images embedding the distro bins and configs (TODO: Add back -Pvalidator when it is fixed)
     secrets:
       NEXUS_USERNAME: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}
       NEXUS_PASSWORD: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
@@ -30,7 +30,7 @@ jobs:
     uses: ./.github/workflows/maven-publish.yml
     with:
       free-disk-space: true
-      maven-args: "-Pbundled-docker -Ddocker.platforms=linux/amd64,linux/arm64" # Build Docker images embedding the distro bins and configs
+      maven-args: "-Pbundled-docker" # Build Docker images embedding the distro bins and configs
     secrets:
       NEXUS_USERNAME: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}
       NEXUS_PASSWORD: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
