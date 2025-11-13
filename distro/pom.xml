@@ -480,6 +480,7 @@
       <id>bundled-docker</id>
       <properties>
         <!-- Docker push registry username-->
+        <dockerMavenPlugin>0.45.0</dockerMavenPlugin>
         <docker.push.registry.username>jnsereko</docker.push.registry.username>
       </properties>
       <build>
@@ -692,6 +693,9 @@
                     </build>
                   </image>
                 </images>
+                <tags>
+                  <tag>%l</tag>
+                </tags>
               </configuration>
               <executions>
                 <execution>
