@@ -620,10 +620,12 @@
               </executions>
             </plugin>
             <plugin>
+              <!-- Disable builidng and pushing distro docker images -->
               <groupId>io.fabric8</groupId>
               <artifactId>docker-maven-plugin</artifactId>
               <version>${dockerMavenPlugin}</version>
               <configuration>
+                <skip>true</skip>
                 <pushRegistry>${docker.push.registry}</pushRegistry>
                 <images>
                   <image>
@@ -690,15 +692,6 @@
                     </build>
                   </image>
                 </images>
-                <tags>
-                  <tag>%l</tag>
-                </tags>
-                <buildx>
-                  <platforms>
-                    <platform>linux/amd64</platform>
-                    <platform>linux/arm64</platform>
-                  </platforms>
-                </buildx>
               </configuration>
               <executions>
                 <execution>
@@ -707,15 +700,20 @@
                     <goal>build</goal>
                   </goals>
                   <phase>package</phase>
+                  <configuration>
+                    <skip>true</skip>
+                  </configuration>
                 </execution>
-                <!-- Disable pushing distro docker images -->
-                <!-- <execution>
+                <execution>
                   <id>Push Bundled Docker images</id>
                   <goals>
                     <goal>push</goal>
                   </goals>
                   <phase>deploy</phase>
-                </execution> -->
+                  <configuration>
+                    <skip>true</skip>
+                  </configuration>
+                </execution>
               </executions>
             </plugin>
           </plugins>
