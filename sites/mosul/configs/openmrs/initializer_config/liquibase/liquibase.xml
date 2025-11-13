@@ -790,6 +790,49 @@
             );
         </sql>
     </changeSet>
+    
+    <changeSet id="delete_retired_names_for_occupation_msfocg" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept_name
+                WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12') and voided = 1;
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete retired names for occupation concept
+        </comment>
+
+        <sql>
+            DELETE FROM concept_name WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12') and voided = 1;
+        </sql>
+    </changeSet>
+
+    <changeSet id="delete_msf_same_as_mapping_for_occupation_msfocg" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(*) from concept_reference_map where concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12') and concept_reference_term_id = (select concept_reference_term_id from concept_reference_term where concept_source_id = (select concept_source_id from concept_reference_source where name = 'MSF') and code = 1327);
+            </sqlCheck>
+        </preConditions>
+    </changeSet>
+        <comment>
+            Delete MSF same as mapping for occupation concept
+        </comment>
+
+        <sql>
+            DELETE FROM concept_reference_map
+                WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12')
+                AND concept_reference_term_id = (
+                    SELECT concept_reference_term_id
+                    FROM concept_reference_term
+                    WHERE concept_source_id = (
+                            SELECT concept_source_id FROM concept_reference_source WHERE name = 'MSF'
+                        )
+                    AND code = 1327
+                );
+
+        </sql>
+    </changeSet>
 
     <changeSet id="remove-tests-from-tests-orderability-20251119" author="vasharma05">
         <preConditions onFail="MARK_RAN">
