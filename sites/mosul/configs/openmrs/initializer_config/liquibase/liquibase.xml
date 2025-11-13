@@ -754,4 +754,18 @@
         </sql>
     </changeSet>
 
+    <changeSet id="delete_msf_answers_to_re_add_answers_for_occupation_msfocg" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select case when count(*) > 0 then 1 else 0 end from concept_answer where concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12');
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete MSF answers to re-add answers
+        </comment>  
+        <sql>
+            DELETE FROM concept_answer WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12');
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
