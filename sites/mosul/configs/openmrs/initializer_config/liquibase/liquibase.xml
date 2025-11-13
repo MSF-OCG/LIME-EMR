@@ -811,26 +811,15 @@
     <changeSet id="delete_msf_same_as_mapping_for_occupation_msfocg" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                select count(*) from concept_reference_map where concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12') and concept_reference_term_id = (select concept_reference_term_id from concept_reference_term where concept_source_id = (select concept_source_id from concept_reference_source where name = 'MSF') and code = 1327);
+                select case when count(*) > 0 then 1 else 0 end from concept_reference_map where concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12');
             </sqlCheck>
         </preConditions>
-    </changeSet>
         <comment>
             Delete MSF same as mapping for occupation concept
         </comment>
 
         <sql>
-            DELETE FROM concept_reference_map
-                WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12')
-                AND concept_reference_term_id = (
-                    SELECT concept_reference_term_id
-                    FROM concept_reference_term
-                    WHERE concept_source_id = (
-                            SELECT concept_source_id FROM concept_reference_source WHERE name = 'MSF'
-                        )
-                    AND code = 1327
-                );
-
+            DELETE FROM concept_reference_map WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12');
         </sql>
     </changeSet>
 
