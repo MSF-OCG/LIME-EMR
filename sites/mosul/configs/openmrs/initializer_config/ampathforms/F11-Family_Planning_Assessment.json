@@ -27,7 +27,8 @@
                 "concept": "00df1796-a090-447d-8904-3d6e0d9e5948",
                 "min": 0,
                 "max": 18,
-                "step": 1
+                "step": 1,
+                "disallowDecimals": true
               }
             },
             {
@@ -40,7 +41,8 @@
                 "concept": "76a96d44-00f5-469f-9329-5a53409a87eb",
                 "min": 0,
                 "max": 18,
-                "step": 1
+                "step": 1,
+                "disallowDecimals": true
               }
             },
             {
@@ -53,7 +55,8 @@
                 "concept": "aa296b81-5599-4076-8e53-e47d6e96159e",
                 "min": 0,
                 "max": 18,
-                "step": 1
+                "step": 1,
+                "disallowDecimals": true
               }
             },
             {
@@ -66,7 +69,8 @@
                 "concept": "bfaee905-6a8f-4b4d-b66b-fe020d1ca3d8",
                 "min": 0,
                 "max": 18,
-                "step": 1
+                "step": 1,
+                "disallowDecimals": true
               }
             }
           ]
@@ -335,10 +339,6 @@
                     "concept": "0f078ca6-bf4f-4be2-b753-895321f7171b"
                   },
                   {
-                    "label": "Breastfeeding < 6 months",
-                    "concept": "46c79d34-1149-4ac2-ac5c-7e639dd44062"
-                  },
-                  {
                     "label": "No children later",
                     "concept": "4c3638f6-2f9d-46a9-9b60-cfe6ab2656b3"
                   },
@@ -363,12 +363,84 @@
                     "concept": "528190ef-5968-4ac3-bfe9-0acdc320d0ba"
                   },
                   {
+                    "label": "Breastfeeding < 6 months",
+                    "concept": "46c79d34-1149-4ac2-ac5c-7e639dd44062"
+                  },
+                  {
                     "label": "Use only when needed",
                     "concept": "8b2fde38-e6d3-4cec-b526-ed01f134efd3"
                   },
                   {
                     "label": "Avoid touching intimate areas",
                     "concept": "d95f5af0-31d2-49a6-ba9d-50d17c5bdbbe"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "whatIsImportant1",
+              "label": "Very good choice",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "0d11843b-4b54-4cab-9344-e8449655120a",
+                "answers": [
+                  {
+                    "label": "Male and Female condom",
+                    "concept": "2646e621-3e0e-49b7-b3d4-dec9ac0fbc44"
+                  },
+                  {
+                    "label": "Implant, IUD, Tubal ligation, Vasectomy",
+                    "concept": "dd0f99d8-6be9-45ee-9ffc-0f924220a8a6"
+                  },
+                  {
+                    "label": "Tubal ligation, Vasectomy",
+                    "concept": "5939ffb8-257c-4b16-9f6c-f961289b747c"
+                  },
+                  {
+                    "label": "Condom (male or female), COC, POP, Injectable, Implant, IUD",
+                    "concept": "37a74320-ed08-44bb-ae50-07eaad6e36c6"
+                  },
+                  {
+                    "label": "COC, POC, Injectable, Implant, IUD, Tubal ligation, Vasectomy",
+                    "concept": "bd43d714-a487-401c-a848-66eaa7fe8a49"
+                  },
+                  {
+                    "label": "COC, POC, Injectable, Implant, Tubal ligation, Vasectomy",
+                    "concept": "b2a46a8d-b47b-4bea-b642-b86226212951"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "whatIsImportant2",
+              "label": "Good choice",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "981b5b3b-51ac-408e-9c32-4151d84a7b5d",
+                "answers": [
+                  {
+                    "label": "Male and Female condom",
+                    "concept": "2646e621-3e0e-49b7-b3d4-dec9ac0fbc44"
+                  },
+                  {
+                    "label": "COC, POP, Injectable",
+                    "concept": "0e429102-4dac-40c8-91ac-bc09e039b6ea"
+                  },
+                  {
+                    "label": "Condom (male or female), POC, Injectable, Implant, IUD",
+                    "concept": "33ce3cf8-6a9f-41c1-86fd-fce5ca15be23"
+                  },
+                  {
+                    "label": "Injectable",
+                    "concept": "9e208135-69fd-4ff0-a139-fc26d87743ab"
+                  },
+                  {
+                    "label": "IUD, vasectomy",
+                    "concept": "14038125-b53c-43ff-b126-d4c52bb2a33c"
                   }
                 ]
               }
@@ -471,32 +543,52 @@
                     "concept": "a5051ac2-d10c-40e5-be13-c06fad96d82c"
                   },
                   {
-                    "label": "Current / history of thromboembolism",
-                    "concept": "4a946435-5e35-4ce7-ac5e-c5b068a5e964"
+                    "label": "Severe untreated anaemia",
+                    "concept": "8ff6da30-0e83-41d2-be01-4f296b6c4b7a"
                   },
                   {
-                    "label": "Molar pregnancy",
-                    "concept": "5ab4cd89-1423-4911-856c-2c658aeabfc6"
-                  },
-                  {
-                    "label": "Diabetes for > 20 years",
-                    "concept": "e243a0d5-e140-4f0b-96b9-23008e4e29ab"
-                  },
-                  {
-                    "label": "Breastfeeding < 6 weeks",
-                    "concept": "1e68bdf8-9b17-497b-835a-275a4bb6d943"
-                  },
-                  {
-                    "label": "Smoker > 35 years old",
+                    "label": "Smoking and age > 35 years",
                     "concept": "6c15e5d8-601f-489e-8cbc-76fb4d881ab2"
                   },
                   {
-                    "label": "BP > 140/90 and migraine with aura",
+                    "label": "BP > 140/90",
                     "concept": "ccf9216a-ee7d-4f77-b6aa-b352f22b71b0"
                   },
                   {
                     "label": "BP > 160/100",
                     "concept": "495831be-128a-4827-902c-06b7c76fdf31"
+                  },
+                  {
+                    "label": "Diabetes mellitus for 20+ years or with end-organ damage",
+                    "concept": "e243a0d5-e140-4f0b-96b9-23008e4e29ab"
+                  },
+                  {
+                    "label": "Thromboembolism (current or past)",
+                    "concept": "4a946435-5e35-4ce7-ac5e-c5b068a5e964"
+                  },
+                  {
+                    "label": "Heart disease or stroke, or 2 or more risk factors (e.g., high blood pressure + smoking)",
+                    "concept": "6541ddce-0e3c-4b7d-ad52-2bfe18e24dd5"
+                  },
+                  {
+                    "label": "Migraines with aura",
+                    "concept": "04c56edf-da9d-4ae9-a6d5-051fe72a0a55"
+                  },
+                  {
+                    "label": "Acute viral hepatitis",
+                    "concept": "82ebce92-50dd-4439-b4fd-7bae7c81a8b8"
+                  },
+                  {
+                    "label": "Cirrhosis or liver tumors",
+                    "concept": "c780e608-7b2d-49f7-bc29-e3c823dfa8e6"
+                  },
+                  {
+                    "label": "Pelvic tuberculosis",
+                    "concept": "dae55e56-6aba-424c-94c7-7f1ca05c01fb"
+                  },
+                  {
+                    "label": "Genital tract infection, current (e.g., current purulent cervicitis, STI, pelvic inflammatory disease, or septic abortion)",
+                    "concept": "d7e8b31f-3f64-443c-b62c-0166de84882a"
                   },
                   {
                     "label": "Unexplained vaginal bleeding",
@@ -507,36 +599,32 @@
                     "concept": "3d26e191-861c-4a50-845f-99b840274606"
                   },
                   {
+                    "label": "Molar pregnancy with persistently elevated \u03b2-hCG levels and evidence or suspicion of intrauterine disease",
+                    "concept": "0ea23cbd-009f-4957-85c4-f1496f11c480"
+                  },
+                  {
                     "label": "History of extra-uterine pregnancy",
                     "concept": "10f3449c-05fd-4a3d-9dca-1de634fd2366"
                   },
                   {
-                    "label": "Severe untreated anaemia",
-                    "concept": "8ff6da30-0e83-41d2-be01-4f296b6c4b7a"
+                    "label": "Postpartum < 6 weeks (with or without breastfeeding)",
+                    "concept": "b03eac56-e883-4fd9-937c-2d6c342517ec"
                   },
                   {
-                    "label": "Current STI/current PID",
-                    "concept": "d7e8b31f-3f64-443c-b62c-0166de84882a"
+                    "label": "Breast cancer, current or past",
+                    "concept": "2ffdb7f5-7f8c-4351-ac1f-92163c49121a"
                   },
                   {
-                    "label": "HIV+ patient on ARV",
-                    "concept": "8dde8bad-62c4-4ec7-9e63-b73f6378a6f0"
+                    "label": "Cervical cancer, pre-treatment",
+                    "concept": "7880f752-538d-41dc-9524-cef97c901292"
                   },
                   {
-                    "label": "On TB medication",
-                    "concept": "6cbfaa66-9499-4653-848b-e485811894f1"
+                    "label": "Use of anticonvulsants (e.g., phenytoin, carbamazepine, lamotrigine, etc.)",
+                    "concept": "b24f1724-2605-4cea-9f48-3d49aad9847e"
                   },
                   {
-                    "label": "On Epilepsy medication",
-                    "concept": "64ae8090-ddd6-4c30-9b8a-8ee12d1d909f"
-                  },
-                  {
-                    "label": "Active liver disease / jaundice",
-                    "concept": "9a1003a7-27b0-42c7-804e-41f35bc5322e"
-                  },
-                  {
-                    "label": "HIV+ patient with active AIDS but NOT on ARV",
-                    "concept": "5ce4f939-edde-410d-a0af-69041733ac23"
+                    "label": "Use of rifampicin or rifabutin",
+                    "concept": "a401459a-99aa-4790-b3ed-1d8963b1a74b"
                   }
                 ]
               }
@@ -549,7 +637,7 @@
               },
               "value": [" ##### Absolute contra-indications"],
               "hide": {
-                "hideWhenExpression": "!includes(conditions, 'a5051ac2-d10c-40e5-be13-c06fad96d82c') && !includes(conditions, '4a946435-5e35-4ce7-ac5e-c5b068a5e964') && !includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab') && !includes(conditions, '1e68bdf8-9b17-497b-835a-275a4bb6d943') && !includes(conditions, '6c15e5d8-601f-489e-8cbc-76fb4d881ab2') && !includes(conditions, 'ccf9216a-ee7d-4f77-b6aa-b352f22b71b0') && !includes(conditions, '495831be-128a-4827-902c-06b7c76fdf31') && !includes(conditions, 'd7e8b31f-3f64-443c-b62c-0166de84882a') && !includes(conditions, '8ff6da30-0e83-41d2-be01-4f296b6c4b7a')"
+                "hideWhenExpression": "!includes(conditions, 'a401459a-99aa-4790-b3ed-1d8963b1a74b') && !includes(conditions, '7880f752-538d-41dc-9524-cef97c901292') && !includes(conditions, 'b24f1724-2605-4cea-9f48-3d49aad9847e') && !includes(conditions, '2ffdb7f5-7f8c-4351-ac1f-92163c49121a') && !includes(conditions, 'b03eac56-e883-4fd9-937c-2d6c342517ec') && !includes(conditions, '0ea23cbd-009f-4957-85c4-f1496f11c480') && !includes(conditions, 'a5051ac2-d10c-40e5-be13-c06fad96d82c') && !includes(conditions, '4a946435-5e35-4ce7-ac5e-c5b068a5e964') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab') && !includes(conditions, '1e68bdf8-9b17-497b-835a-275a4bb6d943') && !includes(conditions, '6c15e5d8-601f-489e-8cbc-76fb4d881ab2') && !includes(conditions, 'ccf9216a-ee7d-4f77-b6aa-b352f22b71b0') && !includes(conditions, '495831be-128a-4827-902c-06b7c76fdf31') && !includes(conditions, 'd7e8b31f-3f64-443c-b62c-0166de84882a') && !includes(conditions, '8ff6da30-0e83-41d2-be01-4f296b6c4b7a')"
               }
             },
             {
@@ -571,7 +659,7 @@
               },
               "value": ["COC"],
               "hide": {
-                "hideWhenExpression": "!includes(conditions, '4a946435-5e35-4ce7-ac5e-c5b068a5e964') && !includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab') && !includes(conditions, '1e68bdf8-9b17-497b-835a-275a4bb6d943') && !includes(conditions, '6c15e5d8-601f-489e-8cbc-76fb4d881ab2') && !includes(conditions, 'ccf9216a-ee7d-4f77-b6aa-b352f22b71b0') && !includes(conditions, '495831be-128a-4827-902c-06b7c76fdf31')"
+                "hideWhenExpression": "!includes(conditions, 'a401459a-99aa-4790-b3ed-1d8963b1a74b') && !includes(conditions, 'b24f1724-2605-4cea-9f48-3d49aad9847e') && !includes(conditions, '2ffdb7f5-7f8c-4351-ac1f-92163c49121a') && !includes(conditions, 'b03eac56-e883-4fd9-937c-2d6c342517ec') && !includes(conditions, 'c780e608-7b2d-49f7-bc29-e3c823dfa8e6') && !includes(conditions, '04c56edf-da9d-4ae9-a6d5-051fe72a0a55') && !includes(conditions, '4a946435-5e35-4ce7-ac5e-c5b068a5e964') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab') && !includes(conditions, '1e68bdf8-9b17-497b-835a-275a4bb6d943') && !includes(conditions, '6c15e5d8-601f-489e-8cbc-76fb4d881ab2') && !includes(conditions, 'ccf9216a-ee7d-4f77-b6aa-b352f22b71b0') && !includes(conditions, '495831be-128a-4827-902c-06b7c76fdf31')"
               }
             },
             {
@@ -582,7 +670,7 @@
               },
               "value": ["POP"],
               "hide": {
-                "hideWhenExpression": "!includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab')"
+                "hideWhenExpression": "!includes(conditions, 'a401459a-99aa-4790-b3ed-1d8963b1a74b') && !includes(conditions, 'b24f1724-2605-4cea-9f48-3d49aad9847e') && !includes(conditions, '2ffdb7f5-7f8c-4351-ac1f-92163c49121a') && !includes(conditions, 'c780e608-7b2d-49f7-bc29-e3c823dfa8e6') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab')"
               }
             },
             {
@@ -593,7 +681,7 @@
               },
               "value": ["Injectable"],
               "hide": {
-                "hideWhenExpression": "!includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab') && !includes(conditions, 'ccf9216a-ee7d-4f77-b6aa-b352f22b71b0') && !includes(conditions, '495831be-128a-4827-902c-06b7c76fdf31')"
+                "hideWhenExpression": "!includes(conditions, '2ffdb7f5-7f8c-4351-ac1f-92163c49121a') && !includes(conditions, 'c780e608-7b2d-49f7-bc29-e3c823dfa8e6') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab') && !includes(conditions, 'ccf9216a-ee7d-4f77-b6aa-b352f22b71b0') && !includes(conditions, '495831be-128a-4827-902c-06b7c76fdf31')"
               }
             },
             {
@@ -604,7 +692,7 @@
               },
               "value": ["Implant"],
               "hide": {
-                "hideWhenExpression": "!includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab')"
+                "hideWhenExpression": "!includes(conditions, '2ffdb7f5-7f8c-4351-ac1f-92163c49121a') && !includes(conditions, 'c780e608-7b2d-49f7-bc29-e3c823dfa8e6') && !includes(conditions, 'e243a0d5-e140-4f0b-96b9-23008e4e29ab')"
               }
             },
             {
@@ -615,7 +703,18 @@
               },
               "value": ["IUD"],
               "hide": {
-                "hideWhenExpression": "!includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'd7e8b31f-3f64-443c-b62c-0166de84882a') && !includes(conditions, '8ff6da30-0e83-41d2-be01-4f296b6c4b7a')"
+                "hideWhenExpression": "!includes(conditions, '7880f752-538d-41dc-9524-cef97c901292') && !includes(conditions, '0ea23cbd-009f-4957-85c4-f1496f11c480') && !includes(conditions, 'dae55e56-6aba-424c-94c7-7f1ca05c01fb') && !includes(conditions, 'd7e8b31f-3f64-443c-b62c-0166de84882a') && !includes(conditions, '8ff6da30-0e83-41d2-be01-4f296b6c4b7a')"
+              }
+            },
+            {
+              "id": "absoluteContraIndication7",
+              "type": "markdown",
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["Hormonal IUD"],
+              "hide": {
+                "hideWhenExpression": "!includes(conditions, '2ffdb7f5-7f8c-4351-ac1f-92163c49121a') && !includes(conditions, 'c780e608-7b2d-49f7-bc29-e3c823dfa8e6')"
               }
             },
             {
@@ -626,7 +725,7 @@
               },
               "value": [" ##### Relative Contra-Indications"],
               "hide": {
-                "hideWhenExpression": "!includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'd7e8b31f-3f64-443c-b62c-0166de84882a') && !includes(conditions, '1e68bdf8-9b17-497b-835a-275a4bb6d943') && !includes(conditions, '5b8c79a9-761b-458d-a29b-5a4c6e27f6c0') && !includes(conditions, '3d26e191-861c-4a50-845f-99b840274606') && !includes(conditions, '10f3449c-05fd-4a3d-9dca-1de634fd2366')"
+                "hideWhenExpression": "!includes(conditions, 'd7e8b31f-3f64-443c-b62c-0166de84882a') && !includes(conditions, '1e68bdf8-9b17-497b-835a-275a4bb6d943') && !includes(conditions, '5b8c79a9-761b-458d-a29b-5a4c6e27f6c0') && !includes(conditions, '3d26e191-861c-4a50-845f-99b840274606') && !includes(conditions, '10f3449c-05fd-4a3d-9dca-1de634fd2366')"
               }
             },
             {
@@ -637,7 +736,7 @@
               },
               "value": ["Tubal ligation"],
               "hide": {
-                "hideWhenExpression": "!includes(conditions, '5ab4cd89-1423-4911-856c-2c658aeabfc6') && !includes(conditions, 'd7e8b31f-3f64-443c-b62c-0166de84882a')"
+                "hideWhenExpression": "!includes(conditions, 'd7e8b31f-3f64-443c-b62c-0166de84882a')"
               }
             },
             {
@@ -693,19 +792,6 @@
               "value": ["IUD"],
               "hide": {
                 "hideWhenExpression": "!includes(conditions, '5b8c79a9-761b-458d-a29b-5a4c6e27f6c0') && !includes(conditions, '3d26e191-861c-4a50-845f-99b840274606') && !includes(conditions, '10f3449c-05fd-4a3d-9dca-1de634fd2366')"
-              }
-            },
-            {
-              "id": "referToTheDoctorForDecision",
-              "type": "markdown",
-              "questionOptions": {
-                "rendering": "markdown"
-              },
-              "value": [
-                " ##### Refer to the doctor for a decision about the method"
-              ],
-              "hide": {
-                "hideWhenExpression": "!includes(conditions, '5ce4f939-edde-410d-a0af-69041733ac23') && !includes(conditions, '9a1003a7-27b0-42c7-804e-41f35bc5322e') && !includes(conditions, '64ae8090-ddd6-4c30-9b8a-8ee12d1d909f') && !includes(conditions, '6cbfaa66-9499-4653-848b-e485811894f1') && !includes(conditions, '8dde8bad-62c4-4ec7-9e63-b73f6378a6f0')"
               }
             }
           ]
@@ -818,13 +904,14 @@
             },
             {
               "id": "prescribeTheChosenFamilyPlanningMethodWithTheOrderBasketIfNecessary",
-              "label": "Prescribe the chosen family planning method(s) with the order basket if necessary",
+              "label": "Prescribe enough family planning method and other medication with the order basket if necessary",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
                 "buttonLabel": "Order medications",
                 "workspaceName": "order-basket"
               },
+              "questionInfo": "Ferrous salts + Folic Acid, Retinol, HIV treatment, Tetracycline ointment, vit K, Vit D, Tetanos and other vaccins (Hep B, BCG, Polio), Antibiotics (Amoxicyline, Meetronidazol, Cloxacillin)",
               "hide": {
                 "hideWhenExpression": "familyPlanningRecommended !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
