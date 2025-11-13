@@ -88,7 +88,15 @@ jobs:
               "username": "${{ secrets.DOCKER_HUB_USERNAME || 'username'}}",
               "password": "${{ secrets.DOCKER_HUB_PASSWORD || 'password'}}"
             }]
-      
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          install: true
+
       - name: Publish maven artifacts
         run: 'mvn --batch-mode --no-transfer-progress clean deploy ${{ inputs.maven-args }}'
 
