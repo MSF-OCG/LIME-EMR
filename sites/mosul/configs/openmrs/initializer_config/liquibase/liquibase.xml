@@ -808,6 +808,28 @@
         </sql>
     </changeSet>
 
+    <changeSet id="rename-occupation-msfocg-concepts" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept c
+                JOIN concept_name cn ON c.concept_id = cn.concept_id
+                WHERE c.uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12'AND cn.name NOT LIKE '% (MSFOCG)';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Rename occupation concept to add MSF-OCG suffix
+        </comment>
+        <sql>
+            UPDATE concept_name
+            SET name = CONCAT(name, ' (MSFOCG)')
+            WHERE concept_id = (
+                SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12'
+            )
+            AND name NOT LIKE '% (MSFOCG)';
+        </sql>
+    </changeSet>
+
     <changeSet id="delete_msf_same_as_mapping_for_occupation_msfocg" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
