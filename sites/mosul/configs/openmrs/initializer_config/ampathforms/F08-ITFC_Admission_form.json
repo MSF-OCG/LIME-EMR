@@ -1,9 +1,9 @@
 {
-  "name": "MSF Nutrition - ITFC Admission",
+  "name": "F08-ITFC Admission",
   "description": "MSF Form - F08-ITFC Admission form",
   "version": "1",
   "published": true,
-  "uuid": "",
+  "uuid": "f87cdfde-7132-3006-89f7-ed291f84bcf0",
   "processor": "EncounterFormProcessor",
   "encounter": "Nutrition",
   "encounterType": "dd528487-82a5-4082-9c72-ed246bd49591",
@@ -56,7 +56,7 @@
                     "concept": "9f2fe30f-a8f0-49ba-82e4-71c232259130"
                   },
                   {
-                    "label": "Readmission",
+                    "label": "Re-admission",
                     "concept": "e4e42ecd-196b-4aa8-a265-bfbed09d77cf"
                   },
                   {
@@ -158,6 +158,7 @@
                 "rendering": "number",
                 "concept": "61f620e5-704f-4674-954e-20b7175240dd",
                 "min": 0,
+                "disallowDecimals": true,
                 "step": 1
               }
             },
@@ -316,6 +317,7 @@
                 "concept": "04905c5a-1c7e-4113-a296-70517c6ec27e",
                 "min": 0,
                 "max": 10,
+                "disallowDecimals": true,
                 "step": 1
               }
             },
@@ -329,6 +331,7 @@
                 "concept": "3fdddaa7-1583-4bc2-b81c-de592b4c0e31",
                 "min": 0,
                 "max": 10,
+                "disallowDecimals": true,
                 "step": 1
               }
             }
@@ -415,6 +418,7 @@
                 "concept": "76a96d44-00f5-469f-9329-5a53409a87eb",
                 "min": 1,
                 "max": 20,
+                "disallowDecimals": true,
                 "step": 1
               }
             },
@@ -427,6 +431,8 @@
                 "rendering": "number",
                 "concept": "bfaee905-6a8f-4b4d-b66b-fe020d1ca3d8",
                 "min": 1,
+                "max": 18,
+                "disallowDecimals": true,
                 "step": 1
               },
               "validators": [
@@ -446,6 +452,8 @@
                 "rendering": "number",
                 "concept": "42503e1b-16f2-471e-a122-c914655f6cca",
                 "min": 1,
+                "max": 18,
+                "disallowDecimals": true,
                 "step": 1
               },
               "validators": [
@@ -490,6 +498,7 @@
                 "concept": "8a4c815e-8774-4386-b22f-74c11a10aa19",
                 "min": 1,
                 "max": 50,
+                "disallowDecimals": true,
                 "step": 1
               }
             }
@@ -507,6 +516,18 @@
             {
               "id": "pleaseCheckInvitalsBiometricsFortemperaturerRateweightheightAndmuacAndAddTodaysMeasurements",
               "label": "Please check in 'Vitals & Biometrics' for 'Temperature', 'R. rate' 'Weight', 'Height' and 'MUAC' AND add today's measurements",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Please check in 'Vitals & Biometrics' for 'Temperature', 'R. rate' 'Weight', 'Height' and 'MUAC' AND add today's measurements"
+              ]
+            },
+            {
+              "id": "capturePatientVitals",
+              "label": "Capture patient vitals",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -793,7 +814,7 @@
                     "concept": "b5d24e8d-e499-4152-9933-90407e7213b9"
                   },
                   {
-                    "label": "Bronchiolitis obstructive bronchitis",
+                    "label": "Bronchiolitis/obstructive bronchitis",
                     "concept": "b7e10d5e-e8d4-4fbf-a3bd-905df49de45d"
                   },
                   {
@@ -809,7 +830,7 @@
                     "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
                   },
                   {
-                    "label": "Cerebral palsy - Neuro disability",
+                    "label": "Cerebral palsy/Neuro disability",
                     "concept": "e13baf3a-df54-404e-b53c-454810c7cbd4"
                   },
                   {
@@ -845,7 +866,7 @@
                     "concept": "2e62aaa6-bf40-4a3c-9d05-a7d4e539c837"
                   },
                   {
-                    "label": "Congestive Heart Failure",
+                    "label": "Congestive heart failure",
                     "concept": "6a7a9d6a-e8b6-4ffb-8321-a56e9e4473e0"
                   },
                   {
@@ -861,7 +882,7 @@
                     "concept": "163727b7-0c90-4a14-83fa-707c4f28860f"
                   },
                   {
-                    "label": "Cutaneous leishmaniosis",
+                    "label": "Cutaneous leishmaniasis",
                     "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
                   },
                   {
@@ -881,7 +902,7 @@
                     "concept": "27dd79e6-2e3c-4687-8ef9-d8ab0adb81b4"
                   },
                   {
-                    "label": "Diabetes Type I and complications",
+                    "label": "Diabetes type 1 and complications",
                     "concept": "d10c2b41-593a-414f-8f7e-a445e9d4f22e"
                   },
                   {
@@ -897,7 +918,7 @@
                     "concept": "087fd7f9-816c-4f1b-80b2-a949c83554f2"
                   },
                   {
-                    "label": "Epilepsy - Seizures",
+                    "label": "Epilepsy/Seizures",
                     "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
                   },
                   {
@@ -1113,7 +1134,7 @@
                     "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
                   },
                   {
-                    "label": "Prematurity and or low birth weight",
+                    "label": "Prematurity and/or low birth weight",
                     "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
                   },
                   {
@@ -1193,7 +1214,7 @@
                     "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
                   },
                   {
-                    "label": "Snake bites",
+                    "label": "Snake bite",
                     "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
                   },
                   {
@@ -1245,7 +1266,7 @@
                     "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
-                    "label": "Viral haemorrhagic fevers",
+                    "label": "Viral haemorrhagic fever",
                     "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
                   },
                   {
@@ -1261,11 +1282,11 @@
                     "concept": "530acec6-b269-410e-89b1-abc15dac02e9"
                   },
                   {
-                    "label": "Vit C deficiency (scurvy)",
+                    "label": "Vit C deficiency (Scurvy)",
                     "concept": "a54e6856-8c64-4d1f-a2a0-1f916eb413bb"
                   },
                   {
-                    "label": "Vit D deficiency (rickets)",
+                    "label": "Vit D deficiency (Rickets)",
                     "concept": "899c74ff-c155-4263-aa2c-587dac49635f"
                   },
                   {
@@ -1274,11 +1295,7 @@
                   },
                   {
                     "label": "Yellow fever",
-                    "concept": "beada794-1e19-4c1d-af5a-8918ca43563d"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
                   }
                 ]
               }
@@ -1293,7 +1310,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "diagnosisAtAdmissionMain !== 'other'"
+                "hideWhenExpression": "mainDiagnosisAtAdmission !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -1342,7 +1359,7 @@
                     "concept": "b5d24e8d-e499-4152-9933-90407e7213b9"
                   },
                   {
-                    "label": "Bronchiolitis obstructive bronchitis",
+                    "label": "Bronchiolitis/obstructive bronchitis",
                     "concept": "b7e10d5e-e8d4-4fbf-a3bd-905df49de45d"
                   },
                   {
@@ -1358,7 +1375,7 @@
                     "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
                   },
                   {
-                    "label": "Cerebral palsy - Neuro disability",
+                    "label": "Cerebral palsy/Neuro disability",
                     "concept": "e13baf3a-df54-404e-b53c-454810c7cbd4"
                   },
                   {
@@ -1394,7 +1411,7 @@
                     "concept": "2e62aaa6-bf40-4a3c-9d05-a7d4e539c837"
                   },
                   {
-                    "label": "Congestive Heart Failure",
+                    "label": "Congestive heart failure",
                     "concept": "6a7a9d6a-e8b6-4ffb-8321-a56e9e4473e0"
                   },
                   {
@@ -1410,7 +1427,7 @@
                     "concept": "163727b7-0c90-4a14-83fa-707c4f28860f"
                   },
                   {
-                    "label": "Cutaneous leishmaniosis",
+                    "label": "Cutaneous leishmaniasis",
                     "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
                   },
                   {
@@ -1430,7 +1447,7 @@
                     "concept": "27dd79e6-2e3c-4687-8ef9-d8ab0adb81b4"
                   },
                   {
-                    "label": "Diabetes Type I and complications",
+                    "label": "Diabetes type 1 and complications",
                     "concept": "d10c2b41-593a-414f-8f7e-a445e9d4f22e"
                   },
                   {
@@ -1446,7 +1463,7 @@
                     "concept": "087fd7f9-816c-4f1b-80b2-a949c83554f2"
                   },
                   {
-                    "label": "Epilepsy - Seizures",
+                    "label": "Epilepsy/Seizures",
                     "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
                   },
                   {
@@ -1662,7 +1679,7 @@
                     "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
                   },
                   {
-                    "label": "Prematurity and or low birth weight",
+                    "label": "Prematurity and/or low birth weight",
                     "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
                   },
                   {
@@ -1742,7 +1759,7 @@
                     "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
                   },
                   {
-                    "label": "Snake bites",
+                    "label": "Snake bite",
                     "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
                   },
                   {
@@ -1794,7 +1811,7 @@
                     "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
-                    "label": "Viral haemorrhagic fevers",
+                    "label": "Viral haemorrhagic fever",
                     "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
                   },
                   {
@@ -1810,11 +1827,11 @@
                     "concept": "530acec6-b269-410e-89b1-abc15dac02e9"
                   },
                   {
-                    "label": "Vit C deficiency (scurvy)",
+                    "label": "Vit C deficiency (Scurvy)",
                     "concept": "a54e6856-8c64-4d1f-a2a0-1f916eb413bb"
                   },
                   {
-                    "label": "Vit D deficiency (rickets)",
+                    "label": "Vit D deficiency (Rickets)",
                     "concept": "899c74ff-c155-4263-aa2c-587dac49635f"
                   },
                   {
@@ -1823,11 +1840,7 @@
                   },
                   {
                     "label": "Yellow fever",
-                    "concept": "beada794-1e19-4c1d-af5a-8918ca43563d"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
                   }
                 ]
               }
@@ -1842,7 +1855,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "diagnosisAtAdmissionSecondary1 !== 'other'"
+                "hideWhenExpression": "diagnosisAtAdmissionSecondary1 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -1891,7 +1904,7 @@
                     "concept": "b5d24e8d-e499-4152-9933-90407e7213b9"
                   },
                   {
-                    "label": "Bronchiolitis obstructive bronchitis",
+                    "label": "Bronchiolitis/obstructive bronchitis",
                     "concept": "b7e10d5e-e8d4-4fbf-a3bd-905df49de45d"
                   },
                   {
@@ -1907,7 +1920,7 @@
                     "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
                   },
                   {
-                    "label": "Cerebral palsy - Neuro disability",
+                    "label": "Cerebral palsy/Neuro disability",
                     "concept": "e13baf3a-df54-404e-b53c-454810c7cbd4"
                   },
                   {
@@ -1943,7 +1956,7 @@
                     "concept": "2e62aaa6-bf40-4a3c-9d05-a7d4e539c837"
                   },
                   {
-                    "label": "Congestive Heart Failure",
+                    "label": "Congestive heart failure",
                     "concept": "6a7a9d6a-e8b6-4ffb-8321-a56e9e4473e0"
                   },
                   {
@@ -1959,7 +1972,7 @@
                     "concept": "163727b7-0c90-4a14-83fa-707c4f28860f"
                   },
                   {
-                    "label": "Cutaneous leishmaniosis",
+                    "label": "Cutaneous leishmaniasis",
                     "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
                   },
                   {
@@ -1979,7 +1992,7 @@
                     "concept": "27dd79e6-2e3c-4687-8ef9-d8ab0adb81b4"
                   },
                   {
-                    "label": "Diabetes Type I and complications",
+                    "label": "Diabetes type 1 and complications",
                     "concept": "d10c2b41-593a-414f-8f7e-a445e9d4f22e"
                   },
                   {
@@ -1995,7 +2008,7 @@
                     "concept": "087fd7f9-816c-4f1b-80b2-a949c83554f2"
                   },
                   {
-                    "label": "Epilepsy - Seizures",
+                    "label": "Epilepsy/Seizures",
                     "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
                   },
                   {
@@ -2211,7 +2224,7 @@
                     "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
                   },
                   {
-                    "label": "Prematurity and or low birth weight",
+                    "label": "Prematurity and/or low birth weight",
                     "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
                   },
                   {
@@ -2291,7 +2304,7 @@
                     "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
                   },
                   {
-                    "label": "Snake bites",
+                    "label": "Snake bite",
                     "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
                   },
                   {
@@ -2343,7 +2356,7 @@
                     "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
-                    "label": "Viral haemorrhagic fevers",
+                    "label": "Viral haemorrhagic fever",
                     "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
                   },
                   {
@@ -2359,11 +2372,11 @@
                     "concept": "530acec6-b269-410e-89b1-abc15dac02e9"
                   },
                   {
-                    "label": "Vit C deficiency (scurvy)",
+                    "label": "Vit C deficiency (Scurvy)",
                     "concept": "a54e6856-8c64-4d1f-a2a0-1f916eb413bb"
                   },
                   {
-                    "label": "Vit D deficiency (rickets)",
+                    "label": "Vit D deficiency (Rickets)",
                     "concept": "899c74ff-c155-4263-aa2c-587dac49635f"
                   },
                   {
@@ -2372,11 +2385,7 @@
                   },
                   {
                     "label": "Yellow fever",
-                    "concept": "beada794-1e19-4c1d-af5a-8918ca43563d"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
                   }
                 ]
               }
@@ -2391,7 +2400,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "diagnosisAtAdmissionSecondary2 !== 'other'"
+                "hideWhenExpression": "diagnosisAtAdmissionSecondary2 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             },
             {
@@ -2440,7 +2449,7 @@
                     "concept": "b5d24e8d-e499-4152-9933-90407e7213b9"
                   },
                   {
-                    "label": "Bronchiolitis obstructive bronchitis",
+                    "label": "Bronchiolitis/obstructive bronchitis",
                     "concept": "b7e10d5e-e8d4-4fbf-a3bd-905df49de45d"
                   },
                   {
@@ -2456,7 +2465,7 @@
                     "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
                   },
                   {
-                    "label": "Cerebral palsy - Neuro disability",
+                    "label": "Cerebral palsy/Neuro disability",
                     "concept": "e13baf3a-df54-404e-b53c-454810c7cbd4"
                   },
                   {
@@ -2492,7 +2501,7 @@
                     "concept": "2e62aaa6-bf40-4a3c-9d05-a7d4e539c837"
                   },
                   {
-                    "label": "Congestive Heart Failure",
+                    "label": "Congestive heart failure",
                     "concept": "6a7a9d6a-e8b6-4ffb-8321-a56e9e4473e0"
                   },
                   {
@@ -2508,7 +2517,7 @@
                     "concept": "163727b7-0c90-4a14-83fa-707c4f28860f"
                   },
                   {
-                    "label": "Cutaneous leishmaniosis",
+                    "label": "Cutaneous leishmaniasis",
                     "concept": "a87831c6-7cf0-462a-8600-40e43a222d00"
                   },
                   {
@@ -2528,7 +2537,7 @@
                     "concept": "27dd79e6-2e3c-4687-8ef9-d8ab0adb81b4"
                   },
                   {
-                    "label": "Diabetes Type I and complications",
+                    "label": "Diabetes type 1 and complications",
                     "concept": "d10c2b41-593a-414f-8f7e-a445e9d4f22e"
                   },
                   {
@@ -2544,7 +2553,7 @@
                     "concept": "087fd7f9-816c-4f1b-80b2-a949c83554f2"
                   },
                   {
-                    "label": "Epilepsy - Seizures",
+                    "label": "Epilepsy/Seizures",
                     "concept": "88f53582-4db7-4936-970d-7b6f685f0c68"
                   },
                   {
@@ -2760,7 +2769,7 @@
                     "concept": "f3154d25-73c6-4a67-9560-36679a3b4c25"
                   },
                   {
-                    "label": "Prematurity and or low birth weight",
+                    "label": "Prematurity and/or low birth weight",
                     "concept": "63122ad6-bba8-4a9f-9376-c0a5b179756f"
                   },
                   {
@@ -2840,7 +2849,7 @@
                     "concept": "6b624ce0-f6f0-455e-a542-bbaaba8f1dbb"
                   },
                   {
-                    "label": "Snake bites",
+                    "label": "Snake bite",
                     "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
                   },
                   {
@@ -2892,7 +2901,7 @@
                     "concept": "b51f3c59-37f6-4557-9167-7236d5407608"
                   },
                   {
-                    "label": "Viral haemorrhagic fevers",
+                    "label": "Viral haemorrhagic fever",
                     "concept": "0bf25cc6-559d-446f-9279-59b29452625e"
                   },
                   {
@@ -2908,11 +2917,11 @@
                     "concept": "530acec6-b269-410e-89b1-abc15dac02e9"
                   },
                   {
-                    "label": "Vit C deficiency (scurvy)",
+                    "label": "Vit C deficiency (Scurvy)",
                     "concept": "a54e6856-8c64-4d1f-a2a0-1f916eb413bb"
                   },
                   {
-                    "label": "Vit D deficiency (rickets)",
+                    "label": "Vit D deficiency (Rickets)",
                     "concept": "899c74ff-c155-4263-aa2c-587dac49635f"
                   },
                   {
@@ -2921,11 +2930,7 @@
                   },
                   {
                     "label": "Yellow fever",
-                    "concept": "beada794-1e19-4c1d-af5a-8918ca43563d"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
                   }
                 ]
               }
@@ -2940,7 +2945,7 @@
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
               },
               "hide": {
-                "hideWhenExpression": "diagnosisAtAdmissionSecondary3 !== 'other'"
+                "hideWhenExpression": "diagnosisAtAdmissionSecondary3 !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
               }
             }
           ]
@@ -2956,17 +2961,29 @@
           "questions": [
             {
               "id": "pleaseStartTheFeedingForm",
-              "label": "Please start the 'Feeding form'",
+              "label": "Please start the 'Feeding form' ",
               "type": "markdown",
               "required": false,
               "questionOptions": {
                 "rendering": "markdown"
               },
-              "value": ["Please start the 'Feeding form'"]
+              "value": ["Please start the 'Feeding form' "]
             },
             {
               "id": "pleaseCheckInImmunizations",
               "label": "Please check in 'Immunizations' (update it if necessary)",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Please check in 'Immunizations' (update it if necessary)"
+              ]
+            },
+            {
+              "id": "capturePatientImmunizations",
+              "label": "Capture patient immunizations",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -2977,6 +2994,18 @@
             {
               "id": "pleaseCheckInMedications",
               "label": "Please check in 'Medications' (update it if necessary)",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Please check in 'Medications' (update it if necessary)"
+              ]
+            },
+            {
+              "id": "activeMedications",
+              "label": "Active medications",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
@@ -2987,6 +3016,18 @@
             {
               "id": "prescribeNewExamsAndMedicationWithTheOrderBasketIfNecessary",
               "label": "Prescribe new exams and medication with the order basket if necessary",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Prescribe new exams and medication with the order basket if necessary"
+              ]
+            },
+            {
+              "id": "orderMedications",
+              "label": "Order medications",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",

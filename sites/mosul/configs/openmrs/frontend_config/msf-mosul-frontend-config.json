@@ -15,11 +15,21 @@
       }
     }
   },
+  "@openmrs/esm-app-shell": {
+    "Enabled feature flags": ["enable-embedded-form-view"]
+  },
+  "@openmrs/esm-form-engine-app": {
+    "hideUnansweredQuestionsInReadonlyForms": true
+  },
   "@openmrs/esm-patient-chart-app": {
     "Display conditions": {
       "privileges": ["Patient Dashboard - View Patient Summary"]
     },
     "notesConceptUuids": ["a3380b6e-c41e-4c7e-a85b-11c1573ae70e"],
+    "encounterEditableDuration": 1440,
+    "encounterEditableDurationOverridePrivileges": [
+      "Override encounter editable duration"
+    ],
     "extensionSlots": {
       "patient-chart-dashboard-slot": {
         "remove": [
@@ -520,15 +530,7 @@
   "@openmrs/esm-patient-tests-app": {
     "resultsViewerConcepts": [
       {
-        "conceptUuid": "cfbb5fca-c52b-43db-b847-5ccd776be68c",
-        "defaultOpen": false
-      },
-      {
-        "conceptUuid": "93b8a58c-b059-4c6e-ac54-f8697cd12e26",
-        "defaultOpen": false
-      },
-      {
-        "conceptUuid": "51f23ff4-6ea9-453a-9932-d165f22199f9",
+        "conceptUuid": "a781d229-0de6-44c0-86ab-2194aae85f77",
         "defaultOpen": false
       }
     ],
@@ -581,5 +583,15 @@
       "allergyReactionUuid": "0973e794-741b-404e-ad46-97a4e7cdec52",
       "otherConceptUuid": "790b41ce-e1e7-11e8-b02f-0242ac130002"
     }
+  },
+  "@openmrs/esm-laboratory-app": {
+    "labTableColumns": [
+      "patientId",
+      "dob",
+      "age",
+      "sex",
+      "totalOrders",
+      "action"
+    ]
   }
 }

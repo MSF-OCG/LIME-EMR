@@ -1,0 +1,772 @@
+{
+  "name": "F63-Palliative care Follow-up",
+  "description": "MSF Form - F63-Palliative care Follow-up",
+  "version": "1",
+  "published": true,
+  "uuid": "af8b1e52-1950-4bf5-b131-22d23491090b",
+  "processor": "EncounterFormProcessor",
+  "retired": false,
+  "referencedForms": [],
+  "encounter": "Palliative care",
+  "encounterType": "8e8d8588-2c73-4f6a-9304-c55ded6a73c9",
+  "pages": [
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "Admission",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "placeOfConsultation",
+              "label": "Place of consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "80e2b197-54ad-4d71-8974-23a325b6d803",
+                "answers": [
+                  {
+                    "label": "Home",
+                    "concept": "bd5bf44b-164c-415c-8bff-b1d4849928d3"
+                  },
+                  {
+                    "label": "Health facility",
+                    "concept": "0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "placeOfConsultationOtherSpecify",
+              "label": "If other, please specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(placeOfConsultation !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Medical",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "clinicalEvolution",
+              "label": "Clinical evolution",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "6581b0dd-6f02-4aff-8223-e73abc23bb65"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Hospitalisation",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "hospitalisationSinceLastConsultationOrCurrently",
+              "label": "Hospitalisation since last consultation or currently?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f33bf50c-4ccf-4ef5-bb11-b2be8066f7d9",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "admissionToWard",
+              "label": "Admission to ward",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c149755e-dd32-43b0-b643-ab14aa483207",
+                "answers": [
+                  {
+                    "label": "Med-Adult",
+                    "concept": "6083f0eb-f397-4f7c-93ab-43a38778351f"
+                  },
+                  {
+                    "label": "Pediatrics",
+                    "concept": "a599cf2b-6568-493f-954c-c7229fee2e7f"
+                  },
+                  {
+                    "label": "Maternity",
+                    "concept": "f11b3a39-3860-478e-9f00-f525d4b39732"
+                  },
+                  {
+                    "label": "ICU",
+                    "concept": "897751f5-b7a2-4e7c-90bb-986abb08b81b"
+                  },
+                  {
+                    "label": "MedNut",
+                    "concept": "b3202ffa-794b-42cc-bbdd-27e8fd647e81"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hospitalisationSinceLastConsultationOrCurrently !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "dateOfHospitalisation",
+              "label": "Date of hospitalisation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "8b9f9358-85ff-4ed4-93bf-e84e61421e74"
+              },
+              "hide": {
+                "hideWhenExpression": "(hospitalisationSinceLastConsultationOrCurrently !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "dateOfHospitalisation > new Date()",
+                  "message": "Date of hospitalisation cannot be in the future"
+                }
+              ]
+            },
+            {
+              "id": "reasonOfHospitalisation",
+              "label": "Reason of hospitalisation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "b996944c-b136-4e8e-9068-562476a0595a"
+              },
+              "hide": {
+                "hideWhenExpression": "(hospitalisationSinceLastConsultationOrCurrently !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "dateOfDischargeFromHospital",
+              "label": "Date of discharge from hospital",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "13cea1c8-e426-411f-95b4-33651fc4325d"
+              },
+              "hide": {
+                "hideWhenExpression": "(hospitalisationSinceLastConsultationOrCurrently !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "typeOfDischarge",
+              "label": "Type of discharge",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "09a06404-afc5-457a-91b9-54152e45a854",
+                "answers": [
+                  {
+                    "label": "Discharged",
+                    "concept": "1fbf752b-536b-486b-bfd1-70325ccdea1a"
+                  },
+                  {
+                    "label": "Dead",
+                    "concept": "dc1c7ac9-d9c3-4887-bc22-827c2db7689f"
+                  },
+                  {
+                    "label": "Referred",
+                    "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11"
+                  },
+                  {
+                    "label": "Defaulter",
+                    "concept": "81cbc44a-ac84-4458-ab99-feab4d64c691"
+                  },
+                  {
+                    "label": "Transferred",
+                    "concept": "18c795cb-7197-46da-926f-e4d1848b8c36"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hospitalisationSinceLastConsultationOrCurrently !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Physical Examination",
+      "sections": [
+        {
+          "label": "Findings",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInbiometricsForweightbprRatespo2AndOtherParametersAndAddTodaysMeasurementsWheneverNecessary",
+              "label": "Please check in 'Biometrics' for 'Weight', 'BP', 'R. rate', 'SpO2' and other parameters AND add today's measurements whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "(hospitalisationSinceLastConsultationOrCurrently !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') || (typeOfDischarge !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            },
+            {
+              "id": "findingsInThePhysicalExamination",
+              "label": "Findings in the physical examination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0dd28dfa-fa10-4dbd-bf6a-4f5ad6868c64"
+              },
+              "hide": {
+                "hideWhenExpression": "(hospitalisationSinceLastConsultationOrCurrently !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') || (typeOfDischarge !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Lab Tests And Investigations",
+      "sections": [
+        {
+          "label": "Tests",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "checkInresultsForRelevantTestsOrdered",
+              "label": "Check in 'Results' for relevant tests ordered",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": ["Check in 'Results' for relevant tests ordered"],
+              "hide": {
+                "hideWhenExpression": "(hospitalisationSinceLastConsultationOrCurrently !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') || (typeOfDischarge !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            },
+            {
+              "id": "commentsOnLabTestsAndInvestigations",
+              "label": "Comments on lab tests and investigations",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              },
+              "hide": {
+                "hideWhenExpression": "(hospitalisationSinceLastConsultationOrCurrently !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') || (typeOfDischarge !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis",
+      "sections": [
+        {
+          "label": "Diagnosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalDiagnosis",
+              "label": "Additional Diagnosis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "42131f0e-c9e2-492c-820e-bd7ff6b9180f"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Management",
+      "sections": [
+        {
+          "label": "Medical",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "dateStartingOpioids",
+              "label": "Date starting opioids",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "3184990b-db09-4282-b41c-90f6967f26af"
+              }
+            },
+            {
+              "id": "painkillers1",
+              "label": "Painkillers 1",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "17ea5b16-863d-4672-a709-01f8fb3a0d17",
+                "answers": [
+                  {
+                    "label": "Paracetamol",
+                    "concept": "15f39fab-3a22-498d-afd9-601399854ef0"
+                  },
+                  {
+                    "label": "Aspirin",
+                    "concept": "0b33b83f-8375-4423-a1cf-e781628f6f0c"
+                  },
+                  {
+                    "label": "Ibuprofen",
+                    "concept": "d58c9949-efa9-4cad-ae56-9f852e3244d5"
+                  },
+                  {
+                    "label": "Co-codamol",
+                    "concept": "67c73bc6-f953-491e-8a23-7f312aeaec80"
+                  },
+                  {
+                    "label": "Co-dydramol",
+                    "concept": "07a44393-f59d-403f-a7c2-6b96ed5775d5"
+                  },
+                  {
+                    "label": "Codaprin",
+                    "concept": "cee705e7-4c68-4f06-ab41-a9d0cdee3f45"
+                  },
+                  {
+                    "label": "Codeine",
+                    "concept": "0c764a52-577f-4005-b739-b5737266d324"
+                  },
+                  {
+                    "label": "Tramadol",
+                    "concept": "a7ce72f6-d4f7-44bb-b705-2988bec7e0ff"
+                  },
+                  {
+                    "label": "Morphine",
+                    "concept": "44eacbc5-cf0b-428f-b139-a6991b0bf489"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "painkillers2",
+              "label": "Painkillers 2",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "17ea5b16-863d-4672-a709-01f8fb3a0d17",
+                "answers": [
+                  {
+                    "label": "Paracetamol",
+                    "concept": "15f39fab-3a22-498d-afd9-601399854ef0"
+                  },
+                  {
+                    "label": "Aspirin",
+                    "concept": "0b33b83f-8375-4423-a1cf-e781628f6f0c"
+                  },
+                  {
+                    "label": "Ibuprofen",
+                    "concept": "d58c9949-efa9-4cad-ae56-9f852e3244d5"
+                  },
+                  {
+                    "label": "Co-codamol",
+                    "concept": "67c73bc6-f953-491e-8a23-7f312aeaec80"
+                  },
+                  {
+                    "label": "Co-dydramol",
+                    "concept": "07a44393-f59d-403f-a7c2-6b96ed5775d5"
+                  },
+                  {
+                    "label": "Codaprin",
+                    "concept": "cee705e7-4c68-4f06-ab41-a9d0cdee3f45"
+                  },
+                  {
+                    "label": "Codeine",
+                    "concept": "0c764a52-577f-4005-b739-b5737266d324"
+                  },
+                  {
+                    "label": "Tramadol",
+                    "concept": "a7ce72f6-d4f7-44bb-b705-2988bec7e0ff"
+                  },
+                  {
+                    "label": "Morphine",
+                    "concept": "44eacbc5-cf0b-428f-b139-a6991b0bf489"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "painkillers3",
+              "label": "Painkillers 3",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "17ea5b16-863d-4672-a709-01f8fb3a0d17",
+                "answers": [
+                  {
+                    "label": "Paracetamol",
+                    "concept": "15f39fab-3a22-498d-afd9-601399854ef0"
+                  },
+                  {
+                    "label": "Aspirin",
+                    "concept": "0b33b83f-8375-4423-a1cf-e781628f6f0c"
+                  },
+                  {
+                    "label": "Ibuprofen",
+                    "concept": "d58c9949-efa9-4cad-ae56-9f852e3244d5"
+                  },
+                  {
+                    "label": "Co-codamol",
+                    "concept": "67c73bc6-f953-491e-8a23-7f312aeaec80"
+                  },
+                  {
+                    "label": "Co-dydramol",
+                    "concept": "07a44393-f59d-403f-a7c2-6b96ed5775d5"
+                  },
+                  {
+                    "label": "Codaprin",
+                    "concept": "cee705e7-4c68-4f06-ab41-a9d0cdee3f45"
+                  },
+                  {
+                    "label": "Codeine",
+                    "concept": "0c764a52-577f-4005-b739-b5737266d324"
+                  },
+                  {
+                    "label": "Tramadol",
+                    "concept": "a7ce72f6-d4f7-44bb-b705-2988bec7e0ff"
+                  },
+                  {
+                    "label": "Morphine",
+                    "concept": "44eacbc5-cf0b-428f-b139-a6991b0bf489"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "otherTreatments",
+              "label": "Other treatments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              }
+            },
+            {
+              "id": "prescribeMedicationAndExamsWithTheOrderBasketIfNecessary",
+              "label": "Prescribe medication and exams with the order basket if necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              },
+              "hide": {
+                "hideWhenExpression": "(hospitalisationSinceLastConsultationOrCurrently !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') || (typeOfDischarge !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            },
+            {
+              "id": "treatmentPlanElaborated",
+              "label": "Treatment plan elaborated",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b1282375-2beb-4f62-8a65-d7d68cba551a",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hospitalisationSinceLastConsultationOrCurrently !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') || (typeOfDischarge !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            },
+            {
+              "id": "treatmentPlanElaboratedDescribe",
+              "label": "Treatment plan elaborated - Describe ",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "78900dd0-228c-48ec-843f-81dae00cd454"
+              },
+              "hide": {
+                "hideWhenExpression": "(hospitalisationSinceLastConsultationOrCurrently !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') || (typeOfDischarge !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f') || (treatmentPlanElaborated !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Other Support",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalSupportNeeded",
+              "label": "Additional support needed",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6b3cf530-e574-419a-9dd4-2c8d3ad69562",
+                "answers": [
+                  {
+                    "label": "Catheterization",
+                    "concept": "a39e540e-b988-40e8-a8b2-26b831c179ef"
+                  },
+                  {
+                    "label": "NG tube feeding",
+                    "concept": "c884bf19-6791-4c38-af6b-1ad910191a89"
+                  },
+                  {
+                    "label": "Dressing",
+                    "concept": "d592dcaf-ae83-4acc-921e-127aa27545b5"
+                  },
+                  {
+                    "label": "Other nursing care",
+                    "concept": "42131f0e-c9e2-492c-820e-bd7ff6b9180f"
+                  },
+                  {
+                    "label": "Physiotherapy",
+                    "concept": "895813df-fbec-4164-9375-eed588ff0387"
+                  },
+                  {
+                    "label": "Mental health support",
+                    "concept": "14e79fdc-4250-428f-949e-dabb2cef4315"
+                  },
+                  {
+                    "label": "Psychosocial counseling",
+                    "concept": "bfcf416f-8aa1-4b9d-a0f7-77c142c1df67"
+                  },
+                  {
+                    "label": "Spiritual support",
+                    "concept": "10156771-379a-4eb1-af43-39b418adba4a"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "placeOfMhSupportOrCounselling",
+              "label": "Place of MH support / counselling",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4721a3aa-527f-4555-ae0b-ad0092aa150c",
+                "answers": [
+                  {
+                    "label": "Home",
+                    "concept": "bd5bf44b-164c-415c-8bff-b1d4849928d3"
+                  },
+                  {
+                    "label": "Health Facility",
+                    "concept": "0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(additionalSupportNeeded !== '14e79fdc-4250-428f-949e-dabb2cef4315' && additionalSupportNeeded !== 'bfcf416f-8aa1-4b9d-a0f7-77c142c1df67')"
+              }
+            },
+            {
+              "id": "specifyOtherNursingCare",
+              "label": "Specify other nursing care",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(additionalSupportNeeded !== '42131f0e-c9e2-492c-820e-bd7ff6b9180f')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow Up",
+      "sections": [
+        {
+          "label": "Follow Up",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "followUpRequired",
+              "label": "Follow-up required",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5f6e245c-83fc-421b-8d46-061ac773ae71",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pleaseScheduleNextVisitInappointments",
+              "label": "Please schedule next visit in 'Appointments'",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "(followUpRequired !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Exit",
+      "sections": [
+        {
+          "label": "Exit",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "dateOfExit",
+              "label": "Date of Exit",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "1f473371-613f-4ef3-b297-49eb779ccd27"
+              },
+              "default": "Current date",
+              "hide": {
+                "hideWhenExpression": "(followUpRequired !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            },
+            {
+              "id": "outcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9e861ef1-e07c-4955-9650-2ebac3138fc3",
+                "answers": [
+                  {
+                    "label": "Discharged",
+                    "concept": "1fbf752b-536b-486b-bfd1-70325ccdea1a"
+                  },
+                  {
+                    "label": "Dead",
+                    "concept": "dc1c7ac9-d9c3-4887-bc22-827c2db7689f"
+                  },
+                  {
+                    "label": "Defaulter",
+                    "concept": "81cbc44a-ac84-4458-ab99-feab4d64c691"
+                  },
+                  {
+                    "label": "Transferred",
+                    "concept": "18c795cb-7197-46da-926f-e4d1848b8c36"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(followUpRequired !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            },
+            {
+              "id": "reasonForDischarge",
+              "label": "Reason for discharge",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a844ff25-b3fb-4873-9681-f2f35f5159ec"
+              },
+              "hide": {
+                "hideWhenExpression": "(followUpRequired !== 'a5c5563e-df0e-4742-a335-b24fb63664ee') || (outcome !== '1fbf752b-536b-486b-bfd1-70325ccdea1a')"
+              }
+            },
+            {
+              "id": "deathCause",
+              "label": "Death cause",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "778b70b5-c6de-4459-a101-6bf02f77d5c7"
+              },
+              "hide": {
+                "hideWhenExpression": "(followUpRequired !== 'a5c5563e-df0e-4742-a335-b24fb63664ee') || (outcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Notes",
+      "sections": [
+        {
+          "label": "Notes",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalNotes",
+              "label": "Additional notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

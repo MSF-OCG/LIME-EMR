@@ -1,9 +1,9 @@
 {
-  "name": "MSF Family Planning - Follow-up",
+  "name": "F12-Family Planning Follow-up",
   "description": "MSF Form - F12-Family Planning Follow-up",
   "version": "1",
   "published": true,
-  "uuid": "",
+  "uuid": "049d76ca-57c8-32d5-a968-a53dfc7e0234",
   "processor": "EncounterFormProcessor",
   "encounter": "Family Planning",
   "encounterType": "d981a14f-8cda-4fe0-aa14-d5c9a2a9a123",
@@ -319,9 +319,44 @@
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "textarea",
-                "concept": "8984db1f-8f1c-4e14-bf34-92c4a4bd0f42"
-              }
+                "rendering": "multiCheckbox",
+                "concept": "8cc9bb13-7326-4566-a305-9d155c3b99e5",
+                "answers": [
+                  {
+                    "label": "Urethral discharge",
+                    "concept": "7d208033-d84d-494e-a888-a33dc45c7358"
+                  },
+                  {
+                    "label": "Discharge and/or inflammation of the anus",
+                    "concept": "35f40afc-3e93-485c-a378-885eda6c6a3b"
+                  },
+                  {
+                    "label": "Abnormal vaginal discharge (color, consistency or odor)",
+                    "concept": "f2cd4fb3-daaa-4572-96c3-fef65bc6ae4c"
+                  },
+                  {
+                    "label": "Bloody vaginal discharge",
+                    "concept": "41371f81-f474-462f-a32b-a413d1367bde"
+                  },
+                  {
+                    "label": "Irritation and/or secretions from the cervix",
+                    "concept": "da48e738-4352-4728-a2e5-7ba6a69ea496"
+                  },
+                  {
+                    "label": "Lesion of the vaginal wall or on the cervix",
+                    "concept": "8e67d541-8a79-484b-975c-e4be8e9c9f2e"
+                  },
+                  {
+                    "label": "Pain on cervical mobilization or bimanual palpation",
+                    "concept": "36506ba1-f0fe-4dc4-a97f-54771a7db1a2"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
             }
           ]
         }
@@ -447,7 +482,7 @@
                 ]
               },
               "inlineMultiCheckbox": true,
-              "questionInfo": "Select all methods including previous one if it is not stoped",
+              "questionInfo": "Select all methods including previous one if it is not stopped",
               "hide": {
                 "hideWhenExpression": "anotherFamilyPlanningMethodPrescribed !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
               }
@@ -484,14 +519,14 @@
             },
             {
               "id": "prescribeEnoughFamilyPlanningMethodWithTheOrderBasketIfNecessary",
-              "label": "Prescribe enough family planning method with the order basket if necessary",
+              "label": "Prescribe enough family planning method and other medication with the order basket if necessary",
               "required": false,
               "questionOptions": {
                 "rendering": "workspace-launcher",
                 "buttonLabel": "Order medications",
                 "workspaceName": "order-basket"
               },
-              "questionInfo": "If pills, condoms or injections were selected, provide enough for 3 months."
+              "questionInfo": "Ferrous salts + Folic Acid, Retinol, HIV treatment, Tetracycline ointment, vit K, Vit D, Tetanos and other vaccins (Hep B, BCG, Polio), Antibiotics (Amoxicyline, Meetronidazol, Cloxacillin)"
             }
           ]
         }
