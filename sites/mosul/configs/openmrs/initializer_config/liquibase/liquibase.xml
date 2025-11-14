@@ -808,25 +808,66 @@
         </sql>
     </changeSet>
 
-    <changeSet id="rename-occupation-msfocg-concepts" author="vasharma05">
+    <changeSet id="update-occupation-msfocg-en-concept-name" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
-                FROM concept c
-                JOIN concept_name cn ON c.concept_id = cn.concept_id
-                WHERE c.uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12'AND cn.name NOT LIKE '% (MSFOCG)';
+                FROM concept_name
+                WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12') AND locale = 'en' AND name = 'Occupation' AND uuid = 'd0951933-5245-418f-acaa-84b23afe37ac';
             </sqlCheck>
         </preConditions>
         <comment>
-            Rename occupation concept to add MSF-OCG suffix
+            Update occupation concept name to add MSF-OCG suffix (locale: en)
         </comment>
         <sql>
             UPDATE concept_name
-            SET name = CONCAT(name, ' (MSFOCG)')
+            SET name = 'Occupation (MSFOCG)', uuid = '032fdf66-7300-4153-a028-eb9486c43a82'
             WHERE concept_id = (
                 SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12'
             )
-            AND name NOT LIKE '% (MSFOCG)';
+            AND locale = 'en';
+        </sql>
+    </changeSet>
+
+    <changeSet id="update-occupation-msfocg-fr-concept-name" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept_name
+                WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12') AND locale = 'fr' AND name = 'Profession' OR uuid = 'e2e79cad-6c3c-43b7-b9b4-7cd21373065d';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Update occupation concept name to add MSF-OCG suffix (locale: fr)
+        </comment>
+        <sql>
+            UPDATE concept_name
+            SET name = 'Profession (MSFOCG)', uuid = '51c28d8a-2820-4da7-809d-11690cd6398b'
+            WHERE concept_id = (
+                SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12'
+            )
+            AND locale = 'fr';
+        </sql>
+    </changeSet>
+
+    <changeSet id="update-occupation-msfocg-ar-concept-name" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept_name
+                WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12') AND locale = 'ar' AND (name = 'العمل' OR uuid = '811640c2-e014-4b2c-b003-1f5ba1c5a136');
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Update occupation concept name to add MSF-OCG suffix (locale: ar)
+        </comment>
+        <sql>
+            UPDATE concept_name
+            SET name = 'العمل (MSFOCG)', uuid = 'fc85be20-815e-4437-8c36-663946d6d9fc'
+            WHERE concept_id = (
+                SELECT concept_id FROM concept WHERE uuid = 'e35ca42c-031e-4dc2-83fe-a926b3de4d12'
+            )
+            AND locale = 'ar';
         </sql>
     </changeSet>
 
