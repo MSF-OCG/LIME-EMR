@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: [ "main" ]
+  release:
+    types: [published]
+
+jobs:
+  validate:
+    uses: ./.github/workflows/maven-build-test.yml
+    with:
+      java-version: "8"
+      maven-phase: "install"
+      free-disk-space: true
+      use-secrets: true
+      maven-args: "-Pbundled-docker" # Build Docker images embedding the distro bins and configs (TODO: Add back -Pvalidator when it is fixed)
+    secrets:
+      NEXUS_USERNAME: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}
+      NEXUS_PASSWORD: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
+
+  release:
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/LIME2-666') || github.event_name == 'release' }}
+    needs: validate
+    uses: ./.github/workflows/maven-publish.yml
+    with:
+      free-disk-space: true
+      maven-args: "-Pbundled-docker" # Build Docker images embedding the distro bins and configs
+    secrets:
+      NEXUS_USERNAME: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}
+      NEXUS_PASSWORD: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
+      DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_REGISTRY_USERNAME }}
+      DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_REGISTRY_PASSWORD }}
