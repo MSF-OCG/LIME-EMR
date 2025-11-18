@@ -15,14 +15,14 @@
 	<artifactId>ozone-msf-distro</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-  
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>8</maven.compiler.source>
 		<maven.compiler.target>8</maven.compiler.target>
 		<limeEmrVersion>0.1.0</limeEmrVersion>
 		<datafilterVersion>2.3.0-SNAPSHOT</datafilterVersion>
-    
+
 		<!--RefApp 3.5.0 modules -->
 		<openmrs.version>2.7.6</openmrs.version>
 		<initializer.version>2.9.0</initializer.version>
@@ -58,7 +58,7 @@
 		<fhirproxyVersion>1.1.0-SNAPSHOT</fhirproxyVersion>
 		<patientsummaryVersion>2.2.0</patientsummaryVersion>
 	</properties>
-  
+
 	<dependencies>
 		<dependency>
 			<groupId>org.openmrs.web</groupId>
@@ -451,11 +451,11 @@
 								</delete>
 								<echo level="info" message="remove openmrs-core volume"/>
 								<replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/docker-compose-openmrs.yml"
-                  match=".*OPENMRS_CORE_PATH:-openmrs-core.*" 
+                  match=".*OPENMRS_CORE_PATH:-openmrs-core.*"
                   replace=""
                   flags="g" />
 								<replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/docker-compose-openmrs.yml"
-                  match=".*openmrs-core: ~.*" 
+                  match=".*openmrs-core: ~.*"
                   replace=""
                   flags="g" />
 
@@ -705,7 +705,7 @@
       <properties>
         <!-- Docker push registry username-->
         <dockerMavenPlugin>0.45.0</dockerMavenPlugin>
-        <docker.push.registry.username>jnsereko</docker.push.registry.username>
+        <docker.push.registry.username>msfocg</docker.push.registry.username>
       </properties>
       <build>
         <plugins>
@@ -773,7 +773,7 @@
                     <echo level="info" message="Adding msf keycloak docker image version"/>
                     <replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/keycloak/Dockerfile"
                                   match="FROM docker.io/bitnami.*" replace="FROM docker.io/mekomsolutions/keycloak:22.0.5" />
-					
+
 					<echo level="info" message="Adding msf OpenMRS docker image version"/>
 					<replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openmrs/Dockerfile"
                                   match="FROM openmrs/openmrs-core.*" replace="FROM openmrs/openmrs-core:2.7.6" />
