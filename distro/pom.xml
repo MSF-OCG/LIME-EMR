@@ -716,28 +716,6 @@
             <executions>
               <execution>
                 <!-- Copy MSF Disto docker compose .txt file -->
-                <id>Copy MSF Disto docker images file</id>
-                <phase>prepare-package</phase>
-                <goals>
-                  <goal>copy-resources</goal>
-                </goals>
-                <configuration>
-                  <outputDirectory>
-                    ${project.build.directory}/bundled-docker-build-tmp
-                  </outputDirectory>
-                  <overwrite>true</overwrite>
-                  <resources>
-                    <resource>
-                      <directory>${project.basedir}/../scripts</directory>
-                      <includes>
-                        <include>docker-images-build.txt</include>
-                      </includes>
-                    </resource>
-                  </resources>
-                </configuration>
-              </execution>
-              <execution>
-                <!-- Copy MSF Disto docker compose .txt file -->
                 <id>Copy MSF OpenFn docker images file</id>
                 <phase>prepare-package</phase>
                 <goals>
@@ -792,9 +770,18 @@
                 </goals>
                 <configuration>
                   <target>
-                    <echo level="info" message="Adding msf docker image version"/>
+                    <echo level="info" message="Adding msf keycloak docker image version"/>
                     <replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/keycloak/Dockerfile"
                                   match="FROM docker.io/bitnami.*" replace="FROM docker.io/mekomsolutions/keycloak:22.0.5" />
+					
+					<echo level="info" message="Adding msf OpenMRS docker image version"/>
+					<replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openmrs/Dockerfile"
+                                  match="FROM openmrs/openmrs-core.*" replace="FROM openmrs/openmrs-core:2.7.6" />
+
+					<echo level="info" message="Adding msf MYSQL docker image version"/>
+					<replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/mysql/Dockerfile"
+                                  match="FROM mariadb.*" replace="FROM mariadb:10.11.13" />
+
                   </target>
                 </configuration>
               </execution>
