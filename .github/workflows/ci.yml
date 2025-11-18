@@ -28,7 +28,6 @@ jobs:
 
   release:
     if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'release' }}
-    needs: validate
     uses: ./.github/workflows/maven-publish.yml
     with:
       free-disk-space: true
