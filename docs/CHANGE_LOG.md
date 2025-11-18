@@ -1,5 +1,29 @@
 # LIME CHANGE LOG 🚀
 
+## Release 13th November, 2025 (Sprint 38)
+
+### Features & Improvements
+
+- Build Palliative Care program forms - [LIME2-1013](https://msf-ocg.atlassian.net/browse/LIME2-1013)
+- Maternity - change Diagnosis optionSet - [LIME2-791](https://msf-ocg.atlassian.net/browse/LIME2-791)
+- PNC - Translations v1 update #2 - [LIME2-991](https://msf-ocg.atlassian.net/browse/LIME2-991)
+- Add Patient Identifier Sticker to LIME and OpenMRS RefApp - [LIME2-1001](https://msf-ocg.atlassian.net/browse/LIME2-1001)
+- F57-HCV Baseline: Missing Tooltips - [LIME2-1020](https://msf-ocg.atlassian.net/browse/LIME2-1020)
+- F61-Travel Medicine Form: Tooltips Missing - [LIME2-1019](https://msf-ocg.atlassian.net/browse/LIME2-1019)
+- F58-HCV Follow Up: Missing Tooltips - [LIME2-1021](https://msf-ocg.atlassian.net/browse/LIME2-1021)
+- Lab - results of some tests not appearing in Results - [LIME2-1023](https://msf-ocg.atlassian.net/browse/LIME2-1023)
+- Family Planning Assessment - change in Contra-indications - [LIME2-1017](https://msf-ocg.atlassian.net/browse/LIME2-1017)
+- Family Planning Assessment - questions to add - [LIME2-1024](https://msf-ocg.atlassian.net/browse/LIME2-1024)
+- Family Planning Follow Up - change datatype of exam to Coded - [LIME2-1026](https://msf-ocg.atlassian.net/browse/LIME2-1026)
+- Family Planning - prescription question changes - [LIME2-1027](https://msf-ocg.atlassian.net/browse/LIME2-1027)
+- Maternity Discharge - questions on HIV added - [LIME2-1028](https://msf-ocg.atlassian.net/browse/LIME2-1028)
+- Bundled Docker implementation - [LIME2-809](https://msf-ocg.atlassian.net/browse/LIME2-809)
+
+### Bug Fixes
+
+- Issue for mhGAP doctor to view the list of medication - [LIME2-760](https://msf-ocg.atlassian.net/browse/LIME2-760)
+- Update roles with patient list access privileges - [LIME2-1025](https://msf-ocg.atlassian.net/browse/LIME2-1025)
+
 ## Release 30th October, 2025 (Sprint 37)
 
 ### Features & Improvements
@@ -7,7 +31,6 @@
 - Build HBV program forms - [LIME2-994](https://msf-ocg.atlassian.net/browse/LIME2-994)
 - Build Social Work program forms - [LIME2-1000](https://msf-ocg.atlassian.net/browse/LIME2-1000)
 - Build HCV programs forms - [LIME2-1011](https://msf-ocg.atlassian.net/browse/LIME2-1011)
-- Build Palliative Care program forms - [LIME2-1013](https://msf-ocg.atlassian.net/browse/LIME2-1013)
 - Build Travel Medicine program form - [LIME2-1015](https://msf-ocg.atlassian.net/browse/LIME2-1015)
 - Obstetrics ultrasound - change Status question/optionset - [LIME2-1002](https://msf-ocg.atlassian.net/browse/LIME2-1002)
 - Obstetric ultrasound - skip logics referred to "Status" changed - [LIME2-1003](https://msf-ocg.atlassian.net/browse/LIME2-1003)
