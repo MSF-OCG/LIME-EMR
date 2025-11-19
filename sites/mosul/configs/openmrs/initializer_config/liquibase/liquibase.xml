@@ -791,4 +791,39 @@
         </sql>
     </changeSet>
 
+    <changeSet id="remove-tests-from-tests-orderability-20251119" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT  case when count(*) > 0 then 1 else 0 end 
+                    FROM concept_set cs 
+                        JOIN concept c1 ON cs.concept_id = c1.concept_id 
+                        JOIN concept c2 ON cs.concept_set = c2.concept_id 
+                    WHERE c2.uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77' 
+                        AND c1.uuid IN ( 
+                            'c5120e94-68c6-4434-bc45-9573e4808468', 
+                            'fb13459b-72f4-4d53-8f5e-dff86adf82cb', 
+                            '079d70a2-10e2-42cf-8317-e1661d3edf24', 
+                            'bce831d3-80c4-4161-a2c5-5dc0fbdb7347', 
+                            'd933de17-e168-465e-b696-2e70fdba7478'
+                        );
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Remove tests from Tests Orderability concept set - Liver panel, Renal function panel, Complete blood count, Erythrocyte sedimentation rate, Prothrombin Time (with INR)
+        </comment>
+        <sql>
+            DELETE FROM concept_set 
+                WHERE concept_id IN (
+                    SELECT concept_id FROM concept WHERE uuid IN ( 
+                        'c5120e94-68c6-4434-bc45-9573e4808468', 
+                        'fb13459b-72f4-4d53-8f5e-dff86adf82cb', 
+                        '079d70a2-10e2-42cf-8317-e1661d3edf24', 
+                        'bce831d3-80c4-4161-a2c5-5dc0fbdb7347', 
+                        'd933de17-e168-465e-b696-2e70fdba7478'
+                    )
+                ) and concept_set = (
+                    select concept_id from concept where uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77'
+                );
+        </sql>
+    </changeSet>
 </databaseChangeLog>
