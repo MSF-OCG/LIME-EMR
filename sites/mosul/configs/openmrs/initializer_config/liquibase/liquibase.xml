@@ -830,7 +830,7 @@
     <changeSet id="remove-members-from-serum-electrolytes-20251119" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                SELECT case when count(*) > 0 then 1 else 0 
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END 
                     FROM concept_set cs 
                         JOIN concept c1 ON cs.concept_id = c1.concept_id 
                         JOIN concept c2 ON cs.concept_set = c2.concept_id 
