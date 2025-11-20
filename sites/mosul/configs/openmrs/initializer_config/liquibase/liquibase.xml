@@ -722,4 +722,73 @@
         </sql>
     </changeSet>
 
+    <changeSet id="remove-answer-from-urine-ketone-test-20251120" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END 
+                    FROM concept_set cs 
+                        JOIN concept c1 ON cs.concept_id = c1.concept_id 
+                        JOIN concept c2 ON cs.concept_set = c2.concept_id 
+                    WHERE c2.uuid = '5eef6049-d68c-4156-9bf3-09a167ebc822' 
+                        AND c1.uuid = '1696cd77-ce81-424b-8c1d-b8c23c922131'
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Remove answer from Urine Ketone test - Four plus
+        </comment>
+        <sql>
+            DELETE FROM concept_set WHERE concept_id IN (
+                SELECT concept_id FROM concept WHERE uuid = '1696cd77-ce81-424b-8c1d-b8c23c922131'
+            ) AND concept_set = (
+                SELECT concept_id FROM concept WHERE uuid = '5eef6049-d68c-4156-9bf3-09a167ebc822' 
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="remove-answer-from-urine-bilirubin-test-20251120" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END 
+                    FROM concept_set cs 
+                        JOIN concept c1 ON cs.concept_id = c1.concept_id 
+                        JOIN concept c2 ON cs.concept_set = c2.concept_id 
+                    WHERE c2.uuid = 'bf6c398d-903e-40aa-bce7-021b280ee875' 
+                        AND c1.uuid = 'd11ec9e7-7dda-4d04-b1c4-ac40d3612d04'
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Remove answer from Bilirubin total presence in urine by test strip test - Trace
+        </comment>
+        <sql>
+            DELETE FROM concept_set WHERE concept_id IN (
+                SELECT concept_id FROM concept WHERE uuid = 'd11ec9e7-7dda-4d04-b1c4-ac40d3612d04'
+            ) AND concept_set = (
+                SELECT concept_id FROM concept WHERE uuid = 'bf6c398d-903e-40aa-bce7-021b280ee875' 
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="remove-answer-from-urine-blood-test-20251120" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END 
+                    FROM concept_set cs 
+                        JOIN concept c1 ON cs.concept_id = c1.concept_id 
+                        JOIN concept c2 ON cs.concept_set = c2.concept_id 
+                    WHERE c2.uuid = 'd395165e-f2c8-4c58-b1ea-1e4d2400e58e' 
+                        AND c1.uuid = 'd11ec9e7-7dda-4d04-b1c4-ac40d3612d04'
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Remove answer from Urine Blood test - Trace
+        </comment>
+        <sql>
+            DELETE FROM concept_set WHERE concept_id IN (
+                SELECT concept_id FROM concept WHERE uuid = 'd11ec9e7-7dda-4d04-b1c4-ac40d3612d04'
+            ) AND concept_set = (
+                SELECT concept_id FROM concept WHERE uuid = 'd395165e-f2c8-4c58-b1ea-1e4d2400e58e' 
+            );
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
