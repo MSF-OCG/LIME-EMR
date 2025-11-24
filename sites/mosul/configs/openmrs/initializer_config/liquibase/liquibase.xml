@@ -791,4 +791,72 @@
         </sql>
     </changeSet>
 
+    <changeSet id="remove-tests-from-tests-orderability-20251119" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT  case when count(*) > 0 then 1 else 0 end 
+                    FROM concept_set cs 
+                        JOIN concept c1 ON cs.concept_id = c1.concept_id 
+                        JOIN concept c2 ON cs.concept_set = c2.concept_id 
+                    WHERE c2.uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77' 
+                        AND c1.uuid IN ( 
+                            'c5120e94-68c6-4434-bc45-9573e4808468', 
+                            'fb13459b-72f4-4d53-8f5e-dff86adf82cb', 
+                            '079d70a2-10e2-42cf-8317-e1661d3edf24', 
+                            'bce831d3-80c4-4161-a2c5-5dc0fbdb7347', 
+                            'd933de17-e168-465e-b696-2e70fdba7478'
+                        );
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Remove tests from Tests Orderability concept set - Liver panel, Renal function panel, Complete blood count, Erythrocyte sedimentation rate, Prothrombin Time (with INR)
+        </comment>
+        <sql>
+            DELETE FROM concept_set 
+                WHERE concept_id IN (
+                    SELECT concept_id FROM concept WHERE uuid IN ( 
+                        'c5120e94-68c6-4434-bc45-9573e4808468', 
+                        'fb13459b-72f4-4d53-8f5e-dff86adf82cb', 
+                        '079d70a2-10e2-42cf-8317-e1661d3edf24', 
+                        'bce831d3-80c4-4161-a2c5-5dc0fbdb7347', 
+                        'd933de17-e168-465e-b696-2e70fdba7478'
+                    )
+                ) AND concept_set = (
+                    SELECT concept_id FROM concept WHERE uuid = 'a781d229-0de6-44c0-86ab-2194aae85f77'
+                );
+        </sql>
+    </changeSet>
+
+    <changeSet id="remove-members-from-serum-electrolytes-20251119" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END 
+                    FROM concept_set cs 
+                        JOIN concept c1 ON cs.concept_id = c1.concept_id 
+                        JOIN concept c2 ON cs.concept_set = c2.concept_id 
+                    WHERE c2.uuid = '0d4d6398-e4a1-4c1f-87aa-429a51eeeffc' 
+                        AND c1.uuid IN ( 
+                            '004c466b-567e-4b90-b9f1-7fcba62f2657',
+                            '8c3e0041-c224-4672-897b-0996e488d96a',
+                            '39ba3592-b4ef-4e2f-968a-b5f82d5ceb59',
+                            'add9cf99-9b28-44db-80bd-cc6eba22b6c8'
+                        );
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Remove members from Serum Electrolytes concept set - Serum carbon dioxide, serum calcium, ionized calcium, serum magnesium
+        </comment>
+        <sql>
+            DELETE FROM concept_set WHERE concept_id IN (
+                SELECT concept_id FROM concept WHERE uuid IN (
+                    '004c466b-567e-4b90-b9f1-7fcba62f2657',
+                    '8c3e0041-c224-4672-897b-0996e488d96a',
+                    '39ba3592-b4ef-4e2f-968a-b5f82d5ceb59',
+                    'add9cf99-9b28-44db-80bd-cc6eba22b6c8'
+                )
+            ) AND concept_set = (
+                SELECT concept_id FROM concept WHERE uuid = '0d4d6398-e4a1-4c1f-87aa-429a51eeeffc'
+            );
+        </sql>
+    </changeSet>
 </databaseChangeLog>
