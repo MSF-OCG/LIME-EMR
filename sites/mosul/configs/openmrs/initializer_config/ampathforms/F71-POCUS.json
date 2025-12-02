@@ -1,0 +1,1334 @@
+{
+  "name": "F71-POCUS",
+  "description": "MSF Form - F71-POCUS",
+  "version": "1",
+  "published": true,
+  "uuid": "bf8e81ac-ca53-4c24-a260-9368aa8b1586",
+  "processor": "EncounterFormProcessor",
+  "encounter": "POCUS",
+  "encounterType": "08f77aaa-3d39-4c30-bb8c-7f3091d7ef51",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Patient",
+      "sections": [
+        {
+          "label": "Patient",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "dateOfPocusExam",
+              "label": "Date of POCUS exam",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "5e06ab70-44e3-46de-9fb6-37f796e55e43"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "pocusUser",
+              "label": "POCUS user",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "0f82cd2c-ccd1-4c2c-a83c-81d5e5494c3f"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "POCUS",
+      "sections": [
+        {
+          "label": "Exam",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pocusExams",
+              "label": "POCUS exams",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "44b5adcd-56bf-4af2-955e-2e3997bf8c44",
+                "answers": [
+                  {
+                    "label": "EFAST",
+                    "concept": "d89790f2-6975-4c1c-bfd3-9642b07d35cc"
+                  },
+                  {
+                    "label": "FASH",
+                    "concept": "8d8d9ba8-6d4d-4669-8a22-03d1bed8d1e0"
+                  },
+                  {
+                    "label": "Lung",
+                    "concept": "5e60ddfd-4fe1-48e2-9393-abf370aea4e1"
+                  },
+                  {
+                    "label": "Basic cardiac",
+                    "concept": "b1ad75a2-606a-4b0c-8206-b50604210a46"
+                  },
+                  {
+                    "label": "Soft tissue",
+                    "concept": "2a82e456-862c-4a51-99df-156cdae8919d"
+                  },
+                  {
+                    "label": "Basic gynecologic",
+                    "concept": "50b1cca9-5c58-479b-9bb9-5e546355fb4a"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "ifPocusExamsIsOtherSpecify",
+              "label": "If POCUS exams is other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Indication",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "indication",
+              "label": "Indication",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "5b4f0143-4d38-4491-9143-860b6f471814",
+                "answers": [
+                  {
+                    "label": "Trauma (abdominal/ thoracic)",
+                    "concept": "8dafb771-db0b-4fc8-b00e-a7e772bab011"
+                  },
+                  {
+                    "label": "Acute abdomen",
+                    "concept": "2dfba50a-a997-441f-b65d-23bc2d5742c6"
+                  },
+                  {
+                    "label": "Abdominal distention/ mass",
+                    "concept": "b781e555-6e2f-420e-9dd3-3e192b99d843"
+                  },
+                  {
+                    "label": "Suspected effusions / ascites",
+                    "concept": "53be880a-7730-4f5d-be1e-304e0c4bd638"
+                  },
+                  {
+                    "label": "Acute respiratory distress / hypoxia",
+                    "concept": "d0c83717-a070-402b-9edd-f989dae95820"
+                  },
+                  {
+                    "label": "Suspected heart disease",
+                    "concept": "d682a3b5-15bf-4814-b82e-c49fee869e3b"
+                  },
+                  {
+                    "label": "Suspected chronic lung pathology",
+                    "concept": "0c6af3ca-0017-400d-b53a-db3f131cba78"
+                  },
+                  {
+                    "label": "Suspected fracture / osteomyelitis",
+                    "concept": "7c2b235c-a891-4489-927f-fc19a0ec7107"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "ifIndicationIsOtherSpecify",
+              "label": "If indication is other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(indication, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "EFAST",
+      "sections": [
+        {
+          "label": "EFAST",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "efastResult",
+              "label": "EFAST result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8df78d81-0ff6-4d1b-8110-f6e1721224cd",
+                "answers": [
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Indeterminate",
+                    "concept": "fbc53323-c608-49f8-8c6d-c1bd5349c546"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'd89790f2-6975-4c1c-bfd3-9642b07d35cc'))"
+              }
+            },
+            {
+              "id": "reason",
+              "label": "Reason",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "1b1345c7-4fa1-4d74-86bc-efd6a98380bb"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'd89790f2-6975-4c1c-bfd3-9642b07d35cc')) || (efastResult !== 'fbc53323-c608-49f8-8c6d-c1bd5349c546')"
+              }
+            },
+            {
+              "id": "efastFindings",
+              "label": "EFAST findings",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "d89790f2-6975-4c1c-bfd3-9642b07d35cc",
+                "answers": [
+                  {
+                    "label": "Free fluid in abdomen",
+                    "concept": "53be880a-7730-4f5d-be1e-304e0c4bd638"
+                  },
+                  {
+                    "label": "Pleural effusion",
+                    "concept": "219684a4-ff81-4ad7-a62b-ca563cb6bfdf"
+                  },
+                  {
+                    "label": "Lung sliding absent",
+                    "concept": "9956cefb-2360-49bf-98d1-885e2330cd64"
+                  },
+                  {
+                    "label": "Pericardial effusion",
+                    "concept": "cee66c62-44de-46d1-93be-a41d06bfa590"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'd89790f2-6975-4c1c-bfd3-9642b07d35cc')) || (efastResult !== 'ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8')"
+              }
+            },
+            {
+              "id": "efastFreeFluidInAbdomen",
+              "label": "Free fluid in abdomen",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "15a5c6b0-d535-4e53-9a30-54469822d291",
+                "answers": [
+                  {
+                    "label": "RUQ",
+                    "concept": "9beef921-b85b-4bd1-8e00-61e2e4591989"
+                  },
+                  {
+                    "label": "LUQ",
+                    "concept": "4c3cd9ae-e723-43bb-ba32-85b85edc6d2e"
+                  },
+                  {
+                    "label": "Pelvis",
+                    "concept": "0bd085f4-10b1-4c47-bcf9-30dd94786843"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'd89790f2-6975-4c1c-bfd3-9642b07d35cc')) || (efastResult !== 'ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8') || (!includes(efastFindings, '53be880a-7730-4f5d-be1e-304e0c4bd638'))"
+              }
+            },
+            {
+              "id": "efastPleuralEffusionSite",
+              "label": "Pleural effusion site",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "1d3f7380-c1ee-452b-aca8-8efa18a2f9a4",
+                "answers": [
+                  {
+                    "label": "Right",
+                    "concept": "0fdda8f4-17b6-47b9-a7e2-604ebc1a1f9b"
+                  },
+                  {
+                    "label": "Left",
+                    "concept": "1e36f171-1f52-4078-95bf-e17e1eb39a08"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'd89790f2-6975-4c1c-bfd3-9642b07d35cc')) || (efastResult !== 'ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8') || (!includes(efastFindings, '219684a4-ff81-4ad7-a62b-ca563cb6bfdf'))"
+              }
+            },
+            {
+              "id": "efastRightPleuralEffusionAmount",
+              "label": "Right - pleural effusion amount",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6c9cab5e-c816-4f6e-8ec9-352c1ba329a2",
+                "answers": [
+                  {
+                    "label": "Small",
+                    "concept": "92edcbfc-05fa-4fe2-9bc5-8c09cdae7757"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Large",
+                    "concept": "59ae0ba3-e292-445b-ae0f-f89f5544df45"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'd89790f2-6975-4c1c-bfd3-9642b07d35cc')) || (efastResult !== 'ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8') || (!includes(efastFindings, '219684a4-ff81-4ad7-a62b-ca563cb6bfdf')) || (!includes(efastPleuralEffusionSite, '0fdda8f4-17b6-47b9-a7e2-604ebc1a1f9b'))"
+              }
+            },
+            {
+              "id": "efastLeftPleuralEffusionAmount",
+              "label": "Left - pleural effusion amount",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6c9cab5e-c816-4f6e-8ec9-352c1ba329a2",
+                "answers": [
+                  {
+                    "label": "Small",
+                    "concept": "92edcbfc-05fa-4fe2-9bc5-8c09cdae7757"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Large",
+                    "concept": "59ae0ba3-e292-445b-ae0f-f89f5544df45"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'd89790f2-6975-4c1c-bfd3-9642b07d35cc')) || (efastResult !== 'ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8') || (!includes(efastFindings, '219684a4-ff81-4ad7-a62b-ca563cb6bfdf')) || (!includes(efastPleuralEffusionSite, '1e36f171-1f52-4078-95bf-e17e1eb39a08'))"
+              }
+            },
+            {
+              "id": "lungSlidingAbsentSite",
+              "label": "Lung sliding absent site",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "9956cefb-2360-49bf-98d1-885e2330cd64",
+                "answers": [
+                  {
+                    "label": "Right",
+                    "concept": "0fdda8f4-17b6-47b9-a7e2-604ebc1a1f9b"
+                  },
+                  {
+                    "label": "Left",
+                    "concept": "1e36f171-1f52-4078-95bf-e17e1eb39a08"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'd89790f2-6975-4c1c-bfd3-9642b07d35cc')) || (efastResult !== 'ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8') || (!includes(efastFindings, '9956cefb-2360-49bf-98d1-885e2330cd64'))"
+              }
+            },
+            {
+              "id": "pericardialEffusion",
+              "label": "Pericardial effusion",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "cee66c62-44de-46d1-93be-a41d06bfa590",
+                "answers": [
+                  {
+                    "label": "Small",
+                    "concept": "92edcbfc-05fa-4fe2-9bc5-8c09cdae7757"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Large",
+                    "concept": "59ae0ba3-e292-445b-ae0f-f89f5544df45"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'd89790f2-6975-4c1c-bfd3-9642b07d35cc')) || (efastResult !== 'ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8') || (!includes(efastFindings, 'cee66c62-44de-46d1-93be-a41d06bfa590'))"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "FASH",
+      "sections": [
+        {
+          "label": "FASH",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "fashFindings",
+              "label": "FASH findings",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "8d8d9ba8-6d4d-4669-8a22-03d1bed8d1e0",
+                "answers": [
+                  {
+                    "label": "Free fluid in abdomen",
+                    "concept": "53be880a-7730-4f5d-be1e-304e0c4bd638"
+                  },
+                  {
+                    "label": "Pleural effusion",
+                    "concept": "219684a4-ff81-4ad7-a62b-ca563cb6bfdf"
+                  },
+                  {
+                    "label": "Pericardial effusion",
+                    "concept": "cee66c62-44de-46d1-93be-a41d06bfa590"
+                  },
+                  {
+                    "label": "Focal liver lesions",
+                    "concept": "b6939afd-1fe6-4760-922a-828d3da4c40b"
+                  },
+                  {
+                    "label": "Focal spleen lesions",
+                    "concept": "a02d26ea-f6d0-4f5b-a629-2708a34efaf6"
+                  },
+                  {
+                    "label": "Periportal/para-aortic lymph nodes",
+                    "concept": "ce5ae4d4-554b-470f-85b4-e513de80bef4"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '8d8d9ba8-6d4d-4669-8a22-03d1bed8d1e0'))"
+              }
+            },
+            {
+              "id": "fashFreeFluidInAbdomen",
+              "label": "Free fluid in abdomen",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "15a5c6b0-d535-4e53-9a30-54469822d291",
+                "answers": [
+                  {
+                    "label": "RUQ",
+                    "concept": "9beef921-b85b-4bd1-8e00-61e2e4591989"
+                  },
+                  {
+                    "label": "LUQ",
+                    "concept": "4c3cd9ae-e723-43bb-ba32-85b85edc6d2e"
+                  },
+                  {
+                    "label": "Pelvis",
+                    "concept": "0bd085f4-10b1-4c47-bcf9-30dd94786843"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '8d8d9ba8-6d4d-4669-8a22-03d1bed8d1e0')) || (!includes(fashFindings, '53be880a-7730-4f5d-be1e-304e0c4bd638'))"
+              }
+            },
+            {
+              "id": "fashPleuralEffusionSite",
+              "label": "Pleural effusion site",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "1d3f7380-c1ee-452b-aca8-8efa18a2f9a4",
+                "answers": [
+                  {
+                    "label": "Right",
+                    "concept": "0fdda8f4-17b6-47b9-a7e2-604ebc1a1f9b"
+                  },
+                  {
+                    "label": "Left",
+                    "concept": "1e36f171-1f52-4078-95bf-e17e1eb39a08"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '8d8d9ba8-6d4d-4669-8a22-03d1bed8d1e0')) || (!includes(fashFindings, '219684a4-ff81-4ad7-a62b-ca563cb6bfdf'))"
+              }
+            },
+            {
+              "id": "fashRightPleuralEffusionAmount",
+              "label": "Right - pleural effusion amount",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6c9cab5e-c816-4f6e-8ec9-352c1ba329a2",
+                "answers": [
+                  {
+                    "label": "Small",
+                    "concept": "92edcbfc-05fa-4fe2-9bc5-8c09cdae7757"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Large",
+                    "concept": "59ae0ba3-e292-445b-ae0f-f89f5544df45"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '8d8d9ba8-6d4d-4669-8a22-03d1bed8d1e0')) || (!includes(fashFindings, '219684a4-ff81-4ad7-a62b-ca563cb6bfdf')) || (!includes(fashPleuralEffusionSite, '0fdda8f4-17b6-47b9-a7e2-604ebc1a1f9b'))"
+              }
+            },
+            {
+              "id": "fashLeftPleuralEffusionAmount",
+              "label": "Left - pleural effusion amount",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6c9cab5e-c816-4f6e-8ec9-352c1ba329a2",
+                "answers": [
+                  {
+                    "label": "Small",
+                    "concept": "92edcbfc-05fa-4fe2-9bc5-8c09cdae7757"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Large",
+                    "concept": "59ae0ba3-e292-445b-ae0f-f89f5544df45"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '8d8d9ba8-6d4d-4669-8a22-03d1bed8d1e0')) || (!includes(fashFindings, '219684a4-ff81-4ad7-a62b-ca563cb6bfdf')) || (!includes(fashPleuralEffusionSite, '1e36f171-1f52-4078-95bf-e17e1eb39a08'))"
+              }
+            },
+            {
+              "id": "fashPericardialEffusion",
+              "label": "Pericardial effusion",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "cee66c62-44de-46d1-93be-a41d06bfa590",
+                "answers": [
+                  {
+                    "label": "Small",
+                    "concept": "92edcbfc-05fa-4fe2-9bc5-8c09cdae7757"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Large",
+                    "concept": "59ae0ba3-e292-445b-ae0f-f89f5544df45"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '8d8d9ba8-6d4d-4669-8a22-03d1bed8d1e0')) || (!includes(fashFindings, 'cee66c62-44de-46d1-93be-a41d06bfa590'))"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Lung Ultrasound",
+      "sections": [
+        {
+          "label": "Lung Ultrasound",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "cardiopulmonaryLungUsgResults",
+              "label": "Cardiopulmonary lung USG results",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "280db49a-6c98-415d-a186-9ea73de6cdfc",
+                "answers": [
+                  {
+                    "label": "A-Lines (normal)",
+                    "concept": "fdf67542-4f06-4d5e-bbcc-a5d9e844da78"
+                  },
+                  {
+                    "label": "B-Lines \u22653 per intercostal space",
+                    "concept": "29bc03c9-ea8e-4c68-817c-d62b225b2751"
+                  },
+                  {
+                    "label": "Confluent B-Lines",
+                    "concept": "e45959da-0408-4645-b166-d72da951da11"
+                  },
+                  {
+                    "label": "Big consolidations >0.5\u20131 cm",
+                    "concept": "d189e2d4-495b-412c-96ed-2ee84f8a20fd"
+                  },
+                  {
+                    "label": "Small consolidations / nodules <0.5 cm",
+                    "concept": "870d2999-4c63-40bb-adeb-d38400819995"
+                  },
+                  {
+                    "label": "Hepatization",
+                    "concept": "b046d5bb-24e1-4f61-9968-56435653a6a3"
+                  },
+                  {
+                    "label": "Pleural effusion",
+                    "concept": "219684a4-ff81-4ad7-a62b-ca563cb6bfdf"
+                  },
+                  {
+                    "label": "Pneumothorax suspected",
+                    "concept": "8e3cac42-7e6c-4b74-9949-c1b9f7d9a395"
+                  },
+                  {
+                    "label": "Pneumothorax excluded",
+                    "concept": "51a3465e-f5c4-4098-a638-0f090b12cac0"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "None of the above",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '5e60ddfd-4fe1-48e2-9393-abf370aea4e1'))"
+              }
+            },
+            {
+              "id": "aLines",
+              "label": "A-lines (normal)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "fdf67542-4f06-4d5e-bbcc-a5d9e844da78",
+                "answers": [
+                  {
+                    "label": "Right",
+                    "concept": "0fdda8f4-17b6-47b9-a7e2-604ebc1a1f9b"
+                  },
+                  {
+                    "label": "Left",
+                    "concept": "1e36f171-1f52-4078-95bf-e17e1eb39a08"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '5e60ddfd-4fe1-48e2-9393-abf370aea4e1')) || (!includes(cardiopulmonaryLungUsgResults, 'fdf67542-4f06-4d5e-bbcc-a5d9e844da78'))"
+              }
+            },
+            {
+              "id": "bLines",
+              "label": "B-lines (\u22653 per intercostal space)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "29bc03c9-ea8e-4c68-817c-d62b225b2751",
+                "answers": [
+                  {
+                    "label": "RAN",
+                    "concept": "1b730d0f-aad3-47fe-abfc-6d031efcd901"
+                  },
+                  {
+                    "label": "RAX",
+                    "concept": "65dd0ae4-7720-4787-940b-390e195906c1"
+                  },
+                  {
+                    "label": "RPO",
+                    "concept": "227a51cf-e8f4-4caa-8068-fed5e6814afe"
+                  },
+                  {
+                    "label": "LAN",
+                    "concept": "23cb2365-e48b-41e3-b506-04e1f9d634b3"
+                  },
+                  {
+                    "label": "LAX",
+                    "concept": "b290eb43-17ec-4246-ae84-5cc2ce928ae7"
+                  },
+                  {
+                    "label": "LPO",
+                    "concept": "8f6e7c13-ee81-4fde-9158-c5a863ce3259"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '5e60ddfd-4fe1-48e2-9393-abf370aea4e1')) || (!includes(cardiopulmonaryLungUsgResults, '29bc03c9-ea8e-4c68-817c-d62b225b2751'))"
+              }
+            },
+            {
+              "id": "confluentBLines",
+              "label": "Confluent B-lines",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "e45959da-0408-4645-b166-d72da951da11",
+                "answers": [
+                  {
+                    "label": "RAN",
+                    "concept": "1b730d0f-aad3-47fe-abfc-6d031efcd901"
+                  },
+                  {
+                    "label": "RAX",
+                    "concept": "65dd0ae4-7720-4787-940b-390e195906c1"
+                  },
+                  {
+                    "label": "RPO",
+                    "concept": "227a51cf-e8f4-4caa-8068-fed5e6814afe"
+                  },
+                  {
+                    "label": "LAN",
+                    "concept": "23cb2365-e48b-41e3-b506-04e1f9d634b3"
+                  },
+                  {
+                    "label": "LAX",
+                    "concept": "b290eb43-17ec-4246-ae84-5cc2ce928ae7"
+                  },
+                  {
+                    "label": "LPO",
+                    "concept": "8f6e7c13-ee81-4fde-9158-c5a863ce3259"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '5e60ddfd-4fe1-48e2-9393-abf370aea4e1')) || (!includes(cardiopulmonaryLungUsgResults, 'e45959da-0408-4645-b166-d72da951da11'))"
+              }
+            },
+            {
+              "id": "bigConsolidations",
+              "label": "Big consolidations",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "d189e2d4-495b-412c-96ed-2ee84f8a20fd",
+                "answers": [
+                  {
+                    "label": "RAN",
+                    "concept": "1b730d0f-aad3-47fe-abfc-6d031efcd901"
+                  },
+                  {
+                    "label": "RAX",
+                    "concept": "65dd0ae4-7720-4787-940b-390e195906c1"
+                  },
+                  {
+                    "label": "RPO",
+                    "concept": "227a51cf-e8f4-4caa-8068-fed5e6814afe"
+                  },
+                  {
+                    "label": "LAN",
+                    "concept": "23cb2365-e48b-41e3-b506-04e1f9d634b3"
+                  },
+                  {
+                    "label": "LAX",
+                    "concept": "b290eb43-17ec-4246-ae84-5cc2ce928ae7"
+                  },
+                  {
+                    "label": "LPO",
+                    "concept": "8f6e7c13-ee81-4fde-9158-c5a863ce3259"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '5e60ddfd-4fe1-48e2-9393-abf370aea4e1')) || (!includes(cardiopulmonaryLungUsgResults, 'd189e2d4-495b-412c-96ed-2ee84f8a20fd'))"
+              }
+            },
+            {
+              "id": "smallConsolidations",
+              "label": "Small consolidations",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "870d2999-4c63-40bb-adeb-d38400819995",
+                "answers": [
+                  {
+                    "label": "RAN",
+                    "concept": "1b730d0f-aad3-47fe-abfc-6d031efcd901"
+                  },
+                  {
+                    "label": "RAX",
+                    "concept": "65dd0ae4-7720-4787-940b-390e195906c1"
+                  },
+                  {
+                    "label": "RPO",
+                    "concept": "227a51cf-e8f4-4caa-8068-fed5e6814afe"
+                  },
+                  {
+                    "label": "LAN",
+                    "concept": "23cb2365-e48b-41e3-b506-04e1f9d634b3"
+                  },
+                  {
+                    "label": "LAX",
+                    "concept": "b290eb43-17ec-4246-ae84-5cc2ce928ae7"
+                  },
+                  {
+                    "label": "LPO",
+                    "concept": "8f6e7c13-ee81-4fde-9158-c5a863ce3259"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '5e60ddfd-4fe1-48e2-9393-abf370aea4e1')) || (!includes(cardiopulmonaryLungUsgResults, '870d2999-4c63-40bb-adeb-d38400819995'))"
+              }
+            },
+            {
+              "id": "hepatization",
+              "label": "Hepatization",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "b046d5bb-24e1-4f61-9968-56435653a6a3",
+                "answers": [
+                  {
+                    "label": "RAN",
+                    "concept": "1b730d0f-aad3-47fe-abfc-6d031efcd901"
+                  },
+                  {
+                    "label": "RAX",
+                    "concept": "65dd0ae4-7720-4787-940b-390e195906c1"
+                  },
+                  {
+                    "label": "RPO",
+                    "concept": "227a51cf-e8f4-4caa-8068-fed5e6814afe"
+                  },
+                  {
+                    "label": "LAN",
+                    "concept": "23cb2365-e48b-41e3-b506-04e1f9d634b3"
+                  },
+                  {
+                    "label": "LAX",
+                    "concept": "b290eb43-17ec-4246-ae84-5cc2ce928ae7"
+                  },
+                  {
+                    "label": "LPO",
+                    "concept": "8f6e7c13-ee81-4fde-9158-c5a863ce3259"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '5e60ddfd-4fe1-48e2-9393-abf370aea4e1')) || (!includes(cardiopulmonaryLungUsgResults, 'b046d5bb-24e1-4f61-9968-56435653a6a3'))"
+              }
+            },
+            {
+              "id": "pleuralEffusion",
+              "label": "Pleural effusion",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "e0cd5ba1-282d-47db-a78b-46bad77ce0e7",
+                "answers": [
+                  {
+                    "label": "Right",
+                    "concept": "0fdda8f4-17b6-47b9-a7e2-604ebc1a1f9b"
+                  },
+                  {
+                    "label": "Left",
+                    "concept": "1e36f171-1f52-4078-95bf-e17e1eb39a08"
+                  },
+                  {
+                    "label": "Fibrinous stranding",
+                    "concept": "887ce08e-ddab-45de-8c88-2480a9b07e87"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '5e60ddfd-4fe1-48e2-9393-abf370aea4e1')) || (!includes(cardiopulmonaryLungUsgResults, '219684a4-ff81-4ad7-a62b-ca563cb6bfdf'))"
+              }
+            },
+            {
+              "id": "pneumothoraxSuspected",
+              "label": "Pneumothorax suspected",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "8e3cac42-7e6c-4b74-9949-c1b9f7d9a395",
+                "answers": [
+                  {
+                    "label": "Right",
+                    "concept": "0fdda8f4-17b6-47b9-a7e2-604ebc1a1f9b"
+                  },
+                  {
+                    "label": "Left",
+                    "concept": "1e36f171-1f52-4078-95bf-e17e1eb39a08"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "questionInfo": "Barcode",
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '5e60ddfd-4fe1-48e2-9393-abf370aea4e1')) || (!includes(cardiopulmonaryLungUsgResults, '8e3cac42-7e6c-4b74-9949-c1b9f7d9a395'))"
+              }
+            },
+            {
+              "id": "pneumothoraxExcluded",
+              "label": "Pneumothorax excluded (seashore sign)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "51a3465e-f5c4-4098-a638-0f090b12cac0",
+                "answers": [
+                  {
+                    "label": "Right",
+                    "concept": "0fdda8f4-17b6-47b9-a7e2-604ebc1a1f9b"
+                  },
+                  {
+                    "label": "Left",
+                    "concept": "1e36f171-1f52-4078-95bf-e17e1eb39a08"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "questionInfo": "Seashore sign",
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '5e60ddfd-4fe1-48e2-9393-abf370aea4e1')) || (!includes(cardiopulmonaryLungUsgResults, '51a3465e-f5c4-4098-a638-0f090b12cac0'))"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Cardiac Ultrasound",
+      "sections": [
+        {
+          "label": "Cardiac Ultrasound",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "lvFunction",
+              "label": "LV function (EF)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bcabae9c-93c8-4b51-8b78-3269d2711ffb",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "label": "Reduced",
+                    "concept": "ea6d5729-f3d2-4fdf-bd17-606be56a1b72"
+                  },
+                  {
+                    "label": "Hyperdynamic",
+                    "concept": "86ab1468-f0d8-4d87-9f29-9a8b49d5330b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'b1ad75a2-606a-4b0c-8206-b50604210a46'))"
+              }
+            },
+            {
+              "id": "lvSize",
+              "label": "LV size",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "441c513f-bc54-46f7-ae87-4192d212ca6c",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "label": "Enlarged",
+                    "concept": "eb85136f-7924-47c0-835d-6eb2a2152828"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'b1ad75a2-606a-4b0c-8206-b50604210a46'))"
+              }
+            },
+            {
+              "id": "rvSize",
+              "label": "RV size",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8204e45c-8af7-442f-be16-b90d4e45d97d",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "label": "Enlarged",
+                    "concept": "eb85136f-7924-47c0-835d-6eb2a2152828"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'b1ad75a2-606a-4b0c-8206-b50604210a46'))"
+              }
+            },
+            {
+              "id": "mitralValve",
+              "label": "Mitral valve",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6f97e518-5471-499a-bce1-85baff1d8dee",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "label": "Reflux",
+                    "concept": "20294347-7c00-4c98-b95d-b673994efb5f"
+                  },
+                  {
+                    "label": "Thickening",
+                    "concept": "dd67b7d5-6ebc-4f12-9fed-82059505aa31"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'b1ad75a2-606a-4b0c-8206-b50604210a46'))"
+              }
+            },
+            {
+              "id": "pericardialEffusionInCardiacUsg",
+              "label": "Pericardial effusion in cardiac USG",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "cee66c62-44de-46d1-93be-a41d06bfa590",
+                "answers": [
+                  {
+                    "label": "nan",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Small",
+                    "concept": "92edcbfc-05fa-4fe2-9bc5-8c09cdae7757"
+                  },
+                  {
+                    "label": "Moderate-Large",
+                    "concept": "ef09c977-ce64-4c64-96e9-f516cd93b964"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'b1ad75a2-606a-4b0c-8206-b50604210a46'))"
+              }
+            },
+            {
+              "id": "ivc",
+              "label": "IVC (Vena cava inferior)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5e1ef5c5-b481-4b9a-b09e-72c78e967926",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "label": "Collapsed",
+                    "concept": "d0ab65d1-1eaa-4673-9512-53ee26458df3"
+                  },
+                  {
+                    "label": "Dilated",
+                    "concept": "cf3eb98d-4063-41a0-ae4f-c4db4880f2cc"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'b1ad75a2-606a-4b0c-8206-b50604210a46'))"
+              }
+            },
+            {
+              "id": "complexCardiacMalfunction",
+              "label": "Complex cardiac malfunction",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5f0a6c66-8c3a-40f4-bb3b-ae0d731564f1",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, 'b1ad75a2-606a-4b0c-8206-b50604210a46'))"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Basic gynecologic",
+      "sections": [
+        {
+          "label": "Pelvic Ultrasound",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pelvicUltrasoundFindings",
+              "label": "Pelvic ultrasound findings",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "939806f6-05e6-47cd-8e0c-15d45539af9a",
+                "answers": [
+                  {
+                    "label": "No abnormality seen ",
+                    "concept": "27e02248-4765-45c3-b565-7ea9a6abdadf"
+                  },
+                  {
+                    "label": "Unclear ",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  },
+                  {
+                    "label": "Suspected abnormality of the uterus / annexes",
+                    "concept": "9756ec2a-cf90-48dd-beb9-48156430d40d"
+                  },
+                  {
+                    "label": "IUD present",
+                    "concept": "3f8b448d-eaf7-4097-b772-a43e33485cd8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '50b1cca9-5c58-479b-9bb9-5e546355fb4a'))"
+              }
+            },
+            {
+              "id": "positionOfIud",
+              "label": "Position of IUD",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "6013d5cb-ec05-4dd9-b1ba-8744ecb11fe6"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '50b1cca9-5c58-479b-9bb9-5e546355fb4a')) || (pelvicUltrasoundFindings !== '3f8b448d-eaf7-4097-b772-a43e33485cd8')"
+              }
+            },
+            {
+              "id": "describeAbnormality",
+              "label": "Describe abnormality",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "92ba9cb2-c8c4-4967-8ad9-9d80892854e1"
+              },
+              "questionInfo": "ALWAYS send to Telemedicine for confirmation OR consult with OBGYN",
+              "hide": {
+                "hideWhenExpression": "(!includes(pocusExams, '50b1cca9-5c58-479b-9bb9-5e546355fb4a')) || (pelvicUltrasoundFindings !== '9756ec2a-cf90-48dd-beb9-48156430d40d')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Aditional information",
+      "sections": [
+        {
+          "label": "Exams and findings",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "descriptionOfOtherExamsFindingsAndNotes",
+              "label": "Description of other exams, findings and notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Conclusion",
+      "sections": [
+        {
+          "label": "Conclusion",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "summaryOfResults",
+              "label": "Summary of results",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "71f707eb-b57e-43af-960e-1c9d7de33424"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Recommendations",
+      "sections": [
+        {
+          "label": "Recommendations",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "actionsToTakeOrRecommendations",
+              "label": "Actions to take / Recommendations",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "566e2a5d-c35f-4b55-a9f2-59e61110c8cf"
+              }
+            },
+            {
+              "id": "pocusImpactOnDiagnosisOrManagement",
+              "label": "POCUS impact on diagnosis/management",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "6a157b56-0326-4f8b-a3b3-04addc1d9ee8",
+                "answers": [
+                  {
+                    "label": "Change of diagnosis",
+                    "concept": "de579693-44c7-4057-b124-629b7791979f"
+                  },
+                  {
+                    "label": "Change of further management / treatment",
+                    "concept": "2a304a6b-2803-4648-b21c-9e5ed4b7027f"
+                  },
+                  {
+                    "label": "Confirmed current plan",
+                    "concept": "5615584c-5dc5-46d7-881e-5e206a55db4d"
+                  },
+                  {
+                    "label": "Telemedicine consultation will be done",
+                    "concept": "8653219b-6990-4083-88f4-e8096c8f400d"
+                  },
+                  {
+                    "label": "Reduction / exclusion of differential diagnoses",
+                    "concept": "129f7427-a1f0-426e-9ead-3710d1a5d9ed"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
