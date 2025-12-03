@@ -1,0 +1,57 @@
+package org.openmrs.module.drools.fever
+
+import org.openmrs.Patient
+import org.openmrs.Obs
+import org.openmrs.Concept
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+import java.util.Date
+import java.util.Calendar
+
+global Object service;
+
+rule "Fever"
+    agenda-group "fever"
+    when
+        $patient: Patient()
+    then
+        // Check if patient is older than 1 year (non-baby)
+        Date birthdate = $patient.getBirthdate();
+        if (birthdate == null) {
+            return;
+        }
+
+        Calendar oneYearAgo = Calendar.getInstance();
+        oneYearAgo.add(Calendar.YEAR, -1);
+
+        if (birthdate.after(oneYearAgo.getTime())) {
+            // Patient is a baby (less than 1 year old), skip
+            return;
+        }
+
+        Concept tempConcept = Context.getConceptService().getConceptByMapping("5088", "CIEL");
+
+        java.util.List<Obs> tempObsList = Context.getObsService().getObservationsByPersonAndConcept(
+            $patient,
+            tempConcept
+        );
+
+        Double temperature = null;
+
+        if (tempObsList != null && !tempObsList.isEmpty()) {
+            for (Obs obs : tempObsList) {
+                if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                    temperature = obs.getValueNumeric();
+                    break;
+                }
+            }
+        }
+
+        if (temperature != null && temperature > 39.5) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Fever"
+            ));
+        }
+end

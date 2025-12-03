@@ -24,7 +24,7 @@
 		<datafilterVersion>2.3.0-SNAPSHOT</datafilterVersion>
 
 		<!--RefApp 3.5.0 modules -->
-		<openmrs.version>2.7.6</openmrs.version>
+		<openmrs.version>2.7.7</openmrs.version>
 		<initializer.version>2.9.0</initializer.version>
 		<fhir2.version>2.7.0</fhir2.version>
 		<webservices.rest.version>2.50.0</webservices.rest.version>
@@ -46,6 +46,7 @@
 		<serialization-xstream.version>0.2.16</serialization-xstream.version>
 		<ordertemplates.version>1.0.2</ordertemplates.version>
 		<patientflags.version>3.0.8</patientflags.version>
+        <drools.version>1.0.0-SNAPSHOT</drools.version>
 		<o3forms.version>2.3.0</o3forms.version>
 		<emrapi.version>2.3.0</emrapi.version>
 		<event.version>3.0.0</event.version>
@@ -199,6 +200,12 @@
 			<groupId>org.openmrs.module</groupId>
 			<artifactId>patientflags-omod</artifactId>
 			<version>${patientflags.version}</version>
+			<scope>provided</scope>
+		</dependency>
+        <dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>drools-omod</artifactId>
+			<version>${drools.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -622,18 +629,19 @@
 					</execution>
 					<!-- Loaded custom patient documents module and ESM patient banner app for stickers functionality. -->
 					<!-- Kept for manual override capability if needed. -->
-					<!-- <execution>
+					<execution>
 						<id>apply-overrides</id>
 						<goals>
 							<goal>execute</goal>
 						</goals>
-						<phase>process-resources</phase>
+						<!-- Must run in prepare-package AFTER 'Copy OpenMRS modules' which copies Maven dependency modules -->
+						<phase>prepare-package</phase>
 						<configuration>
 							<scripts>
 								<script>file://${project.basedir}/../scripts/apply-overrides.groovy</script>
 							</scripts>
 						</configuration>
-					</execution> -->
+					</execution>
 				</executions>
 			</plugin>
 			<plugin>
@@ -797,7 +805,7 @@
 
 					<echo level="info" message="Adding msf OpenMRS docker image version"/>
 					<replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openmrs/Dockerfile"
-                                  match="FROM openmrs/openmrs-core.*" replace="FROM openmrs/openmrs-core:2.7.6" />
+                                  match="FROM openmrs/openmrs-core.*" replace="FROM openmrs/openmrs-core:${openmrs.version}" />
 
 					<echo level="info" message="Adding msf MYSQL docker image version"/>
 					<replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/mysql/Dockerfile"

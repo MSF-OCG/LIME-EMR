@@ -1,0 +1,59 @@
+package org.openmrs.module.drools.chronicconditions
+
+import org.openmrs.Patient
+import org.openmrs.Concept
+import org.openmrs.Condition
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+import java.util.Arrays
+import java.util.HashSet
+
+global Object service;
+
+rule "Chronic_Conditions"
+    agenda-group "chronicconditions"
+    when
+        $patient: Patient()
+    then
+        // Chronic condition CIEL codes:
+        // Diabetes mellitus type 2
+        //  - 142473
+        //  - 123579 (Uncontrolled)
+        // 142474 = Type 1 diabetes
+        // 117399 = Hypertension
+        // 119910 = CHF
+        // 145438 = Chronic renal failure (CKD)
+        // 116031 = Malignant neoplasm (Cancer)
+        String[] chronicCodes = {"142473", "123579", "142474", "117399", "119910", "145438", "116031"};
+
+        java.util.Set<Concept> chronicConcepts = new HashSet<Concept>();
+        for (String code : chronicCodes) {
+            Concept c = Context.getConceptService().getConceptByMapping(code, "CIEL");
+            if (c != null) {
+                chronicConcepts.add(c);
+            }
+        }
+
+        java.util.List<Condition> conditions = Context.getConditionService().getActiveConditions($patient);
+
+        boolean hasChronicCondition = false;
+
+        if (conditions != null) {
+            for (Condition condition : conditions) {
+                if (condition.getCondition() != null &&
+                    condition.getCondition().getCoded() != null &&
+                    chronicConcepts.contains(condition.getCondition().getCoded())) {
+                    hasChronicCondition = true;
+                    break;
+                }
+            }
+        }
+
+        if (hasChronicCondition) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Chronic Condition"
+            ));
+        }
+end

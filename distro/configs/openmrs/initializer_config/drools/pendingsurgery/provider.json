@@ -1,0 +1,23 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "PendingSurgery",
+        "path": "rules/pendingsurgery_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "PendingSurgery",
+        "agendaGroup": "pendingsurgery",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }

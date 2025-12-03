@@ -1,0 +1,23 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "AKI",
+        "path": "rules/aki_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "AcuteKidneyInjury",
+        "agendaGroup": "acutekidneyinjury",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }

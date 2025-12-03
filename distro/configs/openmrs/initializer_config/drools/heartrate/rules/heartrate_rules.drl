@@ -1,0 +1,73 @@
+package org.openmrs.module.drools.heartrate
+
+import org.openmrs.Patient
+import org.openmrs.Obs
+import org.openmrs.Concept
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+
+global Object service;
+
+rule "High_Heart_Rate"
+    agenda-group "highheartrate"
+    when
+        $patient: Patient()
+    then
+        Concept heartRateConcept = Context.getConceptService().getConceptByMapping("5087", "CIEL");
+
+        java.util.List<Obs> hrObsList = Context.getObsService().getObservationsByPersonAndConcept(
+            $patient,
+            heartRateConcept
+        );
+
+        Double heartRate = null;
+
+        if (hrObsList != null && !hrObsList.isEmpty()) {
+            for (Obs obs : hrObsList) {
+                if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                    heartRate = obs.getValueNumeric();
+                    break;
+                }
+            }
+        }
+
+        if (heartRate != null && heartRate > 130) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "High heart rate"
+            ));
+        }
+end
+
+rule "Low_Heart_Rate"
+    agenda-group "lowheartrate"
+    when
+        $patient: Patient()
+    then
+        Concept heartRateConcept = Context.getConceptService().getConceptByMapping("5087", "CIEL");
+
+        java.util.List<Obs> hrObsList = Context.getObsService().getObservationsByPersonAndConcept(
+            $patient,
+            heartRateConcept
+        );
+
+        Double heartRate = null;
+
+        if (hrObsList != null && !hrObsList.isEmpty()) {
+            for (Obs obs : hrObsList) {
+                if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                    heartRate = obs.getValueNumeric();
+                    break;
+                }
+            }
+        }
+
+        if (heartRate != null && heartRate < 40) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Low heart rate"
+            ));
+        }
+end

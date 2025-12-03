@@ -1,0 +1,23 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "WBC",
+        "path": "rules/wbc_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "HighWBC",
+        "agendaGroup": "highwbc",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }

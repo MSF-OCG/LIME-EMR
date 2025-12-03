@@ -1,0 +1,23 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "Allergies",
+        "path": "rules/allergies_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "Allergies",
+        "agendaGroup": "allergies",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }

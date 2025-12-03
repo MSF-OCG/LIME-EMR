@@ -1,0 +1,45 @@
+package org.openmrs.module.drools.highriskcond
+
+import org.openmrs.Patient
+import org.openmrs.Concept
+import org.openmrs.Condition
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+
+global Object service;
+
+rule "High_Risk_Condition"
+    agenda-group "highriskcond"
+    when
+        $patient: Patient()
+    then
+        // CIEL 152305 = Pregnancy confirmed
+        Concept pregnancyConcept = Context.getConceptService().getConceptByMapping("152305", "CIEL");
+
+        if (pregnancyConcept == null) {
+            return;
+        }
+
+        java.util.List<Condition> conditions = Context.getConditionService().getActiveConditions($patient);
+
+        boolean hasHighRiskCondition = false;
+
+        if (conditions != null) {
+            for (Condition condition : conditions) {
+                if (condition.getCondition() != null &&
+                    condition.getCondition().getCoded() != null &&
+                    condition.getCondition().getCoded().equals(pregnancyConcept)) {
+                    hasHighRiskCondition = true;
+                    break;
+                }
+            }
+        }
+
+        if (hasHighRiskCondition) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "High Risk Condition"
+            ));
+        }
+end

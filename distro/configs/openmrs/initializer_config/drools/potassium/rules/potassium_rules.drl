@@ -1,0 +1,41 @@
+package org.openmrs.module.drools.potassium
+
+import org.openmrs.Patient
+import org.openmrs.Obs
+import org.openmrs.Concept
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+
+global Object service;
+
+rule "Critical_Potassium"
+    agenda-group "criticalpotassium"
+    when
+        $patient: Patient()
+    then
+        Concept kConcept = Context.getConceptService().getConceptByMapping("1133", "CIEL");
+
+        java.util.List<Obs> obsList = Context.getObsService().getObservationsByPersonAndConcept(
+            $patient,
+            kConcept
+        );
+
+        Double potassium = null;
+
+        if (obsList != null && !obsList.isEmpty()) {
+            for (Obs obs : obsList) {
+                if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                    potassium = obs.getValueNumeric();
+                    break;
+                }
+            }
+        }
+
+        if (potassium != null && (potassium > 6 || potassium < 2.5)) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Critical Potassium"
+            ));
+        }
+end
