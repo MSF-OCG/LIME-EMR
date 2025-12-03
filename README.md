@@ -474,6 +474,8 @@ services:
     platform: linux/x86_64/v8
 ```
 
+Note that for local development on MacOS, `x86_64/v8` will need to be changed to `amd64`.
+
 ##### Step 2: Add ERL_FLAGS Environment Variable
 
 To solve the `ArgumentError`, add the `ERL_FLAGS` environment variable to our `openFn.env` file:
