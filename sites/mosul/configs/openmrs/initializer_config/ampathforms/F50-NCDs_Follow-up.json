@@ -206,7 +206,8 @@
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
-              }
+              },
+              "questionInfo": "If a past diagnosis was not entered before, please answer 'Yes' and add it also in 'Conditions'"
             },
             {
               "id": "newDiagnosis",
@@ -1032,6 +1033,41 @@
               }
             },
             {
+              "id": "bpMeasuredAtSistolic",
+              "label": "Sistolic BP (mmHg)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "d7a7a4cf-0252-473d-bdc4-314778d0a79e",
+                "min": 90.0,
+                "max": 250.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "default": "last measurement of the same day from Vitals & Biometrics ",
+              "hide": {
+                "hideWhenExpression": "bpMeasuredAtBaseline !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "bpMeasuredAtDiastolic",
+              "label": "Diastolic BP (mmHg)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "e7713839-eefa-4ff4-b063-905fb184a854",
+                "min": 30.0,
+                "max": 150.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "bpMeasuredAtBaseline !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
               "id": "bpMeasuredAtFupControlled",
               "label": "BP Measured at FUP - controlled",
               "type": "obs",
@@ -1197,7 +1233,8 @@
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
-              }
+              },
+              "questionInfo": "Not to be routinely requested"
             },
             {
               "id": "bloodGlucose",
@@ -1529,7 +1566,8 @@
                     "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
                   }
                 ]
-              }
+              },
+              "questionInfo": "Add as an annex to patient's file"
             },
             {
               "id": "ecgInterpretation",
@@ -2009,7 +2047,8 @@
                     "concept": "0ff3a7dc-1a6e-4453-91d5-29cf6a9f790c"
                   }
                 ]
-              }
+              },
+              "questionInfo": "A patient is considered as having signs of depression if: The answer to at least one of the first two questions is \u201cmore than half the time\u201d AND the question about difficulty at home, work and going along with others is answered at least \u201csomewhat difficult\u201d. Consider referral to mhGAP clinician/ psychiatrist if major/severe depression."
             }
           ]
         },
@@ -2062,7 +2101,8 @@
                     "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
                   }
                 ]
-              }
+              },
+              "questionInfo": "If the patient's  score \u2265 5, consider referral  to mhGAP clinician / psychiatrist"
             },
             {
               "id": "cgiIScore",
@@ -2158,7 +2198,8 @@
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
-              }
+              },
+              "questionInfo": "Check in 'Medication' (select options to change or discontinue any medications if needed)"
             },
             {
               "id": "medicationPrescribedInCurrentConsultation",

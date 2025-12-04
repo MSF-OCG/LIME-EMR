@@ -702,7 +702,7 @@
               },
               "questionInfo": "Fill in 'Conditions' the new or previous diagnosis",
               "hide": {
-                "hideWhenExpression": "!includes(diagnosisAtAdmission, 'childOrAdolescentDisorder')"
+                "hideWhenExpression": "!includes(diagnosisAtAdmission, 'fef73529-e631-4620-920b-ff7fc5d458da')"
               }
             },
             {
@@ -1592,23 +1592,35 @@
               }
             },
             {
-              "id": "bpMeasuredAtBaselineControlled",
-              "label": "BP Measured at Baseline - controlled",
+              "id": "bpMeasuredAtSistolic",
+              "label": "Sistolic BP (mmHg)",
               "type": "obs",
               "required": false,
               "questionOptions": {
-                "rendering": "radio",
-                "concept": "341aa420-7929-4434-914d-f93a4149f896",
-                "answers": [
-                  {
-                    "label": "Yes",
-                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
-                  },
-                  {
-                    "label": "No",
-                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
-                  }
-                ]
+                "rendering": "number",
+                "concept": "d7a7a4cf-0252-473d-bdc4-314778d0a79e",
+                "min": 90.0,
+                "max": 250.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "default": "last measurement of the same day from Vitals & Biometrics ",
+              "hide": {
+                "hideWhenExpression": "bpMeasuredAtBaseline !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "bpMeasuredAtDiastolic",
+              "label": "Diastolic BP (mmHg)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "e7713839-eefa-4ff4-b063-905fb184a854",
+                "min": 30.0,
+                "max": 150.0,
+                "disallowDecimals": true,
+                "step": 1
               },
               "hide": {
                 "hideWhenExpression": "bpMeasuredAtBaseline !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
@@ -2573,7 +2585,7 @@
                   }
                 ]
               },
-              "questionInfo": "If the patient\u2019s  score \u2265 5, consider referral  to mhGAP clinician / psychiatrist"
+              "questionInfo": "If the patient's  score \u2265 5, consider referral  to mhGAP clinician / psychiatrist"
             }
           ]
         }
