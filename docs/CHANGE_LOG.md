@@ -1,5 +1,47 @@
 # LIME CHANGE LOG 🚀
 
+## Release 12th December, 2025 (Sprint 40) - DRAFT
+
+### Features & Improvements
+
+- F49-NCDs Baseline Form CGI S Score Question Cannot Be Saved - [LIME2-1036](https://msf-ocg.atlassian.net/browse/LIME2-1036)
+- F55-HBV Baseline AUDIT Score - [LIME2-1040](https://msf-ocg.atlassian.net/browse/LIME2-1040)
+- Error when saving Family Planning Assessment form - [LIME2-1044](https://msf-ocg.atlassian.net/browse/LIME2-1044)
+
+### Bug fixes
+
+## Release 27th November, 2025 (Sprint 39)
+
+### Features & Improvements
+
+- Resolve occupation concept mapping conflict on OpenMRS required for Pre-donation form - [LIME2-1030](https://msf-ocg.atlassian.net/browse/LIME2-1030)
+- Family Planning Assessment - change in Contra-indications - [LIME2-1017](https://msf-ocg.atlassian.net/browse/LIME2-1017)
+- Family Planning Assessment - questions to add - [LIME2-1024](https://msf-ocg.atlassian.net/browse/LIME2-1024)
+- Family Planning - prescription question changes - [LIME2-1027](https://msf-ocg.atlassian.net/browse/LIME2-1027)
+- HCV and HBV - apply autosum for Child Pugh score - [LIME2-1029](https://msf-ocg.atlassian.net/browse/LIME2-1029)
+- Lab order - to delete “Reference number” question - [LIME2-1034](https://msf-ocg.atlassian.net/browse/LIME2-1034)
+- HBV forms - APRI concept datatype change - [LIME2-1038](https://msf-ocg.atlassian.net/browse/LIME2-1038)
+- F55-HBV Baseline Form Spelling Error - [LIME2-1039](https://msf-ocg.atlassian.net/browse/LIME2-1039)
+- Laboratory - additional adaptations of Test orderability - [LIME2-1041](https://msf-ocg.atlassian.net/browse/LIME2-1041)
+- F57-HBV Follow up form: Metadata missing optionset name - [LIME2-1042](https://msf-ocg.atlassian.net/browse/LIME2-1042)
+- Laboratory - results attributes changed - [LIME2-1043](https://msf-ocg.atlassian.net/browse/LIME2-1043)
+- F59-Social Work Baseline Metadata Changes - [LIME2-1047](https://msf-ocg.atlassian.net/browse/LIME2-1047)
+- F62 & 63 - Palliative Care Skip Logics - [LIME2-1050](https://msf-ocg.atlassian.net/browse/LIME2-1050)
+- F63-Palliative Follow Up Form External ID Update - [LIME2-1051](https://msf-ocg.atlassian.net/browse/LIME2-1051)
+- F63-Palliative Follow Up Form Rendering Update - [LIME2-1052](https://msf-ocg.atlassian.net/browse/LIME2-1052)
+
+### Bug Fixes
+
+- F49-NCDs Baseline Form Tooltips are Missing - [LIME2-1037](https://msf-ocg.atlassian.net/browse/LIME2-1037)
+- F59 & F60 - Social Work Baseline & Followup Tooltips missing - [LIME2-1046](https://msf-ocg.atlassian.net/browse/LIME2-1046)
+- Update roles with patient list access privileges - [LIME2-1025](https://msf-ocg.atlassian.net/browse/LIME2-1025)
+
+### Infra & Maintenance
+
+- Bundled Docker implementation - [LIME2-809](https://msf-ocg.atlassian.net/browse/LIME2-809)
+- Add OpenFn Collections Loading from GitHub JSON to Deployment Script - [LIME2-1045](https://msf-ocg.atlassian.net/browse/LIME2-1045)
+- Test running LIME using Bundled docker - [LIME2-1033](https://msf-ocg.atlassian.net/browse/LIME2-1033)
+
 ## Release 13th November, 2025 (Sprint 38)
 
 ### Features & Improvements
