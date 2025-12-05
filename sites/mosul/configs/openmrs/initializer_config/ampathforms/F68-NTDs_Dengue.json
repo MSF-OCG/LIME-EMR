@@ -1,0 +1,595 @@
+{
+  "name": "F68-NTDs Dengue",
+  "description": "MSF Form - F68-NTDs Dengue",
+  "version": "1",
+  "published": true,
+  "uuid": "6ad4d72d-dee6-4460-864d-323e2ce672e6",
+  "processor": "EncounterFormProcessor",
+  "encounter": "NTDs",
+  "encounterType": "3072870f-e7c4-4d88-895d-babb74a8a132",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "Symptoms",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "dateOfOnsetOfTheDisease",
+              "label": "Date of onset of the disease",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "20103867-a7a6-487b-96c6-560596f145ac"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "clinicalEvolution",
+              "label": "Clinical evolution",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "6581b0dd-6f02-4aff-8223-e73abc23bb65"
+              }
+            },
+            {
+              "id": "currentSymptoms",
+              "label": "Current symptoms",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "a54fbf02-4798-45a6-894b-871bb41a1cb8",
+                "answers": [
+                  {
+                    "label": "Headache",
+                    "concept": "11694243-a773-49fb-b6fe-03106fe1be1c"
+                  },
+                  {
+                    "label": "Arthralgia/myalgia",
+                    "concept": "00729882-4d23-46d2-b0a3-1bec68c71d06"
+                  },
+                  {
+                    "label": "Fever",
+                    "concept": "e15e7405-8aad-474d-a09c-bcf40da2fe84"
+                  },
+                  {
+                    "label": "Nausea/vomit",
+                    "concept": "432053d7-8deb-4730-b639-7b9ea187db52"
+                  },
+                  {
+                    "label": "Retro orbital pain",
+                    "concept": "22b9feaa-8029-400c-96bb-6da039b6a4f2"
+                  },
+                  {
+                    "label": "Diffuse rash",
+                    "concept": "01a64755-0318-4f59-8781-7142efc1fa47"
+                  },
+                  {
+                    "label": "Bleeding",
+                    "concept": "9ee1d4c1-177f-495e-acbc-654e4b7f4e31"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "detailOfSymptoms",
+              "label": "Detail of symptoms",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ab12a49c-19fa-4162-a679-4593c7a3d512"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Others",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "recentTravelHistory",
+              "label": "Recent travel history",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "feb815d2-9cad-4f96-ad7c-2b8570b7e2eb"
+              }
+            },
+            {
+              "id": "pleaseCheckInconditionsallergiesAndmedicationsAndUpdateItIfNecessary",
+              "label": "Please check in 'Conditions', 'Allergies' and 'Medications' and update it if necessary",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Please check in 'Conditions', 'Allergies' and 'Medications' and update it if necessary"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Physical Examination",
+      "sections": [
+        {
+          "label": "Physical Examination",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInvitalsBiometricsFortemperatureWeightbprRatepulsespo2AndOtherParametersAndAddCurrentMeasurementsWheneverNecessary",
+              "label": "Please check in 'Vitals & Biometrics' for 'Temperature', Weight', 'BP', 'R. rate', 'Pulse', 'SpO2' and other parameters AND add current measurements whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "warningSigns",
+              "label": "Warning signs",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "bb939282-3ca7-4c26-9f52-79c01719c276",
+                "answers": [
+                  {
+                    "label": "Hypothermia",
+                    "concept": "c2ba15ae-474e-4e6e-b674-1cc8ff004387"
+                  },
+                  {
+                    "label": "Agitation or lethargy",
+                    "concept": "b19d153f-4dde-4eb0-92fa-3434d82a5943"
+                  },
+                  {
+                    "label": "Postural hypotension",
+                    "concept": "f29ac3d9-5d75-4ed4-8bc4-b05a4cf92c62"
+                  },
+                  {
+                    "label": "Petechiae",
+                    "concept": "2442b56b-4c2a-4855-ba0a-c30153c28793"
+                  },
+                  {
+                    "label": "Mucosal bleeding",
+                    "concept": "56ea8f6e-07a7-44b3-a422-046ca7617a39"
+                  },
+                  {
+                    "label": "Respiratory distress",
+                    "concept": "259d630d-6aa0-4faa-abf3-98d4d521499c"
+                  },
+                  {
+                    "label": "Persistent vomiting",
+                    "concept": "b2583e99-7b07-48c8-a8ca-691f70031a41"
+                  },
+                  {
+                    "label": "Painful hepatomegaly",
+                    "concept": "8fa6fec4-a088-421d-9890-ac0eb52a4460"
+                  },
+                  {
+                    "label": "Severe abdominal pain",
+                    "concept": "1f168818-b2da-489b-9113-a0a1108436d0"
+                  },
+                  {
+                    "label": "Reduced urine",
+                    "concept": "6e8eeaec-60b1-41bb-b25e-adfe52050f60"
+                  },
+                  {
+                    "label": "Fluid accumulation (lungs or abdomen)",
+                    "concept": "15a5c6b0-d535-4e53-9a30-54469822d291"
+                  },
+                  {
+                    "label": "None of the above",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "shockSigns",
+              "label": "Shock signs",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "6dbd9d7b-631c-4a51-ac7f-dab200821d52",
+                "answers": [
+                  {
+                    "label": "Arterial BP <80 (adult) <50 (children)",
+                    "concept": "7b64eb1b-6933-4223-93f4-32fc14c63e05"
+                  },
+                  {
+                    "label": "Convergent BP difference <20 mmHg",
+                    "concept": "262a9daa-8f4f-48f1-8c84-1ac079c51084"
+                  },
+                  {
+                    "label": "Capillary filling <2 sec",
+                    "concept": "21ae6118-59c4-45d7-a0a0-17f6ea7453e9"
+                  },
+                  {
+                    "label": "Fast and thin pulse",
+                    "concept": "ab9b8dba-4b23-4c19-aa5c-1abb0feefe2b"
+                  },
+                  {
+                    "label": "None of the above",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "otherFindingsOnPhysicalExamination",
+              "label": "Other findings on physical examination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              }
+            },
+            {
+              "id": "tourniquetTest",
+              "label": "Tourniquet test",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9a8214d3-32f7-489e-a601-6830535cfaf1",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Laboratory",
+      "sections": [
+        {
+          "label": "Laboratory",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "checkInresultsForRelevantTestsOrdered",
+              "label": "Check in 'Results' for relevant tests ordered",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Check in 'Results' for relevant tests ordered"
+            },
+            {
+              "id": "rdtMalaria",
+              "label": "RDT Malaria",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4491cda4-fb3f-48d1-af61-e38b215445e7",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "malariaBloodSmear",
+              "label": "Malaria blood smear",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2ef39231-6b98-47ca-8836-1f6915159f7f",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  }
+                ]
+              },
+              "default": "Malaria blood smear from Lab"
+            },
+            {
+              "id": "rapidTestNs1",
+              "label": "Rapid test NS1",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ef5d6789-cbd5-4a62-94d4-3825300a3a7b",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  }
+                ]
+              },
+              "default": "Rapid test NS1 from Lab"
+            },
+            {
+              "id": "rapidTestIgm",
+              "label": "Rapid test IgM",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "49e4f187-f7af-440c-a6a1-f384806a9a11",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  }
+                ]
+              },
+              "default": "Rapid test IgM from Lab"
+            },
+            {
+              "id": "rapidTestIgg",
+              "label": "Rapid test IgG",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1c262223-4cae-49dd-b837-1c42a19ee456",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  }
+                ]
+              },
+              "default": "Rapid test IgG from Lab"
+            },
+            {
+              "id": "sampleSentForSerologyConfirmatory",
+              "label": "Sample sent for serology confirmatory",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "833e5ac3-dda4-4f33-88b4-e34479cb8c0f",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "commentsOnLabTestsAndInvestigations",
+              "label": "Comments on lab tests and investigations",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Treatment",
+      "sections": [
+        {
+          "label": "Treatment",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "treatment",
+              "label": "Treatment",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "7f490435-ed9e-4de1-85e8-0e52e5ef7318",
+                "answers": [
+                  {
+                    "label": "Paracetamol",
+                    "concept": "15f39fab-3a22-498d-afd9-601399854ef0"
+                  },
+                  {
+                    "label": "Oral rehydration",
+                    "concept": "f95fab1a-0b68-45ff-be55-2c4ae466e3d0"
+                  },
+                  {
+                    "label": "IV rehydration",
+                    "concept": "ab4bdcfd-2e04-4e29-9ff1-a1d0bb893f6d"
+                  },
+                  {
+                    "label": "None of the above",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "prescribeMedicationAndExamsWithTheOrderBasketIfNecessary",
+              "label": "Prescribe medication and exams with the order basket if necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Conclusion",
+      "sections": [
+        {
+          "label": "Conclusion",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "dengueInfection",
+              "label": "Dengue infection",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3f52e164-ae29-4d28-b790-88971bb0c675",
+                "answers": [
+                  {
+                    "label": "Suspect",
+                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
+                  },
+                  {
+                    "label": "Probable",
+                    "concept": "2c40dc8e-09aa-4e19-a378-fdee58b9e848"
+                  },
+                  {
+                    "label": "Confirmed",
+                    "concept": "4b01305f-ca82-454b-ab06-ab98a53eaaae"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Discharge",
+      "sections": [
+        {
+          "label": "Outcome",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "outcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6b32cbb0-5fa7-48fe-85a5-b8ba276ab22d",
+                "answers": [
+                  {
+                    "label": "Home - follow-up required in 48h - 72h",
+                    "concept": "29bd3fdb-0e8c-4b16-9c9e-f0853f083d34"
+                  },
+                  {
+                    "label": "Home - follow-up not required",
+                    "concept": "5b8872a0-bcc0-46e8-9f1b-93eaa2651aa6"
+                  },
+                  {
+                    "label": "Referred/admitted to hospital care",
+                    "concept": "2c2012de-b656-4538-8ea8-baf93aab6ab8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifNecessaryScheduleAFollowUpVisitInappointments",
+              "label": "If necessary, schedule a follow up visit in 'Appointments'",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== '29bd3fdb-0e8c-4b16-9c9e-f0853f083d34')"
+              }
+            },
+            {
+              "id": "ifReferredToHospitalWhere",
+              "label": "If referred to hospital, where",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "8006cb7e-176d-48aa-95e6-a206c61aaa62"
+              },
+              "hide": {
+                "hideWhenExpression": "(outcome !== 'referredOrAdmittedToHospitalCare')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Comments",
+      "sections": [
+        {
+          "label": "Comments",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
