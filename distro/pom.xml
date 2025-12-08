@@ -625,7 +625,8 @@
 						<goals>
 							<goal>execute</goal>
 						</goals>
-						<phase>process-resources</phase>
+						<!-- Must run in prepare-package AFTER 'Copy OpenMRS modules' which copies Maven dependency modules -->
+						<phase>prepare-package</phase>
 						<configuration>
 							<scripts>
 								<script>file://${project.basedir}/../scripts/apply-overrides.groovy</script>
