@@ -969,4 +969,21 @@
         </sql>
     </changeSet>
 
+    <changeSet id="update_serum_albumin_coded_concept_reference" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select case when count(*) > 0 then 1 else 0 end from obs where concept_id = (SELECT concept_id FROM concept WHERE uuid = '849c9903-b45d-4bdc-bfdd-d57d93bd1b26') and value_coded != 'NULL';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Update the concept_id in the coded observations of Serum Albumin concept
+        </comment>
+        <sql>
+            UPDATE obs
+            SET concept_id = (SELECT concept_id FROM concept WHERE uuid = '849c9903-b45d-4bdc-bfdd-d57d93bd1b26')
+            WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '849c9903-b45d-4bdc-bfdd-d57d93bd1b26')
+            AND value_coded != 'NULL';
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
