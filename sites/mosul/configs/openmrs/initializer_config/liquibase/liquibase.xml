@@ -969,7 +969,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="update_serum_albumin_coded_concept_reference" author="vasharma05">
+    <changeSet id="update_serum_albumin_coded_concept_observations" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 select case when count(*) > 0 then 1 else 0 end from obs where concept_id = (SELECT concept_id FROM concept WHERE uuid = '665155e1-9998-4f37-a763-4b2b27842478') and value_coded != 'NULL';
