@@ -66,6 +66,12 @@ if (actualStagingFiles) {
     }
     mergeFiles(stagingFiles, stagingOutputFile, true)
     log.info("Appended staging YAML files into ${stagingOutputFile.name}")
+
+    // Modify the 'name: msf-lime-test' to match staging
+    def fileContent = stagingOutputFile.text
+    def modifiedContent = fileContent.replaceAll(/(?m)^(\s*)name:\s*msf-lime-test\s*$/, '$1name: msf-lime-mosul-staging')
+    stagingOutputFile.text = modifiedContent
+    log.info("Updated name field in ${stagingOutputFile.name} to match staging")
 } else {
     log.info("No staging files found")
 }

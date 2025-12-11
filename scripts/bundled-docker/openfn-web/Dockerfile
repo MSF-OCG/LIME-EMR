@@ -1,4 +1,4 @@
 # Dockerfile.web
-FROM openfn/lightning:v2.11.0
+FROM openfn/lightning:v2.14.14
 
 # Copy the adaptor registry cache

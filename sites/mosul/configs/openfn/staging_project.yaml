@@ -1,6 +1,3 @@
-collections:
-  mosul-metadata-mappings:
-    name: mosul-metadata-mappings
 workflows:
   wf1-dhis2-omrs-migration:
     name: wf1-dhis2-omrs-migration
@@ -8,7 +5,7 @@ workflows:
       Fetch-Metadata:
         name: Fetch Metadata
         adaptor: "@openfn/language-common@2.1.1"
-        credential: mtuchi@openfn.org-mtuchi-collections-config
+        credential: null
         body: |
           cursor($.manualCursor || $.lastRunDateTime).then((state) => {
             console.log("Date cursor to filter TEI extract ::", state.cursor);
@@ -111,7 +108,7 @@ workflows:
       Get-Teis-and-Locations:
         name: Get Teis and Locations
         adaptor: "@openfn/language-dhis2@5.0.1"
-        credential: mtuchi@openfn.org-MSF-DHIS2-UAT
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           const findDuplicatePatient = teis => {
             const seen = new Map();
@@ -205,7 +202,7 @@ workflows:
       Create-Patients:
         name: Create Patients
         adaptor: "@openfn/language-openmrs@4.2.0"
-        credential: aisha@openfn.org-MSF-OMRS-admin
+        credential: michael.bontyes@geneva.msf.org-openmrs
         body: |
           //Define gender options and prepare newPatientUuid and identifiers
           fn(state => {
@@ -397,7 +394,7 @@ workflows:
       Update-Teis:
         name: Update Teis
         adaptor: "@openfn/language-dhis2@5.0.1"
-        credential: mtuchi@openfn.org-MSF-DHIS2-UAT
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           fn(state => {
             if (state.newPatientUuid.length === 0) {
@@ -489,7 +486,7 @@ workflows:
       Validate-TEIs-with-OMRS-Id:
         name: Validate TEIs with OMRS Id
         adaptor: "@openfn/language-openmrs@4.2.0"
-        credential: mtuchi@openfn.org-OpenMRS-Demo
+        credential: michael.bontyes@geneva.msf.org-openmrs
         body: |
           fn((state) => {
             state.patientUuids = state.teisWithOMRSID.map((patient) => {
@@ -582,7 +579,7 @@ workflows:
       Get-Patients:
         name: Get Patients
         adaptor: "@openfn/language-openmrs@4.3.0"
-        credential: mtuchi@openfn.org-OpenMRS-Demo
+        credential: michael.bontyes@geneva.msf.org-openmrs
         body: |
           function removeLinks(data) {
             if (Array.isArray(data)) {
@@ -741,7 +738,7 @@ workflows:
       Mappings:
         name: Mappings
         adaptor: "@openfn/language-common@2.1.1"
-        credential: mtuchi@openfn.org-mtuchi-collections-config
+        credential: null
         body: |
           const isValidUUID = (id) => {
             if (!id || typeof id !== "string") return false;
@@ -826,7 +823,7 @@ workflows:
       Upsert-TEIs:
         name: Upsert TEIs
         adaptor: "@openfn/language-dhis2@5.0.1"
-        credential: mtuchi@openfn.org-MSF-DHIS2-UAT
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           function chunkArray(array, size) {
             const chunks = [];
@@ -1050,7 +1047,7 @@ workflows:
       Get-Encounters:
         name: Get Encounters
         adaptor: "@openfn/language-openmrs@4.3.0"
-        credential: mtuchi@openfn.org-OpenMRS-Demo
+        credential: michael.bontyes@geneva.msf.org-openmrs
         body: |
           function removeLinks(data) {
             if (Array.isArray(data)) {
@@ -1226,7 +1223,7 @@ workflows:
       Get-Parent-and-Child-TEIs:
         name: Get Parent and Child TEIs
         adaptor: "@openfn/language-dhis2@5.0.1"
-        credential: mtuchi@openfn.org-MSF-DHIS2-UAT
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -1398,7 +1395,7 @@ workflows:
       Create-Events:
         name: Create Events
         adaptor: "@openfn/language-dhis2@5.0.1"
-        credential: mtuchi@openfn.org-MSF-DHIS2-UAT
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           const buildTeiUrl = (baseUrl, { trackedEntity, program, orgUnit }) => {
             return `${baseUrl}/dhis-web-tracker-capture/index.html#/dashboard?tei=${trackedEntity}&program=${program}&ou=${orgUnit}`;
@@ -1604,7 +1601,7 @@ workflows:
       Update-TEIs:
         name: Update TEIs
         adaptor: "@openfn/language-dhis2@5.0.1"
-        credential: mtuchi@openfn.org-MSF-DHIS2-UAT
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           // Update TEIs
           create(
@@ -2365,7 +2362,7 @@ workflows:
       Create-TEIs-Relationship:
         name: Create TEIs Relationship
         adaptor: "@openfn/language-dhis2@5.0.1"
-        credential: mtuchi@openfn.org-MSF-DHIS2-UAT
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           fn((state) => {
             state.relationshipsMapping = Object.values(state.childTeis)
@@ -2423,7 +2420,7 @@ workflows:
       Upsert-Child-TEIs:
         name: Upsert Child TEIs
         adaptor: "@openfn/language-dhis2@5.0.1"
-        credential: mtuchi@openfn.org-MSF-DHIS2-UAT
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           create(
             "tracker",
@@ -2593,7 +2590,7 @@ workflows:
       Get-Mappings-from-Collection:
         name: Get Mappings from Collection
         adaptor: "@openfn/language-common@2.3.0"
-        credential: mtuchi@openfn.org-mtuchi-collections-config
+        credential: null
         body: |
           const isValidUUID = (id) => {
             if (!id || typeof id !== "string") return false;
@@ -2676,7 +2673,7 @@ workflows:
       Get-Encounters:
         name: Get Encounters
         adaptor: "@openfn/language-openmrs@4.3.0"
-        credential: mtuchi@openfn.org-OpenMRS-Demo
+        credential: michael.bontyes@geneva.msf.org-openmrs
         body: |
           function removeLinks(data) {
             if (Array.isArray(data)) {
@@ -2798,7 +2795,7 @@ workflows:
       Create-Events:
         name: Create Events
         adaptor: "@openfn/language-dhis2@5.0.1"
-        credential: mtuchi@openfn.org-MSF-DHIS2-UAT
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           // Create or update events for each encounter create(
           create(
@@ -3426,7 +3423,7 @@ workflows:
       Get-Patients:
         name: Get Patients
         adaptor: "@openfn/language-openmrs@4.3.0"
-        credential: mtuchi@openfn.org-OpenMRS-Demo
+        credential: michael.bontyes@geneva.msf.org-openmrs
         body: |
           function removeLinks(data) {
             if (Array.isArray(data)) {
@@ -3585,7 +3582,7 @@ workflows:
       Upsert-TEIs:
         name: Upsert TEIs
         adaptor: "@openfn/language-dhis2@5.0.1"
-        credential: mtuchi@openfn.org-MSF-DHIS2-UAT
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           const buildTeiMapping = (omrsPatient, patientTei, mappingConfig) => {
             const genderMap = {
@@ -3771,7 +3768,7 @@ workflows:
       Get-TEIs-and-Map-Answers:
         name: Get TEIs and Map Answers
         adaptor: "@openfn/language-dhis2@5.0.1"
-        credential: mtuchi@openfn.org-MSF-DHIS2-UAT
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -3809,7 +3806,7 @@ workflows:
       Get-Tie:
         name: Get Tie
         adaptor: "@openfn/language-dhis2@5.0.1"
-        credential: mtuchi@openfn.org-MSF-DHIS2-UAT
+        credential: michael.bontyes@geneva.msf.org-dhis2
         body: |
           const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -3918,6 +3915,4 @@ workflows:
         condition_label: has-patient-uuids
         condition_expression: |
           state.patientUuids.length > 0 && !state.errors
-
         enabled: true
-p
