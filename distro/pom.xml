@@ -58,6 +58,8 @@
 		<oauth2loginVersion>1.6.0-SNAPSHOT</oauth2loginVersion>
 		<fhirproxyVersion>1.1.0-SNAPSHOT</fhirproxyVersion>
 		<patientsummaryVersion>2.2.0</patientsummaryVersion>
+		<msf.environment>dev</msf.environment>
+		<bundled.docker.tag>${msf.environment}</bundled.docker.tag>
 	</properties>
 
 	<dependencies>
@@ -660,6 +662,13 @@
 	</build>
 
 	<profiles>
+		<profile>
+			<id>production</id>
+			<properties>
+				<msf.environment>latest</msf.environment>
+				<bundled.docker.tag>latest</bundled.docker.tag>
+			</properties>
+		</profile>
 		<profile>
 			<id>validator</id>
 			<activation>

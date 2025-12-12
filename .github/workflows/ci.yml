@@ -9,29 +9,24 @@ on:
     types: [published]
 
 jobs:
-  validate:
-    # NOTE: This job is intended for pull_request events, but PRs cannot access the
-    # secrets required to pull MSF artifacts deom Github packages. Keeping the logic
-    # here so we can re-enable it once artifact downloads no longer require secrets
-    # (e.g., after moving to a public Nexus repository).
-    if: false
-    uses: ./.github/workflows/maven-build-test.yml
-    with:
-      java-version: "8"
-      maven-phase: "install"
-      free-disk-space: true
-      use-secrets: true
-      maven-args: "-Pazure -Pbundled-docker" # Build Docker images embedding the distro bins and configs (TODO: Add back -Pvalidator when it is fixed)
-    secrets:
-      NEXUS_USERNAME: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}
-      NEXUS_PASSWORD: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
-
-  release:
-    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'release' }}
+  snapshot:
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
     uses: ./.github/workflows/maven-publish.yml
     with:
       free-disk-space: true
-      maven-args: "-Pazure -Pbundled-docker" # Build Docker images embedding the distro bins and configs
+      maven-args: "-Pazure -Pbundled-docker -Pproduction"
+    secrets:
+      NEXUS_USERNAME: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}
+      NEXUS_PASSWORD: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
+      DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_REGISTRY_USERNAME }}
+      DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_REGISTRY_PASSWORD }}
+
+  release:
+    if: ${{ github.event_name == 'release' }}
+    uses: ./.github/workflows/maven-publish.yml
+    with:
+      free-disk-space: true
+      maven-args: "-Pazure -Pbundled-docker -Pproduction"
     secrets:
       NEXUS_USERNAME: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}
       NEXUS_PASSWORD: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
