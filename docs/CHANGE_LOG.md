@@ -1,14 +1,31 @@
 # LIME CHANGE LOG 🚀
 
-## Release 12th December, 2025 (Sprint 40) - DRAFT
+## Release 11th December, 2025 (Sprint 40)
 
 ### Features & Improvements
 
-- F49-NCDs Baseline Form CGI S Score Question Cannot Be Saved - [LIME2-1036](https://msf-ocg.atlassian.net/browse/LIME2-1036)
-- F55-HBV Baseline AUDIT Score - [LIME2-1040](https://msf-ocg.atlassian.net/browse/LIME2-1040)
-- Error when saving Family Planning Assessment form - [LIME2-1044](https://msf-ocg.atlassian.net/browse/LIME2-1044)
+- Build POCUS form - [LIME2-1060](https://msf-ocg.atlassian.net/browse/LIME2-1060)
+- Build Radiology Request form - [LIME2-1067](https://msf-ocg.atlassian.net/browse/LIME2-1067)
+- Build ICU program forms - [LIME2-1069](https://msf-ocg.atlassian.net/browse/LIME2-1069)
+- Build Wound dressing form - [LIME2-1066](https://msf-ocg.atlassian.net/browse/LIME2-1066)
+- Build NTDs forms - [LIME2-1072](https://msf-ocg.atlassian.net/browse/LIME2-1072)
+- Build Snakebite program form - [LIME2-1054](https://msf-ocg.atlassian.net/browse/LIME2-1054)
+- Build Cholera program form - [LIME2-1059](https://msf-ocg.atlassian.net/browse/LIME2-1059)
+- Social work - options of Referred by eliminated - [LIME2-1070](https://msf-ocg.atlassian.net/browse/LIME2-1070)
+- NCD - add question on BP measurements - [LIME2-1064](https://msf-ocg.atlassian.net/browse/LIME2-1064)
+- Employment status update - [LIME2-1055](https://msf-ocg.atlassian.net/browse/LIME2-1055)
+- Laboratory - date/time of test results reflect date/time of visit activation - [LIME2-1022](https://msf-ocg.atlassian.net/browse/LIME2-1022)
+- Add OpenFn Collections Loading from GitHub JSON to Deployment Script - [LIME2-1045](https://msf-ocg.atlassian.net/browse/LIME2-1045)
+- Add HTTPS support to LIME DEV and LIME UAT. - [LIME2-1056](https://msf-ocg.atlassian.net/browse/LIME2-1056)
+- Update DevOps architecture and OpenFN processes documentation (documents, Github readme files) - [LIME2-1062](https://msf-ocg.atlassian.net/browse/LIME2-1062)
+- CD-CI pipelines to separate dev and release workflows for bundled docker and auto-deploy - [LIME2-1063](https://msf-ocg.atlassian.net/browse/LIME2-1063)
+- Community updates from Soldevo team on patient chart and management - [LIME2-1065](https://msf-ocg.atlassian.net/browse/LIME2-1065)
 
 ### Bug fixes
+
+- F55-HBV Baseline AUDIT Score - [LIME2-1040](https://msf-ocg.atlassian.net/browse/LIME2-1040)
+- F49-NCDs Baseline Form CGI S Score Question Cannot Be Saved - [LIME2-1036](https://msf-ocg.atlassian.net/browse/LIME2-1036)
+- Error when saving Family Planning Assessment form - [LIME2-1044](https://msf-ocg.atlassian.net/browse/LIME2-1044)
 
 ## Release 27th November, 2025 (Sprint 39)
 
@@ -98,7 +115,6 @@
 - Build Blood transfusion form - [LIME2-987](https://msf-ocg.atlassian.net/browse/LIME2-987)
 - Build Pre-donation form - [LIME2-988](https://msf-ocg.atlassian.net/browse/LIME2-988)
 - OpenFN worker upgrades (version 1.15.0) - [LIME2-984](https://msf-ocg.atlassian.net/browse/LIME2-984)
-- Maternity forms translations - [LIME2-882](https://msf-ocg.atlassian.net/browse/LIME2-882)
 - OPD forms translations - [LIME2-888](https://msf-ocg.atlassian.net/browse/LIME2-888)
 - Laboratory - additional changes in list of tests - [LIME2-929](https://msf-ocg.atlassian.net/browse/LIME2-929)
 - Upgrade LIME-EMR to 3.5.0 / Concept reference ranges API doesn't return the ranges for vital concepts - [LIME2-964](https://msf-ocg.atlassian.net/browse/LIME2-964)
@@ -164,7 +180,6 @@
 - Allow for multiple prescriptions in nutrition feeding monitoring form - UI changes - [LIME2-785](https://msf-ocg.atlassian.net/browse/LIME2-785)
 - Testing embedded forms on local and UAT (SolDevelo PRs) - [LIME2-953](https://msf-ocg.atlassian.net/browse/LIME2-953)
 - Calendar for date selection not working on tablets - [LIME2-748](https://msf-ocg.atlassian.net/browse/LIME2-748)
-- Meal data not transferring from feeding form to table - [LIME2-905](https://msf-ocg.atlassian.net/browse/LIME2-905)
 - ER consultation form - change in options names - [LIME2-954](https://msf-ocg.atlassian.net/browse/LIME2-954)
 - ER consultation form - changes in questions - [LIME2-955](https://msf-ocg.atlassian.net/browse/LIME2-955)
 - ER consultation form - section/questions added - [LIME2-956](https://msf-ocg.atlassian.net/browse/LIME2-956)
