@@ -14,7 +14,6 @@
 - Social work - options of Referred by eliminated - [LIME2-1070](https://msf-ocg.atlassian.net/browse/LIME2-1070)
 - NCD - add question on BP measurements - [LIME2-1064](https://msf-ocg.atlassian.net/browse/LIME2-1064)
 - Employment status update - [LIME2-1055](https://msf-ocg.atlassian.net/browse/LIME2-1055)
-- Laboratory - date/time of test results reflect date/time of visit activation - [LIME2-1022](https://msf-ocg.atlassian.net/browse/LIME2-1022)
 - Add OpenFn Collections Loading from GitHub JSON to Deployment Script - [LIME2-1045](https://msf-ocg.atlassian.net/browse/LIME2-1045)
 - Add HTTPS support to LIME DEV and LIME UAT. - [LIME2-1056](https://msf-ocg.atlassian.net/browse/LIME2-1056)
 - Update DevOps architecture and OpenFN processes documentation (documents, Github readme files) - [LIME2-1062](https://msf-ocg.atlassian.net/browse/LIME2-1062)
