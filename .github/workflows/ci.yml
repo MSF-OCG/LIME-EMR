@@ -66,8 +66,8 @@ jobs:
             # Navigate to scripts directory
             cd /home/azureuser/MOSUL/Bundled-Docker/scripts
             
-            # Start bundled services
-            bash export TRAEFIK="true" && export INSTANCE="dev" && bash start-bundled.sh
+            # Start LIME services
+            export TRAEFIK="true" && export INSTANCE="dev" && bash start-bundled.sh
           EOF
       
       - name: Verify Deployment
