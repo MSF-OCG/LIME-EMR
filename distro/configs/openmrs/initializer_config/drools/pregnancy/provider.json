@@ -1,0 +1,23 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "Pregnancy",
+        "path": "rules/pregnancy_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "Pregnancy",
+        "agendaGroup": "pregnancy",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }

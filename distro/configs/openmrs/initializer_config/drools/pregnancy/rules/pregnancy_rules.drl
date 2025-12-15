@@ -1,0 +1,45 @@
+package org.openmrs.module.drools.pregnancy.rules
+
+import org.openmrs.Patient
+import org.openmrs.Concept
+import org.openmrs.Condition
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+
+global org.openmrs.module.drools.calculation.DroolsCalculationService service;
+
+rule "Pregnancy"
+    agenda-group "pregnancy"
+    when
+        $patient: Patient()
+    then
+        // CIEL 293 = Pregnancy confirmed
+        Concept pregnancyConcept = Context.getConceptService().getConceptByMapping("293", "CIEL");
+
+        if (pregnancyConcept == null) {
+            return;
+        }
+
+        java.util.List<Condition> conditions = Context.getConditionService().getActiveConditions($patient);
+
+        boolean isPregnant = false;
+
+        if (conditions != null) {
+            for (Condition condition : conditions) {
+                if (condition.getCondition() != null &&
+                    condition.getCondition().getCoded() != null &&
+                    condition.getCondition().getCoded().equals(pregnancyConcept)) {
+                    isPregnant = true;
+                    break;
+                }
+            }
+        }
+
+        if (isPregnant) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Pregnancy"
+            ));
+        }
+end

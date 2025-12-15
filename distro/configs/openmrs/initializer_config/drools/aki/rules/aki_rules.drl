@@ -1,0 +1,68 @@
+package org.openmrs.module.drools.aki.rules
+
+import org.openmrs.Patient
+import org.openmrs.Obs
+import org.openmrs.Concept
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+import java.util.Collections
+import java.util.Comparator
+
+global org.openmrs.module.drools.calculation.DroolsCalculationService service;
+
+rule "Acute_Kidney_Injury"
+    agenda-group "acutekidneyinjury"
+    when
+        $patient: Patient()
+    then
+        Concept creatinineConcept = Context.getConceptService().getConceptByMapping("1212", "CIEL");
+
+        java.util.List<Obs> obsList = Context.getObsService().getObservationsByPersonAndConcept(
+            $patient,
+            creatinineConcept
+        );
+
+        if (obsList == null || obsList.size() < 2) {
+            // Need at least 2 values to compare (baseline and current)
+            return;
+        }
+
+        // Sort by obs datetime to find oldest (baseline) and most recent
+        Collections.sort(obsList, new Comparator<Obs>() {
+            public int compare(Obs o1, Obs o2) {
+                if (o1.getObsDatetime() == null || o2.getObsDatetime() == null) return 0;
+                return o1.getObsDatetime().compareTo(o2.getObsDatetime());
+            }
+        });
+
+        Double baseline = null;
+        Double current = null;
+
+        // Get baseline (first ever non-voided value)
+        for (Obs obs : obsList) {
+            if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                baseline = obs.getValueNumeric();
+                break;
+            }
+        }
+
+        // Get current (most recent non-voided value)
+        for (int i = obsList.size() - 1; i >= 0; i--) {
+            Obs obs = obsList.get(i);
+            if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                current = obs.getValueNumeric();
+                break;
+            }
+        }
+
+        if (baseline != null && current != null && baseline > 0) {
+            double ratio = current / baseline;
+            if (ratio > 1.5) {
+                insert(new PatientFlag(
+                    $patient,
+                    null,
+                    "Acute Kidney Injury"
+                ));
+            }
+        }
+end

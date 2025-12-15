@@ -1,0 +1,68 @@
+package org.openmrs.module.drools.highriskmed.rules
+
+import org.openmrs.Patient
+import org.openmrs.Concept
+import org.openmrs.Order
+import org.openmrs.DrugOrder
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+import java.util.Arrays
+import java.util.HashSet
+
+global org.openmrs.module.drools.calculation.DroolsCalculationService service;
+
+rule "High_Risk_Medication"
+    agenda-group "highriskmeds"
+    when
+        $patient: Patient()
+    then
+        // High-risk medication CIEL codes
+        // Insulins: 4689, 4879, 4878, 4688, 4687
+        // Anticoagulants: 2477, 4125 (Heparin)
+        // Opioids: 4730, 4731 (morphine), 4666 (fentanyl), 2054 (tramadol), 4748 (oxycodone), 4124 (codeine)
+        String[] highRiskCodes = {"4689", "4879", "4878", "4688", "4687", "2477", "4125", "4730", "4731", "4666", "2054", "4748", "4124"};
+
+        java.util.Set<String> highRiskSet = new HashSet<String>(Arrays.asList(highRiskCodes));
+
+        java.util.List<Order> activeOrders = Context.getOrderService().getActiveOrders(
+            $patient,
+            null,
+            null,
+            null
+        );
+
+        boolean hasHighRiskMed = false;
+
+        if (activeOrders != null) {
+            for (Order order : activeOrders) {
+                if (order instanceof DrugOrder) {
+                    DrugOrder drugOrder = (DrugOrder) order;
+                    if (drugOrder.getDrug() != null && drugOrder.getDrug().getConcept() != null) {
+                        Concept drugConcept = drugOrder.getDrug().getConcept();
+                        // Check if drug concept has a CIEL mapping in our high-risk list
+                        org.openmrs.ConceptMap mapping = null;
+                        for (org.openmrs.ConceptMap m : drugConcept.getConceptMappings()) {
+                            if (m.getConceptReferenceTerm() != null &&
+                                m.getConceptReferenceTerm().getConceptSource() != null &&
+                                "CIEL".equals(m.getConceptReferenceTerm().getConceptSource().getName())) {
+                                String code = m.getConceptReferenceTerm().getCode();
+                                if (highRiskSet.contains(code)) {
+                                    hasHighRiskMed = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                if (hasHighRiskMed) break;
+            }
+        }
+
+        if (hasHighRiskMed) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "High-risk Medication"
+            ));
+        }
+end

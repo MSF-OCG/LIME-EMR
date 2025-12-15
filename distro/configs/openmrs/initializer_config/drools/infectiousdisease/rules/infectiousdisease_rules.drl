@@ -1,0 +1,58 @@
+package org.openmrs.module.drools.infectiousdisease.rules
+
+// TODO: Missing MRSA!
+
+import org.openmrs.Patient
+import org.openmrs.Concept
+import org.openmrs.Condition
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+import java.util.Arrays
+import java.util.HashSet
+
+global org.openmrs.module.drools.calculation.DroolsCalculationService service;
+
+rule "Infectious_Disease"
+    agenda-group "infectiousdisease"
+    when
+        $patient: Patient()
+    then
+        // Infectious disease CIEL codes:
+        // 1452 = Tuberculosis
+        // 4358 = Covid-19 confirmed
+        // 6756 = Hepatitis B (acute)
+        // 6217 = Hepatitis C (Coded)
+        // 6895 = Chronic Hepatitis C
+        String[] infectiousCodes = {"1452", "4358", "6756", "6217", "6895"};
+
+        java.util.Set<Concept> infectiousConcepts = new HashSet<Concept>();
+        for (String code : infectiousCodes) {
+            Concept c = Context.getConceptService().getConceptByMapping(code, "CIEL");
+            if (c != null) {
+                infectiousConcepts.add(c);
+            }
+        }
+
+        java.util.List<Condition> conditions = Context.getConditionService().getActiveConditions($patient);
+
+        boolean hasInfectiousDisease = false;
+
+        if (conditions != null) {
+            for (Condition condition : conditions) {
+                if (condition.getCondition() != null &&
+                    condition.getCondition().getCoded() != null &&
+                    infectiousConcepts.contains(condition.getCondition().getCoded())) {
+                    hasInfectiousDisease = true;
+                    break;
+                }
+            }
+        }
+
+        if (hasInfectiousDisease) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Infectious Disease"
+            ));
+        }
+end

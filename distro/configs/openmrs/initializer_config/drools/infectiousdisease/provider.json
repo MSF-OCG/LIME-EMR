@@ -1,0 +1,23 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "InfectiousDisease",
+        "path": "rules/infectiousdisease_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "InfectiousDisease",
+        "agendaGroup": "infectiousdisease",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }
