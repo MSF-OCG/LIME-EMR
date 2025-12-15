@@ -1543,51 +1543,6 @@
                   "calculateExpression": "api.getLatestObs(patient.id, 'e355de0a-6a46-4bce-ae59-6e66faaa25ee').then(obs => obs?.valueQuantity?.value)"
                 }
               }
-            },
-            {
-              "id": "pulmonaryEmbolismRisk",
-              "label": "Pulmonary embolism risk",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "multiCheckbox",
-                "concept": "0c59d122-129b-43d4-b5de-6c416efd97df",
-                "answers": [
-                  {
-                    "label": "Respiratory rate > 35/min",
-                    "concept": "df26b8b0-439f-4576-8d0d-cc877f384353"
-                  },
-                  {
-                    "label": "Respiratory rate < 8/min",
-                    "concept": "498691a2-501f-4c80-aa62-53a17e22ea18"
-                  },
-                  {
-                    "label": "SBP < 90 mmHg despite fluids",
-                    "concept": "45899750-2b29-46c1-ae4d-4cf47473a2b6"
-                  },
-                  {
-                    "label": "MAP < 65 mmHg despite fluids",
-                    "concept": "c12594a1-5a8e-4f71-a579-ee734f39729f"
-                  },
-                  {
-                    "label": "GCS \u2264 8",
-                    "concept": "293ec884-5fb1-4fcd-bca7-ed38a180d1bd"
-                  },
-                  {
-                    "label": "Urine output < 0.5 mL/kg/hr for > 6 hours",
-                    "concept": "427b7974-9fe8-46c9-af2a-91a9283210be"
-                  },
-                  {
-                    "label": "SpO\u2082 < 90% on O\u2082",
-                    "concept": "e4fb8ad6-d9c8-4a55-8dfb-bd6a351b36ae"
-                  },
-                  {
-                    "label": "None of the above",
-                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
-                  }
-                ]
-              },
-              "inlineMultiCheckbox": true
             }
           ]
         },
@@ -1674,6 +1629,51 @@
                 "rendering": "textarea",
                 "concept": "06df0cd0-0ea6-4447-9b42-cfaeaf826311"
               }
+            },
+            {
+              "id": "pulmonaryEmbolismRisk",
+              "label": "Pulmonary embolism risk",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "0c59d122-129b-43d4-b5de-6c416efd97df",
+                "answers": [
+                  {
+                    "label": "Respiratory rate > 35/min",
+                    "concept": "df26b8b0-439f-4576-8d0d-cc877f384353"
+                  },
+                  {
+                    "label": "Respiratory rate < 8/min",
+                    "concept": "498691a2-501f-4c80-aa62-53a17e22ea18"
+                  },
+                  {
+                    "label": "SBP < 90 mmHg despite fluids",
+                    "concept": "45899750-2b29-46c1-ae4d-4cf47473a2b6"
+                  },
+                  {
+                    "label": "MAP < 65 mmHg despite fluids",
+                    "concept": "c12594a1-5a8e-4f71-a579-ee734f39729f"
+                  },
+                  {
+                    "label": "GCS \u2264 8",
+                    "concept": "293ec884-5fb1-4fcd-bca7-ed38a180d1bd"
+                  },
+                  {
+                    "label": "Urine output < 0.5 mL/kg/hr for > 6 hours",
+                    "concept": "427b7974-9fe8-46c9-af2a-91a9283210be"
+                  },
+                  {
+                    "label": "SpO\u2082 < 90% on O\u2082",
+                    "concept": "e4fb8ad6-d9c8-4a55-8dfb-bd6a351b36ae"
+                  },
+                  {
+                    "label": "None of the above",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
             }
           ]
         }
@@ -1689,12 +1689,12 @@
             {
               "id": "checkInresultsForRelevantTestsOrdered",
               "label": "Check in 'Results' for relevant tests ordered",
+              "type": "markdown",
               "required": false,
               "questionOptions": {
-                "rendering": "workspace-launcher",
-                "buttonLabel": "Order medications",
-                "workspaceName": "order-basket"
-              }
+                "rendering": "markdown"
+              },
+              "value": ["Check in 'Results' for relevant tests ordered"]
             },
             {
               "id": "commentsOnLabTestsAndInvestigations",
