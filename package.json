@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "description": "The OpenMRS 3 distribution for MSF OCG",
   "main": "index.js",
-  "directories": {
-    "test": "tests"
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:login": "playwright test e2e/modules/openmrs/login/login.spec.ts e2e/modules/openfn/login.spec.ts"
   },
-  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.49.0",
-    "@types/node": "^22.10.1"
+    "@types/node": "^22.10.1",
+    "dotenv": "^16.6.1"
   }
 }

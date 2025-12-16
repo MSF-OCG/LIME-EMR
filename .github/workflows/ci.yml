@@ -32,3 +32,79 @@ jobs:
       NEXUS_PASSWORD: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
       DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_REGISTRY_USERNAME }}
       DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_REGISTRY_PASSWORD }}
+  
+  deploy-to-dev:
+    needs: snapshot
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH Agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.LIME_MOSUL_AZURE_DEV_SSH_KEY }}
+      
+      - name: Add SSH known hosts
+        run: |
+          ssh-keyscan -H 57.152.32.79 >> ~/.ssh/known_hosts
+      
+      - name: Deploy to Dev Environment
+        run: |
+          ssh azureuser@57.152.32.79 << 'EOF'
+            set -e
+            
+            # Navigate to MOSUL directory
+            cd /home/azureuser/MOSUL
+            
+            # Pull bundled docker scripts
+            curl -sSL -H 'Cache-Control: no-cache, no-store' \
+              -H 'Authorization: token ${{ secrets.LIME_EMR_TOOLING_GITHUB_TOKEN }}' \
+              https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-Tooling/main/Procedures/pull_bundled_docker_scripts.sh | bash
+
+            # Navigate to scripts directory
+            cd /home/azureuser/MOSUL/Bundled-Docker/scripts
+            
+            # Start LIME services
+            export TRAEFIK="true" && export INSTANCE="dev" && bash start-bundled.sh
+          EOF
+
+  run-e2e-dev-tests:
+    needs: deploy-to-dev
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 📝 Copy test environment variables
+        run: cp e2e/dev.e2e.env .env
+
+      - name: 🛠️ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'yarn'
+
+      - name: 📦 Install dependencies
+        run: yarn install --immutable
+
+      - name: 🎭 Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: ⏳ Wait for OpenFN instance to start
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://lime-mosul-dev.madiro.org:4000/users/log_in)" != "200" ]]; do sleep 10; done
+
+      - name: ⏳ Wait for OpenMRS instance to start
+        run: while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://lime-mosul-dev.madiro.org/openmrs/login.htm)" != "200" ]]; do sleep 10; done
+
+      - name: 🧪 Run E2E tests
+        run: yarn test:login
+
+      - name: 📤 Upload report
+        uses: actions/upload-artifact@v4
+        if: '!cancelled()'
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+          overwrite: true
+            
