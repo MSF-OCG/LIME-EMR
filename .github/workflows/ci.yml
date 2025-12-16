@@ -34,9 +34,8 @@ jobs:
       DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_REGISTRY_PASSWORD }}
   
   deploy-to-dev:
-    # needs: [snapshot, release]
-    # if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'release' }}
-    if: false
+    needs: snapshot
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
     runs-on: ubuntu-latest
     steps:
       - name: Setup SSH Agent
@@ -68,8 +67,9 @@ jobs:
             export TRAEFIK="true" && export INSTANCE="dev" && bash start-bundled.sh
           EOF
 
-  e2e-tests:
-    # needs: deploy-to-dev
+  run-e2e-dev-tests:
+    needs: deploy-to-dev
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout repo
