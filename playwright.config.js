@@ -9,7 +9,7 @@ const path = require('path');
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-require('dotenv').config({ path: path.resolve(__dirname, 'e2e/e2e.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * @see https://playwright.dev/docs/test-configuration
