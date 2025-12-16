@@ -61,9 +61,6 @@ jobs:
               -H 'Authorization: token ${{ secrets.LIME_EMR_TOOLING_GITHUB_TOKEN }}' \
               https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-Tooling/main/Procedures/pull_bundled_docker_scripts.sh | bash
 
-            # Add BACKUP_PATH in azure.concatenated.env
-            sed -i 's|^BACKUP_PATH=.*|BACKUP_PATH=/home/azureuser/BACKUPS/restic|' /home/azureuser/MOSUL/Bundled-Docker/azure.concatenated.env
-            
             # Navigate to scripts directory
             cd /home/azureuser/MOSUL/Bundled-Docker/scripts
             
