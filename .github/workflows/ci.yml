@@ -36,6 +36,7 @@ jobs:
   deploy-to-dev:
     # needs: [snapshot, release]
     # if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'release' }}
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Setup SSH Agent
@@ -71,14 +72,14 @@ jobs:
           EOF
 
   e2e-tests:
-    needs: deploy-to-dev
+    # needs: deploy-to-dev
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout repo
         uses: actions/checkout@v4
 
       - name: 📝 Copy test environment variables
-        run: cp e2e/e2e.env.example e2e/e2e.env
+        run: cp e2e/dev.e2e.env e2e/e2e.env
 
       - name: 🛠️ Setup node
         uses: actions/setup-node@v4

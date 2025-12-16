@@ -1,11 +1,15 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
+const path = require('path');
+
+// Load environment variables for e2e (prefer .env.e2e here, fall back to root .env)
+// require('dotenv').config({ path: path.resolve(__dirname, '.env.e2e') });
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+require('dotenv').config({ path: path.resolve(__dirname, 'e2e/e2e.env') });
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -25,7 +29,7 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+    baseURL: process.env.OPENMRS_BASE_URL || 'https://lime-mosul-dev.madiro.org/openmrs/spa',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -39,8 +43,8 @@ module.exports = defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        // Use prepared auth state.
-        storageState: 'playwright/.auth/user.json',
+        // Use prepared auth state (auth file lives under e2e/ now).
+        storageState: path.join(__dirname, 'e2e/playwright/.auth/user.json'),
       },
       dependencies: ['setup'],
     }

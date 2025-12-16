@@ -8,7 +8,7 @@ test('Sample Form - Verify UI elements and interactions', async ({ page }) => {
   await page.goto('https://dev3.openmrs.org/openmrs/spa/login');
   await page.getByLabel('Username').fill('admin');
   await page.getByRole('button', { name: 'Continue' }).click();
-  await page.getByLabel('Password').fill('Admin123');
+  await page.locator('input#password').fill('Admin123');
   await page.getByRole('button', { name: 'Log in' }).click();
 
   // Verify that Home is visible post-login
