@@ -1,4 +1,4 @@
-package org.openmrs.module.drools.hemoglobin.rules
+package org.openmrs.module.drools.hemoglobin
 
 import org.openmrs.Patient
 import org.openmrs.Obs
@@ -13,7 +13,7 @@ rule "Low_Hemoglobin"
     when
         $patient: Patient()
     then
-        Concept hbConcept = Context.getConceptService().getConceptByMapping("1208", "CIEL");
+        Concept hbConcept = Context.getConceptService().getConceptByMapping("21", "CIEL");
 
         java.util.List<Obs> obsList = Context.getObsService().getObservationsByPersonAndConcept(
             $patient,

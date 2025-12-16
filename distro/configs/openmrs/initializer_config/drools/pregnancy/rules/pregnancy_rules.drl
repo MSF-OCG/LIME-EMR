@@ -1,4 +1,4 @@
-package org.openmrs.module.drools.pregnancy.rules
+package org.openmrs.module.drools.pregnancy
 
 import org.openmrs.Patient
 import org.openmrs.Concept
@@ -13,8 +13,8 @@ rule "Pregnancy"
     when
         $patient: Patient()
     then
-        // CIEL 293 = Pregnancy confirmed
-        Concept pregnancyConcept = Context.getConceptService().getConceptByMapping("293", "CIEL");
+        // CIEL 152305 = Pregnancy confirmed
+        Concept pregnancyConcept = Context.getConceptService().getConceptByMapping("152305", "CIEL");
 
         if (pregnancyConcept == null) {
             return;

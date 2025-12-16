@@ -1,4 +1,4 @@
-package org.openmrs.module.drools.chronicconditions.rules
+package org.openmrs.module.drools.chronicconditions
 
 import org.openmrs.Patient
 import org.openmrs.Concept
@@ -21,8 +21,8 @@ rule "Chronic_Conditions"
         // 203 = Hypertension
         // 4356 = CHF
         // 137 = Chronic renal failure (CKD)
-        // 1453 = Malignant neoplasm (Cancer)
-        String[] chronicCodes = {"165", "164", "203", "4356", "137", "1453"};
+        // 116031 = Malignant neoplasm (Cancer)
+        String[] chronicCodes = {"165", "164", "203", "4356", "137", "116031"};
 
         java.util.Set<Concept> chronicConcepts = new HashSet<Concept>();
         for (String code : chronicCodes) {

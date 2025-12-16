@@ -1,4 +1,4 @@
-package org.openmrs.module.drools.wbc.rules
+package org.openmrs.module.drools.wbc
 
 import org.openmrs.Patient
 import org.openmrs.Obs
@@ -13,7 +13,7 @@ rule "High_WBC"
     when
         $patient: Patient()
     then
-        Concept wbcConcept = Context.getConceptService().getConceptByMapping("1211", "CIEL");
+        Concept wbcConcept = Context.getConceptService().getConceptByMapping("678", "CIEL");
 
         java.util.List<Obs> obsList = Context.getObsService().getObservationsByPersonAndConcept(
             $patient,
