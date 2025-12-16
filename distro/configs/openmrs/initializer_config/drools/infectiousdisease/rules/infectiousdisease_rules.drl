@@ -10,7 +10,7 @@ import org.openmrs.module.patientflags.PatientFlag
 import java.util.Arrays
 import java.util.HashSet
 
-global org.openmrs.module.drools.calculation.DroolsCalculationService service;
+global Object service;
 
 rule "Infectious_Disease"
     agenda-group "infectiousdisease"
@@ -61,6 +61,8 @@ rule "Infectious_Disease"
             // MRSA
             "134228"
         };
+
+        System.out.println("drools executing updated ID file!");
 
         java.util.Set<Concept> infectiousConcepts = new HashSet<Concept>();
         for (String code : infectiousCodes) {
