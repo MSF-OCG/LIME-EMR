@@ -26,10 +26,10 @@ jobs:
     # if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
     uses: ./.github/workflows/deploy.yml
     with:
-      ssh_user: ${{ secrets.LIME_MOSUL_AZURE_DEV_SSH_USER }}
       instance: 'dev'
       traefik_enabled: 'true'
     secrets:
+      ssh_user: ${{ secrets.LIME_MOSUL_AZURE_DEV_SSH_USER }}
       ssh_private_key: ${{ secrets.LIME_MOSUL_AZURE_DEV_SSH_KEY }}
 
   run-e2e-dev-tests:
@@ -62,10 +62,10 @@ jobs:
     if: ${{ github.event_name == 'release' }}
     uses: ./.github/workflows/deploy.yml
     with:
-      ssh_user: ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_USER }}
       instance: 'uat'
       traefik_enabled: 'true'
     secrets:
+      ssh_user: ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_USER }}
       ssh_private_key: ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_KEY }}
 
   run-e2e-uat-tests:
