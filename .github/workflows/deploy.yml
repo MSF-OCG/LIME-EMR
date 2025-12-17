@@ -1,0 +1,71 @@
+name: Deploy to Remote Server
+
+on:
+  workflow_call:
+    inputs:
+      ssh_user:
+        description: 'SSH username for the target server'
+        required: true
+        type: string
+      instance:
+        description: 'Instance name (e.g., dev, uat)'
+        required: true
+        type: string
+      traefik_enabled:
+        description: 'Enable Traefik'
+        required: false
+        type: string
+        default: 'true'
+    secrets:
+      ssh_private_key:
+        description: 'SSH private key for authentication'
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔧 Set domain based on instance
+        id: set-domain
+        run: |
+          if [ "${{ inputs.instance }}" == "dev" ]; then
+            echo "domain=lime-mosul-dev.madiro.org" >> $GITHUB_OUTPUT
+          elif [ "${{ inputs.instance }}" == "uat" ]; then
+            echo "domain=lime-mosul-uat.madiro.org" >> $GITHUB_OUTPUT
+          else
+            echo "Unknown instance: ${{ inputs.instance }}"
+            exit 1
+          fi
+      
+      - name: Setup SSH Agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.ssh_private_key }}
+          log-public-key: false
+      
+      - name: Add SSH known hosts
+        run: |
+          ssh-keyscan -H ${{ steps.set-domain.outputs.domain }} >> ~/.ssh/known_hosts
+      
+      - name: Deploy to ${{ inputs.instance }} Environment
+        run: |
+          ssh ${{ inputs.ssh_user }}@${{ steps.set-domain.outputs.domain }} << 'EOF'
+            set -e
+            
+            # Navigate to MOSUL directory
+            cd /home/${{ inputs.ssh_user }}/MOSUL
+            
+            # Pull bundled docker scripts
+            curl -sSL -H 'Cache-Control: no-cache, no-store' \
+              -H 'Authorization: token ${{ secrets.LIME_EMR_TOOLING_GITHUB_TOKEN }}' \
+              https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-Tooling/main/Procedures/pull_bundled_docker_scripts.sh | bash
+
+            # Remove all Docker images to save space
+            docker image prune -a -f || echo "No images to remove or Docker not running"
+
+            # Navigate to scripts directory
+            cd /home/${{ inputs.ssh_user }}/MOSUL/Bundled-Docker/scripts
+            
+            # Start LIME services
+            export TRAEFIK="${{ inputs.traefik_enabled }}" && export INSTANCE="${{ inputs.instance }}" && bash start-bundled.sh
+          EOF
