@@ -48,11 +48,11 @@ jobs:
       
       - name: Deploy to ${{ inputs.instance }} Environment
         run: |
-          ssh ${{ inputs.ssh_user }}@${{ steps.set-domain.outputs.domain }} << 'EOF'
+          ssh ${{ secrets.ssh_user }}@${{ steps.set-domain.outputs.domain }} << 'EOF'
             set -e
             
             # Navigate to MOSUL directory
-            cd /home/${{ inputs.ssh_user }}/MOSUL
+            cd /home/${{ secrets.ssh_user }}/MOSUL
             
             # Pull bundled docker scripts
             curl -sSL -H 'Cache-Control: no-cache, no-store' \
@@ -63,7 +63,7 @@ jobs:
             docker image prune -a -f || echo "No images to remove or Docker not running"
 
             # Navigate to scripts directory
-            cd /home/${{ inputs.ssh_user }}/MOSUL/Bundled-Docker/scripts
+            cd /home/${{ secrets.ssh_user }}/MOSUL/Bundled-Docker/scripts
             
             # Start LIME services
             export TRAEFIK="${{ inputs.traefik_enabled }}" && export INSTANCE="${{ inputs.instance }}" && bash start-bundled.sh
