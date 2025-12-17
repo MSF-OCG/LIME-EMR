@@ -1447,6 +1447,58 @@
                 ]
               },
               "inlineMultiCheckbox": true
+            },
+            {
+              "id": "circulatoryAeType",
+              "label": "Circulatory AE type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "acccf693-a04b-4371-a742-c677df26abe9",
+                "answers": [
+                  {
+                    "label": "Cardiac",
+                    "concept": "f6de7ad2-fe13-456c-99e4-1dec13382b7a"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "86e4bcc0-fff8-4719-9129-7edb5281431c"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9'))"
+              }
+            },
+            {
+              "id": "skinAeType",
+              "label": "Skin AE type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "521a45ea-064e-4239-abec-0bf128336981",
+                "answers": [
+                  {
+                    "label": "Wound needing chronic care",
+                    "concept": "a10c21ba-0eb3-400e-8885-38275f566385"
+                  },
+                  {
+                    "label": "Severe necrosis + disability",
+                    "concept": "395ed141-f523-4db7-9f6f-6212d9557e92"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a'))"
+              }
             }
           ]
         },
@@ -1613,39 +1665,15 @@
                 "concept": "a99691ce-d2a3-4122-8bd9-480833971802"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301')) ||(respiratoryAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301') || (respiratoryAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
             }
           ]
         },
         {
-          "label": "Circulatory",
+          "label": "Circulatory - Cardiac",
           "isExpanded": false,
           "questions": [
-            {
-              "id": "circulatoryAeType",
-              "label": "Circulatory AE type",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "multiCheckbox",
-                "concept": "acccf693-a04b-4371-a742-c677df26abe9",
-                "answers": [
-                  {
-                    "label": "Cardiac",
-                    "concept": "f6de7ad2-fe13-456c-99e4-1dec13382b7a"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "86e4bcc0-fff8-4719-9129-7edb5281431c"
-                  }
-                ]
-              },
-              "inlineMultiCheckbox": true,
-              "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9'))"
-              }
-            },
             {
               "id": "cardiacAeDiagnosis",
               "label": "Diagnosis (description)",
@@ -1656,7 +1684,7 @@
                 "concept": "0e44d298-f61d-493b-8fde-08b55de253c8"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')"
               }
             },
             {
@@ -1669,7 +1697,7 @@
                 "concept": "483670c4-39ff-43ea-8f96-d478bba4cc47"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')"
               },
               "validators": [
                 {
@@ -1688,7 +1716,7 @@
                 "concept": "7d453e4b-1efa-49ec-b566-5b1f770ae8c4"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')"
               },
               "validators": [
                 {
@@ -1730,7 +1758,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')"
               }
             },
             {
@@ -1769,7 +1797,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')"
               }
             },
             {
@@ -1792,7 +1820,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')"
               }
             },
             {
@@ -1805,9 +1833,15 @@
                 "concept": "051ef67d-10b0-4e00-a729-b759c2a21a1a"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')) ||(cardiacAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a') || (cardiacAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
-            },
+            }
+          ]
+        },
+        {
+          "label": "Circulatory - Other",
+          "isExpanded": false,
+          "questions": [
             {
               "id": "circulatoryAeDiagnosis",
               "label": "Diagnosis (description)",
@@ -1818,7 +1852,7 @@
                 "concept": "c7df5993-4d8d-4900-ba52-f61e6d0dc7e9"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')"
               }
             },
             {
@@ -1831,7 +1865,7 @@
                 "concept": "79452ea5-3f3d-4178-92d4-3abdc76d79e8"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')"
               },
               "validators": [
                 {
@@ -1850,7 +1884,7 @@
                 "concept": "7979e79f-987b-453d-88f9-67c8fc30b0ab"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')"
               },
               "validators": [
                 {
@@ -1892,7 +1926,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')"
               }
             },
             {
@@ -1931,7 +1965,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')"
               }
             },
             {
@@ -1954,7 +1988,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')"
               }
             },
             {
@@ -1967,7 +2001,7 @@
                 "concept": "8dad0a33-9050-427c-808a-a07f1c5dda13"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9')) || (!includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')) || (circulatoryAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c') || (circulatoryAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
             }
           ]
@@ -2135,7 +2169,7 @@
                 "concept": "e16a1ba1-0ded-4c9a-ba8e-d7e0f66333ea"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4')) ||(gastrointestinalAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4') || (gastrointestinalAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
             }
           ]
@@ -2303,7 +2337,7 @@
                 "concept": "f09c4d34-eb69-42c1-8a22-63ddd80036ea"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c21beebb-8ec7-4c1a-b987-b0ebc89415a9')) || (highTempAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'c21beebb-8ec7-4c1a-b987-b0ebc89415a9') || (highTempAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
             }
           ]
@@ -2471,7 +2505,7 @@
                 "concept": "9f93994d-5b0c-4638-89a0-c81557947cdd"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e')) || (serumSicknessRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e') || (serumSicknessRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
             }
           ]
@@ -2639,43 +2673,15 @@
                 "concept": "2b78bd66-6dd3-4b2c-a420-d68d9299a85b"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f')) || (ptsdRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f') || (ptsdRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
             }
           ]
         },
         {
-          "label": "Skin",
+          "label": "Skin - Wound",
           "isExpanded": false,
           "questions": [
-            {
-              "id": "skinAeType",
-              "label": "Skin AE type",
-              "type": "obs",
-              "required": false,
-              "questionOptions": {
-                "rendering": "multiCheckbox",
-                "concept": "521a45ea-064e-4239-abec-0bf128336981",
-                "answers": [
-                  {
-                    "label": "Wound needing chronic care",
-                    "concept": "a10c21ba-0eb3-400e-8885-38275f566385"
-                  },
-                  {
-                    "label": "Severe necrosis + disability",
-                    "concept": "395ed141-f523-4db7-9f6f-6212d9557e92"
-                  },
-                  {
-                    "label": "Other",
-                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-                  }
-                ]
-              },
-              "inlineMultiCheckbox": true,
-              "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a'))"
-              }
-            },
             {
               "id": "woundDiagnosis",
               "label": "Diagnosis (description)",
@@ -2686,7 +2692,7 @@
                 "concept": "b080df13-2710-4c05-b879-34423a26e88a"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')"
               }
             },
             {
@@ -2699,7 +2705,7 @@
                 "concept": "159ff2c9-c315-4d76-9491-eea1a6917ca8"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')"
               },
               "validators": [
                 {
@@ -2718,7 +2724,7 @@
                 "concept": "6e4251e1-fd5e-4b47-9812-b54f6c71dc4f"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')"
               },
               "validators": [
                 {
@@ -2760,7 +2766,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')"
               }
             },
             {
@@ -2799,7 +2805,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')"
               }
             },
             {
@@ -2822,7 +2828,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')"
               }
             },
             {
@@ -2835,9 +2841,15 @@
                 "concept": "8776fb45-ed24-4258-b97e-8cb1eeb67c85"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')) || (woundRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385') || (woundRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
-            },
+            }
+          ]
+        },
+        {
+          "label": "Skin - Necrosis",
+          "isExpanded": false,
+          "questions": [
             {
               "id": "severeNecrosisPlusDisabilityDiagnosis",
               "label": "Diagnosis (description)",
@@ -2848,7 +2860,7 @@
                 "concept": "2a730484-f38d-4d33-8a77-e019fb10700a"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')"
               }
             },
             {
@@ -2861,7 +2873,7 @@
                 "concept": "0cafe210-e73f-46c5-86d6-558072500769"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')"
               },
               "validators": [
                 {
@@ -2880,7 +2892,7 @@
                 "concept": "2c2b245a-7675-42be-9888-39420ccd242c"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')"
               },
               "validators": [
                 {
@@ -2922,7 +2934,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')"
               }
             },
             {
@@ -2961,7 +2973,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')"
               }
             },
             {
@@ -2984,7 +2996,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')"
               }
             },
             {
@@ -2997,9 +3009,15 @@
                 "concept": "c6356ec9-7872-4f99-8755-b733770cea73"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')) || (severeNecrosisPlusDisabilityRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92') || (severeNecrosisPlusDisabilityRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
-            },
+            }
+          ]
+        },
+        {
+          "label": "Skin - Other",
+          "isExpanded": false,
+          "questions": [
             {
               "id": "skinAeDiagnosis",
               "label": "Diagnosis (description)",
@@ -3010,7 +3028,7 @@
                 "concept": "5c22d7a3-5e92-4d01-b15f-4c42b74c6c49"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             },
             {
@@ -3023,7 +3041,7 @@
                 "concept": "febd264e-3816-485b-9e8e-b3302e735f6c"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               },
               "validators": [
                 {
@@ -3042,7 +3060,7 @@
                 "concept": "58d31238-e49a-4a1b-ad44-9ac065f8a305"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               },
               "validators": [
                 {
@@ -3084,7 +3102,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             },
             {
@@ -3123,7 +3141,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             },
             {
@@ -3146,7 +3164,7 @@
                 ]
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             },
             {
@@ -3159,7 +3177,7 @@
                 "concept": "143735d2-302d-4cef-aa17-1b4cca4ead40"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a')) || (!includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')) || (skinAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002') || (skinAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
             }
           ]
@@ -3327,7 +3345,7 @@
                 "concept": "1e082909-df0e-4ee0-91b7-3a92569f6e09"
               },
               "hide": {
-                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002')) || (otherAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002') || (otherAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
             }
           ]
