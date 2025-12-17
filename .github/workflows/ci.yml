@@ -29,7 +29,7 @@ jobs:
       instance: 'dev'
       traefik_enabled: 'true'
     secrets:
-      github_token: ${{ secrets.LIME_EMR_TOOLING_GITHUB_TOKEN }}
+      lime_github_token: ${{ secrets.LIME_EMR_TOOLING_GITHUB_TOKEN }}
       ssh_user: ${{ secrets.LIME_MOSUL_AZURE_DEV_SSH_USER }}
       ssh_private_key: ${{ secrets.LIME_MOSUL_AZURE_DEV_SSH_KEY }}
 
@@ -66,7 +66,7 @@ jobs:
       instance: 'uat'
       traefik_enabled: 'true'
     secrets:
-      github_token: ${{ secrets.LIME_EMR_TOOLING_GITHUB_TOKEN }}
+      lime_github_token: ${{ secrets.LIME_EMR_TOOLING_GITHUB_TOKEN }}
       ssh_user: ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_USER }}
       ssh_private_key: ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_KEY }}
 

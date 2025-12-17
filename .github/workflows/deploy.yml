@@ -13,7 +13,7 @@ on:
         type: string
         default: 'true'
     secrets:
-      github_token:
+      lime_github_token:
         description: 'GitHub token to access tooling'
         required: true
       ssh_user:
@@ -59,7 +59,7 @@ jobs:
             
             # Pull bundled docker scripts
             curl -sSL -H 'Cache-Control: no-cache, no-store' \
-              -H 'Authorization: token ${{ secrets.github_token }}' \
+              -H 'Authorization: token ${{ secrets.lime_github_token }}' \
               https://raw.githubusercontent.com/MSF-OCG/LIME-EMR-Tooling/main/Procedures/pull_bundled_docker_scripts.sh | bash
 
             # Remove all Docker images to save space
