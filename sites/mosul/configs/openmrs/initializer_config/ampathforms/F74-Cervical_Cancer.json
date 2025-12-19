@@ -1,0 +1,2054 @@
+{
+  "name": "F74-Cervical Cancer",
+  "description": "MSF Form - F74-Cervical Cancer",
+  "version": "1",
+  "published": true,
+  "uuid": "7f9cfdc1-4cdf-4da9-85e8-f92b456006c1",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Cervical Cancer",
+  "encounterType": "512239e7-d6b7-458d-9aae-0f22be863e5f",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Consultation information",
+      "sections": [
+        {
+          "label": "Consultation information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "consultationType",
+              "label": "Consultation type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "81ced581-eaea-4279-a091-fa409ef199ed",
+                "answers": [
+                  {
+                    "label": "First visit",
+                    "concept": "7eaec486-ee83-443b-a964-1ddce9b31f52"
+                  },
+                  {
+                    "label": "Follow up visit",
+                    "concept": "f5dc7cdd-dc1b-4a83-8981-ec03b390149e"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Consultation Information",
+      "sections": [
+        {
+          "label": "Consultation Information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "referredBy",
+              "label": "Referred by",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "88da0e72-48e5-46a1-8456-615408d122b3",
+                "answers": [
+                  {
+                    "label": "Self Referral",
+                    "concept": "8d9386b1-a641-4155-9822-7a06a16aa8e8"
+                  },
+                  {
+                    "label": "Completed",
+                    "concept": "617087a8-548b-4b48-b979-ad854de98bed"
+                  },
+                  {
+                    "label": "MSF",
+                    "concept": "74c9a7c6-e64d-4f49-b8a6-f10999eb25bc"
+                  },
+                  {
+                    "label": "Partial",
+                    "concept": "74714556-0ec4-4374-bc33-d4c7dee02bd2"
+                  },
+                  {
+                    "label": "Other health structure (non MSF)",
+                    "concept": "923c6b39-4094-45e4-95ab-b44f7a381980"
+                  },
+                  {
+                    "label": "Not started",
+                    "concept": "59d7e999-b0c0-4a9e-8f01-1a365ed48640"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(consultationType !== '7eaec486-ee83-443b-a964-1ddce9b31f52')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "Current illness",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "historyOfThePresentCondition",
+              "label": "History of the present condition",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "4ed7be54-3759-4a39-904b-ddefc9a22459"
+              },
+              "questionInfo": "If follow up consultation, changes in the condition since last consultation"
+            },
+            {
+              "id": "symptoms",
+              "label": "Symptoms",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "5e373da0-6fd2-4c00-92ec-8d08ade5f72b",
+                "answers": [
+                  {
+                    "label": "Post-coital bleeding",
+                    "concept": "9f27fdd3-c834-41ed-aa9b-b1e5f0499ac5"
+                  },
+                  {
+                    "label": "Intermenstrual bleeding",
+                    "concept": "5f65ddb3-2860-472e-bc99-e122c100c72a"
+                  },
+                  {
+                    "label": "Post-menopausal bleeding",
+                    "concept": "d4bff2ca-f8f8-408f-b934-fb30789c35b4"
+                  },
+                  {
+                    "label": "Foul-smelling vaginal discharge",
+                    "concept": "d3f156c1-db81-427a-a689-84c0690f9d24"
+                  },
+                  {
+                    "label": "Pelvic or lower abdominal pain",
+                    "concept": "f77fc465-ba40-4027-8c93-0ccc4890a69b"
+                  },
+                  {
+                    "label": "Dyspareunia",
+                    "concept": "b365b6b0-cbb0-4a7c-af62-15a77e0e2fe8"
+                  },
+                  {
+                    "label": "Urinary symptoms (dysuria / hematuria / retention)",
+                    "concept": "01c30dc5-af4f-44ae-95e0-23a48f6b9b8b"
+                  },
+                  {
+                    "label": "Bowel symptoms (constipation / rectal bleeding)",
+                    "concept": "adf768a0-41db-44a1-ab10-40a8cf147a0f"
+                  },
+                  {
+                    "label": "Leg pain / swelling",
+                    "concept": "f37e8b9c-f494-4783-ac0d-e830aa69e730"
+                  },
+                  {
+                    "label": "Weight loss / fatigue / loss of appetite",
+                    "concept": "9fd21796-c064-47c2-8ec7-0f070a7a3ff8"
+                  },
+                  {
+                    "label": "Fistula (urine/stool per vagina)",
+                    "concept": "a9252163-4673-4aba-bf37-b9e72b86f8a5"
+                  },
+                  {
+                    "label": "Back pain",
+                    "concept": "9ad2f8c9-f9e8-4e9c-89a2-85d1849e6c0a"
+                  },
+                  {
+                    "label": "Bone pain",
+                    "concept": "5c5050d2-4faa-4590-b042-f36e9e0eb879"
+                  },
+                  {
+                    "label": "Cough / breathlessness",
+                    "concept": "cb17ea3f-4291-47c9-9b9b-524405eca510"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "describeSymptoms",
+              "label": "Describe symptoms",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "53aa255f-db05-49fe-ba83-4d32aa0b9174"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Treatment",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "previousOncologyTreatment",
+              "label": "Previous oncology treatment",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "74cc3cec-89bc-4220-bd94-bec5f9253e6f",
+                "answers": [
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "Thermocoagulation",
+                    "concept": "bf40eaa2-1238-47a4-b127-a2000c01acbb"
+                  },
+                  {
+                    "label": "Cryotherapy",
+                    "concept": "53b0013f-dc8a-4e86-9292-745f93212115"
+                  },
+                  {
+                    "label": "LEEP (Loop Electrosurgical Excision Procedure)",
+                    "concept": "dab30672-726d-40e7-a149-46da297b5f48"
+                  },
+                  {
+                    "label": "Conization",
+                    "concept": "48bd78a5-b819-40d9-8806-9f8a604859d8"
+                  },
+                  {
+                    "label": "Total vaginal hysterectomy",
+                    "concept": "7c6f8c8b-fd80-4a3a-8acf-500cdb0bea9d"
+                  },
+                  {
+                    "label": "Radical Hysterectomy",
+                    "concept": "fe3c7780-035d-409f-809f-a1c0055808f6"
+                  },
+                  {
+                    "label": "Radiation therapy",
+                    "concept": "2e5bf9f3-1cc2-49ab-91f4-fd0e9fdec4e3"
+                  },
+                  {
+                    "label": "Chemotherapy",
+                    "concept": "550998a5-7256-44e4-8622-803fbf4d74c0"
+                  },
+                  {
+                    "label": "Vesicovaginal fistula repair",
+                    "concept": "e734b3ce-d203-4ea3-b137-bd44721c3a9f"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "questionInfo": "If follow up consultation, select only new treatment since last consultation"
+            },
+            {
+              "id": "thermocoagulationDate",
+              "label": "Thermocoagulation date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "219d2efb-01c9-430b-93fb-99a45d27523e"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, 'bf40eaa2-1238-47a4-b127-a2000c01acbb'))"
+              }
+            },
+            {
+              "id": "thermocoagulationPerformedByMsf",
+              "label": "Thermocoagulation performed by MSF?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "218aaef7-0d91-4b1c-9560-3b8847071372",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, 'bf40eaa2-1238-47a4-b127-a2000c01acbb'))"
+              }
+            },
+            {
+              "id": "cryotherapyDate",
+              "label": "Cryotherapy date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "219d2efb-01c9-430b-93fb-99a45d27523e"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, '53b0013f-dc8a-4e86-9292-745f93212115'))"
+              }
+            },
+            {
+              "id": "cryotherapyPerformedByMsf",
+              "label": "Cryotherapy performed by MSF?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "218aaef7-0d91-4b1c-9560-3b8847071372",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, '53b0013f-dc8a-4e86-9292-745f93212115'))"
+              }
+            },
+            {
+              "id": "leepDate",
+              "label": "LEEP date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "219d2efb-01c9-430b-93fb-99a45d27523e"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, 'dab30672-726d-40e7-a149-46da297b5f48'))"
+              }
+            },
+            {
+              "id": "leepPerformedByMsf",
+              "label": "LEEP performed by MSF?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "218aaef7-0d91-4b1c-9560-3b8847071372",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, 'dab30672-726d-40e7-a149-46da297b5f48'))"
+              }
+            },
+            {
+              "id": "chemotherapyStartDate",
+              "label": "Chemotherapy, start date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "e290d074-9e4b-4440-bff5-ebedbefcca4d"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, '550998a5-7256-44e4-8622-803fbf4d74c0'))"
+              }
+            },
+            {
+              "id": "chemotherapyNameOfFacility",
+              "label": "Chemotherapy, name of facility",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, '550998a5-7256-44e4-8622-803fbf4d74c0'))"
+              }
+            },
+            {
+              "id": "chemotherapyModality",
+              "label": "Chemotherapy, modality",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "90276289-59bd-415f-b826-b7c6aecce6ce"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, '550998a5-7256-44e4-8622-803fbf4d74c0'))"
+              }
+            },
+            {
+              "id": "radiationTherapyStartDate",
+              "label": "Radiation therapy, start date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "e290d074-9e4b-4440-bff5-ebedbefcca4d"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, '2e5bf9f3-1cc2-49ab-91f4-fd0e9fdec4e3'))"
+              }
+            },
+            {
+              "id": "radiationTherapyNameOfFacility",
+              "label": "Radiation therapy, name of facility",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, '2e5bf9f3-1cc2-49ab-91f4-fd0e9fdec4e3'))"
+              }
+            },
+            {
+              "id": "radiationTherapyModality",
+              "label": "Radiation therapy, modality",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "90276289-59bd-415f-b826-b7c6aecce6ce"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, '2e5bf9f3-1cc2-49ab-91f4-fd0e9fdec4e3'))"
+              }
+            },
+            {
+              "id": "procedureDate",
+              "label": "Procedure date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "e290d074-9e4b-4440-bff5-ebedbefcca4d"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(previousOncologyTreatment, '48bd78a5-b819-40d9-8806-9f8a604859d8') && !includes(previousOncologyTreatment, '7c6f8c8b-fd80-4a3a-8acf-500cdb0bea9d') && !includes(previousOncologyTreatment, 'fe3c7780-035d-409f-809f-a1c0055808f6') && !includes(previousOncologyTreatment, 'e734b3ce-d203-4ea3-b137-bd44721c3a9f'))"
+              }
+            },
+            {
+              "id": "describeOutcomesAndAnyComplicationFromTreatments",
+              "label": "Describe outcomes and any complication from treatments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "38b05d5f-1f12-4b79-8088-bd44c8243fb3"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Medical",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "comorbidities",
+              "label": "Comorbidities",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "c0c600b8-7b28-4a2b-bc76-87c79d21bf4b",
+                "answers": [
+                  {
+                    "label": "Anaemia",
+                    "concept": "a116ddd7-46af-4183-8b76-babcf2029ed6"
+                  },
+                  {
+                    "label": "Anxiety disorders",
+                    "concept": "2564bdee-c24c-4d96-903e-d44010f2a8ec"
+                  },
+                  {
+                    "label": "Asthma",
+                    "concept": "c10a05bc-e814-4693-a789-1eb884270381"
+                  },
+                  {
+                    "label": "Chronic headache disorders",
+                    "concept": "83956de4-2640-4e91-9b95-f0b03ac6ff6b"
+                  },
+                  {
+                    "label": "Chronic kidney disease",
+                    "concept": "84fc5a0d-0158-4c41-b6e5-8ac7ebfccc0c"
+                  },
+                  {
+                    "label": "Convulsion",
+                    "concept": "3ca8ac73-e503-45d0-913b-3df11f6b0975"
+                  },
+                  {
+                    "label": "Depression",
+                    "concept": "2066f043-2f21-4c19-8c04-77301d7404f9"
+                  },
+                  {
+                    "label": "Diabetes Mellitus",
+                    "concept": "4930dcb4-1f94-42b8-8406-1d4c575c6327"
+                  },
+                  {
+                    "label": "Heart disease",
+                    "concept": "d682a3b5-15bf-4814-b82e-c49fee869e3b"
+                  },
+                  {
+                    "label": "HIV",
+                    "concept": "70e10845-7405-4de1-a283-c95326a90eb5"
+                  },
+                  {
+                    "label": "HPV",
+                    "concept": "4eb5692b-4bb4-4783-a946-578e66ed0385"
+                  },
+                  {
+                    "label": "Hypertension",
+                    "concept": "10f3b49c-c3dc-4aa7-857f-3f9bb7df8dd0"
+                  },
+                  {
+                    "label": "Mental disorder",
+                    "concept": "eea2cb48-389c-42c8-8fe3-5b74d827ef81"
+                  },
+                  {
+                    "label": "Other pathology",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Other immunodeficiencies",
+                    "concept": "a92dc502-5951-4044-819a-f4ab02560015"
+                  },
+                  {
+                    "label": "Phlebitis and thrombophlebitis",
+                    "concept": "bf893c83-01ee-4a2a-8fdb-c663b706f1a5"
+                  },
+                  {
+                    "label": "Pulmonary embolism",
+                    "concept": "da4cfeb2-c11b-407e-9e31-c44daf8567c0"
+                  },
+                  {
+                    "label": "Schizophrenia",
+                    "concept": "f77070aa-ebf0-48d5-8714-47f92fe70a81"
+                  },
+                  {
+                    "label": "Thyroid disease",
+                    "concept": "cb9b825a-e338-4ce6-b587-3c10fc5a2e32"
+                  },
+                  {
+                    "label": "Tuberculosis",
+                    "concept": "ed41ba0d-7410-4374-9fae-c357cd8a8971"
+                  },
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  }
+                ]
+              },
+              "questionInfo": "Check also in 'Conditions' and update it whenever necessary",
+              "hide": {
+                "hideWhenExpression": "(consultationType !== '7eaec486-ee83-443b-a964-1ddce9b31f52')"
+              }
+            },
+            {
+              "id": "riskFactors",
+              "label": "Risk factors",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "133e5282-bb10-47eb-9421-f0dc25299608",
+                "answers": [
+                  {
+                    "label": "Smoking",
+                    "concept": "5924c369-7328-4832-b387-a2e2b6b5d8ee"
+                  },
+                  {
+                    "label": "Alcohol",
+                    "concept": "ec509d6f-a472-4749-bea1-087240bc76cb"
+                  },
+                  {
+                    "label": "Unprotected sex",
+                    "concept": "e28efe56-e141-4ac3-b3fd-bb2f32b21dcc"
+                  },
+                  {
+                    "label": "Multiple sexual partners",
+                    "concept": "90c6def1-fa38-45a1-abf9-dc52c287dc7b"
+                  },
+                  {
+                    "label": "Previous STIs",
+                    "concept": "799c78cc-8c8f-44e2-9223-0c8e607677a1"
+                  },
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(consultationType !== '7eaec486-ee83-443b-a964-1ddce9b31f52')"
+              }
+            },
+            {
+              "id": "hpvStatus",
+              "label": "HPV status",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4eb5692b-4bb4-4783-a946-578e66ed0385",
+                "answers": [
+                  {
+                    "label": "Indeterminate",
+                    "concept": "fbc53323-c608-49f8-8c6d-c1bd5349c546"
+                  },
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(consultationType !== '7eaec486-ee83-443b-a964-1ddce9b31f52') || (!includes(comorbidities, '4eb5692b-4bb4-4783-a946-578e66ed0385'))"
+              }
+            },
+            {
+              "id": "antiretroviralTherapy",
+              "label": "Antiretroviral therapy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c539228e-8f92-4d14-bf9d-340d1e4a5f77",
+                "answers": [
+                  {
+                    "label": "Did not start",
+                    "concept": "59d7e999-b0c0-4a9e-8f01-1a365ed48640"
+                  },
+                  {
+                    "label": "ART initiated",
+                    "concept": "69832c37-a981-42e1-ad27-6565ed412405"
+                  },
+                  {
+                    "label": "ART re-initiated",
+                    "concept": "8a6efe63-f5b7-4cf5-837f-3564f5a3b99b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(consultationType !== '7eaec486-ee83-443b-a964-1ddce9b31f52') || (!includes(comorbidities, '70e10845-7405-4de1-a283-c95326a90eb5'))"
+              }
+            },
+            {
+              "id": "pleaseCheckInmedicationsAndAddAllActiveAndRelevantPastMedicationUsedByThePatient",
+              "label": "Please check in 'Medications' and add all active and relevant past medication used by the patient",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Please check in 'Medications' and add all active and relevant past medication used by the patient"
+            },
+            {
+              "id": "checkInallergiesAndUpdateItIfNecessary",
+              "label": "Check in 'Allergies' and update it if necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "patient-allergy-form-workspace"
+              }
+            },
+            {
+              "id": "detailsAndAdditionalRelevantMedicalOrSurgicalInformation",
+              "label": "Details and additional relevant medical/surgical information",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              },
+              "hide": {
+                "hideWhenExpression": "(consultationType !== '7eaec486-ee83-443b-a964-1ddce9b31f52')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Gynecological/Obstetrical",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "gravida",
+              "label": "Gravida",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "aa296b81-5599-4076-8e53-e47d6e96159e",
+                "min": 0.0,
+                "max": 20.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "default": 0,
+              "hide": {
+                "hideWhenExpression": "(consultationType !== '7eaec486-ee83-443b-a964-1ddce9b31f52')"
+              }
+            },
+            {
+              "id": "numberOfVaginalDeliveries",
+              "label": "Number of vaginal deliveries",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "99502894-0818-4141-a699-2a5179ff492a",
+                "min": 0.0,
+                "max": 20.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(consultationType !== '7eaec486-ee83-443b-a964-1ddce9b31f52')"
+              }
+            },
+            {
+              "id": "numberOfPreviousCesareanSections",
+              "label": "Number of previous cesarean sections",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9ad86b74-8595-4cbd-b46d-dcd69c157e72",
+                "min": 0.0,
+                "max": 20.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(consultationType !== '7eaec486-ee83-443b-a964-1ddce9b31f52')"
+              }
+            },
+            {
+              "id": "totalNumberOfLivingChildren",
+              "label": "Total number of living children",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "bfaee905-6a8f-4b4d-b66b-fe020d1ca3d8",
+                "min": 0.0,
+                "max": 20.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(consultationType !== '7eaec486-ee83-443b-a964-1ddce9b31f52')"
+              }
+            },
+            {
+              "id": "historyOfObstetricalComplication",
+              "label": "History of obstetrical complication",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "9d55cba6-3290-4d3a-8975-7efb329f326a"
+              },
+              "hide": {
+                "hideWhenExpression": "(consultationType !== '7eaec486-ee83-443b-a964-1ddce9b31f52')"
+              }
+            },
+            {
+              "id": "fertilityIntentions",
+              "label": "Fertility intentions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f5ec193a-c669-4369-b380-5ac49399fe6b",
+                "answers": [
+                  {
+                    "label": "Patient wishes to get pregnant",
+                    "concept": "9ea02075-ef76-431a-b550-cc00360673d0"
+                  },
+                  {
+                    "label": "Patient does not wish to get pregnant",
+                    "concept": "848fe7a1-1cac-4515-a68d-5d0b2a80c0cd"
+                  },
+                  {
+                    "label": "Does not know",
+                    "concept": "7325ccad-fc3c-46ae-b50c-a158f00f9324"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(consultationType !== '7eaec486-ee83-443b-a964-1ddce9b31f52')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Psychological assessment",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "feelingNervousAnxiousOrOnEdgeOverPastTwoWeeks",
+              "label": "Feeling nervous, anxious or on edge over past two weeks",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2b991007-964f-4c62-b10e-eade4644763c",
+                "answers": [
+                  {
+                    "label": "0 = Not at all",
+                    "concept": "b1f9346e-4e88-4812-b442-12742918d851"
+                  },
+                  {
+                    "label": "1 = Several days",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "2 = More than half the days",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "3 = Nearly every day",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "notBeingAbleToStopOrControlWorryingOverPastTwoWeeks",
+              "label": "Not being able to stop or control worrying  over past two weeks",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2e271a4d-11cc-4b67-820e-c462e87fa9a6",
+                "answers": [
+                  {
+                    "label": "0 = Not at all",
+                    "concept": "b1f9346e-4e88-4812-b442-12742918d851"
+                  },
+                  {
+                    "label": "1 = Several days",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "2 = More than half the days",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "3 = Nearly every day",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "littleInterestOrPleasureInDoingThingsOverPastTwoWeeks",
+              "label": "Little interest or pleasure in doing things over past two weeks",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0043dce8-ff93-4c8b-9b79-ae7fbbaa2986",
+                "answers": [
+                  {
+                    "label": "0 = Not at all",
+                    "concept": "b1f9346e-4e88-4812-b442-12742918d851"
+                  },
+                  {
+                    "label": "1 = Several days",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "2 = More than half the days",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "3 = Nearly every day",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "feelingDownDepressedOrHopelessOverPastTwoWeeks",
+              "label": "Feeling down, depressed, or hopeless over past two weeks",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "701871b2-e016-499e-9957-d2ac584ad2fd",
+                "answers": [
+                  {
+                    "label": "0 = Not at all",
+                    "concept": "b1f9346e-4e88-4812-b442-12742918d851"
+                  },
+                  {
+                    "label": "1 = Several days",
+                    "concept": "b631d160-8d40-4cf7-92cd-67f628c889e8"
+                  },
+                  {
+                    "label": "2 = More than half the days",
+                    "concept": "234259ec-5368-4488-8482-4f261cc76714"
+                  },
+                  {
+                    "label": "3 = Nearly every day",
+                    "concept": "8ff1f85c-4f04-4f5b-936a-5aa9320cb66e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "phq4Score",
+              "label": "PHQ-4 score",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "2ef9ed9e-223d-495b-90f3-c6690333a819",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1,
+                "calculate": {
+                  "calculateExpression": "(feelingNervousAnxiousOrOnEdgeOverPastTwoWeeks === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingNervousAnxiousOrOnEdgeOverPastTwoWeeks === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingNervousAnxiousOrOnEdgeOverPastTwoWeeks === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (notBeingAbleToStopOrControlWorryingOverPastTwoWeeks === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : notBeingAbleToStopOrControlWorryingOverPastTwoWeeks === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : notBeingAbleToStopOrControlWorryingOverPastTwoWeeks === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (littleInterestOrPleasureInDoingThingsOverPastTwoWeeks === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : littleInterestOrPleasureInDoingThingsOverPastTwoWeeks === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : littleInterestOrPleasureInDoingThingsOverPastTwoWeeks === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0) + (feelingDownDepressedOrHopelessOverPastTwoWeeks === 'b631d160-8d40-4cf7-92cd-67f628c889e8' ? 1 : feelingDownDepressedOrHopelessOverPastTwoWeeks === '234259ec-5368-4488-8482-4f261cc76714' ? 2 : feelingDownDepressedOrHopelessOverPastTwoWeeks === '8ff1f85c-4f04-4f5b-936a-5aa9320cb66e' ? 3 : 0)"
+                }
+              },
+              "questionInfo": "if > 6 = refer to the counselor"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Physical exam",
+      "sections": [
+        {
+          "label": "General exam",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInvitalsBiometricsFortemperatureweightbpmuacpulserrateAndOtherParametersAndAddCurrentMeasurementsWheneverNecessary",
+              "label": "Please check in 'Vitals & Biometrics' for 'Temperature', 'Weight', 'BP', 'MUAC', 'Pulse', 'R.rate' and other parameters AND add current measurements whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "whoPerformanceStatus",
+              "label": "WHO Performance status (ECOG)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "dc06899b-edaf-4637-9e71-166ec9a600ba",
+                "answers": [
+                  {
+                    "label": "0: Fully active, able to carry on all pre-disease performance without restriction",
+                    "concept": "984d5574-a6f5-40d3-b407-4da3caaf595d"
+                  },
+                  {
+                    "label": "1: Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature",
+                    "concept": "91e06e03-56e2-459d-8e52-27d9491922e5"
+                  },
+                  {
+                    "label": "2: Ambulatory and capable of all self-care but unable to carry out any work activities. Up and about more than 50% of waking hours",
+                    "concept": "76be135d-5788-4723-b439-d087524ba457"
+                  },
+                  {
+                    "label": "3: Capable of only limited self-care, confined to bed or chair more than 50% of waking hours",
+                    "concept": "d54bf1bd-cc06-45e8-9a56-234dbec7ced4"
+                  },
+                  {
+                    "label": "4: Completely disabled. Cannot carry out any selfcare; totally confined to bed or chair",
+                    "concept": "7c80ddf0-ef95-487e-aeae-9488d3fcca17"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "cardiovascular",
+              "label": "Cardiovascular",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "ab7bf6f5-d4c5-4784-92f1-1e10896da021",
+                "answers": [
+                  {
+                    "label": "Dyspnea",
+                    "concept": "bfbe06c9-c5db-4ef8-889b-e6ee47c0de18"
+                  },
+                  {
+                    "label": "Heart failure (NYHA I, II, III or IV)",
+                    "concept": "65d6a573-c8b6-4af5-b8c8-58a71b232ae6"
+                  },
+                  {
+                    "label": "Edema",
+                    "concept": "754d677f-316c-4c31-999d-a328fb8b17e1"
+                  },
+                  {
+                    "label": "Elevated jugular venous pressure",
+                    "concept": "a075b7ae-657d-4be4-aaed-29b5995a9373"
+                  },
+                  {
+                    "label": "Valvular condition",
+                    "concept": "678856f7-0860-491a-95e6-ad52bdcd52b2"
+                  },
+                  {
+                    "label": "Irregular HR",
+                    "concept": "587e482f-2427-49ab-8085-9fae259e929d"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "respiratory",
+              "label": "Respiratory",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "96cc4948-3466-4b53-a80d-b85f179cd402",
+                "answers": [
+                  {
+                    "label": "Wheeze",
+                    "concept": "5b67fa69-a580-4b6d-ad6e-a5d4a7ff401f"
+                  },
+                  {
+                    "label": "Crackle",
+                    "concept": "9111a36f-ca53-4720-8fc1-2ad76eb6e43e"
+                  },
+                  {
+                    "label": "Stridor",
+                    "concept": "b188ff8c-3c40-4adb-9df7-d94f512f2777"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "abdomen",
+              "label": "Abdomen",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "ef7658f4-8d75-4c39-8776-1f8717f4ea4b",
+                "answers": [
+                  {
+                    "label": "Ascites",
+                    "concept": "53be880a-7730-4f5d-be1e-304e0c4bd638"
+                  },
+                  {
+                    "label": "Hepatomegaly",
+                    "concept": "00f989af-80cf-4f18-b37d-f4c8495984f8"
+                  },
+                  {
+                    "label": "Splenomegaly",
+                    "concept": "55412acb-529f-4647-a2a2-fedf4d705793"
+                  },
+                  {
+                    "label": "Scars",
+                    "concept": "dfef6705-08c5-4332-b6ba-0faf0a8c646c"
+                  },
+                  {
+                    "label": "Hernia",
+                    "concept": "52ef1832-1bde-439a-a027-f0a8446b2a1d"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "urology",
+              "label": "Urology",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "68deec3d-3cc2-4aca-9f80-2360203d7ab6",
+                "answers": [
+                  {
+                    "label": "Urine retention",
+                    "concept": "aba849b8-4e4d-4e5e-971d-9e398af63659"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "skin",
+              "label": "Skin",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "137e68e0-03ae-47e6-b2fe-5464bcfe86d2",
+                "answers": [
+                  {
+                    "label": "Jaundice",
+                    "concept": "619cc378-0f74-450e-83a9-5c63abb8a0e4"
+                  },
+                  {
+                    "label": "Kaposi Sarcoma",
+                    "concept": "116ebc7b-a04b-42b6-81fe-fcc0bb6028f2"
+                  },
+                  {
+                    "label": "Bed Sore",
+                    "concept": "75c96065-d804-4b85-8d3f-a313abfdfd8a"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "enlargedLymphNodes",
+              "label": "Enlarged lymph nodes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "d8373167-7088-4e2c-95e9-4b6338a98561",
+                "answers": [
+                  {
+                    "label": "Supra-clavicular",
+                    "concept": "b83f45bd-43ab-4d66-9a08-2ba65227b497"
+                  },
+                  {
+                    "label": "Inguinal",
+                    "concept": "a36657ec-fc04-4466-9fdb-08b74fa42221"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "enterDetailsAndOrOrDescribeAdditionalFindings",
+              "label": "Enter details and/or describe additional findings",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Gynaecological exam",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "genitalWarts",
+              "label": "Genital warts (condyloma)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8790a1a4-73a8-45a0-9f46-0b4edd1af896",
+                "answers": [
+                  {
+                    "label": "Vulva",
+                    "concept": "13ba02cf-905c-4f8c-9d95-e1fd3c8d1394"
+                  },
+                  {
+                    "label": "Vagina",
+                    "concept": "bc1dcc94-a522-4c2e-aa8c-66a423620b5e"
+                  },
+                  {
+                    "label": "Cervix",
+                    "concept": "4bd3e0bf-96e8-411c-b536-9af4542e906d"
+                  },
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "describeFindingsFromInspectionDigitalAndSpeculumExaminationOfTheVulvaVaginaCervixAndRectum",
+              "label": "Describe findings from inspection, digital and speculum examination of the vulva, vagina, cervix and rectum",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "8984db1f-8f1c-4e14-bf34-92c4a4bd0f42"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Investigations",
+      "sections": [
+        {
+          "label": "Investigations",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "checkInresultsForRelevantTestsOrdered",
+              "label": "Check in 'Results' for relevant tests ordered",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Check in 'Results' for relevant tests ordered"
+            },
+            {
+              "id": "examsDone",
+              "label": "Exams done",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "ce8e76f3-28cb-492e-a66f-486d0d4a4340",
+                "answers": [
+                  {
+                    "label": "Pregnancy test",
+                    "concept": "61d473d6-ab11-458e-b841-382bc183fd13"
+                  },
+                  {
+                    "label": "HPV test",
+                    "concept": "52082960-2690-426d-88f4-03a5d12e4483"
+                  },
+                  {
+                    "label": "HIV test",
+                    "concept": "0d0561b7-9895-4936-95ad-4c148a2faf83"
+                  },
+                  {
+                    "label": "Colposcopy",
+                    "concept": "b46828ec-9e0a-4dbc-8700-24e5337b30af"
+                  },
+                  {
+                    "label": "VIA (Visual Inspection with Acetic Acid)",
+                    "concept": "db44ceff-0d9c-4105-9574-a0ad2e4ccd2b"
+                  },
+                  {
+                    "label": "Pap smear (cytology)",
+                    "concept": "75727a3d-d163-42c9-8ba0-72aea618a925"
+                  },
+                  {
+                    "label": "Biopsy",
+                    "concept": "a03b46c6-e70e-4bc5-bb5a-f3520f1f6509"
+                  },
+                  {
+                    "label": "Ultrasound",
+                    "concept": "7b228b86-7023-4ab2-be54-68cace7d576e"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "questionInfo": "If follow up consultation, select only new exams since last consultation"
+            },
+            {
+              "id": "pregnancyTest",
+              "label": "Pregnancy Test",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "61d473d6-ab11-458e-b841-382bc183fd13",
+                "answers": [
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(examsDone, '61d473d6-ab11-458e-b841-382bc183fd13'))"
+              }
+            },
+            {
+              "id": "hpvResult",
+              "label": "HPV result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "49b4650e-fd14-48ac-8458-c502a96152d2",
+                "answers": [
+                  {
+                    "label": "Indeterminate",
+                    "concept": "fbc53323-c608-49f8-8c6d-c1bd5349c546"
+                  },
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(examsDone, '52082960-2690-426d-88f4-03a5d12e4483'))"
+              }
+            },
+            {
+              "id": "hivResult",
+              "label": "HIV result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "49b4650e-fd14-48ac-8458-c502a96152d2",
+                "answers": [
+                  {
+                    "label": "Indeterminate",
+                    "concept": "fbc53323-c608-49f8-8c6d-c1bd5349c546"
+                  },
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(examsDone, '0d0561b7-9895-4936-95ad-4c148a2faf83'))"
+              }
+            },
+            {
+              "id": "lastCd4CountDate",
+              "label": "Last CD4 count date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "5e06ab70-44e3-46de-9fb6-37f796e55e43"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(examsDone, '0d0561b7-9895-4936-95ad-4c148a2faf83')) || (hivResult !== 'ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8')"
+              }
+            },
+            {
+              "id": "lastCd4Count",
+              "label": "Last CD4 count",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "f165dd6b-6919-4da9-8cc6-d847ff7d7e92",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(examsDone, '0d0561b7-9895-4936-95ad-4c148a2faf83')) || (hivResult !== 'ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8')"
+              }
+            },
+            {
+              "id": "descriptionOfAcetoWhiteAreasAndOtherLesions",
+              "label": "Description of aceto-white areas and other lesions (location, size)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a365d76f-5830-4629-9f0d-8a3d30979a16"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(examsDone, 'db44ceff-0d9c-4105-9574-a0ad2e4ccd2b'))"
+              }
+            },
+            {
+              "id": "biopsiesNumberOfSpecimenCollected",
+              "label": "Biopsies, Number of specimen(s) collected",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "0c863bae-a87e-4c3e-becd-42b5e694f517",
+                "disallowDecimals": true,
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(examsDone, 'a03b46c6-e70e-4bc5-bb5a-f3520f1f6509'))"
+              }
+            },
+            {
+              "id": "typeOfBiopsy",
+              "label": "Type of biopsy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "482af9e6-795d-42d9-be5b-64f4df54a63e",
+                "answers": [
+                  {
+                    "label": "Biopsy of cervix",
+                    "concept": "d3205c68-9bd5-4b76-b115-b160674cedaf"
+                  },
+                  {
+                    "label": "Biopsy of endocervix",
+                    "concept": "8271b251-3d39-4eaa-8112-0fdd58a278f1"
+                  },
+                  {
+                    "label": "Curettage of endocervix",
+                    "concept": "0ad93561-40b9-4e3f-b0a6-76ce3df1ab4f"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(examsDone, 'a03b46c6-e70e-4bc5-bb5a-f3520f1f6509'))"
+              }
+            },
+            {
+              "id": "biopsyLocalisation",
+              "label": "Biopsy localisation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e984aabb-8f06-4b8c-9105-a09e533e22da"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(examsDone, 'a03b46c6-e70e-4bc5-bb5a-f3520f1f6509')) || (typeOfBiopsy !== 'd3205c68-9bd5-4b76-b115-b160674cedaf')"
+              }
+            },
+            {
+              "id": "papSmearResult",
+              "label": "Pap smear result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4b69e31f-359f-490a-a9b4-8891ea035f45",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "label": "Abnormal",
+                    "concept": "7beb61a4-2665-4326-a666-5cb4bea7a6ae"
+                  },
+                  {
+                    "label": "Unclear",
+                    "concept": "55124917-bd42-4046-8d8f-dcd7f956647a"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(examsDone, '75727a3d-d163-42c9-8ba0-72aea618a925'))"
+              }
+            },
+            {
+              "id": "relevantFindings",
+              "label": "Relevant findings",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e0edc137-5012-4a8b-bf53-0451e92b8061"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(examsDone, 'b46828ec-9e0a-4dbc-8700-24e5337b30af') && !includes(examsDone, '7b228b86-7023-4ab2-be54-68cace7d576e'))"
+              }
+            },
+            {
+              "id": "commentsOnLabTestsAndInvestigations",
+              "label": "Comments on lab tests and investigations",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis",
+      "sections": [
+        {
+          "label": "Diagnosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "classification",
+              "label": "Classification",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "22809b19-54ca-4d88-8d26-9577637c184e",
+                "answers": [
+                  {
+                    "label": "Benign",
+                    "concept": "43714604-7966-48ea-b403-90e11ee5693c"
+                  },
+                  {
+                    "label": "Malignant",
+                    "concept": "819f604b-e06b-4ae7-bf7d-938a3a0ed40b"
+                  },
+                  {
+                    "label": "Inconclusive",
+                    "concept": "dd8e77b0-35d8-4b46-b6d0-292b2915ce76"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifBenignSpecify",
+              "label": "If benign, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "0b5fef16-0019-4da1-a0c0-33d7c117379e"
+              },
+              "hide": {
+                "hideWhenExpression": "(classification !== '43714604-7966-48ea-b403-90e11ee5693c')"
+              }
+            },
+            {
+              "id": "topographyOfTheTumor",
+              "label": "Topography of the tumor",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b7d7332e-aac2-42b0-b957-8436e831fa22",
+                "answers": [
+                  {
+                    "label": "Vulva",
+                    "concept": "2837ec40-41d0-427f-8a6d-c002cce4795c"
+                  },
+                  {
+                    "label": "Vagina",
+                    "concept": "990489ca-5a07-4ef2-80a9-76463e303ae9"
+                  },
+                  {
+                    "label": "Cervix",
+                    "concept": "a6d724c3-32d2-4b86-b262-871347a9464f"
+                  },
+                  {
+                    "label": "Uterus body",
+                    "concept": "6e5b3a77-0302-45d2-a35e-d9813df7b84b"
+                  },
+                  {
+                    "label": "Ovary",
+                    "concept": "b50b234c-7228-4df1-9f99-e2f24a9884a7"
+                  },
+                  {
+                    "label": "Other genital organs",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(classification !== 'dd8e77b0-35d8-4b46-b6d0-292b2915ce76' && classification !== '819f604b-e06b-4ae7-bf7d-938a3a0ed40b')"
+              }
+            },
+            {
+              "id": "hasTheCancerBeenDisclosed",
+              "label": "Has the cancer been disclosed?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "03ed8c55-0b46-4878-943a-b12e5ae9eb8f",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(classification !== '819f604b-e06b-4ae7-bf7d-938a3a0ed40b')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Clinical FIGO staging",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "extension",
+              "label": "Extension",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "42d855c1-29f5-4ce6-8d4c-fdb780b93526",
+                "answers": [
+                  {
+                    "label": "I - Confined to the cervix",
+                    "concept": "d391d48f-ebf8-4cb7-9fb0-ae46a887cedf"
+                  },
+                  {
+                    "label": "II - Extension beyond the cervix but not to the pelvic wall or to the lower third of the vagina",
+                    "concept": "a0c9a902-6412-4431-84ce-7c23f97dc7ae"
+                  },
+                  {
+                    "label": "III - Extension to the pelvic wall and/or involves the lower third of the vagina and/or causes hydronephrosis or a nonfunctioning kidney",
+                    "concept": "d9cc2b20-e257-4800-80a4-e777a1d51169"
+                  },
+                  {
+                    "label": "IV - Extension beyond the true pelvis or has clinically involved the mucosa of the bladder and/or rectum",
+                    "concept": "1882556d-1793-436c-8066-90664c23da57"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(classification !== '819f604b-e06b-4ae7-bf7d-938a3a0ed40b')"
+              }
+            },
+            {
+              "id": "limitsI",
+              "label": "Limits",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "95cc530e-d5a5-4d43-8160-6a6bfac1d3c0",
+                "answers": [
+                  {
+                    "label": "IA -  Invasive cancer identified only microscopically. Invasion is limited to measured stromal invasion with a maximum depth of 5 mm and no wider than 7 mm",
+                    "concept": "d391d48f-ebf8-4cb7-9fb0-ae46a887cedf"
+                  },
+                  {
+                    "label": "IB - confined to the cervix or preclinical lesions greater than Stage IA",
+                    "concept": "3c191a60-7157-400c-be9a-fc6993309c4d"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(classification !== '819f604b-e06b-4ae7-bf7d-938a3a0ed40b') || (extension !== 'd391d48f-ebf8-4cb7-9fb0-ae46a887cedf')"
+              }
+            },
+            {
+              "id": "limitsIi",
+              "label": "Limits",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "95cc530e-d5a5-4d43-8160-6a6bfac1d3c0",
+                "answers": [
+                  {
+                    "label": "IIA - No obvious parametrial involvement",
+                    "concept": "ae395d9c-9a7b-40c2-938f-d9550e96378f"
+                  },
+                  {
+                    "label": "IIB - Obvious parametrial involvement",
+                    "concept": "de9709be-a68f-4515-ae21-6c0831ac768e"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(classification !== '819f604b-e06b-4ae7-bf7d-938a3a0ed40b') || (extension !== 'a0c9a902-6412-4431-84ce-7c23f97dc7ae')"
+              }
+            },
+            {
+              "id": "limitsIii",
+              "label": "Limits",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "95cc530e-d5a5-4d43-8160-6a6bfac1d3c0",
+                "answers": [
+                  {
+                    "label": "IIIA - No extension into the pelvic sidewall but involvement of the lower third of the vagina",
+                    "concept": "15992739-f136-4e77-a204-8a171e5e8cab"
+                  },
+                  {
+                    "label": "IIIB - Extension into the pelvic sidewall or hydronephrosis or non-functioning kidney",
+                    "concept": "b60b4e54-6859-43a9-b447-7f766e263ac5"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(classification !== '819f604b-e06b-4ae7-bf7d-938a3a0ed40b') || (extension !== 'd9cc2b20-e257-4800-80a4-e777a1d51169')"
+              }
+            },
+            {
+              "id": "limitsIv",
+              "label": "Limits",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "95cc530e-d5a5-4d43-8160-6a6bfac1d3c0",
+                "answers": [
+                  {
+                    "label": "IVA - Spread of the tumour into adjacent pelvic organs",
+                    "concept": "1882556d-1793-436c-8066-90664c23da57"
+                  },
+                  {
+                    "label": "IVB - Spread to distant organs",
+                    "concept": "796b6ad7-a1bd-4363-809d-7a1ea06e605b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(classification !== '819f604b-e06b-4ae7-bf7d-938a3a0ed40b') || (extension !== '1882556d-1793-436c-8066-90664c23da57')"
+              }
+            },
+            {
+              "id": "dimensions",
+              "label": "Dimensions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "633db7fb-7b9d-439e-a632-5214d54a839a",
+                "answers": [
+                  {
+                    "label": "IA1 - Measured invasion of the stroma <3mm in depth and <7mm diameter width",
+                    "concept": "8b5731b8-da9e-4235-b2e4-a4c2fa1eb20e"
+                  },
+                  {
+                    "label": "IA2 - Measured invasion of stroma <3mm but <5mm in depth and <7mm diameter width",
+                    "concept": "758f174f-7893-42b3-ae60-6b020b21e78c"
+                  }
+                ]
+              },
+              "questionInfo": "Microscopy only",
+              "hide": {
+                "hideWhenExpression": "(classification !== '819f604b-e06b-4ae7-bf7d-938a3a0ed40b') || (extension !== 'd391d48f-ebf8-4cb7-9fb0-ae46a887cedf') || (limitsI !== 'd391d48f-ebf8-4cb7-9fb0-ae46a887cedf')"
+              }
+            },
+            {
+              "id": "dimensions_1",
+              "label": "Dimensions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "633db7fb-7b9d-439e-a632-5214d54a839a",
+                "answers": [
+                  {
+                    "label": "IB1 - Lesions \u22644cm",
+                    "concept": "4d937c5e-5dfd-4fc4-984d-8df766fca481"
+                  },
+                  {
+                    "label": "IB2 - Lesions >4cm",
+                    "concept": "04b65a32-3a74-403e-a080-bcdc1b3c0d84"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(classification !== '819f604b-e06b-4ae7-bf7d-938a3a0ed40b') || (extension !== 'd391d48f-ebf8-4cb7-9fb0-ae46a887cedf') || (limitsI !== '3c191a60-7157-400c-be9a-fc6993309c4d')"
+              },
+              "idModified": true,
+              "originalLabel": "Dimensions",
+              "warning": "Question ID was modified from 'Dimensions' to ensure uniqueness"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Treatment",
+      "sections": [
+        {
+          "label": "Treatment",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "managementPlan",
+              "label": "Management Plan",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "78900dd0-228c-48ec-843f-81dae00cd454"
+              }
+            },
+            {
+              "id": "treatmentPrescribed",
+              "label": "Treatment prescribed",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "88b04006-2410-42cd-bbe5-0a4f89d3ebbd",
+                "answers": [
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "Thermocoagulation",
+                    "concept": "bf40eaa2-1238-47a4-b127-a2000c01acbb"
+                  },
+                  {
+                    "label": "Cryotherapy",
+                    "concept": "53b0013f-dc8a-4e86-9292-745f93212115"
+                  },
+                  {
+                    "label": "LEEP (Loop Electrosurgical Excision Procedure)",
+                    "concept": "dab30672-726d-40e7-a149-46da297b5f48"
+                  },
+                  {
+                    "label": "Conization",
+                    "concept": "48bd78a5-b819-40d9-8806-9f8a604859d8"
+                  },
+                  {
+                    "label": "Total vaginal hysterectomy",
+                    "concept": "7c6f8c8b-fd80-4a3a-8acf-500cdb0bea9d"
+                  },
+                  {
+                    "label": "Radical Hysterectomy",
+                    "concept": "fe3c7780-035d-409f-809f-a1c0055808f6"
+                  },
+                  {
+                    "label": "Radiation therapy",
+                    "concept": "2e5bf9f3-1cc2-49ab-91f4-fd0e9fdec4e3"
+                  },
+                  {
+                    "label": "Chemotherapy",
+                    "concept": "550998a5-7256-44e4-8622-803fbf4d74c0"
+                  },
+                  {
+                    "label": "Vesicovaginal fistula repair",
+                    "concept": "e734b3ce-d203-4ea3-b137-bd44721c3a9f"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "multidisciplinaryTeamApproachNeeded",
+              "label": "Multidisciplinary team approach needed?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9b104a8a-3898-4a63-9cae-484005d5994c",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "prescribeMedicationWithTheOrderBasketWheneverNecessary",
+              "label": "Prescribe medication with the order basket whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Referral",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "referral",
+              "label": "Referral",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11",
+                "answers": [
+                  {
+                    "label": "Pre-Treatment patient education",
+                    "concept": "f1968d69-077f-4b95-8914-66e914aaf97e"
+                  },
+                  {
+                    "label": "Counseling",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "Private Hospital / Health Centre",
+                    "concept": "a318c58d-7e74-4e8c-887b-ac9c8a700963"
+                  },
+                  {
+                    "label": "Public Hospital / Health Centre (MoH)",
+                    "concept": "df7bad08-b51b-4380-b3bf-f2e3b9ce7963"
+                  },
+                  {
+                    "label": "Palliative care",
+                    "concept": "f1e4049c-8201-4528-acd9-018171a8da99"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifOtherPleaseSpecify",
+              "label": "If other, please specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(referral !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "reasonForReferral",
+              "label": "Reason for referral",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "(referral !== 'a318c58d-7e74-4e8c-887b-ac9c8a700963' && referral !== 'df7bad08-b51b-4380-b3bf-f2e3b9ce7963' && referral !== 'f1e4049c-8201-4528-acd9-018171a8da99' && referral !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Advance decision",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "advanceDecisionToRefuseTreatmentResuscitationStatus",
+              "label": "Advance decision to refuse treatment & resuscitation status?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f3ab34dd-a845-4203-81a7-eaab8c79d2f7",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(referral !== 'f1e4049c-8201-4528-acd9-018171a8da99')"
+              }
+            },
+            {
+              "id": "specifyAgreement",
+              "label": "Specify agreement",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "6de72d8f-d6ad-4acf-8f24-ef4532e233ee"
+              },
+              "hide": {
+                "hideWhenExpression": "(referral !== 'f1e4049c-8201-4528-acd9-018171a8da99')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Conclusion",
+      "sections": [
+        {
+          "label": "Conclusion",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            },
+            {
+              "id": "inappointmentsSetTheNextDateForFollowUpWheneverNecessary",
+              "label": "In 'Appointments' set the next date for follow up whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
