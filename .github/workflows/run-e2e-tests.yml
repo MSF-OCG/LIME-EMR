@@ -1,0 +1,107 @@
+name: Run E2E Tests
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: 'Environment name (e.g., dev, uat)'
+        required: true
+        type: string
+      node_version:
+        description: 'Node.js version to use'
+        required: false
+        type: string
+        default: '20.x'
+      test_command:
+        description: 'Test command to run (e.g., yarn test:login)'
+        required: false
+        type: string
+        default: 'yarn test:e2e'
+      wait_timeout:
+        description: 'Maximum time to wait for services (in seconds)'
+        required: false
+        type: number
+        default: 600
+      report_retention_days:
+        description: 'Number of days to retain test reports'
+        required: false
+        type: number
+        default: 7
+    secrets:
+      openmrs_username:
+        description: 'OpenMRS username'
+        required: true
+      openmrs_password:
+        description: 'OpenMRS password'
+        required: true
+      openfn_email:
+        description: 'OpenFN email'
+        required: true
+      openfn_password:
+        description: 'OpenFN password'
+        required: true
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🔧 Set domain based on environment
+        id: set-domain
+        run: |
+          if [ "${{ inputs.environment }}" == "dev" ]; then
+            echo "domain=lime-mosul-dev.madiro.org" >> $GITHUB_OUTPUT
+          elif [ "${{ inputs.environment }}" == "uat" ]; then
+            echo "domain=lime-mosul-uat.madiro.org" >> $GITHUB_OUTPUT
+          else
+            echo "Unknown environment: ${{ inputs.environment }}"
+            exit 1
+          fi
+
+      - name: 📝 Create .env file
+        run: |
+          cat > .env << EOF
+          OPENMRS_BASE_URL=https://${{ steps.set-domain.outputs.domain }}/openmrs/spa
+          OPENMRS_USERNAME=${{ secrets.openmrs_username }}
+          OPENMRS_PASSWORD=${{ secrets.openmrs_password }}
+
+          OPENFN_BASE_URL=https://${{ steps.set-domain.outputs.domain }}:4000
+          OPENFN_EMAIL=${{ secrets.openfn_email }}
+          OPENFN_PASSWORD=${{ secrets.openfn_password }}
+          EOF
+
+      - name: 🛠️ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node_version }}
+          cache: 'yarn'
+
+      - name: 📦 Install dependencies
+        run: yarn install --immutable
+
+      - name: 🎭 Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: ⏳ Wait for OpenFN instance to start
+        run: |
+          timeout ${{ inputs.wait_timeout }} bash -c 'while [[ "$(curl -s -o /dev/null -w '\''%{http_code}'\'' https://${{ steps.set-domain.outputs.domain }}:4000/users/log_in)" != "200" ]]; do echo "Waiting for OpenFN..."; sleep 10; done'
+          echo "✅ OpenFN instance is ready"
+
+      - name: ⏳ Wait for OpenMRS instance to start
+        run: |
+          timeout ${{ inputs.wait_timeout }} bash -c 'while [[ "$(curl -s -o /dev/null -w '\''%{http_code}'\'' https://${{ steps.set-domain.outputs.domain }}/openmrs/login.htm)" != "200" ]]; do echo "Waiting for OpenMRS..."; sleep 10; done'
+          echo "✅ OpenMRS instance is ready"
+
+      - name: 🧪 Run E2E tests
+        run: ${{ inputs.test_command }}
+
+      - name: 📤 Upload report
+        uses: actions/upload-artifact@v4
+        if: '!cancelled()'
+        with:
+          name: playwright-report-${{ inputs.environment }}
+          path: playwright-report/
+          retention-days: ${{ inputs.report_retention_days }}
+          overwrite: true
