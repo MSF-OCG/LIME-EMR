@@ -1,10 +1,8 @@
 package org.openmrs.module.drools.infectiousdisease
 
-// TODO: Missing MRSA!
-
 import org.openmrs.Patient
 import org.openmrs.Concept
-import org.openmrs.Condition
+import org.openmrs.Diagnosis
 import org.openmrs.api.context.Context
 import org.openmrs.module.patientflags.PatientFlag
 import java.util.Arrays
@@ -62,8 +60,6 @@ rule "Infectious_Disease"
             "134228"
         };
 
-        System.out.println("drools executing updated ID file!");
-
         java.util.Set<Concept> infectiousConcepts = new HashSet<Concept>();
         for (String code : infectiousCodes) {
             Concept c = Context.getConceptService().getConceptByMapping(code, "CIEL");
@@ -72,15 +68,16 @@ rule "Infectious_Disease"
             }
         }
 
-        java.util.List<Condition> conditions = Context.getConditionService().getActiveConditions($patient);
+        // Check encounter diagnoses instead of conditions
+        java.util.List<Diagnosis> diagnoses = Context.getDiagnosisService().getDiagnoses($patient, null);
 
         boolean hasInfectiousDisease = false;
 
-        if (conditions != null) {
-            for (Condition condition : conditions) {
-                if (condition.getCondition() != null &&
-                    condition.getCondition().getCoded() != null &&
-                    infectiousConcepts.contains(condition.getCondition().getCoded())) {
+        if (diagnoses != null) {
+            for (Diagnosis diagnosis : diagnoses) {
+                if (diagnosis.getDiagnosis() != null &&
+                    diagnosis.getDiagnosis().getCoded() != null &&
+                    infectiousConcepts.contains(diagnosis.getDiagnosis().getCoded())) {
                     hasInfectiousDisease = true;
                     break;
                 }

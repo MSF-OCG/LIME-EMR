@@ -5,6 +5,7 @@ import org.openmrs.Obs
 import org.openmrs.Concept
 import org.openmrs.api.context.Context
 import org.openmrs.module.patientflags.PatientFlag
+import org.openmrs.module.drools.utils.CommonUtils
 import java.util.Collections
 import java.util.Comparator
 
@@ -15,7 +16,12 @@ rule "Acute_Kidney_Injury"
     when
         $patient: Patient()
     then
-        Concept creatinineConcept = Context.getConceptService().getConceptByMapping("1212", "CIEL");
+        // Use CommonUtils to get concept by SAME-AS mapping only
+        Concept creatinineConcept = CommonUtils.getConceptBySameAsMapping("790", "CIEL");
+
+        if (creatinineConcept == null) {
+            return;
+        }
 
         java.util.List<Obs> obsList = Context.getObsService().getObservationsByPersonAndConcept(
             $patient,

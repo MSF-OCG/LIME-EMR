@@ -13,7 +13,7 @@ rule "High_INR"
     when
         $patient: Patient()
     then
-        Concept inrConcept = Context.getConceptService().getConceptByMapping("3974", "CIEL");
+        Concept inrConcept = Context.getConceptService().getConceptByMapping("161482", "CIEL");
 
         java.util.List<Obs> obsList = Context.getObsService().getObservationsByPersonAndConcept(
             $patient,

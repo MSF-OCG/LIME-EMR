@@ -25,12 +25,11 @@ rule "Patient_Has_Active_Allergy"
                 }
             }
             
-            // Create a flag if patient has active allergies
             if (hasActiveAllergy) {
                 insert(new PatientFlag(
                     $patient,
                     null,
-                    "Patient has active allergies"
+                    "Allergy"
                 ));
             }
         }

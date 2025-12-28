@@ -5,8 +5,9 @@ import org.openmrs.Concept
 import org.openmrs.Condition
 import org.openmrs.api.context.Context
 import org.openmrs.module.patientflags.PatientFlag
-import java.util.Arrays
+import org.openmrs.module.drools.utils.CommonUtils
 import java.util.HashSet
+import java.util.Set
 
 global Object service;
 
@@ -15,21 +16,18 @@ rule "Chronic_Conditions"
     when
         $patient: Patient()
     then
-        // Chronic condition CIEL codes:
-        // 165 = Diabetes mellitus type 2
-        // 164 = Type 1 diabetes
-        // 203 = Hypertension
-        // 4356 = CHF
-        // 137 = Chronic renal failure (CKD)
-        // 116031 = Malignant neoplasm (Cancer)
-        String[] chronicCodes = {"165", "164", "203", "4356", "137", "116031"};
+        // Chronic condition SNOMED codes:
+        // DM 2: 44054006
+        // DM 1: 46635009
+        // Hypertension: 38341003
+        // CHF: 42343007
+        // CKD: 709044004
+        // Malignant Neoplasm: 363346000
+        String[] chronicCodes = {"44054006", "46635009", "38341003", "42343007", "709044004", "363346000"};
 
-        java.util.Set<Concept> chronicConcepts = new HashSet<Concept>();
+        Set<Concept> chronicConcepts = new HashSet<Concept>();
         for (String code : chronicCodes) {
-            Concept c = Context.getConceptService().getConceptByMapping(code, "CIEL");
-            if (c != null) {
-                chronicConcepts.add(c);
-            }
+            chronicConcepts.addAll(CommonUtils.getConceptsBySameAsOrNarrowerThanMapping(code, "SNOMED CT"));
         }
 
         java.util.List<Condition> conditions = Context.getConditionService().getActiveConditions($patient);
