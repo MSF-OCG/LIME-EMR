@@ -6,6 +6,8 @@ import org.openmrs.Condition
 import org.openmrs.api.context.Context
 import org.openmrs.module.drools.utils.CommonUtils
 import org.openmrs.module.patientflags.PatientFlag
+import java.util.Set
+import java.util.HashSet
 
 
 global Object service;
@@ -16,11 +18,8 @@ rule "High_Risk_Condition"
         $patient: Patient()
     then
         // SNOMED 77386006 - Pregnant
-        Concept pregnancyConcept = CommonUtils.getConceptsBySameAsOrNarrowerThanMapping("77386006", "SNOMED CT");
-
-        if (pregnancyConcept == null) {
-            return;
-        }
+        Set<Concept> pregnancyConcepts = new HashSet<Concept>();
+        pregnancyConcepts.addAll(CommonUtils.getConceptsBySameAsOrNarrowerThanMapping("77386006", "SNOMED CT"));
 
         java.util.List<Condition> conditions = Context.getConditionService().getActiveConditions($patient);
 
@@ -30,7 +29,7 @@ rule "High_Risk_Condition"
             for (Condition condition : conditions) {
                 if (condition.getCondition() != null &&
                     condition.getCondition().getCoded() != null &&
-                    condition.getCondition().getCoded().equals(pregnancyConcept)) {
+                    pregnancyConcepts.contains(condition.getCondition().getCoded())) {
                     hasHighRiskCondition = true;
                     break;
                 }

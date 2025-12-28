@@ -4,6 +4,7 @@ import org.openmrs.Patient
 import org.openmrs.Concept
 import org.openmrs.Diagnosis
 import org.openmrs.api.context.Context
+import org.openmrs.module.drools.utils.CommonUtils
 import org.openmrs.module.patientflags.PatientFlag
 import java.util.Arrays
 import java.util.HashSet
@@ -15,57 +16,17 @@ rule "Infectious_Disease"
     when
         $patient: Patient()
     then
-        // Infectious disease CIEL codes:
-        // Tuberculosis
-        //  - 112141
-        //  - 118890 (Disseminated)
-        //  - 112116 (Bone)
-        //  - 156080 (Drug resistant)
-        //  - 149488 (Acute)
-        //  - 145154 (Chronic)
-        //  - 168739 (Presumed)
-        //  - 159346 (Extremely drug resistant)
-        //  - 42 (Pneumonary)
-        //  - 113491 (Pulmonary, bact/hist exam not done)
-        // Hepatitis B:
-        //  - 111759
-        //  - 121812 (Acute)
-        //  - 120558 (Chronic)
-        //  - 149799 (Acute Fulmniating)
-        //  - 138821 (Carrier)
-        // Hepatitis C
-        //  - 28 (Viral)
-        //  - 138820 (Carrier)
-        //  - 145347 (Chronic viral)
-        //  - 149743 (Acute)
-        //  - 123109 (Coma)
-        //  - 111065 (Hepatic Coma)
-        //  - 156589 (Antibody test positive)
-        // COVID-19
-        //  - 165612 (Suspected)
-        //  - 166183 (Chronic)
-        //  - 165867 (ARDS)
-        //  - 165894 (Disease without lab confirmation)
-        // MRSA - 134228
         String[] infectiousCodes = {
-            // Tuberculosis
-            "112141", "118890", "112116", "156080", "149488", "145154", "168739", "159346", "42", "113491",
-            // Hepatitis B
-            "111759", "121812", "120558", "149799", "138821",
-            // Hepatitis C
-            "28", "138820", "145347", "149743", "123109", "111065", "156589",
-            // COVID-19
-            "165612", "166183", "165867", "165894",
-            // MRSA
-            "134228"
+            "56717001",  // Tuberculosis
+            "66071002",  // Hepatitis B
+            "50711007",  // Hepatitis C
+            "840539006", // COVID-19
+            "266096002"  // MRSA
         };
 
         java.util.Set<Concept> infectiousConcepts = new HashSet<Concept>();
         for (String code : infectiousCodes) {
-            Concept c = Context.getConceptService().getConceptByMapping(code, "CIEL");
-            if (c != null) {
-                infectiousConcepts.add(c);
-            }
+            infectiousConcepts.addAll(CommonUtils.getConceptsBySameAsOrNarrowerThanMapping(code, "SNOMED CT"));
         }
 
         // Check encounter diagnoses instead of conditions
