@@ -1,0 +1,35 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "BloodPressure",
+        "path": "rules/bloodpressure_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "HighBloodPressure",
+        "agendaGroup": "highbloodpressure",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      },
+      {
+        "sessionId": "LowBloodPressure",
+        "agendaGroup": "lowbloodpressure",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }

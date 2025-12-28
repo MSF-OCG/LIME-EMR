@@ -1,0 +1,23 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "Fever",
+        "path": "rules/fever_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "Fever",
+        "agendaGroup": "fever",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }

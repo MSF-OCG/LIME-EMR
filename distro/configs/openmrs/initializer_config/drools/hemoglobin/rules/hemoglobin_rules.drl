@@ -1,0 +1,41 @@
+package org.openmrs.module.drools.hemoglobin
+
+import org.openmrs.Patient
+import org.openmrs.Obs
+import org.openmrs.Concept
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+
+global Object service;
+
+rule "Low_Hemoglobin"
+    agenda-group "lowhemoglobin"
+    when
+        $patient: Patient()
+    then
+        Concept hbConcept = Context.getConceptService().getConceptByMapping("21", "CIEL");
+
+        java.util.List<Obs> obsList = Context.getObsService().getObservationsByPersonAndConcept(
+            $patient,
+            hbConcept
+        );
+
+        Double hb = null;
+
+        if (obsList != null && !obsList.isEmpty()) {
+            for (Obs obs : obsList) {
+                if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                    hb = obs.getValueNumeric();
+                    break;
+                }
+            }
+        }
+
+        if (hb != null && hb < 7) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Low Hemoglobin - Severe Anemia"
+            ));
+        }
+end

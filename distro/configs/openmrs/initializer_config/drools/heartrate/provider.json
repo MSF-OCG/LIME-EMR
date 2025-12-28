@@ -1,0 +1,35 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "HeartRate",
+        "path": "rules/heartrate_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "HighHeartRate",
+        "agendaGroup": "highheartrate",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      },
+      {
+        "sessionId": "LowHeartRate",
+        "agendaGroup": "lowheartrate",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }

@@ -1,0 +1,128 @@
+package org.openmrs.module.drools.bloodpressure
+
+import org.openmrs.Patient
+import org.openmrs.Obs
+import org.openmrs.Concept
+import org.openmrs.api.context.Context
+
+import org.openmrs.module.patientflags.PatientFlag
+
+global Object service;
+
+rule "High_Blood_Pressure"
+    agenda-group "highbloodpressure"
+    when
+        $patient: Patient()
+    then
+        Concept systolicConcept = Context.getConceptService().getConceptByMapping("5085", "CIEL");
+        Concept diastolicConcept = Context.getConceptService().getConceptByMapping("5086", "CIEL");
+
+        java.util.List<Obs> systolicObsList = Context.getObsService().getObservationsByPersonAndConcept(
+            $patient,
+            systolicConcept
+        );
+
+        java.util.List<Obs> diastolicObsList = Context.getObsService().getObservationsByPersonAndConcept(
+            $patient,
+            diastolicConcept
+        );
+
+        Double systolic = null;
+        Double diastolic = null;
+
+        if (systolicObsList != null && !systolicObsList.isEmpty()) {
+            for (Obs obs : systolicObsList) {
+                if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                    systolic = obs.getValueNumeric();
+                    break;
+                }
+            }
+        }
+
+        if (diastolicObsList != null && !diastolicObsList.isEmpty()) {
+            for (Obs obs : diastolicObsList) {
+                if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                    diastolic = obs.getValueNumeric();
+                    break;
+                }
+            }
+        }
+
+        // High BP: SBP > 180 or DBP > 110
+        boolean isHigh = false;
+
+        if (systolic != null && systolic > 180) {
+            isHigh = true;
+        }
+
+        if (diastolic != null && diastolic > 110) {
+            isHigh = true;
+        }
+
+        if (isHigh) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "High blood pressure"
+            ));
+        }
+end
+
+rule "Low_Blood_Pressure"
+    agenda-group "lowbloodpressure"
+    when
+        $patient: Patient()
+    then
+        Concept systolicConcept = Context.getConceptService().getConceptByMapping("5085", "CIEL");
+        Concept diastolicConcept = Context.getConceptService().getConceptByMapping("5086", "CIEL");
+
+        java.util.List<Obs> systolicObsList = Context.getObsService().getObservationsByPersonAndConcept(
+            $patient,
+            systolicConcept
+        );
+
+        java.util.List<Obs> diastolicObsList = Context.getObsService().getObservationsByPersonAndConcept(
+            $patient,
+            diastolicConcept
+        );
+
+        Double systolic = null;
+        Double diastolic = null;
+
+        if (systolicObsList != null && !systolicObsList.isEmpty()) {
+            for (Obs obs : systolicObsList) {
+                if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                    systolic = obs.getValueNumeric();
+                    break;
+                }
+            }
+        }
+
+        if (diastolicObsList != null && !diastolicObsList.isEmpty()) {
+            for (Obs obs : diastolicObsList) {
+                if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                    diastolic = obs.getValueNumeric();
+                    break;
+                }
+            }
+        }
+
+        // Low BP: SBP < 80 or DBP < 50
+        boolean isLow = false;
+
+        if (systolic != null && systolic < 80) {
+            isLow = true;
+        }
+
+        if (diastolic != null && diastolic < 50) {
+            isLow = true;
+        }
+
+        if (isLow) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Low blood pressure"
+            ));
+        }
+end

@@ -1,0 +1,23 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "MissedAppointment",
+        "path": "rules/missedappointment_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "MissedAppointment",
+        "agendaGroup": "missedappointment",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }
