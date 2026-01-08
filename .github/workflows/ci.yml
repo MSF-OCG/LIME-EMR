@@ -22,8 +22,8 @@ jobs:
       DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_REGISTRY_PASSWORD }}
 
   deploy-to-dev:
-    # needs: snapshot
-    # if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    needs: snapshot
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
     uses: ./.github/workflows/deploy.yml
     with:
       instance: 'dev'
@@ -35,7 +35,7 @@ jobs:
 
   run-e2e-dev-tests:
     needs: deploy-to-dev
-    # if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
     uses: ./.github/workflows/run-e2e-tests.yml
     with:
       environment: 'dev'
@@ -59,8 +59,8 @@ jobs:
       DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_REGISTRY_PASSWORD }}
 
   deploy-to-uat:
-    # needs: release
-    # if: ${{ github.event_name == 'release' }}
+    needs: release
+    if: ${{ github.event_name == 'release' }}
     uses: ./.github/workflows/deploy.yml
     with:
       instance: 'uat'
@@ -72,7 +72,7 @@ jobs:
 
   run-e2e-uat-tests:
     needs: deploy-to-uat
-    # if: ${{ github.event_name == 'release' }}
+    if: ${{ github.event_name == 'release' }}
     uses: ./.github/workflows/run-e2e-tests.yml
     with:
       environment: 'uat'
