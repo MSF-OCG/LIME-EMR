@@ -21,7 +21,7 @@ jobs:
       
       - name: Testing UAT Environment - HTTPS Connectivity
         run: |
-          ssh ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_USER }}@lime-mosul-uat.madiro.org << 'EOF'
+          ssh ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_USER }}@lime-mosul-uat.madiro.org -p 22222 << 'EOF'
             set -e
             
             echo "================================================"
