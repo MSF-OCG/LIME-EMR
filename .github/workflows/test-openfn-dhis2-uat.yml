@@ -58,15 +58,15 @@ jobs:
             echo "--------------------------"
             timeout 10 nc -vz dhis2-uat.ocg.msf.org 443 2>&1 || echo "Netcat test failed"
             echo ""
-
-            echo "7. OpenSSL HTTPS Connection Test:"
-            echo "-----------------------------------"
-            timeout 10 openssl s_client -connect dhis2-uat.ocg.msf.org:443 -servername dhis2-uat.ocg.msf.org 
-            echo ""
             
-            echo "8. Curl with Verbose Output:"
+            echo "7. Curl with Verbose Output:"
             echo "----------------------------"
             curl -v -I --connect-timeout 10 https://dhis2-uat.ocg.msf.org 2>&1
+            echo ""
+
+            echo "8. OpenSSL HTTPS Connection Test:"
+            echo "-----------------------------------"
+            timeout 10 openssl s_client -connect dhis2-uat.ocg.msf.org:443 -servername dhis2-uat.ocg.msf.org 
             echo ""
             
             echo "================================================"
