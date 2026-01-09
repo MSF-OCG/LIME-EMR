@@ -8,18 +8,10 @@ on:
   release:
     types: [published]
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to deploy'
-        required: true
-        type: choice
-        options:
-          - dev
-          - uat
 
 jobs:
   snapshot:
-    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'dev') }}
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
     uses: ./.github/workflows/maven-publish.yml
     with:
       free-disk-space: true
@@ -32,7 +24,7 @@ jobs:
 
   deploy-to-dev:
     needs: snapshot
-    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'dev') }}
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
     uses: ./.github/workflows/deploy.yml
     with:
       instance: 'dev'
@@ -44,7 +36,7 @@ jobs:
 
   run-e2e-dev-tests:
     needs: deploy-to-dev
-    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'dev') }}
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
     uses: ./.github/workflows/run-e2e-tests.yml
     with:
       environment: 'dev'
@@ -56,7 +48,7 @@ jobs:
       openfn_password: ${{ secrets.OPENFN_PASSWORD }}
 
   release:
-    if: ${{ github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'uat') }}
+    if: ${{ github.event_name == 'release' || github.event_name == 'workflow_dispatch' }}
     uses: ./.github/workflows/maven-publish.yml
     with:
       free-disk-space: true
@@ -69,7 +61,7 @@ jobs:
 
   deploy-to-uat:
     needs: release
-    if: ${{ github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'uat') }}
+    if: ${{ github.event_name == 'release' || github.event_name == 'workflow_dispatch' }}
     uses: ./.github/workflows/deploy.yml
     with:
       instance: 'uat'
@@ -81,7 +73,7 @@ jobs:
 
   run-e2e-uat-tests:
     needs: deploy-to-uat
-    if: ${{ github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'uat') }}
+    if: ${{ github.event_name == 'release' || github.event_name == 'workflow_dispatch' }}
     uses: ./.github/workflows/run-e2e-tests.yml
     with:
       environment: 'uat'
