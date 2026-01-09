@@ -1,5 +1,30 @@
 # LIME CHANGE LOG 🚀
 
+## Release 8th January, 2026 (Sprint 41)
+
+### Features & Improvements
+
+- Build HIV forms - [LIME2-1076](https://msf-ocg.atlassian.net/browse/LIME2-1076)
+- Build TB forms - [LIME2-1077](https://msf-ocg.atlassian.net/browse/LIME2-1077)
+- Build Gynaecology form - [LIME2-1079](https://msf-ocg.atlassian.net/browse/LIME2-1079)
+- Build Cervical Cancer form - [LIME2-1080](https://msf-ocg.atlassian.net/browse/LIME2-1080)
+- Build ANC form - [LIME2-1081](https://msf-ocg.atlassian.net/browse/LIME2-1081)
+- Build Referral & Discharge form - [LIME2-1082](https://msf-ocg.atlassian.net/browse/LIME2-1082)
+- Radiology request - tooltip added - [LIME2-1083](https://msf-ocg.atlassian.net/browse/LIME2-1083)
+- ICU Baseline - small changes - [LIME2-1084](https://msf-ocg.atlassian.net/browse/LIME2-1084)
+- Employment status update - [LIME2-1055](https://msf-ocg.atlassian.net/browse/LIME2-1055)
+- Schistosomiasis - delete question - [LIME2-1086](https://msf-ocg.atlassian.net/browse/LIME2-1086)
+- Snakebites - rename sections - [LIME2-1087](https://msf-ocg.atlassian.net/browse/LIME2-1087)
+- Cholera - change in OCL ID in comorbidity option - [LIME2-1088](https://msf-ocg.atlassian.net/browse/LIME2-1088)
+
+### Bug fixes
+
+- Dengue - typo errors - [LIME2-1085](https://msf-ocg.atlassian.net/browse/LIME2-1085)
+- Privilege issue on MH forms - [LIME2-1057](https://msf-ocg.atlassian.net/browse/LIME2-1057)
+- Wound dressing - error in rendering - [LIME2-1090](https://msf-ocg.atlassian.net/browse/LIME2-1090)
+- ER exit - change of datatype - [LIME2-1091](https://msf-ocg.atlassian.net/browse/LIME2-1091)
+- Adding support for workspace label customization in FormGen - [LIME2-840](https://msf-ocg.atlassian.net/browse/LIME2-840)
+
 ## Release 11th December, 2025 (Sprint 40)
 
 ### Features & Improvements
