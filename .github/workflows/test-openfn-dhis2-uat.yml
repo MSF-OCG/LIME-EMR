@@ -17,11 +17,11 @@ jobs:
       
       - name: Add SSH known hosts
         run: |
-          ssh-keyscan -H lime-mosul-uat.madiro.org >> ~/.ssh/known_hosts
+          ssh-keyscan -p 22222 -H lime-mosul-uat.madiro.org >> ~/.ssh/known_hosts
       
       - name: Testing UAT Environment - HTTPS Connectivity
         run: |
-          ssh ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_USER }}@lime-mosul-uat.madiro.org -p 22222 << 'EOF'
+          ssh -p 22222 ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_USER }}@lime-mosul-uat.madiro.org << 'EOF'
             set -e
             
             echo "================================================"
