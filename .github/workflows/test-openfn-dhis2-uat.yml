@@ -15,9 +15,9 @@ jobs:
           ssh-private-key: ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_KEY }}
           log-public-key: false
       
-      # - name: Add SSH known hosts
-      #   run: |
-      #     ssh-keyscan -H lime-mosul-uat.madiro.org >> ~/.ssh/known_hosts
+      - name: Add SSH known hosts
+        run: |
+          ssh-keyscan -H lime-mosul-uat.madiro.org >> ~/.ssh/known_hosts
       
       - name: Testing UAT Environment - HTTPS Connectivity
         run: |
