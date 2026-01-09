@@ -21,35 +21,65 @@ jobs:
       
       - name: Testing UAT Environment - HTTPS Connectivity
         run: |
-          ssh -p 22222 ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_USER }}@lime-mosul-uat.madiro.org << 'EOF'
+          ssh ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_USER }}@lime-mosul-uat.madiro.org -p 22222 << 'EOF'
             set -e
             
             echo "================================================"
-            echo "Testing HTTPS connectivity to dhis2-uat.ocg.msf.org"
+            echo "Enhanced Network Diagnostics"
             echo "================================================"
             echo ""
             
-            echo "1. DNS Resolution Test:"
-            echo "------------------------"
-            nslookup dhis2-uat.ocg.msf.org || dig dhis2-uat.ocg.msf.org
+            echo "1. DNS Resolution:"
+            echo "------------------"
+            nslookup dhis2-uat.ocg.msf.org
             echo ""
             
-            echo "3. Telnet Connection Test (Port 443):"
-            echo "--------------------------------------"
-            timeout 10 telnet dhis2-uat.ocg.msf.org 443 || echo "Telnet connection failed or timed out"
-            echo ""
-            
-            echo "4. OpenSSL HTTPS Connection Test:"
-            echo "-----------------------------------"
-            timeout 10 openssl s_client -connect dhis2-uat.ocg.msf.org:443 -servername dhis2-uat.ocg.msf.org </dev/null 2>&1 | head -n 30
-            echo ""
-            
-            echo "5. Curl HTTPS Test:"
+            echo "2. Ping Test (ICMP):"
             echo "--------------------"
-            curl -v -I --connect-timeout 10 https://dhis2-uat.ocg.msf.org 2>&1 | head -n 40
+            ping -c 4 dhis2-uat.ocg.msf.org || echo "Ping blocked or host unreachable"
+            echo ""
+            
+            echo "3. Traceroute to Host:"
+            echo "----------------------"
+            traceroute -m 20 dhis2-uat.ocg.msf.org || echo "Traceroute failed"
+            echo ""
+            
+            echo "4. TCP Traceroute to Port 443:"
+            echo "-------------------------------"
+            sudo traceroute -T -p 443 -m 20 dhis2-uat.ocg.msf.org || echo "TCP traceroute failed"
+            echo ""
+            
+            echo "5. Local Firewall Rules (iptables):"
+            echo "------------------------------------"
+            sudo iptables -L OUTPUT -v -n || echo "Cannot check iptables"
+            echo ""
+            
+            echo "6. UFW Status:"
+            echo "--------------"
+            sudo ufw status verbose || echo "UFW not installed/active"
+            echo ""
+            
+            echo "7. Route to Destination:"
+            echo "------------------------"
+            ip route get 195.20.146.25
+            echo ""
+            
+            echo "8. Netcat Connection Test:"
+            echo "--------------------------"
+            timeout 10 nc -vz dhis2-uat.ocg.msf.org 443 2>&1 || echo "Netcat test failed"
+            echo ""
+            
+            echo "9. Curl with Verbose Output:"
+            echo "----------------------------"
+            curl -v -I --connect-timeout 10 https://dhis2-uat.ocg.msf.org 2>&1
+            echo ""
+            
+            echo "10. Check if Any HTTPS Works (Google):"
+            echo "---------------------------------------"
+            curl -I --connect-timeout 5 https://www.google.com 2>&1 | head -n 5
             echo ""
             
             echo "================================================"
-            echo "Test completed"
+            echo "Diagnostics completed"
             echo "================================================"
           EOF
