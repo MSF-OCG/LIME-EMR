@@ -7,6 +7,7 @@ on:
     branches: [ "main" ]
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   snapshot:
@@ -47,7 +48,7 @@ jobs:
       openfn_password: ${{ secrets.OPENFN_PASSWORD }}
 
   release:
-    if: ${{ github.event_name == 'release' }}
+    if: ${{ github.event_name == 'release' || github.event_name == 'workflow_dispatch' }}
     uses: ./.github/workflows/maven-publish.yml
     with:
       free-disk-space: true
@@ -60,7 +61,7 @@ jobs:
 
   deploy-to-uat:
     needs: release
-    if: ${{ github.event_name == 'release' }}
+    if: ${{ github.event_name == 'release' || github.event_name == 'workflow_dispatch' }}
     uses: ./.github/workflows/deploy.yml
     with:
       instance: 'uat'
@@ -72,7 +73,7 @@ jobs:
 
   run-e2e-uat-tests:
     needs: deploy-to-uat
-    if: ${{ github.event_name == 'release' }}
+    if: ${{ github.event_name == 'release' || github.event_name == 'workflow_dispatch' }}
     uses: ./.github/workflows/run-e2e-tests.yml
     with:
       environment: 'uat'
@@ -81,4 +82,4 @@ jobs:
       openmrs_username: ${{ secrets.OPENMRS_UAT_USERNAME }}
       openmrs_password: ${{ secrets.OPENMRS_UAT_PASSWORD }}
       openfn_email: ${{ secrets.OPENFN_EMAIL }}
-      openfn_password: ${{ secrets.OPENFN_PASSWORD }} 
+      openfn_password: ${{ secrets.OPENFN_PASSWORD }}

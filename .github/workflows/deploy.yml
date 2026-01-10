@@ -47,11 +47,11 @@ jobs:
       
       - name: Add SSH known hosts
         run: |
-          ssh-keyscan -H ${{ steps.set-domain.outputs.domain }} >> ~/.ssh/known_hosts
+          ssh-keyscan -p 22222 -H ${{ steps.set-domain.outputs.domain }} >> ~/.ssh/known_hosts
       
       - name: Deploy to ${{ inputs.instance }} Environment
         run: |
-          ssh ${{ secrets.ssh_user }}@${{ steps.set-domain.outputs.domain }} << 'EOF'
+          ssh ${{ secrets.ssh_user }}@${{ steps.set-domain.outputs.domain }} -p 22222 << 'EOF'
             set -e
             
             # Navigate to MOSUL directory
