@@ -1,0 +1,41 @@
+package org.openmrs.module.drools.oxygensaturation
+
+import org.openmrs.Patient
+import org.openmrs.Obs
+import org.openmrs.Concept
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+
+global Object service;
+
+rule "Low_Oxygen_Saturation"
+    agenda-group "lowoxygensaturation"
+    when
+        $patient: Patient()
+    then
+        Concept o2SatConcept = Context.getConceptService().getConceptByMapping("5092", "CIEL");
+
+        java.util.List<Obs> o2SatObsList = Context.getObsService().getObservationsByPersonAndConcept(
+            $patient,
+            o2SatConcept
+        );
+
+        Double o2Sat = null;
+
+        if (o2SatObsList != null && !o2SatObsList.isEmpty()) {
+            for (Obs obs : o2SatObsList) {
+                if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                    o2Sat = obs.getValueNumeric();
+                    break;
+                }
+            }
+        }
+
+        if (o2Sat != null && o2Sat < 90) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Low oxygen saturation"
+            ));
+        }
+end

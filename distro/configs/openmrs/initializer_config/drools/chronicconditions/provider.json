@@ -1,0 +1,23 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "ChronicConditions",
+        "path": "rules/chronicconditions_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "ChronicConditions",
+        "agendaGroup": "chronicconditions",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }

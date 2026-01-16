@@ -1,0 +1,55 @@
+package org.openmrs.module.drools.infectiousdisease
+
+import org.openmrs.Patient
+import org.openmrs.Concept
+import org.openmrs.Diagnosis
+import org.openmrs.api.context.Context
+import org.openmrs.module.drools.utils.CommonUtils
+import org.openmrs.module.patientflags.PatientFlag
+import java.util.Arrays
+import java.util.HashSet
+
+global Object service;
+
+rule "Infectious_Disease"
+    agenda-group "infectiousdisease"
+    when
+        $patient: Patient()
+    then
+        String[] infectiousCodes = {
+            "56717001",  // Tuberculosis
+            "66071002",  // Hepatitis B
+            "50711007",  // Hepatitis C
+            "840539006", // COVID-19
+            "266096002"  // MRSA
+        };
+
+        java.util.Set<Concept> infectiousConcepts = new HashSet<Concept>();
+        for (String code : infectiousCodes) {
+            infectiousConcepts.addAll(CommonUtils.getConceptsBySameAsOrNarrowerThanMapping(code, "SNOMED CT"));
+        }
+
+        // Check encounter diagnoses instead of conditions
+        java.util.List<Diagnosis> diagnoses = Context.getDiagnosisService().getDiagnoses($patient, null);
+
+        boolean hasInfectiousDisease = false;
+
+        if (diagnoses != null) {
+            for (Diagnosis diagnosis : diagnoses) {
+                if (diagnosis.getDiagnosis() != null &&
+                    diagnosis.getDiagnosis().getCoded() != null &&
+                    infectiousConcepts.contains(diagnosis.getDiagnosis().getCoded())) {
+                    hasInfectiousDisease = true;
+                    break;
+                }
+            }
+        }
+
+        if (hasInfectiousDisease) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Infectious Disease"
+            ));
+        }
+end
