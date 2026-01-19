@@ -27,13 +27,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 🔧 Set domain based on instance
+      - name: 🔧 Set domain and SSH port based on instance
         id: set-domain
         run: |
           if [ "${{ inputs.instance }}" == "dev" ]; then
             echo "domain=lime-mosul-dev.madiro.org" >> $GITHUB_OUTPUT
+            echo "ssh_port=22" >> $GITHUB_OUTPUT
           elif [ "${{ inputs.instance }}" == "uat" ]; then
             echo "domain=lime-mosul-uat.madiro.org" >> $GITHUB_OUTPUT
+            echo "ssh_port=22222" >> $GITHUB_OUTPUT
           else
             echo "Unknown instance: ${{ inputs.instance }}"
             exit 1
@@ -47,11 +49,11 @@ jobs:
       
       - name: Add SSH known hosts
         run: |
-          ssh-keyscan -p 22222 -H ${{ steps.set-domain.outputs.domain }} >> ~/.ssh/known_hosts
+          ssh-keyscan -p ${{ steps.set-domain.outputs.ssh_port }} -H ${{ steps.set-domain.outputs.domain }} >> ~/.ssh/known_hosts
       
       - name: Deploy to ${{ inputs.instance }} Environment
         run: |
-          ssh ${{ secrets.ssh_user }}@${{ steps.set-domain.outputs.domain }} -p 22222 << 'EOF'
+          ssh -p ${{ steps.set-domain.outputs.ssh_port }} ${{ secrets.ssh_user }}@${{ steps.set-domain.outputs.domain }} << 'EOF'
             set -e
             
             # Navigate to MOSUL directory
