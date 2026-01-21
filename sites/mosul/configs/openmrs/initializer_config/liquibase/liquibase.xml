@@ -986,4 +986,25 @@
         </sql>
     </changeSet>
 
+    <changeSet id="insert_concept_range_for_serum_albumin_concept" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept_numeric
+                WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '665155e1-9998-4f37-a763-4b2b27842478');
+            </sqlCheck>
+        </preConditions>
+
+        <comment>
+            Insert concept range for Serum Albumin concept
+        </comment>
+
+        <sql>
+            INSERT INTO concept_numeric (concept_id, hi_normal, low_normal, allow_decimal)
+            SELECT concept_id, 5, 3.8, 1
+            FROM concept 
+            WHERE uuid = '665155e1-9998-4f37-a763-4b2b27842478';
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
