@@ -912,6 +912,9 @@
                 "rendering": "date",
                 "concept": "236791e2-ce4f-4c90-ba09-c7136bf20bec"
               },
+              "hide": {
+                "hideWhenExpression": "(decision !== '77a9e41b-8b74-4cee-9519-f9f39925a3fa')"
+              },
               "validators": [
                 {
                   "type": "js_expression",
@@ -936,7 +939,10 @@
                   "message": "Date of referral out cannot be in the future"
                 }
               ],
-              "default": "Current date"
+              "default": "Current date",
+              "hide": {
+                "hideWhenExpression": "(decision !== '77a9e41b-8b74-4cee-9519-f9f39925a3fa')"
+              }
             }
           ]
         },
@@ -978,6 +984,9 @@
                     "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "(decision !== '77a9e41b-8b74-4cee-9519-f9f39925a3fa')"
               }
             },
             {
@@ -988,6 +997,9 @@
               "questionOptions": {
                 "rendering": "text",
                 "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(referredTo !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
               }
             },
             {
@@ -1008,6 +1020,9 @@
                     "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
                   }
                 ]
+              },
+              "hide": {
+                "hideWhenExpression": "(decision !== '77a9e41b-8b74-4cee-9519-f9f39925a3fa')"
               }
             },
             {
@@ -1018,6 +1033,9 @@
               "questionOptions": {
                 "rendering": "text",
                 "concept": "0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d"
+              },
+              "hide": {
+                "hideWhenExpression": "(decision !== '77a9e41b-8b74-4cee-9519-f9f39925a3fa')"
               }
             }
           ]
