@@ -40,25 +40,25 @@ jobs:
             echo "Unknown instance: ${{ inputs.instance }}"
             exit 1
           fi
-      
+
       - name: Setup SSH Agent
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.ssh_private_key }}
           log-public-key: false
-      
+
       - name: Add SSH known hosts
         run: |
           ssh-keyscan -p ${{ steps.set-domain.outputs.ssh_port }} -H ${{ steps.set-domain.outputs.domain }} >> ~/.ssh/known_hosts
-      
+
       - name: Deploy to ${{ inputs.instance }} Environment
         run: |
           ssh -p ${{ steps.set-domain.outputs.ssh_port }} ${{ secrets.ssh_user }}@${{ steps.set-domain.outputs.domain }} << 'EOF'
             set -e
-            
+
             # Navigate to MOSUL directory
             cd /home/${{ secrets.ssh_user }}/MOSUL
-            
+
             # Pull bundled docker scripts
             curl -sSL -H 'Cache-Control: no-cache, no-store' \
               -H 'Authorization: token ${{ secrets.lime_github_token }}' \
@@ -69,7 +69,7 @@ jobs:
 
             # Navigate to scripts directory
             cd /home/${{ secrets.ssh_user }}/MOSUL/Bundled-Docker/scripts
-            
+
             # Start LIME services
-            export TRAEFIK="${{ inputs.traefik_enabled }}" && export INSTANCE="${{ inputs.instance }}" && bash start-bundled.sh
+            export TRAEFIK="${{ inputs.traefik_enabled }}" && export INSTANCE="${{ inputs.instance }}" && bash start-bundled-docker.sh
           EOF
