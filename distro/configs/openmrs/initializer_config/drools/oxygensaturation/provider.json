@@ -1,0 +1,23 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "OxygenSaturation",
+        "path": "rules/oxygensaturation_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "LowOxygenSaturation",
+        "agendaGroup": "lowoxygensaturation",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }

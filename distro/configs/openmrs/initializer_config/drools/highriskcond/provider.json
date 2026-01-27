@@ -1,0 +1,23 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "High Risk Conditions",
+        "path": "rules/highriskcond_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "HighRiskConditions",
+        "agendaGroup": "highriskconditions",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }

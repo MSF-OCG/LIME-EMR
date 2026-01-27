@@ -1,0 +1,55 @@
+package org.openmrs.module.drools.chronicconditions
+
+import org.openmrs.Patient
+import org.openmrs.Concept
+import org.openmrs.Condition
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+import org.openmrs.module.drools.utils.CommonUtils
+import java.util.HashSet
+import java.util.Set
+
+global Object service;
+
+rule "Chronic_Conditions"
+    agenda-group "chronicconditions"
+    when
+        $patient: Patient()
+    then
+        // Chronic condition SNOMED codes:
+        // DM 2: 44054006
+        // DM 1: 46635009
+        // Hypertension: 38341003
+        // CHF: 42343007
+        // CKD: 709044004
+        // Malignant Neoplasm: 363346000
+        String[] chronicCodes = {"44054006", "46635009", "38341003", "42343007", "709044004", "363346000"};
+
+        Set<Concept> chronicConcepts = new HashSet<Concept>();
+        for (String code : chronicCodes) {
+            chronicConcepts.addAll(CommonUtils.getConceptsBySameAsOrNarrowerThanMapping(code, "SNOMED CT"));
+        }
+
+        java.util.List<Condition> conditions = Context.getConditionService().getActiveConditions($patient);
+
+        boolean hasChronicCondition = false;
+
+        if (conditions != null) {
+            for (Condition condition : conditions) {
+                if (condition.getCondition() != null &&
+                    condition.getCondition().getCoded() != null &&
+                    chronicConcepts.contains(condition.getCondition().getCoded())) {
+                    hasChronicCondition = true;
+                    break;
+                }
+            }
+        }
+
+        if (hasChronicCondition) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Chronic Condition"
+            ));
+        }
+end

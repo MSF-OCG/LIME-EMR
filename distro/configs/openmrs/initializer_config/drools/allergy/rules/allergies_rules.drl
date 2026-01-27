@@ -1,0 +1,36 @@
+package org.openmrs.module.drools.allergy
+
+import org.openmrs.Patient
+import org.openmrs.Allergy
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+import java.util.Collection
+
+global Object service;
+
+rule "Patient_Has_Active_Allergy"
+    agenda-group "allergies"
+    when
+        $patient: Patient()
+    then
+        Collection<Allergy> allergies = Context.getPatientService().getAllergies($patient);
+        
+        // Check if patient has any active (non-voided) allergies
+        if (allergies != null && !allergies.isEmpty()) {
+            boolean hasActiveAllergy = false;
+            for (Allergy allergy : allergies) {
+                if (allergy != null && !allergy.getVoided()) {
+                    hasActiveAllergy = true;
+                    break;
+                }
+            }
+            
+            if (hasActiveAllergy) {
+                insert(new PatientFlag(
+                    $patient,
+                    null,
+                    "Allergy"
+                ));
+            }
+        }
+end
