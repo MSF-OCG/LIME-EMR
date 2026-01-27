@@ -1,0 +1,3621 @@
+{
+  "name": "F59-Social Work Baseline",
+  "description": "MSF Form - F59-Social Work Baseline",
+  "version": "1",
+  "published": true,
+  "uuid": "5247547e-856b-4741-9a13-a40809f450ff",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Social Work",
+  "encounterType": "d1aa3ccb-dfa5-4a31-89d7-f946bc4d7511",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Baseline details",
+      "sections": [
+        {
+          "label": "Baseline details",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "dateOfBaselineConsultation",
+              "label": "Date of Baseline consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "d329cd4b-a10f-4a4d-96b5-c907bf87e721"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "dateOfBaselineConsultation > new Date()",
+                  "message": "Date of baseline consultation cannot be in the future"
+                }
+              ]
+            },
+            {
+              "id": "interpretersInitials",
+              "label": "Interpreter's initials",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "43842112-4092-4105-b24a-871b4b895640"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Consultation Information",
+      "sections": [
+        {
+          "label": "Consultation Information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "placeOfConsultation",
+              "label": "Place of consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "80e2b197-54ad-4d71-8974-23a325b6d803",
+                "answers": [
+                  {
+                    "label": "Health center",
+                    "concept": "b9e779d6-d943-4250-aa44-bbe6d1ebbdee"
+                  },
+                  {
+                    "label": "Hospital",
+                    "concept": "6b8fca2d-0147-4dd8-a8f5-3b813152b952"
+                  },
+                  {
+                    "label": "Home",
+                    "concept": "bd5bf44b-164c-415c-8bff-b1d4849928d3"
+                  },
+                  {
+                    "label": "Mobile clinic",
+                    "concept": "f7ade35b-035d-4bda-a161-6b5fb6e7cfd9"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "placeOfConsultationOtherSpecify",
+              "label": "If other, please specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(placeOfConsultation !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "typeOfConsultation",
+              "label": "Type of consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "81ced581-eaea-4279-a091-fa409ef199ed",
+                "answers": [
+                  {
+                    "label": "Face to Face",
+                    "concept": "d735f17d-c34d-444b-b235-a49b067be72d"
+                  },
+                  {
+                    "label": "Phone call",
+                    "concept": "d5ab08f5-a88b-4d6c-a3cf-1ba3c078b71e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "referredBy",
+              "label": "Referred by:",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "88da0e72-48e5-46a1-8456-615408d122b3",
+                "answers": [
+                  {
+                    "label": "Other MSF staff",
+                    "concept": "526e9903-d998-46a3-8ab4-3e87d0899ec4"
+                  },
+                  {
+                    "label": "Other NGOs",
+                    "concept": "ec1760b9-ee1e-4481-a790-27208002f583"
+                  },
+                  {
+                    "label": "Authorities",
+                    "concept": "80575f44-be81-4694-aba4-012999328339"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "referredByOtherSpecify",
+              "label": "Referred by - Other, Specify:",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(referredBy !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "typeOfIncome",
+              "label": "Type of income",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "f501e482-d6cd-45d7-be5d-ef6e09461380",
+                "answers": [
+                  {
+                    "label": "Employment",
+                    "concept": "eff6ea98-b0df-4eec-b162-77c0eb94546a"
+                  },
+                  {
+                    "label": "Full time job",
+                    "concept": "4a18a820-f3a1-4bb7-9138-558a9ecc81da"
+                  },
+                  {
+                    "label": "Part time job",
+                    "concept": "5a69bbf4-d4f2-455a-a32e-6179cec3f0cd"
+                  },
+                  {
+                    "label": "Benefits",
+                    "concept": "890ae4f8-4e0b-4bb0-9b88-17847a6c3c5c"
+                  },
+                  {
+                    "label": "Cash distribution for refugees",
+                    "concept": "3e90e0aa-c7ee-46e4-ab92-32517f20e445"
+                  },
+                  {
+                    "label": "Support from friends/family (Cash)",
+                    "concept": "7e88be67-4833-4b2c-bbd2-a14a8989fa09"
+                  },
+                  {
+                    "label": "Scavenging",
+                    "concept": "a63c3f54-490e-4dc2-b7d0-a62edb18bcda"
+                  },
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "f2c5fefe-be45-4269-acf2-a2b832e15fb6"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "accessToLabourMarket",
+              "label": "Access to labour market",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "99c637d2-1158-4578-a1d3-619c6d157514",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "unemploymentCard",
+              "label": "Unemployment card",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4f0180b2-2d45-49fd-9ef6-3b9930e18bd2",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "socialSecurityOrInsurance",
+              "label": "Social security / Insurance",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d45f12a2-dda4-479c-91f6-267d856cdb15",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "economicDependants",
+              "label": "Economic Dependants",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c5c94e4e-09a7-4054-9ba2-f8053589ef1d",
+                "answers": [
+                  {
+                    "label": "0",
+                    "concept": "7e68d55e-5b61-47e5-8674-be3d90143fc0"
+                  },
+                  {
+                    "label": "1-5",
+                    "concept": "d6413738-acf2-423d-9518-6bc913f69d54"
+                  },
+                  {
+                    "label": "6-10",
+                    "concept": "2c1f744d-2cfe-42d5-b575-7b7f8b060cca"
+                  },
+                  {
+                    "label": ">10",
+                    "concept": "f5c5dc87-d952-42aa-8cb1-e2e5ea01ac1a"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "isThePatientStudying",
+              "label": "Is the patient studying?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "69c3d769-c1da-4e48-940a-45b5a4ba395a",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "studyingIfYesSpecify",
+              "label": "Studying - If yes, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b2c53d0f-a043-4a59-8c6c-157281ccf6c5",
+                "answers": [
+                  {
+                    "label": "Typical",
+                    "concept": "80189a17-121b-4bb8-910f-fba559b5965f"
+                  },
+                  {
+                    "label": "Non typical",
+                    "concept": "d70a5c28-4f55-4548-a7bf-d6911b910fe8"
+                  },
+                  {
+                    "label": "Language courses",
+                    "concept": "acadffdb-2026-405b-a250-7cca5a516c12"
+                  },
+                  {
+                    "label": "Integrational activities",
+                    "concept": "2a21ce1b-27b3-441f-bec9-f82373e4ce2f"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(isThePatientStudying !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "socialNetworkAndSupport",
+              "label": "Social network and support",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "747082a4-4940-4ef1-94b5-830cc13b2380",
+                "answers": [
+                  {
+                    "label": "Family and friends",
+                    "concept": "a8432309-bc74-4da0-8639-76988c02cbb5"
+                  },
+                  {
+                    "label": "Community",
+                    "concept": "09806734-b304-45e3-8435-1a359cfed6f2"
+                  },
+                  {
+                    "label": "Government Support",
+                    "concept": "da0a8cea-59fb-43e4-8068-091d3aa35631"
+                  },
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "Other Supporting Organisation",
+                    "concept": "0584a64b-8170-4940-8815-f355c2c062c2"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "pregnancyStatus",
+              "label": "Pregnancy Status",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "933ab405-34f1-4d86-900d-bed9b5ba8d05",
+                "answers": [
+                  {
+                    "label": "Planned Pregnancy",
+                    "concept": "03e797ce-863f-4a1b-9e3d-f26a940db130"
+                  },
+                  {
+                    "label": "Unplanned Pregnancy",
+                    "concept": "480a6aaf-7c65-4b64-8d4f-cda81e109819"
+                  },
+                  {
+                    "label": "Unwanted Pregnancy",
+                    "concept": "35910034-cc37-4dd1-abb7-ce140b0eff2b"
+                  },
+                  {
+                    "label": "Pregnancy as result of SV",
+                    "concept": "aca6da8e-0e1d-4a28-9d15-d4eeb70ec804"
+                  },
+                  {
+                    "label": "No Pregnancy",
+                    "concept": "dd83c6d7-e370-4e4e-acb9-620cbd1c0c8b"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Violence and Security",
+      "sections": [
+        {
+          "label": "Violence and Security",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "hasThePatientExperiencedViolence",
+              "label": "Has the patient experienced violence?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ebb50467-1a62-41f0-a849-2ec0ed49607a",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No violence disclosed",
+                    "concept": "58099680-d0dd-4524-899d-b1f3d2a6c337"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "sexualViolence",
+              "label": "Sexual violence",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a0a13eab-84fd-4551-8f19-81bb39759800",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hasThePatientExperiencedViolence !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ifSexualViolenceWasThisPatientReferredToMhOrMedical",
+              "label": "If sexual violence - was this patient referred to MH or Medical?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6d3876be-0a27-466d-ad58-92edcc8c31fb",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hasThePatientExperiencedViolence !== '681cf0bc-5213-492a-8470-0a0b3cc324dd' || sexualViolence !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "timeBetweenSexualEventAndConsultation",
+              "label": "Time between sexual event and consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "aae000c3-5242-4e3c-bd1f-7e922a6d3d34",
+                "answers": [
+                  {
+                    "label": "< 24h",
+                    "concept": "63a236d1-add1-49ec-88c9-8e89108a71f2"
+                  },
+                  {
+                    "label": "24 - 72 hours",
+                    "concept": "8d9cf61e-1f64-4f25-b202-52da17e8c634"
+                  },
+                  {
+                    "label": "< 1 month",
+                    "concept": "0e298528-7c8c-4724-a24f-d71ee7c1ebea"
+                  },
+                  {
+                    "label": "< 1year",
+                    "concept": "b5b58ef8-1bdf-4c14-9384-afbeb848d571"
+                  },
+                  {
+                    "label": ">= 1 year",
+                    "concept": "4a17e0a6-1add-49a6-9831-d8ad7c647ec9"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hasThePatientExperiencedViolence !== '681cf0bc-5213-492a-8470-0a0b3cc324dd' || sexualViolence !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "physicalViolence",
+              "label": "Physical violence",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "97c1c989-ddb6-4b89-987e-12c5f1327667",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hasThePatientExperiencedViolence !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "emotionalViolence",
+              "label": "Emotional violence",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "7b563d52-87ca-41a1-a83c-40ab70b7fccd",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hasThePatientExperiencedViolence !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "psychologicalViolence",
+              "label": "Psychological violence",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8cc87438-1ed7-4350-a044-d28acc22edd2",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hasThePatientExperiencedViolence !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "otherTypeOfViolence",
+              "label": "Other type of violence",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "12906ced-1744-4701-b375-11a83c0b58b9",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hasThePatientExperiencedViolence !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "isThePatientExperiencingInsecurity",
+              "label": "Is the patient experiencing insecurity?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e4a0335e-4e8c-4f77-8256-76a0c115297e",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifYesWhere",
+              "label": "If yes, where?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9f7307b2-8cee-47a1-ac15-ee39e75a17e4",
+                "answers": [
+                  {
+                    "label": "Neighbourhood/City",
+                    "concept": "6a14e4c7-9f37-469a-b184-6d844a5c843b"
+                  },
+                  {
+                    "label": "House/Shelter",
+                    "concept": "4b0d9e26-91c3-44cf-8a44-9e8457e99815"
+                  },
+                  {
+                    "label": "Work / School",
+                    "concept": "7091b6ea-7067-4ee3-9f67-8805904e2f61"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(isThePatientExperiencingInsecurity !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ifOtherSpecify",
+              "label": "If other specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "isThePatientExperiencingInsecurity !== '681cf0bc-5213-492a-8470-0a0b3cc324dd' || ifYesWhere !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+              }
+            },
+            {
+              "id": "patientNeedsASafeHouse",
+              "label": "Patient needs a safe house?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "72bb8fda-8445-4ae8-bfee-f44680b63569",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "lastPlaceOfResidency",
+              "label": "Last place of residency",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d9c2b806-cbf6-49d8-80ab-cba3128ff1ee"
+              }
+            },
+            {
+              "id": "hasThePatientExperiencedpushBack",
+              "label": "Has the patient experienced 'push back'?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0a639998-5c28-444a-a400-3fafa810e66e",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifYesNumberOfpushBacks",
+              "label": "If yes, number of 'push backs'",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "11179219-c47c-4e33-b0fe-7c7a173f1672",
+                "disallowDecimals": true,
+                "min": 0,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "hasThePatientExperiencedpushBack !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "timeSpentInDetention",
+              "label": "Time spent in detention:",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "31503ef7-3202-4741-a1f1-269a7138c6e1",
+                "answers": [
+                  {
+                    "label": "<1 week",
+                    "concept": "ccc2672e-7024-4e24-9a58-e450602d17cf"
+                  },
+                  {
+                    "label": "1 - 4 weeks",
+                    "concept": "d5ea3587-be05-4b66-809c-3c63481300b3"
+                  },
+                  {
+                    "label": "1 - 5 months",
+                    "concept": "14b20911-76ef-4544-aaf0-c7b268802852"
+                  },
+                  {
+                    "label": "6 - 11 months",
+                    "concept": "9e76d2ac-fe4a-48f4-b9c5-94b3c1df0815"
+                  },
+                  {
+                    "label": "1 - 2 years",
+                    "concept": "b60b6b65-a717-46cb-b611-25bb484cd804"
+                  },
+                  {
+                    "label": "> 2 years",
+                    "concept": "58ad66ab-f47a-4460-88ef-a2c0c85d569a"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Drug Use",
+      "sections": [
+        {
+          "label": "Drug Use",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "hasThePatientEverUsedAnyDrugOrSubstance",
+              "label": "Has the patient ever used any drug/substance?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "30837713-453e-4456-ac48-b3886acf02ac",
+                "answers": [
+                  {
+                    "label": "Yes, in the past",
+                    "concept": "e81fa512-38d4-42d4-ae38-cc5fae8345d5"
+                  },
+                  {
+                    "label": "Yes, currently",
+                    "concept": "53eaf1b5-6ff7-498f-b95c-7ce3f116f181"
+                  },
+                  {
+                    "label": "No drug or substance use disclosed",
+                    "concept": "58099680-d0dd-4524-899d-b1f3d2a6c337"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifDrugUseIsYesPatternOfConsumption",
+              "label": "If drug use is yes - Pattern of consumption",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1a316392-d6f4-492b-ab02-84e569886e2b",
+                "answers": [
+                  {
+                    "label": "Injectable",
+                    "concept": "459bb5fc-fde4-4bed-9c6a-aea3f86025dc"
+                  },
+                  {
+                    "label": "Non Injectable",
+                    "concept": "2f865ea2-0b5c-4d1b-a91e-bac62a47703f"
+                  },
+                  {
+                    "label": "Both",
+                    "concept": "6b97c385-719a-4f3b-88cd-7557b490706e"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hasThePatientEverUsedAnyDrugOrSubstance !== 'e81fa512-38d4-42d4-ae38-cc5fae8345d5' && hasThePatientEverUsedAnyDrugOrSubstance !== '53eaf1b5-6ff7-498f-b95c-7ce3f116f181'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Social Requests",
+      "sections": [
+        {
+          "label": "Social requests",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "typeOfSocialRequests",
+              "label": "Type of social requests",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "1ed55578-00a7-4028-9a53-ec4722e827ff",
+                "answers": [
+                  {
+                    "label": "Protection",
+                    "concept": "eff27d0b-d485-4983-814f-febbc4fe185a"
+                  },
+                  {
+                    "label": "Asylum request",
+                    "concept": "be05ce26-ee6b-4b03-b952-fdf93dd02749"
+                  },
+                  {
+                    "label": "Migratory issues",
+                    "concept": "50f765e7-e6da-468a-b421-42b2b5386ce9"
+                  },
+                  {
+                    "label": "Legal Denounce",
+                    "concept": "958bd720-7743-45d5-80f5-6ece8daf3a31"
+                  },
+                  {
+                    "label": "Other legal request",
+                    "concept": "a6de73c2-7e85-4faa-8e0c-0d5b30dc46cc"
+                  },
+                  {
+                    "label": "Medical Registration",
+                    "concept": "4d1c406e-e284-4009-b009-25d70f9e9891"
+                  },
+                  {
+                    "label": "Medical Urgent",
+                    "concept": "df18856c-25d8-43b0-beb4-f15acf543d6d"
+                  },
+                  {
+                    "label": "Medical Non-Urgent",
+                    "concept": "f15e3696-638e-43c0-85cc-cc354e84a823"
+                  },
+                  {
+                    "label": "Mental Health Urgent",
+                    "concept": "0d8f5836-8e95-4cc5-9f87-c3df0a6b224c"
+                  },
+                  {
+                    "label": "Mental Health Non-Urgent",
+                    "concept": "43131914-c006-403a-a0a7-256019b48316"
+                  },
+                  {
+                    "label": "Other medical request",
+                    "concept": "e5208456-8b13-4721-83b5-602a2665032a"
+                  },
+                  {
+                    "label": "Accommodation",
+                    "concept": "be28db81-7f5f-4b70-961a-88d137e053e5"
+                  },
+                  {
+                    "label": "Food",
+                    "concept": "4c933d68-fda6-4343-b52b-1021c5e5182a"
+                  },
+                  {
+                    "label": "NFIs",
+                    "concept": "1fdcd164-3817-430f-bc50-d0b51c346d02"
+                  },
+                  {
+                    "label": "Homelessness support",
+                    "concept": "4e0f4af8-0dec-4a7c-8e23-9d095f7b45e3"
+                  },
+                  {
+                    "label": "Employment",
+                    "concept": "eff6ea98-b0df-4eec-b162-77c0eb94546a"
+                  },
+                  {
+                    "label": "Education",
+                    "concept": "e5406e0e-4cd7-4a47-b7f2-5e3e95a20303"
+                  },
+                  {
+                    "label": "Financial support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "Disability benefit",
+                    "concept": "c0759b23-62b2-4a9e-941f-ed642786297e"
+                  },
+                  {
+                    "label": "Other benefit",
+                    "concept": "9fc4d57b-3e63-4cd9-a5e4-79f4d6da43c4"
+                  },
+                  {
+                    "label": "Communication with services",
+                    "concept": "60cffeb9-18be-4019-9f00-84dedad6d04c"
+                  },
+                  {
+                    "label": "SOT Certificate",
+                    "concept": "57dc0c75-d18a-4347-a20c-3dde03658048"
+                  },
+                  {
+                    "label": "Other Certificate",
+                    "concept": "12477dae-ead2-44d7-97c6-02d5ddc7a808"
+                  },
+                  {
+                    "label": "Contact search",
+                    "concept": "63a7799c-44d1-4adc-b38f-cc6ca9670b29"
+                  },
+                  {
+                    "label": "Transportation",
+                    "concept": "7ec4c2e1-b7bb-490f-a0aa-f102cb27b287"
+                  },
+                  {
+                    "label": "Assistance for documentation",
+                    "concept": "12ce4257-cd58-4212-9e2f-3677300be13b"
+                  },
+                  {
+                    "label": "Other socio-economic request",
+                    "concept": "b52c6840-18e3-4e19-8633-abbabe2a324b"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "socialRequestsDetails",
+              "label": "Social requests details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "54bfcd3e-c2f6-4c55-88cd-a8ee02319273"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Action",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "protectionMainAction",
+              "label": "Protection - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a970ca37-de68-41c1-aecb-9b5a4a42c08e",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'eff27d0b-d485-4983-814f-febbc4fe185a')"
+              }
+            },
+            {
+              "id": "protectionOtherActions",
+              "label": "Protection - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e69618ba-3e9a-473b-bfa2-a329c29f1728"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'eff27d0b-d485-4983-814f-febbc4fe185a')"
+              }
+            },
+            {
+              "id": "protectionOfActions",
+              "label": "Protection - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "dbce60e8-aa9e-4524-983e-66dcf55bd541",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'eff27d0b-d485-4983-814f-febbc4fe185a')"
+              }
+            },
+            {
+              "id": "protectionDetails",
+              "label": "Protection - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'eff27d0b-d485-4983-814f-febbc4fe185a')"
+              }
+            },
+            {
+              "id": "asylumRequestMainAction",
+              "label": "Asylum request - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "7ff6e1f0-c873-448f-a6bb-2c8479ba8dd2",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'be05ce26-ee6b-4b03-b952-fdf93dd02749')"
+              }
+            },
+            {
+              "id": "asylumRequestOtherActions",
+              "label": "Asylum request - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "2571e668-e6d6-4082-ad0b-bfc0f3b3ba95"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'be05ce26-ee6b-4b03-b952-fdf93dd02749')"
+              }
+            },
+            {
+              "id": "asylumRequestOfActions",
+              "label": "Asylum request - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "ae98b793-af3f-4d53-851b-7eb16f7bc692",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'be05ce26-ee6b-4b03-b952-fdf93dd02749')"
+              }
+            },
+            {
+              "id": "asylumRequestDetails",
+              "label": "Asylum request - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'be05ce26-ee6b-4b03-b952-fdf93dd02749')"
+              }
+            },
+            {
+              "id": "migratoryIssuesMainAction",
+              "label": "Migratory issues - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "840d7952-965f-4744-8126-f9af8fc32100",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '50f765e7-e6da-468a-b421-42b2b5386ce9')"
+              }
+            },
+            {
+              "id": "migratoryIssuesOtherActions",
+              "label": "Migratory issues - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "31773371-54a1-4235-9bf6-43cf1a679b37"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '50f765e7-e6da-468a-b421-42b2b5386ce9')"
+              }
+            },
+            {
+              "id": "migratoryIssuesOfActions",
+              "label": "Migratory issues - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "e661ac04-c95e-4710-8154-54e6839cd636",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '50f765e7-e6da-468a-b421-42b2b5386ce9')"
+              }
+            },
+            {
+              "id": "migratoryIssuesDetails",
+              "label": "Migratory issues - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '50f765e7-e6da-468a-b421-42b2b5386ce9')"
+              }
+            },
+            {
+              "id": "legalDenounceMainAction",
+              "label": "Legal Denounce - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "7cb5aa26-ce34-4aba-9ec8-dd4ec4df8bad",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '958bd720-7743-45d5-80f5-6ece8daf3a31')"
+              }
+            },
+            {
+              "id": "legalDenounceOtherActions",
+              "label": "Legal Denounce - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e8ddde73-d68e-40eb-9fed-4d1e60890e8d"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '958bd720-7743-45d5-80f5-6ece8daf3a31')"
+              }
+            },
+            {
+              "id": "legalDenounceOfActions",
+              "label": "Legal Denounce - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9e971c5e-578e-400e-9299-3151f7094c1f",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '958bd720-7743-45d5-80f5-6ece8daf3a31')"
+              }
+            },
+            {
+              "id": "legalDenounceDetails",
+              "label": "Legal Denounce - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '958bd720-7743-45d5-80f5-6ece8daf3a31')"
+              }
+            },
+            {
+              "id": "otherLegalRequestMainAction",
+              "label": "Other legal request - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5d2b16da-5550-48de-9cac-3846eb0ca335",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'a6de73c2-7e85-4faa-8e0c-0d5b30dc46cc')"
+              }
+            },
+            {
+              "id": "otherLegalRequestOtherActions",
+              "label": "Other legal request - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "29ad3f19-575d-40d6-b11c-8658de0bd24a"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'a6de73c2-7e85-4faa-8e0c-0d5b30dc46cc')"
+              }
+            },
+            {
+              "id": "otherLegalRequestOfActions",
+              "label": "Other legal request - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "ff32e219-04a9-4ae6-ba90-f10b6e4e381b",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'a6de73c2-7e85-4faa-8e0c-0d5b30dc46cc')"
+              }
+            },
+            {
+              "id": "otherLegalRequestDetails",
+              "label": "Other legal request - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'a6de73c2-7e85-4faa-8e0c-0d5b30dc46cc')"
+              }
+            },
+            {
+              "id": "medicalRegistrationMainAction",
+              "label": "Medical Registration - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3fae6522-bdd9-417c-ab6f-43edeaf915db",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '4d1c406e-e284-4009-b009-25d70f9e9891')"
+              }
+            },
+            {
+              "id": "medicalRegistrationOtherActions",
+              "label": "Medical Registration - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ad61fdc3-3b78-4f08-be92-5df631982d33"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '4d1c406e-e284-4009-b009-25d70f9e9891')"
+              }
+            },
+            {
+              "id": "medicalRegistrationOfActions",
+              "label": "Medical Registration - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a23187ce-736e-4fd9-bb9c-e4a7d3ebf583",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '4d1c406e-e284-4009-b009-25d70f9e9891')"
+              }
+            },
+            {
+              "id": "medicalRegistrationDetails",
+              "label": "Medical Registration - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '4d1c406e-e284-4009-b009-25d70f9e9891')"
+              }
+            },
+            {
+              "id": "medicalUrgentMainAction",
+              "label": "Medical Urgent - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "330755e6-7eed-494a-8c84-10bd5b7ce7b2",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'df18856c-25d8-43b0-beb4-f15acf543d6d')"
+              }
+            },
+            {
+              "id": "medicalUrgentOtherActions",
+              "label": "Medical Urgent - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e4bb1e15-59e4-4d51-be63-bea4a86b8f71"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'df18856c-25d8-43b0-beb4-f15acf543d6d')"
+              }
+            },
+            {
+              "id": "medicalUrgentOfActions",
+              "label": "Medical Urgent - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "6eb7ce31-bdac-44f5-b6a0-df82e5156bb1",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'df18856c-25d8-43b0-beb4-f15acf543d6d')"
+              }
+            },
+            {
+              "id": "medicalUrgentDetails",
+              "label": "Medical Urgent - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'df18856c-25d8-43b0-beb4-f15acf543d6d')"
+              }
+            },
+            {
+              "id": "medicalNonUrgentMainAction",
+              "label": "Medical Non-Urgent - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "573296d8-7605-4a59-b5bc-4ec7837f5e8f",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'f15e3696-638e-43c0-85cc-cc354e84a823')"
+              }
+            },
+            {
+              "id": "medicalNonUrgentOtherActions",
+              "label": "Medical Non-Urgent - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "01c1b7d7-2c9e-4cfb-b38f-94ff1d798138"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'f15e3696-638e-43c0-85cc-cc354e84a823')"
+              }
+            },
+            {
+              "id": "medicalNonUrgentOfActions",
+              "label": "Medical Non-Urgent - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a1059ecb-0c4f-464b-a99c-174d2edee224",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'f15e3696-638e-43c0-85cc-cc354e84a823')"
+              }
+            },
+            {
+              "id": "medicalNonUrgentDetails",
+              "label": "Medical Non-Urgent - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'f15e3696-638e-43c0-85cc-cc354e84a823')"
+              }
+            },
+            {
+              "id": "mentalHealthUrgentMainAction",
+              "label": "Mental Health Urgent - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6b27d4d0-c7dd-4d34-9209-188e1dfda6f3",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '0d8f5836-8e95-4cc5-9f87-c3df0a6b224c')"
+              }
+            },
+            {
+              "id": "mentalHealthUrgentOtherActions",
+              "label": "Mental Health Urgent - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "cab55680-2dda-4855-96ef-1c3893206459"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '0d8f5836-8e95-4cc5-9f87-c3df0a6b224c')"
+              }
+            },
+            {
+              "id": "mentalHealthUrgentOfActions",
+              "label": "Mental Health Urgent - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a1472d84-079a-47bc-9135-0d1db743f8ab",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '0d8f5836-8e95-4cc5-9f87-c3df0a6b224c')"
+              }
+            },
+            {
+              "id": "mentalHealthUrgentDetails",
+              "label": "Mental Health Urgent - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '0d8f5836-8e95-4cc5-9f87-c3df0a6b224c')"
+              }
+            },
+            {
+              "id": "mentalHealthNonUrgentMainAction",
+              "label": "Mental Health Non-Urgent - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "78a55cb6-8737-425e-9dc2-10284d75e439",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '43131914-c006-403a-a0a7-256019b48316')"
+              }
+            },
+            {
+              "id": "mentalHealthNonUrgentOtherActions",
+              "label": "Mental Health Non-Urgent - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "7a42c0f7-dfeb-4816-a7d3-0f58de90bb16"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '43131914-c006-403a-a0a7-256019b48316')"
+              }
+            },
+            {
+              "id": "mentalHealthNonUrgentOfActions",
+              "label": "Mental Health Non-Urgent - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "33419826-bb3c-4a03-a74e-03bc5b5aa046",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '43131914-c006-403a-a0a7-256019b48316')"
+              }
+            },
+            {
+              "id": "mentalHealthNonUrgentDetails",
+              "label": "Mental Health Non-Urgent - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '43131914-c006-403a-a0a7-256019b48316')"
+              }
+            },
+            {
+              "id": "otherMedicalRequestMainAction",
+              "label": "Other medical request - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9ad82609-9e8c-4f71-a7a7-46cf9b4a06ff",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'e5208456-8b13-4721-83b5-602a2665032a')"
+              }
+            },
+            {
+              "id": "otherMedicalRequestOtherActions",
+              "label": "Other medical request - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "19614177-924d-46c1-b2fa-6fd11765618d"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'e5208456-8b13-4721-83b5-602a2665032a')"
+              }
+            },
+            {
+              "id": "otherMedicalRequestOfActions",
+              "label": "Other medical request - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "92a8a58b-0891-423d-9fbd-bea2aedb28a8",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'e5208456-8b13-4721-83b5-602a2665032a')"
+              }
+            },
+            {
+              "id": "otherMedicalRequestDetails",
+              "label": "Other medical request - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'e5208456-8b13-4721-83b5-602a2665032a')"
+              }
+            },
+            {
+              "id": "accommodationMainAction",
+              "label": "Accommodation - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "05e4dc04-5244-415e-8004-e90397693bce",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'be28db81-7f5f-4b70-961a-88d137e053e5')"
+              }
+            },
+            {
+              "id": "accommodationOtherActions",
+              "label": "Accommodation - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "46b90a3b-af3b-4eb3-8284-919e1e5da3dd"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'be28db81-7f5f-4b70-961a-88d137e053e5')"
+              }
+            },
+            {
+              "id": "accommodationOfActions",
+              "label": "Accommodation - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a9909287-e840-467c-ab35-9902404e881a",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'be28db81-7f5f-4b70-961a-88d137e053e5')"
+              }
+            },
+            {
+              "id": "accommodationDetails",
+              "label": "Accommodation - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'be28db81-7f5f-4b70-961a-88d137e053e5')"
+              }
+            },
+            {
+              "id": "foodMainAction",
+              "label": "Food - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4a510863-5f26-4908-a796-7fa80344071d",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '4c933d68-fda6-4343-b52b-1021c5e5182a')"
+              }
+            },
+            {
+              "id": "foodOtherActions",
+              "label": "Food - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "9164aeb4-6e69-458a-806e-5b35d6d83856"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '4c933d68-fda6-4343-b52b-1021c5e5182a')"
+              }
+            },
+            {
+              "id": "foodOfActions",
+              "label": "Food - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "fe932ad0-2ca8-4f35-8735-2a3bc0596ecc",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '4c933d68-fda6-4343-b52b-1021c5e5182a')"
+              }
+            },
+            {
+              "id": "foodDetails",
+              "label": "Food - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '4c933d68-fda6-4343-b52b-1021c5e5182a')"
+              }
+            },
+            {
+              "id": "nfisMainAction",
+              "label": "NFIs - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d54829e0-13a2-44b1-9896-b66b43f08d22",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '1fdcd164-3817-430f-bc50-d0b51c346d02')"
+              }
+            },
+            {
+              "id": "nfisOtherActions",
+              "label": "NFIs - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "b54461fc-b109-4e68-9598-b50ac2482aa0"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '1fdcd164-3817-430f-bc50-d0b51c346d02')"
+              }
+            },
+            {
+              "id": "nfisOfActions",
+              "label": "NFIs - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "45fd49e1-45b2-425e-b2a4-2d972284a7b4",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '1fdcd164-3817-430f-bc50-d0b51c346d02')"
+              }
+            },
+            {
+              "id": "nfisDetails",
+              "label": "NFIs - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '1fdcd164-3817-430f-bc50-d0b51c346d02')"
+              }
+            },
+            {
+              "id": "homelessnessSupportMainAction",
+              "label": "Homelessness support - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "77d9a70d-b6b9-4d2b-b313-750ec3b7ed3f",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '4e0f4af8-0dec-4a7c-8e23-9d095f7b45e3')"
+              }
+            },
+            {
+              "id": "homelessnessSupportOtherActions",
+              "label": "Homelessness support - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "85a450a7-4b99-4873-acc1-64b72e54e711"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '4e0f4af8-0dec-4a7c-8e23-9d095f7b45e3')"
+              }
+            },
+            {
+              "id": "homelessnessSupportOfActions",
+              "label": "Homelessness support - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "4b66cff9-29dd-4bf7-af78-9b6b258c1a5d",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '4e0f4af8-0dec-4a7c-8e23-9d095f7b45e3')"
+              }
+            },
+            {
+              "id": "homelessnessSupportDetails",
+              "label": "Homelessness support - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '4e0f4af8-0dec-4a7c-8e23-9d095f7b45e3')"
+              }
+            },
+            {
+              "id": "employmentMainAction",
+              "label": "Employment - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3994d2fd-f9b2-4d06-a0b2-981288f7ec60",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'eff6ea98-b0df-4eec-b162-77c0eb94546a')"
+              }
+            },
+            {
+              "id": "employmentOtherActions",
+              "label": "Employment - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ecc39f54-7fe3-40b7-ab59-40ca565a8b7b"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'eff6ea98-b0df-4eec-b162-77c0eb94546a')"
+              }
+            },
+            {
+              "id": "employmentOfActions",
+              "label": "Employment - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "f82b765f-f21b-4b50-ba9a-141406566a4d",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'eff6ea98-b0df-4eec-b162-77c0eb94546a')"
+              }
+            },
+            {
+              "id": "employmentDetails",
+              "label": "Employment - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'eff6ea98-b0df-4eec-b162-77c0eb94546a')"
+              }
+            },
+            {
+              "id": "educationMainAction",
+              "label": "Education - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "be5bb07c-6763-43ff-9e41-b06a1117532c",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'e5406e0e-4cd7-4a47-b7f2-5e3e95a20303')"
+              }
+            },
+            {
+              "id": "educationOtherActions",
+              "label": "Education - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "4c27f985-fe7a-4022-848a-4a0677fc3603"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'e5406e0e-4cd7-4a47-b7f2-5e3e95a20303')"
+              }
+            },
+            {
+              "id": "educationOfActions",
+              "label": "Education - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "6bc6fd72-56cd-4b2e-bd69-b298cb88ddc5",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'e5406e0e-4cd7-4a47-b7f2-5e3e95a20303')"
+              }
+            },
+            {
+              "id": "educationDetails",
+              "label": "Education - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'e5406e0e-4cd7-4a47-b7f2-5e3e95a20303')"
+              }
+            },
+            {
+              "id": "financialSupportMainAction",
+              "label": "Financial support - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "19ee9039-d32f-4aad-8968-c766eb584c23",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'f9b6d02e-6075-40de-aad2-d87c187a4fbc')"
+              }
+            },
+            {
+              "id": "financialSupportOtherActions",
+              "label": "Financial support - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a8eb0867-9689-4af8-99ba-696598ab0a05"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'f9b6d02e-6075-40de-aad2-d87c187a4fbc')"
+              }
+            },
+            {
+              "id": "financialSupportOfActions",
+              "label": "Financial support - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "c47d005a-f4b6-4484-992a-8ad8ef4e2583",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'f9b6d02e-6075-40de-aad2-d87c187a4fbc')"
+              }
+            },
+            {
+              "id": "financialSupportDetails",
+              "label": "Financial support - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'f9b6d02e-6075-40de-aad2-d87c187a4fbc')"
+              }
+            },
+            {
+              "id": "disabilityBenefitMainAction",
+              "label": "Disability benefit - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a2018863-6ca0-4cea-a283-114ec5a20e40",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'c0759b23-62b2-4a9e-941f-ed642786297e')"
+              }
+            },
+            {
+              "id": "disabilityBenefitOtherActions",
+              "label": "Disability benefit - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ac848bc9-a329-4dbc-ba79-59846f817a26"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'c0759b23-62b2-4a9e-941f-ed642786297e')"
+              }
+            },
+            {
+              "id": "disabilityBenefitOfActions",
+              "label": "Disability benefit - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "ffbf1316-c138-4b6f-adf8-e37225e1ce33",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'c0759b23-62b2-4a9e-941f-ed642786297e')"
+              }
+            },
+            {
+              "id": "disabilityBenefitDetails",
+              "label": "Disability benefit - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'c0759b23-62b2-4a9e-941f-ed642786297e')"
+              }
+            },
+            {
+              "id": "otherBenefitMainAction",
+              "label": "Other benefit - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e4388388-01f6-43a1-98f8-c8b86f81c430",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '9fc4d57b-3e63-4cd9-a5e4-79f4d6da43c4')"
+              }
+            },
+            {
+              "id": "otherBenefitOtherActions",
+              "label": "Other benefit - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d4096688-c8bf-4335-8bf3-7682ac68274c"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '9fc4d57b-3e63-4cd9-a5e4-79f4d6da43c4')"
+              }
+            },
+            {
+              "id": "otherBenefitOfActions",
+              "label": "Other benefit - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1faedea5-8054-4044-9a17-46a5c4911577",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '9fc4d57b-3e63-4cd9-a5e4-79f4d6da43c4')"
+              }
+            },
+            {
+              "id": "otherBenefitDetails",
+              "label": "Other benefit - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '9fc4d57b-3e63-4cd9-a5e4-79f4d6da43c4')"
+              }
+            },
+            {
+              "id": "communicationWithServicesMainAction",
+              "label": "Communication with services - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "eb167f37-4450-4f55-a1b8-3b683bf897a0",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '60cffeb9-18be-4019-9f00-84dedad6d04c')"
+              }
+            },
+            {
+              "id": "communicationWithServicesOtherActions",
+              "label": "Communication with services - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "30202d6a-b59a-4734-b609-8133d802afac"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '60cffeb9-18be-4019-9f00-84dedad6d04c')"
+              }
+            },
+            {
+              "id": "communicationWithServicesOfActions",
+              "label": "Communication with services - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "44e12fd3-47ec-463e-bcdd-2371f0d3d666",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '60cffeb9-18be-4019-9f00-84dedad6d04c')"
+              }
+            },
+            {
+              "id": "communicationWithServicesDetails",
+              "label": "Communication with services - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '60cffeb9-18be-4019-9f00-84dedad6d04c')"
+              }
+            },
+            {
+              "id": "sotCertificateMainAction",
+              "label": "SOT Certificate - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1e6d035a-c6c0-4d5b-b30f-518fe39ff511",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '57dc0c75-d18a-4347-a20c-3dde03658048')"
+              }
+            },
+            {
+              "id": "sotCertificateOtherActions",
+              "label": "SOT Certificate - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "18d1dc02-d908-4d10-b4f6-dfe88c78a80e"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '57dc0c75-d18a-4347-a20c-3dde03658048')"
+              }
+            },
+            {
+              "id": "sotCertificateOfActions",
+              "label": "SOT Certificate - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "d9190370-dc7a-4e34-ba17-c74ac471234c",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '57dc0c75-d18a-4347-a20c-3dde03658048')"
+              }
+            },
+            {
+              "id": "sotCertificateDetails",
+              "label": "SOT Certificate - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '57dc0c75-d18a-4347-a20c-3dde03658048')"
+              }
+            },
+            {
+              "id": "otherCertificateMainAction",
+              "label": "Other Certificate - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c00c6215-0a1c-4cd2-9659-cbe2e70e4aa8",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '12477dae-ead2-44d7-97c6-02d5ddc7a808')"
+              }
+            },
+            {
+              "id": "otherCertificateOtherActions",
+              "label": "Other Certificate - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "5dc22afd-677e-4c38-b6ba-76564be30cbc"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '12477dae-ead2-44d7-97c6-02d5ddc7a808')"
+              }
+            },
+            {
+              "id": "otherCertificateOfActions",
+              "label": "Other Certificate - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "0b5795e9-8d44-4bc0-9c73-7f027d7a3c2b",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '12477dae-ead2-44d7-97c6-02d5ddc7a808')"
+              }
+            },
+            {
+              "id": "otherCertificateDetails",
+              "label": "Other Certificate - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '12477dae-ead2-44d7-97c6-02d5ddc7a808')"
+              }
+            },
+            {
+              "id": "contactSearchMainAction",
+              "label": "Contact search - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "032916ac-6e31-44d4-9496-8d95c01f9a58",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '63a7799c-44d1-4adc-b38f-cc6ca9670b29')"
+              }
+            },
+            {
+              "id": "contactSearchOtherActions",
+              "label": "Contact search - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "41b22a86-7d96-4869-b034-1223a022f9a8"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '63a7799c-44d1-4adc-b38f-cc6ca9670b29')"
+              }
+            },
+            {
+              "id": "contactSearchOfActions",
+              "label": "Contact search - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "4a5fece0-5e3c-4a54-99d9-fca9f9d765a1",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '63a7799c-44d1-4adc-b38f-cc6ca9670b29')"
+              }
+            },
+            {
+              "id": "contactSearchDetails",
+              "label": "Contact search - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '63a7799c-44d1-4adc-b38f-cc6ca9670b29')"
+              }
+            },
+            {
+              "id": "transportationMainAction",
+              "label": "Transportation - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "637d9b55-6f83-4687-85c0-35df5da464b7",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '7ec4c2e1-b7bb-490f-a0aa-f102cb27b287')"
+              }
+            },
+            {
+              "id": "transportationOtherActions",
+              "label": "Transportation - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "dc16f8fe-ab5b-47aa-83e0-87c7c80f5c15"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '7ec4c2e1-b7bb-490f-a0aa-f102cb27b287')"
+              }
+            },
+            {
+              "id": "transportationOfActions",
+              "label": "Transportation - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b957c2fc-1447-434a-93ff-6f7dbeeb7e71",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '7ec4c2e1-b7bb-490f-a0aa-f102cb27b287')"
+              }
+            },
+            {
+              "id": "transportationDetails",
+              "label": "Transportation - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '7ec4c2e1-b7bb-490f-a0aa-f102cb27b287')"
+              }
+            },
+            {
+              "id": "assistanceForDocumentationMainAction",
+              "label": "Assistance for documentation - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e2dc487a-1454-4fbd-a13e-faff0a9566b4",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '12ce4257-cd58-4212-9e2f-3677300be13b')"
+              }
+            },
+            {
+              "id": "assistanceForDocumentationOtherActions",
+              "label": "Assistance for documentation - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ae801f66-4e16-4425-981b-ceb2fe06a933"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '12ce4257-cd58-4212-9e2f-3677300be13b')"
+              }
+            },
+            {
+              "id": "assistanceForDocumentationOfActions",
+              "label": "Assistance for documentation - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "d564161f-d96b-4e5f-b90b-d85832291b13",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '12ce4257-cd58-4212-9e2f-3677300be13b')"
+              }
+            },
+            {
+              "id": "assistanceForDocumentationDetails",
+              "label": "Assistance for documentation - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, '12ce4257-cd58-4212-9e2f-3677300be13b')"
+              }
+            },
+            {
+              "id": "otherSocioEconomicRequestMainAction",
+              "label": "Other socio-economic request - Main action",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "15db4ee5-1f61-4191-b0c9-7de8eda65ba7",
+                "answers": [
+                  {
+                    "label": "A - Counselling / Guidance",
+                    "concept": "093fc38a-4bde-4349-a385-a892e32738f8"
+                  },
+                  {
+                    "label": "B - Orientation / Information",
+                    "concept": "87476536-fb4d-4ee9-b6b4-20531b8e5203"
+                  },
+                  {
+                    "label": "C - Administrative / Bureaucratic",
+                    "concept": "3cff3daa-e0fe-4544-af2c-cb88e888dd79"
+                  },
+                  {
+                    "label": "D - Communication with service",
+                    "concept": "eff0b156-c710-466d-8814-d3a35cf8cc7f"
+                  },
+                  {
+                    "label": "E - Referral Internal",
+                    "concept": "57402f43-f755-4f29-a576-66d7728b29e5"
+                  },
+                  {
+                    "label": "F - Referral External",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "G - Financial Support",
+                    "concept": "f9b6d02e-6075-40de-aad2-d87c187a4fbc"
+                  },
+                  {
+                    "label": "H - Accompaniment",
+                    "concept": "d6195671-5087-4370-84d5-429f6891a12b"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'b52c6840-18e3-4e19-8633-abbabe2a324b')"
+              }
+            },
+            {
+              "id": "otherSocioEconomicRequestOtherActions",
+              "label": "Other socio-economic request - Other actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "156f2d49-f9d6-44e6-8b93-21ed61731fc1"
+              },
+              "questionInfo": "Use the letters (A, B, ..) or describe briefly",
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'b52c6840-18e3-4e19-8633-abbabe2a324b')"
+              }
+            },
+            {
+              "id": "otherSocioEconomicRequestOfActions",
+              "label": "Other socio-economic request - # of actions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "59f42919-65c9-45f8-b602-0568feaf44d1",
+                "min": 0.0,
+                "max": 8.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'b52c6840-18e3-4e19-8633-abbabe2a324b')"
+              }
+            },
+            {
+              "id": "otherSocioEconomicRequestDetails",
+              "label": "Other socio-economic request - Details",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfSocialRequests, 'b52c6840-18e3-4e19-8633-abbabe2a324b')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow up",
+      "sections": [
+        {
+          "label": "Follow up",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "followUpNeeded",
+              "label": "Follow-up needed",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5f6e245c-83fc-421b-8d46-061ac773ae71",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pleaseScheduleNextVisitInappointments",
+              "label": "Please schedule next visit in 'Appointments'",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "followUpNeeded !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Discharge",
+      "sections": [
+        {
+          "label": "Discharge",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "dateOfDischarge",
+              "label": "Date of Discharge",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "13cea1c8-e426-411f-95b4-33651fc4325d"
+              },
+              "default": "current date",
+              "hide": {
+                "hideWhenExpression": "followUpNeeded !== 'a5c5563e-df0e-4742-a335-b24fb63664ee'"
+              }
+            },
+            {
+              "id": "typeOfExit",
+              "label": "Type of Exit",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4f4c6be4-1e1a-4770-a73b-bcc69c171748",
+                "answers": [
+                  {
+                    "label": "Social Intervention Concluded",
+                    "concept": "028caadd-a479-41fb-9823-a367cf01c7a4"
+                  },
+                  {
+                    "label": "Lost to Follow-Up",
+                    "concept": "d305b208-354f-4bb7-b35a-df4f8d92c256"
+                  },
+                  {
+                    "label": "No referral available",
+                    "concept": "b157b637-0a45-4b15-a23f-6c0567d76754"
+                  },
+                  {
+                    "label": "Externally referred",
+                    "concept": "bd0a2cb7-16e5-44c3-babb-cfc9ba0a421f"
+                  },
+                  {
+                    "label": "Patient died",
+                    "concept": "5cd3f794-8cbe-4f85-8582-72200a421ff7"
+                  },
+                  {
+                    "label": "Defaulter / Non Compliant",
+                    "concept": "81cbc44a-ac84-4458-ab99-feab4d64c691"
+                  },
+                  {
+                    "label": "Patient moved",
+                    "concept": "b0c8ab49-4de6-427a-bb25-73b9d929f243"
+                  },
+                  {
+                    "label": "Patient wants to conclude",
+                    "concept": "49da2b46-b7d1-4ba7-ba57-cfe219694a9c"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "followUpNeeded !== 'a5c5563e-df0e-4742-a335-b24fb63664ee'"
+              }
+            },
+            {
+              "id": "typeOfExitIfOtherSpecify",
+              "label": "Type of Exit - If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "followUpNeeded !== 'a5c5563e-df0e-4742-a335-b24fb63664ee' || typeOfExit !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Notes",
+      "sections": [
+        {
+          "label": "Notes",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalNotes",
+              "label": "Additional notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

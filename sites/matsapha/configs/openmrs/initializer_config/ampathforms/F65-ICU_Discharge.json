@@ -1,0 +1,2324 @@
+{
+  "name": "F65-ICU Discharge",
+  "description": "MSF Form - F65-ICU Discharge",
+  "version": "1",
+  "published": true,
+  "uuid": "422a8706-d302-4850-bb84-9bb655836195",
+  "processor": "EncounterFormProcessor",
+  "encounter": "ICU",
+  "encounterType": "4b5b1cee-9b31-45fb-b889-f2e694dc9cf5",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Intensive care",
+      "sections": [
+        {
+          "label": "Discharge",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "dischargeDate",
+              "label": "Discharge date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "datetime",
+                "concept": "d92dd800-b048-4724-86fa-91d006f9caa8"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
+              "default": "Current date and time"
+            }
+          ]
+        },
+        {
+          "label": "Medical",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "clinicalEvolutionDuringIcuStay",
+              "label": "Clinical evolution during ICU stay",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "6581b0dd-6f02-4aff-8223-e73abc23bb65"
+              },
+              "questionInfo": "Check also in 'Conditions' and 'Medications' for possible updates"
+            },
+            {
+              "id": "complications",
+              "label": "Complications",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "ec9ffc6e-22c9-4489-ab88-c517460e7838",
+                "answers": [
+                  {
+                    "label": "Unplanned Extubation",
+                    "concept": "73423f03-5fb1-4698-af93-21419eb761d2"
+                  },
+                  {
+                    "label": "Decubitus Ulcer",
+                    "concept": "9d674481-2d73-42d2-8039-ee144ff96e7e"
+                  },
+                  {
+                    "label": "Ventilation associated pneumonia",
+                    "concept": "d58bea9c-cd3f-442c-b2a9-d77856bb46fe"
+                  },
+                  {
+                    "label": "Deep vein thrombosis/Pulmonary embolism",
+                    "concept": "da4cfeb2-c11b-407e-9e31-c44daf8567c0"
+                  },
+                  {
+                    "label": "Nosocomial infection",
+                    "concept": "6411d9fa-dcbd-424d-a3a7-5fb2b318295b"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "None of the above",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "notesOnComplications",
+              "label": "Notes on complications",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(complications, '73423f03-5fb1-4698-af93-21419eb761d2') && !includes(complications, '9d674481-2d73-42d2-8039-ee144ff96e7e') && !includes(complications, 'd58bea9c-cd3f-442c-b2a9-d77856bb46fe') && !includes(complications, 'da4cfeb2-c11b-407e-9e31-c44daf8567c0') && !includes(complications, '6411d9fa-dcbd-424d-a3a7-5fb2b318295b') && !includes(complications, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "updateInconditionsmedicationsAndallergiesWithCurrentInformation",
+              "label": "Update in 'Conditions', 'Medications' and 'Allergies' with current information",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Update in 'Conditions', 'Medications' and 'Allergies' with current information"
+            }
+          ]
+        },
+        {
+          "label": "Management",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "summaryOfManagementInIcu",
+              "label": "Summary of management in ICU",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "78900dd0-228c-48ec-843f-81dae00cd454"
+              }
+            },
+            {
+              "id": "procedures",
+              "label": "Procedures",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "d3ffa682-10ab-41f3-8965-d5835028ddf1",
+                "answers": [
+                  {
+                    "label": "Oxygen Therapy",
+                    "concept": "2e9d005e-c09c-49af-91f4-702d20c5ca5a"
+                  },
+                  {
+                    "label": "Mechanical Ventilation",
+                    "concept": "ba1fc719-4e4c-4818-a4cf-2a4aecd0e51a"
+                  },
+                  {
+                    "label": "Non-Invasive Ventilation",
+                    "concept": "46beb15b-0be2-421a-99a6-5a260c5fcf7e"
+                  },
+                  {
+                    "label": "Continuous IV vasoactive drug",
+                    "concept": "9f30bc80-dfab-49ff-94b8-8359fc3b79ac"
+                  },
+                  {
+                    "label": "Blood transfusion",
+                    "concept": "550f0ba6-b763-4501-9e24-19607031110f"
+                  },
+                  {
+                    "label": "PICC (Peripheral Inserted Central Catheter)",
+                    "concept": "608b8684-ede2-441d-9981-1b679b5aefb1"
+                  },
+                  {
+                    "label": "CVC (Central venous catheter)",
+                    "concept": "cb8017de-74fc-4845-9329-8b627f7889e5"
+                  },
+                  {
+                    "label": "Anti venom infusion",
+                    "concept": "e29cca06-de16-4978-ae6b-2afcc244f22a"
+                  },
+                  {
+                    "label": "Dialysis",
+                    "concept": "246befe4-5bec-44e7-b528-8197ec14a2a1"
+                  },
+                  {
+                    "label": "CPR",
+                    "concept": "2f3e5165-a0db-4e97-bb91-8a8590103da5"
+                  },
+                  {
+                    "label": "HFNO (high flow nasal oxygen)",
+                    "concept": "9edc01e0-7116-4fa0-9a52-cc4b94bc7ecd"
+                  },
+                  {
+                    "label": "Tracheotomy",
+                    "concept": "11ffe345-e6a8-4ea3-89e7-9783b9e91305"
+                  },
+                  {
+                    "label": "Thoracostomy (Chest drain)",
+                    "concept": "d4072a63-b92d-417b-b2bb-7cfc423c27a5"
+                  },
+                  {
+                    "label": "Enteral nutrition",
+                    "concept": "a94af155-da71-4da8-8ee2-b5adf52bdb32"
+                  },
+                  {
+                    "label": "Parenteral nutrition",
+                    "concept": "59f8bfd3-5fdd-4a46-bf37-c109a52d17b9"
+                  },
+                  {
+                    "label": "Sedation",
+                    "concept": "ae4b74af-18d6-4574-9de8-a9371b961449"
+                  },
+                  {
+                    "label": "Urinary Catheter",
+                    "concept": "27861ac6-d2cb-4a0e-9855-abbf21f60a46"
+                  },
+                  {
+                    "label": "Suprapubic catheter",
+                    "concept": "58a3b8b8-43d0-46b5-bd70-3384cda29a8f"
+                  },
+                  {
+                    "label": "Intubation",
+                    "concept": "b08e0e95-9a43-4bbe-9576-68939ef5a24a"
+                  },
+                  {
+                    "label": "Defibrillation",
+                    "concept": "da8d38b1-6f27-47a6-8650-3920e111ed20"
+                  },
+                  {
+                    "label": "X-Ray",
+                    "concept": "06e16b18-b099-4962-ba86-2c248e6edd00"
+                  },
+                  {
+                    "label": "Ultrasound",
+                    "concept": "7b228b86-7023-4ab2-be54-68cace7d576e"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "None of the above",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "ifOxygenTherapyHowManyHours",
+              "label": "If oxygen therapy, how many hours?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "dfd75194-5e4c-4cfd-9fa3-2bbb9a8ac9f8",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(procedures, '2e9d005e-c09c-49af-91f4-702d20c5ca5a'))"
+              }
+            },
+            {
+              "id": "ifVentilationHowManyHours",
+              "label": "If ventilation, how many hours?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9cd8fdd5-fdbd-4e85-baf0-4d8c162e1711",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(procedures, 'ba1fc719-4e4c-4818-a4cf-2a4aecd0e51a'))"
+              }
+            },
+            {
+              "id": "ifSedationHowManyHours",
+              "label": "If sedation, how many hours?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "6d36b085-2844-441a-9e62-2cbce2b89436",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(procedures, 'ae4b74af-18d6-4574-9de8-a9371b961449'))"
+              }
+            },
+            {
+              "id": "notesOnProcedures",
+              "label": "Notes on procedures",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Lab Tests And Investigations",
+      "sections": [
+        {
+          "label": "Lab Tests And Investigations",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "commentsOnLabTestsAndInvestigations",
+              "label": "Comments on lab tests and investigations",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              },
+              "questionInfo": "Check in 'Results' for relevant tests ordered"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Physical Examination",
+      "sections": [
+        {
+          "label": "Physical Examination",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInvitalsBiometricsFortemperatureweightbprRatespo2AndOtherParametersAndAddCurrentMeasurementsWheneverNecessary",
+              "label": "Please check in 'Vitals & Biometrics' for 'Temperature', 'Weight', 'BP', 'R. rate', 'SpO2' and other parameters AND add current measurements whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "weightAtDischarge",
+              "label": "Weight at discharge (in Kg)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "cdb8c5f1-1afd-41d0-ba30-714440441555",
+                "min": 0.0,
+                "disallowDecimals": false,
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'e355de0a-6a46-4bce-ae59-6e66faaa25ee').then(obs => obs?.valueQuantity?.value)"
+                }
+              },
+              "default": "Weight from Biometrics"
+            }
+          ]
+        },
+        {
+          "label": "Review of systems",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "generalExam",
+              "label": "General exam",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ab6eff03-9119-474b-9a4c-d740761d61ca"
+              }
+            },
+            {
+              "id": "skin",
+              "label": "Skin",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "9faa36a9-afeb-4cbc-b9ae-5be4c965db51"
+              }
+            },
+            {
+              "id": "headAndNeck",
+              "label": "Head and neck",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "d6405ed1-e1bc-460f-8a1d-0d837e929b51"
+              }
+            },
+            {
+              "id": "respiratorySystem",
+              "label": "Respiratory system",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "7925f3f5-3e62-4181-8534-a3e2132f1444"
+              }
+            },
+            {
+              "id": "cardiovascularSystem",
+              "label": "Cardiovascular system",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "1e69a561-5601-4c98-b2dc-17893d4bd9e6"
+              }
+            },
+            {
+              "id": "abdomen",
+              "label": "Abdomen",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "1282939b-fed6-4bbf-b0ba-23f32651a087"
+              }
+            },
+            {
+              "id": "extremities",
+              "label": "Extremities",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "f50b37d1-1833-4ae5-9197-b0acd7c8fb05"
+              }
+            },
+            {
+              "id": "genitalia",
+              "label": "Genitalia",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "06df0cd0-0ea6-4447-9b42-cfaeaf826311"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis",
+      "sections": [
+        {
+          "label": "Non surgical condition",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "finalMainDiagnosis",
+              "label": "Final main diagnosis (only if non surgical hospitalisation cause)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "9da302ed-948f-4030-8f0a-a294dd3dff21",
+                "answers": [
+                  {
+                    "label": "Acute asthma",
+                    "concept": "e1b51c42-041f-4a3f-9a31-0337642f42b6"
+                  },
+                  {
+                    "label": "Acute coronary syndrome",
+                    "concept": "ca4d6ffb-80ff-4a6c-8d5c-dad288c0c6bb"
+                  },
+                  {
+                    "label": "Acute diarrhea (non-bloody)",
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
+                  },
+                  {
+                    "label": "Acute flaccid paralysis",
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
+                  },
+                  {
+                    "label": "Acute hemolytic transfusion reaction",
+                    "concept": "d63f8c3c-8320-460f-9965-e0097beecc3d"
+                  },
+                  {
+                    "label": "Acute kidney injury",
+                    "concept": "960e57a7-4fdf-4c5b-a966-6236e46eef80"
+                  },
+                  {
+                    "label": "Acute Respiratory Distress Syndrome (ARDS)",
+                    "concept": "679f0474-601e-4828-b1b3-224e938176bc"
+                  },
+                  {
+                    "label": "Allergy/Anaphylaxis",
+                    "concept": "6010fb98-a2df-49fc-adf3-aed59e1ab836"
+                  },
+                  {
+                    "label": "Amniotic embolism",
+                    "concept": "7cbd52d7-0211-4a5b-9cd5-a1e2034c4e5f"
+                  },
+                  {
+                    "label": "Anaphylactic shock",
+                    "concept": "9b355ca1-666e-4461-83f2-f7066bf70bd3"
+                  },
+                  {
+                    "label": "Arrythmia",
+                    "concept": "26722ca1-acf1-4e1e-ba43-a571a99c76e0"
+                  },
+                  {
+                    "label": "Brain abscess",
+                    "concept": "680a5495-b813-408a-9c8c-ee9eb35c67ae"
+                  },
+                  {
+                    "label": "Burns",
+                    "concept": "719ea0d7-98fd-4e86-84be-451b8c0f6f54"
+                  },
+                  {
+                    "label": "Carbon monoxide poisoning",
+                    "concept": "4168ff43-8d75-4ae5-b508-86c0322654ea"
+                  },
+                  {
+                    "label": "Cardiac arrest",
+                    "concept": "69c7ab29-7066-4fb4-a008-4eabdd3bbd8f"
+                  },
+                  {
+                    "label": "Cardiogenic shock",
+                    "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
+                  },
+                  {
+                    "label": "Cervical spine injury",
+                    "concept": "5a5ef77a-f5ee-483d-bc3e-193e96486a43"
+                  },
+                  {
+                    "label": "Compartment syndrome",
+                    "concept": "8256e6b8-6450-4338-822b-15b3ee9154a1"
+                  },
+                  {
+                    "label": "COPD exacerbation with respiratory failure",
+                    "concept": "127d31e5-7526-4299-a418-bf22c2a3a212"
+                  },
+                  {
+                    "label": "Critical covid 19",
+                    "concept": "f61157c6-111e-469c-a7f1-43aca9ca6db5"
+                  },
+                  {
+                    "label": "Deep venous thrombosis (DVT)",
+                    "concept": "8c534a60-78af-4090-8bb1-f477ea14c52c"
+                  },
+                  {
+                    "label": "Dengue - suspected",
+                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
+                  },
+                  {
+                    "label": "Dengue - confirmed",
+                    "concept": "4b01305f-ca82-454b-ab06-ab98a53eaaae"
+                  },
+                  {
+                    "label": "Diabetic ketoacidosis (DKA)",
+                    "concept": "93e793c6-a5cf-4910-8a80-369e19319383"
+                  },
+                  {
+                    "label": "Diphtheria",
+                    "concept": "2425bb5d-e9df-4e64-b119-ae42eaae1a35"
+                  },
+                  {
+                    "label": "Disseminated intravascular coagulation (DIC)",
+                    "concept": "3db4376a-35f8-43da-b7b4-386ee360484e"
+                  },
+                  {
+                    "label": "Drug intoxication",
+                    "concept": "02a5cc20-1707-4698-82bf-5dcea20b84d2"
+                  },
+                  {
+                    "label": "Eclampsia / severe pre eclampsia",
+                    "concept": "a3025ecb-f18c-4563-b42b-83f4ca196e57"
+                  },
+                  {
+                    "label": "Encephalitis",
+                    "concept": "d0e4c564-f65f-4fd3-89c7-499040a6b7d4"
+                  },
+                  {
+                    "label": "Epilepticus status",
+                    "concept": "88435714-7324-48a0-b64e-c128364d8d22"
+                  },
+                  {
+                    "label": "Ethanol toxicity",
+                    "concept": "915f44c9-8479-4171-9112-b2203e6dfe7f"
+                  },
+                  {
+                    "label": "Gastro intestinal bleeding",
+                    "concept": "df32adc9-6ef9-49f4-9025-336f88de4359"
+                  },
+                  {
+                    "label": "Heart failure",
+                    "concept": "a6c5ab13-d31f-4ac9-88f7-b0b0d0f3fd92"
+                  },
+                  {
+                    "label": "HELLP syndrome",
+                    "concept": "c91196bb-e6fa-4d4a-8d16-fa971bee86fb"
+                  },
+                  {
+                    "label": "Hemoglobinopathies",
+                    "concept": "59957a29-5aff-43a0-a46b-384541ee6d30"
+                  },
+                  {
+                    "label": "Hemothorax",
+                    "concept": "62408c51-aa12-487f-afb8-a1c7046394f9"
+                  },
+                  {
+                    "label": "Hereditary coagulation disorder",
+                    "concept": "ba56384a-41d6-4a94-87ba-e2ffc43db5e2"
+                  },
+                  {
+                    "label": "Hypercalcemia",
+                    "concept": "371a5427-1df6-4031-a5a0-47be19ec3599"
+                  },
+                  {
+                    "label": "Hyperkaliemia",
+                    "concept": "f0e83ab9-fad9-471b-821f-9400d0f3f598"
+                  },
+                  {
+                    "label": "Hypernatremia",
+                    "concept": "20a9dfc5-3431-472b-9320-c1ac8270d2d3"
+                  },
+                  {
+                    "label": "Hyperosmolar hyperglycemic state",
+                    "concept": "4e70f33f-69f2-4d26-9d6a-4b054467827a"
+                  },
+                  {
+                    "label": "Hypoglycemia",
+                    "concept": "7e848f32-6afd-4e14-8cb9-cc8402f42363"
+                  },
+                  {
+                    "label": "Hypokaliemia",
+                    "concept": "ecd1615f-a77d-4036-a276-0448b7f33a9d"
+                  },
+                  {
+                    "label": "Hyponatremia",
+                    "concept": "6721a486-6b8d-4fea-ae4f-06a9e917dac8"
+                  },
+                  {
+                    "label": "Hypovolemic shock",
+                    "concept": "d8c5769e-b090-4bcb-8942-4a3d7c4f58ff"
+                  },
+                  {
+                    "label": "Infective endocarditis",
+                    "concept": "0a62beae-19f8-4de5-abf3-05ef9e83605e"
+                  },
+                  {
+                    "label": "Intracranial hemorrhage",
+                    "concept": "04c2bdfb-5158-45f0-ac57-2eac5a22ba63"
+                  },
+                  {
+                    "label": "Intracranial hypertension",
+                    "concept": "317e8836-ae8d-435e-b8b6-56f404ac2a86"
+                  },
+                  {
+                    "label": "Malignant hypertension",
+                    "concept": "24f84ac8-d755-41a9-a919-a7f934d707d6"
+                  },
+                  {
+                    "label": "Meningeal TB",
+                    "concept": "7477e7a3-d6b4-46c0-b7cf-b973c0c0584d"
+                  },
+                  {
+                    "label": "Meningitis - bacterial",
+                    "concept": "23c733cd-808d-4d23-b58c-78028e66528f"
+                  },
+                  {
+                    "label": "Meningitis - viral",
+                    "concept": "b5482ddf-4568-4d90-a77f-e468f5b0e8f6"
+                  },
+                  {
+                    "label": "Methanol toxicity",
+                    "concept": "559f30d6-aa5e-47d1-9313-b71f2125feb7"
+                  },
+                  {
+                    "label": "Myelitis",
+                    "concept": "74ad92fb-7520-4bd8-bb48-a8796672b138"
+                  },
+                  {
+                    "label": "Myocarditis",
+                    "concept": "58280f6a-a721-40b1-a657-49e1be4d877b"
+                  },
+                  {
+                    "label": "Necrotizing fasciitis",
+                    "concept": "0d3664ef-c537-4410-9335-235c60aff7f8"
+                  },
+                  {
+                    "label": "Nephrotic syndrome or Acute glomerulonephritis",
+                    "concept": "96fb9345-0260-4a54-82ce-4c30e1ce8d1c"
+                  },
+                  {
+                    "label": "Obstetric hemorrhage (PPH excluded)",
+                    "concept": "5b969fd1-b3e0-48b2-ba8b-80ffc3d51e44"
+                  },
+                  {
+                    "label": "Opiod overdose",
+                    "concept": "b78c600b-d010-4cba-a723-4158e2abb504"
+                  },
+                  {
+                    "label": "Organophosporus toxicity",
+                    "concept": "c61bbe67-bca3-4dc6-b806-f2388263787b"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "a54fbf02-4798-45a6-894b-871bb41a1cb8"
+                  },
+                  {
+                    "label": "Palliative care",
+                    "concept": "fb17afb6-033e-4560-8343-eecd6ff0f028"
+                  },
+                  {
+                    "label": "Parenteral nutrition",
+                    "concept": "59f8bfd3-5fdd-4a46-bf37-c109a52d17b9"
+                  },
+                  {
+                    "label": "Peripartum cardiomyopathy",
+                    "concept": "1213f54c-a176-4fbc-a0a4-5b3e86d09836"
+                  },
+                  {
+                    "label": "Pleural effusion",
+                    "concept": "219684a4-ff81-4ad7-a62b-ca563cb6bfdf"
+                  },
+                  {
+                    "label": "Pneumonia - community acquired",
+                    "concept": "2d4e8ce0-25a7-47a2-b973-9b631b38bc52"
+                  },
+                  {
+                    "label": "Pneumonia - hospital acquired",
+                    "concept": "2786a1c5-bc8d-4fd7-a28e-1e8604e6db14"
+                  },
+                  {
+                    "label": "Pneumonia - ventilation acquired",
+                    "concept": "d58bea9c-cd3f-442c-b2a9-d77856bb46fe"
+                  },
+                  {
+                    "label": "Pneumothorax",
+                    "concept": "63946c7d-7261-48f5-a10e-6912f21f57ff"
+                  },
+                  {
+                    "label": "Post op follow up",
+                    "concept": "cabb85e5-ad2a-4e5b-a320-a5462d71bac4"
+                  },
+                  {
+                    "label": "Post partum hemorrhage (PPH)",
+                    "concept": "f586985a-2700-4958-8cb1-f426675f0d8d"
+                  },
+                  {
+                    "label": "Pulmonary Edema",
+                    "concept": "6cd1693a-0c74-486b-a6f0-0fff18777869"
+                  },
+                  {
+                    "label": "Pulmonary embolism",
+                    "concept": "da4cfeb2-c11b-407e-9e31-c44daf8567c0"
+                  },
+                  {
+                    "label": "Rabies",
+                    "concept": "2f07701b-95b2-4235-8c81-448da7f1aaa3"
+                  },
+                  {
+                    "label": "Rhabdomyolysis",
+                    "concept": "c32f8f66-f959-4427-831c-218f323d7167"
+                  },
+                  {
+                    "label": "Scorpion stings",
+                    "concept": "eb3c6628-0a05-4205-aeee-130f827a4790"
+                  },
+                  {
+                    "label": "Sepsis",
+                    "concept": "fb42b25e-155d-4711-86c4-4b27c1bdd8a9"
+                  },
+                  {
+                    "label": "Septic shock",
+                    "concept": "8ea542b2-d6ce-442c-8817-c64716394dc9"
+                  },
+                  {
+                    "label": "Severe Acute Malnutrition (Kwashiorkor)",
+                    "concept": "1fc04050-6ebd-432b-9519-63c5d14f8f0e"
+                  },
+                  {
+                    "label": "Severe Acute Malnutrition (Marasmus - Kwashiorkor)",
+                    "concept": "decc099e-4022-4e35-95f7-6f0485551fa7"
+                  },
+                  {
+                    "label": "Severe Acute Malnutrition (Marasmus)",
+                    "concept": "d5e64667-5e9d-41aa-b6bf-76821db16144"
+                  },
+                  {
+                    "label": "Severe covid 19",
+                    "concept": "bc8fbf45-7621-435f-81fd-3f4b44d5d0e3"
+                  },
+                  {
+                    "label": "Severe malaria",
+                    "concept": "e9f02d62-a180-4a3e-813a-c210ec7364a6"
+                  },
+                  {
+                    "label": "Snake bites",
+                    "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
+                  },
+                  {
+                    "label": "Stroke (CVA - Cerebrovascular Accident)",
+                    "concept": "bff16ef7-3429-4cff-bda0-5cc13a77ae39"
+                  },
+                  {
+                    "label": "Tamponade",
+                    "concept": "92ed9ec4-4ec7-4e98-b023-2deed1faa9f1"
+                  },
+                  {
+                    "label": "Tetanus",
+                    "concept": "ac66146e-5919-428c-8ed6-6a5a764ab06a"
+                  },
+                  {
+                    "label": "Traumatic brain injury",
+                    "concept": "952d4753-7f1c-40fc-94e4-0dd98fdfdbba"
+                  },
+                  {
+                    "label": "Traumatic hemorrhagic shock",
+                    "concept": "e7e1991d-9a20-4ba3-9c53-45464689a72c"
+                  },
+                  {
+                    "label": "Upper airway obstruction",
+                    "concept": "33389a60-08aa-4f11-b43c-74fd61e66611"
+                  },
+                  {
+                    "label": "Yellow fever",
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "finalMainDiagnosisIfotherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(finalMainDiagnosis !== 'a54fbf02-4798-45a6-894b-871bb41a1cb8')"
+              }
+            },
+            {
+              "id": "finalSecondaryDiagnosis1",
+              "label": "Final secondary diagnosis 1",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "3a03bdb4-4b3f-45c3-966a-97843ec88680",
+                "answers": [
+                  {
+                    "label": "Acute asthma",
+                    "concept": "e1b51c42-041f-4a3f-9a31-0337642f42b6"
+                  },
+                  {
+                    "label": "Acute coronary syndrome",
+                    "concept": "ca4d6ffb-80ff-4a6c-8d5c-dad288c0c6bb"
+                  },
+                  {
+                    "label": "Acute diarrhea (non-bloody)",
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
+                  },
+                  {
+                    "label": "Acute flaccid paralysis",
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
+                  },
+                  {
+                    "label": "Acute hemolytic transfusion reaction",
+                    "concept": "d63f8c3c-8320-460f-9965-e0097beecc3d"
+                  },
+                  {
+                    "label": "Acute kidney injury",
+                    "concept": "960e57a7-4fdf-4c5b-a966-6236e46eef80"
+                  },
+                  {
+                    "label": "Acute Respiratory Distress Syndrome (ARDS)",
+                    "concept": "679f0474-601e-4828-b1b3-224e938176bc"
+                  },
+                  {
+                    "label": "Allergy/Anaphylaxis",
+                    "concept": "6010fb98-a2df-49fc-adf3-aed59e1ab836"
+                  },
+                  {
+                    "label": "Amniotic embolism",
+                    "concept": "7cbd52d7-0211-4a5b-9cd5-a1e2034c4e5f"
+                  },
+                  {
+                    "label": "Anaphylactic shock",
+                    "concept": "9b355ca1-666e-4461-83f2-f7066bf70bd3"
+                  },
+                  {
+                    "label": "Arrythmia",
+                    "concept": "26722ca1-acf1-4e1e-ba43-a571a99c76e0"
+                  },
+                  {
+                    "label": "Brain abscess",
+                    "concept": "680a5495-b813-408a-9c8c-ee9eb35c67ae"
+                  },
+                  {
+                    "label": "Burns",
+                    "concept": "719ea0d7-98fd-4e86-84be-451b8c0f6f54"
+                  },
+                  {
+                    "label": "Carbon monoxide poisoning",
+                    "concept": "4168ff43-8d75-4ae5-b508-86c0322654ea"
+                  },
+                  {
+                    "label": "Cardiac arrest",
+                    "concept": "69c7ab29-7066-4fb4-a008-4eabdd3bbd8f"
+                  },
+                  {
+                    "label": "Cardiogenic shock",
+                    "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
+                  },
+                  {
+                    "label": "Cervical spine injury",
+                    "concept": "5a5ef77a-f5ee-483d-bc3e-193e96486a43"
+                  },
+                  {
+                    "label": "Compartment syndrome",
+                    "concept": "8256e6b8-6450-4338-822b-15b3ee9154a1"
+                  },
+                  {
+                    "label": "COPD exacerbation with respiratory failure",
+                    "concept": "127d31e5-7526-4299-a418-bf22c2a3a212"
+                  },
+                  {
+                    "label": "Critical covid 19",
+                    "concept": "f61157c6-111e-469c-a7f1-43aca9ca6db5"
+                  },
+                  {
+                    "label": "Deep venous thrombosis (DVT)",
+                    "concept": "8c534a60-78af-4090-8bb1-f477ea14c52c"
+                  },
+                  {
+                    "label": "Dengue - suspected",
+                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
+                  },
+                  {
+                    "label": "Dengue - confirmed",
+                    "concept": "4b01305f-ca82-454b-ab06-ab98a53eaaae"
+                  },
+                  {
+                    "label": "Diabetic ketoacidosis (DKA)",
+                    "concept": "93e793c6-a5cf-4910-8a80-369e19319383"
+                  },
+                  {
+                    "label": "Diphtheria",
+                    "concept": "2425bb5d-e9df-4e64-b119-ae42eaae1a35"
+                  },
+                  {
+                    "label": "Disseminated intravascular coagulation (DIC)",
+                    "concept": "3db4376a-35f8-43da-b7b4-386ee360484e"
+                  },
+                  {
+                    "label": "Drug intoxication",
+                    "concept": "02a5cc20-1707-4698-82bf-5dcea20b84d2"
+                  },
+                  {
+                    "label": "Eclampsia / severe pre eclampsia",
+                    "concept": "a3025ecb-f18c-4563-b42b-83f4ca196e57"
+                  },
+                  {
+                    "label": "Encephalitis",
+                    "concept": "d0e4c564-f65f-4fd3-89c7-499040a6b7d4"
+                  },
+                  {
+                    "label": "Epilepticus status",
+                    "concept": "88435714-7324-48a0-b64e-c128364d8d22"
+                  },
+                  {
+                    "label": "Ethanol toxicity",
+                    "concept": "915f44c9-8479-4171-9112-b2203e6dfe7f"
+                  },
+                  {
+                    "label": "Gastro intestinal bleeding",
+                    "concept": "df32adc9-6ef9-49f4-9025-336f88de4359"
+                  },
+                  {
+                    "label": "Heart failure",
+                    "concept": "a6c5ab13-d31f-4ac9-88f7-b0b0d0f3fd92"
+                  },
+                  {
+                    "label": "HELLP syndrome",
+                    "concept": "c91196bb-e6fa-4d4a-8d16-fa971bee86fb"
+                  },
+                  {
+                    "label": "Hemoglobinopathies",
+                    "concept": "59957a29-5aff-43a0-a46b-384541ee6d30"
+                  },
+                  {
+                    "label": "Hemothorax",
+                    "concept": "62408c51-aa12-487f-afb8-a1c7046394f9"
+                  },
+                  {
+                    "label": "Hereditary coagulation disorder",
+                    "concept": "ba56384a-41d6-4a94-87ba-e2ffc43db5e2"
+                  },
+                  {
+                    "label": "Hypercalcemia",
+                    "concept": "371a5427-1df6-4031-a5a0-47be19ec3599"
+                  },
+                  {
+                    "label": "Hyperkaliemia",
+                    "concept": "f0e83ab9-fad9-471b-821f-9400d0f3f598"
+                  },
+                  {
+                    "label": "Hypernatremia",
+                    "concept": "20a9dfc5-3431-472b-9320-c1ac8270d2d3"
+                  },
+                  {
+                    "label": "Hyperosmolar hyperglycemic state",
+                    "concept": "4e70f33f-69f2-4d26-9d6a-4b054467827a"
+                  },
+                  {
+                    "label": "Hypoglycemia",
+                    "concept": "7e848f32-6afd-4e14-8cb9-cc8402f42363"
+                  },
+                  {
+                    "label": "Hypokaliemia",
+                    "concept": "ecd1615f-a77d-4036-a276-0448b7f33a9d"
+                  },
+                  {
+                    "label": "Hyponatremia",
+                    "concept": "6721a486-6b8d-4fea-ae4f-06a9e917dac8"
+                  },
+                  {
+                    "label": "Hypovolemic shock",
+                    "concept": "d8c5769e-b090-4bcb-8942-4a3d7c4f58ff"
+                  },
+                  {
+                    "label": "Infective endocarditis",
+                    "concept": "0a62beae-19f8-4de5-abf3-05ef9e83605e"
+                  },
+                  {
+                    "label": "Intracranial hemorrhage",
+                    "concept": "04c2bdfb-5158-45f0-ac57-2eac5a22ba63"
+                  },
+                  {
+                    "label": "Intracranial hypertension",
+                    "concept": "317e8836-ae8d-435e-b8b6-56f404ac2a86"
+                  },
+                  {
+                    "label": "Malignant hypertension",
+                    "concept": "24f84ac8-d755-41a9-a919-a7f934d707d6"
+                  },
+                  {
+                    "label": "Meningeal TB",
+                    "concept": "7477e7a3-d6b4-46c0-b7cf-b973c0c0584d"
+                  },
+                  {
+                    "label": "Meningitis - bacterial",
+                    "concept": "23c733cd-808d-4d23-b58c-78028e66528f"
+                  },
+                  {
+                    "label": "Meningitis - viral",
+                    "concept": "b5482ddf-4568-4d90-a77f-e468f5b0e8f6"
+                  },
+                  {
+                    "label": "Methanol toxicity",
+                    "concept": "559f30d6-aa5e-47d1-9313-b71f2125feb7"
+                  },
+                  {
+                    "label": "Myelitis",
+                    "concept": "74ad92fb-7520-4bd8-bb48-a8796672b138"
+                  },
+                  {
+                    "label": "Myocarditis",
+                    "concept": "58280f6a-a721-40b1-a657-49e1be4d877b"
+                  },
+                  {
+                    "label": "Necrotizing fasciitis",
+                    "concept": "0d3664ef-c537-4410-9335-235c60aff7f8"
+                  },
+                  {
+                    "label": "Nephrotic syndrome or Acute glomerulonephritis",
+                    "concept": "96fb9345-0260-4a54-82ce-4c30e1ce8d1c"
+                  },
+                  {
+                    "label": "Obstetric hemorrhage (PPH excluded)",
+                    "concept": "5b969fd1-b3e0-48b2-ba8b-80ffc3d51e44"
+                  },
+                  {
+                    "label": "Opiod overdose",
+                    "concept": "b78c600b-d010-4cba-a723-4158e2abb504"
+                  },
+                  {
+                    "label": "Organophosporus toxicity",
+                    "concept": "c61bbe67-bca3-4dc6-b806-f2388263787b"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "a54fbf02-4798-45a6-894b-871bb41a1cb8"
+                  },
+                  {
+                    "label": "Palliative care",
+                    "concept": "fb17afb6-033e-4560-8343-eecd6ff0f028"
+                  },
+                  {
+                    "label": "Parenteral nutrition",
+                    "concept": "59f8bfd3-5fdd-4a46-bf37-c109a52d17b9"
+                  },
+                  {
+                    "label": "Peripartum cardiomyopathy",
+                    "concept": "1213f54c-a176-4fbc-a0a4-5b3e86d09836"
+                  },
+                  {
+                    "label": "Pleural effusion",
+                    "concept": "219684a4-ff81-4ad7-a62b-ca563cb6bfdf"
+                  },
+                  {
+                    "label": "Pneumonia - community acquired",
+                    "concept": "2d4e8ce0-25a7-47a2-b973-9b631b38bc52"
+                  },
+                  {
+                    "label": "Pneumonia - hospital acquired",
+                    "concept": "2786a1c5-bc8d-4fd7-a28e-1e8604e6db14"
+                  },
+                  {
+                    "label": "Pneumonia - ventilation acquired",
+                    "concept": "d58bea9c-cd3f-442c-b2a9-d77856bb46fe"
+                  },
+                  {
+                    "label": "Pneumothorax",
+                    "concept": "63946c7d-7261-48f5-a10e-6912f21f57ff"
+                  },
+                  {
+                    "label": "Post op follow up",
+                    "concept": "cabb85e5-ad2a-4e5b-a320-a5462d71bac4"
+                  },
+                  {
+                    "label": "Post partum hemorrhage (PPH)",
+                    "concept": "f586985a-2700-4958-8cb1-f426675f0d8d"
+                  },
+                  {
+                    "label": "Pulmonary Edema",
+                    "concept": "6cd1693a-0c74-486b-a6f0-0fff18777869"
+                  },
+                  {
+                    "label": "Pulmonary embolism",
+                    "concept": "da4cfeb2-c11b-407e-9e31-c44daf8567c0"
+                  },
+                  {
+                    "label": "Rabies",
+                    "concept": "2f07701b-95b2-4235-8c81-448da7f1aaa3"
+                  },
+                  {
+                    "label": "Rhabdomyolysis",
+                    "concept": "c32f8f66-f959-4427-831c-218f323d7167"
+                  },
+                  {
+                    "label": "Scorpion stings",
+                    "concept": "eb3c6628-0a05-4205-aeee-130f827a4790"
+                  },
+                  {
+                    "label": "Sepsis",
+                    "concept": "fb42b25e-155d-4711-86c4-4b27c1bdd8a9"
+                  },
+                  {
+                    "label": "Septic shock",
+                    "concept": "8ea542b2-d6ce-442c-8817-c64716394dc9"
+                  },
+                  {
+                    "label": "Severe Acute Malnutrition (Kwashiorkor)",
+                    "concept": "1fc04050-6ebd-432b-9519-63c5d14f8f0e"
+                  },
+                  {
+                    "label": "Severe Acute Malnutrition (Marasmus - Kwashiorkor)",
+                    "concept": "decc099e-4022-4e35-95f7-6f0485551fa7"
+                  },
+                  {
+                    "label": "Severe Acute Malnutrition (Marasmus)",
+                    "concept": "d5e64667-5e9d-41aa-b6bf-76821db16144"
+                  },
+                  {
+                    "label": "Severe covid 19",
+                    "concept": "bc8fbf45-7621-435f-81fd-3f4b44d5d0e3"
+                  },
+                  {
+                    "label": "Severe malaria",
+                    "concept": "e9f02d62-a180-4a3e-813a-c210ec7364a6"
+                  },
+                  {
+                    "label": "Snake bites",
+                    "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
+                  },
+                  {
+                    "label": "Stroke (CVA - Cerebrovascular Accident)",
+                    "concept": "bff16ef7-3429-4cff-bda0-5cc13a77ae39"
+                  },
+                  {
+                    "label": "Tamponade",
+                    "concept": "92ed9ec4-4ec7-4e98-b023-2deed1faa9f1"
+                  },
+                  {
+                    "label": "Tetanus",
+                    "concept": "ac66146e-5919-428c-8ed6-6a5a764ab06a"
+                  },
+                  {
+                    "label": "Traumatic brain injury",
+                    "concept": "952d4753-7f1c-40fc-94e4-0dd98fdfdbba"
+                  },
+                  {
+                    "label": "Traumatic hemorrhagic shock",
+                    "concept": "e7e1991d-9a20-4ba3-9c53-45464689a72c"
+                  },
+                  {
+                    "label": "Upper airway obstruction",
+                    "concept": "33389a60-08aa-4f11-b43c-74fd61e66611"
+                  },
+                  {
+                    "label": "Yellow fever",
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "final2ndDiagnosis1IfotherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(finalSecondaryDiagnosis1 !== 'a54fbf02-4798-45a6-894b-871bb41a1cb8')"
+              }
+            },
+            {
+              "id": "finalSecondaryDiagnosis2",
+              "label": "Final secondary diagnosis 2",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "e9ff5084-8d17-48e8-a1b7-890d1b4e14b1",
+                "answers": [
+                  {
+                    "label": "Acute asthma",
+                    "concept": "e1b51c42-041f-4a3f-9a31-0337642f42b6"
+                  },
+                  {
+                    "label": "Acute coronary syndrome",
+                    "concept": "ca4d6ffb-80ff-4a6c-8d5c-dad288c0c6bb"
+                  },
+                  {
+                    "label": "Acute diarrhea (non-bloody)",
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
+                  },
+                  {
+                    "label": "Acute flaccid paralysis",
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
+                  },
+                  {
+                    "label": "Acute hemolytic transfusion reaction",
+                    "concept": "d63f8c3c-8320-460f-9965-e0097beecc3d"
+                  },
+                  {
+                    "label": "Acute kidney injury",
+                    "concept": "960e57a7-4fdf-4c5b-a966-6236e46eef80"
+                  },
+                  {
+                    "label": "Acute Respiratory Distress Syndrome (ARDS)",
+                    "concept": "679f0474-601e-4828-b1b3-224e938176bc"
+                  },
+                  {
+                    "label": "Allergy/Anaphylaxis",
+                    "concept": "6010fb98-a2df-49fc-adf3-aed59e1ab836"
+                  },
+                  {
+                    "label": "Amniotic embolism",
+                    "concept": "7cbd52d7-0211-4a5b-9cd5-a1e2034c4e5f"
+                  },
+                  {
+                    "label": "Anaphylactic shock",
+                    "concept": "9b355ca1-666e-4461-83f2-f7066bf70bd3"
+                  },
+                  {
+                    "label": "Arrythmia",
+                    "concept": "26722ca1-acf1-4e1e-ba43-a571a99c76e0"
+                  },
+                  {
+                    "label": "Brain abscess",
+                    "concept": "680a5495-b813-408a-9c8c-ee9eb35c67ae"
+                  },
+                  {
+                    "label": "Burns",
+                    "concept": "719ea0d7-98fd-4e86-84be-451b8c0f6f54"
+                  },
+                  {
+                    "label": "Carbon monoxide poisoning",
+                    "concept": "4168ff43-8d75-4ae5-b508-86c0322654ea"
+                  },
+                  {
+                    "label": "Cardiac arrest",
+                    "concept": "69c7ab29-7066-4fb4-a008-4eabdd3bbd8f"
+                  },
+                  {
+                    "label": "Cardiogenic shock",
+                    "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
+                  },
+                  {
+                    "label": "Cervical spine injury",
+                    "concept": "5a5ef77a-f5ee-483d-bc3e-193e96486a43"
+                  },
+                  {
+                    "label": "Compartment syndrome",
+                    "concept": "8256e6b8-6450-4338-822b-15b3ee9154a1"
+                  },
+                  {
+                    "label": "COPD exacerbation with respiratory failure",
+                    "concept": "127d31e5-7526-4299-a418-bf22c2a3a212"
+                  },
+                  {
+                    "label": "Critical covid 19",
+                    "concept": "f61157c6-111e-469c-a7f1-43aca9ca6db5"
+                  },
+                  {
+                    "label": "Deep venous thrombosis (DVT)",
+                    "concept": "8c534a60-78af-4090-8bb1-f477ea14c52c"
+                  },
+                  {
+                    "label": "Dengue - suspected",
+                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
+                  },
+                  {
+                    "label": "Dengue - confirmed",
+                    "concept": "4b01305f-ca82-454b-ab06-ab98a53eaaae"
+                  },
+                  {
+                    "label": "Diabetic ketoacidosis (DKA)",
+                    "concept": "93e793c6-a5cf-4910-8a80-369e19319383"
+                  },
+                  {
+                    "label": "Diphtheria",
+                    "concept": "2425bb5d-e9df-4e64-b119-ae42eaae1a35"
+                  },
+                  {
+                    "label": "Disseminated intravascular coagulation (DIC)",
+                    "concept": "3db4376a-35f8-43da-b7b4-386ee360484e"
+                  },
+                  {
+                    "label": "Drug intoxication",
+                    "concept": "02a5cc20-1707-4698-82bf-5dcea20b84d2"
+                  },
+                  {
+                    "label": "Eclampsia / severe pre eclampsia",
+                    "concept": "a3025ecb-f18c-4563-b42b-83f4ca196e57"
+                  },
+                  {
+                    "label": "Encephalitis",
+                    "concept": "d0e4c564-f65f-4fd3-89c7-499040a6b7d4"
+                  },
+                  {
+                    "label": "Epilepticus status",
+                    "concept": "88435714-7324-48a0-b64e-c128364d8d22"
+                  },
+                  {
+                    "label": "Ethanol toxicity",
+                    "concept": "915f44c9-8479-4171-9112-b2203e6dfe7f"
+                  },
+                  {
+                    "label": "Gastro intestinal bleeding",
+                    "concept": "df32adc9-6ef9-49f4-9025-336f88de4359"
+                  },
+                  {
+                    "label": "Heart failure",
+                    "concept": "a6c5ab13-d31f-4ac9-88f7-b0b0d0f3fd92"
+                  },
+                  {
+                    "label": "HELLP syndrome",
+                    "concept": "c91196bb-e6fa-4d4a-8d16-fa971bee86fb"
+                  },
+                  {
+                    "label": "Hemoglobinopathies",
+                    "concept": "59957a29-5aff-43a0-a46b-384541ee6d30"
+                  },
+                  {
+                    "label": "Hemothorax",
+                    "concept": "62408c51-aa12-487f-afb8-a1c7046394f9"
+                  },
+                  {
+                    "label": "Hereditary coagulation disorder",
+                    "concept": "ba56384a-41d6-4a94-87ba-e2ffc43db5e2"
+                  },
+                  {
+                    "label": "Hypercalcemia",
+                    "concept": "371a5427-1df6-4031-a5a0-47be19ec3599"
+                  },
+                  {
+                    "label": "Hyperkaliemia",
+                    "concept": "f0e83ab9-fad9-471b-821f-9400d0f3f598"
+                  },
+                  {
+                    "label": "Hypernatremia",
+                    "concept": "20a9dfc5-3431-472b-9320-c1ac8270d2d3"
+                  },
+                  {
+                    "label": "Hyperosmolar hyperglycemic state",
+                    "concept": "4e70f33f-69f2-4d26-9d6a-4b054467827a"
+                  },
+                  {
+                    "label": "Hypoglycemia",
+                    "concept": "7e848f32-6afd-4e14-8cb9-cc8402f42363"
+                  },
+                  {
+                    "label": "Hypokaliemia",
+                    "concept": "ecd1615f-a77d-4036-a276-0448b7f33a9d"
+                  },
+                  {
+                    "label": "Hyponatremia",
+                    "concept": "6721a486-6b8d-4fea-ae4f-06a9e917dac8"
+                  },
+                  {
+                    "label": "Hypovolemic shock",
+                    "concept": "d8c5769e-b090-4bcb-8942-4a3d7c4f58ff"
+                  },
+                  {
+                    "label": "Infective endocarditis",
+                    "concept": "0a62beae-19f8-4de5-abf3-05ef9e83605e"
+                  },
+                  {
+                    "label": "Intracranial hemorrhage",
+                    "concept": "04c2bdfb-5158-45f0-ac57-2eac5a22ba63"
+                  },
+                  {
+                    "label": "Intracranial hypertension",
+                    "concept": "317e8836-ae8d-435e-b8b6-56f404ac2a86"
+                  },
+                  {
+                    "label": "Malignant hypertension",
+                    "concept": "24f84ac8-d755-41a9-a919-a7f934d707d6"
+                  },
+                  {
+                    "label": "Meningeal TB",
+                    "concept": "7477e7a3-d6b4-46c0-b7cf-b973c0c0584d"
+                  },
+                  {
+                    "label": "Meningitis - bacterial",
+                    "concept": "23c733cd-808d-4d23-b58c-78028e66528f"
+                  },
+                  {
+                    "label": "Meningitis - viral",
+                    "concept": "b5482ddf-4568-4d90-a77f-e468f5b0e8f6"
+                  },
+                  {
+                    "label": "Methanol toxicity",
+                    "concept": "559f30d6-aa5e-47d1-9313-b71f2125feb7"
+                  },
+                  {
+                    "label": "Myelitis",
+                    "concept": "74ad92fb-7520-4bd8-bb48-a8796672b138"
+                  },
+                  {
+                    "label": "Myocarditis",
+                    "concept": "58280f6a-a721-40b1-a657-49e1be4d877b"
+                  },
+                  {
+                    "label": "Necrotizing fasciitis",
+                    "concept": "0d3664ef-c537-4410-9335-235c60aff7f8"
+                  },
+                  {
+                    "label": "Nephrotic syndrome or Acute glomerulonephritis",
+                    "concept": "96fb9345-0260-4a54-82ce-4c30e1ce8d1c"
+                  },
+                  {
+                    "label": "Obstetric hemorrhage (PPH excluded)",
+                    "concept": "5b969fd1-b3e0-48b2-ba8b-80ffc3d51e44"
+                  },
+                  {
+                    "label": "Opiod overdose",
+                    "concept": "b78c600b-d010-4cba-a723-4158e2abb504"
+                  },
+                  {
+                    "label": "Organophosporus toxicity",
+                    "concept": "c61bbe67-bca3-4dc6-b806-f2388263787b"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "a54fbf02-4798-45a6-894b-871bb41a1cb8"
+                  },
+                  {
+                    "label": "Palliative care",
+                    "concept": "fb17afb6-033e-4560-8343-eecd6ff0f028"
+                  },
+                  {
+                    "label": "Parenteral nutrition",
+                    "concept": "59f8bfd3-5fdd-4a46-bf37-c109a52d17b9"
+                  },
+                  {
+                    "label": "Peripartum cardiomyopathy",
+                    "concept": "1213f54c-a176-4fbc-a0a4-5b3e86d09836"
+                  },
+                  {
+                    "label": "Pleural effusion",
+                    "concept": "219684a4-ff81-4ad7-a62b-ca563cb6bfdf"
+                  },
+                  {
+                    "label": "Pneumonia - community acquired",
+                    "concept": "2d4e8ce0-25a7-47a2-b973-9b631b38bc52"
+                  },
+                  {
+                    "label": "Pneumonia - hospital acquired",
+                    "concept": "2786a1c5-bc8d-4fd7-a28e-1e8604e6db14"
+                  },
+                  {
+                    "label": "Pneumonia - ventilation acquired",
+                    "concept": "d58bea9c-cd3f-442c-b2a9-d77856bb46fe"
+                  },
+                  {
+                    "label": "Pneumothorax",
+                    "concept": "63946c7d-7261-48f5-a10e-6912f21f57ff"
+                  },
+                  {
+                    "label": "Post op follow up",
+                    "concept": "cabb85e5-ad2a-4e5b-a320-a5462d71bac4"
+                  },
+                  {
+                    "label": "Post partum hemorrhage (PPH)",
+                    "concept": "f586985a-2700-4958-8cb1-f426675f0d8d"
+                  },
+                  {
+                    "label": "Pulmonary Edema",
+                    "concept": "6cd1693a-0c74-486b-a6f0-0fff18777869"
+                  },
+                  {
+                    "label": "Pulmonary embolism",
+                    "concept": "da4cfeb2-c11b-407e-9e31-c44daf8567c0"
+                  },
+                  {
+                    "label": "Rabies",
+                    "concept": "2f07701b-95b2-4235-8c81-448da7f1aaa3"
+                  },
+                  {
+                    "label": "Rhabdomyolysis",
+                    "concept": "c32f8f66-f959-4427-831c-218f323d7167"
+                  },
+                  {
+                    "label": "Scorpion stings",
+                    "concept": "eb3c6628-0a05-4205-aeee-130f827a4790"
+                  },
+                  {
+                    "label": "Sepsis",
+                    "concept": "fb42b25e-155d-4711-86c4-4b27c1bdd8a9"
+                  },
+                  {
+                    "label": "Septic shock",
+                    "concept": "8ea542b2-d6ce-442c-8817-c64716394dc9"
+                  },
+                  {
+                    "label": "Severe Acute Malnutrition (Kwashiorkor)",
+                    "concept": "1fc04050-6ebd-432b-9519-63c5d14f8f0e"
+                  },
+                  {
+                    "label": "Severe Acute Malnutrition (Marasmus - Kwashiorkor)",
+                    "concept": "decc099e-4022-4e35-95f7-6f0485551fa7"
+                  },
+                  {
+                    "label": "Severe Acute Malnutrition (Marasmus)",
+                    "concept": "d5e64667-5e9d-41aa-b6bf-76821db16144"
+                  },
+                  {
+                    "label": "Severe covid 19",
+                    "concept": "bc8fbf45-7621-435f-81fd-3f4b44d5d0e3"
+                  },
+                  {
+                    "label": "Severe malaria",
+                    "concept": "e9f02d62-a180-4a3e-813a-c210ec7364a6"
+                  },
+                  {
+                    "label": "Snake bites",
+                    "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
+                  },
+                  {
+                    "label": "Stroke (CVA - Cerebrovascular Accident)",
+                    "concept": "bff16ef7-3429-4cff-bda0-5cc13a77ae39"
+                  },
+                  {
+                    "label": "Tamponade",
+                    "concept": "92ed9ec4-4ec7-4e98-b023-2deed1faa9f1"
+                  },
+                  {
+                    "label": "Tetanus",
+                    "concept": "ac66146e-5919-428c-8ed6-6a5a764ab06a"
+                  },
+                  {
+                    "label": "Traumatic brain injury",
+                    "concept": "952d4753-7f1c-40fc-94e4-0dd98fdfdbba"
+                  },
+                  {
+                    "label": "Traumatic hemorrhagic shock",
+                    "concept": "e7e1991d-9a20-4ba3-9c53-45464689a72c"
+                  },
+                  {
+                    "label": "Upper airway obstruction",
+                    "concept": "33389a60-08aa-4f11-b43c-74fd61e66611"
+                  },
+                  {
+                    "label": "Yellow fever",
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "final2ndDiagnosis2IfotherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(finalSecondaryDiagnosis2 !== 'a54fbf02-4798-45a6-894b-871bb41a1cb8')"
+              }
+            },
+            {
+              "id": "finalSecondaryDiagnosis3",
+              "label": "Final secondary diagnosis 3",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "d1e43f55-4432-4a19-bf17-5a1c97b2226f",
+                "answers": [
+                  {
+                    "label": "Acute asthma",
+                    "concept": "e1b51c42-041f-4a3f-9a31-0337642f42b6"
+                  },
+                  {
+                    "label": "Acute coronary syndrome",
+                    "concept": "ca4d6ffb-80ff-4a6c-8d5c-dad288c0c6bb"
+                  },
+                  {
+                    "label": "Acute diarrhea (non-bloody)",
+                    "concept": "03f98e36-796b-47f9-94db-50194e27d35a"
+                  },
+                  {
+                    "label": "Acute flaccid paralysis",
+                    "concept": "6a374a98-ddf7-4f8a-8e9f-ecd96ea100e4"
+                  },
+                  {
+                    "label": "Acute hemolytic transfusion reaction",
+                    "concept": "d63f8c3c-8320-460f-9965-e0097beecc3d"
+                  },
+                  {
+                    "label": "Acute kidney injury",
+                    "concept": "960e57a7-4fdf-4c5b-a966-6236e46eef80"
+                  },
+                  {
+                    "label": "Acute Respiratory Distress Syndrome (ARDS)",
+                    "concept": "679f0474-601e-4828-b1b3-224e938176bc"
+                  },
+                  {
+                    "label": "Allergy/Anaphylaxis",
+                    "concept": "6010fb98-a2df-49fc-adf3-aed59e1ab836"
+                  },
+                  {
+                    "label": "Amniotic embolism",
+                    "concept": "7cbd52d7-0211-4a5b-9cd5-a1e2034c4e5f"
+                  },
+                  {
+                    "label": "Anaphylactic shock",
+                    "concept": "9b355ca1-666e-4461-83f2-f7066bf70bd3"
+                  },
+                  {
+                    "label": "Arrythmia",
+                    "concept": "26722ca1-acf1-4e1e-ba43-a571a99c76e0"
+                  },
+                  {
+                    "label": "Brain abscess",
+                    "concept": "680a5495-b813-408a-9c8c-ee9eb35c67ae"
+                  },
+                  {
+                    "label": "Burns",
+                    "concept": "719ea0d7-98fd-4e86-84be-451b8c0f6f54"
+                  },
+                  {
+                    "label": "Carbon monoxide poisoning",
+                    "concept": "4168ff43-8d75-4ae5-b508-86c0322654ea"
+                  },
+                  {
+                    "label": "Cardiac arrest",
+                    "concept": "69c7ab29-7066-4fb4-a008-4eabdd3bbd8f"
+                  },
+                  {
+                    "label": "Cardiogenic shock",
+                    "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
+                  },
+                  {
+                    "label": "Cervical spine injury",
+                    "concept": "5a5ef77a-f5ee-483d-bc3e-193e96486a43"
+                  },
+                  {
+                    "label": "Compartment syndrome",
+                    "concept": "8256e6b8-6450-4338-822b-15b3ee9154a1"
+                  },
+                  {
+                    "label": "COPD exacerbation with respiratory failure",
+                    "concept": "127d31e5-7526-4299-a418-bf22c2a3a212"
+                  },
+                  {
+                    "label": "Critical covid 19",
+                    "concept": "f61157c6-111e-469c-a7f1-43aca9ca6db5"
+                  },
+                  {
+                    "label": "Deep venous thrombosis (DVT)",
+                    "concept": "8c534a60-78af-4090-8bb1-f477ea14c52c"
+                  },
+                  {
+                    "label": "Dengue - suspected",
+                    "concept": "c0574b8a-eff3-4ab6-8534-b386a314ca53"
+                  },
+                  {
+                    "label": "Dengue - confirmed",
+                    "concept": "4b01305f-ca82-454b-ab06-ab98a53eaaae"
+                  },
+                  {
+                    "label": "Diabetic ketoacidosis (DKA)",
+                    "concept": "93e793c6-a5cf-4910-8a80-369e19319383"
+                  },
+                  {
+                    "label": "Diphtheria",
+                    "concept": "2425bb5d-e9df-4e64-b119-ae42eaae1a35"
+                  },
+                  {
+                    "label": "Disseminated intravascular coagulation (DIC)",
+                    "concept": "3db4376a-35f8-43da-b7b4-386ee360484e"
+                  },
+                  {
+                    "label": "Drug intoxication",
+                    "concept": "02a5cc20-1707-4698-82bf-5dcea20b84d2"
+                  },
+                  {
+                    "label": "Eclampsia / severe pre eclampsia",
+                    "concept": "a3025ecb-f18c-4563-b42b-83f4ca196e57"
+                  },
+                  {
+                    "label": "Encephalitis",
+                    "concept": "d0e4c564-f65f-4fd3-89c7-499040a6b7d4"
+                  },
+                  {
+                    "label": "Epilepticus status",
+                    "concept": "88435714-7324-48a0-b64e-c128364d8d22"
+                  },
+                  {
+                    "label": "Ethanol toxicity",
+                    "concept": "915f44c9-8479-4171-9112-b2203e6dfe7f"
+                  },
+                  {
+                    "label": "Gastro intestinal bleeding",
+                    "concept": "df32adc9-6ef9-49f4-9025-336f88de4359"
+                  },
+                  {
+                    "label": "Heart failure",
+                    "concept": "a6c5ab13-d31f-4ac9-88f7-b0b0d0f3fd92"
+                  },
+                  {
+                    "label": "HELLP syndrome",
+                    "concept": "c91196bb-e6fa-4d4a-8d16-fa971bee86fb"
+                  },
+                  {
+                    "label": "Hemoglobinopathies",
+                    "concept": "59957a29-5aff-43a0-a46b-384541ee6d30"
+                  },
+                  {
+                    "label": "Hemothorax",
+                    "concept": "62408c51-aa12-487f-afb8-a1c7046394f9"
+                  },
+                  {
+                    "label": "Hereditary coagulation disorder",
+                    "concept": "ba56384a-41d6-4a94-87ba-e2ffc43db5e2"
+                  },
+                  {
+                    "label": "Hypercalcemia",
+                    "concept": "371a5427-1df6-4031-a5a0-47be19ec3599"
+                  },
+                  {
+                    "label": "Hyperkaliemia",
+                    "concept": "f0e83ab9-fad9-471b-821f-9400d0f3f598"
+                  },
+                  {
+                    "label": "Hypernatremia",
+                    "concept": "20a9dfc5-3431-472b-9320-c1ac8270d2d3"
+                  },
+                  {
+                    "label": "Hyperosmolar hyperglycemic state",
+                    "concept": "4e70f33f-69f2-4d26-9d6a-4b054467827a"
+                  },
+                  {
+                    "label": "Hypoglycemia",
+                    "concept": "7e848f32-6afd-4e14-8cb9-cc8402f42363"
+                  },
+                  {
+                    "label": "Hypokaliemia",
+                    "concept": "ecd1615f-a77d-4036-a276-0448b7f33a9d"
+                  },
+                  {
+                    "label": "Hyponatremia",
+                    "concept": "6721a486-6b8d-4fea-ae4f-06a9e917dac8"
+                  },
+                  {
+                    "label": "Hypovolemic shock",
+                    "concept": "d8c5769e-b090-4bcb-8942-4a3d7c4f58ff"
+                  },
+                  {
+                    "label": "Infective endocarditis",
+                    "concept": "0a62beae-19f8-4de5-abf3-05ef9e83605e"
+                  },
+                  {
+                    "label": "Intracranial hemorrhage",
+                    "concept": "04c2bdfb-5158-45f0-ac57-2eac5a22ba63"
+                  },
+                  {
+                    "label": "Intracranial hypertension",
+                    "concept": "317e8836-ae8d-435e-b8b6-56f404ac2a86"
+                  },
+                  {
+                    "label": "Malignant hypertension",
+                    "concept": "24f84ac8-d755-41a9-a919-a7f934d707d6"
+                  },
+                  {
+                    "label": "Meningeal TB",
+                    "concept": "7477e7a3-d6b4-46c0-b7cf-b973c0c0584d"
+                  },
+                  {
+                    "label": "Meningitis - bacterial",
+                    "concept": "23c733cd-808d-4d23-b58c-78028e66528f"
+                  },
+                  {
+                    "label": "Meningitis - viral",
+                    "concept": "b5482ddf-4568-4d90-a77f-e468f5b0e8f6"
+                  },
+                  {
+                    "label": "Methanol toxicity",
+                    "concept": "559f30d6-aa5e-47d1-9313-b71f2125feb7"
+                  },
+                  {
+                    "label": "Myelitis",
+                    "concept": "74ad92fb-7520-4bd8-bb48-a8796672b138"
+                  },
+                  {
+                    "label": "Myocarditis",
+                    "concept": "58280f6a-a721-40b1-a657-49e1be4d877b"
+                  },
+                  {
+                    "label": "Necrotizing fasciitis",
+                    "concept": "0d3664ef-c537-4410-9335-235c60aff7f8"
+                  },
+                  {
+                    "label": "Nephrotic syndrome or Acute glomerulonephritis",
+                    "concept": "96fb9345-0260-4a54-82ce-4c30e1ce8d1c"
+                  },
+                  {
+                    "label": "Obstetric hemorrhage (PPH excluded)",
+                    "concept": "5b969fd1-b3e0-48b2-ba8b-80ffc3d51e44"
+                  },
+                  {
+                    "label": "Opiod overdose",
+                    "concept": "b78c600b-d010-4cba-a723-4158e2abb504"
+                  },
+                  {
+                    "label": "Organophosporus toxicity",
+                    "concept": "c61bbe67-bca3-4dc6-b806-f2388263787b"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "a54fbf02-4798-45a6-894b-871bb41a1cb8"
+                  },
+                  {
+                    "label": "Palliative care",
+                    "concept": "fb17afb6-033e-4560-8343-eecd6ff0f028"
+                  },
+                  {
+                    "label": "Parenteral nutrition",
+                    "concept": "59f8bfd3-5fdd-4a46-bf37-c109a52d17b9"
+                  },
+                  {
+                    "label": "Peripartum cardiomyopathy",
+                    "concept": "1213f54c-a176-4fbc-a0a4-5b3e86d09836"
+                  },
+                  {
+                    "label": "Pleural effusion",
+                    "concept": "219684a4-ff81-4ad7-a62b-ca563cb6bfdf"
+                  },
+                  {
+                    "label": "Pneumonia - community acquired",
+                    "concept": "2d4e8ce0-25a7-47a2-b973-9b631b38bc52"
+                  },
+                  {
+                    "label": "Pneumonia - hospital acquired",
+                    "concept": "2786a1c5-bc8d-4fd7-a28e-1e8604e6db14"
+                  },
+                  {
+                    "label": "Pneumonia - ventilation acquired",
+                    "concept": "d58bea9c-cd3f-442c-b2a9-d77856bb46fe"
+                  },
+                  {
+                    "label": "Pneumothorax",
+                    "concept": "63946c7d-7261-48f5-a10e-6912f21f57ff"
+                  },
+                  {
+                    "label": "Post op follow up",
+                    "concept": "cabb85e5-ad2a-4e5b-a320-a5462d71bac4"
+                  },
+                  {
+                    "label": "Post partum hemorrhage (PPH)",
+                    "concept": "f586985a-2700-4958-8cb1-f426675f0d8d"
+                  },
+                  {
+                    "label": "Pulmonary Edema",
+                    "concept": "6cd1693a-0c74-486b-a6f0-0fff18777869"
+                  },
+                  {
+                    "label": "Pulmonary embolism",
+                    "concept": "da4cfeb2-c11b-407e-9e31-c44daf8567c0"
+                  },
+                  {
+                    "label": "Rabies",
+                    "concept": "2f07701b-95b2-4235-8c81-448da7f1aaa3"
+                  },
+                  {
+                    "label": "Rhabdomyolysis",
+                    "concept": "c32f8f66-f959-4427-831c-218f323d7167"
+                  },
+                  {
+                    "label": "Scorpion stings",
+                    "concept": "eb3c6628-0a05-4205-aeee-130f827a4790"
+                  },
+                  {
+                    "label": "Sepsis",
+                    "concept": "fb42b25e-155d-4711-86c4-4b27c1bdd8a9"
+                  },
+                  {
+                    "label": "Septic shock",
+                    "concept": "8ea542b2-d6ce-442c-8817-c64716394dc9"
+                  },
+                  {
+                    "label": "Severe Acute Malnutrition (Kwashiorkor)",
+                    "concept": "1fc04050-6ebd-432b-9519-63c5d14f8f0e"
+                  },
+                  {
+                    "label": "Severe Acute Malnutrition (Marasmus - Kwashiorkor)",
+                    "concept": "decc099e-4022-4e35-95f7-6f0485551fa7"
+                  },
+                  {
+                    "label": "Severe Acute Malnutrition (Marasmus)",
+                    "concept": "d5e64667-5e9d-41aa-b6bf-76821db16144"
+                  },
+                  {
+                    "label": "Severe covid 19",
+                    "concept": "bc8fbf45-7621-435f-81fd-3f4b44d5d0e3"
+                  },
+                  {
+                    "label": "Severe malaria",
+                    "concept": "e9f02d62-a180-4a3e-813a-c210ec7364a6"
+                  },
+                  {
+                    "label": "Snake bites",
+                    "concept": "8d69cf7f-b82c-4d7f-8d90-417b6fde8ad1"
+                  },
+                  {
+                    "label": "Stroke (CVA - Cerebrovascular Accident)",
+                    "concept": "bff16ef7-3429-4cff-bda0-5cc13a77ae39"
+                  },
+                  {
+                    "label": "Tamponade",
+                    "concept": "92ed9ec4-4ec7-4e98-b023-2deed1faa9f1"
+                  },
+                  {
+                    "label": "Tetanus",
+                    "concept": "ac66146e-5919-428c-8ed6-6a5a764ab06a"
+                  },
+                  {
+                    "label": "Traumatic brain injury",
+                    "concept": "952d4753-7f1c-40fc-94e4-0dd98fdfdbba"
+                  },
+                  {
+                    "label": "Traumatic hemorrhagic shock",
+                    "concept": "e7e1991d-9a20-4ba3-9c53-45464689a72c"
+                  },
+                  {
+                    "label": "Upper airway obstruction",
+                    "concept": "33389a60-08aa-4f11-b43c-74fd61e66611"
+                  },
+                  {
+                    "label": "Yellow fever",
+                    "concept": "09015081-016e-431c-bae3-5a2ffdb18734"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "final2ndDiagnosis3IfotherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(finalSecondaryDiagnosis3 !== 'a54fbf02-4798-45a6-894b-871bb41a1cb8')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Outcome",
+      "sections": [
+        {
+          "label": "Discharge",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "typeOfDischarge",
+              "label": "Type of discharge",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "09a06404-afc5-457a-91b9-54152e45a854",
+                "answers": [
+                  {
+                    "label": "Dead",
+                    "concept": "dc1c7ac9-d9c3-4887-bc22-827c2db7689f"
+                  },
+                  {
+                    "label": "Defaulter (Absconded)",
+                    "concept": "81cbc44a-ac84-4458-ab99-feab4d64c691"
+                  },
+                  {
+                    "label": "Discharged",
+                    "concept": "1fbf752b-536b-486b-bfd1-70325ccdea1a"
+                  },
+                  {
+                    "label": "Referred",
+                    "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11"
+                  },
+                  {
+                    "label": "Transferred",
+                    "concept": "18c795cb-7197-46da-926f-e4d1848b8c36"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifOtherTypeOfDischargeSpecify",
+              "label": "If other type of discharge, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(typeOfDischarge !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Referral",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "ifReferredToWhere",
+              "label": "If referred, to where",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11",
+                "answers": [
+                  {
+                    "label": "MoH",
+                    "concept": "b0e5066f-047b-441c-b428-2517035e7ad0"
+                  },
+                  {
+                    "label": "MSF",
+                    "concept": "74c9a7c6-e64d-4f49-b8a6-f10999eb25bc"
+                  },
+                  {
+                    "label": "NGO",
+                    "concept": "80ea94ed-44ea-40fa-b697-98523b62df36"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(typeOfDischarge !== '93eb9716-6866-4d13-9b8f-59c0a7605a11')"
+              }
+            },
+            {
+              "id": "ifReferredToWhereIfOtherSpecify",
+              "label": "If referred, to where - if other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(typeOfDischarge !== '93eb9716-6866-4d13-9b8f-59c0a7605a11') || (ifReferredToWhere !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "causeOfReferral",
+              "label": "Cause of referral",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "53b450aa-d27c-4c2f-9a4e-98513bbe645f"
+              },
+              "hide": {
+                "hideWhenExpression": "(typeOfDischarge !== '93eb9716-6866-4d13-9b8f-59c0a7605a11')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Transfer",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "ifTransferToWhere",
+              "label": "If transfer, to where",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "eef5efc1-4d6a-43fb-87e1-4cca9842678d",
+                "answers": [
+                  {
+                    "label": "Maternity",
+                    "concept": "f11b3a39-3860-478e-9f00-f525d4b39732"
+                  },
+                  {
+                    "label": "Adult ward",
+                    "concept": "3d15cd9c-076b-4c02-b475-59c9bc836373"
+                  },
+                  {
+                    "label": "ITFC",
+                    "concept": "344d7889-0fc4-4843-b695-cd08c7bdc73e"
+                  },
+                  {
+                    "label": "Pediatrics",
+                    "concept": "a599cf2b-6568-493f-954c-c7229fee2e7f"
+                  },
+                  {
+                    "label": "Neonatology",
+                    "concept": "9a7c7900-3198-42cd-b88d-bc47882ab8a8"
+                  },
+                  {
+                    "label": "Operating theater",
+                    "concept": "99ab75e1-7490-43ce-bfb1-d3888242ba1e"
+                  },
+                  {
+                    "label": "Surgery",
+                    "concept": "4d688780-019e-40fd-9004-044b69d9283f"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(typeOfDischarge !== '18c795cb-7197-46da-926f-e4d1848b8c36')"
+              }
+            },
+            {
+              "id": "ifTransferToWhereIfOtherSpecify",
+              "label": "If transfer, to where - if other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(typeOfDischarge !== '18c795cb-7197-46da-926f-e4d1848b8c36') || (ifTransferToWhere !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Death",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "deathCause",
+              "label": "Death cause",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "778b70b5-c6de-4459-a101-6bf02f77d5c7",
+                "answers": [
+                  {
+                    "label": "Acute cardiac arrest",
+                    "concept": "69c7ab29-7066-4fb4-a008-4eabdd3bbd8f"
+                  },
+                  {
+                    "label": "Cardiogenic shock",
+                    "concept": "d24d0c85-2e0d-4572-8b92-85dde8267c3d"
+                  },
+                  {
+                    "label": "Central nervous system failure",
+                    "concept": "30f268e8-b630-4487-8c71-0553da32120a"
+                  },
+                  {
+                    "label": "End stage tumor disease",
+                    "concept": "07053e3b-bf11-4222-a801-4df18ff49926"
+                  },
+                  {
+                    "label": "Hemorrhagic shock",
+                    "concept": "e7e1991d-9a20-4ba3-9c53-45464689a72c"
+                  },
+                  {
+                    "label": "Liver failure",
+                    "concept": "82276de7-f415-485e-bc26-26250550e8b9"
+                  },
+                  {
+                    "label": "Multi-organ failure",
+                    "concept": "a4e8810b-a049-4d94-ac7d-68dcc48cde2d"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "f2c5fefe-be45-4269-acf2-a2b832e15fb6"
+                  },
+                  {
+                    "label": "Renal failure",
+                    "concept": "91a1f6cc-a86f-4c1e-8d7d-9901a40b0327"
+                  },
+                  {
+                    "label": "Respiratory failure",
+                    "concept": "0c38d7d7-b74e-461a-99a6-1aebaccc42be"
+                  },
+                  {
+                    "label": "Septic shock",
+                    "concept": "8ea542b2-d6ce-442c-8817-c64716394dc9"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(typeOfDischarge !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            },
+            {
+              "id": "specifyDeathCause",
+              "label": "Specify death cause",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e364431c-0eee-4acc-a1e6-d9c4484903f2"
+              },
+              "hide": {
+                "hideWhenExpression": "(typeOfDischarge !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f') || (deathCause !== 'f2c5fefe-be45-4269-acf2-a2b832e15fb6')"
+              }
+            },
+            {
+              "id": "deathWithin48h",
+              "label": "Death within 48h?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ab9fcaa9-0d65-4755-be0d-092d1cdaadb8",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(typeOfDischarge !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Comments",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

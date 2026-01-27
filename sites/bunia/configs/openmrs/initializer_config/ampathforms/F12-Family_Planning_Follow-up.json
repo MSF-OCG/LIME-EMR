@@ -1,0 +1,536 @@
+{
+  "name": "F12-Family Planning Follow-up",
+  "description": "MSF Form - F12-Family Planning Follow-up",
+  "version": "1",
+  "published": true,
+  "uuid": "049d76ca-57c8-32d5-a968-a53dfc7e0234",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Family Planning",
+  "encounterType": "d981a14f-8cda-4fe0-aa14-d5c9a2a9a123",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "History",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "method",
+              "label": "Method",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "30b2d692-6a05-401f-8ede-13e027b8a436",
+                "answers": [
+                  {
+                    "label": "Male condom",
+                    "concept": "6fafa6b0-9acb-4982-9532-af2b85ea2ed6"
+                  },
+                  {
+                    "label": "Female condom",
+                    "concept": "d0f6ffc4-5a90-433b-a866-75e040e2731f"
+                  },
+                  {
+                    "label": "COC",
+                    "concept": "dcc05293-cda6-48ee-b934-8982712ae59c"
+                  },
+                  {
+                    "label": "POP",
+                    "concept": "c1360005-c7f9-42af-b085-2a5909da9f0b"
+                  },
+                  {
+                    "label": "Injectable Depo Provera",
+                    "concept": "c88d3441-86e0-4e72-b749-5f4471a75b92"
+                  },
+                  {
+                    "label": "Injectable Sayanna",
+                    "concept": "84bcf6c2-05f2-495e-9e56-22302558a418"
+                  },
+                  {
+                    "label": "Implant",
+                    "concept": "7791ffc1-beca-4543-b781-8f4f65872bb6"
+                  },
+                  {
+                    "label": "Copper IUD",
+                    "concept": "e47a2044-2fef-4535-9418-21108c8be2d3"
+                  },
+                  {
+                    "label": "Hormonal IUD",
+                    "concept": "99f02e71-cd90-4de6-a6c9-3a2f6fd94124"
+                  },
+                  {
+                    "label": "Emergency contraceptive",
+                    "concept": "711f0159-f083-4953-be52-4862e25a11e0"
+                  },
+                  {
+                    "label": "Tubal ligation",
+                    "concept": "5939ffb8-257c-4b16-9f6c-f961289b747c"
+                  },
+                  {
+                    "label": "Vasectomy",
+                    "concept": "76e3ce78-9147-43e5-a200-82c6d7c7ddd4"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "default": "the most recent answer from \"Family planning recommended - Chosen method\" from Family Planning Assessment form or from \"Which method\" from last Family Planing Follow-up form "
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Problems related to family planning method",
+      "sections": [
+        {
+          "label": "Problems related to family planning method",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "satisfiedWithMethod",
+              "label": "Satisfied with method",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c8e2c475-7cc7-4eca-a06a-33ac69a79aea",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "describeIssuesExplainedByThePatient",
+              "label": "Describe issues explained by the patient",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "e0ab2ad5-a9f1-4802-bbe2-45865af1582d"
+              },
+              "hide": {
+                "hideWhenExpression": "satisfiedWithMethod !== 'a5c5563e-df0e-4742-a335-b24fb63664ee'"
+              }
+            },
+            {
+              "id": "newFamilyPlanningNeeds",
+              "label": "New family planning needs",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3d9bbd4f-32bf-4f6a-b428-7cb5a1409003",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "describeCurrentNeedsInFamilyPlanning",
+              "label": "Describe current needs in family planning",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "a713e24d-f6ee-48de-861f-afed03a2c49a"
+              },
+              "hide": {
+                "hideWhenExpression": "newFamilyPlanningNeeds !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "changedBleedingPattern",
+              "label": "Changed bleeding pattern",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e9fa46ab-9c41-4714-8c38-4968bc67bffa",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "describeChangeInMenstrualPattern",
+              "label": "Describe change in menstrual pattern",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "c189a885-cb28-474c-aaf8-f961c646800f"
+              },
+              "hide": {
+                "hideWhenExpression": "changedBleedingPattern !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "headacheOrDizziness",
+              "label": "Headache / dizziness",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "11694243-a773-49fb-b6fe-03106fe1be1c",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "nauseaOrAbdominalPain",
+              "label": "Nausea / abdominal pain",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6d55fb49-4c7b-4422-a4da-57f9e2b0a75a",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "breastTender",
+              "label": "Breast tender",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a2c8cd74-698c-45c7-9315-e1bf6cfd9200",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "moodChanges",
+              "label": "Mood changes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e68010d8-5f82-4199-bc58-ca39dbb04c7e",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "describeMoodChanges",
+              "label": "Describe mood changes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "f0da44af-5af2-4ea2-b094-336edab910b2"
+              },
+              "hide": {
+                "hideWhenExpression": "moodChanges !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "otherProblem",
+              "label": "Other problem(s)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Examination",
+      "sections": [
+        {
+          "label": "Examination",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInvitalsBiometricsForbpAndweightAndAddTodaysMeasurements",
+              "label": "Please check in 'Vitals & Biometrics' for 'BP' and 'Weight' AND add today's measurements",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "vaginalOrSpeculumExam",
+              "label": "Vaginal / speculum exam (ONLY if suspicion of STI or IUD displacement)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "8cc9bb13-7326-4566-a305-9d155c3b99e5",
+                "answers": [
+                  {
+                    "label": "Urethral discharge",
+                    "concept": "7d208033-d84d-494e-a888-a33dc45c7358"
+                  },
+                  {
+                    "label": "Discharge and/or inflammation of the anus",
+                    "concept": "35f40afc-3e93-485c-a378-885eda6c6a3b"
+                  },
+                  {
+                    "label": "Abnormal vaginal discharge (color, consistency or odor)",
+                    "concept": "f2cd4fb3-daaa-4572-96c3-fef65bc6ae4c"
+                  },
+                  {
+                    "label": "Bloody vaginal discharge",
+                    "concept": "41371f81-f474-462f-a32b-a413d1367bde"
+                  },
+                  {
+                    "label": "Irritation and/or secretions from the cervix",
+                    "concept": "da48e738-4352-4728-a2e5-7ba6a69ea496"
+                  },
+                  {
+                    "label": "Lesion of the vaginal wall or on the cervix",
+                    "concept": "8e67d541-8a79-484b-975c-e4be8e9c9f2e"
+                  },
+                  {
+                    "label": "Pain on cervical mobilization or bimanual palpation",
+                    "concept": "36506ba1-f0fe-4dc4-a97f-54771a7db1a2"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Conclusion",
+      "sections": [
+        {
+          "label": "Conclusion",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "stopCurrentContraception",
+              "label": "Stop current contraception?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "cd1b7bae-2c26-428b-ad2c-4b11ef35c2cf",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "forWhichReason",
+              "label": "For which reason",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "f3dc70a6-dcac-4bf3-9e51-34f29bc914eb"
+              },
+              "hide": {
+                "hideWhenExpression": "stopCurrentContraception !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "anotherFamilyPlanningMethodPrescribed",
+              "label": "Another family planning method prescribed?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c9706794-479c-4379-87a1-d36234a5b913",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "whichMethod",
+              "label": "Which method(s)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "30b2d692-6a05-401f-8ede-13e027b8a436",
+                "answers": [
+                  {
+                    "label": "Male condom",
+                    "concept": "6fafa6b0-9acb-4982-9532-af2b85ea2ed6"
+                  },
+                  {
+                    "label": "Female condom",
+                    "concept": "d0f6ffc4-5a90-433b-a866-75e040e2731f"
+                  },
+                  {
+                    "label": "COC",
+                    "concept": "dcc05293-cda6-48ee-b934-8982712ae59c"
+                  },
+                  {
+                    "label": "POP",
+                    "concept": "c1360005-c7f9-42af-b085-2a5909da9f0b"
+                  },
+                  {
+                    "label": "Injectable Depo Provera",
+                    "concept": "c88d3441-86e0-4e72-b749-5f4471a75b92"
+                  },
+                  {
+                    "label": "Injectable Sayanna",
+                    "concept": "84bcf6c2-05f2-495e-9e56-22302558a418"
+                  },
+                  {
+                    "label": "Implant",
+                    "concept": "7791ffc1-beca-4543-b781-8f4f65872bb6"
+                  },
+                  {
+                    "label": "Copper IUD",
+                    "concept": "e47a2044-2fef-4535-9418-21108c8be2d3"
+                  },
+                  {
+                    "label": "Hormonal IUD",
+                    "concept": "99f02e71-cd90-4de6-a6c9-3a2f6fd94124"
+                  },
+                  {
+                    "label": "Emergency contraceptive",
+                    "concept": "711f0159-f083-4953-be52-4862e25a11e0"
+                  },
+                  {
+                    "label": "Tubal ligation",
+                    "concept": "5939ffb8-257c-4b16-9f6c-f961289b747c"
+                  },
+                  {
+                    "label": "Vasectomy",
+                    "concept": "76e3ce78-9147-43e5-a200-82c6d7c7ddd4"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "questionInfo": "Select all methods including previous one if it is not stopped",
+              "hide": {
+                "hideWhenExpression": "anotherFamilyPlanningMethodPrescribed !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "remarks",
+              "label": "Remarks",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
+              }
+            },
+            {
+              "id": "dateOfNextVisit",
+              "label": "Date of next visit",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "edc6f30c-4ff2-4a4f-8b90-ca4502bb97a1"
+              }
+            },
+            {
+              "id": "inappointmentsSetTheNextDateForFollowUpWheneverNecessary",
+              "label": "In 'Appointments' set the next date for follow up whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              }
+            },
+            {
+              "id": "prescribeEnoughFamilyPlanningMethodWithTheOrderBasketIfNecessary",
+              "label": "Prescribe enough family planning method and other medication with the order basket if necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              },
+              "questionInfo": "Ferrous salts + Folic Acid, Retinol, HIV treatment, Tetracycline ointment, vit K, Vit D, Tetanos and other vaccins (Hep B, BCG, Polio), Antibiotics (Amoxicyline, Metronidazol, Cloxacillin)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

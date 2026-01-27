@@ -1,0 +1,1342 @@
+{
+  "name": "F52-HIV Follow-up",
+  "description": "MSF Form - F52-HIV Follow-up",
+  "version": "1",
+  "published": true,
+  "uuid": "a4a78660-0f76-46c5-b0b7-71bd09d2ed3b",
+  "processor": "EncounterFormProcessor",
+  "encounter": "HIV",
+  "encounterType": "ee6e952d-1c7e-4c5e-a4ea-dfe97355a971",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Consultation Information",
+      "sections": [
+        {
+          "label": "Information on the consultation",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "followUpDate",
+              "label": "Follow up date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "fa040452-2023-4f4a-9560-17a430b353c2"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "date > new Date()",
+                  "message": "Follow up date cannot be in the future"
+                }
+              ]
+            },
+            {
+              "id": "categoryOfConsultation",
+              "label": "Category of consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "81ced581-eaea-4279-a091-fa409ef199ed",
+                "answers": [
+                  {
+                    "label": "Planned visit",
+                    "concept": "c00938b1-ef8b-4583-89aa-9f74ea165a25"
+                  },
+                  {
+                    "label": "Acute illness",
+                    "concept": "42c9bc49-ac4d-4b86-8753-48d378075c59"
+                  },
+                  {
+                    "label": "Missed last appointment",
+                    "concept": "54e8c1b6-6397-4822-89a4-cf81fbc68ce9"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "Comorbidities",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "checkInconditionsmedicationsAndallergiesToToUpdateThemIfNecessary",
+              "label": "Check in 'Conditions', 'Medications' and 'Allergies' to to update them if necessary",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Check in 'Conditions', 'Medications' and 'Allergies' to to update them if necessary"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "TB",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "tbDiagnosedSinceLastConsultation",
+              "label": "TB diagnosed since last consultation?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6f193c82-83d2-411f-90d7-0a18bf3dca2f",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifTbTreatment",
+              "label": "If TB, treatment",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0bdf07ae-79c2-4789-b5b1-68b2c272b04c",
+                "answers": [
+                  {
+                    "label": "Did not start",
+                    "concept": "59d7e999-b0c0-4a9e-8f01-1a365ed48640"
+                  },
+                  {
+                    "label": "On DSTB Ttr",
+                    "concept": "e3734523-b1c8-4fcd-ab43-67e185a3e1c3"
+                  },
+                  {
+                    "label": "On DRTB Ttr",
+                    "concept": "bdc8e82c-50d2-4029-af9a-50e09576ac10"
+                  }
+                ]
+              },
+              "questionInfo": "Update in 'Conditions'",
+              "hide": {
+                "hideWhenExpression": "(tbDiagnosedSinceLastConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ifTbTreatmentStartDate",
+              "label": "If TB, treatment start date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "e290d074-9e4b-4440-bff5-ebedbefcca4d"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "date > new Date()",
+                  "message": "Treatment start date cannot be in the future"
+                }
+              ],
+              "questionInfo": "Fill in 'Medications' with the treatment received",
+              "hide": {
+                "hideWhenExpression": "(ifTbTreatment !== 'e3734523-b1c8-4fcd-ab43-67e185a3e1c3' && ifTbTreatment !== 'bdc8e82c-50d2-4029-af9a-50e09576ac10')"
+              }
+            },
+            {
+              "id": "ifTbTreatmentPhase",
+              "label": "If TB, treatment phase",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "596178f7-bbaf-472f-849b-271720d0533d",
+                "answers": [
+                  {
+                    "label": "The intensive phase (IP)",
+                    "concept": "4e16bcbf-598f-4dfb-95d7-4b5f40d1de51"
+                  },
+                  {
+                    "label": "The continuation phase (CP)",
+                    "concept": "3a397910-dd66-42cb-a3c1-614c2f2d2955"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(ifTbTreatment !== 'e3734523-b1c8-4fcd-ab43-67e185a3e1c3' && ifTbTreatment !== 'bdc8e82c-50d2-4029-af9a-50e09576ac10')"
+              }
+            },
+            {
+              "id": "tbScreeningQuestions",
+              "label": "TB screening questions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "6f193c82-83d2-411f-90d7-0a18bf3dca2f",
+                "answers": [
+                  {
+                    "label": "Cough",
+                    "concept": "cb17ea3f-4291-47c9-9b9b-524405eca510"
+                  },
+                  {
+                    "label": "Night sweats",
+                    "concept": "e3af354c-827f-4f92-a226-595841894336"
+                  },
+                  {
+                    "label": "Fever",
+                    "concept": "e15e7405-8aad-474d-a09c-bcf40da2fe84"
+                  },
+                  {
+                    "label": "Enlarged lymph nodes",
+                    "concept": "04802401-cdad-43dd-bc21-cb1d19b3fddc"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(tbDiagnosedSinceLastConsultation !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "HCV",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "hepatitisCDiagnosedSinceLastConsultation",
+              "label": "Hepatitis C diagnosed since last consultation?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6483521e-1b2e-4143-96c1-3cae99c4428e",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifHepatitisCTreatment",
+              "label": "If Hepatitis C, treatment",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6b9ec3e0-e9e0-450e-9d24-6e4107778562",
+                "answers": [
+                  {
+                    "label": "Did not start",
+                    "concept": "59d7e999-b0c0-4a9e-8f01-1a365ed48640"
+                  },
+                  {
+                    "label": "On treatment",
+                    "concept": "0dee14f7-5536-4c63-bdbf-4357ac3203b2"
+                  },
+                  {
+                    "label": "Treatment completed",
+                    "concept": "a0bd9f2c-199e-459e-b14c-36f1b077d9dc"
+                  }
+                ]
+              },
+              "questionInfo": "Update in 'Conditions' and fill in 'Medications' with the treatment received",
+              "hide": {
+                "hideWhenExpression": "(hepatitisCDiagnosedSinceLastConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ifHepatitisCOutcome",
+              "label": "If Hepatitis C, outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9e861ef1-e07c-4955-9650-2ebac3138fc3",
+                "answers": [
+                  {
+                    "label": "Cured",
+                    "concept": "4afad5ca-6b49-4fc2-9dca-4468f5f3a3f6"
+                  },
+                  {
+                    "label": "Failure",
+                    "concept": "d2eb1634-64e3-4b0b-a185-44258e5d7273"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(hepatitisCDiagnosedSinceLastConsultation !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Since last consultation",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "renalDiseaseDiagnosed",
+              "label": "Renal disease diagnosed?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1a16cb77-52ba-415e-a6a0-73e2fd11f57c",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "diabetesDiagnosed",
+              "label": "Diabetes diagnosed?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "db973d66-e027-4238-87c9-fa6e53026d12",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "psychiatricConditionsDiagnosed",
+              "label": "Psychiatric conditions diagnosed?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a257d08e-b90d-4505-91c3-e23ea040f61c",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hypertensionDiagnosed",
+              "label": "Hypertension diagnosed?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "fad7b56b-7633-4467-9e6a-17328278b580",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "epilepsyDiagnosed",
+              "label": "Epilepsy diagnosed?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "09334f94-5efd-49f0-b494-68b9192f2fd8",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Sexual and Reproductive health",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "currentPregnancy",
+              "label": "Current pregnancy?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "61d473d6-ab11-458e-b841-382bc183fd13",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "estimatedGestationalAge",
+              "label": "Estimated gestational age (weeks)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1d2003cb-4b14-4391-8f90-37a74976676a",
+                "min": 0.0,
+                "max": 50.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(currentPregnancy !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "useOfCondoms",
+              "label": "Use of condoms?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0c7f670d-8e21-47ba-8e02-461df19d70e8",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "otherFamilyPlanningMethods",
+              "label": "Other family planning methods?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f764332e-d56c-4978-a790-c845def5ed14",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(currentPregnancy !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            },
+            {
+              "id": "stiDiagnosisSinceLastConsultation",
+              "label": "STI diagnosis since last consultation?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1462280f-a1ff-4719-aa26-f00453c2df85",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Medication",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "anyOfTheFollowingSideEffects",
+              "label": "Any of the following side effects",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "8b8140b1-e9da-4df8-b299-c36c9a639d1a",
+                "answers": [
+                  {
+                    "label": "Abdominal pain with or without nausea",
+                    "concept": "eaaeb9c1-286a-444b-a578-0db8cb86c126"
+                  },
+                  {
+                    "label": "Diarrhea with or without nausea/ vomiting",
+                    "concept": "1361c31f-e817-4e8f-84cc-6ffab48bdeef"
+                  },
+                  {
+                    "label": "Jaundice",
+                    "concept": "619cc378-0f74-450e-83a9-5c63abb8a0e4"
+                  },
+                  {
+                    "label": "Nausea and vomiting",
+                    "concept": "68b601b2-6178-4336-8798-82217775720d"
+                  },
+                  {
+                    "label": "Dizziness/ psychological/ psychiatry",
+                    "concept": "11694243-a773-49fb-b6fe-03106fe1be1c"
+                  },
+                  {
+                    "label": "Skin lesions",
+                    "concept": "5a81dc5f-0304-48fe-9720-ec5322f2389d"
+                  },
+                  {
+                    "label": "Painful or cold feet",
+                    "concept": "fc6bfee4-fad7-446a-9dbb-1c525fce295f"
+                  },
+                  {
+                    "label": "nan",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "nausesAndVomiting",
+              "label": "Nauses and vomiting",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "432053d7-8deb-4730-b639-7b9ea187db52",
+                "answers": [
+                  {
+                    "label": "Grade 1: Once per day and/or lasting 3 days",
+                    "concept": "aa63864e-ddb5-4158-9405-fd9061646cc0"
+                  },
+                  {
+                    "label": "Grade 2: <4 episodes per day and not dehydrated",
+                    "concept": "f84a113c-6c1b-4690-8991-2a191a82b171"
+                  },
+                  {
+                    "label": "Grade 3: Vomits >3 times per day, and dehydrated",
+                    "concept": "9f882b95-d306-4492-9d40-e192aa1edc68"
+                  },
+                  {
+                    "label": "Grade 4: Dehydrated - too sick for primary care treatment",
+                    "concept": "e1758f44-bbc2-4f86-b117-18a289719d5f"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(anyOfTheFollowingSideEffects, '68b601b2-6178-4336-8798-82217775720d'))"
+              }
+            },
+            {
+              "id": "dizzinessOrPsychologicalOrPsychiatric",
+              "label": "Dizziness/ psychological/ psychiatric",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "11694243-a773-49fb-b6fe-03106fe1be1c",
+                "answers": [
+                  {
+                    "label": "Dizziness only",
+                    "concept": "11694243-a773-49fb-b6fe-03106fe1be1c"
+                  },
+                  {
+                    "label": "Vivid dreams",
+                    "concept": "ffca1f02-4b02-409c-9c93-adbfa7186a0d"
+                  },
+                  {
+                    "label": "Mood changes or persistent disturbing dreams",
+                    "concept": "e68010d8-5f82-4199-bc58-ca39dbb04c7e"
+                  },
+                  {
+                    "label": "Acute psychosis, hallucinations, confused behavior",
+                    "concept": "b33dac1c-b0c0-4fcd-b639-661bb6678924"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(anyOfTheFollowingSideEffects, '11694243-a773-49fb-b6fe-03106fe1be1c'))"
+              }
+            },
+            {
+              "id": "skinLesions",
+              "label": "Skin lesions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "01a64755-0318-4f59-8781-7142efc1fa47",
+                "answers": [
+                  {
+                    "label": "Mild: Red, itchy",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate: Maculopapular rash or dry scales",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe: Blisters or moist loss of skin; involving mucous membranes",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(anyOfTheFollowingSideEffects, '5a81dc5f-0304-48fe-9720-ec5322f2389d'))"
+              }
+            },
+            {
+              "id": "painfulOrColdFeet",
+              "label": "Painful or cold feet",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "144eeed2-b62d-413b-a926-8a3588b2671b",
+                "answers": [
+                  {
+                    "label": "Discomfort",
+                    "concept": "2cde89e4-75f1-4765-a47b-1f39eacab6f9"
+                  },
+                  {
+                    "label": "Functional impairment",
+                    "concept": "29fe43a8-f5bf-4aa5-9ebf-34d1b917e20d"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(anyOfTheFollowingSideEffects, 'fc6bfee4-fad7-446a-9dbb-1c525fce295f'))"
+              }
+            },
+            {
+              "id": "describeSideEffect",
+              "label": "Describe side effect",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0da21d2e-e464-4871-8ff8-f950808fbd85"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(anyOfTheFollowingSideEffects, '68b601b2-6178-4336-8798-82217775720d') && !includes(anyOfTheFollowingSideEffects, '11694243-a773-49fb-b6fe-03106fe1be1c') && !includes(anyOfTheFollowingSideEffects, '5a81dc5f-0304-48fe-9720-ec5322f2389d') && !includes(anyOfTheFollowingSideEffects, 'fc6bfee4-fad7-446a-9dbb-1c525fce295f') && !includes(anyOfTheFollowingSideEffects, 'eaaeb9c1-286a-444b-a578-0db8cb86c126') && !includes(anyOfTheFollowingSideEffects, '619cc378-0f74-450e-83a9-5c63abb8a0e4') && !includes(anyOfTheFollowingSideEffects, '1361c31f-e817-4e8f-84cc-6ffab48bdeef'))"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Physical Examination",
+      "sections": [
+        {
+          "label": "Physical Examination",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInvitalsBiometricsFortemperatureweightheightmuacAndAddTodaysMeasurements",
+              "label": "Please check in 'Vitals & Biometrics' for 'Temperature', 'Weight', 'Height', 'MUAC' AND add today's measurements",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Please check in 'Vitals & Biometrics' for 'Temperature', 'Weight', 'Height', 'MUAC' AND add today's measurements"
+              ]
+            },
+            {
+              "id": "capturePatientVitalsBiometrics",
+              "label": "Capture patient vitals & biometrics",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "weightOrHeight",
+              "label": "Weight / height",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2651145f-c10c-4c04-9735-791537a1fa2c",
+                "answers": [
+                  {
+                    "label": "< -3 Zs",
+                    "concept": "68957c94-55fa-4d5c-acc0-8b8ad7ba6531"
+                  },
+                  {
+                    "label": "[-3 ; -2 Zs[",
+                    "concept": "fc1cb3e7-a88e-4100-b06a-24a04e01a83f"
+                  },
+                  {
+                    "label": ">= -2 Zs",
+                    "concept": "8e6dab78-1940-4e92-80ec-448013949067"
+                  },
+                  {
+                    "label": "Not relevant",
+                    "concept": "66ee2fdd-b54c-4456-80f0-6987f572a6b8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "oedema",
+              "label": "Oedema",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "754d677f-316c-4c31-999d-a328fb8b17e1",
+                "answers": [
+                  {
+                    "label": "+",
+                    "concept": "382578c2-91b4-4235-a02d-d20fbe9f8044"
+                  },
+                  {
+                    "label": "++",
+                    "concept": "709e4a07-af9f-432b-8711-b3caed41998c"
+                  },
+                  {
+                    "label": "+++",
+                    "concept": "9e6f2ae1-4aa3-4cbc-bd8d-98515b76cc15"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "findingsInThePhysicalExamination",
+              "label": "Findings in the physical examination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0dd28dfa-fa10-4dbd-bf6a-4f5ad6868c64"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Laboratory Test",
+      "sections": [
+        {
+          "label": "Exams done since last consultation",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "cd4Count",
+              "label": "CD4 count",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1eaf226e-2daf-45df-8808-13672a702e19",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "cd4CountDate",
+              "label": "CD4 count date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "5e06ab70-44e3-46de-9fb6-37f796e55e43"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "date > new Date()",
+                  "message": "CD4 count date cannot be in the future"
+                }
+              ],
+              "default": "Latest CD4 count date from Lab",
+              "hide": {
+                "hideWhenExpression": "(cd4Count !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "cd4",
+              "label": "CD4 (/\u00b5L)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "f165dd6b-6919-4da9-8cc6-d847ff7d7e92",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "default": "Latest CD4 count from Lab",
+              "hide": {
+                "hideWhenExpression": "(cd4Count !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "cd4_1",
+              "label": "CD4 (% lymphocytes)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1931fdcc-79f7-480f-a4db-da7b90032d35",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "default": "Latest CD4 count from Lab",
+              "hide": {
+                "hideWhenExpression": "(cd4Count !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              },
+              "idModified": true,
+              "originalLabel": "CD4 (% lymphocytes)",
+              "warning": "Question ID was modified from 'CD4 (% lymphocytes)' to ensure uniqueness"
+            },
+            {
+              "id": "plasmaHivRna",
+              "label": "Plasma HIV RNA",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d7107c38-8adf-42eb-b56b-4e82c06b6ec6",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "plasmaHivRnaDate",
+              "label": "Plasma HIV RNA date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "5e06ab70-44e3-46de-9fb6-37f796e55e43"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "date > new Date()",
+                  "message": "HIV RNA date cannot be in the future"
+                }
+              ],
+              "default": "Latest HIV RNA date from Lab",
+              "hide": {
+                "hideWhenExpression": "(plasmaHivRna !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "plasmaHivRna_1",
+              "label": "Plasma HIV RNA (copies/ml)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "51f23ff4-6ea9-453a-9932-d165f22199f9",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "default": "Latest HIV RNA result from Lab",
+              "hide": {
+                "hideWhenExpression": "(plasmaHivRna !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              },
+              "idModified": true,
+              "originalLabel": "Plasma HIV RNA (copies/ml)",
+              "warning": "Question ID was modified from 'Plasma HIV RNA (copies/ml)' to ensure uniqueness"
+            },
+            {
+              "id": "hbvSerologicTest",
+              "label": "HBV serologic test",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8e7c05b0-14a1-46f3-9435-f4272fe25bb3",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hbvSerologicDate",
+              "label": "HBV serologic date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "5e06ab70-44e3-46de-9fb6-37f796e55e43"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "date > new Date()",
+                  "message": "HBV serologic date cannot be in the future"
+                }
+              ],
+              "default": "Latest HBV test date from Lab",
+              "hide": {
+                "hideWhenExpression": "(hbvSerologicTest !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "hbvSerologicTestResult",
+              "label": "HBV serologic test result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8e7c05b0-14a1-46f3-9435-f4272fe25bb3",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "default": "Latest HBV result from Lab",
+              "hide": {
+                "hideWhenExpression": "(hbvSerologicTest !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "tbScreeningTest",
+              "label": "TB screening test",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6f193c82-83d2-411f-90d7-0a18bf3dca2f",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "tbTestResult",
+              "label": "TB test result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6f193c82-83d2-411f-90d7-0a18bf3dca2f",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "default": "Latest HBV result from Lab",
+              "hide": {
+                "hideWhenExpression": "(tbScreeningTest !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Treatment",
+      "sections": [
+        {
+          "label": "Antiretroviral Treatment",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "artInitiation",
+              "label": "ART initiation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "69832c37-a981-42e1-ad27-6565ed412405",
+                "answers": [
+                  {
+                    "label": "ART continuation",
+                    "concept": "01f59bf8-13f0-4fb2-900b-37d03f133a4d"
+                  },
+                  {
+                    "label": "ART initiated at this consultation",
+                    "concept": "69832c37-a981-42e1-ad27-6565ed412405"
+                  },
+                  {
+                    "label": "Did not start",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifInitiationOrOnArtArtStartDate",
+              "label": "If initiation or on ART - ART start date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "e290d074-9e4b-4440-bff5-ebedbefcca4d"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "date > new Date()",
+                  "message": "ART start date cannot be in the future"
+                }
+              ],
+              "hide": {
+                "hideWhenExpression": "(artInitiation !== '01f59bf8-13f0-4fb2-900b-37d03f133a4d' && artInitiation !== '69832c37-a981-42e1-ad27-6565ed412405')"
+              }
+            },
+            {
+              "id": "artRegimen",
+              "label": "ART regimen",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2b1dc697-1a53-4e85-871c-9fa938ffb70c",
+                "answers": [
+                  {
+                    "label": "First line ART",
+                    "concept": "424b50e3-8416-4abf-b039-10a8466c0e00"
+                  },
+                  {
+                    "label": "Second line ART",
+                    "concept": "f6968ff7-2aa0-4d16-a094-dac750deddf6"
+                  },
+                  {
+                    "label": "Third line ART",
+                    "concept": "02467eb3-c0eb-40bf-8069-ac3d6a531ce7"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(artInitiation !== '01f59bf8-13f0-4fb2-900b-37d03f133a4d' && artInitiation !== '69832c37-a981-42e1-ad27-6565ed412405')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Prophylactic Treatment Given",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "iptProphylaxis",
+              "label": "IPT prophylaxis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e3391607-e034-4613-80d3-001399ed5a4d",
+                "answers": [
+                  {
+                    "label": "Started",
+                    "concept": "a528ad46-18be-4aac-9ec6-9cf47318a6e8"
+                  },
+                  {
+                    "label": "Ended",
+                    "concept": "6694765f-29c2-4099-a3b2-36eadf924217"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ctxProphylaxis",
+              "label": "CTX prophylaxis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f649df63-e5d4-4de8-bdcc-d2f48f9fba95",
+                "answers": [
+                  {
+                    "label": "Started",
+                    "concept": "a528ad46-18be-4aac-9ec6-9cf47318a6e8"
+                  },
+                  {
+                    "label": "Ended",
+                    "concept": "6694765f-29c2-4099-a3b2-36eadf924217"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Prescription",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "prescribeExamsAndMedicationWithTheOrderBasket",
+              "label": "Prescribe exams and medication with the order basket (Hb, creatinine, ALT, cholesterol, PAP smear)",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Exit",
+      "sections": [
+        {
+          "label": "Exit",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "exitFromHivProgram",
+              "label": "Exit from HIV program",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "369c1921-9c30-4208-aea8-aef606f2f562",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "exitDate",
+              "label": "Exit date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "1f473371-613f-4ef3-b297-49eb779ccd27"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "date > new Date()",
+                  "message": "Exit date cannot be in the future"
+                }
+              ],
+              "default": "current date",
+              "hide": {
+                "hideWhenExpression": "(exitFromHivProgram !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "typeOfExit",
+              "label": "Type of exit",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4f4c6be4-1e1a-4770-a73b-bcc69c171748",
+                "answers": [
+                  {
+                    "label": "Deceased",
+                    "concept": "dc1c7ac9-d9c3-4887-bc22-827c2db7689f"
+                  },
+                  {
+                    "label": "Defaulter",
+                    "concept": "81cbc44a-ac84-4458-ab99-feab4d64c691"
+                  },
+                  {
+                    "label": "Transferred",
+                    "concept": "18c795cb-7197-46da-926f-e4d1848b8c36"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(exitFromHivProgram !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow up",
+      "sections": [
+        {
+          "label": "Follow up",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseScheduleNextVisitInappointments",
+              "label": "Please schedule next visit in 'Appointments'",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "(exitFromHivProgram !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            },
+            {
+              "id": "nextVisitDate",
+              "label": "Next visit date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "edc6f30c-4ff2-4a4f-8b90-ca4502bb97a1"
+              },
+              "hide": {
+                "hideWhenExpression": "(exitFromHivProgram !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Notes",
+      "sections": [
+        {
+          "label": "Notes",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalNotes",
+              "label": "Additional notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

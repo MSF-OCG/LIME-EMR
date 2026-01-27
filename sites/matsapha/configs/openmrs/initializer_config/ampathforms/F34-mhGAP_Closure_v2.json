@@ -1,0 +1,650 @@
+{
+  "name": "F34-mhGAP Closure",
+  "description": "MSF Form - F34-mhGAP Closure v2",
+  "version": "1",
+  "published": true,
+  "uuid": "47ccf9ca-d1a6-3ec1-b474-880a5ab29fee",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Mental Health",
+  "encounterType": "95d68645-1b72-4290-be0b-ec1fb64bc067",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "mhGAP closure form",
+      "sections": [
+        {
+          "label": "File information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "openingDate",
+              "label": "Opening date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "e290d074-9e4b-4440-bff5-ebedbefcca4d"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "openingDate > new Date()",
+                  "message": "Opening date cannot be in the future"
+                }
+              ],
+              "default": "Date of the first Mental Health consultation (after the last closure if any)"
+            },
+            {
+              "id": "closureDate",
+              "label": "Closure date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "8a9d2ace-372f-4413-a1c4-8999f55e2de2"
+              },
+              "validators": [
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "closureDate < openingDate",
+                  "message": "Closure date must be after the opening date"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "closureDate > new Date()",
+                  "message": "Closure date cannot be in the future"
+                }
+              ],
+              "default": "new Date()"
+            },
+            {
+              "id": "totalNumberOfSessions",
+              "label": "Total number of sessions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1bf47398-7786-4f3e-8cae-b84a21f53eba",
+                "min": 0,
+                "step": 1
+              },
+              "default": "Total number of Mental Health consultation forms (closure not included) with [The patient did not come] <> 'Yes'"
+            },
+            {
+              "id": "mainTypeOfIntervention",
+              "label": "Main type of intervention",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "82d1fcad-d1be-4ea2-a66c-c872fb4825b4",
+                "answers": [
+                  {
+                    "label": "Counselling",
+                    "concept": "08c534b7-c901-46fb-9831-50ecfcd74d1b"
+                  },
+                  {
+                    "label": "Psychotherapy",
+                    "concept": "aa9c5d82-1ebf-43c7-9218-6766c4affbc4"
+                  },
+                  {
+                    "label": "Psychiatry/mhGAP",
+                    "concept": "a8069a02-0f7c-4718-8352-aea076d93e70"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "mainTypeOfConsultation",
+              "label": "Main type of consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "401b2df0-e26f-4f49-9165-6e20a1b8865a",
+                "answers": [
+                  {
+                    "label": "Individual",
+                    "concept": "96223dc7-6959-4ea5-a362-c0246d858c87"
+                  },
+                  {
+                    "label": "Couple",
+                    "concept": "61b32a22-acef-4141-9faa-9c236cdfa978"
+                  },
+                  {
+                    "label": "Family",
+                    "concept": "f16d5d76-155b-453d-bd60-ea8ee4d344e9"
+                  },
+                  {
+                    "label": "Group",
+                    "concept": "a8593834-0e37-43fb-b1f3-ad3c704ef0e1"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "totalNumberOfBeneficiariesInFamilyConsultation",
+              "label": "Total number of beneficiaries in family consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b87a93ff-a4a1-4601-b35d-1e42bfa7e194",
+                "min": 0,
+                "max": 99,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "mainTypeOfConsultation !== 'f16d5d76-155b-453d-bd60-ea8ee4d344e9'"
+              }
+            },
+            {
+              "id": "mainLocationOfIntervention",
+              "label": "Main location of intervention",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "82978311-bef9-46f9-9a9a-cc62254b00a6",
+                "answers": [
+                  {
+                    "label": "Health facility",
+                    "concept": "0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d"
+                  },
+                  {
+                    "label": "MSF health facility",
+                    "concept": "41e68dee-a2a3-4e6c-9d96-53def5caff52"
+                  },
+                  {
+                    "label": "Mobile clinic",
+                    "concept": "f7ade35b-035d-4bda-a161-6b5fb6e7cfd9"
+                  },
+                  {
+                    "label": "Home visit",
+                    "concept": "bd5bf44b-164c-415c-8bff-b1d4849928d3"
+                  },
+                  {
+                    "label": "School visit",
+                    "concept": "7091b6ea-7067-4ee3-9f67-8805904e2f61"
+                  },
+                  {
+                    "label": "Remote / phone",
+                    "concept": "398ce872-5862-4826-bba8-826915eddf98"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "specifyHealthFacility",
+              "label": "Specify Health Facility",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d"
+              },
+              "hide": {
+                "hideWhenExpression": "mainLocationOfIntervention !== '0a0c70d2-2ba5-4cb3-941f-b4a9a4a7ec6d'"
+              }
+            },
+            {
+              "id": "specifyMsfHealthFacility",
+              "label": "Specify MSF Health Facility",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "41e68dee-a2a3-4e6c-9d96-53def5caff52"
+              },
+              "hide": {
+                "hideWhenExpression": "mainLocationOfIntervention !== '41e68dee-a2a3-4e6c-9d96-53def5caff52'"
+              }
+            },
+            {
+              "id": "specifyMobileClinic",
+              "label": "Specify Mobile Clinic",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "08cd4b4a-4b0b-4391-987b-b5b3d770d30f"
+              },
+              "hide": {
+                "hideWhenExpression": "mainLocationOfIntervention !== 'f7ade35b-035d-4bda-a161-6b5fb6e7cfd9'"
+              }
+            },
+            {
+              "id": "mainLocationOfIntervention_ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e08d532b-e56c-43dc-b831-af705654d2dc"
+              },
+              "hide": {
+                "hideWhenExpression": "mainLocationOfIntervention !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Closure",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "wasAMentalHealthCertificateProvided",
+              "label": "Was a Mental Health Certificate provided?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "cce4fc0b-9d64-4918-8583-2449a59aef60",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "typeOfClosure",
+              "label": "Type of closure",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9e861ef1-e07c-4955-9650-2ebac3138fc3",
+                "answers": [
+                  {
+                    "label": "Discharge with the patient's agreement: end of care",
+                    "concept": "76a8d333-9cdd-4375-b1a2-a2487365d8f3"
+                  },
+                  {
+                    "label": "Discharge with the patient's agreement: single consultation",
+                    "concept": "193d1bc8-5b68-4beb-a319-5278dea965bb"
+                  },
+                  {
+                    "label": "Discharge with the patient's agreement: patient moved",
+                    "concept": "6df81c5c-1b71-4df2-90b4-7ce57b34f32a"
+                  },
+                  {
+                    "label": "Discharge with the patient's agreement: patient referred",
+                    "concept": "8e67e45a-82de-4a3a-896f-2ef326375fa5"
+                  },
+                  {
+                    "label": "Patient cannot access the service: MSF is no longer there",
+                    "concept": "1cb43f9e-16f1-41d9-af61-ff0ca1bdda6b"
+                  },
+                  {
+                    "label": "Patient cannot access the service: transport issues",
+                    "concept": "c6c45e52-4226-45de-989e-010ecc8c5a52"
+                  },
+                  {
+                    "label": "Patient cannot access the service: arrested/kidnaped",
+                    "concept": "032e96fe-26f1-48e9-ad8f-115c40bd05d7"
+                  },
+                  {
+                    "label": "Lost to follow up: unable to trace",
+                    "concept": "e6e89670-8072-4362-a8d3-20ccf58df7d3"
+                  },
+                  {
+                    "label": "Lost to follow up: dissatisfied/different expectations",
+                    "concept": "e813870b-c8db-488a-82ab-49b1446d1854"
+                  },
+                  {
+                    "label": "Deceased/missing",
+                    "concept": "380f61cd-b510-4830-97d8-7010b160c322"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "patientReferredTo",
+              "label": "Patient referred to",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8fb3bb7d-c935-4b57-8444-1b953470e109",
+                "answers": [
+                  {
+                    "label": "Medical care (MSF, MoH, NGO)",
+                    "concept": "5f121c90-eca2-4af4-bc2f-49ad1a50ff2e"
+                  },
+                  {
+                    "label": "Non-MSF psychiatrist services",
+                    "concept": "489b042d-5ed4-436f-944c-27b7f31bef3f"
+                  },
+                  {
+                    "label": "Psychological support/ Counselling",
+                    "concept": "b35a7b70-7247-4646-8871-560c93ad8ea9"
+                  },
+                  {
+                    "label": "Social services",
+                    "concept": "978fa5d2-e6c4-4b2a-a293-73c098de0af6"
+                  },
+                  {
+                    "label": "Legal services",
+                    "concept": "8fe43e9c-dd37-4f61-8f30-e3ac2f3b9445"
+                  },
+                  {
+                    "label": "Protection services",
+                    "concept": "eff27d0b-d485-4983-814f-febbc4fe185a"
+                  },
+                  {
+                    "label": "Hospitalisation",
+                    "concept": "6b8fca2d-0147-4dd8-a8f5-3b813152b952"
+                  },
+                  {
+                    "label": "Group support",
+                    "concept": "204c5cd9-7ef2-4347-89c2-df17e4789d06"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfClosure !== '8e67e45a-82de-4a3a-896f-2ef326375fa5'"
+              }
+            },
+            {
+              "id": "patientReferredTo_ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "patientReferredTo !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+              }
+            },
+            {
+              "id": "reasonForReferral",
+              "label": "Reason for referral",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "b7fdcd18-fc30-4b5d-82b2-bb0eec31f0e4"
+              },
+              "hide": {
+                "hideWhenExpression": "typeOfClosure !== '8e67e45a-82de-4a3a-896f-2ef326375fa5'"
+              }
+            },
+            {
+              "id": "descriptionOfStatusAtExitAndReasonForTheClosure",
+              "label": "Description of status at exit and reason for the closure",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "218d09c8-76b2-4e1c-8503-0db58f62ea52"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Goals final status",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "goal1",
+              "label": "Goal 1",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3d081f71-7b90-4fb2-a8bc-961263ab6cec",
+                "answers": [
+                  {
+                    "label": "Achieved",
+                    "concept": "fa2f265a-3fa5-4d93-b750-c84d5e659113"
+                  },
+                  {
+                    "label": "No change",
+                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                  },
+                  {
+                    "label": "Challenges",
+                    "concept": "e3920288-c60e-453f-810c-e707924c37e3"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "goal2",
+              "label": "Goal 2",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e6461d60-052f-450a-96aa-9523e807b560",
+                "answers": [
+                  {
+                    "label": "Achieved",
+                    "concept": "fa2f265a-3fa5-4d93-b750-c84d5e659113"
+                  },
+                  {
+                    "label": "No change",
+                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                  },
+                  {
+                    "label": "Challenges",
+                    "concept": "e3920288-c60e-453f-810c-e707924c37e3"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "goal3",
+              "label": "Goal 3",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d8e794bc-efd6-447b-8079-d8f84a267e36",
+                "answers": [
+                  {
+                    "label": "Achieved",
+                    "concept": "fa2f265a-3fa5-4d93-b750-c84d5e659113"
+                  },
+                  {
+                    "label": "No change",
+                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                  },
+                  {
+                    "label": "Challenges",
+                    "concept": "e3920288-c60e-453f-810c-e707924c37e3"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Last available scores",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "mhos",
+              "label": "MHOS",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "90b3d09c-d296-44d2-8292-8e04377fe027",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'b2c5b6e0-66f0-4b9d-8576-b6f48e0a06df').then(obs => obs?.valueQuantity?.value)"
+                },
+                "min": 0,
+                "max": 65,
+                "step": 1
+              },
+              "default": "Value of last MHOS score measured"
+            },
+            {
+              "id": "phq9",
+              "label": "PHQ-9",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "6545b874-f44d-4d18-9ab1-7a8bb21c0a15",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, '5f3d618e-5c89-43bd-8c79-07e4e98c2f23').then(obs => obs?.valueQuantity?.value)"
+                },
+                "min": 0,
+                "max": 27,
+                "step": 1
+              },
+              "default": "Value of last PHQ-9 score measured"
+            },
+            {
+              "id": "gad7",
+              "label": "GAD7",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "22b16c12-4487-42f4-956c-1890d1f81ac8",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, '89e1b4f8-d4c6-491b-bc32-4d4f79a8df9d').then(obs => obs?.valueQuantity?.value)"
+                },
+                "min": 0,
+                "max": 27,
+                "step": 1
+              },
+              "default": "Value of last GAD7 score measured"
+            },
+            {
+              "id": "cgiS",
+              "label": "CGI-S (rating of severity CGI-S: how mentally ill is the patient at this time?)",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "77f1a782-24af-40ba-bac1-b97d9a080f40",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'a1a75011-0fef-460a-b666-dda2d171f39b').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
+                },
+                "answers": [
+                  {
+                    "label": "0 - Not assessed",
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "label": "1 - Normal/not ill",
+                    "concept": "28eca5ef-725d-411f-af28-538a4a6f0a89"
+                  },
+                  {
+                    "label": "2 - Suspected mentally ill",
+                    "concept": "8f8af8f2-4256-4fba-9ce9-e62097b871d3"
+                  },
+                  {
+                    "label": "3 - Mildly ill",
+                    "concept": "c90610d0-29ee-437e-af93-7bcc49fda2f1"
+                  },
+                  {
+                    "label": "4 - Moderately ill",
+                    "concept": "e81cfac7-6c80-4e1b-af86-3d896c9bbdac"
+                  },
+                  {
+                    "label": "5 - Markedly ill",
+                    "concept": "cf122053-f10b-4450-89e1-ed9adabb413c"
+                  },
+                  {
+                    "label": "6 - Severely ill",
+                    "concept": "a6f90f7f-82c5-4cf0-adc5-c71cc14ca3c7"
+                  },
+                  {
+                    "label": "7 - Extremely ill patient",
+                    "concept": "0f115f25-cdd0-49c3-b009-ba9acb041fef"
+                  }
+                ]
+              },
+              "default": "Value of last CGI-S score measured"
+            },
+            {
+              "id": "cgiI",
+              "label": "CGI-I (rating of  improvement CGI-I: how much has the patient improved at this time?)",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "select",
+                "concept": "c64dfacd-2fb5-464d-83a9-ebb9eb8d3ab3",
+                "calculate": {
+                  "calculateExpression": "api.getLatestObs(patient.id, 'f94de17e-9771-4711-aabb-c5bb0c022be2').then(obs => obs?.valueCodeableConcept?.coding[0]?.code)"
+                },
+                "answers": [
+                  {
+                    "label": "0 - Not assessed",
+                    "concept": "eb770ad7-b106-4255-83bd-2dc284fbd7ce"
+                  },
+                  {
+                    "label": "1 - Very much improved",
+                    "concept": "7f91e377-d1bf-4d59-b2fd-ad21c08a833a"
+                  },
+                  {
+                    "label": "2 - Much improved",
+                    "concept": "a8db8105-87a7-47b9-8aad-7b524ed8f530"
+                  },
+                  {
+                    "label": "3 - Minimally improved",
+                    "concept": "e19f352f-b693-434a-af4d-2813487de15c"
+                  },
+                  {
+                    "label": "4 - No change",
+                    "concept": "6e4cc3f3-9e9a-4fd6-ac3e-cf2acd701c91"
+                  },
+                  {
+                    "label": "5 - Minimally worse",
+                    "concept": "65ff54d3-f624-463d-8da9-655c3586ad1f"
+                  },
+                  {
+                    "label": "6 - Much worse",
+                    "concept": "a666c8f2-d5c8-4646-9a89-cfb597bb5380"
+                  },
+                  {
+                    "label": "7 - Very much worse",
+                    "concept": "ece17856-b110-4453-9bc5-a92891f86846"
+                  }
+                ]
+              },
+              "default": "Value of last CGI-I score measured"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

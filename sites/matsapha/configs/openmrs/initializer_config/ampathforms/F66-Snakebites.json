@@ -1,0 +1,3633 @@
+{
+  "name": "F66-Snakebites",
+  "description": "MSF Form - F66-Snakebites",
+  "version": "1",
+  "published": true,
+  "uuid": "3301baa0-ee4e-4893-b258-8b66193da64c",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Snakebite",
+  "encounterType": "c4040f9a-b1d6-4fe8-a4e3-126b72ae937d",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Admission",
+      "sections": [
+        {
+          "label": "Admission Data",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "snakebiteDate",
+              "label": "Snakebite date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "8e353299-79fa-4020-841a-720789568998"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "timeFromBiteToFirstCareOrConsultation",
+              "label": "Time from bite to first care/consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6cd256e8-dff4-45a8-8073-a292e9d5d671",
+                "answers": [
+                  {
+                    "label": "< 6 hours",
+                    "concept": "1adba906-f637-4004-8407-c0d1de6df22c"
+                  },
+                  {
+                    "label": "6 - 23 hours",
+                    "concept": "1a009b95-83da-457e-a753-a423fd0f2e18"
+                  },
+                  {
+                    "label": ">= 24 hours",
+                    "concept": "30253d23-7a9d-47fc-9adf-7a1e11cdf541"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "Snakebite Description",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "partOfBodyBitten",
+              "label": "Part of body bitten",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "af5c9efa-5f87-4074-94f0-189051626792",
+                "answers": [
+                  {
+                    "label": "Ankle",
+                    "concept": "18f47b06-10de-4190-87be-a235de241107"
+                  },
+                  {
+                    "label": "Arm",
+                    "concept": "709fbf02-1dd4-4c65-ad32-33609305017a"
+                  },
+                  {
+                    "label": "Head / face",
+                    "concept": "20fd9a6c-5ceb-46a0-9ac1-521caec67352"
+                  },
+                  {
+                    "label": "Foot",
+                    "concept": "86f3bdf3-7b21-4cf5-97c8-7a779e85dcbe"
+                  },
+                  {
+                    "label": "Hand",
+                    "concept": "a394fdca-c57e-4181-b208-848bc2f885fe"
+                  },
+                  {
+                    "label": "Leg",
+                    "concept": "5ae8c8dc-6db7-4ce0-8485-27ca03365674"
+                  },
+                  {
+                    "label": "Trunk",
+                    "concept": "bf32e77c-4a87-4d6b-a5d9-6b0c4b27e038"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "villageOrAreaWhereTheBiteOccurred",
+              "label": "Village/area where the bite occurred",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a185ec86-2bdf-4c8b-b959-99030fd93423"
+              }
+            },
+            {
+              "id": "environmentWhereTheSnakebiteHappened",
+              "label": "Environment where the snakebite happened",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "af1fc717-0a9d-4cb8-a43a-269271b48bbd",
+                "answers": [
+                  {
+                    "label": "compound",
+                    "concept": "0a9349f8-a10c-4295-b433-168c600d63dd"
+                  },
+                  {
+                    "label": "field",
+                    "concept": "d3609e92-3b64-4cf1-a67c-9514126c3086"
+                  },
+                  {
+                    "label": "indoors",
+                    "concept": "4fb2b940-33db-48c0-ba14-4ae30a41beb0"
+                  },
+                  {
+                    "label": "river",
+                    "concept": "df9a5d7d-07ab-46db-ad1a-9351b0d03010"
+                  },
+                  {
+                    "label": "road",
+                    "concept": "92adc6e9-d9a1-4bc0-b91a-beeae9efb5ba"
+                  },
+                  {
+                    "label": "toilet",
+                    "concept": "982804d5-75bd-46e0-bf66-1ec894488a42"
+                  },
+                  {
+                    "label": "tree",
+                    "concept": "e8e85fd1-799d-4cdd-bcc8-204b79861e95"
+                  },
+                  {
+                    "label": "other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifOtherEnvironmentSpecify",
+              "label": "If other environment - specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(environmentWhereTheSnakebiteHappened !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "snakeSize",
+              "label": "Snake size",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d1ad88c0-04da-44f5-9e1f-433e8124cde2",
+                "answers": [
+                  {
+                    "label": "small (<1m)",
+                    "concept": "b2d6471a-5384-48e5-83fe-1f77a487562e"
+                  },
+                  {
+                    "label": "large (>1m)",
+                    "concept": "59ae0ba3-e292-445b-ae0f-f89f5544df45"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "suspectedSpecies",
+              "label": "Suspected species",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "bff2fc1d-9305-4757-aaeb-b8b2e4458d7c",
+                "answers": [
+                  {
+                    "label": "Viper / Puff Ader",
+                    "concept": "6ff9595b-5fce-4d77-baec-f1e5b2f34884"
+                  },
+                  {
+                    "label": "Cobra",
+                    "concept": "45fb09c4-f5ca-49b2-9412-ab661f60d0c5"
+                  },
+                  {
+                    "label": "Colubrid",
+                    "concept": "96b6ea98-e9a7-4e0c-a5fb-72d9e230bad1"
+                  },
+                  {
+                    "label": "Mamba",
+                    "concept": "57aa8354-47b0-4d01-b618-56fe9fa9006a"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "ifOtherSpeciesSpecify",
+              "label": "If other species - specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(suspectedSpecies, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Medical",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "allergy",
+              "label": "Allergy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b9ddbe43-35a4-476b-a9dd-063c62286be4",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "questionInfo": "Please check in 'Allergies' (update it if necessary)"
+            },
+            {
+              "id": "riskFactors",
+              "label": "Risk factors",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "b5598ad3-b010-4b78-a47f-944062c8d46c",
+                "answers": [
+                  {
+                    "label": "Diabetes",
+                    "concept": "1af832e4-841d-49b0-ab99-8c2328bca4ce"
+                  },
+                  {
+                    "label": "Immune deficiency",
+                    "concept": "7241ec42-bb60-4abf-acb5-2d2af867a90d"
+                  },
+                  {
+                    "label": "Pregnant",
+                    "concept": "933ab405-34f1-4d86-900d-bed9b5ba8d05"
+                  },
+                  {
+                    "label": "Other risk factor",
+                    "concept": "b5598ad3-b010-4b78-a47f-944062c8d46c"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "detailsAndOrOrOtherPastMedicalHistory",
+              "label": "Details and/or other past medical history",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ab12a49c-19fa-4162-a679-4593c7a3d512"
+              },
+              "questionInfo": "Check also in 'Conditions' and update it whenever necessary"
+            },
+            {
+              "id": "pleaseCheckInmedicationsAndAddAllActiveAndRelevantPastMedicationUsedByThePatient",
+              "label": "Please check in 'Medications' and add all active and relevant past medication used by the patient",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Please check in 'Medications' and add all active and relevant past medication used by the patient"
+            },
+            {
+              "id": "consultationWithTraditionalHealerBeforeComingToHealthCenter",
+              "label": "Consultation with traditional healer before coming to health center?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "62adb6c3-ee6e-41eb-b4a4-d8bcb94117b9",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Findings",
+      "sections": [
+        {
+          "label": "Admission",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInvitalsBiometricsFortemperatureweightbprRatespo2AndOtherParametersAndAddCurrentMeasurementsWheneverNecessary",
+              "label": "Please check in 'Vitals & Biometrics' for 'Temperature', 'Weight', 'BP', 'R. rate', 'SpO2' and other parameters AND add current measurements whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "signsAndSymptoms",
+              "label": "Signs and symptoms",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "5f683542-233e-47c2-b06e-69d2a639a78b",
+                "answers": [
+                  {
+                    "label": "Bite site swelling, redness ('dry bite') - Cytotoxic",
+                    "concept": "c211de3b-94b8-4a5f-8a4b-7af8b0ff3691"
+                  },
+                  {
+                    "label": "Bite site burning pain, swelling, discoloration - Cytotoxic (mild)",
+                    "concept": "0860f31c-ef22-4559-9ee2-bcc645790d4e"
+                  },
+                  {
+                    "label": "Bite site blistering, necrosis, enlarged lymph nodes - Cytotoxic (severe)",
+                    "concept": "11ffda1d-cd58-4ac2-a642-be686895813b"
+                  },
+                  {
+                    "label": "Bleeding - Hematotoxic",
+                    "concept": "d14d3774-1595-479d-829a-6c81f98a32d0"
+                  },
+                  {
+                    "label": "Ptosis (droopy eyes) - Neurotoxic",
+                    "concept": "f2ebb8e9-8fac-4e8e-8dfb-3e1cfff2f560"
+                  },
+                  {
+                    "label": "Diplopia - Neurotoxic",
+                    "concept": "bde14dd9-5bef-4484-b002-21ae2f64e5a6"
+                  },
+                  {
+                    "label": "Respiratory paralysis - Neurotoxic",
+                    "concept": "bcf679bb-736b-4cea-b770-858b4cceeb91"
+                  },
+                  {
+                    "label": "Hypotension - Cardiovascular",
+                    "concept": "c1796c08-8ffe-43c3-9a7c-d46f9d693e2b"
+                  },
+                  {
+                    "label": "Shock - Cardiovascular",
+                    "concept": "6dbd9d7b-631c-4a51-ac7f-dab200821d52"
+                  },
+                  {
+                    "label": "Arrhythmia - Cardiovascular",
+                    "concept": "ec692852-5d0c-4fbf-9ec3-9671b60ffc2f"
+                  },
+                  {
+                    "label": "Vomiting",
+                    "concept": "2314bb39-ed30-4332-b77c-2ac59f79f355"
+                  },
+                  {
+                    "label": "Diarrhoea",
+                    "concept": "1361c31f-e817-4e8f-84cc-6ffab48bdeef"
+                  },
+                  {
+                    "label": "Tachycardia",
+                    "concept": "5cf7dcd6-583b-4420-a12b-6fd1b6d0ddfc"
+                  },
+                  {
+                    "label": "Fever",
+                    "concept": "e15e7405-8aad-474d-a09c-bcf40da2fe84"
+                  },
+                  {
+                    "label": "Hypoperfusion",
+                    "concept": "fd0ab17f-0379-462f-ad55-1cf56fc830d5"
+                  },
+                  {
+                    "label": "Hypoxia",
+                    "concept": "ef51638c-e95f-4216-9461-5135fe6ae0af"
+                  },
+                  {
+                    "label": "Altered consciousness",
+                    "concept": "6d9426cd-9812-4d26-9f62-bc8eef6ecd0a"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "additionalClinicalFindings",
+              "label": "Additional clinical findings",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0dd28dfa-fa10-4dbd-bf6a-4f5ad6868c64"
+              }
+            },
+            {
+              "id": "takeAPictureOfBiteSiteToKeepAsAttachmentInPatientFile",
+              "label": "Take a picture of bite site to keep as Attachment in patient file",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "capture-photo-widget"
+              }
+            },
+            {
+              "id": "checkInresultsForRelevantTestsOrdered",
+              "label": "Check in 'Results' for relevant tests ordered",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Check in 'Results' for relevant tests ordered"
+            },
+            {
+              "id": "mnWbct",
+              "label": "20 mn - WBCT (whole blood clotting test)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "09fdc8a7-91a7-409d-81f1-7bcb8650c5a6",
+                "answers": [
+                  {
+                    "label": "Clotting",
+                    "concept": "fc49b380-fbf8-42a7-abbf-a3ca32b03b67"
+                  },
+                  {
+                    "label": "Not clotting - Hematotoxic",
+                    "concept": "5b714e83-fdc6-4893-9d8e-7a2353d93878"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "commentsOnLabTestsAndInvestigations",
+              "label": "Comments on lab tests and investigations",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Treatment",
+      "sections": [
+        {
+          "label": "Treatment",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "prescribeMedicationAndExamsWithTheOrderBasketIfNecessary",
+              "label": "Prescribe medication and exams with the order basket if necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Antivenom",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "antivenom",
+              "label": "Antivenom",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f6d6aa9a-6c4f-4859-8e8e-26947ddd5369",
+                "answers": [
+                  {
+                    "label": "Not needed",
+                    "concept": "8287919c-f99c-4c51-9494-857b5e63b7f5"
+                  },
+                  {
+                    "label": "1 type",
+                    "concept": "52270aa0-d66a-4d8f-9ccb-9178d3cb4707"
+                  },
+                  {
+                    "label": "2 types",
+                    "concept": "e091c6ab-4e4e-4320-a6ef-6061859662b3"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "antivenom1",
+              "label": "Antivenom 1",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "52270aa0-d66a-4d8f-9ccb-9178d3cb4707",
+                "answers": [
+                  {
+                    "label": "Bharat",
+                    "concept": "2a038969-b4fc-41ec-8539-a1a3a9562800"
+                  },
+                  {
+                    "label": "EchiTabPlus",
+                    "concept": "4724798b-26e2-43a0-a091-461fe511d752"
+                  },
+                  {
+                    "label": "Fav-Afrique",
+                    "concept": "774799b8-02b1-4558-a6c1-3aec1c662611"
+                  },
+                  {
+                    "label": "NAVPC",
+                    "concept": "f22523b5-16e0-45d6-87af-109211a35434"
+                  },
+                  {
+                    "label": "SAIMR/SAVP",
+                    "concept": "b3442b05-5c15-4606-a60e-38dafec1482e"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== '52270aa0-d66a-4d8f-9ccb-9178d3cb4707' && antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3')"
+              }
+            },
+            {
+              "id": "ifOtherAntivenom1Specify",
+              "label": "If other, please specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "bf2c85cc-4c40-4b22-9ef8-cd67ce2303cf"
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== '52270aa0-d66a-4d8f-9ccb-9178d3cb4707' && antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3') || (antivenom1 !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "batchNumberAntivenom1",
+              "label": "Batch number",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "9080802d-51c9-48b5-a8aa-5c72b7a998e3"
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== '52270aa0-d66a-4d8f-9ccb-9178d3cb4707' && antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3')"
+              }
+            },
+            {
+              "id": "qualityIssueSuspectedAntivenom1",
+              "label": "Quality issue suspected",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1e4940b9-371b-41fa-b7ae-1204aebf8c85",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== '52270aa0-d66a-4d8f-9ccb-9178d3cb4707' && antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3')"
+              }
+            },
+            {
+              "id": "antivenom2",
+              "label": "Antivenom 2",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e091c6ab-4e4e-4320-a6ef-6061859662b3",
+                "answers": [
+                  {
+                    "label": "Bharat",
+                    "concept": "2a038969-b4fc-41ec-8539-a1a3a9562800"
+                  },
+                  {
+                    "label": "EchiTabPlus",
+                    "concept": "4724798b-26e2-43a0-a091-461fe511d752"
+                  },
+                  {
+                    "label": "Fav-Afrique",
+                    "concept": "774799b8-02b1-4558-a6c1-3aec1c662611"
+                  },
+                  {
+                    "label": "NAVPC",
+                    "concept": "f22523b5-16e0-45d6-87af-109211a35434"
+                  },
+                  {
+                    "label": "SAIMR/SAVP",
+                    "concept": "b3442b05-5c15-4606-a60e-38dafec1482e"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3')"
+              }
+            },
+            {
+              "id": "ifOtherAntivenom2Specify",
+              "label": "If other, please specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "d7bc4256-caca-4db7-8631-c1d1eff34768"
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3') || (antivenom2 !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "batchNumberAntivenom2",
+              "label": "Batch number",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "9080802d-51c9-48b5-a8aa-5c72b7a998e3"
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3')"
+              }
+            },
+            {
+              "id": "qualityIssueSuspectedAntivenom2",
+              "label": "Quality issue suspected",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d322acb5-dc07-4a45-966f-d470e3a962c4",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "First 6 hours",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "vialsUsedDuringInitialTreatment1",
+              "label": "# vials used during initial treatment (first 6 hours)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "846d3bb1-b0d2-405d-bd69-8799e427bc56",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== '52270aa0-d66a-4d8f-9ccb-9178d3cb4707' && antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3')"
+              }
+            },
+            {
+              "id": "vialsUsedDuringInitialTreatment2",
+              "label": "# vials used during initial treatment (first 6 hours)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "7b9d0d01-c938-4034-8c09-4d03df84d96b",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Clinical evolution",
+      "sections": [
+        {
+          "label": "6 hours to exit",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInbiometricsForweightbprRatespo2AndOtherParametersAndAddUpdatedMeasurementsWheneverNecessary",
+              "label": "Please check in 'Biometrics' for 'Weight', 'BP', 'R. rate', 'SpO2' and other parameters AND add updated measurements whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "signsAndSymptomsEvolution",
+              "label": "Signs and symptoms evolution",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "5f683542-233e-47c2-b06e-69d2a639a78b",
+                "answers": [
+                  {
+                    "label": "Bite site swelling, redness ('dry bite') - Cytotoxic",
+                    "concept": "c211de3b-94b8-4a5f-8a4b-7af8b0ff3691"
+                  },
+                  {
+                    "label": "Bite site burning pain, swelling, discoloration - Cytotoxic (mild)",
+                    "concept": "0860f31c-ef22-4559-9ee2-bcc645790d4e"
+                  },
+                  {
+                    "label": "Bite site blistering, necrosis, enlarged lymph nodes - Cytotoxic 8severe)",
+                    "concept": "11ffda1d-cd58-4ac2-a642-be686895813b"
+                  },
+                  {
+                    "label": "Bleeding - Hematotoxic",
+                    "concept": "d14d3774-1595-479d-829a-6c81f98a32d0"
+                  },
+                  {
+                    "label": "Ptosis (droopy eyes) - Neurotoxic",
+                    "concept": "f2ebb8e9-8fac-4e8e-8dfb-3e1cfff2f560"
+                  },
+                  {
+                    "label": "Diplopia - Neurotoxic",
+                    "concept": "bde14dd9-5bef-4484-b002-21ae2f64e5a6"
+                  },
+                  {
+                    "label": "Respiratory paralysis - Neurotoxic",
+                    "concept": "bcf679bb-736b-4cea-b770-858b4cceeb91"
+                  },
+                  {
+                    "label": "Hypotension - Cardiovascular",
+                    "concept": "c1796c08-8ffe-43c3-9a7c-d46f9d693e2b"
+                  },
+                  {
+                    "label": "Shock - Cardiovascular",
+                    "concept": "6dbd9d7b-631c-4a51-ac7f-dab200821d52"
+                  },
+                  {
+                    "label": "Arrhythmia - Cardiovascular",
+                    "concept": "ec692852-5d0c-4fbf-9ec3-9671b60ffc2f"
+                  },
+                  {
+                    "label": "Vomiting",
+                    "concept": "2314bb39-ed30-4332-b77c-2ac59f79f355"
+                  },
+                  {
+                    "label": "Diarrhoea",
+                    "concept": "1361c31f-e817-4e8f-84cc-6ffab48bdeef"
+                  },
+                  {
+                    "label": "Tachycardia",
+                    "concept": "5cf7dcd6-583b-4420-a12b-6fd1b6d0ddfc"
+                  },
+                  {
+                    "label": "Fever",
+                    "concept": "e15e7405-8aad-474d-a09c-bcf40da2fe84"
+                  },
+                  {
+                    "label": "Hypoperfusion",
+                    "concept": "fd0ab17f-0379-462f-ad55-1cf56fc830d5"
+                  },
+                  {
+                    "label": "Hypoxia",
+                    "concept": "ef51638c-e95f-4216-9461-5135fe6ae0af"
+                  },
+                  {
+                    "label": "Altered consciousness",
+                    "concept": "6d9426cd-9812-4d26-9f62-bc8eef6ecd0a"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "compareCurrentBiteSiteWithInitialPictureTakenTakeANewPictureOfBiteSiteToKeepAsAttachmentInPatientFile",
+              "label": "Compare current bite site with initial picture taken - take a new picture of bite site to keep as Attachment in patient file",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "capture-photo-widget"
+              }
+            },
+            {
+              "id": "mnWbct_1",
+              "label": "20 mn - WBCT",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "09fdc8a7-91a7-409d-81f1-7bcb8650c5a6",
+                "answers": [
+                  {
+                    "label": "Clotting",
+                    "concept": "fc49b380-fbf8-42a7-abbf-a3ca32b03b67"
+                  },
+                  {
+                    "label": "Not clotting - Hematotoxic",
+                    "concept": "5b714e83-fdc6-4893-9d8e-7a2353d93878"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              },
+              "idModified": true,
+              "originalLabel": "20 mn - WBCT",
+              "warning": "Question ID was modified from '20 mn - WBCT' to ensure uniqueness"
+            },
+            {
+              "id": "commentOnClinicalEvolution",
+              "label": "Comment on clinical evolution",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            },
+            {
+              "id": "modifyMedicationAndRequestAdditionalExamsWithTheOrderBasketIfNecessary",
+              "label": "Modify medication and request additional exams with the order basket if necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Discharge",
+      "sections": [
+        {
+          "label": "Outcome",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "dischargeDate",
+              "label": "Discharge date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "13cea1c8-e426-411f-95b4-33651fc4325d"
+              },
+              "default": "Current date"
+            },
+            {
+              "id": "dischargeDiagnosis",
+              "label": "Discharge diagnosis",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9da302ed-948f-4030-8f0a-a294dd3dff21",
+                "answers": [
+                  {
+                    "label": "Dry bite - no antivenom needed",
+                    "concept": "191598ca-8590-4235-aafc-7b0af2d5ae0e"
+                  },
+                  {
+                    "label": "Cytotoxic mild - no antivenom needed",
+                    "concept": "9e5cbcd8-6720-4d2a-a2a4-64b605c771ff"
+                  },
+                  {
+                    "label": "Cytotoxic severe responding well to 1-2 doses antivenom",
+                    "concept": "a1e09a4f-5fd8-4c83-9847-6b45dc7b22e5"
+                  },
+                  {
+                    "label": "Cytotoxic severe responding well to 3+ doses antivenom",
+                    "concept": "25790561-43d0-4b2a-afe6-6d70f32fd361"
+                  },
+                  {
+                    "label": "Cytotoxic severe with poor/no response to antivenom",
+                    "concept": "eddcd462-0182-49a7-8531-1973113f2841"
+                  },
+                  {
+                    "label": "Haematotoxic (with/without Cytotoxic) responding well to 1-2 doses antivenom",
+                    "concept": "a64221d6-6463-4d7e-a69e-1f70a8a87a4a"
+                  },
+                  {
+                    "label": "Haematotoxic (with/without Cytotoxic) responding well to 3+ doses antivenom",
+                    "concept": "a3663df9-2b92-4586-b6b6-bb7aa0fb3370"
+                  },
+                  {
+                    "label": "Haematotoxic (with/without Cytotoxic) with poor/no response to antivenom",
+                    "concept": "3ba86bdb-9c7c-453e-ab3d-0aa56d64e7f2"
+                  },
+                  {
+                    "label": "Neurotoxic responding well to 1-2 doses antivenom",
+                    "concept": "8db1a87b-de75-415f-8c25-e5945f9f95f6"
+                  },
+                  {
+                    "label": "Neurotoxic responding well to 3+ doses antivenom",
+                    "concept": "d53ef05d-3e5d-45a8-8f89-699f160365bc"
+                  },
+                  {
+                    "label": "Neurotoxic with poor/no response to antivenom",
+                    "concept": "bba4bf56-a430-4837-813e-aa8211bd6c87"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifOtherDiagnosisSpecify",
+              "label": "If other diagnosis - specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(dischargeDiagnosis !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "dischargeOutcome",
+              "label": "Discharge outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6b32cbb0-5fa7-48fe-85a5-b8ba276ab22d",
+                "answers": [
+                  {
+                    "label": "Cured",
+                    "concept": "4afad5ca-6b49-4fc2-9dca-4468f5f3a3f6"
+                  },
+                  {
+                    "label": "Dead",
+                    "concept": "32b271a9-8c74-4094-8242-6744661cf30f"
+                  },
+                  {
+                    "label": "Defaulter",
+                    "concept": "81cbc44a-ac84-4458-ab99-feab4d64c691"
+                  },
+                  {
+                    "label": "Released with sequelae",
+                    "concept": "b8902ac6-c3ac-4cae-9121-fc606489c564"
+                  },
+                  {
+                    "label": "Referred",
+                    "concept": "77a9e41b-8b74-4cee-9519-f9f39925a3fa"
+                  },
+                  {
+                    "label": "Transferred",
+                    "concept": "18c795cb-7197-46da-926f-e4d1848b8c36"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Antivenom",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "totalInfusionsAtDischargeAntivenom1",
+              "label": "Total # infusions at discharge - antivenom 1",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "df7c9064-3f7d-4171-99c3-95662015dbc5",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== '52270aa0-d66a-4d8f-9ccb-9178d3cb4707' && antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3')"
+              }
+            },
+            {
+              "id": "totalVialsUsedAtDischargeAntivenom1",
+              "label": "Total # vials used at discharge - antivenom 1",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "82e4c043-16eb-4c39-8e20-dcc879762601",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== '52270aa0-d66a-4d8f-9ccb-9178d3cb4707' && antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3')"
+              }
+            },
+            {
+              "id": "totalInfusionsAtDischargeAntivenom2",
+              "label": "Total # infusions at discharge - antivenom 2",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "ba548052-48e0-4d23-a704-bf4d80627d54",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3')"
+              }
+            },
+            {
+              "id": "totalVialsUsedAtDischargeAntivenom2",
+              "label": "Total # vials used at discharge - antivenom 2",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "9f118e61-9563-49fc-85a8-6a44f2dd1ffb",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(antivenom !== 'e091c6ab-4e4e-4320-a6ef-6061859662b3')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Antivenom effect",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "timeIntervalUnitFromAntivenomToStabilization",
+              "label": "Time interval unit from antivenom to stabilization",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "dea17552-bab7-47a1-b195-7b6a26b777f2",
+                "answers": [
+                  {
+                    "label": "in minutes",
+                    "concept": "eacce6b3-d14c-4541-bffd-c704d3999bcd"
+                  },
+                  {
+                    "label": "in hours",
+                    "concept": "1307d5be-4135-48a2-84bd-ad7d109a0a90"
+                  },
+                  {
+                    "label": "in days",
+                    "concept": "b051736a-e19e-48ff-b672-66249f57c51c"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "timeIntervalInMinutesFromAntivenomToStabilization",
+              "label": "Length in minutes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "abcf01a1-1ac9-4515-854b-35a4ecc416b2",
+                "min": 0.0,
+                "max": 60.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(timeIntervalUnitFromAntivenomToStabilization !== 'eacce6b3-d14c-4541-bffd-c704d3999bcd')"
+              }
+            },
+            {
+              "id": "timeIntervalInHoursFromAntivenomToStabilization",
+              "label": "Length in hours",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "07133479-cb34-467d-9a69-bf9d84bf8131",
+                "min": 0.0,
+                "max": 24.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(timeIntervalUnitFromAntivenomToStabilization !== '1307d5be-4135-48a2-84bd-ad7d109a0a90')"
+              }
+            },
+            {
+              "id": "timeIntervalInDaysFromAntivenomToStabilization",
+              "label": "Length in days",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b959ea9e-dc8e-42af-a345-430bc7090073",
+                "min": 0.0,
+                "max": 10.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(timeIntervalUnitFromAntivenomToStabilization !== 'b051736a-e19e-48ff-b672-66249f57c51c')"
+              }
+            },
+            {
+              "id": "timeIntervalUnitFromAntivenomToCure",
+              "label": "Time interval unit from antivenom to cure",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "dea17552-bab7-47a1-b195-7b6a26b777f2",
+                "answers": [
+                  {
+                    "label": "in minutes",
+                    "concept": "eacce6b3-d14c-4541-bffd-c704d3999bcd"
+                  },
+                  {
+                    "label": "in hours",
+                    "concept": "1307d5be-4135-48a2-84bd-ad7d109a0a90"
+                  },
+                  {
+                    "label": "in days",
+                    "concept": "b051736a-e19e-48ff-b672-66249f57c51c"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "timeIntervalFromAntivenomToCureInMinutes",
+              "label": "Length in minutes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "0a35eaf8-80fe-4f7f-b2e9-36d134b1e42c",
+                "min": 0.0,
+                "max": 60.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(timeIntervalUnitFromAntivenomToCure !== 'eacce6b3-d14c-4541-bffd-c704d3999bcd')"
+              }
+            },
+            {
+              "id": "timeIntervalFromAntivenomToCureInHours",
+              "label": "Length in hours",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "60a7b900-3213-45f8-8f9a-905c4560a0aa",
+                "min": 0.0,
+                "max": 24.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(timeIntervalUnitFromAntivenomToCure !== '1307d5be-4135-48a2-84bd-ad7d109a0a90')"
+              }
+            },
+            {
+              "id": "timeIntervalFromAntivenomToCureInDays",
+              "label": "Length in days",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "23b1b62c-5e43-484f-9012-dea8ce34e678",
+                "min": 0.0,
+                "max": 10.0,
+                "disallowDecimals": true,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(timeIntervalUnitFromAntivenomToCure !== 'b051736a-e19e-48ff-b672-66249f57c51c')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Treatment",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "treatmentReceivedByThePatient",
+              "label": "Treatment received by the patient",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "d6081b93-291a-4349-a1c7-8a11e7326de1",
+                "answers": [
+                  {
+                    "label": "IV Ringer infusion",
+                    "concept": "c78c0784-95db-4057-9641-6fefb7b601ef"
+                  },
+                  {
+                    "label": "Adrenaline",
+                    "concept": "3b909c35-7958-40bd-967f-465071675700"
+                  },
+                  {
+                    "label": "Antihistamine",
+                    "concept": "591bdc73-ab5c-4259-81d7-67e20833085d"
+                  },
+                  {
+                    "label": "Oxygen",
+                    "concept": "775a4895-fdbd-4409-9292-6044972eca83"
+                  },
+                  {
+                    "label": "TT vaccination",
+                    "concept": "d8743f9a-7a03-4a9c-ad99-b41764aae1cc"
+                  },
+                  {
+                    "label": "Debridement / fasciotomy",
+                    "concept": "afbc0c03-5270-46f8-b309-9c0b50f62ed3"
+                  },
+                  {
+                    "label": "Amputation",
+                    "concept": "59df1909-7809-44f3-8dff-d000d56c9369"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "ifDebridementOrFasciotomySpecify",
+              "label": "If debridement / fasciotomy - specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "1dff76c7-f3ae-4947-9ff4-4b6603c05c00"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(treatmentReceivedByThePatient, 'afbc0c03-5270-46f8-b309-9c0b50f62ed3'))"
+              }
+            },
+            {
+              "id": "ifAmputationSpecify",
+              "label": "If amputation - specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "cb8e3668-f0cb-4d90-936b-90e6c7e3070b"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(treatmentReceivedByThePatient, '59df1909-7809-44f3-8dff-d000d56c9369'))"
+              }
+            },
+            {
+              "id": "specifyOtherRelevantTreatments",
+              "label": "Specify other relevant treatments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(treatmentReceivedByThePatient, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Adverse Events",
+      "sections": [
+        {
+          "label": "Adverse Events",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "adverseEventsFromTreatment",
+              "label": "Adverse events from treatment",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "8b8140b1-e9da-4df8-b299-c36c9a639d1a",
+                "answers": [
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "Respiratory",
+                    "concept": "c81875da-982a-45e6-aa49-7b871fdba301"
+                  },
+                  {
+                    "label": "Circulatory",
+                    "concept": "acccf693-a04b-4371-a742-c677df26abe9"
+                  },
+                  {
+                    "label": "Gastrointestinal",
+                    "concept": "38e1f27b-afdd-4fff-a953-9d24a3b439e4"
+                  },
+                  {
+                    "label": "Skin",
+                    "concept": "64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a"
+                  },
+                  {
+                    "label": "High temp >38\u00b0",
+                    "concept": "c21beebb-8ec7-4c1a-b987-b0ebc89415a9"
+                  },
+                  {
+                    "label": "Serum sickness (late 5-28 days)",
+                    "concept": "0d1a4695-56b5-4b88-8d74-00b6f19e244e"
+                  },
+                  {
+                    "label": "PTSD",
+                    "concept": "eb4f106b-7ad6-4756-94ca-b61603c3ee8f"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "circulatoryAeType",
+              "label": "Circulatory AE type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "acccf693-a04b-4371-a742-c677df26abe9",
+                "answers": [
+                  {
+                    "label": "Cardiac",
+                    "concept": "f6de7ad2-fe13-456c-99e4-1dec13382b7a"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "86e4bcc0-fff8-4719-9129-7edb5281431c"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9'))"
+              }
+            },
+            {
+              "id": "skinAeType",
+              "label": "Skin AE type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "521a45ea-064e-4239-abec-0bf128336981",
+                "answers": [
+                  {
+                    "label": "Wound needing chronic care",
+                    "concept": "a10c21ba-0eb3-400e-8885-38275f566385"
+                  },
+                  {
+                    "label": "Severe necrosis + disability",
+                    "concept": "395ed141-f523-4db7-9f6f-6212d9557e92"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a'))"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Respiratory",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "respiratoryAeDiagnosis",
+              "label": "Diagnosis (description)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "dff68df6-f504-4c6a-ae42-5e5e6839a2da"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301'))"
+              }
+            },
+            {
+              "id": "respiratoryAeOnsetDate",
+              "label": "Onset date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "870715b1-5398-49e4-a525-f4a381371575"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301'))"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "respiratoryAeEndDate",
+              "label": "End date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "74ed1acd-0a77-46dc-8be2-0f1d2e6849f7"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301'))"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "respiratoryAeEndDate < respiratoryAeOnsetDate",
+                  "message": "End date must be after onset date"
+                }
+              ]
+            },
+            {
+              "id": "respiratoryAeSeverity",
+              "label": "Severity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0d6b754e-68a2-47ac-93a4-6bb5c76e7396",
+                "answers": [
+                  {
+                    "label": "Mild",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  },
+                  {
+                    "label": "Life-threatening",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301'))"
+              }
+            },
+            {
+              "id": "respiratoryAeOutcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c7f66f94-38a5-4647-8990-01ef82ec6e0d",
+                "answers": [
+                  {
+                    "label": "Fatal",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  },
+                  {
+                    "label": "Improving",
+                    "concept": "26c988ba-d359-4347-a8bd-905ccaf5eb9d"
+                  },
+                  {
+                    "label": "Resolved",
+                    "concept": "4aa214b7-380f-4775-a79d-09651673ce5f"
+                  },
+                  {
+                    "label": "Resolved with sequelae",
+                    "concept": "3ee1d7b5-506b-48cb-b50a-aeec301636de"
+                  },
+                  {
+                    "label": "Not resolved",
+                    "concept": "89abdeff-2d55-4346-9514-ba7bad08d3a3"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301'))"
+              }
+            },
+            {
+              "id": "respiratoryAeRelatedToAntivenom",
+              "label": "Related to antivenom?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6c14f537-29bd-46e0-9e4a-152a8c52eb68",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301'))"
+              }
+            },
+            {
+              "id": "respiratoryAeOtherCauses",
+              "label": "Other causes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a99691ce-d2a3-4122-8bd9-480833971802"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301') || (respiratoryAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Circulatory - Cardiac",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "cardiacAeDiagnosis",
+              "label": "Diagnosis (description)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "0e44d298-f61d-493b-8fde-08b55de253c8"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')"
+              }
+            },
+            {
+              "id": "cardiacAeOnsetDate",
+              "label": "Onset date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "483670c4-39ff-43ea-8f96-d478bba4cc47"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "cardiacAeEndDate",
+              "label": "End date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "7d453e4b-1efa-49ec-b566-5b1f770ae8c4"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "cardiacAeEndDate < cardiacAeOnsetDate",
+                  "message": "End date must be after onset date"
+                }
+              ]
+            },
+            {
+              "id": "cardiacAeSeverity",
+              "label": "Severity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d3714c87-018b-40d6-a908-be38819ba888",
+                "answers": [
+                  {
+                    "label": "Mild",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  },
+                  {
+                    "label": "Life-threatening",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')"
+              }
+            },
+            {
+              "id": "cardiacAeOutcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6ad83a04-6141-422a-a5de-3cc32bfc13f5",
+                "answers": [
+                  {
+                    "label": "Fatal",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  },
+                  {
+                    "label": "Improving",
+                    "concept": "26c988ba-d359-4347-a8bd-905ccaf5eb9d"
+                  },
+                  {
+                    "label": "Resolved",
+                    "concept": "4aa214b7-380f-4775-a79d-09651673ce5f"
+                  },
+                  {
+                    "label": "Resolved with sequelae",
+                    "concept": "3ee1d7b5-506b-48cb-b50a-aeec301636de"
+                  },
+                  {
+                    "label": "Not resolved",
+                    "concept": "89abdeff-2d55-4346-9514-ba7bad08d3a3"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')"
+              }
+            },
+            {
+              "id": "cardiacAeRelatedToAntivenom",
+              "label": "Related to antivenom?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "79dd641d-bf6b-40d8-aa00-40a8839e5e6d",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a')"
+              }
+            },
+            {
+              "id": "cardiacAeOtherCauses",
+              "label": "Other causes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "051ef67d-10b0-4e00-a729-b759c2a21a1a"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, 'f6de7ad2-fe13-456c-99e4-1dec13382b7a') || (cardiacAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Circulatory - Other",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "circulatoryAeDiagnosis",
+              "label": "Diagnosis (description)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "c7df5993-4d8d-4900-ba52-f61e6d0dc7e9"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')"
+              }
+            },
+            {
+              "id": "circulatoryAeOnsetDate",
+              "label": "Onset date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "79452ea5-3f3d-4178-92d4-3abdc76d79e8"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "circulatoryAeEndDate",
+              "label": "End date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "7979e79f-987b-453d-88f9-67c8fc30b0ab"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "circulatoryAeEndDate < circulatoryAeOnsetDate",
+                  "message": "End date must be after onset date"
+                }
+              ]
+            },
+            {
+              "id": "circulatoryAeSeverity",
+              "label": "Severity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bec99dcd-137d-4bba-8ea0-4047f41f1ec6",
+                "answers": [
+                  {
+                    "label": "Mild",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  },
+                  {
+                    "label": "Life-threatening",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')"
+              }
+            },
+            {
+              "id": "circulatoryAeOutcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c38d9039-2adf-485d-b724-dfe981f97443",
+                "answers": [
+                  {
+                    "label": "Fatal",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  },
+                  {
+                    "label": "Improving",
+                    "concept": "26c988ba-d359-4347-a8bd-905ccaf5eb9d"
+                  },
+                  {
+                    "label": "Resolved",
+                    "concept": "4aa214b7-380f-4775-a79d-09651673ce5f"
+                  },
+                  {
+                    "label": "Resolved with sequelae",
+                    "concept": "3ee1d7b5-506b-48cb-b50a-aeec301636de"
+                  },
+                  {
+                    "label": "Not resolved",
+                    "concept": "89abdeff-2d55-4346-9514-ba7bad08d3a3"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')"
+              }
+            },
+            {
+              "id": "circulatoryAeRelatedToAntivenom",
+              "label": "Related to antivenom?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "64a7796f-3d8d-4c64-84f5-042295fc3095",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c')"
+              }
+            },
+            {
+              "id": "circulatoryAeOtherCauses",
+              "label": "Other causes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "8dad0a33-9050-427c-808a-a07f1c5dda13"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') || !includes(circulatoryAeType, '86e4bcc0-fff8-4719-9129-7edb5281431c') || (circulatoryAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Gastrointestinal",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "gastrointestinalAeDiagnosis",
+              "label": "Diagnosis (description)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "0282dbe2-2a6e-4021-8b45-0fab6880fc58"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4'))"
+              }
+            },
+            {
+              "id": "gastrointestinalAeOnsetDate",
+              "label": "Onset date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "967ce54b-565c-411c-aef8-f7883887a75a"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4'))"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "gastrointestinalAeEndDate",
+              "label": "End date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "663f0291-3449-4584-b256-e681869d7954"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4'))"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "gastrointestinalAeEndDate < gastrointestinalAeOnsetDate",
+                  "message": "End date must be after onset date"
+                }
+              ]
+            },
+            {
+              "id": "gastrointestinalAeSeverity",
+              "label": "Severity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "554b5570-03df-4e9c-bd92-aaea1ed92e2a",
+                "answers": [
+                  {
+                    "label": "Mild",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  },
+                  {
+                    "label": "Life-threatening",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4'))"
+              }
+            },
+            {
+              "id": "gastrointestinalAeOutcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f0cb49fd-4ac1-4c56-8a47-bd45b3914e33",
+                "answers": [
+                  {
+                    "label": "Fatal",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  },
+                  {
+                    "label": "Improving",
+                    "concept": "26c988ba-d359-4347-a8bd-905ccaf5eb9d"
+                  },
+                  {
+                    "label": "Resolved",
+                    "concept": "4aa214b7-380f-4775-a79d-09651673ce5f"
+                  },
+                  {
+                    "label": "Resolved with sequelae",
+                    "concept": "3ee1d7b5-506b-48cb-b50a-aeec301636de"
+                  },
+                  {
+                    "label": "Not resolved",
+                    "concept": "89abdeff-2d55-4346-9514-ba7bad08d3a3"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4'))"
+              }
+            },
+            {
+              "id": "gastrointestinalAeRelatedToAntivenom",
+              "label": "Related to antivenom?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "72bc8c0a-cc2a-40c9-a6cd-bc44144cb028",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4'))"
+              }
+            },
+            {
+              "id": "gastrointestinalAeOtherCauses",
+              "label": "Other causes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e16a1ba1-0ded-4c9a-ba8e-d7e0f66333ea"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4') || (gastrointestinalAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "High Temp",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "highTempAeDiagnosis",
+              "label": "Diagnosis (description)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "0e50083b-937f-4c5c-b82f-f8fa12abd745"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c21beebb-8ec7-4c1a-b987-b0ebc89415a9'))"
+              }
+            },
+            {
+              "id": "highTempAeOnsetDate",
+              "label": "Onset date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "e1680379-cf99-4aba-93da-1712fe38b5d6"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c21beebb-8ec7-4c1a-b987-b0ebc89415a9'))"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "highTempAeEndDate",
+              "label": "End date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "caae0b97-832e-4cc7-9cf9-c4a3d1bc3eb8"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c21beebb-8ec7-4c1a-b987-b0ebc89415a9'))"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "highTempAeEndDate < highTempAeOnsetDate",
+                  "message": "End date must be after onset date"
+                }
+              ]
+            },
+            {
+              "id": "highTempAeSeverity",
+              "label": "Severity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4d3146ce-6a9a-42ab-a7cc-e4fbad539740",
+                "answers": [
+                  {
+                    "label": "Mild",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  },
+                  {
+                    "label": "Life-threatening",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c21beebb-8ec7-4c1a-b987-b0ebc89415a9'))"
+              }
+            },
+            {
+              "id": "highTempAeOutcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f4a800c5-00a8-42d9-9593-2a160a8c4eb8",
+                "answers": [
+                  {
+                    "label": "Fatal",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  },
+                  {
+                    "label": "Improving",
+                    "concept": "26c988ba-d359-4347-a8bd-905ccaf5eb9d"
+                  },
+                  {
+                    "label": "Resolved",
+                    "concept": "4aa214b7-380f-4775-a79d-09651673ce5f"
+                  },
+                  {
+                    "label": "Resolved with sequelae",
+                    "concept": "3ee1d7b5-506b-48cb-b50a-aeec301636de"
+                  },
+                  {
+                    "label": "Not resolved",
+                    "concept": "89abdeff-2d55-4346-9514-ba7bad08d3a3"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c21beebb-8ec7-4c1a-b987-b0ebc89415a9'))"
+              }
+            },
+            {
+              "id": "highTempAeRelatedToAntivenom",
+              "label": "Related to antivenom?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e1a46fec-127a-4e6b-a362-ace2f6ba75f1",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c21beebb-8ec7-4c1a-b987-b0ebc89415a9'))"
+              }
+            },
+            {
+              "id": "highTempAeOtherCauses",
+              "label": "Other causes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "f09c4d34-eb69-42c1-8a22-63ddd80036ea"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'c21beebb-8ec7-4c1a-b987-b0ebc89415a9') || (highTempAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Serum sickness",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "serumSicknesDiagnosis",
+              "label": "Diagnosis (description)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "f0d07aa9-38cd-484b-9475-9ecf12bd1bbc"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e'))"
+              }
+            },
+            {
+              "id": "serumSicknessOnsetDate",
+              "label": "Onset date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "672194ea-f99b-4e70-b069-526848a02b91"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e'))"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "serumSicknessEndDate",
+              "label": "End date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "8261e80a-6f53-4d6b-94ff-130e81a356ad"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e'))"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "serumSicknessEndDate < serumSicknessOnsetDate",
+                  "message": "End date must be after onset date"
+                }
+              ]
+            },
+            {
+              "id": "serumSicknessSeverity",
+              "label": "Severity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "80b444d8-6f51-49f7-b286-45c7db6475a9",
+                "answers": [
+                  {
+                    "label": "Mild",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  },
+                  {
+                    "label": "Life-threatening",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e'))"
+              }
+            },
+            {
+              "id": "serumSicknessOutcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2b086c22-8aa1-4e6a-8f86-05d11dbf406c",
+                "answers": [
+                  {
+                    "label": "Fatal",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  },
+                  {
+                    "label": "Improving",
+                    "concept": "26c988ba-d359-4347-a8bd-905ccaf5eb9d"
+                  },
+                  {
+                    "label": "Resolved",
+                    "concept": "4aa214b7-380f-4775-a79d-09651673ce5f"
+                  },
+                  {
+                    "label": "Resolved with sequelae",
+                    "concept": "3ee1d7b5-506b-48cb-b50a-aeec301636de"
+                  },
+                  {
+                    "label": "Not resolved",
+                    "concept": "89abdeff-2d55-4346-9514-ba7bad08d3a3"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e'))"
+              }
+            },
+            {
+              "id": "serumSicknessRelatedToAntivenom",
+              "label": "Related to antivenom?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8f593abc-3def-4e9b-b6ae-cc76f3d86e60",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e'))"
+              }
+            },
+            {
+              "id": "serumSicknessOtherCauses",
+              "label": "Other causes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "9f93994d-5b0c-4638-89a0-c81557947cdd"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e') || (serumSicknessRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "PTSD",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "ptsdDiagnosis",
+              "label": "Diagnosis (description)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "1e38e1bb-9e4a-4792-ade5-30e7ca27be18"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f'))"
+              }
+            },
+            {
+              "id": "ptsdOnsetDate",
+              "label": "Onset date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "a6fe7d0c-dc31-4b6c-969e-28b52bd50fc0"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f'))"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "ptsdEndDate",
+              "label": "End date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "d5b4a2ff-a2e0-4255-b353-aba009e7f53a"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f'))"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "ptsdEndDate < ptsdOnsetDate",
+                  "message": "End date must be after onset date"
+                }
+              ]
+            },
+            {
+              "id": "ptsdSeverity",
+              "label": "Severity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "700b6a97-07d6-43ec-b8df-1fb999687ee1",
+                "answers": [
+                  {
+                    "label": "Mild",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  },
+                  {
+                    "label": "Life-threatening",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f'))"
+              }
+            },
+            {
+              "id": "ptsdOutcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a6067590-81f7-4496-9512-23e36844f5d7",
+                "answers": [
+                  {
+                    "label": "Fatal",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  },
+                  {
+                    "label": "Improving",
+                    "concept": "26c988ba-d359-4347-a8bd-905ccaf5eb9d"
+                  },
+                  {
+                    "label": "Resolved",
+                    "concept": "4aa214b7-380f-4775-a79d-09651673ce5f"
+                  },
+                  {
+                    "label": "Resolved with sequelae",
+                    "concept": "3ee1d7b5-506b-48cb-b50a-aeec301636de"
+                  },
+                  {
+                    "label": "Not resolved",
+                    "concept": "89abdeff-2d55-4346-9514-ba7bad08d3a3"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f'))"
+              }
+            },
+            {
+              "id": "ptsdRelatedToAntivenom",
+              "label": "Related to antivenom?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "483a3c69-5e01-46bc-99d6-a62d9b233225",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f'))"
+              }
+            },
+            {
+              "id": "ptsdOtherCauses",
+              "label": "Other causes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "2b78bd66-6dd3-4b2c-a420-d68d9299a85b"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f') || (ptsdRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Skin - Wound",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "woundDiagnosis",
+              "label": "Diagnosis (description)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "b080df13-2710-4c05-b879-34423a26e88a"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')"
+              }
+            },
+            {
+              "id": "woundOnsetDate",
+              "label": "Onset date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "159ff2c9-c315-4d76-9491-eea1a6917ca8"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "woundEndDate",
+              "label": "End date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "6e4251e1-fd5e-4b47-9812-b54f6c71dc4f"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "woundEndDate < woundOnsetDate",
+                  "message": "End date must be after onset date"
+                }
+              ]
+            },
+            {
+              "id": "woundSeverity",
+              "label": "Severity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "025abf95-7c6d-4287-9c6d-658be8cedd15",
+                "answers": [
+                  {
+                    "label": "Mild",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  },
+                  {
+                    "label": "Life-threatening",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')"
+              }
+            },
+            {
+              "id": "woundOutcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "600b8b17-a482-437e-a5e7-17fd1dcf3918",
+                "answers": [
+                  {
+                    "label": "Fatal",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  },
+                  {
+                    "label": "Improving",
+                    "concept": "26c988ba-d359-4347-a8bd-905ccaf5eb9d"
+                  },
+                  {
+                    "label": "Resolved",
+                    "concept": "4aa214b7-380f-4775-a79d-09651673ce5f"
+                  },
+                  {
+                    "label": "Resolved with sequelae",
+                    "concept": "3ee1d7b5-506b-48cb-b50a-aeec301636de"
+                  },
+                  {
+                    "label": "Not resolved",
+                    "concept": "89abdeff-2d55-4346-9514-ba7bad08d3a3"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')"
+              }
+            },
+            {
+              "id": "woundRelatedToAntivenom",
+              "label": "Related to antivenom?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c7979ef2-6dd1-4c44-b885-760a603aaf83",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385')"
+              }
+            },
+            {
+              "id": "woundOtherCauses",
+              "label": "Other causes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "8776fb45-ed24-4258-b97e-8cb1eeb67c85"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, 'a10c21ba-0eb3-400e-8885-38275f566385') || (woundRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Skin - Necrosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "severeNecrosisPlusDisabilityDiagnosis",
+              "label": "Diagnosis (description)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "2a730484-f38d-4d33-8a77-e019fb10700a"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')"
+              }
+            },
+            {
+              "id": "severeNecrosisPlusDisabilityOnsetDate",
+              "label": "Onset date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "0cafe210-e73f-46c5-86d6-558072500769"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "severeNecrosisPlusDisabilityEndDate",
+              "label": "End date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "2c2b245a-7675-42be-9888-39420ccd242c"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "severeNecrosisPlusDisabilityEndDate < severeNecrosisPlusDisabilityOnsetDate",
+                  "message": "End date must be after onset date"
+                }
+              ]
+            },
+            {
+              "id": "severeNecrosisPlusDisabilitySeverity",
+              "label": "Severity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "82809d87-05c9-478a-b14f-c4f9bba658e4",
+                "answers": [
+                  {
+                    "label": "Mild",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  },
+                  {
+                    "label": "Life-threatening",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')"
+              }
+            },
+            {
+              "id": "severeNecrosisPlusDisabilityOutcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f6f2029b-7b3a-48e5-a34f-6f52561a3cd3",
+                "answers": [
+                  {
+                    "label": "Fatal",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  },
+                  {
+                    "label": "Improving",
+                    "concept": "26c988ba-d359-4347-a8bd-905ccaf5eb9d"
+                  },
+                  {
+                    "label": "Resolved",
+                    "concept": "4aa214b7-380f-4775-a79d-09651673ce5f"
+                  },
+                  {
+                    "label": "Resolved with sequelae",
+                    "concept": "3ee1d7b5-506b-48cb-b50a-aeec301636de"
+                  },
+                  {
+                    "label": "Not resolved",
+                    "concept": "89abdeff-2d55-4346-9514-ba7bad08d3a3"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')"
+              }
+            },
+            {
+              "id": "severeNecrosisPlusDisabilityRelatedToAntivenom",
+              "label": "Related to antivenom?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1a8fdece-886c-4913-b4bd-552fd910af8e",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92')"
+              }
+            },
+            {
+              "id": "severeNecrosisPlusDisabilityOtherCauses",
+              "label": "Other causes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "c6356ec9-7872-4f99-8755-b733770cea73"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '395ed141-f523-4db7-9f6f-6212d9557e92') || (severeNecrosisPlusDisabilityRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Skin - Other",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "skinAeDiagnosis",
+              "label": "Diagnosis (description)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "5c22d7a3-5e92-4d01-b15f-4c42b74c6c49"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "skinAeOnsetDate",
+              "label": "Onset date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "febd264e-3816-485b-9e8e-b3302e735f6c"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "skinAeEndDate",
+              "label": "End date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "58d31238-e49a-4a1b-ad44-9ac065f8a305"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "skinAeEndDate < skinAeOnsetDate",
+                  "message": "End date must be after onset date"
+                }
+              ]
+            },
+            {
+              "id": "skinAeSeverity",
+              "label": "Severity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e4665eb8-365a-450a-aa90-d4406e5bfc3a",
+                "answers": [
+                  {
+                    "label": "Mild",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  },
+                  {
+                    "label": "Life-threatening",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "skinAeOutcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8d66692d-2c8f-41c6-9c4f-3bd66659c026",
+                "answers": [
+                  {
+                    "label": "Fatal",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  },
+                  {
+                    "label": "Improving",
+                    "concept": "26c988ba-d359-4347-a8bd-905ccaf5eb9d"
+                  },
+                  {
+                    "label": "Resolved",
+                    "concept": "4aa214b7-380f-4775-a79d-09651673ce5f"
+                  },
+                  {
+                    "label": "Resolved with sequelae",
+                    "concept": "3ee1d7b5-506b-48cb-b50a-aeec301636de"
+                  },
+                  {
+                    "label": "Not resolved",
+                    "concept": "89abdeff-2d55-4346-9514-ba7bad08d3a3"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "skinAeRelatedToAntivenom",
+              "label": "Related to antivenom?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "521a45ea-064e-4239-abec-0bf128336981",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "skinAeOtherCauses",
+              "label": "Other causes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "143735d2-302d-4cef-aa17-1b4cca4ead40"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '64b17e82-bfe7-4e20-9d62-ee9a5b1dfb5a') || !includes(skinAeType, '790b41ce-e1e7-11e8-b02f-0242ac130002') || (skinAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Other",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "otherAeDiagnosis",
+              "label": "Diagnosis (description)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "ee6b4d0c-d467-4b52-a16c-82a8eadb2754"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "otherAeOnsetDate",
+              "label": "Onset date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "426d74db-5ced-4453-8ed8-b3a31eb0b0e2"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ]
+            },
+            {
+              "id": "otherAeEndDate",
+              "label": "End date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "3819513f-5f54-4671-a7bb-e6b4801ed885"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "otherAeEndDate < otherAeOnsetDate",
+                  "message": "End date must be after onset date"
+                }
+              ]
+            },
+            {
+              "id": "otherAeSeverity",
+              "label": "Severity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3aa2be34-d5c3-4e32-88c2-b3896ff83e5a",
+                "answers": [
+                  {
+                    "label": "Mild",
+                    "concept": "b5d370b4-be5e-40a2-b51b-da9931c761d1"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Severe",
+                    "concept": "6452d80d-6cd7-4da0-9bcb-92c42cea1023"
+                  },
+                  {
+                    "label": "Life-threatening",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "otherAeOutcome",
+              "label": "Outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "318b411b-778d-49fc-8592-ff3c7d07d101",
+                "answers": [
+                  {
+                    "label": "Fatal",
+                    "concept": "9da41c49-f088-4791-87be-5d11b3d7ae25"
+                  },
+                  {
+                    "label": "Improving",
+                    "concept": "26c988ba-d359-4347-a8bd-905ccaf5eb9d"
+                  },
+                  {
+                    "label": "Resolved",
+                    "concept": "4aa214b7-380f-4775-a79d-09651673ce5f"
+                  },
+                  {
+                    "label": "Resolved with sequelae",
+                    "concept": "3ee1d7b5-506b-48cb-b50a-aeec301636de"
+                  },
+                  {
+                    "label": "Not resolved",
+                    "concept": "89abdeff-2d55-4346-9514-ba7bad08d3a3"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "otherAeRelatedToAntivenom",
+              "label": "Related to antivenom?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "862124c2-bf9c-48c7-be3c-1ade15e29a08",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "otherAeOtherCauses",
+              "label": "Other causes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "1e082909-df0e-4ee0-91b7-3a92569f6e09"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002') || (otherAeRelatedToAntivenom !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Decision",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "antivenomStoppedDefinitely",
+              "label": "Antivenom stopped definitely",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9aa002f0-c35f-4447-b7c6-3882d812baac",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301') && !includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') && !includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4') && !includes(adverseEventsFromTreatment, 'skinhighTempMoreThan38') && !includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e') && !includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f') && !includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "antivenomResumedAfterInterruption",
+              "label": "Antivenom resumed after interruption",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "89ce89e2-ea39-4d1e-9bcb-779adf802d93",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301') && !includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') && !includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4') && !includes(adverseEventsFromTreatment, 'skinhighTempMoreThan38') && !includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e') && !includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f') && !includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Seriousness",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "oneOrManyAesWereFatal",
+              "label": "One or many AEs were fatal",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0c7690c9-19c1-4ec7-aaa4-5e7bee740a8c",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301') && !includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') && !includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4') && !includes(adverseEventsFromTreatment, 'skinhighTempMoreThan38') && !includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e') && !includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f') && !includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "autopsy",
+              "label": "Autopsy",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6d339065-389c-44ec-b68e-7eb0db2fcc43",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301') && !includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') && !includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4') && !includes(adverseEventsFromTreatment, 'skinhighTempMoreThan38') && !includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e') && !includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f') && !includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "lifeThreatening",
+              "label": "Life-threatening",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "dcd37201-6615-484d-a7b2-bda61ae64a1b",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301') && !includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') && !includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4') && !includes(adverseEventsFromTreatment, 'skinhighTempMoreThan38') && !includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e') && !includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f') && !includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "requiredProlongedHospitalisation",
+              "label": "Required prolonged hospitalisation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2052b56d-745a-4963-a421-afe95a0da5c4",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301') && !includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') && !includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4') && !includes(adverseEventsFromTreatment, 'skinhighTempMoreThan38') && !includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e') && !includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f') && !includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "congenitalAnomalyOrBirthDefect",
+              "label": "Congenital anomaly/birth defect",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b6046fe2-cd68-40fc-9bbc-b70e265a3006",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301') && !includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') && !includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4') && !includes(adverseEventsFromTreatment, 'skinhighTempMoreThan38') && !includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e') && !includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f') && !includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "ledToPersistentOrSignificantDisabilityOrIncapacity",
+              "label": "Led to persistent or significant disability /incapacity",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bd0ea357-9b92-4d86-9ff4-feb6571b50f0",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301') && !includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') && !includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4') && !includes(adverseEventsFromTreatment, 'skinhighTempMoreThan38') && !includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e') && !includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f') && !includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "otherwiseMedicallyImportant",
+              "label": "Otherwise medically important",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "7276ed6a-1428-48c0-a184-b08b70e8ce3c",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301') && !includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') && !includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4') && !includes(adverseEventsFromTreatment, 'skinhighTempMoreThan38') && !includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e') && !includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f') && !includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            },
+            {
+              "id": "narrative",
+              "label": "Narrative",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              },
+              "hide": {
+                "hideWhenExpression": "(!includes(adverseEventsFromTreatment, 'c81875da-982a-45e6-aa49-7b871fdba301') && !includes(adverseEventsFromTreatment, 'acccf693-a04b-4371-a742-c677df26abe9') && !includes(adverseEventsFromTreatment, '38e1f27b-afdd-4fff-a953-9d24a3b439e4') && !includes(adverseEventsFromTreatment, 'skinhighTempMoreThan38') && !includes(adverseEventsFromTreatment, '0d1a4695-56b5-4b88-8d74-00b6f19e244e') && !includes(adverseEventsFromTreatment, 'eb4f106b-7ad6-4756-94ca-b61603c3ee8f') && !includes(adverseEventsFromTreatment, '790b41ce-e1e7-11e8-b02f-0242ac130002'))"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Comments",
+      "sections": [
+        {
+          "label": "Comments",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow Up",
+      "sections": [
+        {
+          "label": "Follow Up",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseScheduleNextVisitInappointmentsIfNecessary",
+              "label": "Please schedule next visit in 'Appointments' if necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "(dischargeOutcome !== '4afad5ca-6b49-4fc2-9dca-4468f5f3a3f6' && dischargeOutcome !== 'b8902ac6-c3ac-4cae-9121-fc606489c564' && dischargeOutcome !== '77a9e41b-8b74-4cee-9519-f9f39925a3fa')"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ozonemsf</groupId>
+  <artifactId>ozone-msf-matsapha</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+    <gmavenplusPluginVersion>3.0.2</gmavenplusPluginVersion>
+    <msf.environment>dev</msf.environment>
+    <bundled.docker.tag>${msf.environment}</bundled.docker.tag>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <artifactId>ozone-msf-iraq</artifactId>
+      <groupId>com.ozonemsf</groupId>
+      <version>1.0.0-SNAPSHOT</version>
+      <type>zip</type>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Unpack Ozone MSF zip -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.6.1</version>
+        <executions>
+          <execution>
+            <id>Unpack Ozone MSF</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <excludeTransitive>true</excludeTransitive>
+              <outputDirectory>${project.build.directory}/ozone-msf-iraq</outputDirectory>
+              <includeArtifactIds>ozone-msf-iraq</includeArtifactIds>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+          <execution>
+            <!-- Copy Ozone MSF files -->
+            <id>Copy Ozone MSF files</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>
+                ${project.build.directory}/${project.artifactId}-${project.version}</outputDirectory>
+              <overwrite>true</overwrite>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}/ozone-msf-iraq</directory>
+                  <excludes>
+                    <exclude>distro/configs/**/ampathforms/*.*</exclude>
+                    <exclude>distro/configs/**/ampathformstranslations/*.*</exclude>
+                    <exclude>distro/configs/**/addresshierarchy/*.*</exclude>
+                    <exclude>distro/configs/**/idgen/*.*</exclude>
+                    <exclude>distro/configs/**/locations/*.*</exclude>
+                    <exclude>distro/configs/**/visittypes/*.*</exclude>
+                    <exclude>distro/ozone-info.json</exclude>
+                  </excludes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <!-- Override with local config files-->
+            <id>Copy local resources</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>
+                ${project.build.directory}/${project.artifactId}-${project.version}/distro/configs</outputDirectory>
+              <overwrite>true</overwrite>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/configs</directory>
+                  <excludes>
+                    <exclude>.gitkeep</exclude>
+                  </excludes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- packaging the distro as a installable/deployable file -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.6.0</version>
+        <executions>
+          <execution>
+            <id>Package distro artifacts</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <appendAssemblyId>false</appendAssemblyId>
+              <descriptors>
+                <descriptor>assembly.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>Add MSF Matsapha Frontend Configuration</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo message="Adding MSF Matsapha frontend config"/>
+                <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
+                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-matsapha-frontend-config.json" />
+                <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env"
+                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-matsapha-frontend-config.json" />
+              </target>
+            </configuration>
+          </execution>
+          <execution>
+            <id>Add MSF Matsapha Script Configuration</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo level="info" message="Adding MSF project Name to ozone" />
+                <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
+                  match="export PROJECT_NAME=.*" replace='export PROJECT_NAME="${project.artifactId}"' />
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.gmavenplus</groupId>
+        <artifactId>gmavenplus-plugin</artifactId>
+        <version>${gmavenplusPluginVersion}</version>
+        <executions>
+          <execution>
+            <id>combine openfn project.yaml files in Matsapha</id>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <phase>process-resources</phase>
+            <configuration>
+              <scripts>
+                <script>file://${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/merge-openfn-yaml.groovy</script>
+              </scripts>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>4.0.15</version>
+            <scope>runtime</scope>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.gmaven</groupId>
+        <artifactId>groovy-maven-plugin</artifactId>
+        <version>2.1.1</version>
+        <executions>
+            <execution>
+                <id>Create Matsapha Ozone Info</id>
+                <phase>process-resources</phase>
+                <goals>
+                    <goal>execute</goal>
+                </goals>
+                <configuration>
+                  <source>
+                    // Ensure target directory exists
+                    def targetDir = new File("${project.build.directory}/${project.artifactId}-${project.version}/distro")
+                    targetDir.mkdirs()
+
+                    // Always create/overwrite the JSON file
+                    def ozoneInfoFile = new File(targetDir, "ozone-info.json")
+                    def ozoneInfo = [
+                        name: "${project.artifactId}",
+                        version: "${project.version}",
+                        description: "${project.description}"
+                    ]
+
+                    ozoneInfoFile.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(ozoneInfo))
+                </source>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>production</id>
+      <properties>
+        <msf.environment>latest</msf.environment>
+        <bundled.docker.tag>latest</bundled.docker.tag>
+      </properties>
+    </profile>
+    <profile>
+      <id>bundled-docker</id>
+      <properties>
+        <!-- Groovy template version-->
+        <groovyTemplatesVersion>3.0.22</groovyTemplatesVersion>
+        <!-- Ozone Bundled version-->
+        <ozoneBundledDocker>1.0.0-alpha.13</ozoneBundledDocker>
+        <!-- Fabric8 Docker Maven Plugin version-->
+        <dockerMavenPlugin>0.45.0</dockerMavenPlugin>
+        <!-- Docker push registry-->
+        <docker.push.registry>docker.io</docker.push.registry>
+        <!-- Docker push registry username-->
+        <docker.push.registry.username>msfocg</docker.push.registry.username>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <executions>
+              <execution>
+                <!-- Override with local config files-->
+                <id>Copy bundled docker resources</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>copy-resources</goal>
+                </goals>
+                <configuration>
+                  <outputDirectory>
+                    ${project.build.directory}/bundled-docker-build-tmp
+                  </outputDirectory>
+                  <overwrite>true</overwrite>
+                  <resources>
+                    <resource>
+                      <directory>${project.build.directory}/ozone-msf-iraq</directory>
+                      <includes>
+                        <include>bundled-docker/**</include>
+                      </includes>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>3.1.0</version>
+            <executions>
+              <execution>
+                <id>Add OpenFn project state to OpenFn workeer image</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openfn-worker/Dockerfile"
+                      match="COPY configs/openfn/openfn-project\.yaml /app/packages/ws-worker/lime/"
+                      replace="COPY configs/openfn/openfn-project.yaml /app/packages/ws-worker/lime/&#10;COPY configs/openfn/projectState.json /app/packages/ws-worker/lime/"
+                      byline="false" />
+                  </target>
+                  </configuration>
+              </execution>
+              <execution>
+                <id>Add adaptor cache to openfn web image</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <echo file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openfn-web/Dockerfile" append="true" message="COPY configs/openfn/adaptor_registry_cache.json /app/priv/adaptor_registry_cache.json"/>
+                  </target>
+                </configuration>
+              </execution>
+              <execution>
+                <id>Copy MSF content to bundled docker</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <target>
+                    <mkdir dir="${project.build.directory}/bundled-docker-build-tmp/distro"/>
+                    <copy todir="${project.build.directory}/bundled-docker-build-tmp/distro">
+                        <fileset dir="${project.build.directory}/${project.artifactId}-${project.version}/distro" includes="**/*" />
+                    </copy>
+                  </target>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.gmavenplus</groupId>
+            <artifactId>gmavenplus-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>Generate Docker Compose Bundled yaml</id>
+                <goals>
+                  <goal>execute</goal>
+                </goals>
+                <phase>package</phase>
+                <configuration>
+                  <scripts>
+                    <script>
+                      file://${project.build.directory}/bundled-docker-build-tmp/bundled-docker/scripts/generate-bundled-docker-compose.groovy</script>
+                  </scripts>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>io.fabric8</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>${dockerMavenPlugin}</version>
+            <configuration>
+              <pushRegistry>${docker.push.registry}</pushRegistry>
+              <images>
+                <image>
+                  <name>${docker.push.registry.username}/%a-openmrs-backend:${bundled.docker.tag}</name>
+                  <build>
+                    <dockerFile>
+                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openmrs/Dockerfile</dockerFile>
+                    <contextDir>
+                      ${project.build.directory}/bundled-docker-build-tmp/</contextDir>
+                  <buildx>
+                    <platforms>
+                      <platform>linux/amd64</platform>
+                      <platform>linux/arm64</platform>
+                    </platforms>
+                  </buildx>
+                  </build>
+                </image>
+                <image>
+                  <name>${docker.push.registry.username}/%a-openmrs-frontend:${bundled.docker.tag}</name>
+                  <build>
+                    <dockerFile>
+                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/frontend/Dockerfile</dockerFile>
+                    <contextDir>
+                      ${project.build.directory}/bundled-docker-build-tmp/</contextDir>
+                  <buildx>
+                    <platforms>
+                      <platform>linux/amd64</platform>
+                      <platform>linux/arm64</platform>
+                    </platforms>
+                  </buildx>
+                  </build>
+                </image>
+                <image>
+                  <name>${docker.push.registry.username}/%a-proxy:${bundled.docker.tag}</name>
+                  <build>
+                    <dockerFile>
+                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/proxy/Dockerfile</dockerFile>
+                    <contextDir>
+                      ${project.build.directory}/bundled-docker-build-tmp/</contextDir>
+                  <buildx>
+                    <platforms>
+                      <platform>linux/amd64</platform>
+                      <platform>linux/arm64</platform>
+                    </platforms>
+                  </buildx>
+                  </build>
+                </image>
+                <image>
+                  <name>${docker.push.registry.username}/%a-postgresql:${bundled.docker.tag}</name>
+                  <build>
+                    <dockerFile>
+                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/postgresql/Dockerfile</dockerFile>
+                    <contextDir>
+                      ${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
+                  <buildx>
+                    <platforms>
+                      <platform>linux/amd64</platform>
+                      <platform>linux/arm64</platform>
+                    </platforms>
+                  </buildx>
+                  </build>
+                </image>
+                <image>
+                  <name>${docker.push.registry.username}/%a-mysql:${bundled.docker.tag}</name>
+                  <build>
+                    <dockerFile>
+                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/mysql/Dockerfile</dockerFile>
+                    <contextDir>
+                      ${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
+                  <buildx>
+                    <platforms>
+                      <platform>linux/amd64</platform>
+                      <platform>linux/arm64</platform>
+                    </platforms>
+                  </buildx>
+                  </build>
+                </image>
+                <image>
+                  <name>${docker.push.registry.username}/%a-openfn-web:${bundled.docker.tag}</name>
+                  <build>
+                    <dockerFile>
+                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openfn-web/Dockerfile</dockerFile>
+                    <contextDir>
+                      ${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
+                  <buildx>
+                    <platforms>
+                      <platform>linux/amd64</platform>
+                    </platforms>
+                  </buildx>
+                  </build>
+                </image>
+                <image>
+                  <name>${docker.push.registry.username}/%a-openfn-worker:${bundled.docker.tag}</name>
+                  <build>
+                    <dockerFile>
+                      ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openfn-worker/Dockerfile</dockerFile>
+                    <contextDir>
+                      ${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
+                  <buildx>
+                    <platforms>
+                      <platform>linux/amd64</platform>
+                    </platforms>
+                  </buildx>
+                  </build>
+                </image>
+              </images>
+            </configuration>
+            <executions>
+              <execution>
+                <id>Build Bundled Docker images</id>
+                <goals>
+                  <goal>build</goal>
+                </goals>
+                <phase>package</phase>
+              </execution>
+              <execution>
+                <id>Push Bundled Docker images</id>
+                <goals>
+                  <goal>push</goal>
+                </goals>
+                <phase>deploy</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+      <dependencies>
+        <dependency>
+          <groupId>com.ozonehis</groupId>
+          <artifactId>bundled-docker</artifactId>
+          <type>zip</type>
+          <version>${ozoneBundledDocker}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.codehaus.groovy</groupId>
+          <artifactId>groovy-templates</artifactId>
+          <version>${groovyTemplatesVersion}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
+
+  <repositories>
+    <repository>
+      <id>mks-nexus-public</id>
+      <url>https://nexus.mekomsolutions.net/repository/maven-public/</url>
+    </repository>
+    <repository>
+      <id>msf-ocg-github-lime-emr</id>
+      <url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR/</url>
+    </repository>
+  </repositories>
+
+  <distributionManagement>
+    <repository>
+      <name>MSF repo for releases</name>
+      <id>msf-ocg-github-lime-emr</id>
+      <url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR</url>
+    </repository>
+    <snapshotRepository>
+      <name>MSF repo for snapshots</name>
+      <id>msf-ocg-github-lime-emr</id>
+      <url>https://maven.pkg.github.com/MSF-OCG/LIME-EMR</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+</project>

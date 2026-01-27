@@ -1,0 +1,234 @@
+{
+  "name": "F10-Feeding",
+  "description": "MSF Form - F10-Feeding Form",
+  "version": "1",
+  "published": true,
+  "uuid": "5372abbc-0515-33e2-bee3-8d61f24cdea5",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Nutrition",
+  "encounterType": "efb1ee49-ed60-40f4-aa2e-c45143dc4d49",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "ITFC Feeding Form",
+      "sections": [
+        {
+          "label": "Feeding",
+          "isExpanded": false,
+          "questions": [
+            {
+              "label": "Previous encounter dates",
+              "type": "obs",
+              "id": "previousEncounterDates",
+              "questionOptions": {
+                "concept": "",
+                "rendering": "fixed-value",
+                "calculate": {
+                  "calculateExpression": "getPreviousEncounterDates(patient.id, '583b6ade-118f-4582-8e4b-da340d358f9b').then(value => value)"
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "true"
+              }
+            },
+            {
+              "label": "Date",
+              "type": "encounterDatetime",
+              "required": true,
+              "id": "encounterDate",
+              "readonly": "mode != 'enter'",
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "583b6ade-118f-4582-8e4b-da340d358f9b"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                },
+                {
+                  "type": "js_expression",
+                  "failsWhenExpression": "(mode == 'enter') && !isEmpty(previousEncounterDates) && includes(previousEncounterDates, formatDate(myValue, 'YYYY-MM-DD'))",
+                  "message": "Date entered already exists, please update the existing entry or enter another date"
+                }
+              ]
+            },
+            {
+              "id": "phase",
+              "label": "Feeding phase",
+              "type": "obs",
+              "required": false,
+              "readonly": "!customHasRequiredPrivilege('Manage Nutrition')",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4d3e796b-3783-4c56-8fc5-9944c6a7cbac",
+                "answers": [
+                  {
+                    "label": "Phase 1",
+                    "concept": "179e3e29-5628-4adf-8801-413fc044fda7"
+                  },
+                  {
+                    "label": "Transition",
+                    "concept": "9c5dcbce-49f4-4b69-88a0-799206c82e2d"
+                  },
+                  {
+                    "label": "Phase 2",
+                    "concept": "4b411bed-969d-4f35-9a03-2423e065cf10"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "numberOfMealsOrDay",
+              "label": "Number of meals / day",
+              "type": "obs",
+              "required": false,
+              "readonly": "!customHasRequiredPrivilege('Manage Nutrition')",
+              "questionOptions": {
+                "rendering": "numeric",
+                "concept": "6e4c6118-30cf-4d61-8e24-c619e413e68a",
+                "min": 0,
+                "step": 1
+              }
+            },
+            {
+              "id": "product",
+              "label": "Feeding product",
+              "type": "obs",
+              "required": false,
+              "readonly": "!customHasRequiredPrivilege('Manage Nutrition')",
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f6e95c03-ba4d-4263-b768-34f05c617a47",
+                "answers": [
+                  {
+                    "label": "F75",
+                    "concept": "63b914b9-836d-4869-8e76-de7cbaaa0ef7"
+                  },
+                  {
+                    "label": "F100",
+                    "concept": "d9db0be4-e01b-4520-8837-bc4dab724c78"
+                  },
+                  {
+                    "label": "Diluted F100",
+                    "concept": "96597743-6a5e-4a26-bbae-b7d02196fd59"
+                  },
+                  {
+                    "label": "Infant formula",
+                    "concept": "decf87b8-f1a6-4d77-b497-cefa846e5ef8"
+                  },
+                  {
+                    "label": "RUTF sachet",
+                    "concept": "75aed48d-0b2b-4edc-a5f8-fb278b733a8a"
+                  },
+                  {
+                    "label": "RUTF BP100",
+                    "concept": "87f0e64d-ad5c-4ba1-be38-f73ca6cedbe0"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "quantitySachetOrMeal",
+              "label": "Quantity - ml / sachet / biscuits per meal",
+              "type": "obs",
+              "required": false,
+              "readonly": "!customHasRequiredPrivilege('Manage Nutrition')",
+              "questionOptions": {
+                "rendering": "numeric",
+                "concept": "138e3afb-dc74-4976-9315-b74babf44188",
+                "min": 0,
+                "step": 1
+              }
+            }
+          ]
+        },
+        {
+          "label": "Feeding monitoring",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "feedingInformation",
+              "label": "Feeding information",
+              "type": "obsGroup",
+              "questionOptions": {
+                "rendering": "repeating",
+                "concept": "9d5a0528-6e3f-482e-9cea-a9931be75244",
+                "repeatOptions": {
+                  "limitExpression": "useFieldValue('numberOfMealsOrDay')"
+                }
+              },
+              "questions": [
+                {
+                  "id": "amountTaken",
+                  "label": "Amount taken",
+                  "type": "obs",
+                  "required": false,
+                  "questionOptions": {
+                    "rendering": "radio",
+                    "concept": "b3b45c66-0be2-464e-8727-e88807f21b12",
+                    "answers": [
+                      {
+                        "label": "0%",
+                        "concept": "9ec3a20a-2ae2-41b0-90a7-49616fa4ca6c"
+                      },
+                      {
+                        "label": "25%",
+                        "concept": "a58f59b5-0707-4a7c-bda8-59fe33066f93"
+                      },
+                      {
+                        "label": "50%",
+                        "concept": "eb223d5b-fc8c-4f55-94a0-bd55602a7c85"
+                      },
+                      {
+                        "label": "75%",
+                        "concept": "1e6e5bae-2136-443b-85ae-cef238395220"
+                      },
+                      {
+                        "label": "100%",
+                        "concept": "1c2e7789-bbf2-48ab-99e8-9d3b9115b871"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "remark",
+                  "label": "Remark",
+                  "type": "obs",
+                  "required": false,
+                  "questionOptions": {
+                    "rendering": "radio",
+                    "concept": "69c228c8-5bde-414f-b6aa-dcbc248edbb1",
+                    "answers": [
+                      {
+                        "label": "Absent",
+                        "concept": "a98837f8-f4ea-4406-bbfa-eebba57cefbb"
+                      },
+                      {
+                        "label": "Vomiting",
+                        "concept": "cc78d379-4d7b-4fba-b2c3-2a686c6b4809"
+                      },
+                      {
+                        "label": "Refusal",
+                        "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                      },
+                      {
+                        "label": "Nasogastric tube",
+                        "concept": "8b92f604-8c1f-457c-8eff-93ae46acb29a"
+                      },
+                      {
+                        "label": "IV fluid",
+                        "concept": "cabc3bae-673f-44da-981b-dfb82ec4db44"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
