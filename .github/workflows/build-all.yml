@@ -5,16 +5,16 @@ on:
   push:
     branches:
       - main
-  
+
 jobs:
   build-and-publish:
-    permissions: 
+    permissions:
       contents: read
       packages: write
     runs-on: ubuntu-latest
     strategy:
-        matrix:
-          java: [ '8' ]
+      matrix:
+        java: ["8"]
 
     steps:
       - name: Free Disk Space (Ubuntu)
@@ -27,15 +27,15 @@ jobs:
           large-packages: true
           docker-images: true
           swap-storage: true
-          
+
       - uses: actions/checkout@v4
-      
+
       - name: Set up JDK ${{ matrix.java }}
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
+          distribution: "temurin"
           java-version: ${{ matrix.java }}
-          cache: 'maven'
+          cache: "maven"
 
       - name: Set settings.xml
         uses: s4u/maven-settings-action@v3.0.0
@@ -46,7 +46,7 @@ jobs:
               "username": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}",
               "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
             }]
-  
+
       - name: Build and Test
         run: ./scripts/mvnw --batch-mode --update-snapshots --activate-profiles validator -Pazure clean package
 
@@ -57,7 +57,7 @@ jobs:
           artifact-path: "${{ github.workspace }}/distro"
           maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
           maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
-          
+
       - name: Publish MSF Mosul to artifacts GitHub
         uses: ./.github/actions/upload-maven-artifacts
         with:
@@ -79,13 +79,5 @@ jobs:
         with:
           artifact-name: "Matsapha"
           artifact-path: "${{ github.workspace }}/sites/matsapha"
-          maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
-          maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
-
-      - name: Publish MSF DRC artifacts to GitHub
-        uses: ./.github/actions/upload-maven-artifacts
-        with:
-          artifact-name: "Bunia"
-          artifact-path: "${{ github.workspace }}/sites/bunia"
           maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
           maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
