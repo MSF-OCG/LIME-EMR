@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- Add admin as provider -->
+    <changeSet id="add_admin_provider-20250808" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN EXISTS (SELECT 1 FROM provider WHERE person_id = 1) THEN 0 ELSE 1 END;
+            </sqlCheck>
+        </preConditions>
+        <insert tableName="provider">
+            <column name="person_id" value="1" />
+            <column name="name" value="Super User" />
+            <column name="identifier" value="admin" />
+            <column name="uuid" value="361ebccc-0992-46c5-a99f-ac523bed386e" />
+            <column name="creator" value="1" />
+            <column name="date_created" value="2024-07-11 11:30:00" />
+        </insert>
+    </changeSet>
+
+    <!-- Unvoid arabic translations voided by Initializer -->
+    <changeSet id="unvoid_arabic_translations-202411261121" author="michaelbontyes">
+        <sql>
+            UPDATE concept_name
+            SET voided = 0
+            WHERE voided = 1
+              AND void_reason = 'Voided by module Initializer'
+              AND locale = 'ar';
+        </sql>
+    </changeSet>
+
+    <!-- Schedule auto-close OPD visits -->
+    <changeSet id="unvoid_arabic_translations-202411271458" author="michaelbontyes">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) FROM scheduler_task_config WHERE uuid = '8c17b376-1a2b-11e1-a51a-00248140a5eb';
+            </sqlCheck>
+        </preConditions>
+
+        <comment>
+            Schedule auto-close OPD visits task
+            This task will stop all active visits that match the visit type(s) specified by the value
+            of the global property 'visits.autoCloseVisitType'.
+            The task will run daily at midnight.
+        </comment>
+
+        <sql>
+            INSERT INTO openmrs.scheduler_task_config (name,description,schedulable_class,start_time,start_time_pattern,repeat_interval,start_on_startup,started,created_by,date_created,changed_by,date_changed,last_execution_time,uuid) VALUES
+                ('Auto Close Visits Task','Stops all active visits that match the visit type(s) specified by the value of the global property ''visits.autoCloseVisitType''','org.openmrs.scheduler.tasks.AutoCloseVisitsTask','2024-11-28 00:00:00','MM/dd/yyyy HH:mm:ss',86400,1,1,1,'2018-06-04 18:30:16',1,'2024-11-27 11:54:11','2024-11-27 11:49:00','8c17b376-1a2b-11e1-a51a-00248140a5eb')
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

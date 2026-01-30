@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.ozonemsf</groupId>
-  <artifactId>ozone-msf-mosul</artifactId>
+  <artifactId>ozone-msf-matsapha</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -128,23 +128,23 @@
         <version>3.1.0</version>
         <executions>
           <execution>
-            <id>Add MSF Mosul Frontend Configuration</id>
+            <id>Add MSF Matsapha Frontend Configuration</id>
             <phase>process-resources</phase>
             <goals>
               <goal>run</goal>
             </goals>
             <configuration>
               <target>
-                <echo message="Adding MSF Mosul frontend config"/>
+                <echo message="Adding MSF Matsapha frontend config"/>
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
-                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-mosul-frontend-config.json" />
+                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-matsapha-frontend-config.json" />
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env"
-                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-mosul-frontend-config.json" />
+                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-matsapha-frontend-config.json" />
               </target>
             </configuration>
           </execution>
           <execution>
-            <id>Add MSF Mosul Script Configuration</id>
+            <id>Add MSF Matsapha Script Configuration</id>
             <phase>process-resources</phase>
             <goals>
               <goal>run</goal>
@@ -165,7 +165,7 @@
         <version>${gmavenplusPluginVersion}</version>
         <executions>
           <execution>
-            <id>combine openfn project.yaml files in Mosul</id>
+            <id>combine openfn project.yaml files in Matsapha</id>
             <goals>
               <goal>execute</goal>
             </goals>
@@ -192,7 +192,7 @@
         <version>2.1.1</version>
         <executions>
             <execution>
-                <id>Create Mosul Ozone Info</id>
+                <id>Create Matsapha Ozone Info</id>
                 <phase>process-resources</phase>
                 <goals>
                     <goal>execute</goal>
