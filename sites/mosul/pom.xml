@@ -20,7 +20,7 @@
 
   <dependencies>
     <dependency>
-      <artifactId>ozone-msf-iraq</artifactId>
+      <artifactId>ozone-msf-distro</artifactId>
       <groupId>com.ozonemsf</groupId>
       <version>1.0.0-SNAPSHOT</version>
       <type>zip</type>
@@ -43,8 +43,8 @@
             </goals>
             <configuration>
               <excludeTransitive>true</excludeTransitive>
-              <outputDirectory>${project.build.directory}/ozone-msf-iraq</outputDirectory>
-              <includeArtifactIds>ozone-msf-iraq</includeArtifactIds>
+              <outputDirectory>${project.build.directory}/ozone-msf-distro</outputDirectory>
+              <includeArtifactIds>ozone-msf-distro</includeArtifactIds>
             </configuration>
           </execution>
         </executions>
@@ -67,7 +67,7 @@
               <overwrite>true</overwrite>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/ozone-msf-iraq</directory>
+                  <directory>${project.build.directory}/ozone-msf-distro</directory>
                   <excludes>
                     <exclude>distro/configs/**/addresshierarchy/*.*</exclude>
                     <exclude>distro/configs/**/locations/*.*</exclude>
@@ -261,7 +261,7 @@
                   <overwrite>true</overwrite>
                   <resources>
                     <resource>
-                      <directory>${project.build.directory}/ozone-msf-iraq</directory>
+                      <directory>${project.build.directory}/ozone-msf-distro</directory>
                       <includes>
                         <include>bundled-docker/**</include>
                       </includes>
