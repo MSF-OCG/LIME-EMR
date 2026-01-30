@@ -24,19 +24,8 @@
         </insert>
     </changeSet>
 
-    <!-- Unvoid arabic translations voided by Initializer -->
-    <changeSet id="unvoid_arabic_translations-202411261121" author="michaelbontyes">
-        <sql>
-            UPDATE concept_name
-            SET voided = 0
-            WHERE voided = 1
-              AND void_reason = 'Voided by module Initializer'
-              AND locale = 'ar';
-        </sql>
-    </changeSet>
-
     <!-- Schedule auto-close OPD visits -->
-    <changeSet id="unvoid_arabic_translations-202411271458" author="michaelbontyes">
+    <changeSet id="schedule-auto-close-opd-visits-20250808" author="michaelbontyes">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 SELECT COUNT(*) FROM scheduler_task_config WHERE uuid = '8c17b376-1a2b-11e1-a51a-00248140a5eb';
