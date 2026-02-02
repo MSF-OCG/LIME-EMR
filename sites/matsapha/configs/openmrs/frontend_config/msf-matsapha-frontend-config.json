@@ -177,16 +177,23 @@
   "@openmrs/esm-patient-registration-app": {
     "defaultPatientIdentifierTypes": [
       "05a29f94-c0ed-11e2-94be-8c13b969e334",
-      "22348099-3873-459e-a32e-d93b17eda533"
+      "50f77027-36b6-4984-9bd5-5ff83462e50a"
     ],
     "sections": [
-      "demographics",
+      "basicInfo",
       "contact",
       "additionalInformation",
       "relationships",
       "emergencyContacts"
     ],
     "fieldDefinitions": [
+      {
+        "id": "sexAtBirth",
+        "type": "person attribute",
+        "uuid": "282a4e10-9d75-4161-9cfe-7632989019d1",
+        "label": "Sex at Birth",
+        "answerConceptSetUuid": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7"
+      },
       {
         "id": "telephoneNumber",
         "type": "person attribute",
@@ -335,24 +342,26 @@
     ],
     "sectionDefinitions": [
       {
-        "id": "demographics",
-        "fields": ["name", "gender", "dob", "id"]
+        "id": "basicInfo",
+        "name": "Basic info",
+        "fields": ["name", "gender", "sexAtBirth", "dob", "id"]
       },
       {
         "id": "additionalInformation",
-        "name": "Additional Information",
+        "name": "Demographics",
         "fields": [
+          "nationality",
           "currentStatus",
           "legalStatus",
           "maritalStatus",
-          "numberOfChildren",
-          "occupation"
+          "occupation",
+          "numberOfChildren"
         ]
       },
       {
         "id": "contact",
         "name": "Contact Details",
-        "fields": ["address", "telephoneNumber", "emailAddress", "nationality"]
+        "fields": ["address", "telephoneNumber", "emailAddress"]
       },
       {
         "id": "emergencyContacts",
@@ -372,8 +381,7 @@
     "fieldConfigurations": {
       "name": {
         "displayCapturePhoto": false,
-        "allowUnidentifiedPatients": true,
-        "displayMiddleName": false
+        "allowUnidentifiedPatients": true
       },
       "address": {
         "useAddressHierarchy": {
