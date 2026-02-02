@@ -18,13 +18,13 @@ entryPoints:
           scheme: https
   websecure:
     address: :443
+  web4000:
+    address: :4000
     http:
-      tls:
-        certResolver: le
-        domains:
-          - main: "traefik.me"
-            sans:
-              - "*.traefik.me"
+      redirections:
+        entryPoint:
+          to: web4000
+          scheme: https
 certificatesResolvers:
   le:
     acme:
@@ -32,13 +32,12 @@ certificatesResolvers:
       storage: /letsencrypt/acme.json
       httpChallenge:
         entryPoint: web
+
 metrics:
   prometheus:
     entryPoint: "websecure"
 
 providers:
-  file:
-    filename: /etc/traefik/tls.yml
   docker:
     network: web
     exposedByDefault: false
