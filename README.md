@@ -1,4 +1,5 @@
 # MSF-OCG LIME EMR
+
 The OpenMRS 3 distribution for MSF OCG
 
 <table>
@@ -22,9 +23,6 @@ The OpenMRS 3 distribution for MSF OCG
   </tr>
 </table>
 
-
-
-
 ## A Generic Light Modular EMR using
 
 <div>
@@ -42,8 +40,8 @@ The OpenMRS 3 distribution for MSF OCG
 </div>
 
 ## Technical documentation of the project
-[https://msf-ocg.github.io/LIME-EMR-project-demo](https://msf-ocg.github.io/LIME-EMR)
 
+[https://msf-ocg.github.io/LIME-EMR-project-demo](https://msf-ocg.github.io/LIME-EMR)
 
 ## Quick Start
 
@@ -73,9 +71,9 @@ Running MSF Mosul
 cd sites/mosul/target/ozone-msf-mosul-<version>/run/docker/scripts
 ./start-demo.sh
 ```
-> Note: By default, OpenMRS will start on port 4001.
-To change the port, modify the `PROXY_PUBLIC_PORT` variable in the `.env` file (/run/docker/.env).
 
+> Note: By default, OpenMRS will start on port 4001.
+> To change the port, modify the `PROXY_PUBLIC_PORT` variable in the `.env` file (/run/docker/.env).
 
 ## Ambitions and success criteria
 
@@ -97,52 +95,59 @@ To change the port, modify the `PROXY_PUBLIC_PORT` variable in the `.env` file (
 - Collaborative – share information, insights, strategies and deliverables within the community
 - Achievable – taking in account the overall roadmap and challenges of implementers
 
-
 ## Key features
 
 ### Program-specific content
+
 - **Mental health** forms (7 forms - PHQ9, MHPSS and mhGap)
 
 ### Multilingual UI and forms
+
 - **Arabic and English** support. You can read more about the [implementation here](/docs/translations.md)
 
 ### Role-based access control (RBAC)
+
 - Role-based **appointments**
 - Role-based **forms**
 - Role-based **encounters**
 - Role-based **form modification**
 
 ### Advanced form configuration
+
 - Answer-based **filter for questions**
 - Role-based **write privilege**
 - Get **previous observations**
 - Score **Calculations**
 
 ### Printing
+
 - Patient **identification stickers** in registration with barcodes
 
 ### Visit management
+
 - Auto-close **OPD Visits** nightly
 
 ### Data exchange and interoperability
+
 - Syncing automatically data between **OpenMRS and DHIS2 Tracker** using OpenFN
 
 ## Configuration hierarchy and inheritance
 
 ### Assumptions
-- There are **3 levels** of configurations: Distro < Country < Site
+
+- There are **2 levels** of configurations: Distro -> Site.
 - The default **ineritance logic** is for lower levels to overwrite above ones
 - **Configurations** includes backend and frontend binaries, frontend configs, initializer metadata, and assets like logos.
 - It **primarly support OpenMRS**, but aims to be flexible and also support Senaite, Superset, OpenFN, FHIR, etc.
 
 #### Hierarchy overview - example
+
 ```
 ── pom.xml - Aggredator / Orchestrator
       └── /distro/pom.xml - Organizational-wide Config
-      └── /countries - Country-specific Config
-            └── /iraq/pom.xl
       └── /sites - Site-specific Config
-            └── /mosul/pom.xl
+            └── /mosul/pom.xml
+            └── /matsapha/pom.xml
 ```
 
 ### Workflow diagram
@@ -174,29 +179,28 @@ Z --> |Pulling the artefacts| ZA
 
 ### Ozone Level **OpenMRS RefApp**
 
-- [X] Refapp stable version of [modules for frontend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/frontend/spa-assemble-config.json)
-- [X] Refapp stable version of [modules for backend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/distro/pom.xml)
+- [x] Refapp stable version of [modules for frontend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/frontend/spa-assemble-config.json)
+- [x] Refapp stable version of [modules for backend](https://github.com/openmrs/openmrs-distro-referenceapplication/blob/main/distro/pom.xml)
 
 ### MSF Distro **LIME EMR** repository
 
-- [X] MSF [branding in frontend config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/frontend/custom-config.json)
-- [X] MSF [logo and assets](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/frontend/assets)
-- [X] [Env specific logos](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/dev/frontend/qa/assets/logo.png) for users to easily identify their environment
+- [x] MSF [branding in frontend config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/frontend/custom-config.json)
+- [x] MSF [logo and assets](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/frontend/assets)
+- [x] [Env specific logos](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/dev/frontend/qa/assets/logo.png) for users to easily identify their environment
 
 ### Country level: **Iraq**
 
-- [X] [Roles config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/roles/roles_core-demo.csv) for Initializer
+- [x] [Roles config](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/roles/roles_core-demo.csv) for Initializer
 
 ### Site level: **Mosul**
 
-- [X] [Address hierarchy](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/distro/configuration/addresshierarchy) for Initializer
-- [X] [Locations](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/locations/locations.csv) for Initializer
-- [X] [Person attributes](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/personattributetypes/personattributetypes_core-demo.csv) for Initializer
-- [X] [Initial consultation form](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/ampathforms/initial_consultation-lime_demo.json)
-
-
+- [x] [Address hierarchy](https://github.com/MSF-OCG/LIME-EMR-project-demo/tree/main/distro/configuration/addresshierarchy) for Initializer
+- [x] [Locations](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/locations/locations.csv) for Initializer
+- [x] [Person attributes](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/personattributetypes/personattributetypes_core-demo.csv) for Initializer
+- [x] [Initial consultation form](https://github.com/MSF-OCG/LIME-EMR-project-demo/blob/main/distro/configuration/ampathforms/initial_consultation-lime_demo.json)
 
 ## Maven configuration
+
 Sometimes, you might need to customize your Maven configuration file to build the project.
 
 On Mac, you can edit those settings using: `vi ~/.m2/settings.xml`
@@ -212,7 +216,6 @@ Add the below Maven Server config and API key to your system's Maven settings. R
     </server>
   </servers>
 ```
-
 
 #### Enable SSL (i.e., Run with Traefik Enabled)
 
@@ -238,6 +241,7 @@ This will allow you to access the server either using `*.traefik.me` or the usua
    ```bash
    INSTALL_DIR="**.**/home/lime/$APP_NAME"
    ```
+
 4. Disable logging in lime_emr.sh (success and error)
    Function to log success messages
 
@@ -272,7 +276,7 @@ log_error() {
 - [ ] In pom files, replicate a similar logic for **initializer configuration files** - assumung that the lower level also always overwrite the above one.
 - [ ] Simplify the **results of the build** currently generating muliple targets for all levels, rather than a single one for the execution level, being the Site level. Example: [ozone-msf-mosul-1.0.0-SNAPSHOT](https://github.com/MSF-OCG/LIME-EMR/packages/2120035)
 - [ ] Ensure that the **Github Action build** is running the right level of configs upon release or manual trigger - not triggering all of them aspecially for performance savings pursposes:
-  `<img width="689" alt="Screenshot 2024-04-18 at 1 30 07 PM" src="https://github.com/MSF-OCG/LIME-EMR/assets/9321036/763551d3-a2d4-4476-8aac-334a6f6e611b">`
+      `<img width="689" alt="Screenshot 2024-04-18 at 1 30 07 PM" src="https://github.com/MSF-OCG/LIME-EMR/assets/9321036/763551d3-a2d4-4476-8aac-334a6f6e611b">`
 
 ---
 
@@ -283,10 +287,9 @@ log_error() {
 ##### [Backend configuration](#backend-configuration)
 
 We use the maven's `pom.xml` file at the root of each level to define what configuration should be applied.
-We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/maven-resources-plugin) to exclude/filter and include configs as different execution processes using the `copy-resources` goal.  This allows us to add or remove files while copying them form the parent level to the current level's build directory after the parent's download.
+We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/maven-resources-plugin) to exclude/filter and include configs as different execution processes using the `copy-resources` goal. This allows us to add or remove files while copying them form the parent level to the current level's build directory after the parent's download.
 
 - ###### [How to use the maven resources plugin](#how-to-use-the-maven-resources-plugin)
-
 
   ```xml
   <plugin>
@@ -297,8 +300,8 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
       </executions>
   </plugin>
   ```
-- ###### [Excluding/Filtering files from parent level](#excluding-files-from-parent-level)
 
+- ###### [Excluding/Filtering files from parent level](#excluding-files-from-parent-level)
 
   ```xml
   <plugin>
@@ -329,8 +332,8 @@ We embrace maven's [maven resources plugin](https://maven.apache.org/plugins/mav
       ...
   </plugin>
   ```
-- ###### [Including files to current level](#including-files-to-current-level)
 
+- ###### [Including files to current level](#including-files-to-current-level)
 
   ```xml
   <plugin>
@@ -407,13 +410,13 @@ Below is how its done
 ```
 
 This task replaces all the occurrences of the sting `ozone-frontend-config.json` with `msf-frontend-config.json`
-After building the project using maven, the  `SPA_CONFIG_URLS` variable (it specifies the location of the frontend config file inside docker) in the `.env` file will have a value of `/openmrs/spa/configs/msf-frontend-config.json`
+After building the project using maven, the `SPA_CONFIG_URLS` variable (it specifies the location of the frontend config file inside docker) in the `.env` file will have a value of `/openmrs/spa/configs/msf-frontend-config.json`
 
-> Note: Docker compose will only load the file passed to the `SPA_CONFIG_URLS` in the `.env` file.  This means that any other file present in the `target` but not added to the `SPA_CONFIG_URLS` will be ignored.
+> Note: Docker compose will only load the file passed to the `SPA_CONFIG_URLS` in the `.env` file. This means that any other file present in the `target` but not added to the `SPA_CONFIG_URLS` will be ignored.
 
 ###### [Inheritance in Frontend Configuration](#inheritance-in-frontend-configuration)
 
-The OpenMRS frontend tooling supports loading a frontend configuration on top of the currently loaded configuration.  This means that we can use one file to load general frontend configuration like at `Organization level` branding and logos, and at site level, an `obs-table` on top of the patient chart.   Both these configuration will be loaded successfully.
+The OpenMRS frontend tooling supports loading a frontend configuration on top of the currently loaded configuration. This means that we can use one file to load general frontend configuration like at `Organization level` branding and logos, and at site level, an `obs-table` on top of the patient chart. Both these configuration will be loaded successfully.
 
 We can also use the child frontend configuration file to override the inherited frontend configuration. This implies that each level should have its own frontend configuration file in case it needs to load new frontend configuration.
 
@@ -435,6 +438,7 @@ We can also use the child frontend configuration file to override the inherited 
   ```properties
   SPA_CONFIG_URLS=/openmrs/spa/configs/msf-frontend-config.json
   ```
+
 - Site frontend configuration inheriting from Organization level
   in pom.xml file
 
@@ -507,9 +511,9 @@ We use a simple Groovy script to merge all `.yaml` files in the `./config/openfn
 
 **Assumptions:**
 
-* Config file name can be anything except `openfn-project.yaml`.
-* Config should have a `.yaml` extension.
-* Config should be in `./config/openfn` at compile time.
+- Config file name can be anything except `openfn-project.yaml`.
+- Config should have a `.yaml` extension.
+- Config should be in `./config/openfn` at compile time.
 
 ##### Adding OpenFn Workflows on a Specific Level
 
@@ -589,4 +593,5 @@ Ensure your workflow file is placed inside `./config/openfn`.
 ### 1.0.0-SNAPSHOT (in progress)
 
 ### Automated QA
+
 This project is tested with BrowserStack
