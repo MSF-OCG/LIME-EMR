@@ -1,0 +1,99 @@
+{
+  "repo_notes": [
+    {
+      "content": "LIME EMR (Light Modular EMR) is an OpenMRS 3 distribution built by MSF (Médecins Sans Frontières) OCG for humanitarian healthcare settings. It uses a three-level configuration inheritance model: Distro (organization-wide MSF base) → Country (e.g., Iraq) → Site (e.g., Mosul, Matsapha). Each level inherits from its parent and can selectively override configuration files. The build system is Apache Maven, organized as a multi-module aggregator. Each module produces a ZIP artifact. The frontend uses OpenMRS 3 ESM microfrontend architecture. Clinical forms are JSON-based and loaded by the Initializer module. The system integrates with DHIS2 for health reporting via OpenFn Lightning workflows, OpenConceptLab for terminology, and supports HL7 FHIR. Infrastructure uses Docker Compose with Traefik for SSL, Keycloak for OAuth2, MySQL for OpenMRS, and PostgreSQL for OpenFn. CI/CD uses GitHub Actions with Playwright E2E tests."
+    },
+    {
+      "content": "Key directories: /distro (base MSF config, pom.xml defines backend modules, configs/openmrs/ has frontend assembly, frontend config, and initializer_config with 14 clinical forms), /countries/iraq (country overrides), /sites/mosul (75+ clinical forms, Arabic/English translations, OpenFn DHIS2 workflows), /sites/matsapha (Eswatini site, custom branding and address hierarchy), /environment (QA/UAT/Prod branding), /scripts (Docker Compose files, Groovy merge scripts, env files), /e2e (Playwright tests for login, mental health forms, filtered/translated answers), /.github/workflows (ci.yml orchestrates build→deploy→test)."
+    },
+    {
+      "content": "The Maven build inheritance works by: 1) downloading parent artifact ZIP, 2) unpacking it, 3) excluding files to be replaced via maven-resources-plugin, 4) copying current level's files on top, 5) running Groovy scripts to merge OpenFn YAML and AntRun to update .env variables, 6) packaging as new ZIP. Frontend config inheritance uses SPA_CONFIG_URLS in .env to load multiple JSON configs in order. The Initializer module loads clinical metadata (concepts, forms, drugs, roles, locations) from CSV/JSON files in initializer_config/ directories. OpenFn config uses a Groovy merge script (merge-openfn-yaml.groovy) to combine workflow YAML files at each level. Bundled Docker builds 8 images (openmrs-backend, openmrs-frontend, proxy, mysql, postgresql, openfn-web, openfn-worker) with multi-platform support (amd64/arm64) and pushes to Docker Hub under the msfocg registry."
+    }
+  ],
+  "pages": [
+    {
+      "title": "Overview",
+      "purpose": "Provide a high-level introduction to LIME EMR: what it is (OpenMRS 3 distribution for MSF OCG), its purpose (humanitarian healthcare), current deployment sites (Distro base, Mosul/Iraq with 75+ forms, Matsapha/Eswatini), key capabilities (clinical forms, multilingual support, RBAC, data exchange, FHIR interoperability, multi-site inheritance, Docker containerization), and ambitions/success criteria."
+    },
+    {
+      "title": "Architecture",
+      "purpose": "Document the three-level configuration inheritance model (Distro → Country → Site), the runtime service architecture (OpenMRS backend/frontend, OpenFn Lightning, Traefik, Keycloak, MySQL, PostgreSQL, DHIS2), how they interact via REST/FHIR APIs, and the technology stack (Java 8, OpenMRS Core 2.7.6, OpenMRS 3 ESM microfrontends with 40+ modules, Docker Compose, Maven)."
+    },
+    {
+      "title": "Quick Start - Distro",
+      "purpose": "Provide step-by-step instructions for running the base MSF distribution: prerequisites (Java 8, Maven, Docker, GitHub token in ~/.m2/settings.xml), building with ./scripts/mvnw clean package, running with source distro/target/go-to-scripts-dir.sh && ./start-demo.sh, and accessing OpenMRS at localhost:4001.",
+      "parent": "Overview"
+    },
+    {
+      "title": "Quick Start - Site",
+      "purpose": "Provide step-by-step instructions for running a specific site: building and running Mosul (cd sites/mosul/target/ozone-msf-mosul-<version>/run/docker/scripts && ./start-demo.sh), running Matsapha, running Iraq country-level. Explain that sites include all distro configuration plus site-specific overrides.",
+      "parent": "Overview"
+    },
+    {
+      "title": "Project Structure",
+      "purpose": "Explain the repository directory layout: pom.xml (root aggregator), /distro (pom.xml, configs/openmrs with frontend_assembly, frontend_config, initializer_config containing ampathforms, concepts, drugs, roles, etc.), /countries/iraq, /sites/mosul (75+ forms, translations, address hierarchy, OpenFn), /sites/matsapha, /environment (QA/UAT/Prod), /scripts (Docker Compose, Groovy, env files), /e2e (Playwright), /docs, /.github/workflows."
+    },
+    {
+      "title": "Inheritance Hierarchy",
+      "purpose": "Detail how the three-level inheritance (Distro < Country < Site) works at build time: 1) download parent ZIP, 2) unpack, 3) exclude overridden files via maven-resources-plugin, 4) copy current level's files, 5) post-process (Groovy merges OpenFn YAML, AntRun updates .env), 6) package as new ZIP. Cover configuration types that can be overridden (backend JARs, frontend ESM bundles, frontend JSON configs, Initializer metadata, assets, OpenFn YAML, Docker Compose). Explain frontend config inheritance via SPA_CONFIG_URLS.",
+      "parent": "Project Structure"
+    },
+    {
+      "title": "Adding a New Site",
+      "purpose": "Step-by-step guide to add a new site: 1) create directory structure (sites/newsite/ with pom.xml, assembly.xml, configs/openmrs/ and configs/openfn/), 2) create pom.xml using sites/matsapha/pom.xml as template (dependency on ozone-msf-distro, Maven plugins for unpack/exclude/copy/antrun/groovy/assembly), 3) create assembly.xml, 4) register module in root pom.xml, 5) build and verify. List the minimum required files: address hierarchy, locations, ID generation, frontend config, OpenFn workflow YAML, projectState.json.",
+      "parent": "Project Structure"
+    },
+    {
+      "title": "Build System",
+      "purpose": "Document the Maven build system: multi-module aggregator structure, Maven profiles (local, azure, production, bundled-docker), key plugins (maven-dependency-plugin, maven-resources-plugin, maven-antrun-plugin, gmavenplus-plugin, maven-assembly-plugin, merge-maven-plugin, docker-maven-plugin), Maven settings.xml configuration for GitHub Packages authentication, and artifact publishing.",
+      "parent": "Project Structure"
+    },
+    {
+      "title": "HTTPS",
+      "purpose": "Document HTTPS support via Traefik v2.6 reverse proxy: enabling with TRAEFIK=true, how SSL works (reverse-proxy-https-helper init container downloads traefik.me wildcard certs), dynamic domain generation (api-<IP>.traefik.me for OpenMRS, openfn-<IP>.traefik.me for OpenFn), Traefik dashboard basic auth, ports 80/443, Azure deployment ORIGINS configuration.",
+      "parent": "Architecture"
+    },
+    {
+      "title": "Bundled Docker",
+      "purpose": "Document the bundled-docker Maven profile: activation with -Pbundled-docker, 8 Docker images built (openmrs-backend, openmrs-frontend, proxy, mysql, postgresql, openfn-web, openfn-worker) under msfocg registry on Docker Hub, platform support (amd64+arm64 for most, amd64-only for OpenFn), tag strategy (dev default, latest with -Pproduction), site-level injection of OpenFn config into worker/web images.",
+      "parent": "Architecture"
+    },
+    {
+      "title": "CI/CD",
+      "purpose": "Document GitHub Actions workflows: ci.yml (main orchestrator triggered on push/PR/release/manual, chains snapshot build → deploy → E2E tests), maven-publish.yml (builds and publishes to GitHub Packages and Docker Hub), deploy.yml (reusable deployment with Traefik SSL), run-e2e-tests.yml (Playwright E2E with environment-specific config), playwright.yml (manual trigger), configuration-build-test.yml (PR validation), cleanup-artifacts.yml (scheduled cleanup). Include E2E testing details: Playwright v1.49.0, Chromium, test coverage (login, mental health forms, filtered/translated answers, visits), BrowserStack integration.",
+      "parent": "Architecture"
+    },
+    {
+      "title": "OpenMRS Configuration",
+      "purpose": "Document OpenMRS configuration: backend modules defined in distro/pom.xml (OpenMRS Core 2.7.6, 20+ modules including FHIR2, Initializer, Appointments, Queue, Forms, Reporting, Stock Management, Billing, Bed Management), frontend modules in spa-assemble-config.json (Core UI 8.0.1, 40+ ESM modules, Madiro Nutrition/Mental Health apps), Initializer metadata domains (ampathforms, concepts, drugs, encountertypes, roles, privileges, locations, addresshierarchy, idgen, etc.). Backend inheritance via maven-resources-plugin copy/exclude, frontend inheritance via maven-antrun-plugin SPA_CONFIG_URLS."
+    },
+    {
+      "title": "Clinical Forms",
+      "purpose": "Document the clinical form system: JSON-based forms using O3 form engine, stored in ampathforms/ directory. 14 distro-level forms (mental health PHQ-9/MHPSS/mhGAP, family planning, HIV, social work, gynaecology, referral). 75+ Mosul site forms organized by specialty (obstetrics, surgery, neonatology, paediatrics, emergency, nutrition, infectious diseases, palliative care, ICU, procedures, specialized programs). Advanced features: answer-based question filtering, role-based write privileges, previous observation retrieval, score calculations. Multilingual translations in ampathformstranslations/ directory.",
+      "parent": "OpenMRS Configuration"
+    },
+    {
+      "title": "Address Hierarchy",
+      "purpose": "Document the Address Hierarchy module configuration: addressConfiguration.xml defines hierarchy levels (COUNTRY, STATE_PROVINCE, COUNTY_DISTRICT, CITY_VILLAGE) with defaults and display format. addresshierarchy_<country>.csv contains the hierarchy data in CSV format (COUNTRY,STATE_PROVINCE,COUNTY_DISTRICT,CITY_VILLAGE%UUID). Entry delimiter is comma, identifier delimiter is %. Sites exclude parent address hierarchy and provide their own (e.g., Mosul with ~129 Iraq/Ninawa villages, Matsapha excludes address hierarchy entirely).",
+      "parent": "OpenMRS Configuration"
+    },
+    {
+      "title": "OpenFn Configuration",
+      "purpose": "Document OpenFn integration: Docker containers (Lightning web, worker, PostgreSQL) defined in scripts/docker-compose-openfn.yml. Overview of how OpenFn automates data exchange between OpenMRS and DHIS2 Tracker."
+    },
+    {
+      "title": "OpenFn Project Workflows and State Files",
+      "purpose": "Document the three key OpenFn config files: 1) <site>-project.yaml (workflow definitions with jobs, adaptors like language-http/language-fhir, JavaScript job code), 2) projectState.json (project metadata, retention policies, credential references with IDs/names/owners), 3) adaptor_registry_cache.json (cached adaptor versions for offline/faster startup). Explain workflow YAML inheritance via Groovy merge script (merge-openfn-yaml.groovy) that combines all .yaml files in configs/openfn/ at compile time. Rules: any filename except openfn-project.yaml, .yaml extension, in configs/openfn/. Bundled Docker copies these into OpenFn worker/web images.",
+      "parent": "OpenFn Configuration"
+    },
+    {
+      "title": "OpenFn Credentials",
+      "purpose": "Document credential management: credentials (API keys, passwords, connection strings) are NOT stored in the repository. projectState.json only contains credential references (IDs and names). Actual values managed via: OpenFn Lightning UI, Docker environment variables (OPENFN_ENDPOINT, SECRET_KEY, ORIGINS), .env files in scripts/secrets/ (local.msf.env, azure.msf.env) merged at build time. Required env vars: ERL_FLAGS='+JPperf true' (avoids ArgumentError), ORIGINS for CORS.",
+      "parent": "OpenFn Configuration"
+    },
+    {
+      "title": "How To Guides",
+      "purpose": "Practical step-by-step guides: how to add a new clinical form (create JSON, place in ampathforms/, add translations, build), how to override a distro config at site level (place override file, add exclude in pom.xml), how to add a new OpenFn workflow (create .yaml, Groovy merges automatically, update projectState.json for credentials), how to run E2E tests locally (configure .env, yarn install, yarn test:e2e), how to enable HTTPS (TRAEFIK=true), how to build bundled Docker images (-Pbundled-docker, -Pproduction for latest tag)."
+    }
+  ]
+}
