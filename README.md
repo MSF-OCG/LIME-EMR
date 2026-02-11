@@ -728,6 +728,8 @@ ORIGINS="http://your-domain.com"  # Allowed CORS origins (set for Azure deployme
 
 ## 6. How To
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/MSF-OCG/LIME-EMR)
+
 ### How to add a new clinical form
 
 1. Create a JSON form definition following the [O3 form engine schema](https://openmrs.atlassian.net/wiki/spaces/projects/pages/68747273/O3+Form+Docs)
