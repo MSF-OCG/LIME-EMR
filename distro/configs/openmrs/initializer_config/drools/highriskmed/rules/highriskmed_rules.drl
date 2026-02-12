@@ -16,25 +16,25 @@ rule "High_Risk_Medication"
     when
         $patient: Patient()
     then
-        // High-risk medication CIEL codes
-        // Insulins: 282, 279, 78060 (human)
-        // Anticoagulants:
-        //   - 86416 (warfarin)
-        //   - 166106 (apixaban), 166107 (rivaroxaban), 166108 (edoxaban), 76631 (fondaparinux)
-        //   - 77414 (heparin sodium), 74225 (dalteparin), 75688 (enoxaparin)
-        //   - 165448 (dabigatran)
-        // Opioids:
-        //   - 73667 (codeine), 76273 (fentanyl), 77702 (hydrocodone), 77744 (hydromorphone)
-        //   - 80106 (morphine), 81332 (oxycodone), 81348 (oxymorphone), 85276 (tramadol)
-        String[] highRiskCodes = {
+        // High-risk medication concept UUIDs from distro_drugs.csv
+        String[] highRiskUuids = {
             // Insulins
-            "4689", "78064", "4687",
+            "e469325d-8170-40ab-983b-91c77893ff44",  // GLARGINE
+            "0606f4e8-86e1-4f5f-b232-0733b058a534",  // ASPART
+            "91d4e185-f320-4daf-ad62-564455802bc5",  // BIPHASIC
+            "986457a9-6fd5-4fb1-b1db-baddda35ebff",  // ISOPHANE (NPH)
+            "dd66298b-0543-4607-82b1-3f84f3d6544c",  // RAPID
             // Anticoagulants
-            "86416", "166106", "166107", "166108", "76631", "77414", "74225", "75688", "165448",
+            "0efc7111-fe85-427e-afac-3e916b38fcf1",  // ENOXAPARIN
+            "3eb11e0f-0149-4826-8e9d-64599fba7db8",  // HEPARIN
             // Opioids
-            "73667", "76273", "77702", "77744", "80106", "81332", "81348", "85276"
+            "0c764a52-577f-4005-b739-b5737266d324",  // CODEINE
+            "28992602-98a8-492d-9c3a-816da76bbbc1",  // MORPHINE
+            "397edcca-8aa5-46c4-9c8a-d2c2b56c1a48",  // OXYCODONE
+            "a7ce72f6-d4f7-44bb-b705-2988bec7e0ff",  // TRAMADOL
+            "719c9117-b977-45fc-8e39-884fb524e8aa"   // FENTANYL
         };
-        java.util.Set<String> highRiskSet = new HashSet<String>(Arrays.asList(highRiskCodes));
+        java.util.Set<String> highRiskSet = new HashSet<String>(Arrays.asList(highRiskUuids));
 
         java.util.List<Order> activeOrders = Context.getOrderService().getActiveOrders(
             $patient,
@@ -51,18 +51,10 @@ rule "High_Risk_Medication"
                     DrugOrder drugOrder = (DrugOrder) order;
                     if (drugOrder.getDrug() != null && drugOrder.getDrug().getConcept() != null) {
                         Concept drugConcept = drugOrder.getDrug().getConcept();
-                        // Check if drug concept has a CIEL mapping in our high-risk list
-                        org.openmrs.ConceptMap mapping = null;
-                        for (org.openmrs.ConceptMap m : drugConcept.getConceptMappings()) {
-                            if (m.getConceptReferenceTerm() != null &&
-                                m.getConceptReferenceTerm().getConceptSource() != null &&
-                                "CIEL".equals(m.getConceptReferenceTerm().getConceptSource().getName())) {
-                                String code = m.getConceptReferenceTerm().getCode();
-                                if (highRiskSet.contains(code)) {
-                                    hasHighRiskMed = true;
-                                    break;
-                                }
-                            }
+                        // Check if concept UUID is in our high-risk list
+                        if (highRiskSet.contains(drugConcept.getUuid())) {
+                            hasHighRiskMed = true;
+                            break;
                         }
                     }
                 }

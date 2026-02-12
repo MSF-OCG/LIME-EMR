@@ -17,45 +17,33 @@ rule "Missed_Appointment"
         boolean lastAppointmentWasMissed = false;
 
         try {
-            // Get Bahmni AppointmentsService
-            Class<?> serviceClass = Class.forName("org.openmrs.module.appointments.service.AppointmentsService");
+            Class<?> serviceClass = Context.loadClass("org.openmrs.module.appointments.service.AppointmentsService");
             Object appointmentsService = Context.getService(serviceClass);
 
             if (appointmentsService != null) {
-                // Get all past appointments (from a long time ago to now)
                 Calendar cal = Calendar.getInstance();
                 Date endDate = cal.getTime();
-                cal.add(Calendar.YEAR, -100);  // Go back far enough to get all appointments
+                cal.add(Calendar.YEAR, -100);
                 Date startDate = cal.getTime();
 
                 java.lang.reflect.Method getAllInRange = appointmentsService.getClass().getMethod(
-                    "getAllAppointmentsInDateRange",
-                    Date.class,
-                    Date.class
-                );
-
+                    "getAllAppointmentsInDateRange", Date.class, Date.class);
                 List<?> allAppointments = (List<?>) getAllInRange.invoke(appointmentsService, startDate, endDate);
 
                 if (allAppointments != null) {
-                    // Get AppointmentStatus.Missed
-                    Class<?> statusClass = Class.forName("org.openmrs.module.appointments.model.AppointmentStatus");
+                    Class<?> statusClass = Context.loadClass("org.openmrs.module.appointments.model.AppointmentStatus");
                     Object missedStatus = Enum.valueOf((Class<Enum>) statusClass, "Missed");
 
-                    // Find the most recent appointment for this patient
                     Object mostRecentAppointment = null;
                     Date mostRecentDate = null;
 
                     for (Object apt : allAppointments) {
-                        // Get patient from appointment
                         java.lang.reflect.Method getPatient = apt.getClass().getMethod("getPatient");
                         org.openmrs.Patient aptPatient = (org.openmrs.Patient) getPatient.invoke(apt);
 
                         if (aptPatient != null && aptPatient.getPatientId().equals($patient.getPatientId())) {
-                            // Get the start date/time
                             java.lang.reflect.Method getStartDateTime = apt.getClass().getMethod("getStartDateTime");
                             Date aptDate = (Date) getStartDateTime.invoke(apt);
-
-                            System.out.println("Checking appointment: " + aptDate);
 
                             if (aptDate != null && (mostRecentDate == null || aptDate.after(mostRecentDate))) {
                                 mostRecentDate = aptDate;
@@ -64,7 +52,6 @@ rule "Missed_Appointment"
                         }
                     }
 
-                    // Check if the most recent appointment was missed
                     if (mostRecentAppointment != null) {
                         java.lang.reflect.Method getStatus = mostRecentAppointment.getClass().getMethod("getStatus");
                         Object status = getStatus.invoke(mostRecentAppointment);
@@ -76,14 +63,11 @@ rule "Missed_Appointment"
                 }
             }
         } catch (Exception e) {
-            // Appointments module may not be installed or other error
+            System.err.println("MISSED_APT_RULE ERROR: " + e.getClass().getName() + ": " + e.getMessage());
+            e.printStackTrace();
         }
 
         if (lastAppointmentWasMissed) {
-            insert(new PatientFlag(
-                $patient,
-                null,
-                "Missed Clinic Appointment"
-            ));
+            insert(new PatientFlag($patient, null, "Missed Clinic Appointment"));
         }
 end
