@@ -1,5 +1,25 @@
 # LIME CHANGE LOG 🚀
 
+## Release 5th February, 2026 (Sprint 43)
+
+### Mosul, Iraq
+
+- LIME2-1098 HBV Follow up - type correction
+- LIME2-1097 TB forms - missing question
+- LIME2-1096 HIV forms - typo correction
+- LIME2-1099 Referral & Discharge - additional skip logic
+
+### Matsapha, Eswatini
+
+- LIME2-1103 Eswatini (Matsapha) - Add new sites to LIME EMR
+- LIME2-1105 VPS Provisioning for Eswatini (Matsapha)
+- LIME2-1107 Add site specific configs for Matsapha
+- LIME2-1108 Set up Github pipelines to build Eswatini instance
+- LIME2-1109 Metadata and form sharing for both Mosul and Eswatini sites
+- LIME2-1110 Deployment and domain mapping for Matsapha site
+- LIME2-1104 Eswatini OCL collection preparation
+- LIME2-1111 Add registration metadata fields for matsapha
+
 ## Release 8th January, 2026 (Sprint 41)
 
 ### Features & Improvements

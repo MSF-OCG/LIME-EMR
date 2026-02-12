@@ -14,8 +14,8 @@ services:
     stop_grace_period: '3s'
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
+      interval: 10s
+      timeout: 10s
       retries: 5
     image: postgres:13
     networks:
@@ -68,9 +68,9 @@ services:
     healthcheck:
       test: '${DOCKER_WEB_HEALTHCHECK_TEST:-curl localhost:4000/health_check}'
       interval: '10s'
-      timeout: '3s'
+      timeout: '10s'
       start_period: '30s'
-      retries: 3
+      retries: 5
     ports:
       - '${LIGHTNING_EXTERNAL_PORT:-${PORT:-4000}}:${URL_PORT:-4000}'
     networks:
@@ -94,8 +94,8 @@ services:
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
     command: ['pnpm', 'start:prod', '-l', 'ws://web:${URL_PORT:-4000}/worker']
-    restart: '${DOCKER_RESTART_POLICY:-unless-stopped}'
-    stop_grace_period: '3s'
+    restart: unless-stopped
+    stop_grace_period: '30s'
     expose:
       - '2222'
     networks:

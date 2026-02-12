@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
   release:
     types: [published]
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
     uses: ./.github/workflows/maven-publish.yml
     with:
       free-disk-space: true
-      maven-args: "-Pazure -Pbundled-docker"
+      maven-args: '-Pazure -Pbundled-docker'
     secrets:
       NEXUS_USERNAME: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}
       NEXUS_PASSWORD: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
@@ -52,7 +52,7 @@ jobs:
     uses: ./.github/workflows/maven-publish.yml
     with:
       free-disk-space: true
-      maven-args: "-Pazure -Pbundled-docker -Pproduction"
+      maven-args: '-Pazure -Pbundled-docker -Pproduction'
     secrets:
       NEXUS_USERNAME: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}
       NEXUS_PASSWORD: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
