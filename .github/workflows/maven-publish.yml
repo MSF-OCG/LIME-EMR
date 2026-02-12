@@ -91,8 +91,19 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        with:
-          install: true
+
+      - name: Additional disk space cleanup
+        env:
+          BUILDX_BUILDER: default
+        run: |
+          sudo docker image prune -a -f
+          sudo docker builder prune -a -f
+          sudo docker system prune -a -f
+          sudo apt-get clean
+          sudo apt-get autoclean
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
+          sudo rm -rf /usr/local/graalvm /opt/hostedtoolcache
+          df -h
 
       - name: Publish maven artifacts
         run: 'mvn --batch-mode --no-transfer-progress clean deploy ${{ inputs.maven-args }}'
