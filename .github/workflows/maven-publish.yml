@@ -53,7 +53,7 @@ jobs:
     steps:
       - name: Free Disk Space (Ubuntu)
         if: ${{ inputs.free-disk-space }}
-        uses: jlumbroso/free-disk-space@main
+        uses: jlumbroso/free-disk-space@v1.3.1
         with:
           tool-cache: false
           android: true
@@ -71,14 +71,6 @@ jobs:
           java-version: ${{ inputs.java-version }}
           distribution: ${{ inputs.java-distribution }}
           cache: 'maven'
-
-      - name: Verify Java installation
-        env:
-          JAVA_HOME: ${{ steps.setup-java.outputs.path }}
-        run: |
-          echo "JAVA_HOME: $JAVA_HOME"
-          java -version
-          javac -version
 
       - name: Set settings.xml
         uses: s4u/maven-settings-action@v3.0.0
@@ -102,6 +94,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Additional disk space cleanup
+        if: ${{ inputs.free-disk-space }}
         env:
           BUILDX_BUILDER: default
         run: |
@@ -109,14 +102,10 @@ jobs:
           sudo docker builder prune -a -f
           sudo docker system prune -a -f
           sudo apt-get clean
-          sudo apt-get autoclean
-          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
-          sudo rm -rf /usr/local/graalvm /opt/hostedtoolcache
+          sudo rm -rf /usr/local/graalvm
           df -h
 
       - name: Publish maven artifacts
-        env:
-          JAVA_HOME: ${{ steps.setup-java.outputs.path }}
         run: 'mvn --batch-mode --no-transfer-progress clean deploy ${{ inputs.maven-args }}'
 
       - name: Upload artifacts to GitHub
