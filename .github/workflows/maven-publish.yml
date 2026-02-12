@@ -53,7 +53,7 @@ jobs:
     steps:
       - name: Free Disk Space (Ubuntu)
         if: ${{ inputs.free-disk-space }}
-        uses: jlumbroso/free-disk-space@main
+        uses: jlumbroso/free-disk-space@v1.3.1
         with:
           tool-cache: false
           android: true
@@ -65,6 +65,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up JDK ${{ inputs.java-version }}
+        id: setup-java
         uses: actions/setup-java@v4
         with:
           java-version: ${{ inputs.java-version }}
@@ -91,8 +92,18 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        with:
-          install: true
+
+      - name: Additional disk space cleanup
+        if: ${{ inputs.free-disk-space }}
+        env:
+          BUILDX_BUILDER: default
+        run: |
+          sudo docker image prune -a -f
+          sudo docker builder prune -a -f
+          sudo docker system prune -a -f
+          sudo apt-get clean
+          sudo rm -rf /usr/local/graalvm
+          df -h
 
       - name: Publish maven artifacts
         run: 'mvn --batch-mode --no-transfer-progress clean deploy ${{ inputs.maven-args }}'
