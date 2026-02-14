@@ -1,0 +1,23 @@
+{
+    "isEnabled": true,
+    "rules": [
+      {
+        "name": "Hemoglobin",
+        "path": "rules/hemoglobin_rules.drl"
+      }
+    ],
+    "sessionConfigs": [
+      {
+        "sessionId": "LowHemoglobin",
+        "agendaGroup": "lowhemoglobin",
+        "params": [
+          {
+            "name": "patient",
+            "type": "PATIENT_UUID",
+            "required": true
+          }
+        ],
+        "returnObjectsTypeClassName": "org.openmrs.module.patientflags.PatientFlag"
+      }
+    ]
+  }

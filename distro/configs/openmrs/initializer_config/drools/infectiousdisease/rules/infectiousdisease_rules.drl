@@ -1,0 +1,129 @@
+package org.openmrs.module.drools.infectiousdisease
+
+import org.openmrs.Patient
+import org.openmrs.Diagnosis
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+import java.util.Arrays
+import java.util.HashSet
+
+global Object service;
+
+rule "Infectious_Disease"
+    agenda-group "infectiousdisease"
+    when
+        $patient: Patient()
+    then
+        // Infectious disease concept UUIDs from OCL export (using external_id)
+        String[] infectiousUuids = {
+            // --- Distro OCL (available to all sites) ---
+
+            // TUBERCULOSIS
+            "ed41ba0d-7410-4374-9fae-c357cd8a8971",  // Tuberculosis
+            "b6aec37b-8990-48c3-9ece-2e3edd5dbfe9",  // Pulmonary tuberculosis
+            "17ca2ee9-e8a5-48da-bb44-2a8988acee51",  // Extra pulmonary tuberculosis
+            "3e74ac4d-e22e-4b46-8603-bbacf738c544",  // Tuberculosis respiratory, not confirmed
+            "6b48f48f-728a-48a1-9495-2e5c6c29080c",  // Abdominal tuberculosis
+            "4c4dcd80-86de-44ac-9749-3d95fc748215",  // Tuberculosis of bones and joints
+            "1ec31090-eabf-435c-9231-53c432a4a4cd",  // Tuberculosis lymphadenopathy
+            "8bc04d6b-ea04-45ab-a2dc-c74f9640bf15",  // Pott's disease
+            "3c71fd16-03bf-43f8-9131-02a3fc5ad4c4",  // Miliary Tuberculosis
+            "598848c0-03df-4b0c-aeb6-bd59f4625e8a",  // Mycobacterium tuberculosis, extrapulmonary
+            "ebb754dd-1b0b-4573-b6c2-25d9f63d8704",  // Pneumonia, tuberculous
+            "9b5b1418-e55e-47b6-a408-6970d516650c",  // Tuberculosis of pericardium
+            "dae55e56-6aba-424c-94c7-7f1ca05c01fb",  // Pelvic tuberculosis
+            "e43b1ffc-b558-4b31-a01b-7340d16dbab2",  // Neonatal tuberculosis
+            "7477e7a3-d6b4-46c0-b7cf-b973c0c0584d",  // Meningeal TB
+
+            // HEPATITIS
+            "e68c1c38-4feb-4436-814b-fc1ab77dddb1",  // Hepatitis B
+            "9a3979c9-a92f-4a74-adb0-353a56d0d0e7",  // Hepatitis viral type B
+            "1f6708f4-a7fd-48ea-a450-a4bd16dea2a1",  // Acute Hepatitis B
+            "16c5703c-e06c-4ee0-b01f-16c33ef46532",  // Hepatitis C
+            "6483521e-1b2e-4143-96c1-3cae99c4428e",  // Hepatitis C (Coded)
+            "2b80e8b6-cf00-4a98-8a7c-e634b6ad7b7b",  // Chronic Hepatitis C
+            "9abc577d-d0d4-4b22-b5a9-733753c65aa4",  // Chronic hepatitis C with HIV infection
+            "0f4f2114-7c52-466f-ae8f-7e62ff9aa273",  // Hepatitis A
+            "78c7cf86-ea33-4f82-baec-fcc3bfe41d93",  // Hepatitis delta
+            "0687435a-d6f5-4a8e-be93-26fd0d43afa5",  // Hepatitis E
+            "82ebce92-50dd-4439-b4fd-7bae7c81a8b8",  // Acute viral hepatitis
+
+            // HIV/AIDS
+            "0d0561b7-9895-4936-95ad-4c148a2faf83",  // HIV infection and AIDS
+            "38162348-f696-4a53-9c1d-d2690cb52c99",  // HIV Infection confirmed
+            "70e10845-7405-4de1-a283-c95326a90eb5",  // HIV positive
+            "b97081fb-40c7-4fdf-8b14-d88857ba710f",  // HIV infection suspected
+            "cf4825c1-a375-4eac-986f-33c127f3ae37",  // Confirmed HIV without AIDS
+            "bb4ea2ba-8869-459a-ab99-4b95c6b41025",  // Complications of HIV
+            "a6c36363-7cbe-41a3-995d-b82176468edd",  // Pericarditis due to human immunodeficiency virus
+
+            // COVID-19
+            "a70fdf0e-87d4-4219-9763-d3d4fdf9d6dc",  // Covid-19 confirmed
+            "163727b7-0c90-4a14-83fa-707c4f28860f",  // Covid-19 probable
+
+            // MALARIA
+            "141fb5f1-fa2f-4934-9a22-e0a318633a10",  // Malaria
+            "f9cb0dac-1b8f-442c-94cb-4bde52a2a979",  // Simple malaria
+            "e9f02d62-a180-4a3e-813a-c210ec7364a6",  // Severe malaria
+            "d931d26c-65b1-4f4e-bca4-98119495093d",  // Cerebral malaria
+            "4522f6b8-36ac-4c78-b250-07a4ba4daa46",  // Congenital malaria
+            "011da844-01d2-4840-b3e1-663d3ad11e15",  // Hyperreactive splenomegaly due to malaria
+
+            // SEPSIS
+            "fb42b25e-155d-4711-86c4-4b27c1bdd8a9",  // Sepsis
+            "b30d2825-c1ef-4223-8735-fe8c85756c14",  // Neonatal sepsis/septic shock
+            "2b69f345-f813-4f1f-958b-e6726a14c32c",  // Puerperal sepsis
+
+            // MENINGITIS
+            "a4b63517-6046-4279-b0ca-86409f3b7e63",  // Meningitis
+            "23c733cd-808d-4d23-b58c-78028e66528f",  // Bacterial meningitis
+            "b5482ddf-4568-4d90-a77f-e468f5b0e8f6",  // Viral meningitis
+            "346681f0-fe13-41bf-8578-252f1b471527",  // Meningitis suspected
+
+            // CHOLERA
+            "1de0008f-ca3d-4dda-80c5-a71c5039445e",  // Cholera confirmed
+            "0e8565a1-f02c-4981-a8b3-47c312f7ca5d",  // Cholera (suspected)
+
+            // DENGUE
+            "27a73e7c-c9f8-4d87-90f4-8ce7bc654e8e",  // Dengue
+            "4b01305f-ca82-454b-ab06-ab98a53eaaae",  // Dengue confirmed
+            "c0574b8a-eff3-4ab6-8534-b386a314ca53",  // Dengue suspected
+            "a3613778-4e9c-4cf6-b9d0-b265c3415c65",  // Dengue haemorrhagic fever
+
+            // OTHER
+            "a1a7f04a-997b-4914-8f32-4546c2554519",  // Typhoid fever
+
+            // --- Mosul OCL only (site-specific, no-op for other sites) ---
+            "85aea47c-d8a2-46e0-80ea-984463c90f21",  // Pleural tuberculosis
+            "b54d3ccf-7400-4524-be46-9adffa2a950a",  // Active hepatitis B (HBsAg+)
+            "01fc9b7b-2e63-474d-bf91-674e42d01871",  // HIV/AIDS stage 4
+            "bc8fbf45-7621-435f-81fd-3f4b44d5d0e3",  // Severe covid 19
+            "f61157c6-111e-469c-a7f1-43aca9ca6db5",  // Critical covid 19
+            "3059023b-bbcc-47f6-b01f-335cb53ba6a2"   // Meningitis A
+        };
+        java.util.Set<String> infectiousSet = new HashSet<String>(Arrays.asList(infectiousUuids));
+
+        // Check encounter diagnoses
+        java.util.List<Diagnosis> diagnoses = Context.getDiagnosisService().getDiagnoses($patient, null);
+
+        boolean hasInfectiousDisease = false;
+
+        if (diagnoses != null) {
+            for (Diagnosis diagnosis : diagnoses) {
+                if (diagnosis.getDiagnosis() != null &&
+                    diagnosis.getDiagnosis().getCoded() != null &&
+                    infectiousSet.contains(diagnosis.getDiagnosis().getCoded().getUuid())) {
+                    hasInfectiousDisease = true;
+                    break;
+                }
+            }
+        }
+
+        if (hasInfectiousDisease) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Infectious Disease"
+            ));
+        }
+end

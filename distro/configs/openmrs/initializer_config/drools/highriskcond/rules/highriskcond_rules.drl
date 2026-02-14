@@ -1,0 +1,66 @@
+package org.openmrs.module.drools.highriskcond
+
+import org.openmrs.Patient
+import org.openmrs.Concept
+import org.openmrs.Condition
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+import java.util.Arrays
+import java.util.HashSet
+
+global Object service;
+
+rule "High_Risk_Condition"
+    agenda-group "highriskconditions"
+    when
+        $patient: Patient()
+    then
+        System.out.println("HIGH_RISK_COND: Evaluating patient " + $patient.getPatientId());
+
+        // Pregnancy-related concept UUIDs
+        // Only concepts that imply the patient is currently pregnant
+        String[] pregnancyUuids = {
+            // --- Distro OCL (available to all sites) ---
+            "5ab4cd89-1423-4911-856c-2c658aeabfc6",  // Pregnancy confirmed
+            "480a6aaf-7c65-4b64-8d4f-cda81e109819",  // Unplanned Pregnancy
+            "ab5e0123-e789-4440-a71f-33c54e69b30b",  // Multiple gestation
+            "2b816c77-3c82-4444-b91a-f0f7b9ddaad5",  // Diabetes mellitus in pregnancy
+            "c91196bb-e6fa-4d4a-8d16-fa971bee86fb",  // HELLP syndrome
+            "cd697b66-cbbe-4e2d-aa3a-29c122d21858",  // Pre-eclampsia
+            "90152dfb-1e9f-4e06-9b78-f02f166b7168",  // Eclampsia
+            "41e96bb3-a0b5-41e9-b3cd-44afa72e9f29",  // Hypertension/pre-/eclampsia
+            "03e797ce-863f-4a1b-9e3d-f26a940db130",  // Planned pregnancy
+            "35910034-cc37-4dd1-abb7-ce140b0eff2b",  // Unwanted pregnancy
+            "aca6da8e-0e1d-4a28-9d15-d4eeb70ec804",  // Pregnancy as result of sexual violence
+            // --- Mosul OCL only (site-specific, no-op for other sites) ---
+            "af80c954-b62f-43f8-b54f-9b434a3dc43d",  // Currently pregnant
+            "1ac889c4-5384-469f-a711-59d3d0391ceb",  // Viable pregnancy
+            "5b093d19-3d43-4734-9a2a-cdb833f2835e",  // Gestational Diabetes Mellitus (GDM)
+            "407d6c7f-0c0d-44ec-b5b3-ffe23988658c",  // NCDs in pregnancy
+            "190d5343-bb56-432e-82da-cbc4590b983b"   // Pregnancy, referred for complications
+        };
+        java.util.Set<String> pregnancySet = new HashSet<String>(Arrays.asList(pregnancyUuids));
+
+        java.util.List<Condition> conditions = Context.getConditionService().getActiveConditions($patient);
+
+        boolean hasHighRiskCondition = false;
+
+        if (conditions != null) {
+            for (Condition condition : conditions) {
+                if (condition.getCondition() != null &&
+                    condition.getCondition().getCoded() != null &&
+                    pregnancySet.contains(condition.getCondition().getCoded().getUuid())) {
+                    hasHighRiskCondition = true;
+                    break;
+                }
+            }
+        }
+
+        if (hasHighRiskCondition) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "High Risk Condition"
+            ));
+        }
+end

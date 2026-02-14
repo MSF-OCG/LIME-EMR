@@ -31,18 +31,27 @@ try {
         appIndex > 0 ? cleanName.substring(0, appIndex + 4) : cleanName
     }
 
-    // Optimized matching function
+    // Optimized matching function - returns single match for frontend
     def findMatchingPath = { Path dir, String baseName, boolean isFrontend ->
         if (!Files.exists(dir)) return null
-        
-        def matcher = isFrontend ? 
-            { it.fileName.toString().startsWith(baseName) } : 
+
+        def matcher = isFrontend ?
+            { it.fileName.toString().startsWith(baseName) } :
             { getBackendBaseName(it.fileName.toString()) == baseName }
-            
+
         Files.list(dir)
             .filter { matcher(it) }
             .findFirst()
             .orElse(null)
+    }
+
+    // Find ALL matching backend modules (there may be multiple versions)
+    def findAllMatchingModules = { Path dir, String baseName ->
+        if (!Files.exists(dir)) return []
+
+        Files.list(dir)
+            .filter { getBackendBaseName(it.fileName.toString()) == baseName }
+            .collect()
     }
 
     // File operations with better logging
@@ -140,17 +149,19 @@ try {
                 if (file.toString().endsWith('.omod')) {
                     def overrideName = file.fileName.toString()
                     def baseName = getBackendBaseName(overrideName)
-                    
-                    def targetFile = findMatchingPath(moduleBinariesDir, baseName, false)
-                    if (targetFile) {
-                        println " - Overriding ${targetFile.fileName} with ${overrideName}"
-                        Files.delete(targetFile)
-                        Files.copy(file, moduleBinariesDir.resolve(file.fileName), StandardCopyOption.REPLACE_EXISTING)
+
+                    // Find ALL existing versions of this module and delete them
+                    def existingModules = findAllMatchingModules(moduleBinariesDir, baseName)
+                    if (existingModules) {
+                        existingModules.each { existingModule ->
+                            println " - Removing ${existingModule.fileName} (replaced by ${overrideName})"
+                            Files.delete(existingModule)
+                        }
+                        println " - Adding override ${overrideName}"
                     } else {
-                        // If module doesn't exist, just copy it to the binaries directory
-                        println " - Adding new module ${overrideName} to binaries"
-                        Files.copy(file, moduleBinariesDir.resolve(file.fileName), StandardCopyOption.REPLACE_EXISTING)
+                        println " - Adding new module ${overrideName}"
                     }
+                    Files.copy(file, moduleBinariesDir.resolve(file.fileName), StandardCopyOption.REPLACE_EXISTING)
                 }
                 FileVisitResult.CONTINUE
             }

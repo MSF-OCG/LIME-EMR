@@ -1,0 +1,155 @@
+package org.openmrs.module.drools.chronicconditions
+
+import org.openmrs.Patient
+import org.openmrs.Concept
+import org.openmrs.Condition
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+import java.util.Arrays
+import java.util.HashSet
+
+global Object service;
+
+rule "Chronic_Conditions"
+    agenda-group "chronicconditions"
+    when
+        $patient: Patient()
+    then
+        // Chronic condition concept UUIDs from OCL export
+        String[] chronicUuids = {
+            // --- Distro OCL (available to all sites) ---
+
+            // DIABETES
+            "4930dcb4-1f94-42b8-8406-1d4c575c6327",  // Diabetes
+            "1af832e4-841d-49b0-ab99-8c2328bca4ce",  // Diabetes (Coded)
+            "f1ee73b2-08cb-4373-80ac-357a704d3608",  // Diabetes mellitus, type 2
+            "ed1150fd-278f-4012-b3d7-a795ac9fac82",  // Diabetes mellitus, type 1
+            "8769913c-9750-48e9-b0c8-a7f702d6ea66",  // Type 2 diabetes
+            "67cec6b8-78e5-4b7a-964b-f8a01d50db12",  // Type 1 diabetes
+            "d7a393be-2fd5-4054-94b2-f0410c3bd152",  // Uncontrolled Diabetes Mellitus
+            "4ec446ef-f128-4ea7-a6b3-d232ee099052",  // Type 2 Diabetes requiring insulin
+            "2830d282-319a-4ae0-bb62-67fbcf4d100f",  // Type 2 diabetes on oral hypoglycemic agents only
+            "ea3f4fe5-6d0a-4850-8883-7958fe5c83e7",  // Type 2 diabetes on followup without hypoglycemic agents
+            "e5561289-6989-49e4-9c88-818065a37ac0",  // Non-insulin dependent type 2 diabetes mellitus
+            "7b11535a-6696-4fb5-aaf8-7d32d3537fd8",  // Insulin dependent type 2 diabetes mellitus
+            "9324b929-a53f-49e6-a83e-a2067175ddb7",  // Diabetes mellitus with renal manifestation
+            "db973d66-e027-4238-87c9-fa6e53026d12",  // Diabetes type II diagnosis status
+            "f9bd6164-18e9-41ce-97cd-45ff85d6f124",  // Diabetes type I diagnosis status
+            "d10c2b41-593a-414f-8f7e-a445e9d4f22e",  // Diabetes type 1 and complications
+            "27dd79e6-2e3c-4687-8ef9-d8ab0adb81b4",  // Diabetes type 2 and complications
+            "28d17413-ffae-4ed4-a46b-62f8b4deb6d7",  // Diabetes and complications
+            "e243a0d5-e140-4f0b-96b9-23008e4e29ab",  // Diabetes for more than 20 years
+            "93e793c6-a5cf-4910-8a80-369e19319383",  // Diabetes with ketoacidosis
+
+            // HYPERTENSION
+            "10f3b49c-c3dc-4aa7-857f-3f9bb7df8dd0",  // Hypertension
+            "ea776032-d8dd-4d46-b9e4-7981d6eda2d9",  // Essential hypertension
+            "00f773cf-2847-4123-8746-a649e02958a4",  // Chronic hypertension
+            "8c38caaf-7a7c-43dd-91d6-d8042758b3d8",  // Mild hypertension
+            "8f57e84c-dcdf-4e75-ab6e-7f2e2a859507",  // Moderate hypertension
+            "6a5ed406-259b-4035-98a8-073ad7e66637",  // Severe hypertension
+            "ec419ee7-5e6a-4d8e-be6f-b0d1e0d72f95",  // Severe uncontrolled hypertension
+            "24f84ac8-d755-41a9-a919-a7f934d707d6",  // Malignant hypertension
+            "317e8836-ae8d-435e-b8b6-56f404ac2a86",  // Benign intracranial hypertension
+            "fad7b56b-7633-4467-9e6a-17328278b580",  // Hypertension diagnosis status
+
+            // HEART FAILURE
+            "6a7a9d6a-e8b6-4ffb-8321-a56e9e4473e0",  // Congestive heart failure
+            "9a738c8b-62dc-44a2-9ae2-1cb615bacdcd",  // Cardiac failure
+            "a6c5ab13-d31f-4ac9-88f7-b0b0d0f3fd92",  // Acute heart failure
+            "f17c8da4-7c5c-4f1e-b1d4-62baccf7d58d",  // Left Heart Failure
+            "78c30996-4243-4c47-a467-08eeeb4384a7",  // Right heart failure
+            "d6bc7bac-d216-423f-9e83-99859371bb35",  // Unknown heart failure without echocardiogram
+            "938006c1-1507-46f8-a5ea-366f516287ae",  // Refractory heart disease
+            "1ea1079c-d537-4fc1-af8f-63c9203be2d8",  // Cor pulmonale
+            "fe989a53-9788-46e9-a170-f1f4b7abfddf",  // Heart failure diagnosis status
+
+            // CHRONIC KIDNEY DISEASE
+            "84fc5a0d-0158-4c41-b6e5-8ac7ebfccc0c",  // Chronic kidney disease
+            "1a16cb77-52ba-415e-a6a0-73e2fd11f57c",  // Renal disease
+            "91a1f6cc-a86f-4c1e-8d7d-9901a40b0327",  // Renal failure
+            "0b6cc322-5d58-4c44-aa65-26d81f99b090",  // Acute on chronic renal failure
+            "4fb24fe8-c8ac-4f18-a198-8b851d2951b3",  // Chronic kidney disease due to hypertension
+            "c7966797-5af8-4be6-86d3-cbf58c1eb13e",  // Chronic Kidney Disease, Stage I
+            "17673dae-3b76-4337-8d7f-c93cbd26d560",  // Chronic Kidney Disease, Stage II (Mild)
+            "9b9d7e27-92bd-4ceb-ae9c-64cde1689f54",  // Chronic Kidney Disease, Stage III (Moderate)
+            "46bb7c8b-7ce3-4f0f-aada-71fa0fc63e4d",  // Chronic Kidney Disease, Stage IV (Severe)
+            "9d3aac62-a5ab-41d2-b322-7242c747247e",  // Chronic Kidney Disease, Stage V
+            "6cf007a9-2692-43b6-bc97-dda579129623",  // Hypertensive renal disease (Coded)
+            "1bb8eb28-f22e-4a17-9e19-d8cd13a54c7e",  // Congenital polycystic kidney
+            "42e81b70-63ab-4387-aebe-90e20db918e7",  // Chronic renal disease diagnosis status
+
+            // CANCER / NEOPLASM
+            "819f604b-e06b-4ae7-bf7d-938a3a0ed40b",  // Malignant neoplasm
+            "be1800cf-19cd-4074-9398-f0962fc3db8c",  // Neoplasm
+            "2ffdb7f5-7f8c-4351-ac1f-92163c49121a",  // Breast cancer
+            "7880f752-538d-41dc-9524-cef97c901292",  // Cervical cancer, pre-treatment
+            "116ebc7b-a04b-42b6-81fe-fcc0bb6028f2",  // Kaposi's sarcoma of skin
+            "c039b4a0-019d-428d-ae11-cabf36510be6",  // Hepatocellular Carcinoma (HCC)
+            "2b518642-4b85-4c40-97a1-aadc1504e6e5",  // Hepatocellular carcinoma (HCC) due to Hepatitis B
+            "0aff792b-9689-4319-ae43-4c3aba3c6994",  // Hepatocellular carcinoma (HCC) due to Hepatitis C
+            "267cdd45-1b34-4480-a593-5f613455391f",  // Hepatocellular carcinoma (HCC) secondary to unknown cause
+            "5d4ecdeb-4ec9-4800-9144-e1606a0ae4d8",  // Malignant neoplasm of liver
+            "6d21cde2-ae6a-473a-a3bf-e19fe342fd3f",  // Malignant pericardial effusion
+            "dfd1981e-4b53-44c5-babf-e7ff78d25202",  // Uncontrolled cancer pain
+
+            // COPD / CHRONIC LUNG DISEASE
+            "0d9a7323-b54a-4d2b-a231-e34fa54e3a54",  // Chronic obstructive pulmonary disease
+            "127d31e5-7526-4299-a418-bf22c2a3a212",  // Acute exacerbation of chronic obstructive pulmonary disease
+            "68b7e054-046a-4ec1-8c6a-b05d0480da47",  // COPD diagnosis status
+            "0c6af3ca-0017-400d-b53a-db3f131cba78",  // Chronic lung disease
+            "5fb7a0ee-665e-4886-9314-5ad0524185b6",  // Chronic nonspecific lung disease
+
+            // CIRRHOSIS / CHRONIC LIVER DISEASE
+            "5acbc381-8a54-49c2-8ffe-db8d03f27d8f",  // Cirrhosis and chronic liver disease
+            "feb97184-c7c8-4ca2-b630-10a25e2eee0e",  // Cirrhosis of liver
+            "3148a5c8-698c-4230-acea-2314f38a7541",  // Cirrhosis of liver with ascites
+            "e306af4e-f6c9-41b9-bf1e-872b9580123b",  // Liver cirrhosis without portal hypertension
+            "270cf452-d128-460b-9c33-a2cbc9745255",  // Liver cirrhosis with portal hypertension
+            "308629fa-96dc-4213-b8aa-10b18148ae18",  // Liver cirrhosis due to Hepatitis B
+            "6f73b281-e2e1-4361-8c0f-bda2504eede3",  // Liver cirrhosis due to Hepatitis C
+            "cdfc46fc-a9ca-4411-ad2e-1cc4088bc58f",  // Liver cirrhosis secondary nonalcoholic steatohepatitis (NASH)
+            "81c87262-a542-4bfb-9950-5864a67c9d6c",  // Hepatic cirrhosis due to schistosomiasis
+            "9ad22546-b8bb-42b0-9148-f19a5b0f988f",  // Cardiac cirrhosis
+            "9da523c9-f27b-402d-9d83-7acfce2d6d2a",  // Alcoholic cirrhosis
+            "1aa0ad31-cce9-4d5b-b2d0-ea16424b43c2",  // Cryptogenic cirrhosis
+            "c780e608-7b2d-49f7-bc29-e3c823dfa8e6",  // Cirrhosis or liver tumors
+            "2b80e8b6-cf00-4a98-8a7c-e634b6ad7b7b",  // Chronic Hepatitis C
+            "9abc577d-d0d4-4b22-b5a9-733753c65aa4",  // Chronic hepatitis C with HIV infection
+
+            // OTHER CHRONIC CONDITIONS
+            "197f1f41-b0c7-407d-b95f-b1e26c3fd23c",  // Chronic psychosis (incl. schizophrenia)
+            "f77070aa-ebf0-48d5-8714-47f92fe70a81",  // Schizophrenia
+            "d2f59555-b1ef-4f3b-89c5-88c91f3a8126",  // Chronic Pain
+            "83956de4-2640-4e91-9b95-f0b03ac6ff6b",  // Chronic headache disorder
+            "b49087eb-89ac-45f3-9680-728a450535fb",  // Chronic disease
+
+            // --- Mosul OCL only (site-specific, no-op for other sites) ---
+            "65d6a573-c8b6-4af5-b8c8-58a71b232ae6",  // NYHA Heart failure classification
+            "aa2d042c-dae6-486f-b2d7-c38bb883f291"   // F4: cirrhosis
+        };
+        java.util.Set<String> chronicSet = new HashSet<String>(Arrays.asList(chronicUuids));
+
+        java.util.List<Condition> conditions = Context.getConditionService().getActiveConditions($patient);
+
+        boolean hasChronicCondition = false;
+
+        if (conditions != null) {
+            for (Condition condition : conditions) {
+                if (condition.getCondition() != null &&
+                    condition.getCondition().getCoded() != null &&
+                    chronicSet.contains(condition.getCondition().getCoded().getUuid())) {
+                    hasChronicCondition = true;
+                    break;
+                }
+            }
+        }
+
+        if (hasChronicCondition) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Chronic Condition"
+            ));
+        }
+end

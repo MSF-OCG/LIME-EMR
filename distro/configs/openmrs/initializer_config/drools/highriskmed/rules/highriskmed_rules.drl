@@ -1,0 +1,72 @@
+package org.openmrs.module.drools.highriskmed
+
+import org.openmrs.Patient
+import org.openmrs.Concept
+import org.openmrs.Order
+import org.openmrs.DrugOrder
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+import java.util.Arrays
+import java.util.HashSet
+
+global Object service;
+
+rule "High_Risk_Medication"
+    agenda-group "highriskmeds"
+    when
+        $patient: Patient()
+    then
+        // High-risk medication concept UUIDs from distro_drugs.csv
+        String[] highRiskUuids = {
+            // Insulins
+            "e469325d-8170-40ab-983b-91c77893ff44",  // GLARGINE
+            "0606f4e8-86e1-4f5f-b232-0733b058a534",  // ASPART
+            "91d4e185-f320-4daf-ad62-564455802bc5",  // BIPHASIC
+            "986457a9-6fd5-4fb1-b1db-baddda35ebff",  // ISOPHANE (NPH)
+            "dd66298b-0543-4607-82b1-3f84f3d6544c",  // RAPID
+            // Anticoagulants
+            "0efc7111-fe85-427e-afac-3e916b38fcf1",  // ENOXAPARIN
+            "3eb11e0f-0149-4826-8e9d-64599fba7db8",  // HEPARIN
+            // Opioids
+            "0c764a52-577f-4005-b739-b5737266d324",  // CODEINE
+            "28992602-98a8-492d-9c3a-816da76bbbc1",  // MORPHINE
+            "397edcca-8aa5-46c4-9c8a-d2c2b56c1a48",  // OXYCODONE
+            "a7ce72f6-d4f7-44bb-b705-2988bec7e0ff",  // TRAMADOL
+            "719c9117-b977-45fc-8e39-884fb524e8aa"   // FENTANYL
+        };
+        java.util.Set<String> highRiskSet = new HashSet<String>(Arrays.asList(highRiskUuids));
+
+        java.util.List<Order> activeOrders = Context.getOrderService().getActiveOrders(
+            $patient,
+            null,
+            null,
+            null
+        );
+
+        boolean hasHighRiskMed = false;
+
+        if (activeOrders != null) {
+            for (Order order : activeOrders) {
+                if (order instanceof DrugOrder) {
+                    DrugOrder drugOrder = (DrugOrder) order;
+                    if (drugOrder.getDrug() != null && drugOrder.getDrug().getConcept() != null) {
+                        Concept drugConcept = drugOrder.getDrug().getConcept();
+                        // Check if concept UUID is in our high-risk list
+                        if (highRiskSet.contains(drugConcept.getUuid())) {
+                            hasHighRiskMed = true;
+                            break;
+                        }
+                    }
+                }
+                if (hasHighRiskMed) break;
+            }
+        }
+
+        if (hasHighRiskMed) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "High-risk Medication"
+            ));
+        }
+end

@@ -1,0 +1,102 @@
+package org.openmrs.module.drools.heartrate
+
+import org.openmrs.Patient
+import org.openmrs.Obs
+import org.openmrs.Concept
+import org.openmrs.api.context.Context
+import org.openmrs.module.patientflags.PatientFlag
+import java.util.ArrayList
+
+global Object service;
+
+rule "High_Heart_Rate"
+    agenda-group "highheartrate"
+    when
+        $patient: Patient()
+    then
+        // NOTE: Both MSF:1331 (Pulse) and MSF:1308 (Heart rate) have SAME-AS mappings to CIEL:5087
+        // in OCL. This is a data issue that should be fixed in OCL, but for now we check both.
+        Concept pulseConcept = Context.getConceptService().getConceptByMapping("1331", "MSF");
+        Concept heartRateConcept = Context.getConceptService().getConceptByMapping("1308", "MSF");
+
+        java.util.List<Obs> allObsList = new ArrayList<Obs>();
+
+        if (pulseConcept != null) {
+            java.util.List<Obs> pulseObs = Context.getObsService().getObservationsByPersonAndConcept($patient, pulseConcept);
+            if (pulseObs != null) {
+                allObsList.addAll(pulseObs);
+            }
+        }
+
+        if (heartRateConcept != null) {
+            java.util.List<Obs> hrObs = Context.getObsService().getObservationsByPersonAndConcept($patient, heartRateConcept);
+            if (hrObs != null) {
+                allObsList.addAll(hrObs);
+            }
+        }
+
+        Double heartRate = null;
+
+        if (!allObsList.isEmpty()) {
+            for (Obs obs : allObsList) {
+                if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                    heartRate = obs.getValueNumeric();
+                    break;
+                }
+            }
+        }
+
+        if (heartRate != null && heartRate > 130) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "High heart rate"
+            ));
+        }
+end
+
+rule "Low_Heart_Rate"
+    agenda-group "lowheartrate"
+    when
+        $patient: Patient()
+    then
+        // NOTE: Both MSF:1331 (Pulse) and MSF:1308 (Heart rate) have SAME-AS mappings to CIEL:5087
+        // in OCL. This is a data issue that should be fixed in OCL, but for now we check both.
+        Concept pulseConcept = Context.getConceptService().getConceptByMapping("1331", "MSF");
+        Concept heartRateConcept = Context.getConceptService().getConceptByMapping("1308", "MSF");
+
+        java.util.List<Obs> allObsList = new ArrayList<Obs>();
+
+        if (pulseConcept != null) {
+            java.util.List<Obs> pulseObs = Context.getObsService().getObservationsByPersonAndConcept($patient, pulseConcept);
+            if (pulseObs != null) {
+                allObsList.addAll(pulseObs);
+            }
+        }
+
+        if (heartRateConcept != null) {
+            java.util.List<Obs> hrObs = Context.getObsService().getObservationsByPersonAndConcept($patient, heartRateConcept);
+            if (hrObs != null) {
+                allObsList.addAll(hrObs);
+            }
+        }
+
+        Double heartRate = null;
+
+        if (!allObsList.isEmpty()) {
+            for (Obs obs : allObsList) {
+                if (obs != null && !obs.getVoided() && obs.getValueNumeric() != null) {
+                    heartRate = obs.getValueNumeric();
+                    break;
+                }
+            }
+        }
+
+        if (heartRate != null && heartRate < 40) {
+            insert(new PatientFlag(
+                $patient,
+                null,
+                "Low heart rate"
+            ));
+        }
+end

@@ -7,6 +7,20 @@
       "roles": [
         "Organizational: Nurse"
       ]
+    },
+    "extensionSlots": {
+      "patient-chart-test-results-dashboard-slot": {
+        "add": [
+          "patient-flags-list"
+        ],
+        "configure": {
+          "patient-flags-list": {
+            "tags": [
+              "Labs"
+            ]
+          }
+        }
+      }
     }
   },
   "@openmrs/esm-login-app": {
@@ -22,7 +36,7 @@
         {
           "src": "configs/msf-logo.png",
           "alt": ""
-        }        
+        }
       ]
     }
   },
@@ -56,5 +70,64 @@
         "MSF Administrator"
       ]
     }
+  },
+  "@openmrs/esm-patient-flags-app": {
+    "tagActions": [
+      {
+        "tagName": "Vitals",
+        "url":"${openmrsSpaBase}/patient/${patientUuid}/chart/Vitals & Biometrics"
+      },
+      {
+        "tagName": "Labs",
+        "url": "${openmrsSpaBase}/patient/${patientUuid}/chart/Results"
+      },
+      {
+        "tagName": "Medications",
+        "url":"${openmrsSpaBase}/patient/${patientUuid}/chart/Medications"
+      },
+      {
+        "tagName": "High Risk Conditions",
+        "url": "${openmrsSpaBase}/patient/${patientUuid}/chart/Conditions"
+      },
+      {
+        "tagName": "Chronic Conditions",
+        "url": "${openmrsSpaBase}/patient/${patientUuid}/chart/Conditions"
+      },
+      {
+        "tagName": "Infectious Disease Conditions",
+        "url": "${openmrsSpaBase}/patient/${patientUuid}/chart/Conditions"
+      },
+      {
+        "tagName": "Procedures",
+        "url":"${openmrsSpaBase}/patient/${patientUuid}/chart/Appointments"
+      },
+      {
+        "tagName": "Appointments",
+        "url":"${openmrsSpaBase}/patient/${patientUuid}/chart/Appointments"
+      }
+    ],
+    "flagActions": [
+      {
+        "flagName": "Allergy",
+        "url": "${openmrsSpaBase}/patient/${patientUuid}/chart/Allergies"
+      }
+    ],
+    "priorities": [
+      {
+        "priority": "high",
+        "color": "high-contrast",
+        "isRiskPriority": true
+      },
+      {
+        "priority": "medium",
+        "color": "red",
+        "isRiskPriority": false
+      },
+      {
+        "priority": "low",
+        "color": "orange",
+        "isRiskPriority": false
+      }
+    ]
   }
 }
