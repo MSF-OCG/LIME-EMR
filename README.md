@@ -746,6 +746,83 @@ ORIGINS="http://your-domain.com"  # Allowed CORS origins (set for Azure deployme
    ```
 3. The site's copy will be used instead
 
+### How to remove a frontend app from the site level
+
+To remove (hide) a frontend app for a specific site without affecting other sites, edit the site's frontend configuration JSON file (e.g., `sites/<site-name>/configs/openmrs/frontend_config/msf-<site-name>-frontend-config.json`).
+
+**Option A: Remove the app's extensions from specific slots**
+
+Use the `"remove"` property in an `extensionSlots` configuration to hide the app's UI elements from the page:
+
+```json
+{
+  "@openmrs/esm-patient-home-app": {
+    "extensionSlots": {
+      "homepage-dashboard-slot": {
+        "remove": ["service-queues-dashboard-link"]
+      }
+    }
+  }
+}
+```
+
+This is useful when you want to remove specific widgets or dashboard links contributed by an app, while keeping other parts of the app available.
+
+**Option B: Restrict the app using Display conditions**
+
+Set `"Display conditions"` with a privilege that no role at the site has, effectively hiding it from all users:
+
+```json
+{
+  "@openmrs/esm-dispensing-app": {
+    "Display conditions": {
+      "privileges": ["Some Privilege Not Granted At This Site"]
+    }
+  }
+}
+```
+
+**Option C: Remove importmap entries via the build (site-level)**
+
+Add a `gmavenplus-plugin` execution in the site's `pom.xml` that runs the `remove-importmap-entries.groovy` script. This strips the specified modules from the importmap at build time so they are never loaded for that site:
+
+```xml
+<execution>
+  <id>remove-importmap-entries</id>
+  <goals>
+    <goal>execute</goal>
+  </goals>
+  <phase>process-resources</phase>
+  <configuration>
+    <properties>
+      <property>
+        <name>modulesToRemove</name>
+        <value>esm-mental-health-app,esm-nutrition-app</value>
+      </property>
+    </properties>
+    <scripts>
+      <script>file://${project.basedir}/../../scripts/remove-importmap-entries.groovy</script>
+    </scripts>
+  </configuration>
+</execution>
+```
+
+Pass a comma-separated list of module names (without the `@openmrs/` or `@madiro/` scope prefix) in the `modulesToRemove` property.
+
+**Option D: Exclude the app from the build entirely (distro-level)**
+
+If the app should be excluded from **all** sites, add it to the `frontendModuleExcludes` array in `distro/configs/openmrs/frontend_assembly/spa-assemble-config.json`:
+
+```json
+{
+  "frontendModuleExcludes": [
+    "@openmrs/esm-some-app"
+  ]
+}
+```
+
+> **Note:** Options A and B are configuration-level overrides — they hide the app's UI via the site's frontend config JSON. Option C removes the app from the importmap at build time for a single site. Option D is a distro-level change that excludes the app from the build for all sites.
+
 ### How to add a new OpenFn workflow
 
 1. Create a `.yaml` file in `configs/openfn/` at the desired level
