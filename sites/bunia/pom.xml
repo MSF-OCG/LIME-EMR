@@ -13,11 +13,12 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
+    <gmavenplusPluginVersion>3.0.2</gmavenplusPluginVersion>
   </properties>
 
   <dependencies>
     <dependency>
-      <artifactId>ozone-msf-iraq</artifactId>
+      <artifactId>ozone-msf-distro</artifactId>
       <groupId>com.ozonemsf</groupId>
       <version>1.0.0-SNAPSHOT</version>
       <type>zip</type>
@@ -40,8 +41,8 @@
             </goals>
             <configuration>
               <excludeTransitive>true</excludeTransitive>
-              <outputDirectory>${project.build.directory}/ozone-msf-iraq</outputDirectory>
-              <includeArtifactIds>ozone-msf-iraq</includeArtifactIds>
+              <outputDirectory>${project.build.directory}/ozone-msf-distro</outputDirectory>
+              <includeArtifactIds>ozone-msf-distro</includeArtifactIds>
             </configuration>
           </execution>
         </executions>
@@ -64,7 +65,16 @@
               <overwrite>true</overwrite>
               <resources>
                 <resource>
-                  <directory>${project.build.directory}/ozone-msf-iraq</directory>
+                  <directory>${project.build.directory}/ozone-msf-distro</directory>
+                  <excludes>
+                    <exclude>distro/configs/**/addresshierarchy/*.*</exclude>
+                    <exclude>distro/configs/**/locations/*.*</exclude>
+                    <exclude>distro/configs/**/idgen/*.*</exclude>
+                    <exclude>distro/configs/**/visittypes/*.*</exclude>
+                    <exclude>distro/configs/**/appointmentservicedefinitions/*.*</exclude>
+                    <exclude>distro/configs/**/appointmentservicetypes/*.*</exclude>
+                    <exclude>distro/ozone-info.json</exclude>
+                  </excludes>
                 </resource>
               </resources>
             </configuration>
@@ -129,15 +139,89 @@
               <target>
                 <echo message="Adding MSF Bunia frontend config"/>
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
-                               match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-bunia-frontend-config.json" />
+                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-bunia-frontend-config.json" />
+                <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env"
+                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-matsapha-frontend-config.json" />
+              </target>
+            </configuration>
+          </execution>
+          <execution>
+            <id>Add MSF Matsapha Script Configuration</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <echo level="info" message="Adding MSF project Name to ozone" />
+                <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/utils.sh"
+                  match="export PROJECT_NAME=.*" replace='export PROJECT_NAME="${project.artifactId}"' />
               </target>
             </configuration>
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.gmavenplus</groupId>
+        <artifactId>gmavenplus-plugin</artifactId>
+        <version>${gmavenplusPluginVersion}</version>
+        <executions>
+          <execution>
+            <id>combine openfn project.yaml files in Matsapha</id>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+            <phase>process-resources</phase>
+            <configuration>
+              <scripts>
+                <script>file://${project.build.directory}/${project.artifactId}-${project.version}/run/docker/scripts/merge-openfn-yaml.groovy</script>
+              </scripts>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>4.0.15</version>
+            <scope>runtime</scope>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.gmaven</groupId>
+        <artifactId>groovy-maven-plugin</artifactId>
+        <version>2.1.1</version>
+        <executions>
+            <execution>
+                <id>Create Matsapha Ozone Info</id>
+                <phase>process-resources</phase>
+                <goals>
+                    <goal>execute</goal>
+                </goals>
+                <configuration>
+                  <source>
+                    // Ensure target directory exists
+                    def targetDir = new File("${project.build.directory}/${project.artifactId}-${project.version}/distro")
+                    targetDir.mkdirs()
+
+                    // Always create/overwrite the JSON file
+                    def ozoneInfoFile = new File(targetDir, "ozone-info.json")
+                    def ozoneInfo = [
+                        name: "${project.artifactId}",
+                        version: "${project.version}",
+                        description: "${project.description}"
+                    ]
+
+                    ozoneInfoFile.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(ozoneInfo))
+                </source>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
     </plugins>
   </build>
-
+  
   <repositories>
     <repository>
       <id>mks-nexus-public</id>
