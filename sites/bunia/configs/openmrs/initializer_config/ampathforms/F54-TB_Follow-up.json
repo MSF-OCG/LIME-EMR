@@ -1,0 +1,1412 @@
+{
+  "name": "F54-TB Follow-up",
+  "description": "MSF Form - F54-TB Follow-up",
+  "version": "1",
+  "published": true,
+  "uuid": "de26f8b2-2506-474e-8663-8512b41d1dec",
+  "processor": "EncounterFormProcessor",
+  "encounter": "TB",
+  "encounterType": "38d6a89c-a47a-4aa5-9408-da84a4aa99fc",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "Consultation Information",
+      "sections": [
+        {
+          "label": "Consultation Information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "followUpConsultationDate",
+              "label": "Follow up consultation date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "d329cd4b-a10f-4a4d-96b5-c907bf87e721"
+              },
+              "validators": [
+                {
+                  "type": "date",
+                  "allowFutureDates": "false"
+                }
+              ],
+              "default": "Current date"
+            },
+            {
+              "id": "followUpDueDate",
+              "label": "Follow up due date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "fa040452-2023-4f4a-9560-17a430b353c2"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "Tuberculosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "symptomsStillPresent",
+              "label": "Symptoms still present",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "c82579dc-9308-4da6-a171-9441db3805fa",
+                "answers": [
+                  {
+                    "label": "Cough",
+                    "concept": "cb17ea3f-4291-47c9-9b9b-524405eca510"
+                  },
+                  {
+                    "label": "Sputum production",
+                    "concept": "d36a8a52-d54a-4856-98d9-4d265a8cd040"
+                  },
+                  {
+                    "label": "Weight loss",
+                    "concept": "9fd21796-c064-47c2-8ec7-0f070a7a3ff8"
+                  },
+                  {
+                    "label": "Anorexia (loss of appetite)",
+                    "concept": "92b89271-e6be-43bb-a00b-7cc8fa29672a"
+                  },
+                  {
+                    "label": "Fatigue",
+                    "concept": "d36a8a52-d54a-4856-98d9-4d265a8cd040"
+                  },
+                  {
+                    "label": "Haemoptysis (blood in sputum)",
+                    "concept": "2401942f-d83e-419b-a069-ba912b573de5"
+                  },
+                  {
+                    "label": "Shortness of breath",
+                    "concept": "f3b3532f-74b7-42a6-a717-c11c80ee02fe"
+                  },
+                  {
+                    "label": "Chest pain",
+                    "concept": "0b53603a-99cc-482a-bf4b-f67952584b70"
+                  },
+                  {
+                    "label": "Fever",
+                    "concept": "e15e7405-8aad-474d-a09c-bcf40da2fe84"
+                  },
+                  {
+                    "label": "Night sweats",
+                    "concept": "e3af354c-827f-4f92-a226-595841894336"
+                  },
+                  {
+                    "label": "Headache",
+                    "concept": "b13cb3fe-14bc-4574-b686-31827bf61a4c"
+                  },
+                  {
+                    "label": "Enlarged lymph nodes",
+                    "concept": "04802401-cdad-43dd-bc21-cb1d19b3fddc"
+                  },
+                  {
+                    "label": "Vomiting",
+                    "concept": "cc78d379-4d7b-4fba-b2c3-2a686c6b4809"
+                  },
+                  {
+                    "label": "Altered consciousness / confusion",
+                    "concept": "6ae8c71e-7a29-4641-8c73-6d6fcc94c93d"
+                  },
+                  {
+                    "label": "Back pain",
+                    "concept": "9ad2f8c9-f9e8-4e9c-89a2-85d1849e6c0a"
+                  },
+                  {
+                    "label": "Joint pain",
+                    "concept": "c496cb6c-05c7-41ae-99d3-79a93465c4d8"
+                  },
+                  {
+                    "label": "Urinary symptoms",
+                    "concept": "01c30dc5-af4f-44ae-95e0-23a48f6b9b8b"
+                  },
+                  {
+                    "label": "Ascites",
+                    "concept": "53be880a-7730-4f5d-be1e-304e0c4bd638"
+                  },
+                  {
+                    "label": "Abdominal mass",
+                    "concept": "b781e555-6e2f-420e-9dd3-3e192b99d843"
+                  },
+                  {
+                    "label": "Edema",
+                    "concept": "754d677f-316c-4c31-999d-a328fb8b17e1"
+                  },
+                  {
+                    "label": "Skin lesions",
+                    "concept": "5a81dc5f-0304-48fe-9720-ec5322f2389d"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "evolutionOfSymptomsSinceLastConsultation",
+              "label": "Evolution of symptoms since last consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "6581b0dd-6f02-4aff-8223-e73abc23bb65"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Contact",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "numberOfPossibleContacts",
+              "label": "Number of possible contacts",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "c41df29c-1196-4a80-beb5-56aeb508909a",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            },
+            {
+              "id": "numberOfContactsScreened",
+              "label": "Number of contacts screened",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "249c7575-54f0-430c-8233-fb493e2301cb",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            },
+            {
+              "id": "numberOfContactsScreenedPositive",
+              "label": "Number of contacts screened positive",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b9c6149f-487e-4412-9920-cfec62320f1b",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            },
+            {
+              "id": "numberOfContactsOnTbTreatment",
+              "label": "Number of contacts on TB treatment",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "4775303a-c091-47db-ba16-05b4f4a052ff",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            },
+            {
+              "id": "numberOfContactsOnIpt",
+              "label": "Number of contacts on IPT",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1e607f82-2b88-4f53-9882-85f8a5a434c9",
+                "min": 0.0,
+                "disallowDecimals": true,
+                "step": 1
+              }
+            }
+          ]
+        },
+        {
+          "label": "Medical",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "otherSymptomsOrNewMedicalConditions",
+              "label": "Other symptoms or new medical conditions",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ab12a49c-19fa-4162-a679-4593c7a3d512"
+              }
+            },
+            {
+              "id": "checkInconditionsmedicationsAndallergiesToToUpdateThemIfNecessary",
+              "label": "Check in 'Conditions', 'Medications' and 'Allergies' to to update them if necessary",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Check in 'Conditions', 'Medications' and 'Allergies' to to update them if necessary"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Physical Examination",
+      "sections": [
+        {
+          "label": "Physical Examination",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInvitalsBiometricsForweightheightAndAddTodaysMeasurements",
+              "label": "Please check in 'Vitals & Biometrics' for 'Weight', 'Height' AND add today's measurements",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "weightOrHeight",
+              "label": "Weight / height",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2651145f-c10c-4c04-9735-791537a1fa2c",
+                "answers": [
+                  {
+                    "label": "[-3 ; -2 Zs[",
+                    "concept": "6a48b558-b61d-4be7-9c13-c9279f396bbc"
+                  },
+                  {
+                    "label": "< -3 Zs",
+                    "concept": "4eca905b-97ca-4c48-9408-2dece451ab2a"
+                  },
+                  {
+                    "label": ">= -2 Zs",
+                    "concept": "a456ad55-006a-4f90-b03e-8d608e85194b"
+                  },
+                  {
+                    "label": "Not relevant",
+                    "concept": "66ee2fdd-b54c-4456-80f0-6987f572a6b8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "oedema",
+              "label": "Oedema",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "754d677f-316c-4c31-999d-a328fb8b17e1",
+                "answers": [
+                  {
+                    "label": "no",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "+",
+                    "concept": "382578c2-91b4-4235-a02d-d20fbe9f8044"
+                  },
+                  {
+                    "label": "++",
+                    "concept": "709e4a07-af9f-432b-8711-b3caed41998c"
+                  },
+                  {
+                    "label": "+++",
+                    "concept": "9e6f2ae1-4aa3-4cbc-bd8d-98515b76cc15"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "changeInWeight",
+              "label": "Change in weight",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "255fa388-76f1-4b7d-81b1-bdb26eebed22",
+                "answers": [
+                  {
+                    "label": "Weight gained",
+                    "concept": "1ec67f06-1b6e-4a52-bb4f-e8860ae579cf"
+                  },
+                  {
+                    "label": "Weight lost",
+                    "concept": "9fd21796-c064-47c2-8ec7-0f070a7a3ff8"
+                  },
+                  {
+                    "label": "Weight stable",
+                    "concept": "00ad068c-d136-4b18-b677-30bdf220db11"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Neurological",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "levelOfConciousness",
+              "label": "Level of conciousness",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "15181802-73d2-4fe3-bb07-18cc8aa98eea",
+                "answers": [
+                  {
+                    "label": "Alert",
+                    "concept": "01d17f23-922d-43ef-8720-aae13c9a4cd1"
+                  },
+                  {
+                    "label": "Drowsy",
+                    "concept": "2adc43d5-f107-4489-970d-06afba9a581e"
+                  },
+                  {
+                    "label": "Stuporous",
+                    "concept": "b1257c3d-230e-4344-bf67-a4e4d6dc4a8e"
+                  },
+                  {
+                    "label": "Comatose",
+                    "concept": "778cbc1a-0c17-437d-ba49-2883d151db91"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "focalNeurologicalDeficits",
+              "label": "Focal neurological deficits",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d940cbd8-635b-4d5d-837b-f9ce306fa0b2",
+                "answers": [
+                  {
+                    "label": "Present",
+                    "concept": "7b0b71a9-cc0b-4b13-84af-a3c255cfaef2"
+                  },
+                  {
+                    "label": "Absent",
+                    "concept": "a98837f8-f4ea-4406-bbfa-eebba57cefbb"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Chest",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "breathSounds",
+              "label": "Breath sounds",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ede567db-3796-4813-a761-547ebfe50244",
+                "answers": [
+                  {
+                    "label": "Normal vesicular",
+                    "concept": "69b3fef1-8059-44fe-8bbf-504d746fe03f"
+                  },
+                  {
+                    "label": "Reduced",
+                    "concept": "ea6d5729-f3d2-4fdf-bd17-606be56a1b72"
+                  },
+                  {
+                    "label": "Bronchial",
+                    "concept": "d01ff097-b439-4a21-b03f-4b81f3dfb9b0"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "abnormalSounds",
+              "label": "Abnormal sounds",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9b1e1005-70bc-454c-9727-c3ca31b6298c",
+                "answers": [
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "Crackles",
+                    "concept": "9111a36f-ca53-4720-8fc1-2ad76eb6e43e"
+                  },
+                  {
+                    "label": "Wheeze",
+                    "concept": "5b67fa69-a580-4b6d-ad6e-a5d4a7ff401f"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "chestPercussion",
+              "label": "Chest percussion",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1b8d4f26-9f6b-4abc-b021-b63b51b5299c",
+                "answers": [
+                  {
+                    "label": "Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "label": "Dullness",
+                    "concept": "5bbfefa1-62fb-4107-af8a-d8963e97672b"
+                  },
+                  {
+                    "label": "Hyper-resonant",
+                    "concept": "0596d031-0b9c-4e7f-9de4-2f123c1d7070"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "cardiacRhythm",
+              "label": "Cardiac rhythm",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f2b8aba5-1b1f-4255-bcca-6f99b0ea02fa",
+                "answers": [
+                  {
+                    "label": "Regular",
+                    "concept": "b75152e2-a30b-4eda-860a-be3dfe32c53f"
+                  },
+                  {
+                    "label": "Irregular",
+                    "concept": "579e20b6-6456-40f3-961b-a7a96deeebe4"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Lymph node",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "lymphNode",
+              "label": "Lymph node",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "62a4cc19-4349-4d13-bcf6-2db286afe560",
+                "answers": [
+                  {
+                    "label": "Not palpable / Normal",
+                    "concept": "d884d3dd-7649-4260-b139-2d740baf9767"
+                  },
+                  {
+                    "label": "Enlarged",
+                    "concept": "04802401-cdad-43dd-bc21-cb1d19b3fddc"
+                  },
+                  {
+                    "label": "Tender",
+                    "concept": "2292e97c-14ee-4c0d-96a5-80302cfb38cf"
+                  },
+                  {
+                    "label": "Matted (group of fused lymph nodes)",
+                    "concept": "af90bbfc-b3e3-4d8a-8bfc-6dc842777995"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Abdominal",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "abdominalDistension",
+              "label": "Abdominal distension",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a504e61e-0524-4139-992f-fbb2d1676438",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "abdominalTenderness",
+              "label": "Abdominal tenderness",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "028a373a-df66-4b7f-9cbc-365c9cc792bd",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "organomegaly",
+              "label": "Organomegaly",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4628e546-1872-4b03-84cc-5d06bb5987ae",
+                "answers": [
+                  {
+                    "label": "None",
+                    "concept": "68297667-f4d1-4e5d-9cb3-5c95f283f762"
+                  },
+                  {
+                    "label": "Hepatomegaly",
+                    "concept": "00f989af-80cf-4f18-b37d-f4c8495984f8"
+                  },
+                  {
+                    "label": "Splenomegaly",
+                    "concept": "55412acb-529f-4647-a2a2-fedf4d705793"
+                  },
+                  {
+                    "label": "Both",
+                    "concept": "6b97c385-719a-4f3b-88cd-7557b490706e"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ascites",
+              "label": "Ascites",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "960ed50a-0a89-4bd8-a35f-58dbc14ffa39",
+                "answers": [
+                  {
+                    "label": "Present",
+                    "concept": "7b0b71a9-cc0b-4b13-84af-a3c255cfaef2"
+                  },
+                  {
+                    "label": "Absent",
+                    "concept": "a98837f8-f4ea-4406-bbfa-eebba57cefbb"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Bones and joints",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "jointSwelling",
+              "label": "Joint swelling",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b1ed2cb0-fb39-4df8-b293-92d68e5437b7",
+                "answers": [
+                  {
+                    "label": "Present",
+                    "concept": "7b0b71a9-cc0b-4b13-84af-a3c255cfaef2"
+                  },
+                  {
+                    "label": "Absent",
+                    "concept": "a98837f8-f4ea-4406-bbfa-eebba57cefbb"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "deformities",
+              "label": "Deformities",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "efb28e04-d80f-4cb2-802e-16ca1b162cb3",
+                "answers": [
+                  {
+                    "label": "Present",
+                    "concept": "7b0b71a9-cc0b-4b13-84af-a3c255cfaef2"
+                  },
+                  {
+                    "label": "Absent",
+                    "concept": "a98837f8-f4ea-4406-bbfa-eebba57cefbb"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "restrictedMobility",
+              "label": "Restricted mobility",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "b10b22e3-a46d-4682-aba5-fdeac3591d29",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Findings",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "describeTheFindingsInThePhysicalExamination",
+              "label": "Describe the findings in the physical examination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0dd28dfa-fa10-4dbd-bf6a-4f5ad6868c64"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Investigations",
+      "sections": [
+        {
+          "label": "Lab tests",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "checkInresultsForNewSmearTestCultureGenxpertHivTestAndOthers",
+              "label": "Check in 'Results' for new Smear test, Culture, GenXpert, HIV test and others",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": "Check in 'Results' for new Smear test, Culture, GenXpert, HIV test and others"
+            },
+            {
+              "id": "smearTestResult",
+              "label": "Smear test result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "7793ad70-201c-4b4d-91cd-6bd3f8531de9",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "cultureResult",
+              "label": "Culture result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ee75bb9a-411b-484d-a23c-e7e94c99b082",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "genxpertMtbResult",
+              "label": "GenXpert MTB result (molecular test)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "02a62b5b-35eb-4c88-8dd6-f7e18670cf35",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "genxpertRifampicinResult",
+              "label": "GenXpert rifampicin result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "796d6e82-94d3-422b-b36e-cc038799b05b",
+                "answers": [
+                  {
+                    "label": "Sensitive",
+                    "concept": "b72ccd93-2f76-4ad7-9883-8ad61361c45c"
+                  },
+                  {
+                    "label": "Resistant",
+                    "concept": "63dad4fb-7d35-4697-8712-e12ba0199d27"
+                  },
+                  {
+                    "label": "Indeterminate",
+                    "concept": "95c1786e-ac17-4188-801c-10a269958005"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Comments",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "commentsOnLabTestsAndOtherInvestigations",
+              "label": "Comments on lab tests and other investigations",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Treatment",
+      "sections": [
+        {
+          "label": "TB treatment",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "tbTreatmentPhase",
+              "label": "TB treatment phase",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "596178f7-bbaf-472f-849b-271720d0533d",
+                "answers": [
+                  {
+                    "label": "Drug sensitive intensive phase",
+                    "concept": "4e16bcbf-598f-4dfb-95d7-4b5f40d1de51"
+                  },
+                  {
+                    "label": "Drug resistant intensive phase",
+                    "concept": "5c4bb88e-e557-4f27-b41a-664f61055b1d"
+                  },
+                  {
+                    "label": "Drug sensitive continuation phase",
+                    "concept": "3a397910-dd66-42cb-a3c1-614c2f2d2955"
+                  },
+                  {
+                    "label": "Drug resistant continuation phase",
+                    "concept": "e74b35ca-707e-4bae-a9f9-c2bfb78d75aa"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "tbTreatmentIntensivePhaseStartDate",
+              "label": "TB treatment intensive phase start date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "84f309a1-03c9-4f9e-a9a5-bdb7340ca314"
+              },
+              "hide": {
+                "hideWhenExpression": "(tbTreatmentPhase !== '4e16bcbf-598f-4dfb-95d7-4b5f40d1de51' && tbTreatmentPhase !== '5c4bb88e-e557-4f27-b41a-664f61055b1d')"
+              }
+            },
+            {
+              "id": "regimen",
+              "label": "Regimen (intensive phase)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4e16bcbf-598f-4dfb-95d7-4b5f40d1de51",
+                "answers": [
+                  {
+                    "label": "2 HRZE",
+                    "concept": "74f4eb7c-b97d-45b4-b1e6-8bb89f91f501"
+                  },
+                  {
+                    "label": "3 HRZE",
+                    "concept": "e28f1b26-c672-4711-9231-65a30044d7ff"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(tbTreatmentPhase !== '4e16bcbf-598f-4dfb-95d7-4b5f40d1de51')"
+              }
+            },
+            {
+              "id": "medication",
+              "label": "Medication (intensive phase)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "62c39626-28b4-46cf-8c91-0b8d6166d1f6",
+                "answers": [
+                  {
+                    "label": "Levofloxacin",
+                    "concept": "76825fa7-def6-4bc2-a135-d15232736de5"
+                  },
+                  {
+                    "label": "Moxifloxacin",
+                    "concept": "cc8e3b61-3b07-4b6b-9cd0-e5b87b03f6f1"
+                  },
+                  {
+                    "label": "Bedaquiline",
+                    "concept": "f7e5b431-b71b-4af6-a69d-ee20b045c32c"
+                  },
+                  {
+                    "label": "Linezolid",
+                    "concept": "79422ff3-2096-4873-9cb8-435be0c6916c"
+                  },
+                  {
+                    "label": "Clofazimine",
+                    "concept": "bd143bfe-449e-4392-aa8c-216187c75d6f"
+                  },
+                  {
+                    "label": "Cycleoserine",
+                    "concept": "548f319a-0e42-4d24-b739-cd0644d20318"
+                  },
+                  {
+                    "label": "Terizidone",
+                    "concept": "42fefb47-9f40-4e61-960d-7711d46466c0"
+                  },
+                  {
+                    "label": "Ethambutol",
+                    "concept": "d3abfe6b-a8a3-468f-b450-4ede15fc0b65"
+                  },
+                  {
+                    "label": "Delamanid",
+                    "concept": "69b32561-9c83-4de8-9bd6-2cc4e6d3c61f"
+                  },
+                  {
+                    "label": "Pyrazinamide",
+                    "concept": "c7dfc17e-ca38-4f9e-9cd9-e0d143f53acc"
+                  },
+                  {
+                    "label": "Isomiazid",
+                    "concept": "2a176ed3-5794-4f4f-a6bd-9ee0a37e9cf7"
+                  },
+                  {
+                    "label": "Rifampicin",
+                    "concept": "69e73b51-8814-4a26-a6b5-60fcd6dcb566"
+                  },
+                  {
+                    "label": "Imipenem-Cilastatin",
+                    "concept": "c54550bd-a4f9-43a7-a096-e8f43f1bcd1e"
+                  },
+                  {
+                    "label": "Meropenem",
+                    "concept": "fc10757c-ae41-4498-8d42-8f9c35dd0326"
+                  },
+                  {
+                    "label": "Amikacin",
+                    "concept": "01fa96b7-ed51-4334-a6a0-916cf6362470"
+                  },
+                  {
+                    "label": "Streptomycin",
+                    "concept": "aa27e8ce-4448-4b4d-b72d-157ffc0a1f3a"
+                  },
+                  {
+                    "label": "Ethionamide",
+                    "concept": "7db6f6ad-ddfd-4d04-bbad-a5e26fc3f16a"
+                  },
+                  {
+                    "label": "Prothionamide",
+                    "concept": "0194a368-acfe-4c12-806e-65a8eca9b1b7"
+                  },
+                  {
+                    "label": "P-Aminosalicylic Acid",
+                    "concept": "93bb5f90-2313-4f06-8ecd-bbb244f9f9aa"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(tbTreatmentPhase !== '5c4bb88e-e557-4f27-b41a-664f61055b1d')"
+              }
+            },
+            {
+              "id": "dateOfBeginningOfContinuationPhase",
+              "label": "Date of beginning of continuation phase",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "c3121db8-321a-48b7-aab4-f77058d455b0"
+              },
+              "hide": {
+                "hideWhenExpression": "(tbTreatmentPhase !== '3a397910-dd66-42cb-a3c1-614c2f2d2955' && tbTreatmentPhase !== 'e74b35ca-707e-4bae-a9f9-c2bfb78d75aa')"
+              }
+            },
+            {
+              "id": "regimen_1",
+              "label": "Regimen (continuation phase)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3a397910-dd66-42cb-a3c1-614c2f2d2955",
+                "answers": [
+                  {
+                    "label": "4 HR",
+                    "concept": "2777667e-145c-4c5c-a658-c2968a7b4839"
+                  },
+                  {
+                    "label": "5 HR",
+                    "concept": "48813211-e013-4948-8ae9-594505af4a4b"
+                  },
+                  {
+                    "label": "10 HR",
+                    "concept": "7836178d-49fe-4b8c-b951-831674ec9ffb"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(tbTreatmentPhase !== '3a397910-dd66-42cb-a3c1-614c2f2d2955')"
+              },
+              "idModified": true,
+              "originalLabel": "Regimen (continuation phase)",
+              "warning": "Question ID was modified from 'Regimen (continuation phase)' to ensure uniqueness"
+            },
+            {
+              "id": "medication_1",
+              "label": "Medication (continuation)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "62c39626-28b4-46cf-8c91-0b8d6166d1f6",
+                "answers": [
+                  {
+                    "label": "Levofloxacin",
+                    "concept": "76825fa7-def6-4bc2-a135-d15232736de5"
+                  },
+                  {
+                    "label": "Moxifloxacin",
+                    "concept": "cc8e3b61-3b07-4b6b-9cd0-e5b87b03f6f1"
+                  },
+                  {
+                    "label": "Bedaquiline",
+                    "concept": "f7e5b431-b71b-4af6-a69d-ee20b045c32c"
+                  },
+                  {
+                    "label": "Linezolid",
+                    "concept": "79422ff3-2096-4873-9cb8-435be0c6916c"
+                  },
+                  {
+                    "label": "Clofazimine",
+                    "concept": "bd143bfe-449e-4392-aa8c-216187c75d6f"
+                  },
+                  {
+                    "label": "Cycleoserine",
+                    "concept": "548f319a-0e42-4d24-b739-cd0644d20318"
+                  },
+                  {
+                    "label": "Terizidone",
+                    "concept": "42fefb47-9f40-4e61-960d-7711d46466c0"
+                  },
+                  {
+                    "label": "Ethambutol",
+                    "concept": "d3abfe6b-a8a3-468f-b450-4ede15fc0b65"
+                  },
+                  {
+                    "label": "Delamanid",
+                    "concept": "69b32561-9c83-4de8-9bd6-2cc4e6d3c61f"
+                  },
+                  {
+                    "label": "Pyrazinamide",
+                    "concept": "c7dfc17e-ca38-4f9e-9cd9-e0d143f53acc"
+                  },
+                  {
+                    "label": "Isomiazid",
+                    "concept": "2a176ed3-5794-4f4f-a6bd-9ee0a37e9cf7"
+                  },
+                  {
+                    "label": "Rifampicin",
+                    "concept": "69e73b51-8814-4a26-a6b5-60fcd6dcb566"
+                  },
+                  {
+                    "label": "Imipenem-Cilastatin",
+                    "concept": "c54550bd-a4f9-43a7-a096-e8f43f1bcd1e"
+                  },
+                  {
+                    "label": "Meropenem",
+                    "concept": "fc10757c-ae41-4498-8d42-8f9c35dd0326"
+                  },
+                  {
+                    "label": "Amikacin",
+                    "concept": "01fa96b7-ed51-4334-a6a0-916cf6362470"
+                  },
+                  {
+                    "label": "Streptomycin",
+                    "concept": "aa27e8ce-4448-4b4d-b72d-157ffc0a1f3a"
+                  },
+                  {
+                    "label": "Ethionamide",
+                    "concept": "7db6f6ad-ddfd-4d04-bbad-a5e26fc3f16a"
+                  },
+                  {
+                    "label": "Prothionamide",
+                    "concept": "0194a368-acfe-4c12-806e-65a8eca9b1b7"
+                  },
+                  {
+                    "label": "P-Aminosalicylic Acid",
+                    "concept": "93bb5f90-2313-4f06-8ecd-bbb244f9f9aa"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(tbTreatmentPhase !== 'e74b35ca-707e-4bae-a9f9-c2bfb78d75aa')"
+              },
+              "idModified": true,
+              "originalLabel": "Medication (continuation)",
+              "warning": "Question ID was modified from 'Medication (continuation)' to ensure uniqueness"
+            }
+          ]
+        },
+        {
+          "label": "Administration",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "treatmentAdministration",
+              "label": "Treatment administration",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ec4cbb7a-8e5b-43fd-8a1d-0fb547309304",
+                "answers": [
+                  {
+                    "label": "DOT",
+                    "concept": "251749d3-752c-4b6a-9116-bff2a5151907"
+                  },
+                  {
+                    "label": "SAT",
+                    "concept": "99b160be-6797-4854-bb29-ec8b96f8cb16"
+                  },
+                  {
+                    "label": "VOT",
+                    "concept": "d356ced7-3d70-45b1-a835-324a602238b3"
+                  },
+                  {
+                    "label": "Community administration",
+                    "concept": "f91d1b08-cd3b-46a3-a0a6-63f0964925bc"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "ifTreatmentAdministrationIsOtherPleaseSpecify",
+              "label": "If treatment administration is other, please specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "(treatmentAdministration !== '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            },
+            {
+              "id": "pyridoxine",
+              "label": "Pyridoxine",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3aed9c43-fb84-46f0-9dd6-c427e87360d3",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Prescription",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "prescribeExamsAndMedicationWithTheOrderBasket",
+              "label": "Prescribe exams and medication with the order basket",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Exit",
+      "sections": [
+        {
+          "label": "Exit",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "exitFromTbProgram",
+              "label": "Exit from TB program",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3916b3e1-4d99-49e1-92ae-63341cb3b816",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "treatmentOutcome",
+              "label": "Treatment outcome",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2ba37c82-60d6-4de1-b9bd-c65a78b4f888",
+                "answers": [
+                  {
+                    "label": "Cured",
+                    "concept": "4afad5ca-6b49-4fc2-9dca-4468f5f3a3f6"
+                  },
+                  {
+                    "label": "Completed",
+                    "concept": "617087a8-548b-4b48-b979-ad854de98bed"
+                  },
+                  {
+                    "label": "Deceased",
+                    "concept": "dc1c7ac9-d9c3-4887-bc22-827c2db7689f"
+                  },
+                  {
+                    "label": "Failure",
+                    "concept": "d2eb1634-64e3-4b0b-a185-44258e5d7273"
+                  },
+                  {
+                    "label": "LTFU",
+                    "concept": "d305b208-354f-4bb7-b35a-df4f8d92c256"
+                  },
+                  {
+                    "label": "Transferred",
+                    "concept": "18c795cb-7197-46da-926f-e4d1848b8c36"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "(exitFromTbProgram !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ifDeceasedSpecifyDeathCause",
+              "label": "If deceased, specify death cause",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "e364431c-0eee-4acc-a1e6-d9c4484903f2"
+              },
+              "hide": {
+                "hideWhenExpression": "(exitFromTbProgram !== '681cf0bc-5213-492a-8470-0a0b3cc324dd') || (treatmentOutcome !== 'dc1c7ac9-d9c3-4887-bc22-827c2db7689f')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow up",
+      "sections": [
+        {
+          "label": "Follow up",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseScheduleNextVisitInappointments",
+              "label": "Please schedule next visit in 'Appointments'",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "appointments-form-workspace"
+              },
+              "hide": {
+                "hideWhenExpression": "(exitFromTbProgram !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow-up",
+      "sections": [
+        {
+          "label": "Follow-up",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "nextVisitDate",
+              "label": "Next visit date",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "edc6f30c-4ff2-4a4f-8b90-ca4502bb97a1"
+              },
+              "hide": {
+                "hideWhenExpression": "(exitFromTbProgram !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Notes",
+      "sections": [
+        {
+          "label": "Notes",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalNotes",
+              "label": "Additional notes",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "ef3a4c4f-cdb4-46d1-9e85-bc8a4790a219"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
