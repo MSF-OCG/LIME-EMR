@@ -141,12 +141,12 @@
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
                             match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-bunia-frontend-config.json" />
                 <replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env"
-                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-matsapha-frontend-config.json" />
+                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-bunia-frontend-config.json" />
               </target>
             </configuration>
           </execution>
           <execution>
-            <id>Add MSF Matsapha Script Configuration</id>
+            <id>Add MSF Bunia Script Configuration</id>
             <phase>process-resources</phase>
             <goals>
               <goal>run</goal>
@@ -167,7 +167,7 @@
         <version>${gmavenplusPluginVersion}</version>
         <executions>
           <execution>
-            <id>combine openfn project.yaml files in Matsapha</id>
+            <id>combine openfn project.yaml files in Bunia</id>
             <goals>
               <goal>execute</goal>
             </goals>
@@ -194,7 +194,7 @@
         <version>2.1.1</version>
         <executions>
             <execution>
-                <id>Create Matsapha Ozone Info</id>
+                <id>Create Bunia Ozone Info</id>
                 <phase>process-resources</phase>
                 <goals>
                     <goal>execute</goal>
