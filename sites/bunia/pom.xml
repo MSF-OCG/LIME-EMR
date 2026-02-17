@@ -15,6 +15,7 @@
 		<maven.compiler.source>8</maven.compiler.source>
 		<maven.compiler.target>8</maven.compiler.target>
 		<gmavenplusPluginVersion>3.0.2</gmavenplusPluginVersion>
+    <groovy.version>4.0.30</groovy.version>
 	</properties>
 
 	<dependencies>
@@ -242,14 +243,37 @@
 							</scripts>
 						</configuration>
 					</execution>
+					<execution>
+						<id>remove-importmap-entries</id>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<phase>process-resources</phase>
+						<configuration>
+							<properties>
+								<property>
+									<name>modulesToRemove</name>
+									<value>@madiro/esm-mental-health-app,@madiro/esm-nutrition-app</value>
+								</property>
+							</properties>
+							<scripts>
+								<script>file://${project.basedir}/../../scripts/remove-importmap-entries.groovy</script>
+							</scripts>
+						</configuration>
+					</execution>
 				</executions>
 				<dependencies>
 					<dependency>
 						<groupId>org.apache.groovy</groupId>
 						<artifactId>groovy</artifactId>
-						<version>4.0.15</version>
+						<version>${groovy.version}</version>
 						<scope>runtime</scope>
 					</dependency>
+					<dependency>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy-json</artifactId>
+            <version>${groovy.version}</version>
+          </dependency>
 				</dependencies>
 			</plugin>
 			<plugin>
