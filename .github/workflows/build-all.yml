@@ -81,3 +81,11 @@ jobs:
           artifact-path: "${{ github.workspace }}/sites/matsapha"
           maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
           maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
+
+      - name: Publish MSF Bunia artifacts to GitHub
+        uses: ./.github/actions/upload-maven-artifacts
+        with:
+          artifact-name: "Bunia"
+          artifact-path: "${{ github.workspace }}/sites/bunia"
+          maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
+          maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
