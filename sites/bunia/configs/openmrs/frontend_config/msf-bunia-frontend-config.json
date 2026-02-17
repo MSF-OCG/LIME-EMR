@@ -178,21 +178,39 @@
   "@openmrs/esm-patient-registration-app": {
     "defaultPatientIdentifierTypes": [
       "05a29f94-c0ed-11e2-94be-8c13b969e334",
-      "22348099-3873-459e-a32e-d93b17eda533"
+      "50f77027-36b6-4984-9bd5-5ff83462e50a"
     ],
     "sections": [
-      "demographics",
+      "basicInformtion",
       "contact",
-      "additionalInformation",
+      "demographics",
       "relationships",
       "emergencyContacts"
     ],
     "fieldDefinitions": [
       {
+        "id": "name2",
+        "type": "person attribute",
+        "uuid": "ec705ed9-2274-483c-bc92-1f120232161f",
+        "label": "Nom 2",
+        "validation": {
+          "required": false
+        }
+      },
+      {
+        "id": "name3",
+        "type": "person attribute",
+        "uuid": "33829173-d444-4d1d-a407-869d322c27d4",
+        "label": "Nom 3",
+        "validation": {
+          "required": false
+        }
+      },
+      {
         "id": "telephoneNumber",
         "type": "person attribute",
         "uuid": "bc851ec1-9fb7-49da-acd7-1a61168002fe",
-        "label": "Telephone Number",
+        "label": "Numéro de téléphone",
         "validation": {
           "required": false,
           "matches": "^\\+?(\\d{1,3})?[-.\\s]?(\\(?\\d{1,4}?\\)?)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$"
@@ -212,7 +230,7 @@
         "id": "emergencycontact1firstName",
         "type": "person attribute",
         "uuid": "b0f6124c-7645-420e-a82b-058799209e33",
-        "label": "Emergency contact 1 First Name",
+        "label": "Prénom de la personne de contact 1",
         "validation": {
           "required": false
         }
@@ -221,7 +239,7 @@
         "id": "emergencycontact1lastName",
         "type": "person attribute",
         "uuid": "f1512c64-4529-42c3-a795-14e30d4a157b",
-        "label": "Emergency contact 1 Last Name",
+        "label": "Nom de la personne de contact 1",
         "validation": {
           "required": false
         }
@@ -230,14 +248,14 @@
         "id": "emergencycontact1relationshipToPatient",
         "type": "person attribute",
         "uuid": "057e07a8-2170-4422-b257-26e401e3c151",
-        "label": "Emergency contact 1 Relationship To Patient",
+        "label": "Relation avec le patient de la personne de contact 1",
         "answerConceptSetUuid": "610e573a-157f-475b-93d3-6afbcf74e71b"
       },
       {
         "id": "emergencycontact1phoneNumber",
         "type": "person attribute",
         "uuid": "f173f4ac-6ba2-44a4-870c-a6dab973bf3a",
-        "label": "Emergency contact 1 Phone Number",
+        "label": "Numéro de téléphone de la personne de contact",
         "validation": {
           "required": false
         }
@@ -246,7 +264,7 @@
         "id": "emergencycontact2firstName",
         "type": "person attribute",
         "uuid": "0d84be8a-7cfe-4af9-bf9a-9ed42e3822f2",
-        "label": "Emergency contact 2 First Name",
+        "label": "Prénom de la personne de contact 2",
         "validation": {
           "required": false
         }
@@ -255,7 +273,7 @@
         "id": "emergencycontact2lastName",
         "type": "person attribute",
         "uuid": "63b1be4d-5bd8-4e76-902c-276c56666047",
-        "label": "Emergency contact 2 Last Name",
+        "label": "Nom de la personne de contact 2",
         "validation": {
           "required": false
         }
@@ -264,14 +282,14 @@
         "id": "emergencycontact2relationshipToPatient",
         "type": "person attribute",
         "uuid": "486da62c-12a8-463c-ada9-4e8f6488075e",
-        "label": "Emergency contact 2 Relationship To Patient",
+        "label": "Relation avec le patient de la personne de contact 2",
         "answerConceptSetUuid": "1cc30f31-cb1d-440c-9ea5-826bd71e2b29"
       },
       {
         "id": "emergencycontact2phoneNumber",
         "type": "person attribute",
         "uuid": "7109ae0c-60b3-4362-9a5d-39a7b078e5dc",
-        "label": "Emergency contact 2 Phone Number",
+        "label": "Numéro de téléphone de la personne de contact 2",
         "validation": {
           "required": false
         }
@@ -280,14 +298,14 @@
         "id": "maritalStatus",
         "type": "person attribute",
         "uuid": "3884dc76-c271-4bcb-8df8-81c6fb897f53",
-        "label": "Marital status",
+        "label": "Statut civil",
         "answerConceptSetUuid": "544ef960-3b65-4add-8795-96b2b084faa3"
       },
       {
         "id": "currentStatus",
         "type": "person attribute",
         "uuid": "e0b6ed99-72c4-4847-a442-e9929eac4a0f",
-        "label": "Current Status",
+        "label": "Statut actuel",
         "validation": {
           "required": false
         },
@@ -297,7 +315,7 @@
         "id": "nationality",
         "type": "person attribute",
         "uuid": "24d1fa23-9778-4a8e-9f7b-93f694fc25e2",
-        "label": "Nationality",
+        "label": "Nationalité",
         "validation": {
           "required": false
         },
@@ -307,7 +325,7 @@
         "id": "legalStatus",
         "type": "person attribute",
         "uuid": "a9b2c642-097f-43f8-b96b-4d2f50ffd9b1",
-        "label": "Legal Status",
+        "label": "Statut juridique",
         "validation": {
           "required": false
         },
@@ -317,7 +335,7 @@
         "id": "occupation",
         "type": "person attribute",
         "uuid": "dd1f7f0f-ccea-4228-9aa8-a8c3b0ea4c3e",
-        "label": "Occupation",
+        "label": "Profession",
         "validation": {
           "required": false
         },
@@ -327,7 +345,7 @@
         "id": "numberOfChildren",
         "type": "person attribute",
         "uuid": "e363161a-9d5c-4331-8463-238938f018ed",
-        "label": "Number of Children",
+        "label": "Combien d'enfants le patient a-t-il?",
         "validation": {
           "required": false,
           "matches": "^(0|[1-9][0-9]?|100)$"
@@ -336,13 +354,15 @@
     ],
     "sectionDefinitions": [
       {
-        "id": "demographics",
-        "fields": ["name", "gender", "dob", "id"]
+        "id": "basicInformtion",
+        "name": "Basic information",
+        "fields": ["name", "name2", "name3", "gender", "dob", "id"]
       },
       {
-        "id": "additionalInformation",
-        "name": "Additional Information",
+        "id": "demographics",
+        "name": "Demographics",
         "fields": [
+          "nationality",
           "currentStatus",
           "legalStatus",
           "maritalStatus",
@@ -353,7 +373,7 @@
       {
         "id": "contact",
         "name": "Contact Details",
-        "fields": ["address", "telephoneNumber", "emailAddress", "nationality"]
+        "fields": ["address", "telephoneNumber", "emailAddress"]
       },
       {
         "id": "emergencyContacts",
@@ -373,8 +393,7 @@
     "fieldConfigurations": {
       "name": {
         "displayCapturePhoto": false,
-        "allowUnidentifiedPatients": true,
-        "displayMiddleName": false
+        "allowUnidentifiedPatients": true
       },
       "address": {
         "useAddressHierarchy": {
@@ -385,6 +404,17 @@
     "registrationObs": {
       "encounterTypeUuid": "10d061d8-0677-47f2-8061-f302244dc48b",
       "encounterProviderRoleUuid": "240b26f9-dd88-4172-823d-4a8bfeb7841f"
+    },
+    "Translation overrides": {
+      "fr": {
+        "familyNameLabelText": "Nom 1",
+        "basicInformtionSection": "Informations de base",
+        "emergencyContactsSection": "Contacts d'urgence",
+        "demographicsSection": "Données démographiques",
+        "relationshipsSection": "Relation avec autres patients patient",
+        "Health Zone": "Zone de santé",
+        "Address": "Lieu de résidence"
+      }
     }
   },
   "@openmrs/esm-form-builder-app": {
