@@ -1,0 +1,39 @@
+<addressConfiguration>
+  <wipe>true</wipe>
+  <addressComponents>
+    <addressComponent>
+      <field>COUNTRY</field>
+      <nameMapping>Location.country</nameMapping>
+      <sizeMapping>40</sizeMapping>
+      <elementDefault>DRC</elementDefault>
+      <requiredInHierarchy>true</requiredInHierarchy>
+    </addressComponent>
+    <addressComponent>
+      <field>STATE_PROVINCE</field>
+      <nameMapping>Province</nameMapping>
+      <sizeMapping>40</sizeMapping>
+      <requiredInHierarchy>true</requiredInHierarchy>
+    </addressComponent>
+    <addressComponent>
+      <field>COUNTY_DISTRICT</field>
+      <nameMapping>Health Zone</nameMapping>
+      <sizeMapping>40</sizeMapping>
+      <requiredInHierarchy>true</requiredInHierarchy>
+    </addressComponent>
+    <addressComponent>
+      <field>ADDRESS_1</field>
+      <nameMapping>Address</nameMapping>
+      <sizeMapping>80</sizeMapping>
+      <requiredInHierarchy>true</requiredInHierarchy>
+    </addressComponent>
+  </addressComponents>
+  <lineByLineFormat>
+    <string>country stateProvince countyDistrict</string>
+    <string>address1</string>
+  </lineByLineFormat>
+  <addressHierarchyFile>
+    <filename>addresshierarchy_drc.csv</filename>
+    <entryDelimiter>,</entryDelimiter>
+    <identifierDelimiter>%</identifierDelimiter>
+  </addressHierarchyFile>
+</addressConfiguration>
