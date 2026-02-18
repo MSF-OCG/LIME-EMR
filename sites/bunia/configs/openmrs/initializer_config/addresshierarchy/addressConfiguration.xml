@@ -10,37 +10,29 @@
     </addressComponent>
     <addressComponent>
       <field>STATE_PROVINCE</field>
-      <nameMapping>Location.province</nameMapping>
+      <nameMapping>Province</nameMapping>
       <sizeMapping>40</sizeMapping>
-      <elementDefault>Equateur</elementDefault>
       <requiredInHierarchy>true</requiredInHierarchy>
     </addressComponent>
     <addressComponent>
       <field>COUNTY_DISTRICT</field>
-      <nameMapping>Location.district</nameMapping>
+      <nameMapping>Health Zone</nameMapping>
       <sizeMapping>40</sizeMapping>
-      <elementDefault>Bunia</elementDefault>
-      <requiredInHierarchy>true</requiredInHierarchy>
-    </addressComponent>
-    <addressComponent>
-      <field>CITY_VILLAGE</field>
-      <nameMapping>Location.village</nameMapping>
-      <sizeMapping>80</sizeMapping>
       <requiredInHierarchy>true</requiredInHierarchy>
     </addressComponent>
     <addressComponent>
       <field>ADDRESS_1</field>
-      <nameMapping>Location.address1</nameMapping>
-      <sizeMapping>40</sizeMapping>
+      <nameMapping>Address</nameMapping>
+      <sizeMapping>80</sizeMapping>
       <requiredInHierarchy>true</requiredInHierarchy>
     </addressComponent>
   </addressComponents>
   <lineByLineFormat>
-            <string>cityVillage countyDistrict stateProvince country</string>
-            <string>address1</string>
+    <string>country stateProvince countyDistrict</string>
+    <string>address1</string>
   </lineByLineFormat>
   <addressHierarchyFile>
-    <filename>addresshierarchy_iraq.csv</filename>
+    <filename>addresshierarchy_drc.csv</filename>
     <entryDelimiter>,</entryDelimiter>
     <identifierDelimiter>%</identifierDelimiter>
   </addressHierarchyFile>
