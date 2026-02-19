@@ -15,7 +15,9 @@
 		<maven.compiler.source>8</maven.compiler.source>
 		<maven.compiler.target>8</maven.compiler.target>
 		<gmavenplusPluginVersion>3.0.2</gmavenplusPluginVersion>
-    <groovy.version>4.0.30</groovy.version>
+		<msf.environment>dev</msf.environment>
+		<bundled.docker.tag>${msf.environment}</bundled.docker.tag>
+		<groovy.version>4.0.30</groovy.version>
 	</properties>
 
 	<dependencies>
@@ -309,6 +311,273 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>production</id>
+			<properties>
+				<msf.environment>latest</msf.environment>
+				<bundled.docker.tag>latest</bundled.docker.tag>
+			</properties>
+		</profile>
+		<profile>
+			<id>bundled-docker</id>
+			<properties>
+				<!-- Groovy template version-->
+				<groovyTemplatesVersion>3.0.22</groovyTemplatesVersion>
+				<!-- Ozone Bundled version-->
+				<ozoneBundledDocker>1.0.0-alpha.13</ozoneBundledDocker>
+				<!-- Fabric8 Docker Maven Plugin version-->
+				<dockerMavenPlugin>0.45.0</dockerMavenPlugin>
+				<!-- Docker push registry-->
+				<docker.push.registry>docker.io</docker.push.registry>
+				<!-- Docker push registry username-->
+				<docker.push.registry.username>msfocg</docker.push.registry.username>
+			</properties>
+			<build>
+				<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<executions>
+					<execution>
+						<!-- Override with local config files-->
+						<id>Copy bundled docker resources</id>
+						<phase>process-resources</phase>
+						<goals>
+						<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+						<outputDirectory>
+							${project.build.directory}/bundled-docker-build-tmp
+						</outputDirectory>
+						<overwrite>true</overwrite>
+						<resources>
+							<resource>
+							<directory>${project.build.directory}/ozone-msf-distro</directory>
+							<includes>
+								<include>bundled-docker/**</include>
+							</includes>
+							</resource>
+						</resources>
+						</configuration>
+					</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>3.1.0</version>
+					<executions>
+					<execution>
+						<id>Add OpenFn project state to OpenFn workeer image</id>
+						<phase>package</phase>
+						<goals>
+						<goal>run</goal>
+						</goals>
+						<configuration>
+						<target>
+							<replaceregexp file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openfn-worker/Dockerfile"
+							match="COPY configs/openfn/openfn-project\.yaml /app/packages/ws-worker/lime/"
+							replace="COPY configs/openfn/openfn-project.yaml /app/packages/ws-worker/lime/&#10;COPY configs/openfn/projectState.json /app/packages/ws-worker/lime/"
+							byline="false" />
+						</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>Add adaptor cache to openfn web image</id>
+						<phase>package</phase>
+						<goals>
+						<goal>run</goal>
+						</goals>
+						<configuration>
+						<target>
+							<echo file="${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openfn-web/Dockerfile" append="true" message="COPY configs/openfn/adaptor_registry_cache.json /app/priv/adaptor_registry_cache.json"/>
+						</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>Copy MSF content to bundled docker</id>
+						<phase>package</phase>
+						<goals>
+						<goal>run</goal>
+						</goals>
+						<configuration>
+						<target>
+							<mkdir dir="${project.build.directory}/bundled-docker-build-tmp/distro"/>
+							<copy todir="${project.build.directory}/bundled-docker-build-tmp/distro">
+								<fileset dir="${project.build.directory}/${project.artifactId}-${project.version}/distro" includes="**/*" />
+							</copy>
+						</target>
+						</configuration>
+					</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.gmavenplus</groupId>
+					<artifactId>gmavenplus-plugin</artifactId>
+					<executions>
+					<execution>
+						<id>Generate Docker Compose Bundled yaml</id>
+						<goals>
+						<goal>execute</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+						<scripts>
+							<script>
+							file://${project.build.directory}/bundled-docker-build-tmp/bundled-docker/scripts/generate-bundled-docker-compose.groovy</script>
+						</scripts>
+						</configuration>
+					</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>io.fabric8</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>${dockerMavenPlugin}</version>
+					<configuration>
+					<pushRegistry>${docker.push.registry}</pushRegistry>
+					<images>
+						<image>
+						<name>${docker.push.registry.username}/%a-openmrs-backend:${bundled.docker.tag}</name>
+						<build>
+							<dockerFile>
+							${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openmrs/Dockerfile</dockerFile>
+							<contextDir>
+							${project.build.directory}/bundled-docker-build-tmp/</contextDir>
+						<buildx>
+							<platforms>
+							<platform>linux/amd64</platform>
+							<platform>linux/arm64</platform>
+							</platforms>
+						</buildx>
+						</build>
+						</image>
+						<image>
+						<name>${docker.push.registry.username}/%a-openmrs-frontend:${bundled.docker.tag}</name>
+						<build>
+							<dockerFile>
+							${project.build.directory}/bundled-docker-build-tmp/bundled-docker/frontend/Dockerfile</dockerFile>
+							<contextDir>
+							${project.build.directory}/bundled-docker-build-tmp/</contextDir>
+						<buildx>
+							<platforms>
+							<platform>linux/amd64</platform>
+							<platform>linux/arm64</platform>
+							</platforms>
+						</buildx>
+						</build>
+						</image>
+						<image>
+						<name>${docker.push.registry.username}/%a-proxy:${bundled.docker.tag}</name>
+						<build>
+							<dockerFile>
+							${project.build.directory}/bundled-docker-build-tmp/bundled-docker/proxy/Dockerfile</dockerFile>
+							<contextDir>
+							${project.build.directory}/bundled-docker-build-tmp/</contextDir>
+						<buildx>
+							<platforms>
+							<platform>linux/amd64</platform>
+							<platform>linux/arm64</platform>
+							</platforms>
+						</buildx>
+						</build>
+						</image>
+						<image>
+						<name>${docker.push.registry.username}/%a-postgresql:${bundled.docker.tag}</name>
+						<build>
+							<dockerFile>
+							${project.build.directory}/bundled-docker-build-tmp/bundled-docker/postgresql/Dockerfile</dockerFile>
+							<contextDir>
+							${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
+						<buildx>
+							<platforms>
+							<platform>linux/amd64</platform>
+							<platform>linux/arm64</platform>
+							</platforms>
+						</buildx>
+						</build>
+						</image>
+						<image>
+						<name>${docker.push.registry.username}/%a-mysql:${bundled.docker.tag}</name>
+						<build>
+							<dockerFile>
+							${project.build.directory}/bundled-docker-build-tmp/bundled-docker/mysql/Dockerfile</dockerFile>
+							<contextDir>
+							${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
+						<buildx>
+							<platforms>
+							<platform>linux/amd64</platform>
+							<platform>linux/arm64</platform>
+							</platforms>
+						</buildx>
+						</build>
+						</image>
+						<image>
+						<name>${docker.push.registry.username}/%a-openfn-web:${bundled.docker.tag}</name>
+						<build>
+							<dockerFile>
+							${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openfn-web/Dockerfile</dockerFile>
+							<contextDir>
+							${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
+						<buildx>
+							<platforms>
+							<platform>linux/amd64</platform>
+							</platforms>
+						</buildx>
+						</build>
+						</image>
+						<image>
+						<name>${docker.push.registry.username}/%a-openfn-worker:${bundled.docker.tag}</name>
+						<build>
+							<dockerFile>
+							${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openfn-worker/Dockerfile</dockerFile>
+							<contextDir>
+							${project.build.directory}/bundled-docker-build-tmp/distro</contextDir>
+						<buildx>
+							<platforms>
+							<platform>linux/amd64</platform>
+							</platforms>
+						</buildx>
+						</build>
+						</image>
+					</images>
+					</configuration>
+					<executions>
+					<execution>
+						<id>Build Bundled Docker images</id>
+						<goals>
+						<goal>build</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+					<execution>
+						<id>Push Bundled Docker images</id>
+						<goals>
+						<goal>push</goal>
+						</goals>
+						<phase>deploy</phase>
+					</execution>
+					</executions>
+				</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+				<groupId>com.ozonehis</groupId>
+				<artifactId>bundled-docker</artifactId>
+				<type>zip</type>
+				<version>${ozoneBundledDocker}</version>
+				</dependency>
+				<dependency>
+				<groupId>org.codehaus.groovy</groupId>
+				<artifactId>groovy-templates</artifactId>
+				<version>${groovyTemplatesVersion}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 
 	<repositories>
 		<repository>
