@@ -1007,4 +1007,90 @@
         </sql>
     </changeSet>
 
+    <changeSet id="delete_retired_names_for_legal_status_msfocg" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept_name WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa') and voided = 1;
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete retired names for Legal Status concept
+        </comment>
+
+        <sql>
+            DELETE FROM concept_name WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa') and voided = 1;
+        </sql>
+    </changeSet>
+
+    <changeSet id="update-legal-status-msfocg-en-concept-name" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept_name WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa') AND locale = 'en' AND name = 'Legal status' AND uuid = 'cf39131c-4fe2-4208-908e-00a806909bd9';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Update Legal Status concept name to add MSF-OCG suffix (locale: en)
+        </comment>
+        <sql>
+            UPDATE concept_name SET name = 'Legal status (MSFOCG)', uuid = '9d17c23f-91e9-4c07-84cd-e796769dde1b' WHERE concept_id = (     SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa' ) AND locale = 'en';
+        </sql>
+    </changeSet>
+
+    <changeSet id="update-legal-status-msfocg-fr-concept-name" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept_name WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa') AND locale = 'fr' AND name = 'Statut légal' OR uuid = '70fe6b97-4456-49cf-bd30-a29da266b493';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Update Legal Status concept name to add MSF-OCG suffix (locale: fr)
+        </comment>
+        <sql>
+            UPDATE concept_name SET name = 'Statut légal (MSFOCG)', uuid = 'be2283d9-1eb5-40ab-90a6-13e4721d1ad3' WHERE concept_id = (     SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa' ) AND locale = 'fr';
+        </sql>
+    </changeSet>
+
+    <changeSet id="update-legal-status-msfocg-ar-concept-name" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM concept_name WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa') AND locale = 'ar' AND (name = 'الوضع القانوني' OR uuid = 'd713fdc7-4749-4442-abdc-cd1879d8fd22');
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Update Legal Status concept name to add MSF-OCG suffix (locale: ar)
+        </comment>
+        <sql>
+            UPDATE concept_name SET name = 'الوضع القانوني (MSFOCG)', uuid = '02a90fae-5e5c-453d-9c52-20bf0f60a05c' WHERE concept_id = (     SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa' ) AND locale = 'ar';
+        </sql>
+    </changeSet>
+
+    <changeSet id="delete_msf_same_as_mapping_for_legal-status_msfocg" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select case when count(*) > 0 then 1 else 0 end from concept_reference_map where concept_id = (SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa');
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete MSF same as mapping for Legal Status concept
+        </comment>
+
+        <sql>
+            DELETE FROM concept_reference_map WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa');
+        </sql>
+    </changeSet>
+
+    <changeSet id="delete_msf_answers_to_re_add_answers_for_legal-status_msfocg" author="vasharma05">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select case when count(*) > 0 then 1 else 0 end from concept_answer where concept_id = (SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa');
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Delete MSF answers to re-add answers
+        </comment>
+        <sql>
+            DELETE FROM concept_answer WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa');
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
