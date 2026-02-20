@@ -1007,19 +1007,6 @@
         </sql>
     </changeSet>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     <changeSet id="delete_retired_names_for_legal_status_msfocg" author="vasharma05">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
@@ -1059,7 +1046,7 @@
             Update Legal Status concept name to add MSF-OCG suffix (locale: fr)
         </comment>
         <sql>
- UPDATE concept_name SET name = 'Statut légal (MSFOCG)', uuid = 'be2283d9-1eb5-40ab-90a6-13e4721d1ad3' WHERE concept_id = (     SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa' ) AND locale = 'fr';
+            UPDATE concept_name SET name = 'Statut légal (MSFOCG)', uuid = 'be2283d9-1eb5-40ab-90a6-13e4721d1ad3' WHERE concept_id = (     SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa' ) AND locale = 'fr';
         </sql>
     </changeSet>
 
