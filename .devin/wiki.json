@@ -93,7 +93,22 @@
     },
     {
       "title": "How To Guides",
-      "purpose": "Practical step-by-step guides: how to add a new clinical form (create JSON, place in ampathforms/, add translations, build), how to override a distro config at site level (place override file, add exclude in pom.xml), how to add a new OpenFn workflow (create .yaml, Groovy merges automatically, update projectState.json for credentials), how to run E2E tests locally (configure .env, yarn install, yarn test:e2e), how to enable HTTPS (TRAEFIK=true), how to build bundled Docker images (-Pbundled-docker, -Pproduction for latest tag)."
+      "purpose": "Practical step-by-step guides: how to add a new clinical form (create JSON, place in ampathforms/, add translations, build), how to override a distro config at site level (place override file, add exclude in pom.xml), how to add a new OpenFn workflow (create .yaml, Groovy merges automatically, update projectState.json for credentials), how to run E2E tests locally (configure .env, yarn install, yarn test:e2e), how to enable HTTPS (TRAEFIK=true), how to build bundled Docker images (-Pbundled-docker, -Pproduction for latest tag), how to set up and manage backups (Restic automated backups, manual database dumps, restore procedures, offsite transfer)."
+    },
+    {
+      "title": "Backup and Recovery",
+      "purpose": "Document the backup and recovery strategy for LIME EMR. Covers two approaches: 1) Automated Restic backups via mekomsolutions/restic-compose-backup Docker image (configured in run/docker/concatenated.env with BACKUP_PATH, RESTIC_PASSWORD, retention policies, and CRON_SCHEDULE), which runs alongside other services via docker-compose-backup.yml inherited from Ozone. 2) Manual database backups using mysqldump for OpenMRS (MariaDB) and pg_dump for OpenFn (PostgreSQL). Includes restore procedures for both Restic snapshots (restic snapshots to list, restic restore to recover) and manual SQL dumps (gunzip piped to mysql/psql). Also covers offsite backup transfer using GPG encryption and rsync/scp. Key reference: docs/restic_backup.md.",
+      "parent": "How To Guides"
+    },
+    {
+      "title": "Restic Automated Backups",
+      "purpose": "Document the Restic-based automated backup system: uses mekomsolutions/restic-compose-backup Docker image, configuration via environment variables in run/docker/concatenated.env (BACKUP_PATH for local storage directory, RESTIC_PASSWORD for encryption, RESTIC_KEEP_DAILY/WEEKLY/MONTHLY/YEARLY for retention policies, CRON_SCHEDULE for scheduling e.g. '0 0 * * *' for daily at midnight, LOG_LEVEL). Setup requires creating ~/backups/restic_data with chmod 700. Backups are encrypted and deduplicated by Restic. The backup container is defined in docker-compose-backup.yml which is inherited from the Ozone HIS parent platform. Backs up Docker volumes including MySQL/MariaDB data (OpenMRS) and PostgreSQL data (OpenFn). Full reference at docs/restic_backup.md.",
+      "parent": "Backup and Recovery"
+    },
+    {
+      "title": "Manual Database Backup and Restore",
+      "purpose": "Document manual backup and restore procedures for both databases. MySQL/MariaDB (OpenMRS): backup with 'docker exec openmrs-db mysqldump' using --skip-lock-tables --single-transaction --skip-triggers flags, pipe to gzip; restore by gunzipping into 'docker exec -i openmrs-db mysql'. PostgreSQL (OpenFn): backup with 'docker exec openfn-postgresql pg_dump -U hello lightning_prod', pipe to gzip; restore by gunzipping into 'docker exec -i openfn-postgresql psql'. Also covers offsite transfer: GPG encryption (gpg --encrypt --recipient), secure copy with scp, and ongoing replication with rsync -a --delete. Legacy backup script in docs/README.md shows historical approach using mysqldump + GPG + rsync with cron scheduling.",
+      "parent": "Backup and Recovery"
     }
   ]
 }

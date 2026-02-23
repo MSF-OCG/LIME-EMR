@@ -850,6 +850,109 @@ export TRAEFIK="true" && ./start-demo.sh
 ./scripts/mvnw clean package -Pbundled-docker -Pproduction
 ```
 
+### How to set up automated backups with Restic
+
+LIME EMR uses [Restic](https://restic.readthedocs.io/) via the [`mekomsolutions/restic-compose-backup`](https://github.com/mekomsolutions/restic-compose-backup) Docker image for automated, encrypted, and deduplicated backups of Docker volumes (MySQL/MariaDB for OpenMRS and PostgreSQL for OpenFn).
+
+**Step 1. Create a backup directory:**
+
+```bash
+sudo mkdir -p ~/backups/restic_data
+sudo chmod 700 ~/backups/restic_data
+sudo chown $USER:$USER ~/backups/restic_data
+```
+
+**Step 2. Configure backup environment variables** in `run/docker/concatenated.env`:
+
+```bash
+BACKUP_PATH=~/backups/restic_data
+RESTIC_PASSWORD=your-strong-password-here
+RESTIC_KEEP_DAILY=7
+RESTIC_KEEP_WEEKLY=4
+RESTIC_KEEP_MONTHLY=6
+RESTIC_KEEP_YEARLY=2
+LOG_LEVEL=INFO
+CRON_SCHEDULE=0 0 * * *
+```
+
+**Step 3. Start LIME** with `./start.sh` or `./start-with-sso.sh`. The backup container (`docker-compose-backup.yml`, inherited from Ozone) runs automatically alongside the other services.
+
+See [`docs/restic_backup.md`](docs/restic_backup.md) for the full Restic backup reference.
+
+### How to perform a manual database backup
+
+For ad-hoc backups outside of the Restic automation, use `mysqldump` for the OpenMRS database and `pg_dump` for the OpenFn database:
+
+**MySQL/MariaDB (OpenMRS):**
+```bash
+docker exec openmrs-db /usr/bin/mysqldump \
+  --max_allowed_packet=512M \
+  -u openmrs --password='<password>' \
+  openmrs --skip-lock-tables --single-transaction --skip-triggers \
+  | gzip > openmrs_backup_$(date +%Y%m%d).sql.gz
+```
+
+**PostgreSQL (OpenFn):**
+```bash
+docker exec openfn-postgresql pg_dump \
+  -U hello lightning_prod \
+  | gzip > openfn_backup_$(date +%Y%m%d).sql.gz
+```
+
+### How to restore from a Restic backup
+
+**Step 1. List available snapshots:**
+```bash
+docker exec backup restic snapshots
+```
+
+**Step 2. Restore a snapshot** (replace `<snapshot-id>` with the target snapshot):
+```bash
+docker exec backup restic restore <snapshot-id> --target /
+```
+
+**Step 3. Restart services** to pick up the restored data:
+```bash
+docker compose down && docker compose up -d
+```
+
+For restoring from a manual SQL dump instead:
+
+**MySQL/MariaDB (OpenMRS):**
+```bash
+gunzip < openmrs_backup_20250101.sql.gz | docker exec -i openmrs-db mysql -u openmrs --password='<password>' openmrs
+```
+
+**PostgreSQL (OpenFn):**
+```bash
+gunzip < openfn_backup_20250101.sql.gz | docker exec -i openfn-postgresql psql -U hello lightning_prod
+```
+
+### How to encrypt and transfer backups offsite
+
+For additional security and offsite redundancy beyond Restic's built-in encryption:
+
+**Step 1. Install GPG and generate a key pair** (one-time setup on the backup server):
+```bash
+sudo apt-get install gnupg
+gpg --gen-key
+```
+
+**Step 2. Encrypt a backup file:**
+```bash
+gpg --encrypt --recipient "Your Name" openmrs_backup_20250101.sql.gz
+```
+
+**Step 3. Transfer to an offsite server:**
+```bash
+scp -i /path/to/backup_key openmrs_backup_20250101.sql.gz.gpg backup@remote-server:/backups/
+```
+
+For ongoing file-level replication, use `rsync`:
+```bash
+rsync -a --delete ~/backups/restic_data/ backup@remote-server:/backups/restic_data/
+```
+
 ---
 
 ## 7. Release Notes
