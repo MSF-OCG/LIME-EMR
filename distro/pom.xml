@@ -876,7 +876,7 @@
               <pushRegistry>${docker.push.registry}</pushRegistry>
               <images>
                 <image>
-                  <name>${docker.push.registry.username}/%a-openmrs-backend</name>
+                  <name>${docker.push.registry.username}/%a-openmrs-backend:${bundled.docker.tag}</name>
                   <build>
                     <dockerFile>
                       ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openmrs/Dockerfile</dockerFile>
@@ -885,7 +885,7 @@
                   </build>
                 </image>
                 <image>
-                  <name>${docker.push.registry.username}/%a-openmrs-frontend</name>
+                  <name>${docker.push.registry.username}/%a-openmrs-frontend:${bundled.docker.tag}</name>
                   <build>
                     <dockerFile>
                       ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/frontend/Dockerfile</dockerFile>
@@ -894,7 +894,7 @@
                   </build>
                 </image>
                 <image>
-                  <name>${docker.push.registry.username}/%a-proxy</name>
+                  <name>${docker.push.registry.username}/%a-proxy:${bundled.docker.tag}</name>
                   <build>
                     <dockerFile>
                       ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/proxy/Dockerfile</dockerFile>
@@ -903,7 +903,7 @@
                   </build>
                 </image>
                 <image>
-                  <name>${docker.push.registry.username}/%a-postgresql</name>
+                  <name>${docker.push.registry.username}/%a-postgresql:${bundled.docker.tag}</name>
                   <build>
                     <dockerFile>
                       ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/postgresql/Dockerfile</dockerFile>
@@ -912,7 +912,7 @@
                   </build>
                 </image>
                 <image>
-                  <name>${docker.push.registry.username}/%a-mysql</name>
+                  <name>${docker.push.registry.username}/%a-mysql:${bundled.docker.tag}</name>
                   <build>
                     <dockerFile>
                       ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/mysql/Dockerfile</dockerFile>
@@ -921,7 +921,7 @@
                   </build>
                 </image>
                 <image>
-                  <name>${docker.push.registry.username}/%a-openfn-web</name>
+                  <name>${docker.push.registry.username}/%a-openfn-web:${bundled.docker.tag}</name>
                   <build>
                     <dockerFile>
                       ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openfn-web/Dockerfile</dockerFile>
@@ -930,7 +930,7 @@
                   </build>
                 </image>
                 <image>
-                  <name>${docker.push.registry.username}/%a-openfn-worker</name>
+                  <name>${docker.push.registry.username}/%a-openfn-worker:${bundled.docker.tag}</name>
                   <build>
                     <dockerFile>
                       ${project.build.directory}/bundled-docker-build-tmp/bundled-docker/openfn-worker/Dockerfile</dockerFile>
