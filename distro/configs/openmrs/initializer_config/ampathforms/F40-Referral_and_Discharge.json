@@ -51,6 +51,26 @@
               "default": "Last name from Registration form"
             },
             {
+              "id": "dateOfBirthIsKnown",
+              "label": "Date of Birth is known?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "113e8817-7b95-489f-99f1-7b234bca59e2",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
               "id": "dateOfBirth",
               "label": "Date of birth",
               "type": "obs",
@@ -58,6 +78,9 @@
               "questionOptions": {
                 "rendering": "date",
                 "concept": "c020e465-d495-4f6b-97fa-6d4c0009fcd2"
+              },
+              "hide": {
+                "hideWhenExpression": "(dateOfBirthIsKnown !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
               },
               "validators": [
                 {
@@ -69,8 +92,65 @@
               "default": "Date of Birth from Registration form"
             },
             {
-              "id": "ageInDays",
-              "label": "Age in days",
+              "id": "ageInDaysCalculated",
+              "label": "Age in days - calculated",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "551b1e48-a393-4551-b31c-846247dec4fe",
+                "disallowDecimals": true,
+                "min": 0,
+                "step": 1,
+                "calculate": {
+                  "calculateExpression": "dayjs().diff(dayjs(dateOfBirth), 'day')"
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "(dateOfBirthIsKnown !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ageInMonthsCalculated",
+              "label": "Age in months - calculated",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "1efa02a1-d83b-4525-b113-b495beb8b8fd",
+                "disallowDecimals": true,
+                "min": 0,
+                "step": 1,
+                "calculate": {
+                  "calculateExpression": "(Current date - date of birth)/30.4375"
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "(dateOfBirthIsKnown !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ageInYearsCalculated",
+              "label": "Age in years - calculated",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "b9bcbd77-a942-4d7d-8523-7fcd0c6801f4",
+                "disallowDecimals": true,
+                "min": 0,
+                "step": 1,
+                "calculate": {
+                  "calculateExpression": "(Current date - date of birth)/365.25"
+                }
+              },
+              "hide": {
+                "hideWhenExpression": "(dateOfBirthIsKnown !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+              }
+            },
+            {
+              "id": "ageInDaysEstimated",
+              "label": "Age in days - estimated",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -78,15 +158,15 @@
                 "concept": "551b1e48-a393-4551-b31c-846247dec4fe",
                 "min": 0.0,
                 "disallowDecimals": true,
-                "step": 1,
-                "calculate": {
-                  "calculateExpression": "Current date - date of birth"
-                }
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(dateOfBirthIsKnown !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
             },
             {
-              "id": "ageInMonths",
-              "label": "Age in months",
+              "id": "ageInMonthsEstimated",
+              "label": "Age in months - estimated",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -94,15 +174,15 @@
                 "concept": "1efa02a1-d83b-4525-b113-b495beb8b8fd",
                 "min": 0.0,
                 "disallowDecimals": true,
-                "step": 1,
-                "calculate": {
-                  "calculateExpression": "(Current date - date of birth)/30.4375"
-                }
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(dateOfBirthIsKnown !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
             },
             {
-              "id": "ageInYears",
-              "label": "Age in years",
+              "id": "ageInYearsEstimated",
+              "label": "Age in years - estimated",
               "type": "obs",
               "required": false,
               "questionOptions": {
@@ -110,10 +190,10 @@
                 "concept": "b9bcbd77-a942-4d7d-8523-7fcd0c6801f4",
                 "min": 0.0,
                 "disallowDecimals": true,
-                "step": 1,
-                "calculate": {
-                  "calculateExpression": "(Current date - date of birth)/365.25"
-                }
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "(dateOfBirthIsKnown !== 'a5c5563e-df0e-4742-a335-b24fb63664ee')"
               }
             },
             {
