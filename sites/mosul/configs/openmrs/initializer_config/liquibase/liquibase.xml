@@ -1093,4 +1093,21 @@
         </sql>
     </changeSet>
 
+    <changeSet id="msf-patient-encounter-report-serialized-objects" author="jnsereko">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) 
+                FROM serialized_object 
+                WHERE uuid = '35e338f2-6011-4f50-b2dc-f06a80e1a99c';
+            </sqlCheck>
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) 
+                FROM serialized_object 
+                WHERE uuid = 'e3019e58-017b-4f4c-93b9-636cc3a30b7b';
+            </sqlCheck>
+        </preConditions>
+        <sql>SET foreign_key_checks = 0;</sql>
+        <sqlFile path="sql/serialized_object.sql" relativeToChangelogFile="true" stripComments="false"/>
+        <sql>SET foreign_key_checks = 1;</sql>
+    </changeSet>
 </databaseChangeLog>
