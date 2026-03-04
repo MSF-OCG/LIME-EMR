@@ -45,4 +45,22 @@
         </sql>
     </changeSet>
 
+    <!-- Remove "Matsapha: " prefix from role names -->
+    <changeSet id="remove_matsapha_prefix_from_roles-20260304" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM role WHERE role LIKE 'Matsapha: %';
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            SET FOREIGN_KEY_CHECKS = 0;
+            UPDATE role_privilege SET role = SUBSTRING(role, 11) WHERE role LIKE 'Matsapha: %';
+            UPDATE role_role SET parent_role = SUBSTRING(parent_role, 11) WHERE parent_role LIKE 'Matsapha: %';
+            UPDATE role_role SET child_role = SUBSTRING(child_role, 11) WHERE child_role LIKE 'Matsapha: %';
+            UPDATE user_role SET role = SUBSTRING(role, 11) WHERE role LIKE 'Matsapha: %';
+            UPDATE role SET role = SUBSTRING(role, 11) WHERE role LIKE 'Matsapha: %';
+            SET FOREIGN_KEY_CHECKS = 1;
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
