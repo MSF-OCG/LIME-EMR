@@ -10,6 +10,17 @@ All notable changes to the OpenFn Mosul configuration are documented here.
 
 ---
 
+## [v1.5.4] - 2026-02-24
+
+**Type:** Enhancement | **PR:** [#364](https://github.com/MSF-OCG/LIME-EMR/pull/364)
+
+- Add custom mapping for radio button questions
+
+**Metadata:** LIME EMR - Iraq Metadata - Release 1 - v2025-09-25.xlsx
+**OMRS Forms:** v2-2025
+
+---
+
 ## [v1.5.3] - 2026-02-24
 
 **Type:** Enhancement | **PR:** [#363](https://github.com/MSF-OCG/LIME-EMR/pull/363)
