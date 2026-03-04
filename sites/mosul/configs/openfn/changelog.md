@@ -12,7 +12,7 @@ All notable changes to the OpenFn Mosul configuration are documented here.
 
 ## [v1.5.4] - 2026-02-24
 
-**Type:** Enhancement | **PR:** [#364](https://github.com/MSF-OCG/LIME-EMR/pull/364)
+**Type:** Enhancement | **PR:** [#371](https://github.com/MSF-OCG/LIME-EMR/pull/371)
 
 - Add custom mapping for radio button questions
 
