@@ -45,4 +45,22 @@
         </sql>
     </changeSet>
 
+    <!-- Remove "Bunia: " prefix from role names -->
+    <changeSet id="remove_bunia_prefix_from_roles-20260304" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM role WHERE role LIKE 'Bunia: %';
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            SET FOREIGN_KEY_CHECKS = 0;
+            UPDATE role_privilege SET role = SUBSTRING(role, 8) WHERE role LIKE 'Bunia: %';
+            UPDATE role_role SET parent_role = SUBSTRING(parent_role, 8) WHERE parent_role LIKE 'Bunia: %';
+            UPDATE role_role SET child_role = SUBSTRING(child_role, 8) WHERE child_role LIKE 'Bunia: %';
+            UPDATE user_role SET role = SUBSTRING(role, 8) WHERE role LIKE 'Bunia: %';
+            UPDATE role SET role = SUBSTRING(role, 8) WHERE role LIKE 'Bunia: %';
+            SET FOREIGN_KEY_CHECKS = 1;
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
