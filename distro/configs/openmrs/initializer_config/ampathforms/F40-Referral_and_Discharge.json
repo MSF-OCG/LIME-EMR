@@ -107,7 +107,7 @@
                 }
               },
               "hide": {
-                "hideWhenExpression": "(dateOfBirthIsKnown !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+                "hideWhenExpression": "(isEmpty(dateOfBirth) || dateOfBirthIsKnown !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
               }
             },
             {
@@ -122,11 +122,11 @@
                 "min": 0,
                 "step": 1,
                 "calculate": {
-                  "calculateExpression": "(Current date - date of birth)/30.4375"
+                  "calculateExpression": "dayjs().diff(dayjs(dateOfBirth), 'month')"
                 }
               },
               "hide": {
-                "hideWhenExpression": "(dateOfBirthIsKnown !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+                "hideWhenExpression": "(isEmpty(dateOfBirth) || dateOfBirthIsKnown !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
               }
             },
             {
@@ -141,11 +141,11 @@
                 "min": 0,
                 "step": 1,
                 "calculate": {
-                  "calculateExpression": "(Current date - date of birth)/365.25"
+                  "calculateExpression": "dayjs().diff(dayjs(dateOfBirth), 'year')"
                 }
               },
               "hide": {
-                "hideWhenExpression": "(dateOfBirthIsKnown !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
+                "hideWhenExpression": "(isEmpty(dateOfBirth) || dateOfBirthIsKnown !== '681cf0bc-5213-492a-8470-0a0b3cc324dd')"
               }
             },
             {
@@ -156,7 +156,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "551b1e48-a393-4551-b31c-846247dec4fe",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": true,
                 "step": 1
               },
@@ -172,7 +172,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "1efa02a1-d83b-4525-b113-b495beb8b8fd",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": true,
                 "step": 1
               },
@@ -188,7 +188,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "b9bcbd77-a942-4d7d-8523-7fcd0c6801f4",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": true,
                 "step": 1
               },
@@ -264,7 +264,7 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "94fb60d7-2b98-40b2-bd50-c7667768b082",
-                "min": 0.0,
+                "min": 0,
                 "disallowDecimals": true,
                 "step": 1,
                 "calculate": {
@@ -782,8 +782,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "61b31217-9d75-4a1a-9d74-8c64b48232bc",
-                "min": 0.0,
-                "max": 50.0,
+                "min": 0,
+                "max": 50,
                 "disallowDecimals": false
               },
               "default": "Temperature from Vital Signs",
@@ -797,8 +797,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "0513f82d-b1da-4137-b78d-8cff37debd5a",
-                "min": 0.0,
-                "max": 300.0,
+                "min": 0,
+                "max": 300,
                 "disallowDecimals": true,
                 "step": 1
               },
@@ -823,8 +823,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "3eca50b7-955c-4d6c-a563-4c98b85b115b",
-                "min": 0.0,
-                "max": 100.0,
+                "min": 0,
+                "max": 100,
                 "disallowDecimals": true,
                 "step": 1
               },
@@ -838,8 +838,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "e355de0a-6a46-4bce-ae59-6e66faaa25ee",
-                "min": 0.0,
-                "max": 200.0,
+                "min": 0,
+                "max": 200,
                 "disallowDecimals": false
               },
               "default": "Weight from Biometrics"
@@ -852,8 +852,8 @@
               "questionOptions": {
                 "rendering": "number",
                 "concept": "3fbf0612-8343-4fcd-bc20-7e9d3cb85d6f",
-                "min": 0.0,
-                "max": 350.0,
+                "min": 0,
+                "max": 350,
                 "disallowDecimals": true,
                 "step": 1
               },
