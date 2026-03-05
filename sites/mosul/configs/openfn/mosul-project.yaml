@@ -688,7 +688,8 @@ workflows:
             const patientMap = formMaps.patient.dataValueMap;
             const piiAttrs = ["Jt9BhFZkvP2", "mVbzW9TVo7r", "fa7uwpCKIwa"]
             const statusAttrMaps = Object.keys(patientMap).filter((d) => !piiAttrs.includes(d)).map((d) => {
-              const attrValue = findAttrValue(patientMap[d]);
+              const attrTypeUuid = patientMap[d].split("::")[0]
+              const attrValue = findAttrValue(attrTypeUuid);
               if (!findOptCode(attrValue)) {
                 console.log(`'Missing OptCode for', ${attrValue}`)
               }
