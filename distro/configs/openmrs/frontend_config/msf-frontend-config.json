@@ -1,20 +1,200 @@
 {
+  "@openmrs/esm-patient-home-app": {
+    "extensionSlots": {
+      "homepage-widgets-slot": {
+        "configure": {
+          "active-visits-widget": {
+            "Display conditions": {
+              "privileges": ["Configure Visits"]
+            }
+          }
+        }
+      },
+      "homepage-dashboard-slot": {
+        "remove": ["service-queues-dashboard-link"]
+      }
+    }
+  },
+  "@openmrs/esm-app-shell": {
+    "Enabled feature flags": ["enable-embedded-form-view", "patient-flags"]
+  },
+  "@openmrs/esm-form-engine-app": {
+    "hideUnansweredQuestionsInReadonlyForms": true
+  },
+  "@openmrs/esm-patient-label-printing-app": {
+    "showPrintIdentifierStickerButton": true
+  },
   "@openmrs/esm-patient-chart-app": {
     "logo": {
       "src": "configs/header-logo.png"
     },
     "Display conditions": {
-      "roles": ["Organizational: Nurse"]
+      "privileges": ["Patient Dashboard - View Patient Summary"]
     },
+    "notesConceptUuids": ["a3380b6e-c41e-4c7e-a85b-11c1573ae70e"],
+    "encounterEditableDuration": 1440,
     "extensionSlots": {
       "patient-chart-test-results-dashboard-slot": {
-        "add": ["patient-flags-list"],
+        "add": ["patient-flags-list", "obs-table-horizontal-widget"],
+        "order": ["patient-flags-list", "obs-table-horizontal-widget"],
         "configure": {
           "patient-flags-list": {
             "tags": ["Labs"]
+          },
+          "charts-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["Patient Dashboard - View Patient Summary"]
+            }
+          },
+          "medications-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["Manage Patient Medication"]
+            }
+          },
+          "encounters-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["Configure Visits"]
+            }
+          },
+          "allergies-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["Patient Overview - View Allergies"]
+            }
+          },
+          "laboratory-patient-chart-link": {
+            "Display conditions": {
+              "privileges": ["Manage Patient Investigation"]
+            }
+          },
+          "results-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["Patient Dashboard - View Encounters Section"]
+            }
+          },
+          "programs-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["Patient Overview - View Programs"]
+            }
+          },
+          "test-results-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["View Concepts"]
+            }
+          },
+          "immunization-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["Manage Immunization Summary"]
+            }
+          },
+          "patient-appointments-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["Manage Appointments"]
+            }
+          },
+          "visit-header-right-slot": {
+            "Display conditions": {
+              "privileges": ["Configure Visits"]
+            }
+          },
+          "patient-orders-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["Manage Patient Orders"]
+            }
+          },
+          "conditions-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["Patient Dashboard - View Conditions"]
+            }
+          },
+          "attachments-results-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["Manage Patient Orders"]
+            }
+          },
+          "patient-mental-health-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["View Mental Health"]
+            }
+          },
+          "patient-nutrition-summary-dashboard": {
+            "Display conditions": {
+              "privileges": ["Manage Nutrition"]
+            }
+          },
+          "obs-table-horizontal-widget": {
+            "title": "Follow up table demo",
+            "oldestFirst": true,
+            "editable": true,
+            "encounterTypeToCreateUuid": "d7151f82-c1f3-4152-a605-2f9ea7414a79",
+            "data": [
+              {
+                "concept": "3fbf0612-8343-4fcd-bc20-7e9d3cb85d6f"
+              },
+              {
+                "concept": "e355de0a-6a46-4bce-ae59-6e66faaa25ee"
+              },
+              {
+                "concept": "1eb3b596-367a-4347-a568-d1284beb8b5b"
+              },
+              {
+                "concept": "ea74226b-f9b8-4385-a92a-71efe991f60f"
+              }
+            ]
+          }
+        }
+      },
+      "laboratory-orders-dashboard-slot": {
+        "configure": {
+          "laboratory-orders-summary": {
+            "Display conditions": {
+              "privileges": ["Manage Patient Lab Orders"]
+            }
+          }
+        }
+      },
+      "patient-chart-immunizations-dashboard-slot": {
+        "configure": {
+          "immunization-details-widget": {
+            "Display conditions": {
+              "privileges": ["Manage Patient Immunization Orders"]
+            }
+          }
+        }
+      },
+      "action-menu-patient-chart-items-slot": {
+        "configure": {
+          "order-basket-action-menu": {
+            "Display conditions": {
+              "privileges": ["Manage Order Basket"]
+            }
+          },
+          "visit-note-nav-button": {
+            "Display conditions": {
+              "privileges": ["Manage Visit Note"]
+            }
+          },
+          "clinical-form-action-menu": {
+            "Display conditions": {
+              "privileges": ["Manage Clinical Forms"]
+            }
+          },
+          "patient-lists-action-menu": {
+            "Display conditions": {
+              "privileges": ["View Patients"]
+            }
           }
         }
       }
+    }
+  },
+  "@openmrs/esm-patient-attachments-app": {
+    "Display conditions": {
+      "privileges": ["Add Attachments"]
+    }
+  },
+  "@openmrs/esm-patient-orders-app": {
+    "Display conditions": {
+      "privileges": ["Manage Patient Orders"]
     }
   },
   "@openmrs/esm-login-app": {
@@ -41,6 +221,15 @@
     "extensionSlots": {
       "patient-chart-dashboard-slot": {
         "remove": ["offline-tools-patient-chart-actions-dashboard-link"]
+      },
+      "app-menu-slot": {
+        "configure": {
+          "dispensing-link": {
+            "Display conditions": {
+              "privileges": ["Edit Medication Dispense"]
+            }
+          }
+        }
       }
     }
   },
@@ -51,6 +240,7 @@
   },
   "@openmrs/esm-form-builder-app": {
     "showSchemaSaveWarning": false,
+    "enableFormValidation": true,
     "Display conditions": {
       "privileges": ["MSF Administrator"]
     }
@@ -119,6 +309,12 @@
       }
     ]
   },
+  "@openmrs/esm-patient-medications-app": {
+    "daysDurationUnit": {
+      "uuid": "3fcaef9b-1d65-4c8b-8f4d-620edd8d601a",
+      "display": "Days"
+    }
+  },
   "@openmrs/esm-patient-vitals-app": {
     "concepts": {
       "temperatureUuid": "61b31217-9d75-4a1a-9d74-8c64b48232bc",
@@ -134,6 +330,157 @@
       "vitalSignsConceptSetUuid": "4813598f-2a7a-4da7-b2ae-32319622bc1f"
     }
   },
+  "@openmrs/esm-patient-notes-app": {
+    "isPrimaryDiagnosisRequired": false,
+    "visitNoteConfig": {
+      "encounterNoteTextConceptUuid": "a3380b6e-c41e-4c7e-a85b-11c1573ae70e"
+    }
+  },
+  "@openmrs/esm-medications-app": {
+    "requireIndication": false
+  },
+  "@openmrs/esm-patient-search-app": {
+    "search": {
+      "searchFilterFields": {
+        "gender": {
+          "enabled": "true"
+        },
+        "dateOfBirth": {
+          "enabled": "true"
+        },
+        "age": {
+          "enabled": "true",
+          "min": "0"
+        },
+        "postcode": {
+          "enabled": "true"
+        },
+        "personAttributes": [
+          {
+            "attributeTypeUuid": "bc851ec1-9fb7-49da-acd7-1a61168002fe"
+          },
+          {
+            "attributeTypeUuid": "14d4f066-15f5-102d-96e4-000c29c2a5d7"
+          },
+          {
+            "attributeTypeUuid": "8b56eac7-5c76-4b9c-8c6f-1deab8d3fc47"
+          },
+          {
+            "attributeTypeUuid": "ec705ed9-2274-483c-bc92-1f120232161f"
+          },
+          {
+            "attributeTypeUuid": "33829173-d444-4d1d-a407-869d322c27d4"
+          },
+          {
+            "attributeTypeUuid": "b0f6124c-7645-420e-a82b-058799209e33"
+          },
+          {
+            "attributeTypeUuid": "f1512c64-4529-42c3-a795-14e30d4a157b"
+          },
+          {
+            "attributeTypeUuid": "f173f4ac-6ba2-44a4-870c-a6dab973bf3a"
+          },
+          {
+            "attributeTypeUuid": "0d84be8a-7cfe-4af9-bf9a-9ed42e3822f2"
+          },
+          {
+            "attributeTypeUuid": "63b1be4d-5bd8-4e76-902c-276c56666047"
+          },
+          {
+            "attributeTypeUuid": "7109ae0c-60b3-4362-9a5d-39a7b078e5dc"
+          },
+          {
+            "attributeTypeUuid": "e363161a-9d5c-4331-8463-238938f018ed"
+          },
+          {
+            "attributeTypeUuid": "a9b2c642-097f-43f8-b96b-4d2f50ffd9b1"
+          }
+        ]
+      }
+    }
+  },
+  "@openmrs/esm-patient-tests-app": {
+    "resultsViewerConcepts": [
+      {
+        "conceptUuid": "a781d229-0de6-44c0-86ab-2194aae85f77",
+        "defaultOpen": false
+      },
+      {
+        "conceptUuid": "c5120e94-68c6-4434-bc45-9573e4808468",
+        "defaultOpen": false
+      },
+      {
+        "conceptUuid": "fb13459b-72f4-4d53-8f5e-dff86adf82cb",
+        "defaultOpen": false
+      },
+      {
+        "conceptUuid": "079d70a2-10e2-42cf-8317-e1661d3edf24",
+        "defaultOpen": false
+      },
+      {
+        "conceptUuid": "bce831d3-80c4-4161-a2c5-5dc0fbdb7347",
+        "defaultOpen": false
+      },
+      {
+        "conceptUuid": "d933de17-e168-465e-b696-2e70fdba7478",
+        "defaultOpen": false
+      },
+      {
+        "conceptUuid": "004c466b-567e-4b90-b9f1-7fcba62f2657",
+        "defaultOpen": false
+      },
+      {
+        "conceptUuid": "8c3e0041-c224-4672-897b-0996e488d96a",
+        "defaultOpen": false
+      },
+      {
+        "conceptUuid": "39ba3592-b4ef-4e2f-968a-b5f82d5ceb59",
+        "defaultOpen": false
+      },
+      {
+        "conceptUuid": "add9cf99-9b28-44db-80bd-cc6eba22b6c8",
+        "defaultOpen": false
+      }
+    ],
+    "orders": {
+      "labOrderableConcepts": ["a781d229-0de6-44c0-86ab-2194aae85f77"]
+    },
+    "showReferenceNumberField": false
+  },
+  "@openmrs/esm-patient-immunizations-app": {
+    "immunizationConceptSet": "26d426e6-1f7a-4bf0-b80b-5ea287d754c2",
+    "sequenceDefinitions": [
+      {
+        "vaccineConceptUuid": "364a4a6d-c10f-4807-a4f5-84c91cc81124",
+        "sequences": [
+          {
+            "sequenceLabel": "Dose-1",
+            "sequenceNumber": 1
+          },
+          {
+            "sequenceLabel": "Dose-2",
+            "sequenceNumber": 2
+          },
+          {
+            "sequenceLabel": "Dose-3",
+            "sequenceNumber": 3
+          },
+          {
+            "sequenceLabel": "Dose-4",
+            "sequenceNumber": 4
+          },
+          {
+            "sequenceLabel": "Booster-1",
+            "sequenceNumber": 11
+          },
+          {
+            "sequenceLabel": "Booster-2",
+            "sequenceNumber": 12
+          }
+        ]
+      }
+    ]
+  },
   "@openmrs/esm-patient-allergies-app": {
     "concepts": {
       "drugAllergenUuid": "c997dc23-5835-4c70-b128-b5a7394786c6",
@@ -145,5 +492,15 @@
       "allergyReactionUuid": "0973e794-741b-404e-ad46-97a4e7cdec52",
       "otherConceptUuid": "790b41ce-e1e7-11e8-b02f-0242ac130002"
     }
+  },
+  "@openmrs/esm-laboratory-app": {
+    "labTableColumns": [
+      "patientId",
+      "dob",
+      "age",
+      "sex",
+      "totalOrders",
+      "action"
+    ]
   }
 }
