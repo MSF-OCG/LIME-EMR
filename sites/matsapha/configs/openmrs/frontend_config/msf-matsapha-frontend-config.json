@@ -188,11 +188,13 @@
     ],
     "fieldDefinitions": [
       {
-        "id": "sexAtBirth",
+        "id": "genderIdentity",
         "type": "person attribute",
-        "uuid": "282a4e10-9d75-4161-9cfe-7632989019d1",
-        "label": "Sex at Birth",
-        "answerConceptSetUuid": "a0b79c90-3571-4c2d-876e-7cc3e58bfa8f"
+        "uuid": "42ac2c39-30e7-42ed-8475-c610971530de",
+        "label": "Gender Identity",
+        "answerConceptSetUuid": "1e18d5f5-c539-479f-a18b-0b5aaeb01e34",
+        "displayInPatientBanner": true,
+        "orderOfDisplayInPatientBanner": 0
       },
       {
         "id": "telephoneNumber",
@@ -344,7 +346,7 @@
       {
         "id": "basicInfo",
         "name": "Basic info",
-        "fields": ["name", "gender", "sexAtBirth", "dob", "id"]
+        "fields": ["name", "gender", "genderIdentity", "dob", "id"]
       },
       {
         "id": "additionalInformation",
@@ -395,6 +397,7 @@
     }
   },
   "@openmrs/esm-form-builder-app": {
+    "showSchemaSaveWarning": false,
     "enableFormValidation": true
   },
   "@openmrs/esm-primary-navigation-app": {

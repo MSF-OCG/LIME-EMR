@@ -547,7 +547,40 @@
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
-                FROM form WHERE name like '%MSF%';
+                FROM form WHERE name IN (
+                    'MSF Nutrition - ITFC Admission',
+                    'MSF Nutrition - ITFC Discharge form',
+                    'MSF Nutrition - Feeding Form',
+                    'MSF Family Planning - Assessment',
+                    'MSF Family Planning - Follow-up',
+                    'Post Natal Care',
+                    'F14-Basic obstetric ultrasound',
+                    'F15-Surgical safety checklist',
+                    'F16-Operative report',
+                    'F17-Surgery admission form',
+                    'F18-Surgery discharge form',
+                    'F19-Pre anesthesia record',
+                    'F20-Recovery form',
+                    'F21-Anesthesia transfer form',
+                    'F22-Neonatal delivery form',
+                    'F23-Neonatal admission form',
+                    'F24-Neonatal discharge form',
+                    'F25-Pediatrics admission form',
+                    'F26-Pediatrics discharge form',
+                    'F27-Adult admission form',
+                    'F28-Adult discharge form',
+                    'MSF Mental Health - MHPSS Baseline v2',
+                    'MSF Mental Health - MHPSS Follow-up v2',
+                    'MSF Mental Health - mhGAP Baseline v2',
+                    'MSF Mental Health - mhGAP Follow-up v2',
+                    'MSF Mental Health - MHPSS Closure v2',
+                    'MSF Mental Health - mhGAP Closure v2',
+                    'MSF Mental Health - PHQ-9 v2',
+                    'MSF Nutrition - ATFC form',
+                    'F41-ER triage form',
+                    'F42-ER consultation form',
+                    'F43-ER exit form'
+                );
             </sqlCheck>
         </preConditions>
         <comment>
@@ -593,7 +626,40 @@
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
-                FROM form_resource WHERE name like '%MSF%';
+                FROM form_resource WHERE name IN (
+                    'MSF Nutrition - ITFC Admission',
+                    'MSF Nutrition - ITFC Discharge form',
+                    'MSF Nutrition - Feeding Form',
+                    'MSF Family Planning - Assessment',
+                    'MSF Family Planning - Follow-up',
+                    'Post Natal Care',
+                    'F14-Basic obstetric ultrasound',
+                    'F15-Surgical safety checklist',
+                    'F16-Operative report',
+                    'F17-Surgery admission form',
+                    'F18-Surgery discharge form',
+                    'F19-Pre anesthesia record',
+                    'F20-Recovery form',
+                    'F21-Anesthesia transfer form',
+                    'F22-Neonatal delivery form',
+                    'F23-Neonatal admission form',
+                    'F24-Neonatal discharge form',
+                    'F25-Pediatrics admission form',
+                    'F26-Pediatrics discharge form',
+                    'F27-Adult admission form',
+                    'F28-Adult discharge form',
+                    'MSF Mental Health - MHPSS Baseline v2',
+                    'MSF Mental Health - MHPSS Follow-up v2',
+                    'MSF Mental Health - mhGAP Baseline v2',
+                    'MSF Mental Health - mhGAP Follow-up v2',
+                    'MSF Mental Health - MHPSS Closure v2',
+                    'MSF Mental Health - mhGAP Closure v2',
+                    'MSF Mental Health - PHQ-9 v2',
+                    'MSF Nutrition - ATFC form',
+                    'F41-ER triage form',
+                    'F42-ER consultation form',
+                    'F43-ER exit form'
+                );
             </sqlCheck>
         </preConditions>
         <comment>
@@ -1002,7 +1068,7 @@
         <sql>
             INSERT INTO concept_numeric (concept_id, hi_normal, low_normal, allow_decimal)
             SELECT concept_id, 5, 3.8, 1
-            FROM concept 
+            FROM concept
             WHERE uuid = '665155e1-9998-4f37-a763-4b2b27842478';
         </sql>
     </changeSet>
@@ -1090,6 +1156,42 @@
         </comment>
         <sql>
             DELETE FROM concept_answer WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '9728c2ff-a489-4e97-94d0-07e02f403baa');
+        </sql>
+    </changeSet>
+
+    <changeSet id="msf-patient-encounter-report-serialized-objects" author="jnsereko">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*)
+                FROM serialized_object
+                WHERE uuid = '35e338f2-6011-4f50-b2dc-f06a80e1a99c';
+            </sqlCheck>
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*)
+                FROM serialized_object
+                WHERE uuid = 'e3019e58-017b-4f4c-93b9-636cc3a30b7b';
+            </sqlCheck>
+        </preConditions>
+        <sql>SET foreign_key_checks = 0;</sql>
+        <sqlFile path="sql/serialized_object.sql" relativeToChangelogFile="true" stripComments="false"/>
+        <sql>SET foreign_key_checks = 1;</sql>
+    </changeSet>
+
+    <!-- Remove "Mosul: " prefix from role names -->
+    <changeSet id="remove_mosul_prefix_from_roles-20260304" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM role WHERE role LIKE 'Mosul: %';
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            SET FOREIGN_KEY_CHECKS = 0;
+            UPDATE role_privilege SET role = SUBSTRING(role, 8) WHERE role LIKE 'Mosul: %';
+            UPDATE role_role SET parent_role = SUBSTRING(parent_role, 8) WHERE parent_role LIKE 'Mosul: %';
+            UPDATE role_role SET child_role = SUBSTRING(child_role, 8) WHERE child_role LIKE 'Mosul: %';
+            UPDATE user_role SET role = SUBSTRING(role, 8) WHERE role LIKE 'Mosul: %';
+            UPDATE role SET role = SUBSTRING(role, 8) WHERE role LIKE 'Mosul: %';
+            SET FOREIGN_KEY_CHECKS = 1;
         </sql>
     </changeSet>
 
