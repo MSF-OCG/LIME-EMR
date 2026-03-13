@@ -56,7 +56,7 @@
         </sql>
     </changeSet>
 
-    <!-- Schedule auto-close OPD visits -->
+    <!-- Schedule auto-close OPD Visit -->
     <changeSet id="unvoid_arabic_translations-202411271458" author="michaelbontyes">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
@@ -65,7 +65,7 @@
         </preConditions>
 
         <comment>
-            Schedule auto-close OPD visits task
+            Schedule auto-close OPD Visit task
             This task will stop all active visits that match the visit type(s) specified by the value
             of the global property 'visits.autoCloseVisitType'.
             The task will run daily at midnight.
