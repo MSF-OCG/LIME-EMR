@@ -441,22 +441,6 @@
                   </build>
                 </image>
                 <image>
-									<name>
-										${docker.push.registry.username}/%a-grafana-agent:${bundled.docker.tag}</name>
-									<build>
-										<dockerFile>
-											${project.build.directory}/bundled-docker-tmp/bundled-docker/grafana-agent/Dockerfile</dockerFile>
-										<contextDir>
-											${project.build.directory}/bundled-docker-tmp/</contextDir>
-										<buildx>
-											<platforms>
-												<platform>linux/amd64</platform>
-												<platform>linux/arm64</platform>
-											</platforms>
-										</buildx>
-									</build>
-								</image>
-                <image>
                   <name>${docker.push.registry.username}/%a-openmrs-frontend:${bundled.docker.tag}</name>
                   <build>
                     <dockerFile>
