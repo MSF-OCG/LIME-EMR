@@ -192,9 +192,7 @@
         "type": "person attribute",
         "uuid": "42ac2c39-30e7-42ed-8475-c610971530de",
         "label": "Gender Identity",
-        "answerConceptSetUuid": "1e18d5f5-c539-479f-a18b-0b5aaeb01e34",
-        "displayInPatientBanner": true,
-        "orderOfDisplayInPatientBanner": 0
+        "answerConceptSetUuid": "1e18d5f5-c539-479f-a18b-0b5aaeb01e34"
       },
       {
         "id": "telephoneNumber",
@@ -591,5 +589,18 @@
       "totalOrders",
       "action"
     ]
+  },
+  "@openmrs/esm-patient-banner-app": {
+    "extensionSlots": {
+      "patient-banner-tags-slot": {
+        "add": ["person-attribute-tag#genderIdentity"],
+        "order": ["person-attribute-tag#genderIdentity"],
+        "configure": {
+          "person-attribute-tag#genderIdentity": {
+            "attributeType": "42ac2c39-30e7-42ed-8475-c610971530de"
+          }
+        }
+      }
+    }
   }
 }
