@@ -14,6 +14,7 @@
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
     <gmavenplusPluginVersion>3.0.2</gmavenplusPluginVersion>
+    <groovy.version>4.0.30</groovy.version>
     <msf.environment>dev</msf.environment>
     <bundled.docker.tag>${msf.environment}</bundled.docker.tag>
   </properties>
@@ -68,12 +69,16 @@
                 <resource>
                   <directory>${project.build.directory}/ozone-msf-distro</directory>
                   <excludes>
+                    <exclude>distro/configs/**/ampathforms/IPD_Admission_form.json</exclude>
                     <exclude>distro/configs/**/addresshierarchy/*.*</exclude>
                     <exclude>distro/configs/**/locations/*.*</exclude>
                     <exclude>distro/configs/**/idgen/*.*</exclude>
                     <exclude>distro/configs/**/visittypes/*.*</exclude>
                     <exclude>distro/configs/**/appointmentservicedefinitions/*.*</exclude>
                     <exclude>distro/configs/**/appointmentservicetypes/*.*</exclude>
+                    <exclude>distro/configs/**/dispositions/*.*</exclude>
+                    <exclude>distro/configs/**/metadatatermmappings/*.*</exclude>
+                    <exclude>distro/configs/**/encountertypes/distro_ward_encountertypes.csv</exclude>
                     <exclude>distro/ozone-info.json</exclude>
                   </excludes>
                 </resource>
@@ -179,13 +184,36 @@
               </scripts>
             </configuration>
           </execution>
+          <execution>
+						<id>remove-importmap-entries</id>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<phase>process-resources</phase>
+						<configuration>
+							<properties>
+								<property>
+									<name>modulesToRemove</name>
+									<value>@openmrs/esm-ward-app</value>
+								</property>
+							</properties>
+							<scripts>
+								<script>file://${project.basedir}/../../scripts/remove-importmap-entries.groovy</script>
+							</scripts>
+						</configuration>
+					</execution>
         </executions>
         <dependencies>
           <dependency>
             <groupId>org.apache.groovy</groupId>
             <artifactId>groovy</artifactId>
-            <version>4.0.15</version>
+            <version>${groovy.version}</version>
             <scope>runtime</scope>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy-json</artifactId>
+            <version>${groovy.version}</version>
           </dependency>
         </dependencies>
       </plugin>
