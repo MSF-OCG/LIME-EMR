@@ -2,7 +2,7 @@ name: Build, validate configuration and deploy
 
 on:
   workflow_dispatch:
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,13 +29,13 @@ jobs:
               "username": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}",
               "password": "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
             }]
-  
+
       - name: Build and Test
         run: ./scripts/mvnw --batch-mode --update-snapshots --activate-profiles validator -Pazure clean package
 
   release:
-    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'release' }}    
-    runs-on: ubuntu-latest 
+    if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'release' }}
+    runs-on: ubuntu-latest
     needs: build
     outputs:
       directories: ${{ steps.check_dir.outputs.directories }}
@@ -69,36 +69,18 @@ jobs:
     needs: release
     if: contains(needs.release.outputs.directories, 'distro')
     runs-on: ubuntu-latest
-    permissions: 
-      contents: read
-      packages: write
     steps:
-    - uses: actions/checkout@v4
-    - name: Publish MSF distro artifacts to GitHub
-      uses: ./.github/actions/upload-maven-artifacts
-      with:
-        artifact-name: "distro"
-        artifact-path: "${{ github.workspace }}/distro"
-        maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
-        maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
+    - name: Skip legacy ZIP artifact publishing
+      run: echo "ZIP artifact publishing has been deprecated in favor of Docker Hub images."
   release-iraq:
     needs: [release, release-distro]
     if: |
       ( always() && !failure() ) &&
       contains(needs.release.outputs.directories, 'iraq')
     runs-on: ubuntu-latest
-    permissions: 
-      contents: read
-      packages: write
     steps:
-    - uses: actions/checkout@v4
-    - name: Publish MSF Mosul to artifacts GitHub
-      uses: ./.github/actions/upload-maven-artifacts
-      with:
-        artifact-name: "Iraq"
-        artifact-path: "${{ github.workspace }}/countries/iraq"
-        maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
-        maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
+    - name: Skip legacy ZIP artifact publishing
+      run: echo "ZIP artifact publishing has been deprecated in favor of Docker Hub images."
 
   release-mosul:
     needs: [release, release-iraq]
@@ -106,15 +88,6 @@ jobs:
       ( always() && !failure() ) &&
       contains(needs.release.outputs.directories, 'mosul')
     runs-on: ubuntu-latest
-    permissions: 
-      contents: read
-      packages: write
     steps:
-    - uses: actions/checkout@v4
-    - name: Publish MSF Iraq artifacts to GitHub
-      uses: ./.github/actions/upload-maven-artifacts
-      with:
-        artifact-name: "Mosul"
-        artifact-path: "${{ github.workspace }}/sites/mosul"
-        maven-server-username: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_USERNAME }}"
-        maven-server-token: "${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}"
+    - name: Skip legacy ZIP artifact publishing
+      run: echo "ZIP artifact publishing has been deprecated in favor of Docker Hub images."

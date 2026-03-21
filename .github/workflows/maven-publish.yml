@@ -18,21 +18,6 @@ on:
         required: false
         type: string
         default: '-DskipTests=true'
-      upload-artifacts:
-        description: 'Whether to upload build artifacts or not'
-        required: false
-        type: boolean
-        default: false
-      artifact-path:
-        description: 'Path to the artifact(s) to upload'
-        required: false
-        type: string
-        default: ''
-      artifact-name:
-        description: 'Name of the artifact(s) to upload'
-        required: false
-        type: string
-        default: 'artifact'
       free-disk-space:
         description: 'Whether to free disk space before running the build'
         required: false
@@ -50,6 +35,8 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Free Disk Space (Ubuntu)
         if: ${{ inputs.free-disk-space }}
@@ -107,11 +94,3 @@ jobs:
 
       - name: Publish maven artifacts
         run: 'mvn --batch-mode --no-transfer-progress clean deploy ${{ inputs.maven-args }}'
-
-      - name: Upload artifacts to GitHub
-        if: ${{ inputs.upload-artifacts }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ inputs.artifact-name }}
-          path: ${{ inputs.artifact-path }}
-          overwrite: true
