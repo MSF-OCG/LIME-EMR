@@ -418,8 +418,8 @@ The project uses **Apache Maven** as its build system, organized as a multi-modu
 
 | Profile | Description |
 |---------|-------------|
-| `local` (default) | Uses `local.msf.env`, Traefik disabled |
-| `azure` | Uses `azure.msf.env`, Traefik enabled with SSL |
+| `local` (default) | Sets `MSF_SERVER_TYPE=local`, Traefik disabled |
+| `azure` | Sets `MSF_SERVER_TYPE=azure`, Traefik enabled with SSL |
 | `production` | Sets Docker tag to `latest` |
 | `bundled-docker` | Builds Docker images with multi-platform support (see [Bundled Docker](#512-bundled-docker)) |
 
@@ -759,7 +759,7 @@ OpenFn credentials (API keys, passwords, connection strings for OpenMRS, DHIS2, 
 Actual credential values are managed through:
 - **OpenFn Lightning UI** — Credentials are created and managed in the OpenFn web interface
 - **Environment variables** — Connection details are passed via Docker environment variables (`OPENFN_ENDPOINT`, `SECRET_KEY`, `ORIGINS`, etc.)
-- **`.env` files** — Stored in `scripts/secrets/` (e.g., `local.msf.env`, `azure.msf.env`) and merged at build time
+- **`.env` merge at build time** — The Maven build merges `.env` files unpacked into `run/docker/` into `concatenated.env`; add or override variables there or via your deployment environment as needed
 
 For Docker deployments, the OpenFn environment requires:
 ```sh

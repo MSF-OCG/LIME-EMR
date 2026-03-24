@@ -410,27 +410,6 @@
 							</resources>
 						</configuration>
 					</execution>
-
-					<execution>
-						<id>Copy MSF environment variables</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>
-                ${project.build.directory}/${project.artifactId}-${project.version}/run/docker</outputDirectory>
-							<overwrite>true</overwrite>
-							<resources>
-								<resource>
-									<directory>${project.basedir}/../scripts/secrets</directory>
-									<includes>
-										<include>${envFileToInclude}</include>
-									</includes>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
 				</executions>
 			</plugin>
 			<plugin>
@@ -714,7 +693,6 @@
     <profile>
       <id>local</id>
       <properties>
-        <envFileToInclude>local.msf.env</envFileToInclude>
         <msfServerType>local</msfServerType>
       </properties>
       <activation>
@@ -724,7 +702,6 @@
     <profile>
       <id>azure</id>
       <properties>
-        <envFileToInclude>azure.msf.env</envFileToInclude>
         <msfServerType>azure</msfServerType>
       </properties>
     </profile>
