@@ -24,7 +24,6 @@
 - LIME2-1147 Enable ward and bed management
 - LIME2-1166 French translations for Bunia forms
 - LIME2-1183 Translate drugs on Bunia
-- LIME2-1150 Stock management
 
 ### MATSAPHA
 
