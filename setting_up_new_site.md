@@ -102,11 +102,12 @@ The same metadata is then imported on the site level using the above dependency 
         <directory>${project.build.directory}/ozone-msf-distro</directory>
         <excludes>
           <exclude>distro/configs/**/addresshierarchy/*.*</exclude>
-          <exclude>distro/configs/**/locations/*.*</exclude>
-          <exclude>distro/configs/**/idgen/*.*</exclude>
-          <exclude>distro/configs/**/visittypes/*.*</exclude>
-          <exclude>distro/configs/**/appointmentservicedefinitions/*.*</exclude>
-          <exclude>distro/configs/**/appointmentservicetypes/*.*</exclude>
+          <exclude>distro/configs/**/addresshierarchy/**/*.*</exclude>
+          <exclude>distro/configs/**/locations/**/*.*</exclude>
+          <exclude>distro/configs/**/idgen/**/*.*</exclude>
+          <exclude>distro/configs/**/visittypes/**/*.*</exclude>
+          <exclude>distro/configs/**/appointmentservicedefinitions/**/*.*</exclude>
+          <exclude>distro/configs/**/appointmentservicetypes/**/*.*</exclude>
           <exclude>distro/ozone-info.json</exclude>
         </excludes>
       </resource>
@@ -187,6 +188,49 @@ The Frontend file name updated in above step is also to be updated in the `pom.x
 
 This will append to the `SPA_CONFIG_URLS` env variable in the `concatenated.env` file in the build folder, which contains all the env variables for running the project, with the site level frontend configuration file. This variable defines the files loaded by used by OpenMRS frontend when the application loads on the browser.
 
+#### Add the initializer_config content-package structure
+
+Site-level `initializer_config` files must be copied into a content-package directory structure so that the Initializer can determine the correct override order across inheritance levels. This requires two changes in the site's `pom.xml`:
+
+**1. Exclude `initializer_config` from the flat copy.** In the `maven-resources-plugin` execution `Copy local resources`, add an exclude so these files are not copied without the subfolder structure:
+
+```xml
+<resources>
+  <resource>
+    <directory>${project.basedir}/configs</directory>
+    <excludes>
+      <exclude>.gitkeep</exclude>
+      <exclude>openmrs/initializer_config/**</exclude>
+    </excludes>
+  </resource>
+</resources>
+```
+
+**2. Add an antrun execution with a regexp mapper.** In the `maven-antrun-plugin`, add an execution that copies `initializer_config` files with the artifact name inserted as a subfolder between the domain folder and the file:
+
+```xml
+<execution>
+  <id>Copy local initializer_config with content-package structure</id>
+  <phase>process-resources</phase>
+  <goals>
+    <goal>run</goal>
+  </goals>
+  <configuration>
+    <target>
+      <mkdir dir="${project.build.directory}/${project.artifactId}-${project.version}/distro/configs/openmrs/initializer_config"/>
+      <copy todir="${project.build.directory}/${project.artifactId}-${project.version}/distro/configs/openmrs/initializer_config">
+        <fileset dir="${project.basedir}/configs/openmrs/initializer_config"/>
+        <mapper type="regexp"
+                from="^([^/]+)/(.+)$"
+                to="\1/${project.artifactId}/\2"/>
+      </copy>
+    </target>
+  </configuration>
+</execution>
+```
+
+This transforms a source file like `locations/matsapha_locations.csv` into `locations/ozone-msf-matsapha/matsapha_locations.csv` in the build output. This is the same pattern used at the distro level in `distro/pom.xml`.
+
 ### Update the OpenMRS metadata for the site
 
 Under the `site/matsapha/configs/openmrs/initializer_config/` folder exists the initializer folders that contains the CSV files defining the metadata under various folders.
@@ -196,3 +240,5 @@ Please refer the link mentioned in the [Pre-requisites' OpenMRS Initializer](#op
 ## Where to see the final metadata for the site
 
 To see the final metadata configs for the site, after running the command `mvn clean package`, you must go to `sites/matsapha/target/ozone-msf-matsapha-<version>/`. This will contain the final metadata that will be used to set up the OpenMRS application for the particular site (here Matsapha).
+
+Note that `initializer_config` files in the build output follow the content-package structure. For example, the site-level file `sites/matsapha/configs/openmrs/initializer_config/locations/matsapha_locations.csv` will appear as `distro/configs/openmrs/initializer_config/locations/ozone-msf-matsapha/matsapha_locations.csv` in the final build output. Each domain folder (e.g., `locations`, `idgen`, `globalproperties`) contains subfolders named after the artifact that contributed the files (e.g., `ozone-distro`, `ozone-msf-distro`, `ozone-msf-matsapha`), allowing the Initializer to determine the correct loading order.

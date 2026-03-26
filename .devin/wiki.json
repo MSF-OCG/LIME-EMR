@@ -88,7 +88,7 @@
     },
     {
       "title": "OpenFn Credentials",
-      "purpose": "Document credential management: credentials (API keys, passwords, connection strings) are NOT stored in the repository. projectState.json only contains credential references (IDs and names). Actual values managed via: OpenFn Lightning UI, Docker environment variables (OPENFN_ENDPOINT, SECRET_KEY, ORIGINS), .env files in scripts/secrets/ (local.msf.env, azure.msf.env) merged at build time. Required env vars: ERL_FLAGS='+JPperf true' (avoids ArgumentError), ORIGINS for CORS.",
+      "purpose": "Document credential management: credentials (API keys, passwords, connection strings) are NOT stored in the repository. projectState.json only contains credential references (IDs and names). Actual values managed via: OpenFn Lightning UI, Docker environment variables (OPENFN_ENDPOINT, SECRET_KEY, ORIGINS), and .env files merged at build time into run/docker/concatenated.env from unpacked Ozone/docker sources. Required env vars: ERL_FLAGS='+JPperf true' (avoids ArgumentError), ORIGINS for CORS.",
       "parent": "OpenFn Configuration"
     },
     {
