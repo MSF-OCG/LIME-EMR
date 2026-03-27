@@ -5917,37 +5917,40 @@ workflows:
             return { dataValues: mappings, eventDate };
           }
           
-          function f61(encounter, events, state) {
-            const event = events?.find((e) => e.programStage === "y8MvLYtuKE3")?.event;
+          function f61(encounter, tei, state) {
+            const { dhis2Map } = state;
+            const attributeMap = {
+              SRy50Q7NxIO: dhis2Map.attr.ageInYears, // Travel Medicine - Age in years
+              soFBcn6mxUk: dhis2Map.attr.sex, // Travel Medicine - Gender
+              HA3gBgKwZzw: dhis2Map.attr.currentStatus, // Travel Medicine - Current status
+              CeQKylwVj7u: dhis2Map.attr.nationality, // Travel Medicine - Nationality
+              vqMs7hmPtFT: dhis2Map.attr.placeOfliving, // Travel Medicine - Place of living
+            };
+            const attributeMapping = mapAttribute(tei.attributes, attributeMap);
           
             return [
+              ...attributeMapping,
               {
-                event,
-                programStage: "y8MvLYtuKE3",
-                dataValues: [
-                  {
-                    dataElement: "wqSAGFM1Oz8",
-                    value: encounter.obs.some(
-                      (o) => o.concept.uuid === "2ff0d1ad-df05-4128-b2d2-d72307a6aa3f"
-                    )
-                      ? "TRUE"
-                      : "FALSE",
-                  },
-                  {
-                    dataElement: "wiOCvUUHUEr",
-                    value: dataValueByConcept(
-                      encounter,
-                      {
-                        dataElement: "wiOCvUUHUEr",
-                        conceptUuid: "d0e31c9b-fb6b-4d8b-9c54-c8410c719f1c",
-                        questionId: "rfe-forms-howDoYouPlanToTravel",
-                      },
-                      state
-                    ),
-                  },
-                ].filter((d) => d.value),
+                dataElement: "wqSAGFM1Oz8",
+                value: encounter.obs.some(
+                  (o) => o.concept.uuid === "2ff0d1ad-df05-4128-b2d2-d72307a6aa3f"
+                )
+                  ? "TRUE"
+                  : "FALSE",
               },
-            ];
+              {
+                dataElement: "wiOCvUUHUEr",
+                value: encounter.obs.find((o) => {
+                  return (
+                    o.concept.uuid === "d0e31c9b-fb6b-4d8b-9c54-c8410c719f1c" &&
+                    o.formFieldPath === "rfe-forms-howDoYouPlanToTravel" &&
+                    o.value.uuid === "1eff97cc-bec8-4bdf-9022-dc0f2132c260"
+                  );
+                })?.value?.display
+                  ? "road"
+                  : undefined,
+              },
+            ].filter((d) => d.value);
           }
           
           function f64(encounter) {
@@ -6245,7 +6248,7 @@ workflows:
                 formMapping.push(...f09Mapping);
               }
               if (f61Uuid === encounter.form.uuid) {
-                const f61Mapping = f61(encounter, tei.events, state);
+                const f61Mapping = f61(encounter, tei, state);
                 formMapping.push(...f61Mapping);
               }
           
@@ -6630,7 +6633,7 @@ workflows:
           
             return state;
           });
-          
+         
       Get-Patients:
         name: Get Patients
         adaptor: '@openfn/language-openmrs@4.3.0'
