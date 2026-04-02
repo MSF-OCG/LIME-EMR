@@ -237,6 +237,36 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>Set ESM Default Locale to fr</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo message="Setting OMRS_ESM_DEFAULT_LOCALE to fr"/>
+								<replaceregexp
+									file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
+									match="^OMRS_ESM_DEFAULT_LOCALE=.*(\r?\n)?"
+									replace=""
+									flags="g" />
+								<echo
+									file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
+									append="true"
+									message="OMRS_ESM_DEFAULT_LOCALE=fr" />
+								<replaceregexp
+									file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env"
+									match="^OMRS_ESM_DEFAULT_LOCALE=.*(\r?\n)?"
+									replace=""
+									flags="g" />
+								<echo
+									file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env"
+									append="true"
+									message="OMRS_ESM_DEFAULT_LOCALE=fr" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
 						<id>Add MSF Bunia Script Configuration</id>
 						<phase>process-resources</phase>
 						<goals>
@@ -280,7 +310,7 @@
 							<properties>
 								<property>
 									<name>modulesToRemove</name>
-									<value>@madiro/esm-mental-health-app,@madiro/esm-nutrition-app,@openmrs/esm-task-list-app</value>
+									<value>@madiro/esm-mental-health-app,@madiro/esm-nutrition-app</value>
 								</property>
 							</properties>
 							<scripts>
