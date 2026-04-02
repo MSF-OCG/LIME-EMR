@@ -22,30 +22,100 @@
         "appointmentCheckInFailed": "Une erreur s'est produite lors de l'enregistrement du rendez-vous",
         "appointmentCheckedInWithExistingVisit": "Rendez-vous enregistré en utilisant la visite active existante",
         "appointmentTypeRequired": "Le type de rendez-vous est requis",
+        "appointmentsForDate": "Rendez-vous pour : {{date}}",
+        "appointmentsUpdateFailed": "Échec de la mise à jour des rendez-vous",
+        "appointmentsUpdateFailedMessage": "La mise à jour des rendez-vous a échoué pour {{patient}}. Raison : {{reason}}",
+        "appointmentsUpdated": "Rendez-vous mis à jour",
+        "appointmentsUpdatedMessage": "Les rendez-vous des patients sélectionnés ont été mis à jour avec succès",
+        "changeAppointmentsStatus": "Modifier le statut des rendez-vous",
+        "changeStatus": "Modifier le statut",
+        "changeStatusForSelectedAppointments": "Modifier le statut des rendez-vous suivants.",
         "checkInFailed": "L'enregistrement a échoué",
         "durationMaxErrorMessage": "La durée ne peut pas dépasser 1440 minutes (24 heures)",
+        "early": "En avance",
+        "failedToEndActiveVisit": "Échec de la clôture de la visite active pour {{patient}}",
+        "failedToUpdateVisit": "Échec de la mise à jour de la visite",
         "female": "Femme",
+        "filterAppointmentsByStatus": "Filtrer les rendez-vous par statut",
+        "invalidAppointmentStatusChange": "Impossible de passer le rendez-vous du statut {{currentStatus}} au statut {{newStatus}}",
         "invalidTime": "Heure invalide",
         "locationRequired": "L'emplacement est requis",
         "male": "Homme",
+        "markAppointmentAsCompletedMessage": "Marquer le rendez-vous comme terminé clôturera la visite active du patient",
+        "note": "Note",
+        "notes": "Notes",
         "other": "Autre",
         "providerRequired": "Le prestataire est requis",
+        "saving": "Enregistrement en cours",
+        "selectStatus": "Sélectionner le statut",
+        "service": "Service",
         "serviceRequired": "Le service est requis",
+        "todaysAppointment": "Rendez-vous d'aujourd'hui",
+        "type": "Type",
         "unknown": "Inconnu"
+      }
+    }
+  },
+  "@openmrs/esm-bed-management-app": {
+    "Translation overrides": {
+      "fr": {
+        "description": "Description",
+        "type": "Type"
       }
     }
   },
   "@openmrs/esm-form-builder-app": {
     "Translation overrides": {
       "fr": {
-        "items": " éléments"
+        "answerErrors": "Erreurs de réponse",
+        "code": "Code",
+        "description": "Description",
+        "fixSchemaAndRender": "Corrigez l'erreur dans l'éditeur de schéma et cliquez sur \"Afficher les modifications\" pour réessayer.",
+        "items": " éléments",
+        "maxLengthOfCharacters": "Longueur maximale de caractères",
+        "maxValue": "Valeur maximale saisissable",
+        "minLengthOfCharacters": "Longueur minimale de caractères",
+        "minValue": "Valeur minimale saisissable",
+        "pages": "Pages",
+        "returnToDashboard": "Retour au tableau de bord",
+        "sections": "Sections",
+        "source": "Source",
+        "version": "Version",
+        "versionPlaceholder": "ex. : 1.0"
       }
     }
   },
-  "@openmrs/esm-implementer-tools-app": {
+  "@openmrs/esm-form-engine-app": {
     "Translation overrides": {
       "fr": {
-        "objectPropertyValidationMessage": "Caractéristique {{key}} : {{error}}"
+        "closeThisPanel": "Fermer ce panneau",
+        "errorLaunchingWorkspace": "Erreur lors de l'ouverture de l'espace de travail",
+        "errorLaunchingWorkspaceSubtitle": "Une erreur inattendue s'est produite lors de l'ouverture de l'espace de travail.",
+        "errorTitle": "Une erreur s'est produite avec ce formulaire",
+        "noPatientContext": "Aucun patient sélectionné",
+        "noPatientContextSubtitle": "Ouvrez un dossier patient pour utiliser ce bouton.",
+        "notification": "Notification",
+        "or": "ou",
+        "tryAgainMessage": "Essayez d'ouvrir un autre formulaire depuis"
+      }
+    }
+  },
+  "@openmrs/esm-generic-patient-widgets-app": {
+    "Translation overrides": {
+      "fr": {
+        "addEncounter": "Ajouter une consultation",
+        "editabilityNote": "Appuyez sur une observation pour la modifier",
+        "errorSavingObservation": "Erreur lors de l'enregistrement de l'observation",
+        "noValue": "Aucune valeur",
+        "observationSaved": "Observation enregistrée avec succès"
+      }
+    }
+  },
+  "@openmrs/esm-laboratory-app": {
+    "Translation overrides": {
+      "fr": {
+        "exceptionStatus": "EXCEPTION",
+        "orderInstructions": "Instructions :"
       }
     }
   },
@@ -57,18 +127,55 @@
       }
     }
   },
+  "@openmrs/esm-patient-allergies-app": {
+    "Translation overrides": {
+      "fr": {
+        "Allergies": "Allergies",
+        "allergies": "Allergies"
+      }
+    }
+  },
+  "@openmrs/esm-patient-attachments-app": {
+    "Translation overrides": {
+      "fr": {
+        "attachmentPreview": "Aperçu de la pièce jointe",
+        "deleteAttachment": "Supprimer la pièce jointe",
+        "deleteAttachmentConfirmationText": "Êtes-vous sûr de vouloir supprimer la pièce jointe \"{{fileName}}\" ? Cette action est irréversible.",
+        "image": "Image",
+        "options": "Options",
+        "type": "Type"
+      }
+    }
+  },
+  "@openmrs/esm-patient-banner-app": {
+    "Translation overrides": {
+      "fr": {
+        "countyDistrict": "District",
+        "district": "District"
+      }
+    }
+  },
   "@openmrs/esm-patient-chart-app": {
     "Translation overrides": {
       "fr": {
+        "activeVisitExists": "Ce patient a déjà une visite active",
         "addAllergy": "Ajouter une allergie",
         "addAppointment": "Ajouter un rendez-vous",
         "addCondition": "Ajouter une condition",
         "addLabOrPrescription": "Ajouter un examen ou une ordonnance",
         "addNote": "Ajouter une note",
         "addVitals": "Ajouter des paramètres vitales",
+        "deathDateBeforeBirthDate": "La date de décès ne peut pas être antérieure à la date de naissance",
+        "endActiveVisitFirst": "Vous devez clôturer la visite en cours avant d'en commencer une nouvelle.",
         "endVisit": "Terminer la visite",
+        "errorCreatingVisitAttribute": "Erreur lors de la création de l'attribut de visite {{attributeName}}",
+        "markDeceasedSuccessfully": "Patient marqué comme décédé avec succès",
+        "markDeceasedWarning": "Marquer le patient comme décédé met à jour ses informations de décès",
         "more": "Plus",
+        "noActiveVisitMessage": "visite active",
         "notApplicable": "N/A",
+        "notes": "Notes",
+        "notes__lower": "notes",
         "orderDiscontinued": "Commande arrêtée",
         "orderPlaced": "Commande passée",
         "orderUpdated": "Commande mise à jour",
@@ -80,7 +187,29 @@
         "otherForm": "Autre formulaire",
         "pastVisit": "Visite passée",
         "updated": "Mis à jour",
-        "visit": "Visite"
+        "visit": "Visite",
+        "visitStartDateBeforeBirthdate": "La date de début ne peut pas être antérieure à la date de naissance du patient"
+      }
+    }
+  },
+  "@openmrs/esm-patient-flags-app": {
+    "Translation overrides": {
+      "fr": {
+        "alphabetically": "A - Z",
+        "closeFlagsList": "Fermer la liste des indicateurs",
+        "flagsUpdateError": "La mise à jour de certains indicateurs a échoué",
+        "flagsUpdated": "Indicateurs mis à jour",
+        "flagsUpdatedSuccessfully": "Indicateurs mis à jour avec succès",
+        "saving": "Enregistrement en cours...",
+        "updateError": "Erreur de mise à jour"
+      }
+    }
+  },
+  "@openmrs/esm-patient-immunizations-app": {
+    "Translation overrides": {
+      "fr": {
+        "doseNumber": "Dose {{number}}",
+        "note": "Note"
       }
     }
   },
@@ -89,6 +218,37 @@
       "fr": {
         "patientIdNotFound": "Identifiant du patient introuvable",
         "printInProgress": "Impression déjà en cours"
+      }
+    }
+  },
+  "@openmrs/esm-patient-medications-app": {
+    "Translation overrides": {
+      "fr": {
+        "actionsMenu": "Menu d'actions",
+        "applyCalculatedQuantity": "Appliquer la quantité calculée ({{quantity}})",
+        "dosageGreaterThanZeroErrorMessage": "La dose doit être supérieure à 0",
+        "editDrugOrderWorkspaceTitle": "Modifier l'ordonnance médicamenteuse",
+        "errorSavingDrugOrder": "Erreur lors de l'enregistrement de l'ordonnance médicamenteuse",
+        "launchOrderBasket": "Ouvrir le panier de commandes",
+        "orderDiscontinued": "Commande arrêtée",
+        "orderPlaced": "Commande passée",
+        "orderUpdated": "Commande mise à jour",
+        "orderedFor": "Commande passée pour",
+        "ordersCompleted": "Commandes complétées",
+        "ordersDiscontinued": "Commandes arrêtées",
+        "ordersPlaced": "Commandes passées",
+        "ordersUpdated": "Commandes mises à jour",
+        "printMedications": "Imprimer les médicaments",
+        "quantityAutoCalculated": "Calculé automatiquement",
+        "updated": "Mis à jour"
+      }
+    }
+  },
+  "@openmrs/esm-patient-notes-app": {
+    "Translation overrides": {
+      "fr": {
+        "image": "Image",
+        "note": "Note"
       }
     }
   },
@@ -105,27 +265,252 @@
         "RECEIVED": "Reçue",
         "ROUTINE": "De routine",
         "STAT": "Urgente",
+        "addOrderTests": "Ajouter des examens à cette commande",
         "age": "Âge",
+        "discontinued": "Arrêté",
+        "editOrderableForOrderType": "Modifier {{orderTypeDisplay}}",
+        "editTestResults": "Modifier les résultats d'examens",
+        "errorLoadingClinicians": "Erreur lors du chargement des cliniciens",
+        "errorSavingDrugOrder": "Erreur lors de l'enregistrement de la commande",
         "gender": "Sexe",
+        "instructions": "Instructions",
         "laboratoryReport": "Rapport du laboratoire",
         "name": "Nom",
+        "onDate": "le",
+        "orderDiscontinued": "Commande arrêtée",
+        "orderPlaced": "Commande passée",
+        "orderUpdated": "Commande mise à jour",
+        "orderedFor": "Commande passée pour",
+        "ordersCompleted": "Commandes complétées",
+        "ordersDiscontinued": "Commandes arrêtées",
+        "ordersPlaced": "Commandes passées",
+        "ordersUpdated": "Commandes mises à jour",
+        "referenceRange": "Plage de référence",
+        "saveTests": "Enregistrer les examens",
         "selectTestsToPrint": "Sélectionner les examens à imprimer",
-        "testDone": "Examen terminé"
+        "successSavingDrugOrder": "Commande enregistrée",
+        "testDone": "Examen terminé",
+        "tryReopeningTheForm": "Veuillez essayer de relancer le formulaire",
+        "updated": "Mis à jour"
+      }
+    }
+  },
+  "@openmrs/esm-patient-programs-app": {
+    "Translation overrides": {
+      "fr": {
+        "programEnrollmentsLower": "inscriptions aux programmes"
+      }
+    }
+  },
+  "@openmrs/esm-patient-registration-app": {
+    "Translation overrides": {
+      "fr": {
+        "deathdayBeforeBirthday": "La date et l'heure de décès ne peuvent pas être antérieures à la date de naissance",
+        "errorFetchingAddresses": "Erreur lors de la récupération des adresses",
+        "errorFetchingResults": "Erreur lors de la récupération des résultats",
+        "inputDummyData": "Saisir des données de test",
+        "loading": "Chargement",
+        "noAddressResults": "Aucune adresse correspondante trouvée",
+        "noMatchingResults": "Aucun résultat correspondant",
+        "nonCodedCauseOfDeathRequiredWhenSelected": "La cause de décès non codée est obligatoire",
+        "searching": "Recherche en cours...",
+        "source": "Source"
+      }
+    }
+  },
+  "@openmrs/esm-patient-search-app": {
+    "Translation overrides": {
+      "fr": {
+        "noRecentlyViewedPatients": "Aucun patient consulté récemment",
+        "recentPatientsEmptyStateHint": "Les patients que vous sélectionnez apparaîtront ici pour un accès rapide"
+      }
+    }
+  },
+  "@openmrs/esm-patient-tests-app": {
+    "Translation overrides": {
+      "fr": {
+        "age": "Âge",
+        "backToOrderBasket": "Retour au panier de commandes",
+        "confirmEditResults": "Voulez-vous modifier les résultats d'examens pour le patient suivant ?",
+        "dateOrdered": "Date de prescription",
+        "discontinued": "Arrêté",
+        "editOrderableForOrderType": "Modifier {{orderTypeDisplay}}",
+        "errorSavingLabOrder": "Erreur lors de l'enregistrement de la commande de laboratoire",
+        "observationsDisplayText": "observations",
+        "orderDetails": "Détails de la commande",
+        "orderDiscontinued": "Commande arrêtée",
+        "orderNumber": "Numéro de commande",
+        "orderPlaced": "Commande passée",
+        "orderUpdated": "Commande mise à jour",
+        "ordered": "Commande passée pour",
+        "orderedFor": "Commande passée pour",
+        "ordersCompleted": "Commandes complétées",
+        "ordersDiscontinued": "Commandes arrêtées",
+        "ordersPlaced": "Commandes passées",
+        "ordersUpdated": "Commandes mises à jour",
+        "other": "Autre",
+        "panels": "panneaux",
+        "patientDetails": "Détails du patient",
+        "refreshingData": "Actualisation des données",
+        "removeFromBasket": "Retirer du panier",
+        "returnToOrderBasket": "Retour au panier de commandes",
+        "testResultsData": "données des résultats d'examens",
+        "trendlineTooltipRange": "Plage",
+        "trendlineTooltipValue": "Valeur",
+        "unknown": "Inconnu",
+        "updated": "Mis à jour"
+      }
+    }
+  },
+  "@openmrs/esm-patient-vitals-app": {
+    "Translation overrides": {
+      "fr": {
+        "notes": "Notes",
+        "spo2": "SpO2",
+        "temp": "Temp",
+        "temperatureAbbreviated": "Temp"
+      }
+    }
+  },
+  "@openmrs/esm-primary-navigation-app": {
+    "Translation overrides": {
+      "fr": {
+        "notifications": "Notifications"
+      }
+    }
+  },
+  "@openmrs/esm-task-list-app": {
+    "Translation overrides": {
+      "fr": {
+        "addTask": "Ajouter une tâche",
+        "addTaskButton": "Ajouter une tâche",
+        "assignProviderLabel": "Attribuer à un prestataire",
+        "assignProviderPlaceholder": "Rechercher des prestataires",
+        "assignProviderRoleLabel": "Attribuer à un rôle de prestataire",
+        "assignProviderRolePlaceholder": "Rechercher des rôles de prestataire",
+        "assignedTo": "Attribué à",
+        "backToTaskDetails": "Retour aux détails de la tâche",
+        "backToTaskList": "Retour à la liste des tâches",
+        "createdBy": "Créé par",
+        "customTaskName": "Tâche personnalisée",
+        "date": "Date",
+        "deleteTask": "Supprimer la tâche",
+        "deleteTaskConfirmationText": "Êtes-vous sûr de vouloir supprimer cette tâche ?",
+        "deleting": "Suppression en cours",
+        "discard": "Annuler",
+        "dueDate": "Date d'échéance",
+        "dueDateLabel": "Date d'échéance",
+        "dueDateRequired": "La date d'échéance est obligatoire lorsque Date est sélectionnée",
+        "dueLabel": "Échéance",
+        "errorDeletingTask": "Erreur lors de la suppression de la tâche",
+        "markComplete": "Marquer comme terminé",
+        "markIncomplete": "Marquer comme inachevé",
+        "name": "Nom",
+        "nextVisit": "Prochaine visite",
+        "noAssignment": "Aucune attribution",
+        "noTasksMessage": "Aucune tâche pour l'instant",
+        "overdue": "En retard",
+        "priorityHigh": "Haute",
+        "priorityLabel": "Priorité",
+        "priorityLow": "Bas",
+        "priorityMedium": "Moyenne",
+        "priorityPlaceholder": "Sélectionner la priorité (facultatif)",
+        "providerSearchHint": "Commencez à saisir pour rechercher des prestataires",
+        "rationale": "Justification",
+        "rationaleLabel": "Expliquez brièvement pourquoi cette tâche est nécessaire (facultatif)",
+        "rationalePlaceholder": "Ajouter une note ici",
+        "saveTask": "Enregistrer la tâche",
+        "scheduledInfo": "Planifiée",
+        "scheduledOnNextVisit": "Le {{date}} pour la prochaine visite",
+        "scheduledOnThisVisit": "Le {{date}} pour la même visite",
+        "scheduledTodayForNextVisit": "Aujourd'hui pour la prochaine visite",
+        "scheduledTodayForThisVisit": "Aujourd'hui pour cette visite",
+        "selectSingleAssignee": "Sélectionnez soit un prestataire, soit un rôle de prestataire, pas les deux",
+        "systemTaskEditSubtitle": "Le nom de la tâche ne peut pas être modifié.",
+        "systemTaskEditTitle": "Vous modifiez une tâche système",
+        "task": "Tâche",
+        "taskAddFailed": "Échec de l'ajout de la tâche",
+        "taskAdded": "Tâche ajoutée",
+        "taskCompleted": "Tâche marquée comme terminée",
+        "taskDeleted": "Tâche supprimée",
+        "taskIncomplete": "Tâche marquée comme inaccomplie",
+        "taskList": "Liste des tâches",
+        "taskListWorkspaceTitle": "Liste des tâches",
+        "taskLoadError": "Un problème est survenu lors du chargement de la liste des tâches.",
+        "taskNameLabel": "Nom de la tâche",
+        "taskNamePlaceholder": "Saisissez le nom de la tâche",
+        "taskNameRequired": "Le nom de la tâche est obligatoire",
+        "taskUpdateFailed": "Impossible de mettre à jour la tâche",
+        "taskUpdated": "Tâche mise à jour",
+        "tasks": "Tâches"
       }
     }
   },
   "@openmrs/esm-ward-app": {
     "Translation overrides": {
       "fr": {
+        "admissionRequestCancelledForPatient": "Demande d'admission annulée pour {{patientName}}",
+        "alsoAdmitOrCancel": "Également admettre / annuler :",
+        "alsoTransferOrCancel": "Également transférer / annuler :",
         "clinicalNoteErrorMessage": "La note clinique est requise",
         "days_one": "{{count}} jour",
         "days_other": "{{count}} jours",
+        "deleteNote": "Supprimer la note",
+        "deleteNoteConfirmationText": "Êtes-vous sûr de vouloir supprimer cette note ? Cette action est irréversible.",
+        "editNote": "Modifier la note",
+        "errorAdmittingPatient": "Échec de l'admission de {{patientName}}",
+        "errorCancellingAdmissionRequest": "Erreur lors de l'annulation de la demande d'admission pour {{patientName}}",
+        "errorCreatingTransferRequest": "Erreur lors de la création de la demande de transfert pour {{patientName}}",
+        "errorDeletingNote": "Erreur lors de la suppression de la note",
+        "errorSavingPatientNote": "Erreur lors de l'enregistrement de la note du patient",
+        "errorTransferringPatient": "Échec du transfert de {{patientName}}",
         "hours_one": "{{count}} heure",
         "hours_other": "{{count}} heures",
+        "infants": "Nourrissons",
+        "labelColon": "{{label}} :",
         "minutes_one": "{{count}} minute",
         "minutes_other": "{{count}} minutes",
+        "mothers": "Mères",
+        "note": "Note",
+        "noteDeletedSuccessfully": "Note supprimée avec succès",
+        "notes": "Notes",
+        "orderBasket": "Panier de commandes",
+        "patientAdmittedButBedNotAssigned": "{{patientName}} admis(e) avec succès mais l'attribution d'un lit a échoué",
+        "patientAdmittedToLocation": "{{patientName}} admis(e) avec succès à {{location}}",
+        "patientAdmittedWoBed": "{{patientName}} admis(e) avec succès à {{location}}",
+        "patientTransferRequestCreatedForPatient": "Demande de transfert créée pour {{patientName}}",
+        "patientTransferredSuccessfully": "Patient transféré avec succès",
+        "patientTransferredToLocation": "{{patientName}} transféré(e) avec succès vers {{location}}",
         "seconds_one": "{{count}} seconde",
-        "seconds_other": "{{count}} secondes"
+        "seconds_other": "{{count}} secondes",
+        "totalBeds": "Nombre total de lits",
+        "wardPatient": "Patient en service"
+      }
+    }
+  },
+  "core": {
+    "Translation overrides": {
+      "fr": {
+        "abnormalValue": "Valeur anormale",
+        "actionableNotification": "Notification actionnable",
+        "closeSnackbar": "Fermer la notification",
+        "countyDistrict": "District",
+        "district": "District",
+        "emptyStateText": "Aucun(e) {{displayText}} à afficher",
+        "errorLoadingLoginLocations": "Impossible de charger les emplacements de connexion. Veuillez réessayer ou contacter le support si le problème persiste.",
+        "leftNavigation": "Navigation gauche",
+        "noResultsToDisplay": "Aucun résultat à afficher",
+        "notAvailable": "Non disponible",
+        "paginationItemsCount": "{{pageItemsCount}} / {{totalItems}} éléments",
+        "paginationOfPages": "de {{count}} pages",
+        "patientAvatarAlt": "Avatar de {{patientName}}",
+        "patientPhotoAlt": "Photo de profil de {{patientName}}",
+        "patientPhotoPlaceholder": "Espace réservé pour la photo de {{patientName}}",
+        "recordNewEntry": "Enregistrer {{displayText}}",
+        "seeAll": "Voir tout",
+        "snackbarNotification": "Notification contextuelle",
+        "yearAbbreviation": "an",
+        "yearsAbbreviation": "ans"
       }
     }
   }
