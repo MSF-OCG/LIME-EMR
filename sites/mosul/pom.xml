@@ -281,6 +281,7 @@
     <profile>
       <id>bundled-docker</id>
       <properties>
+        <ozone.bundled.docker.build.directory>${project.build.directory}/bundled-docker-tmp</ozone.bundled.docker.build.directory>
         <!-- Groovy template version-->
         <groovyTemplatesVersion>3.0.22</groovyTemplatesVersion>
         <!-- Ozone Bundled version-->
@@ -307,7 +308,7 @@
                 </goals>
                 <configuration>
                   <outputDirectory>
-                    ${project.build.directory}/bundled-docker-build-tmp
+                    ${project.build.directory}/bundled-docker-tmp
                   </outputDirectory>
                   <overwrite>true</overwrite>
                   <resources>
