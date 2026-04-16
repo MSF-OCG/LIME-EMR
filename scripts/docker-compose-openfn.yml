@@ -65,9 +65,10 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
-    image: postgres:13
+    image: postgres:16
     networks:
       - ozone
+      - web
     ports:
       - "${OPENFN_POSTGRES_PORT:-5433}:5432"
     restart: ${DOCKER_RESTART_POLICY:-unless-stopped}
@@ -78,7 +79,7 @@ services:
 
   migrations:
     platform: linux/x86_64/v8
-    image: 'openfn/lightning:v2.14.14'
+    image: 'openfn/lightning:latest'
     command: ["/app/bin/lightning", "eval", "Lightning.Release.migrate"]
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
@@ -93,7 +94,7 @@ services:
 
   web:
     platform: linux/x86_64/v8
-    image: 'openfn/lightning:v2.14.14'
+    image: 'openfn/lightning:latest'
     command: ["/app/bin/server"]
     deploy:
       resources:
@@ -133,7 +134,7 @@ services:
 
   worker:
     platform: linux/x86_64/v8
-    image: 'openfn/ws-worker:v1.19.6'
+    image: 'openfn/ws-worker:latest'
     deploy:
       resources:
         limits:
