@@ -77,6 +77,9 @@
                     <exclude>distro/configs/**/visittypes/**/*.*</exclude>
                     <exclude>distro/configs/**/appointmentservicedefinitions/**/*.*</exclude>
                     <exclude>distro/configs/**/appointmentservicetypes/**/*.*</exclude>
+                    <exclude>distro/configs/**/dispositions/**/*.*</exclude>
+                    <exclude>distro/configs/**/metadatatermmappings/**/*.*</exclude>
+                    <exclude>distro/configs/**/encountertypes/**/distro_ward_encountertypes.csv</exclude>
                     <exclude>distro/ozone-info.json</exclude>
                   </excludes>
                 </resource>
@@ -278,6 +281,7 @@
     <profile>
       <id>bundled-docker</id>
       <properties>
+        <ozone.bundled.docker.build.directory>${project.build.directory}/bundled-docker-tmp</ozone.bundled.docker.build.directory>
         <!-- Groovy template version-->
         <groovyTemplatesVersion>3.0.22</groovyTemplatesVersion>
         <!-- Ozone Bundled version-->
@@ -304,7 +308,7 @@
                 </goals>
                 <configuration>
                   <outputDirectory>
-                    ${project.build.directory}/bundled-docker-build-tmp
+                    ${project.build.directory}/bundled-docker-tmp
                   </outputDirectory>
                   <overwrite>true</overwrite>
                   <resources>

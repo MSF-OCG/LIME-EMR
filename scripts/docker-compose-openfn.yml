@@ -1,3 +1,48 @@
+x-openfn-core-environment: &openfn-core-environment
+  OPENFN_HOSTNAME: ${OPENFN_HOSTNAME:-localhost:4000}
+  MIX_ENV: ${MIX_ENV:-prod}
+  NODE_ENV: ${NODE_ENV:-production}
+  EMAIL_ADMIN: ${EMAIL_ADMIN:-sample@mail.com}
+  SECRET_KEY_BASE: ${SECRET_KEY_BASE:-please_generate_a_more_secure_unique_secret_value_for_your_project}
+  URL_SCHEME: ${URL_SCHEME:-http}
+  URL_HOST: ${URL_HOST:-localhost}
+  URL_PORT: ${URL_PORT:-4000}
+  LISTEN_ADDRESS: ${LISTEN_ADDRESS:-0.0.0.0}
+  PORT: ${PORT:-4000}
+  ORIGINS: ${ORIGINS:-http://localhost:4000}
+  DISABLE_DB_SSL: ${DISABLE_DB_SSL:-true}
+  OPENFN_POSTGRES_HOST: ${OPENFN_POSTGRES_HOST:-openfn-postgresql}
+  POSTGRES_PORT: ${POSTGRES_PORT:-5432}
+  OPENFN_DB_NAME: ${OPENFN_DB_NAME:-lightning_prod}
+  OPENFN_DB_USER: ${OPENFN_DB_USER:-hello}
+  OPENFN_DB_PASSWORD: ${OPENFN_DB_PASSWORD:-password}
+  DATABASE_URL: ${DATABASE_URL:-postgresql://hello:password@openfn-postgresql:5432/lightning_prod}
+  DATABASE_QUEUE_INTERVAL: ${DATABASE_QUEUE_INTERVAL:-1000}
+  DATABASE_QUEUE_TARGET: ${DATABASE_QUEUE_TARGET:-5000}
+  DATABASE_TIMEOUT: ${DATABASE_TIMEOUT:-70000}
+  PRIMARY_ENCRYPTION_KEY: ${PRIMARY_ENCRYPTION_KEY:-0bJ9w+hn4ebQrsCaWXuA9JY49fP9kbHmywGd5K7k+/s=}
+  WORKER_RUNS_PRIVATE_KEY: ${WORKER_RUNS_PRIVATE_KEY:-LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb2dJQkFBS0NBUUVBeWJER3JEbFBWd05yWTA4czF3VkU5SktDSWhhditwT1ZXVSsyR2pSekFneEI5dW5CCjFrejdJQTh3SUIyZ1NseDhYWHlPZDA5QmhlMHBiRERxV2Q5YWV5OGZNb2tTMUVkcGFBT1k0YnRPYlIwbDFlM2wKazBQelBIc2lITWlFVWpTQm5yS2ZJZVJjd1VKK3NPaTQxVjYrTVV4V1FhSFBPTXRrWjRMNFdUOTVvV0paNG8wdQpQd0pXS0V0cmh3cHdoSldHeFl1Ym51TVhJdW1PTW5USFZ4cmlpdGRjODdyMDhuUTF3eDJjT3JkUkVBK25mWjVWCml6VHprUVFBTG1PNUI4V3IrS1ZYRW5HRUVHVTR2alRMYkQ5blAyclVXMXYvSFBTamgyZjlOaDlxd1RDQm04bGoKb1JBQ3BUTUhlS2VxYmpQOVgxM2V1bFp0a2hhK05kRndkeDdPZ1FJREFRQUJBb0lCQURrU2hkV2NUZ0F3WG9YMgpsSml2ekFodElOZm1sWnVSZ1pTSlF0MTlkQUhqV0JNM3FIc3N3MjhaL1NOSlh0OUw5b0U1eXRLbUljTjFEZUNvCm90Z1ZwUFB3cktKUE9YM0tTMkI4akJsc09GQVdER3ZSNnNIV1c1RUV3dTFrTEZWYXVFY2hBbmpEdHgrVTRtYkwKSStwMDZkcm5ZQTBvYll3RHVnQzBoZlF6U3diSVhaM3d6V25BVlRaZE4yTGFqRTA2UHRNSkxsSzZZZ3FyWmpObQpzeXpKSVgwRmg4WlFlOHZVMmF1U205UnIvTFhwMEN6TFpDYmxUT2RRcXlRdFQ3cHR5c2ZBUWZvZkkrMFNWcVZ2CkhqQUhaTU5ZZk9mSFJiMVBjVzFKdjZlSUJERFZiYXNCZVl5bWlQRStXVEpkOU1hbFNFSlI5NDFmaWFBQ1UwVEcKRlhLclQ4RUNnWUVBL0JaNEJvbkdONkVsQUd5akhldU42eXhka3JCUHJhUWh4am5ScEZxMGQzTjFISUdBS2pEVQpvQStEU0JzMG1NY2xRWm8yT1dHVTdZbzhwNkEzZVMyNTc2aVF6a1pndnNhS3hXcnFWTTBCRHdlOU5mdEYyVXQwCjhoczNZS1V2ek1yNEhiL1FTVFZkWldWZkR0YUdBY3kxTkFnVlRJcE9PK1FDTlk5V3p1cVVlT2tDZ1lFQXpOSVUKNm1HOGcxOUtqN1lJb3hmd1E1c3E1WGhWSk8zQ3MvVXpqSU5HKzNSRnZDWDRxd2VoTVdUY0NBVVFicnl5MGlJSApYdGpXR1B3clM5Z0JiZzdsS2VJdkdQYXRlZGhrZUNqMDJzVVp3SnZoUGowaHRXTnZWckRnb1doWG03M0xNUU1lCnRrOTdDejZta0J5RWw0VGcwMTVLL1JHK2hVLzl0aVhWRDBoUEtka0NnWUFqV0c4cDA0V0VaVWJQNFd1WmxWNkgKdStlKzJwUEJjQU1BVFRrVXgxY0liSnJlRFZaUUZCcXIrcURZcWwvY2tBZXNSQmdZUVpObEh2M1VMd1c0S3U0bwpLVVZzZHJlMzZCU3JDNHVocWtEY3Y2UUsvcGxUbDEzbFdHV1NXbmJ5U3Y4eEJLVUtycjNTcXIwQ1VwZmxock5kCmdVaWpPNzB1YnBEVXU2MWJRODdmaVFLQmdFQkhBYWRZaXNlVHBSdWFuZlZJOHU3VWlFN0JSNzh5R25OTlZTTVkKbzdNUUZ6NW5rRFZrVEpMcXV4Nk5NRTRBVEFJa0Nib2JSSDFNemUyY1dUNkgwQ1VueFc0SkpBSGtCZ3VybHNQOQpMUXJFSUpqZXFIQjdSeHFtb2FnbHpiQ2pqRnZTUmRZaTlWTmZFdmlRNm85K2RPd0FZSG94RW1CVjdTSTNsemlYCmtiaHBBb0dBYjBrVUVpanl0akZlUWJBRGYvRk92VlRVdmUxZW9PK3JuWmJ2V3NhVWhVSGRuMTdDUXc0Y1ZjK0UKbHQzWXhHVmMvNldIV3E3azB4YXBlVWJucEF4NjNIMTlNZTRjTmJFaXZSb2d4bzdHWERnRDIxbENGUHlCUmZKagpLN2g1VE1lQnRnZjhibGdrVzcxenkyWFdNWnBJRXVRT3ZCZjJqRVJuU0hYTDFrL2NObDQ9Ci0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg}
+  WORKER_SECRET: ${WORKER_SECRET:-dECXNlqctXJ/a+1FI4AaeLZY4Rp+Pxo23WwmJxC2xew=}
+  INIT_PROJECT_FOR_NEW_USER: ${INIT_PROJECT_FOR_NEW_USER:-false}
+  PURGE_DELETED_AFTER_DAYS: ${PURGE_DELETED_AFTER_DAYS:-7}
+  ERL_FLAGS: ${ERL_FLAGS:-+JPperf true}
+  OPENFN_COLLECTIONS_JSON_URL: ${OPENFN_COLLECTIONS_JSON_URL:-}
+  OPENFN_COLLECTION_NAME: ${OPENFN_COLLECTION_NAME:-mosul-metadata-mappings-staging}
+  OPENFN_ENDPOINT: ${OPENFN_ENDPOINT:-http://web:4000}
+  OPENFN_COLLECTIONS_GITHUB_TOKEN: ${OPENFN_COLLECTIONS_GITHUB_TOKEN:-}
+  MSF_OPENFN_FIRST_NAME: ${MSF_OPENFN_FIRST_NAME:-admin}
+  MSF_OPENFN_LAST_NAME: ${MSF_OPENFN_LAST_NAME:-user}
+  MSF_OPENFN_PASSWORD: ${MSF_OPENFN_PASSWORD:-Admin1234567}
+
+x-openfn-worker-environment: &openfn-worker-environment
+  WORKER_MAX_RUN_DURATION_SECONDS: ${WORKER_MAX_RUN_DURATION_SECONDS:-3600}
+  WORKER_MAX_RUN_MEMORY_MB: ${WORKER_MAX_RUN_MEMORY_MB:-1000}
+  WORKER_CAPACITY: ${WORKER_CAPACITY:-4}
+  WORKER_SOCKET_TIMEOUT_SECONDS: ${WORKER_SOCKET_TIMEOUT_SECONDS:-70}
+  WORKER_COLLECTIONS_URL: ${WORKER_COLLECTIONS_URL:-http://web:4000/collections}
+  WORKER_LIGHTNING_SERVICE_URL: ${WORKER_LIGHTNING_SERVICE_URL:-http://web:4000/worker}
+  MAX_DATACLIP_SIZE_MB: ${MAX_DATACLIP_SIZE_MB:-10}
+
 networks:
   web:
     external: true
@@ -7,22 +52,26 @@ services:
     command: postgres -c wal_level=logical -c max_wal_senders=10 -c max_replication_slots=10 -c max_connections=200
     environment:
       POSTGRES_DB: postgres
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      OPENFN_DB_NAME: ${OPENFN_DB_NAME:-lightning_prod}
+      OPENFN_DB_USER: ${OPENFN_DB_USER:-hello}
+      OPENFN_DB_PASSWORD: ${OPENFN_DB_PASSWORD:-password}
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
     stop_grace_period: '3s'
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
       interval: 10s
       timeout: 10s
       retries: 5
-    image: postgres:13
+    image: postgres:16
     networks:
       - ozone
+      - web
     ports:
       - "${OPENFN_POSTGRES_PORT:-5433}:5432"
-    restart: unless-stopped
+    restart: ${DOCKER_RESTART_POLICY:-unless-stopped}
     volumes:
       - openfn-postgres-data:/var/lib/postgresql/data
       - "${SQL_SCRIPTS_PATH}/postgresql/create_db.sh:/docker-entrypoint-initdb.d/create_db.sh"
@@ -30,10 +79,12 @@ services:
 
   migrations:
     platform: linux/x86_64/v8
-    image: 'openfn/lightning:v2.14.14'
+    image: 'openfn/lightning:latest'
     command: ["/app/bin/lightning", "eval", "Lightning.Release.migrate"]
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
+    environment:
+      <<: *openfn-core-environment
     depends_on:
       openfn-postgresql:
         condition: service_healthy
@@ -43,7 +94,7 @@ services:
 
   web:
     platform: linux/x86_64/v8
-    image: 'openfn/lightning:v2.14.14'
+    image: 'openfn/lightning:latest'
     command: ["/app/bin/server"]
     deploy:
       resources:
@@ -53,6 +104,7 @@ services:
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
     environment:
+      <<: *openfn-core-environment
       ADAPTORS_REGISTRY_JSON_PATH: /app/priv/adaptor_registry_cache.json
     depends_on:
       migrations:
@@ -76,12 +128,13 @@ services:
     networks:
       - ozone
       - web
+    restart: ${DOCKER_RESTART_POLICY:-unless-stopped}
     volumes:
       - $OPENFN_CONFIG_PATH/adaptor_registry_cache.json:/app/priv/adaptor_registry_cache.json
 
   worker:
     platform: linux/x86_64/v8
-    image: 'openfn/ws-worker:v1.19.6'
+    image: 'openfn/ws-worker:latest'
     deploy:
       resources:
         limits:
@@ -93,8 +146,10 @@ services:
         restart: true
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
+    environment:
+      <<: [*openfn-core-environment, *openfn-worker-environment]
     command: ['pnpm', 'start:prod', '-l', 'ws://web:${URL_PORT:-4000}/worker']
-    restart: unless-stopped
+    restart: ${DOCKER_RESTART_POLICY:-unless-stopped}
     stop_grace_period: '30s'
     expose:
       - '2222'

@@ -432,6 +432,22 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>Add MSF Translations Frontend Configuration</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo message="Adding MSF Translations frontend config"/>
+								<replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
+                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-translations-frontend-config.json" />
+								<replaceregexp file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env"
+                            match="(SPA_CONFIG_URLS=.+)" replace="\1,/openmrs/spa/configs/msf-translations-frontend-config.json" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
 						<id>Add MSF addons to ozone</id>
 						<phase>process-resources</phase>
 						<goals>

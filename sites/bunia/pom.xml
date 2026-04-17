@@ -237,6 +237,36 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>Set ESM Default Locale to fr</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo message="Setting OMRS_ESM_DEFAULT_LOCALE to fr"/>
+								<replaceregexp
+									file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
+									match="^OMRS_ESM_DEFAULT_LOCALE=.*(\r?\n)?"
+									replace=""
+									flags="g" />
+								<echo
+									file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/.env"
+									append="true"
+									message="OMRS_ESM_DEFAULT_LOCALE=fr" />
+								<replaceregexp
+									file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env"
+									match="^OMRS_ESM_DEFAULT_LOCALE=.*(\r?\n)?"
+									replace=""
+									flags="g" />
+								<echo
+									file="${project.build.directory}/${project.artifactId}-${project.version}/run/docker/concatenated.env"
+									append="true"
+									message="OMRS_ESM_DEFAULT_LOCALE=fr" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
 						<id>Add MSF Bunia Script Configuration</id>
 						<phase>process-resources</phase>
 						<goals>
@@ -348,6 +378,7 @@
 		<profile>
 			<id>bundled-docker</id>
 			<properties>
+				<ozone.bundled.docker.build.directory>${project.build.directory}/bundled-docker-tmp</ozone.bundled.docker.build.directory>
 				<!-- Groovy template version-->
 				<groovyTemplatesVersion>3.0.22</groovyTemplatesVersion>
 				<!-- Ozone Bundled version-->
@@ -374,7 +405,7 @@
 						</goals>
 						<configuration>
 						<outputDirectory>
-							${project.build.directory}/bundled-docker-build-tmp
+							${project.build.directory}/bundled-docker-tmp
 						</outputDirectory>
 						<overwrite>true</overwrite>
 						<resources>
