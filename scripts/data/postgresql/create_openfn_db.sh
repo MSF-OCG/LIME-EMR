@@ -13,6 +13,11 @@ function create_user_and_database() {
 	    GRANT ALL PRIVILEGES ON DATABASE $database TO $user;
 		GRANT $user TO $POSTGRES_USER;
 EOSQL
+	# PostgreSQL 15+ revoked CREATE on public schema from PUBLIC by default.
+	# Explicitly grant it so Ecto migrations can create schema_migrations.
+	psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$database" <<-EOSQL
+	    GRANT ALL ON SCHEMA public TO $user;
+EOSQL
 }
 
 echo "Running OpenFn Database initialization script"
