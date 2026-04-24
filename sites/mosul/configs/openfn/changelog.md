@@ -10,6 +10,19 @@ All notable changes to the OpenFn Mosul configuration are documented here.
 
 ---
 
+## [v1.5.5] - 2026-04-23
+
+**Type:** Enhancement | **PR:** [#371](https://github.com/MSF-OCG/LIME-EMR/pull/371)
+
+- Add Legacy MSF ID as a new TEI attribute mapping sourced from the OpenMRS registration form
+- Refresh metadata using the new release file and propagate it across WF1 and WF2
+- Improve resilience by logging — but not syncing — encounters with unmapped option set values
+
+**Metadata:** LIME EMR - Iraq Metadata - Release 1 - v2026-04-22.xlsx
+**OMRS Forms:** v2-2025
+
+---
+
 ## [v1.5.4] - 2026-02-24
 
 **Type:** Enhancement | **PR:** [#371](https://github.com/MSF-OCG/LIME-EMR/pull/371)
