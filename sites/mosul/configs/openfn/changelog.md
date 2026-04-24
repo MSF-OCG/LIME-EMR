@@ -12,7 +12,7 @@ All notable changes to the OpenFn Mosul configuration are documented here.
 
 ## [v1.5.5] - 2026-04-23
 
-**Type:** Enhancement | **PR:** [#371](https://github.com/MSF-OCG/LIME-EMR/pull/371)
+**Type:** Enhancement | **PR:** [#411](https://github.com/MSF-OCG/LIME-EMR/pull/411)
 
 - Add Legacy MSF ID as a new TEI attribute mapping sourced from the OpenMRS registration form
 - Refresh metadata using the new release file and propagate it across WF1 and WF2
