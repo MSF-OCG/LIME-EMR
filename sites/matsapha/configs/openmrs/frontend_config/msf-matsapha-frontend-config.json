@@ -205,6 +205,16 @@
         }
       },
       {
+        "id": "secondTelephoneNumber",
+        "type": "person attribute",
+        "uuid": "c8e29544-e9a8-4422-9e93-7bc705a75898",
+        "label": "Second Phone Number",
+        "validation": {
+          "required": false,
+          "matches": "^\\+?(\\d{1,3})?[-.\\s]?(\\(?\\d{1,4}?\\)?)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$"
+        }
+      },
+      {
         "id": "emailAddress",
         "type": "person attribute",
         "uuid": "14d4f066-15f5-102d-96e4-000c29c2a5d7",
@@ -371,7 +381,7 @@
       {
         "id": "contact",
         "name": "Contact Details",
-        "fields": ["address", "telephoneNumber", "emailAddress"]
+        "fields": ["address", "telephoneNumber", "secondTelephoneNumber", "emailAddress"]
       },
       {
         "id": "emergencyContacts",
