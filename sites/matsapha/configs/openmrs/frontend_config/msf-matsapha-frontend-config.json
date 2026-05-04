@@ -293,41 +293,11 @@
         }
       },
       {
-        "id": "maritalStatus",
+        "id": "partnershipStatus",
         "type": "person attribute",
-        "uuid": "3884dc76-c271-4bcb-8df8-81c6fb897f53",
-        "label": "Marital status",
-        "answerConceptSetUuid": "544ef960-3b65-4add-8795-96b2b084faa3"
-      },
-      {
-        "id": "currentStatus",
-        "type": "person attribute",
-        "uuid": "e0b6ed99-72c4-4847-a442-e9929eac4a0f",
-        "label": "Current Status",
-        "validation": {
-          "required": false
-        },
-        "answerConceptSetUuid": "b3767edc-78f5-4d0f-a2d8-564ae58d00cf"
-      },
-      {
-        "id": "nationality",
-        "type": "person attribute",
-        "uuid": "24d1fa23-9778-4a8e-9f7b-93f694fc25e2",
-        "label": "Nationality",
-        "validation": {
-          "required": false
-        },
-        "answerConceptSetUuid": "3dc96ee4-daea-4460-b141-6b31f7b7ae93"
-      },
-      {
-        "id": "legalStatus",
-        "type": "person attribute",
-        "uuid": "a9b2c642-097f-43f8-b96b-4d2f50ffd9b1",
-        "label": "Legal Status",
-        "validation": {
-          "required": false
-        },
-        "answerConceptSetUuid": "9728c2ff-a489-4e97-94d0-07e02f403baa"
+        "uuid": "2225132f-0a04-436d-929d-cd24e6af4cd2",
+        "label": "Partnership status",
+        "answerConceptSetUuid": "0a303b92-2bc3-4693-bbcb-a27cab95736a"
       },
       {
         "id": "occupation",
@@ -347,16 +317,6 @@
         "validation": {
           "required": false
         }
-      },
-      {
-        "id": "numberOfChildren",
-        "type": "person attribute",
-        "uuid": "e363161a-9d5c-4331-8463-238938f018ed",
-        "label": "Number of Children",
-        "validation": {
-          "required": false,
-          "matches": "^(0|[1-9][0-9]?|100)$"
-        }
       }
     ],
     "sectionDefinitions": [
@@ -369,13 +329,9 @@
         "id": "additionalInformation",
         "name": "Demographics",
         "fields": [
-          "nationality",
-          "currentStatus",
-          "legalStatus",
-          "maritalStatus",
+          "partnershipStatus",
           "occupation",
-          "occupationOther",
-          "numberOfChildren"
+          "occupationOther"
         ]
       },
       {
