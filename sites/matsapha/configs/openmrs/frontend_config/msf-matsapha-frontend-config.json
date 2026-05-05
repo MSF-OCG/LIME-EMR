@@ -190,9 +190,9 @@
       {
         "id": "genderIdentity",
         "type": "person attribute",
-        "uuid": "42ac2c39-30e7-42ed-8475-c610971530de",
-        "label": "Gender Identity",
-        "answerConceptSetUuid": "1e18d5f5-c539-479f-a18b-0b5aaeb01e34"
+        "uuid": "a3afd9ce-4123-4f04-8de4-0032d49bf8f9",
+        "label": "Gender",
+        "answerConceptSetUuid": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7"
       },
       {
         "id": "telephoneNumber",
@@ -317,6 +317,17 @@
         "validation": {
           "required": false
         }
+      },
+      {
+        "id": "dateOfFirstVisit",
+        "type": "person attribute",
+        "uuid": "7ed1588d-53ff-4d56-a583-90c709ef9753",
+        "label": "Date of first visit",
+        "validation": {
+          "required": false,
+          "type": "date"
+        },
+        "answerConceptSetUuid": "9a714fad-091e-4821-a547-7d6bc0d83a67"
       }
     ],
     "sectionDefinitions": [
@@ -331,7 +342,8 @@
         "fields": [
           "partnershipStatus",
           "occupation",
-          "occupationOther"
+          "occupationOther",
+          "dateOfFirstVisit"
         ]
       },
       {
