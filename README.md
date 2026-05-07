@@ -65,18 +65,19 @@ LIME EMR is a **generic, light, modular** Electronic Medical Record system desig
 
 | Site | Country | Clinical Forms | Description |
 |------|---------|---------------|-------------|
-| **Distro** (MSF base) | — | 14 forms | Core programs: mental health, family planning, HIV, social work, gynaecology, referral & discharge |
-| **Mosul** | Iraq | 75+ forms | Full hospital: surgery, ER, maternity, paediatrics, neonatology, ICU, infectious diseases, palliative care, nutrition, specialized programs. Arabic/English. DHIS2 sync via OpenFn. |
-| **Matsapha** | Eswatini | Inherits distro | Recently added site with custom branding, address hierarchy, ID generation, and OpenFn configuration |
+| **Distro** (MSF base) | — | 26 forms | Core programs: mental health (MHPSS/mhGAP v2), family planning, HIV, social work, gynaecology, surgery/anaesthesia, procedures/transfusion, wound dressing, radiology, referral & discharge |
+| **Mosul** | Iraq | 77 total (51 site-specific + 26 from distro) | Full hospital: obstetrics, ER, maternity, paediatrics, neonatology, ICU, infectious diseases (TB/HBV/HCV/NCDs), palliative care, nutrition, NTDs, and specialized programs. Arabic/English. DHIS2 sync via OpenFn. |
+| **Matsapha** | Eswatini | Inherits distro | Site with custom branding, address hierarchy, ID generation, and OpenFn configuration |
+| **Bunia** | DRC | Inherits distro | Site with custom branding, address hierarchy, ID generation, roles, and OpenFn configuration |
 
 ### Key Capabilities
 
-- **Clinical forms** — 75+ JSON-based forms across mental health, surgery, obstetrics, infectious diseases, and more
+- **Clinical forms** — 77+ JSON-based forms across mental health, surgery, obstetrics, infectious diseases, and more
 - **Multilingual** — Arabic and English UI and form translations
 - **Role-based access control** — Role-based forms, appointments, encounters, and data filtering
 - **Data exchange** — Real-time OpenMRS ↔ DHIS2 Tracker synchronization via OpenFn
 - **Interoperability** — FHIR R4 API, OpenConceptLab terminology, REST web services
-- **Multi-site** — Three-level configuration inheritance (Distro → Country → Site)
+- **Multi-site** — Three-level configuration inheritance (Distro → Country → Site), with active deployments in Iraq, Eswatini, and DRC
 - **Containerized** — Docker Compose orchestration with optional Traefik SSL
 
 ### Ambitions and Success Criteria
@@ -120,6 +121,7 @@ flowchart TD
         DISTRO --> COUNTRY["Country: e.g., Iraq"]
         DISTRO --> SITE_A["Site: e.g., Mosul"]
         DISTRO --> SITE_B["Site: e.g., Matsapha"]
+        DISTRO --> SITE_C["Site: e.g., Bunia"]
     end
 
     subgraph Build["Build & Deploy"]
@@ -163,8 +165,8 @@ flowchart LR
 
 | Layer | Technologies |
 |-------|-------------|
-| **Backend** | OpenMRS Core 2.7.6, Java 8, 20+ OpenMRS modules (FHIR2, Initializer, Appointments, Queue, Forms, Reporting, etc.) |
-| **Frontend** | OpenMRS 3 ESM microfrontend architecture (Core UI 8.0.1, Patient Chart 11.3.1, 40+ modules), plus custom Madiro modules (Nutrition, Mental Health) |
+| **Backend** | OpenMRS Core 2.7.7, Java 8, 20+ OpenMRS modules (FHIR2, Initializer, Appointments, Queue, Forms, Reporting, etc.) |
+| **Frontend** | OpenMRS 3 ESM microfrontend architecture (41 modules), plus custom Madiro modules (Nutrition, Mental Health) |
 | **Data exchange** | OpenFn Lightning for DHIS2 sync, FHIR R4 API, OpenConceptLab |
 | **Infrastructure** | Docker Compose, Traefik v2.6 (SSL), Keycloak (OAuth2), MySQL, PostgreSQL |
 | **Build** | Apache Maven (multi-module aggregator), GitHub Actions CI/CD, GitHub Packages |
@@ -215,6 +217,12 @@ cd sites/matsapha/target/ozone-msf-matsapha-<version>/run/docker/scripts
 ./start-demo.sh
 ```
 
+**Bunia (DRC):**
+```bash
+cd sites/bunia/target/ozone-msf-bunia-<version>/run/docker/scripts
+./start-demo.sh
+```
+
 **Iraq (country-level, without site-specific config):**
 ```bash
 cd countries/iraq/target/ozone-msf-iraq-<version>/run/docker/scripts
@@ -257,8 +265,11 @@ LIME-EMR/
 │   │   │   │   └── idgen/               # Patient ID generation
 │   │   │   └── frontend_config/         # msf-mosul-frontend-config.json
 │   │   └── configs/openfn/              # OpenFn workflows for DHIS2 sync
-│   └── matsapha/                        # Matsapha site (Eswatini)
-│       ├── configs/openmrs/             # Address hierarchy, locations, ID generation
+│   ├── matsapha/                        # Matsapha site (Eswatini)
+│   │   ├── configs/openmrs/             # Address hierarchy, locations, ID generation
+│   │   └── configs/openfn/              # OpenFn workflow configuration
+│   └── bunia/                           # Bunia site (DRC)
+│       ├── configs/openmrs/             # Address hierarchy, locations, ID generation, roles
 │       └── configs/openfn/              # OpenFn workflow configuration
 ├── environment/                         # Environment-specific branding (QA, UAT, Prod)
 ├── scripts/                             # Docker Compose files, build utilities, env files
@@ -276,7 +287,8 @@ pom.xml                          # Root aggregator / orchestrator
 ├── distro/pom.xml               # Organization-wide config (MSF)
 ├── countries/iraq/pom.xml       # Country config (inherits distro)
 ├── sites/mosul/pom.xml          # Site config (inherits distro)
-└── sites/matsapha/pom.xml       # Site config (inherits distro)
+├── sites/matsapha/pom.xml       # Site config (inherits distro)
+└── sites/bunia/pom.xml          # Site config (inherits distro)
 ```
 
 **How inheritance works at build time:**
@@ -355,7 +367,8 @@ sites/newsite/
 The pom.xml must include Maven plugins to:
 - **Unpack** the distro artifact (`maven-dependency-plugin`)
 - **Exclude** distro files being replaced (`maven-resources-plugin`) — typically `addresshierarchy`, `locations`, `idgen`, `visittypes`, `appointmentservicedefinitions`
-- **Copy** site-specific configs on top (`maven-resources-plugin`)
+- **Copy** site-specific configs on top (`maven-resources-plugin`), excluding `openmrs/initializer_config/**` from the flat copy
+- **Copy initializer_config with content-package structure** (`maven-antrun-plugin`) — uses a regexp mapper to nest files under `initializer_config/<domain>/<artifactId>/<file>` (e.g., `locations/ozone-msf-newsite/newsite_locations.csv`)
 - **Update** the `.env` file with the site frontend config URL (`maven-antrun-plugin`)
 - **Merge** OpenFn YAML files (`gmavenplus-plugin` with `merge-openfn-yaml.groovy`)
 - **Package** as ZIP (`maven-assembly-plugin`)
@@ -396,6 +409,8 @@ cd sites/newsite/target/ozone-msf-newsite-<version>/run/docker/scripts
 ./start-demo.sh
 ```
 
+> A detailed step-by-step guide for adding a new site is also available in [`setting_up_new_site.md`](setting_up_new_site.md), using Matsapha as a worked example.
+
 ### 4.3 Build System
 
 The project uses **Apache Maven** as its build system, organized as a multi-module aggregator.
@@ -404,8 +419,8 @@ The project uses **Apache Maven** as its build system, organized as a multi-modu
 
 | Profile | Description |
 |---------|-------------|
-| `local` (default) | Uses `local.msf.env`, Traefik disabled |
-| `azure` | Uses `azure.msf.env`, Traefik enabled with SSL |
+| `local` (default) | Sets `MSF_SERVER_TYPE=local`, Traefik disabled |
+| `azure` | Sets `MSF_SERVER_TYPE=azure`, Traefik enabled with SSL |
 | `production` | Sets Docker tag to `latest` |
 | `bundled-docker` | Builds Docker images with multi-platform support (see [Bundled Docker](#512-bundled-docker)) |
 
@@ -511,9 +526,11 @@ flowchart LR
 |----------|---------|---------|
 | `ci.yml` | Push to `main`, PRs, releases, manual | Main orchestrator — chains build, deploy, and test jobs |
 | `maven-publish.yml` | Called by `ci.yml` | Builds all Maven modules, publishes to GitHub Packages and Docker Hub |
-| `deploy.yml` | Called by `ci.yml` | Deploys to target environment with optional Traefik SSL |
+| `deploy.yml` | Called by `ci.yml` | Deploys to target environment (dev/UAT) with optional Traefik SSL |
 | `run-e2e-tests.yml` | Called by `ci.yml` | Runs Playwright E2E tests against deployed environment |
 | `playwright.yml` | Manual dispatch | Standalone Playwright test execution |
+| `build-all.yml` | Push to `main`, manual | Full build and deploy using GitHub-hosted runners (with disk cleanup) |
+| `build-all-vm.yml` | Manual dispatch | Full build and deploy on self-hosted runner |
 | `configuration-build-test.yml` | PR | Validates that configuration builds succeed |
 | `cleanup-artifacts.yml` | Scheduled | Removes old build artifacts |
 
@@ -544,11 +561,35 @@ This project is also tested with **BrowserStack**.
 
 OpenMRS configuration covers the backend modules, frontend microfrontends, and clinical metadata loaded by the [Initializer module](https://github.com/mekomsolutions/openmrs-module-initializer).
 
-**Backend module versions** are defined in [`distro/pom.xml`](distro/pom.xml) (OpenMRS Core 2.7.6, 20+ modules including FHIR2, Initializer, Appointments, Queue, Forms, Reporting, Stock Management, Billing, Bed Management, etc.).
+**Backend module versions** are defined in [`distro/pom.xml`](distro/pom.xml) (OpenMRS Core 2.7.7, 20+ modules including FHIR2, Initializer, Appointments, Queue, Forms, Reporting, Stock Management, Billing, Bed Management, etc.).
 
 **Frontend module versions** are defined in [`distro/configs/openmrs/frontend_assembly/spa-assemble-config.json`](distro/configs/openmrs/frontend_assembly/spa-assemble-config.json) (Core UI 8.0.1, 40+ ESM modules plus custom Madiro Nutrition and Mental Health apps).
 
-**Initializer metadata** is loaded from CSV and JSON files in the `configs/openmrs/initializer_config/` directory at each level. Supported domains include: `ampathforms`, `concepts`, `drugs`, `encountertypes`, `patientidentifiertypes`, `personattributetypes`, `roles`, `privileges`, `globalproperties`, `locations`, `addresshierarchy`, `idgen`, `visittypes`, `appointmentservicedefinitions`, `conceptsources`, `locationtags`, `messageproperties`, `liquibase`, and `ocl`.
+**Initializer metadata** is loaded from CSV and JSON files in the `configs/openmrs/initializer_config/` directory at each level. Supported domains include:
+
+| Domain | Description |
+|--------|-------------|
+| `ampathforms` | Clinical form definitions (JSON) |
+| `ampathformstranslations` | Form UI translations (Arabic/English) |
+| `concepts` / `conceptsources` | Medical concept definitions and source mappings |
+| `drugs` | Drug database |
+| `encountertypes` | Encounter type definitions |
+| `patientidentifiertypes` | Patient ID type definitions |
+| `personattributetypes` | Person attribute type definitions |
+| `roles` / `privileges` | User roles and system privileges |
+| `globalproperties` | OpenMRS global properties |
+| `jsonkeyvalues` | Key-value configuration entries |
+| `locations` / `locationtags` | Facility locations and location tags |
+| `addresshierarchy` | Geographic address hierarchy (site-level) |
+| `idgen` / `autogenerationoptions` | Patient ID generation schemes |
+| `visittypes` | Visit type definitions |
+| `appointmentservicedefinitions` / `appointmentservicetypes` | Appointment service configuration |
+| `flags` / `flagpriorities` / `flagtags` | Patient flag definitions and categories |
+| `drools` | Drools rule engine configurations |
+| `systemtasks` | Scheduled system task definitions |
+| `messageproperties` | i18n message property overrides |
+| `liquibase` | Custom database migration scripts |
+| `ocl` | OpenConceptLab reference terminology imports |
 
 Backend configuration inheritance uses the `maven-resources-plugin` `copy-resources` goal to copy files from the parent level while selectively excluding files that the current level overrides. Frontend configuration inheritance uses the `maven-antrun-plugin` to append site-specific config URLs to the `SPA_CONFIG_URLS` variable in the Docker `.env` file.
 
@@ -556,17 +597,20 @@ Backend configuration inheritance uses the `maven-resources-plugin` `copy-resour
 
 Clinical forms are JSON-based and use the [OpenMRS O3 form engine](https://openmrs.atlassian.net/wiki/spaces/projects/pages/68747273/O3+Form+Docs). They are stored in the `ampathforms/` subdirectory of the Initializer configuration at each level.
 
-**Distro-level forms** (14 forms shared across all sites):
+**Distro-level forms** (26 forms shared across all sites):
 - **Mental health** (7 forms): PHQ-9, MHPSS baseline/follow-up/closure v2, mhGAP baseline/follow-up/closure v2
 - **Family planning** (2 forms): Assessment, follow-up
 - **HIV** (2 forms): Baseline, follow-up
 - **Social work** (2 forms): Baseline, follow-up
+- **Surgery & anaesthesia** (7 forms): Surgical safety checklist, operative report, admission/discharge, pre-anaesthesia record, recovery, anaesthesia transfer
+- **Procedures & transfusion** (3 forms): Small procedure report, pre-donation, blood transfusion
 - **Gynaecology** (1 form)
 - **Referral & discharge** (1 form)
+- **Wound dressing** (1 form)
+- **Radiology request** (1 form)
 
-**Mosul site-specific forms** (75+ forms covering a full hospital program):
+**Mosul site-specific forms** (51 additional forms — 77 total when combined with distro):
 - **Obstetrics**: ANC, PNC, obstetric ultrasound, maternity triage/admission/delivery/discharge, cervical cancer
-- **Surgery & anaesthesia**: Surgical safety checklist, operative report, admission/discharge, pre-anaesthesia record, recovery, anaesthesia transfer
 - **Neonatology**: Delivery, admission, discharge
 - **Paediatrics**: Admission, discharge
 - **Adult medicine**: Admission, discharge
@@ -574,8 +618,8 @@ Clinical forms are JSON-based and use the [OpenMRS O3 form engine](https://openm
 - **Nutrition**: ITFC admission/discharge, feeding form
 - **Infectious diseases**: NCDs, TB, HBV, HCV (baseline & follow-up), travel medicine
 - **Palliative care & ICU**: Baseline/follow-up, ICU admission/discharge
-- **Procedures & transfusion**: Small procedure report, pre-donation, blood transfusion
-- **Specialized programs**: Snakebites, cholera, dengue, filariasis, schistosomiasis, POCUS, wound dressing, radiology request
+- **Specialized programs**: Snakebites, cholera, dengue, filariasis, schistosomiasis, POCUS
+- **Mental health (legacy v1)**: PHQ-9 v1, MHPSS baseline/follow-up/closure, mhGAP baseline/follow-up/closure
 
 **Advanced form features:**
 - **Answer-based question filtering** — Show or hide questions based on selected answers
@@ -716,7 +760,7 @@ OpenFn credentials (API keys, passwords, connection strings for OpenMRS, DHIS2, 
 Actual credential values are managed through:
 - **OpenFn Lightning UI** — Credentials are created and managed in the OpenFn web interface
 - **Environment variables** — Connection details are passed via Docker environment variables (`OPENFN_ENDPOINT`, `SECRET_KEY`, `ORIGINS`, etc.)
-- **`.env` files** — Stored in `scripts/secrets/` (e.g., `local.msf.env`, `azure.msf.env`) and merged at build time
+- **`.env` merge at build time** — The Maven build merges `.env` files unpacked into `run/docker/` into `concatenated.env`; add or override variables there or via your deployment environment as needed
 
 For Docker deployments, the OpenFn environment requires:
 ```sh
@@ -848,6 +892,109 @@ export TRAEFIK="true" && ./start-demo.sh
 ./scripts/mvnw clean package -Pbundled-docker
 # For production tags:
 ./scripts/mvnw clean package -Pbundled-docker -Pproduction
+```
+
+### How to set up automated backups with Restic
+
+LIME EMR uses [Restic](https://restic.readthedocs.io/) via the [`mekomsolutions/restic-compose-backup`](https://github.com/mekomsolutions/restic-compose-backup) Docker image for automated, encrypted, and deduplicated backups of Docker volumes (MySQL/MariaDB for OpenMRS and PostgreSQL for OpenFn).
+
+**Step 1. Create a backup directory:**
+
+```bash
+sudo mkdir -p ~/backups/restic_data
+sudo chmod 700 ~/backups/restic_data
+sudo chown $USER:$USER ~/backups/restic_data
+```
+
+**Step 2. Configure backup environment variables** in `run/docker/concatenated.env`:
+
+```bash
+BACKUP_PATH=~/backups/restic_data
+RESTIC_PASSWORD=your-strong-password-here
+RESTIC_KEEP_DAILY=7
+RESTIC_KEEP_WEEKLY=4
+RESTIC_KEEP_MONTHLY=6
+RESTIC_KEEP_YEARLY=2
+LOG_LEVEL=INFO
+CRON_SCHEDULE=0 0 * * *
+```
+
+**Step 3. Start LIME** with `./start.sh` or `./start-with-sso.sh`. The backup container (`docker-compose-backup.yml`, inherited from Ozone) runs automatically alongside the other services.
+
+See [`docs/restic_backup.md`](docs/restic_backup.md) for the full Restic backup reference.
+
+### How to perform a manual database backup
+
+For ad-hoc backups outside of the Restic automation, use `mysqldump` for the OpenMRS database and `pg_dump` for the OpenFn database:
+
+**MySQL/MariaDB (OpenMRS):**
+```bash
+docker exec openmrs-db /usr/bin/mysqldump \
+  --max_allowed_packet=512M \
+  -u openmrs --password='<password>' \
+  openmrs --skip-lock-tables --single-transaction --skip-triggers \
+  | gzip > openmrs_backup_$(date +%Y%m%d).sql.gz
+```
+
+**PostgreSQL (OpenFn):**
+```bash
+docker exec openfn-postgresql pg_dump \
+  -U hello lightning_prod \
+  | gzip > openfn_backup_$(date +%Y%m%d).sql.gz
+```
+
+### How to restore from a Restic backup
+
+**Step 1. List available snapshots:**
+```bash
+docker exec backup restic snapshots
+```
+
+**Step 2. Restore a snapshot** (replace `<snapshot-id>` with the target snapshot):
+```bash
+docker exec backup restic restore <snapshot-id> --target /
+```
+
+**Step 3. Restart services** to pick up the restored data:
+```bash
+docker compose down && docker compose up -d
+```
+
+For restoring from a manual SQL dump instead:
+
+**MySQL/MariaDB (OpenMRS):**
+```bash
+gunzip < openmrs_backup_20250101.sql.gz | docker exec -i openmrs-db mysql -u openmrs --password='<password>' openmrs
+```
+
+**PostgreSQL (OpenFn):**
+```bash
+gunzip < openfn_backup_20250101.sql.gz | docker exec -i openfn-postgresql psql -U hello lightning_prod
+```
+
+### How to encrypt and transfer backups offsite
+
+For additional security and offsite redundancy beyond Restic's built-in encryption:
+
+**Step 1. Install GPG and generate a key pair** (one-time setup on the backup server):
+```bash
+sudo apt-get install gnupg
+gpg --gen-key
+```
+
+**Step 2. Encrypt a backup file:**
+```bash
+gpg --encrypt --recipient "Your Name" openmrs_backup_20250101.sql.gz
+```
+
+**Step 3. Transfer to an offsite server:**
+```bash
+scp -i /path/to/backup_key openmrs_backup_20250101.sql.gz.gpg backup@remote-server:/backups/
+```
+
+For ongoing file-level replication, use `rsync`:
+```bash
+rsync -a --delete ~/backups/restic_data/ backup@remote-server:/backups/restic_data/
 ```
 
 ---

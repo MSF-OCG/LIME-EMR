@@ -28,7 +28,8 @@
     "Display conditions": {
       "privileges": ["Patient Dashboard - View Patient Summary"]
     },
-    "disableChangingVisitLocation": true,
+    "disableChangingVisitLocation": false,
+    "restrictByVisitLocationTag": true,
     "notesConceptUuids": ["a3380b6e-c41e-4c7e-a85b-11c1573ae70e"],
     "encounterEditableDuration": 1440,
     "extensionSlots": {
@@ -299,7 +300,7 @@
         "type": "person attribute",
         "uuid": "3884dc76-c271-4bcb-8df8-81c6fb897f53",
         "label": "Statut civil",
-        "answerConceptSetUuid": "544ef960-3b65-4add-8795-96b2b084faa3"
+        "answerConceptSetUuid": "d87f9d62-d096-4754-acc1-3b434f82489a"
       },
       {
         "id": "currentStatus",
@@ -411,13 +412,14 @@
         "basicInformtionSection": "Informations de base",
         "emergencyContactsSection": "Contacts d'urgence",
         "demographicsSection": "Données démographiques",
-        "relationshipsSection": "Relation avec autres patients patient",
+        "relationshipsSection": "Relation avec autres patient",
         "Health Zone": "Zone de santé",
         "Address": "Lieu de résidence"
       }
     }
   },
   "@openmrs/esm-form-builder-app": {
+    "showSchemaSaveWarning": false,
     "enableFormValidation": true
   },
   "@openmrs/esm-primary-navigation-app": {
@@ -439,21 +441,6 @@
       "display": "Days"
     }
   },
-  "@openmrs/esm-patient-vitals-app": {
-    "concepts": {
-      "temperatureUuid": "61b31217-9d75-4a1a-9d74-8c64b48232bc",
-      "pulseUuid": "6a12d34d-2274-4ce3-90d6-58f6967572ae",
-      "diastolicBloodPressureUuid": "e7713839-eefa-4ff4-b063-905fb184a854",
-      "systolicBloodPressureUuid": "d7a7a4cf-0252-473d-bdc4-314778d0a79e",
-      "heightUuid": "3fbf0612-8343-4fcd-bc20-7e9d3cb85d6f",
-      "weightUuid": "e355de0a-6a46-4bce-ae59-6e66faaa25ee",
-      "respiratoryRateUuid": "eacb8006-5dc4-4ff8-93f4-2d3fec5025c4",
-      "generalPatientNoteUuid": "66ccfb38-b865-464e-8a1c-2cb3a1ff69f4",
-      "midUpperArmCircumferenceUuid": "54c4de90-df88-4c4a-b3f6-e00ec1a02f85",
-      "oxygenSaturationUuid": "3eca50b7-955c-4d6c-a563-4c98b85b115b",
-      "vitalSignsConceptSetUuid": "4813598f-2a7a-4da7-b2ae-32319622bc1f"
-    }
-  },
   "@openmrs/esm-patient-notes-app": {
     "isPrimaryDiagnosisRequired": false,
     "visitNoteConfig": {
@@ -467,17 +454,17 @@
     "search": {
       "searchFilterFields": {
         "gender": {
-          "enabled": "true"
+          "enabled": true
         },
         "dateOfBirth": {
-          "enabled": "true"
+          "enabled": true
         },
         "age": {
-          "enabled": "true",
-          "min": "0"
+          "enabled": true,
+          "min": 0
         },
         "postcode": {
-          "enabled": "true"
+          "enabled": true
         },
         "personAttributes": [
           {
@@ -604,18 +591,6 @@
         ]
       }
     ]
-  },
-  "@openmrs/esm-patient-allergies-app": {
-    "concepts": {
-      "drugAllergenUuid": "c997dc23-5835-4c70-b128-b5a7394786c6",
-      "environmentalAllergenUuid": "48f44fff-68d3-4a0b-a862-948cf7a3a466",
-      "foodAllergenUuid": "bcb06035-a976-4268-a2fc-5bb8bf0cd2ae",
-      "mildReactionUuid": "b5d370b4-be5e-40a2-b51b-da9931c761d1",
-      "moderateReactionUuid": "a835148e-ab6a-4edb-92fa-004628b970bc",
-      "severeReactionUuid": "6452d80d-6cd7-4da0-9bcb-92c42cea1023",
-      "allergyReactionUuid": "0973e794-741b-404e-ad46-97a4e7cdec52",
-      "otherConceptUuid": "790b41ce-e1e7-11e8-b02f-0242ac130002"
-    }
   },
   "@openmrs/esm-laboratory-app": {
     "labTableColumns": [

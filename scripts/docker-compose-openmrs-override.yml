@@ -4,3 +4,7 @@ services:
 
   mysql:
     image: mariadb:10.11.13
+
+  frontend:
+    environment:
+      OMRS_ESM_DEFAULT_LOCALE: ${OMRS_ESM_DEFAULT_LOCALE}

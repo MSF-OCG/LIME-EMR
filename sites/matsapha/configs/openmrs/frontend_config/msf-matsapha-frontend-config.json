@@ -188,17 +188,27 @@
     ],
     "fieldDefinitions": [
       {
-        "id": "sexAtBirth",
+        "id": "genderIdentity",
         "type": "person attribute",
-        "uuid": "282a4e10-9d75-4161-9cfe-7632989019d1",
-        "label": "Sex at Birth",
-        "answerConceptSetUuid": "a0b79c90-3571-4c2d-876e-7cc3e58bfa8f"
+        "uuid": "a3afd9ce-4123-4f04-8de4-0032d49bf8f9",
+        "label": "Gender",
+        "answerConceptSetUuid": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7"
       },
       {
         "id": "telephoneNumber",
         "type": "person attribute",
         "uuid": "bc851ec1-9fb7-49da-acd7-1a61168002fe",
         "label": "Telephone Number",
+        "validation": {
+          "required": false,
+          "matches": "^\\+?(\\d{1,3})?[-.\\s]?(\\(?\\d{1,4}?\\)?)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$"
+        }
+      },
+      {
+        "id": "secondTelephoneNumber",
+        "type": "person attribute",
+        "uuid": "c8e29544-e9a8-4422-9e93-7bc705a75898",
+        "label": "Second Phone Number",
         "validation": {
           "required": false,
           "matches": "^\\+?(\\d{1,3})?[-.\\s]?(\\(?\\d{1,4}?\\)?)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$"
@@ -283,41 +293,11 @@
         }
       },
       {
-        "id": "maritalStatus",
+        "id": "partnershipStatus",
         "type": "person attribute",
-        "uuid": "3884dc76-c271-4bcb-8df8-81c6fb897f53",
-        "label": "Marital status",
-        "answerConceptSetUuid": "544ef960-3b65-4add-8795-96b2b084faa3"
-      },
-      {
-        "id": "currentStatus",
-        "type": "person attribute",
-        "uuid": "e0b6ed99-72c4-4847-a442-e9929eac4a0f",
-        "label": "Current Status",
-        "validation": {
-          "required": false
-        },
-        "answerConceptSetUuid": "b3767edc-78f5-4d0f-a2d8-564ae58d00cf"
-      },
-      {
-        "id": "nationality",
-        "type": "person attribute",
-        "uuid": "24d1fa23-9778-4a8e-9f7b-93f694fc25e2",
-        "label": "Nationality",
-        "validation": {
-          "required": false
-        },
-        "answerConceptSetUuid": "3dc96ee4-daea-4460-b141-6b31f7b7ae93"
-      },
-      {
-        "id": "legalStatus",
-        "type": "person attribute",
-        "uuid": "a9b2c642-097f-43f8-b96b-4d2f50ffd9b1",
-        "label": "Legal Status",
-        "validation": {
-          "required": false
-        },
-        "answerConceptSetUuid": "9728c2ff-a489-4e97-94d0-07e02f403baa"
+        "uuid": "2225132f-0a04-436d-929d-cd24e6af4cd2",
+        "label": "Partnership status",
+        "answerConceptSetUuid": "0a303b92-2bc3-4693-bbcb-a27cab95736a"
       },
       {
         "id": "occupation",
@@ -330,38 +310,46 @@
         "answerConceptSetUuid": "f22eb938-f41b-4f20-b01d-238aeef64e23"
       },
       {
-        "id": "numberOfChildren",
+        "id": "occupationOther",
         "type": "person attribute",
-        "uuid": "e363161a-9d5c-4331-8463-238938f018ed",
-        "label": "Number of Children",
+        "uuid": "34dfe9c6-c3f7-44ca-8951-e3806543a8a6",
+        "label": "Occupation, if other specify",
+        "validation": {
+          "required": false
+        }
+      },
+      {
+        "id": "dateOfFirstVisit",
+        "type": "person attribute",
+        "uuid": "7ed1588d-53ff-4d56-a583-90c709ef9753",
+        "label": "Date of first visit",
         "validation": {
           "required": false,
-          "matches": "^(0|[1-9][0-9]?|100)$"
-        }
+          "type": "date"
+        },
+        "answerConceptSetUuid": "9a714fad-091e-4821-a547-7d6bc0d83a67"
       }
     ],
     "sectionDefinitions": [
       {
         "id": "basicInfo",
         "name": "Basic info",
-        "fields": ["name", "gender", "sexAtBirth", "dob", "id"]
+        "fields": ["name", "gender", "genderIdentity", "dob", "id"]
       },
       {
         "id": "additionalInformation",
         "name": "Demographics",
         "fields": [
-          "nationality",
-          "currentStatus",
-          "legalStatus",
-          "maritalStatus",
+          "partnershipStatus",
           "occupation",
-          "numberOfChildren"
+          "occupationOther",
+          "dateOfFirstVisit"
         ]
       },
       {
         "id": "contact",
         "name": "Contact Details",
-        "fields": ["address", "telephoneNumber", "emailAddress"]
+        "fields": ["address", "telephoneNumber", "secondTelephoneNumber", "emailAddress"]
       },
       {
         "id": "emergencyContacts",
@@ -395,6 +383,7 @@
     }
   },
   "@openmrs/esm-form-builder-app": {
+    "showSchemaSaveWarning": false,
     "enableFormValidation": true
   },
   "@openmrs/esm-primary-navigation-app": {
@@ -414,21 +403,6 @@
     "daysDurationUnit": {
       "uuid": "3fcaef9b-1d65-4c8b-8f4d-620edd8d601a",
       "display": "Days"
-    }
-  },
-  "@openmrs/esm-patient-vitals-app": {
-    "concepts": {
-      "temperatureUuid": "61b31217-9d75-4a1a-9d74-8c64b48232bc",
-      "pulseUuid": "6a12d34d-2274-4ce3-90d6-58f6967572ae",
-      "diastolicBloodPressureUuid": "e7713839-eefa-4ff4-b063-905fb184a854",
-      "systolicBloodPressureUuid": "d7a7a4cf-0252-473d-bdc4-314778d0a79e",
-      "heightUuid": "3fbf0612-8343-4fcd-bc20-7e9d3cb85d6f",
-      "weightUuid": "e355de0a-6a46-4bce-ae59-6e66faaa25ee",
-      "respiratoryRateUuid": "eacb8006-5dc4-4ff8-93f4-2d3fec5025c4",
-      "generalPatientNoteUuid": "66ccfb38-b865-464e-8a1c-2cb3a1ff69f4",
-      "midUpperArmCircumferenceUuid": "54c4de90-df88-4c4a-b3f6-e00ec1a02f85",
-      "oxygenSaturationUuid": "3eca50b7-955c-4d6c-a563-4c98b85b115b",
-      "vitalSignsConceptSetUuid": "4813598f-2a7a-4da7-b2ae-32319622bc1f"
     }
   },
   "@openmrs/esm-patient-notes-app": {
@@ -603,5 +577,18 @@
       "totalOrders",
       "action"
     ]
+  },
+  "@openmrs/esm-patient-banner-app": {
+    "extensionSlots": {
+      "patient-banner-tags-slot": {
+        "add": ["person-attribute-tag#genderIdentity"],
+        "order": ["person-attribute-tag#genderIdentity"],
+        "configure": {
+          "person-attribute-tag#genderIdentity": {
+            "attributeType": "42ac2c39-30e7-42ed-8475-c610971530de"
+          }
+        }
+      }
+    }
   }
 }

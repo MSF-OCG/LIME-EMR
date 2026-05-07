@@ -1,32 +1,28 @@
-### 🐞 Related Issues / Tickets
-
-Link to any existing issues, feature requests, or bugs this PR addresses.
-
-- Closes #LIME2-123
-- Related to #LIME2-456
-
-### ✅ PR Checklist
-
-#### 👨‍💻 For Author
+### Requirements
 
 - [ ] I included the JIRA issue key in all commit messages (e.g., `LIME2-123`)
 - [ ] I wrote or updated tests covering the changes (if applicable)
 - [ ] I updated documentation (if applicable)
 - [ ] I verified the feature/fix works as expected
 - [ ] I attached a video or screenshots showing the feature/fix working on DEV
-- [ ] I logged my dev time in JIRA issue
 - [ ] I updated the JIRA issue comments, status to "PR Ready"
-- [ ] I unassigned the issue so a reviewer can pick it up
-- [ ] I mentioned its status update during dev sync call or in Slack
 - [ ] My work is ready for PR Review on DEV
+- [ ] My work includes tests or is validated by existing tests.
 
-#### 🔍 For Reviewer
+### Summary
 
-- [ ] I verified the JIRA ticket key is present in commits
-- [ ] I reviewed and confirmed the JIRA issue status is accurate
-- [ ] I verified the feature/fix works as expected on DEV or UAT
-- [ ] I attached a video or screenshots showing the feature/fix working on DEV or UAT
-- [ ] I updated the JIRA issue comments, status to "DEV Ready" or "UAT Ready"
-- [ ] I logged my review time in JIRA issue
-- [ ] I mentioned its status update during daily dev sync call or on Slack
-- [ ] This work is ready for UAT and PRODUCTION
+<!-- Briefly describe the changes made in this PR -->
+
+### Screenshots
+
+<!-- Add any related screenshots of video demo -->
+
+### Related Issue
+
+<!-- JIRA ticket or github issue link -->
+<!-- Closes #LIME2-123 -->
+<!-- Related to #LIME2-456 -->
+
+### Other
+
+<!-- Any other details related to the work done in this PR or follow up work -->
