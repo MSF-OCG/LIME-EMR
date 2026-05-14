@@ -1,8 +1,13 @@
 # MSF-OCG LIME EMR
 
-**LIME EMR** (Light Modular EMR) is an [OpenMRS 3](https://openmrs.org/) distribution built by [MSF](https://www.msf.org/) OCG (Operational Centre Geneva). It provides a generic, modular Electronic Medical Record system for humanitarian healthcare settings, with multi-site deployments across Iraq and Eswatini.
+**LIME EMR** (Light Modular EMR) is an [OpenMRS 3](https://openmrs.org/) distribution built by [MSF](https://www.msf.org/) OCG (Operational Centre Geneva), operated and maintained by [Madiro Labs](https://madiro.org/). It provides a generic, modular Electronic Medical Record system for humanitarian healthcare settings, with multi-site deployments across Iraq, Eswatini, and DRC.
 
 The system is built on the [Ozone HIS](https://www.ozone-his.com/) platform and integrates with [DHIS2](https://dhis2.org/) for health information reporting, [OpenFn](https://www.openfn.org/) for workflow automation, [OpenConceptLab](https://openconceptlab.org/) for terminology management, and [HL7 FHIR](https://www.hl7.org/fhir/) for health data interoperability.
+
+[![CI](https://github.com/MSF-OCG/LIME-EMR/actions/workflows/ci.yml/badge.svg)](https://github.com/MSF-OCG/LIME-EMR/actions/workflows/ci.yml)
+[![Build all](https://github.com/MSF-OCG/LIME-EMR/actions/workflows/build-all.yml/badge.svg)](https://github.com/MSF-OCG/LIME-EMR/actions/workflows/build-all.yml)
+[![Config test](https://github.com/MSF-OCG/LIME-EMR/actions/workflows/configuration-build-test.yml/badge.svg)](https://github.com/MSF-OCG/LIME-EMR/actions/workflows/configuration-build-test.yml)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/MSF-OCG/LIME-EMR)
 
 <table>
   <tr>
@@ -25,7 +30,7 @@ The system is built on the [Ozone HIS](https://www.ozone-his.com/) platform and 
   </tr>
 </table>
 
-**Technical documentation**: [https://msf-ocg.github.io/LIME-EMR](https://msf-ocg.github.io/LIME-EMR)
+**Full technical documentation**: [https://msf-ocg.github.io/LIME-EMR](https://msf-ocg.github.io/LIME-EMR) -- architecture deep-dives, deployment guides, operations runbooks, and development references are maintained on the Docsify documentation site.
 
 ---
 
@@ -52,8 +57,21 @@ The system is built on the [Ozone HIS](https://www.ozone-his.com/) platform and 
      - 5.2.2 [OpenFn](#522-openfn)
        - 5.2.2.1 [Project Workflows and State Files](#5221-project-workflows-and-state-files)
        - 5.2.2.2 [Credentials](#5222-credentials)
-6. [How To](#6-how-to)
-7. [Release Notes](#7-release-notes)
+   - 5.3 [Clinical Features](#53-clinical-features)
+     - 5.3.1 [Patient Flags](#531-patient-flags)
+     - 5.3.2 [Follow-up Tables](#532-follow-up-tables)
+     - 5.3.3 [Tasks](#533-tasks)
+6. [Deployment Infrastructure](#6-deployment-infrastructure)
+   - 6.1 [Single-Command VPS Deployment](#61-single-command-vps-deployment)
+   - 6.2 [Bundled Docker Stack](#62-bundled-docker-stack)
+   - 6.3 [CI/CD Pipeline](#63-cicd-pipeline)
+   - 6.4 [FiWi Production Deployment — Manual Process](#64-fiwi-production-deployment--manual-process)
+   - 6.5 [Multi-Level Configuration Inheritance](#65-multi-level-configuration-inheritance)
+   - 6.6 [Hosting Strategy](#66-hosting-strategy)
+   - 6.7 [Data Protection and Patient Safety](#67-data-protection-and-patient-safety)
+7. [How To](#7-how-to)
+8. [Contributing](#8-contributing)
+9. [Release Notes](#9-release-notes)
 
 ---
 
@@ -65,40 +83,41 @@ LIME EMR is a **generic, light, modular** Electronic Medical Record system desig
 
 | Site | Country | Clinical Forms | Description |
 |------|---------|---------------|-------------|
-| **Distro** (MSF base) | — | 26 forms | Core programs: mental health (MHPSS/mhGAP v2), family planning, HIV, social work, gynaecology, surgery/anaesthesia, procedures/transfusion, wound dressing, radiology, referral & discharge |
-| **Mosul** | Iraq | 77 total (51 site-specific + 26 from distro) | Full hospital: obstetrics, ER, maternity, paediatrics, neonatology, ICU, infectious diseases (TB/HBV/HCV/NCDs), palliative care, nutrition, NTDs, and specialized programs. Arabic/English. DHIS2 sync via OpenFn. |
+| **Distro** (MSF base) | -- | 26 forms | Core programs: mental health (MHPSS/mhGAP v2), family planning, HIV, social work, gynaecology, surgery/anaesthesia, procedures/transfusion, wound dressing, radiology, referral & discharge |
+| **LIME Demo** | -- | 26 forms (distro only) | Generic showcase environment. Runs the distro level directly with no site-specific overrides — used to demonstrate new OpenMRS versions and features without affecting project-specific configurations. |
+| **Mosul** | Iraq | 77 total (51 site-specific + 26 from distro) | Full hospital: obstetrics, ER, maternity, paediatrics, neonatology, ICU, infectious diseases (TB/HBV/HCV/NCDs), palliative care, nutrition, NTDs, and specialized programs. Arabic/English. DHIS2 sync via OpenFn. Live in production since 2024. |
 | **Matsapha** | Eswatini | Inherits distro | Site with custom branding, address hierarchy, ID generation, and OpenFn configuration |
 | **Bunia** | DRC | Inherits distro | Site with custom branding, address hierarchy, ID generation, roles, and OpenFn configuration |
 
 ### Key Capabilities
 
-- **Clinical forms** — 77+ JSON-based forms across mental health, surgery, obstetrics, infectious diseases, and more
-- **Multilingual** — Arabic and English UI and form translations
-- **Role-based access control** — Role-based forms, appointments, encounters, and data filtering
-- **Data exchange** — Real-time OpenMRS ↔ DHIS2 Tracker synchronization via OpenFn
-- **Interoperability** — FHIR R4 API, OpenConceptLab terminology, REST web services
-- **Multi-site** — Three-level configuration inheritance (Distro → Country → Site), with active deployments in Iraq, Eswatini, and DRC
-- **Containerized** — Docker Compose orchestration with optional Traefik SSL
+- **Clinical forms** -- 77+ JSON-based forms across mental health, surgery, obstetrics, infectious diseases, and more
+- **Multilingual** -- Arabic and English UI and form translations
+- **Role-based access control** -- Role-based forms, appointments, encounters, and data filtering
+- **Data exchange** -- Real-time OpenMRS to DHIS2 Tracker synchronization via OpenFn (live in production across all sites)
+- **Interoperability** -- FHIR R4 API, OpenConceptLab terminology, REST web services
+- **Multi-site** -- Three-level configuration inheritance (Distro, Country, Site), with active deployments in Iraq, Eswatini, and DRC
+- **Containerized** -- Docker Compose orchestration with Traefik SSL, automated backups, and single-command VPS provisioning
 
 ### Ambitions and Success Criteria
 
-- **Integrated** – with OpenMRS ecosystem and community roadmap
-- **Innovative** – leveraging modern technology and approaches
-- **Sustainable** – using well maintained and documented tools and practices
-- **Open** – using open-source software and licenses allowing for reusability
-- **Data driven** – quality information available to the right people when they need it
-- **Quality of care** – address tangible needs from healthcare workers and patients
-- **Relevant** – content and patient flows representative of use cases defined by healthcare workers
-- **Harmonized** – content following global standards such as ICD, SNOMED, etc.
-- **Portable** – agnostic architecture, containerization, and orchestration
-- **Adaptable** – content and configuration management that can easily be updated
-- **Recoverable** – recommendations for a solid backup and recovery strategy
-- **Testable** – automated testing and reporting whenever possible
-- **Secure** – architecture and practices to meet GDPR and HIPAA regulations
-- **Reliable** – recommendations to support redundancy, failover, and monitoring by design
-- **Interoperable** – to support Health Information Exchange (HIE) and standards such as HL7 FHIR
-- **Collaborative** – share information, insights, strategies and deliverables within the community
-- **Achievable** – taking into account the overall roadmap and challenges of implementers
+- **Integrated** -- with OpenMRS ecosystem and community roadmap
+- **Innovative** -- leveraging modern technology and approaches
+- **Sustainable** -- using well maintained and documented tools and practices
+- **Open** -- using open-source software and licenses allowing for reusability
+- **Data driven** -- quality information available to the right people when they need it
+- **Quality of care** -- address tangible needs from healthcare workers and patients
+- **Relevant** -- content and patient flows representative of use cases defined by healthcare workers
+- **Harmonized** -- content following global standards such as ICD, SNOMED, etc.
+- **Portable** -- agnostic architecture, containerization, and orchestration
+- **Adaptable** -- content and configuration management that can easily be updated
+- **Recoverable** -- recommendations for a solid backup and recovery strategy
+- **Testable** -- automated testing and reporting whenever possible
+- **Secure** -- architecture and practices to meet GDPR and HIPAA regulations
+- **Reliable** -- recommendations to support redundancy, failover, and monitoring by design
+- **Interoperable** -- to support Health Information Exchange (HIE) and standards such as HL7 FHIR
+- **Collaborative** -- share information, insights, strategies and deliverables within the community
+- **Achievable** -- taking into account the overall roadmap and challenges of implementers
 
 ---
 
@@ -106,9 +125,9 @@ LIME EMR is a **generic, light, modular** Electronic Medical Record system desig
 
 LIME EMR follows a **three-level configuration inheritance model** designed for multi-site humanitarian deployments:
 
-1. **Distro** (`/distro`) — Organization-wide MSF base configuration. Defines backend modules, frontend modules, core clinical forms, concept dictionaries, drug lists, roles, and branding shared across all MSF sites.
-2. **Country** (`/countries/<name>`) — Country-specific overrides (e.g., Iraq-specific metadata or roles).
-3. **Site** (`/sites/<name>`) — Site-specific overrides. Adds address hierarchies, locations, ID generation, site-specific clinical forms, translations, and OpenFn workflows for a particular facility.
+1. **Distro** (`/distro`) -- Organization-wide MSF base configuration. Defines backend modules, frontend modules, core clinical forms, concept dictionaries, drug lists, roles, and branding shared across all MSF sites.
+2. **Country** (`/countries/<name>`) -- Country-specific overrides (e.g., Iraq-specific metadata or roles).
+3. **Site** (`/sites/<name>`) -- Site-specific overrides. Adds address hierarchies, locations, ID generation, site-specific clinical forms, translations, and OpenFn workflows for a particular facility.
 
 Each lower level inherits everything from the level above and can selectively override or extend any configuration file. The build system (Maven) orchestrates this by unpacking the parent artifact, then copying and excluding files at each level.
 
@@ -293,12 +312,12 @@ pom.xml                          # Root aggregator / orchestrator
 
 **How inheritance works at build time:**
 
-1. **Download** — Maven downloads the parent level's artifact (ZIP) from GitHub Packages
-2. **Unpack** — The artifact is unpacked into the build directory
-3. **Exclude** — Files that the current level overrides are excluded via `maven-resources-plugin`
-4. **Copy** — The current level's own configuration files are copied on top
-5. **Post-process** — Groovy scripts merge OpenFn YAML files; AntRun updates `.env` variables
-6. **Package** — The result is packaged as a new ZIP artifact
+1. **Download** -- Maven downloads the parent level's artifact (ZIP) from GitHub Packages
+2. **Unpack** -- The artifact is unpacked into the build directory
+3. **Exclude** -- Files that the current level overrides are excluded via `maven-resources-plugin`
+4. **Copy** -- The current level's own configuration files are copied on top
+5. **Post-process** -- Groovy scripts merge OpenFn YAML files; AntRun updates `.env` variables
+6. **Package** -- The result is packaged as a new ZIP artifact
 
 **Configuration types that can be overridden at each level:**
 - Backend OpenMRS modules (JARs)
@@ -346,7 +365,7 @@ sites/newsite/
         └── version.txt
 ```
 
-**Step 2. Create `pom.xml`** — Use `sites/matsapha/pom.xml` as a template. Key elements:
+**Step 2. Create `pom.xml`** -- Use `sites/matsapha/pom.xml` as a template. Key elements:
 
 ```xml
 <groupId>com.ozonemsf</groupId>
@@ -366,14 +385,13 @@ sites/newsite/
 
 The pom.xml must include Maven plugins to:
 - **Unpack** the distro artifact (`maven-dependency-plugin`)
-- **Exclude** distro files being replaced (`maven-resources-plugin`) — typically `addresshierarchy`, `locations`, `idgen`, `visittypes`, `appointmentservicedefinitions`
-- **Copy** site-specific configs on top (`maven-resources-plugin`), excluding `openmrs/initializer_config/**` from the flat copy
-- **Copy initializer_config with content-package structure** (`maven-antrun-plugin`) — uses a regexp mapper to nest files under `initializer_config/<domain>/<artifactId>/<file>` (e.g., `locations/ozone-msf-newsite/newsite_locations.csv`)
+- **Exclude** distro files being replaced (`maven-resources-plugin`) -- typically `addresshierarchy`, `locations`, `idgen`, `visittypes`, `appointmentservicedefinitions`
+- **Copy** site-specific configs on top (`maven-resources-plugin`)
 - **Update** the `.env` file with the site frontend config URL (`maven-antrun-plugin`)
 - **Merge** OpenFn YAML files (`gmavenplus-plugin` with `merge-openfn-yaml.groovy`)
 - **Package** as ZIP (`maven-assembly-plugin`)
 
-**Step 3. Create `assembly.xml`** — Copy from any existing site (they are identical):
+**Step 3. Create `assembly.xml`** -- Copy from any existing site (they are identical):
 
 ```xml
 <assembly>
@@ -419,8 +437,8 @@ The project uses **Apache Maven** as its build system, organized as a multi-modu
 
 | Profile | Description |
 |---------|-------------|
-| `local` (default) | Sets `MSF_SERVER_TYPE=local`, Traefik disabled |
-| `azure` | Sets `MSF_SERVER_TYPE=azure`, Traefik enabled with SSL |
+| `local` (default) | Uses `local.msf.env`, Traefik disabled |
+| `azure` | Uses `azure.msf.env`, Traefik enabled with SSL |
 | `production` | Sets Docker tag to `latest` |
 | `bundled-docker` | Builds Docker images with multi-platform support (see [Bundled Docker](#512-bundled-docker)) |
 
@@ -471,8 +489,8 @@ export TRAEFIK="true" && ./start-demo.sh
 - An init container (`reverse-proxy-https-helper`) downloads wildcard SSL certificates from traefik.me
 - Traefik terminates SSL and proxies requests to the OpenMRS frontend, OpenFn Lightning, and other services
 - Domains are generated dynamically using the server's IP address:
-  - `https://api-<IP>.traefik.me` — OpenMRS
-  - `https://openfn-<IP>.traefik.me` — OpenFn Lightning
+  - `https://api-<IP>.traefik.me` -- OpenMRS
+  - `https://openfn-<IP>.traefik.me` -- OpenFn Lightning
 - The Traefik admin dashboard is protected with basic authentication (`TRAEFIK_ADMIN_USER` / `TRAEFIK_ADMIN_PASSWORD`)
 - Ports: HTTP (80) and HTTPS (443)
 
@@ -524,7 +542,7 @@ flowchart LR
 
 | Workflow | Trigger | Purpose |
 |----------|---------|---------|
-| `ci.yml` | Push to `main`, PRs, releases, manual | Main orchestrator — chains build, deploy, and test jobs |
+| `ci.yml` | Push to `main`, PRs, releases, manual | Main orchestrator -- chains build, deploy, and test jobs |
 | `maven-publish.yml` | Called by `ci.yml` | Builds all Maven modules, publishes to GitHub Packages and Docker Hub |
 | `deploy.yml` | Called by `ci.yml` | Deploys to target environment (dev/UAT) with optional Traefik SSL |
 | `run-e2e-tests.yml` | Called by `ci.yml` | Runs Playwright E2E tests against deployed environment |
@@ -609,7 +627,7 @@ Clinical forms are JSON-based and use the [OpenMRS O3 form engine](https://openm
 - **Wound dressing** (1 form)
 - **Radiology request** (1 form)
 
-**Mosul site-specific forms** (51 additional forms — 77 total when combined with distro):
+**Mosul site-specific forms** (51 additional forms -- 77 total when combined with distro):
 - **Obstetrics**: ANC, PNC, obstetric ultrasound, maternity triage/admission/delivery/discharge, cervical cancer
 - **Neonatology**: Delivery, admission, discharge
 - **Paediatrics**: Admission, discharge
@@ -622,17 +640,17 @@ Clinical forms are JSON-based and use the [OpenMRS O3 form engine](https://openm
 - **Mental health (legacy v1)**: PHQ-9 v1, MHPSS baseline/follow-up/closure, mhGAP baseline/follow-up/closure
 
 **Advanced form features:**
-- **Answer-based question filtering** — Show or hide questions based on selected answers
-- **Role-based write privileges** — Restrict which fields a user can edit based on their role
-- **Previous observation retrieval** — Pre-populate form fields with data from prior encounters
-- **Score calculations** — Automatic scoring (e.g., PHQ-9 depression score, Child-Pugh score)
-- **Multilingual translations** — Arabic and English form translations stored in the `ampathformstranslations/` directory (see [`docs/translations.md`](docs/translations.md))
+- **Answer-based question filtering** -- Show or hide questions based on selected answers
+- **Role-based write privileges** -- Restrict which fields a user can edit based on their role
+- **Previous observation retrieval** -- Pre-populate form fields with data from prior encounters
+- **Score calculations** -- Automatic scoring (e.g., PHQ-9 depression score, Child-Pugh score)
+- **Multilingual translations** -- Arabic and English form translations stored in the `ampathformstranslations/` directory (see [`docs/translations.md`](docs/translations.md))
 
 ##### 5.2.1.2 Address Hierarchy
 
 Each site defines its geographic address hierarchy via the [Address Hierarchy module](https://github.com/openmrs/openmrs-module-addresshierarchy). The configuration consists of two files in `configs/openmrs/initializer_config/addresshierarchy/`:
 
-**1. `addressConfiguration.xml`** — Defines the hierarchy levels and display format:
+**1. `addressConfiguration.xml`** -- Defines the hierarchy levels and display format:
 
 ```xml
 <addressConfiguration>
@@ -663,7 +681,7 @@ Each site defines its geographic address hierarchy via the [Address Hierarchy mo
 </addressConfiguration>
 ```
 
-**2. `addresshierarchy_<country>.csv`** — The hierarchy data in CSV format:
+**2. `addresshierarchy_<country>.csv`** -- The hierarchy data in CSV format:
 
 ```csv
 Iraq,Ninawa,Mosul,Al Ayadya%e7LLNpajpID
@@ -678,13 +696,13 @@ At the site level, the distro's address hierarchy files are excluded and replace
 
 #### 5.2.2 OpenFn
 
-[OpenFn](https://www.openfn.org/) is used to automate data exchange between OpenMRS and DHIS2 Tracker. It runs as Docker containers (Lightning web app, worker, and PostgreSQL database) defined in `scripts/docker-compose-openfn.yml`.
+[OpenFn](https://www.openfn.org/) automates data exchange between OpenMRS and DHIS2 Tracker. It runs as Docker containers (Lightning web app, worker, and PostgreSQL database) defined in `scripts/docker-compose-openfn.yml`. OpenFn is live in production across all deployment sites.
 
 ##### 5.2.2.1 Project Workflows and State Files
 
 OpenFn configuration lives in `configs/openfn/` at each level. Three key files define a site's OpenFn setup:
 
-**1. `<site>-project.yaml`** — Workflow definitions. This is the main configuration file that defines OpenFn projects, workflows, jobs, triggers, and edges. Example structure:
+**1. `<site>-project.yaml`** -- Workflow definitions. This is the main configuration file that defines OpenFn projects, workflows, jobs, triggers, and edges. Example structure:
 
 ```yaml
 workflows:
@@ -711,7 +729,7 @@ Rules:
 - Files must be in `configs/openfn/` at the appropriate level
 - At site level, the parent's compiled `openfn-project.yaml` is excluded and the merge script runs again to combine all workflow files from the current level
 
-**2. `projectState.json`** — Project metadata and credential references. Contains the OpenFn project ID, name, retention policies, and a mapping of credential names to their IDs:
+**2. `projectState.json`** -- Project metadata and credential references. Contains the OpenFn project ID, name, retention policies, and a mapping of credential names to their IDs:
 
 ```json
 {
@@ -734,7 +752,7 @@ Rules:
 }
 ```
 
-**3. `adaptor_registry_cache.json`** — A local cache of available OpenFn adaptors and their versions. This prevents repeated registry lookups and improves startup performance:
+**3. `adaptor_registry_cache.json`** -- A local cache of available OpenFn adaptors and their versions. This prevents repeated registry lookups and improves startup performance:
 
 ```json
 [
@@ -758,9 +776,9 @@ In the **bundled Docker** build, these files are copied directly into the OpenFn
 OpenFn credentials (API keys, passwords, connection strings for OpenMRS, DHIS2, etc.) are **not stored in the repository**. The `projectState.json` file only contains credential **references** (IDs and names), not the actual secret values.
 
 Actual credential values are managed through:
-- **OpenFn Lightning UI** — Credentials are created and managed in the OpenFn web interface
-- **Environment variables** — Connection details are passed via Docker environment variables (`OPENFN_ENDPOINT`, `SECRET_KEY`, `ORIGINS`, etc.)
-- **`.env` merge at build time** — The Maven build merges `.env` files unpacked into `run/docker/` into `concatenated.env`; add or override variables there or via your deployment environment as needed
+- **OpenFn Lightning UI** -- Credentials are created and managed in the OpenFn web interface
+- **Environment variables** -- Connection details are passed via Docker environment variables (`OPENFN_ENDPOINT`, `SECRET_KEY`, `ORIGINS`, etc.)
+- **`.env` files** -- Stored in `scripts/secrets/` (e.g., `local.msf.env`, `azure.msf.env`) and merged at build time
 
 For Docker deployments, the OpenFn environment requires:
 ```sh
@@ -770,9 +788,210 @@ ORIGINS="http://your-domain.com"  # Allowed CORS origins (set for Azure deployme
 
 ---
 
-## 6. How To
+### 5.3 Clinical Features
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/MSF-OCG/LIME-EMR)
+#### 5.3.1 Patient Flags
+
+Patient Flags are automatic clinical alerts that surface in the patient chart when specific conditions are detected — abnormal vitals, critical lab results, high-risk medications, missed appointments, and more.
+
+**How it works:** The [Drools](https://www.drools.org/) rule engine evaluates patient data in real-time against configured rules. When a rule matches, a flag appears as a colored alert in the relevant dashboard tab of the patient chart.
+
+**18 pre-configured flags (distro level):**
+
+| Flag | Trigger | Priority | Tag |
+|------|---------|----------|-----|
+| Allergy | Any active allergy recorded | High | Patient Safety |
+| HighBloodPressure | Systolic BP above threshold | High | Vitals |
+| LowBloodPressure | Systolic BP below threshold | High | Vitals |
+| HighHeartRate | Heart rate above threshold | High | Vitals |
+| LowHeartRate | Heart rate below threshold | High | Vitals |
+| LowOxygenSaturation | SpO₂ below threshold | High | Vitals |
+| Fever | Temperature > 39.5°C (patients older than 1 year) | Medium | Vitals |
+| HighWBC | High white blood cell count | Medium | Labs |
+| LowHemoglobin | Severe anemia threshold | High | Labs |
+| HighINR | Bleeding risk threshold | High | Labs |
+| CriticalPotassium | Potassium outside safe range | High | Labs |
+| AcuteKidneyInjury | AKI indicator | Medium | Labs |
+| HighRiskMeds | High-risk medication prescribed | Low | Medications |
+| HighRiskConds | High-risk condition recorded | High | High Risk Conditions |
+| ChronicConditions | Chronic condition recorded | Low | Chronic Conditions |
+| InfectiousDisease | Infectious disease condition recorded | High | Infections Disease Conditions |
+| PendingSurgery | Pending surgery recorded | Low | Procedures |
+| MissedAppointment | Missed clinic appointment | Low | Appointments |
+
+**UI placement:** Flags are filtered by tag and surface in the relevant patient chart dashboard tab:
+
+| Dashboard tab | Tags shown |
+|--------------|------------|
+| Test Results | Labs |
+| Summary | Patient Safety, Medications |
+| Medications | Patient Safety, Medications |
+| Conditions | Chronic Conditions |
+| Appointments | Appointments |
+
+**Status:** Enabled at distro level (LIME Demo). Disabled at site level for Mosul, Matsapha, and Bunia pending clinical validation at each deployment.
+
+**Configuration files:**
+- Flag definitions: `distro/configs/openmrs/initializer_config/flags/flags.csv`
+- Drools evaluation rules: `distro/configs/openmrs/initializer_config/drools/<flag-name>/rules/`
+- Frontend widget placement: `msf-frontend-config.json` → `patient-flags-list` extension in `@openmrs/esm-patient-chart-app` slots
+
+See [How to enable Patient Flags at a site](#how-to-enable-patient-flags-at-a-site).
+
+---
+
+#### 5.3.2 Follow-up Tables
+
+The follow-up table is a horizontal observation widget that appears in the **Test Results** tab of the patient chart. It displays selected clinical observations across all visits in chronological order — enabling at-a-glance longitudinal tracking of any configured concept.
+
+**Key configuration properties:**
+
+| Property | Distro default | Description |
+|----------|---------------|-------------|
+| `title` | "Follow up table demo" | Widget header shown in the UI |
+| `oldestFirst` | `true` | Displays visits left-to-right chronologically |
+| `editable` | `true` | Allows inline editing of observations |
+| `encounterTypeToCreateUuid` | Visit Note encounter type UUID | Encounter type used when saving new values |
+| `data` | Height (cm), Weight (kg) + 2 additional vitals | Concepts rendered as columns |
+
+The distro ships Height and Weight as a baseline. Any numeric or text observation concept can be added as a column.
+
+**Status:** Enabled at distro level and inherited by all sites.
+
+**Configuration file:** `distro/configs/openmrs/frontend_config/msf-frontend-config.json` → `obs-table-horizontal-widget` under `patient-chart-test-results-dashboard-slot`
+
+See [How to configure Follow-up Table columns](#how-to-configure-follow-up-table-columns).
+
+---
+
+#### 5.3.3 Tasks
+
+The Tasks feature provides structured clinical task management — healthcare workers can assign, track, and complete predefined tasks linked to clinical activities (documentation, coordination, monitoring, medication, and procedures).
+
+**62 pre-configured tasks across 6 categories:**
+
+| Category | Example tasks |
+|----------|--------------|
+| Documentation | Obtain patient consent for surgery, Fill death certificate, Complete discharge summary, Scan documents into EMR |
+| Coordination | Organise patient transfer between wards, Organise specialist referral, Organise discharge |
+| Monitoring | Monitor vital signs, Monitor blood pressure, Monitor oxygen saturation, Monitor fluid balance |
+| Assessment | Measure height/weight, Measure MUAC |
+| Medication | Dispense medication, Administer prescribed medication, Discontinue medication |
+| Procedures | Insert/remove IV line, Collect lab samples, Insert urinary catheter, Change dressing |
+
+**Access:** Tasks are accessed through the dedicated **Tasks app** in the main navigation. The service queues dashboard link is intentionally removed from the homepage across all configurations to consolidate task access in the dedicated app.
+
+**Roles:** All clinical roles (General role and roles inheriting from it) have task view and management privileges by default via `Get Queue Entries` and `Manage Queue Entries` privileges.
+
+**Status:** Enabled at distro level and inherited by all sites.
+
+**Configuration file:** `distro/configs/openmrs/initializer_config/systemtasks/systemtasks.csv`
+
+See [How to add a custom Task](#how-to-add-a-custom-task).
+
+---
+
+## 6. Deployment Infrastructure
+
+This section describes the deployment automation and operational infrastructure that enables LIME EMR to run continuously across MSF field sites. These tools are maintained in the private [LIME-EMR-Tooling](https://github.com/MSF-OCG/LIME-EMR-Tooling) repository and operated by [Madiro Labs](https://madiro.org/).
+
+### 6.1 Single-Command VPS Deployment
+
+A deployment orchestrator script (`deploy-lime.sh`) takes a fresh Ubuntu VPS from bare metal to a fully running LIME instance in a single command, organized in four sequential phases:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                      deploy-lime.sh                             │
+│                                                                 │
+│  Phase 1 ──  VPS Security Hardening         (secure-vps.sh)    │
+│  Phase 2 ──  Docker & Package Installation  (bundled_docker_…) │
+│  Phase 3 ──  Pull Bundled-Docker Scripts    (pull_bundled_…)   │
+│  Phase 4 ──  Start LIME Instance            (start-bundled-…)  │
+│                                                                 │
+│  Output:  Running LIME EMR on a hardened VPS with HTTPS         │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+The four phases cover: server security hardening, Docker installation, pulling the Bundled-Docker orchestration scripts, and starting the full LIME service stack (Traefik + OpenMRS + OpenFn + databases).
+
+This replaced a multi-hour manual provisioning process. A new site environment can be provisioned in under 30 minutes. Full documentation and usage instructions are in the [`LIME-EMR-Tooling` repository](https://github.com/MSF-OCG/LIME-EMR-Tooling).
+
+### 6.2 Bundled Docker Stack
+
+All services run as a single Docker Compose stack behind a Traefik reverse proxy:
+
+- **Traefik** handles HTTPS termination with automatic Let's Encrypt certificate provisioning
+- **OpenMRS** Frontend + Backend + MariaDB
+- **OpenFn** Lightning + Worker + PostgreSQL
+- One Compose configuration per environment profile (`local`, `dev`, `uat`, `prod`)
+- Environment-specific secrets and configuration managed via per-instance environment files
+
+The stack runs 10+ containers and is designed to fit on a single VPS with 8 GB RAM.
+
+### 6.3 CI/CD Pipeline
+
+The GitHub Actions pipeline follows a build-deploy-test chain that runs automatically on code changes:
+
+- **Automated deployment**: Pushes to `main` trigger a snapshot build, automated deployment to the dev environment, and Playwright E2E tests — all without manual intervention
+- **Release gating**: Published GitHub Releases trigger a production build, deploy to UAT, and E2E tests. Failed E2E tests block the deployment pipeline
+- **Environment isolation**: Dev and UAT environments run on independent infrastructure with separate databases containing only synthetic test data
+- **Docker Hub publishing**: All site images are built and pushed to Docker Hub (`msfocg/<site>-*`) as part of the pipeline
+- **Production deployment**: FiWi field production VMs are updated manually by an authorized operator — automated runners cannot reach MSF-managed field infrastructure (see [section 6.4](#64-fiwi-production-deployment--manual-process))
+
+### 6.4 FiWi Production Deployment — Manual Process
+
+MSF field production VMs (FiWi) run on MSF-managed on-premises infrastructure behind VPN — automated CI/CD runners cannot reach them directly. Production deployments are therefore **manual** and must be triggered by an authorized operator with appropriate network access.
+
+The deployment flow: a GitHub Release triggers Docker image builds to Docker Hub, then an operator connects to the field VM, pulls the latest orchestration scripts, and starts the updated stack.
+
+See [`LIME-EMR-Tooling` documentation](https://github.com/MSF-OCG/LIME-EMR-Tooling) for the full operator runbook and access prerequisites.
+
+### 6.5 Multi-Level Configuration Inheritance
+
+The three-level Maven hierarchy ensures configuration is not duplicated across sites:
+
+```
+Distro (MSF base -- 26 forms, shared modules)
+  └── Country (Iraq / Eswatini / DRC -- country-specific config)
+        └── Site (Mosul / Matsapha / Bunia -- site-specific forms, concepts, users)
+```
+
+Adding a new site inherits everything from the distro and country levels automatically. Only site-specific overrides (address hierarchy, locations, ID generation, branding, and any additional clinical forms) need to be added. See [Adding a New Site](#42-adding-a-new-site) for the step-by-step process.
+
+### 6.6 Hosting Strategy
+
+Dev and UAT environments run on cloud VPS instances managed by Madiro, providing cost-predictable hosting for the full container stack. The CI/CD toolchain (GitHub Actions, Docker Hub) works identically across hosting providers.
+
+Production environments run on MSF-managed on-premises infrastructure and require manual operator deployment as described in [section 6.4](#64-fiwi-production-deployment--manual-process).
+
+### 6.7 Data Protection and Patient Safety
+
+Patient data in LIME EMR deployments is subject to strict data residency and isolation requirements:
+
+- **Patient data stays on-premises**: Real patient records exist only on MSF-managed field infrastructure (FiWi VMs). Patient data is never transmitted to, stored on, or processed by external cloud infrastructure.
+- **Dev and UAT contain no real patient data**: Development and UAT environments run exclusively with synthetic test data. Importing real patient records into these environments is not permitted.
+- **Data minimization**: Only data necessary for patient care is collected and retained. Retention periods follow MSF data governance policies.
+- **Access control**: Role-based access ensures clinical data is accessible only to authorized healthcare workers at the relevant site.
+
+For full data residency specifications, backup procedures, and compliance documentation, see the [LIME-EMR-Tooling](https://github.com/MSF-OCG/LIME-EMR-Tooling) operational documentation.
+
+---
+
+## 7. How To
+
+### How to add or update clinical concepts
+
+Clinical concepts (diagnoses, observations, medications, coded answers) are managed through [OpenConceptLab (OCL)](https://openconceptlab.org/) and loaded into OpenMRS via the Initializer module.
+
+**Workflow:**
+1. Search for existing concepts in the CIEL source — prefer reuse over creating new ones
+2. If no CIEL concept exists, create a new concept in the MSF OCG source on OCL
+3. Add all required concepts to an OCL collection (per program or per form)
+4. Release the collection and export it as a ZIP file
+5. Place the ZIP in `configs/openmrs/initializer_config/ocl/` at the appropriate level (distro or site)
+6. Build and restart OpenMRS — the Initializer loads concepts automatically
+
+> Full workflow, UUID generation formula, and drug list management: [Content Management documentation](https://msf-ocg.github.io/LIME-EMR/#/content-management)
 
 ### How to add a new clinical form
 
@@ -865,7 +1084,7 @@ If the app should be excluded from **all** sites, add it to the `frontendModuleE
 }
 ```
 
-> **Note:** Options A and B are configuration-level overrides — they hide the app's UI via the site's frontend config JSON. Option C removes the app from the importmap at build time for a single site. Option D is a distro-level change that excludes the app from the build for all sites.
+> **Note:** Options A and B are configuration-level overrides -- they hide the app's UI via the site's frontend config JSON. Option C removes the app from the importmap at build time for a single site. Option D is a distro-level change that excludes the app from the build for all sites.
 
 ### How to add a new OpenFn workflow
 
@@ -997,9 +1216,83 @@ For ongoing file-level replication, use `rsync`:
 rsync -a --delete ~/backups/restic_data/ backup@remote-server:/backups/restic_data/
 ```
 
+### How to enable Patient Flags at a site
+
+Flags are enabled at the distro level (LIME Demo). To enable them at a specific site:
+
+1. In the site's frontend config (`sites/<site>/configs/openmrs/frontend_config/msf-<site>-frontend-config.json`), add `"patient-flags"` to the feature flags list:
+   ```json
+   "@openmrs/esm-app-shell": {
+     "Enabled feature flags": ["enable-embedded-form-view", "patient-flags"]
+   }
+   ```
+2. The Drools rules and flag definitions are inherited from the distro — no additional metadata files are needed
+3. Optionally adjust which tag groups appear on each dashboard slot by configuring `patient-flags-list` in the relevant `extensionSlots` entry
+4. Build and deploy: `./scripts/mvnw clean package`
+
+### How to configure Follow-up Table columns
+
+The follow-up table columns are defined by a list of concept UUIDs in the frontend config:
+
+1. Edit `msf-frontend-config.json` at the appropriate level (distro or site)
+2. Locate the `obs-table-horizontal-widget` configuration under `patient-chart-test-results-dashboard-slot`
+3. Add or replace entries in the `data` array — each entry is a concept UUID:
+   ```json
+   "obs-table-horizontal-widget": {
+     "title": "My Follow-up Table",
+     "oldestFirst": true,
+     "editable": true,
+     "encounterTypeToCreateUuid": "<encounter-type-uuid>",
+     "data": [
+       {"concept": "<concept-uuid-1>"},
+       {"concept": "<concept-uuid-2>"}
+     ]
+   }
+   ```
+4. Each concept UUID must exist in the OpenMRS concept dictionary — see [How to add or update clinical concepts](#how-to-add-or-update-clinical-concepts)
+5. Build and deploy: `./scripts/mvnw clean package`
+
+To override this at site level, follow the standard [config inheritance pattern](#how-to-override-a-distro-configuration-at-site-level).
+
+### How to add a custom Task
+
+Tasks are defined as CSV rows and loaded by the Initializer module on startup:
+
+1. Open `configs/openmrs/initializer_config/systemtasks/systemtasks.csv` at the appropriate level (distro for shared tasks, site for site-specific tasks)
+2. Add a new row with the following columns:
+
+   | Column | Description | Example |
+   |--------|-------------|---------|
+   | `Uuid` | Unique UUID v4 | `a1b2c3d4-e5f6-...` |
+   | `Name` | Machine-readable slug | `check-wound-dressing` |
+   | `Title` | Human-readable task name | `Check wound dressing` |
+   | `Description` | Category path shown in UI | `Monitoring > Wound Care` |
+   | `Priority` | `High`, `Medium`, or `Low` | `Medium` |
+   | `Default Assignee Role` | Role name (optional) | `Nurse` |
+   | `Rationale` | Free text note (optional) | |
+
+3. Build and restart — the Initializer loads new tasks automatically on startup
+4. No additional frontend configuration is needed — new tasks appear in the task-list app immediately
+
 ---
 
-## 7. Release Notes
+## 8. Contributing
+
+LIME EMR is an open-source project and contributions are welcome. Here are ways to get involved:
+
+- **Report issues** -- Open a [GitHub issue](https://github.com/MSF-OCG/LIME-EMR/issues) for bugs, feature requests, or questions
+- **Submit pull requests** -- Fork the repository, create a feature branch, and submit a PR against `main`
+- **Clinical forms** -- If you have experience with OpenMRS O3 forms, contributions to the form library are particularly valuable
+- **Documentation** -- Improvements to the [documentation site](https://msf-ocg.github.io/LIME-EMR) are always appreciated
+- **Testing** -- Help expand Playwright E2E test coverage
+
+Before contributing, please review the existing [project structure](#4-project-structure) and [build system](#43-build-system) documentation to understand the codebase layout. PRs are validated by the `configuration-build-test.yml` workflow, which checks that configuration builds succeed.
+
+For detailed architecture documentation, development guides, and operations runbooks, see the **[full documentation site](https://msf-ocg.github.io/LIME-EMR)**.
+
+---
+
+## 9. Release Notes
 
 See [`docs/CHANGE_LOG.md`](docs/CHANGE_LOG.md) for the full sprint-by-sprint release history.
 
@@ -1009,3 +1302,6 @@ See [`docs/CHANGE_LOG.md`](docs/CHANGE_LOG.md) for the full sprint-by-sprint rel
 - [ ] Replicate similar **merge logic for Initializer configuration files**
 - [ ] Simplify **build output** to produce a single artifact at the execution (Site) level
 - [ ] Optimize **GitHub Actions builds** to trigger only the relevant level on release or manual dispatch
+- [ ] **Remove Country level** — flatten hierarchy to Distro → Site; `countries/iraq/` contains no active configuration, simplifying the Maven build graph and CI triggers
+- [ ] **Expand E2E test suite** — CI currently runs only 2 login tests (`yarn test:login`); extend coverage to core clinical workflows (form submission, patient registration, appointments)
+- [ ] **Document Matsapha and Bunia forms** — add site-specific form lists to Section 5.2.1.1 (currently only Mosul and Distro are documented)

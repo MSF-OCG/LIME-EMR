@@ -1,46 +1,5 @@
 # LIME CHANGE LOG 🚀
 
-## Release 20th March, 2026 (Sprint 44)
-
-### MOSUL
-
-- LIME2-1101 Family planning assessment - Change render for family choices to inline multicheckbox
-- LIME2-1179 Patient header - MSF ID truncated/not fully visible
-- LIME2-1149 OCL collection update
-- LIME2-1093 Slowness in loading of active patients list
-- LIME2-1113 F43-ER exit - error when saving the form with Body part
-- LIME2-1124 Add auto visit close at the end of day configuration
-- LIME2-1129 Investigate disabled appointment button when opened from form
-- LIME2-1093 Slowness in loading of active patients list
-- LIME2-1113 F43-ER exit - error when saving the form with Body part
-- LIME2-1124 Add auto visit close at the end of day configuration
-- LIME2-1129 Investigate disabled appointment button when opened from form
-
-### BUNIA
-
-- LIME2-1133 Bunia Vital Signs & Biometrics - missed translations
-- LIME2-1134 Bunia Registration - differences with metadata
-- LIME2-1135 Bunia Registration - changes in metadata
-- LIME2-1147 Enable ward and bed management
-- LIME2-1166 French translations for Bunia forms
-- LIME2-1183 Translate drugs on Bunia
-
-### MATSAPHA
-
-- LIME2-1118 Matsapha registration - inconsistent with metadata
-
-### DEMO
-
-- LIME2-1157 Enable ward and bed management - Demo
-- LIME2-1159 Enable Patient Flags + 25 pre-configured flags (Brandon's work)
-- LIME2-1160 Enable Tasks + pre-configured tasks (Brandon's work)
-- LIME2-1161 Enable Follow-up table (Brandon's work)
-
-### LIME Maintenance & Infra
-
-- LIME2-1175 Remove old secrets template from LIME
-- LIME2-1171 Update HTTPS approach with infrastructure - MSF infra to enable Nginx proxy with MSF certificate
-
 ## Release 5th February, 2026 (Sprint 43)
 
 ### Mosul, Iraq

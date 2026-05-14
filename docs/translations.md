@@ -9,7 +9,7 @@ OpenMRS is used in many countries around the world, and it is important that the
 
 To change the language,
 
-1. Login to the app http://lime-mosul-dev.madiro.org/openmrs/spa/login After login you will be redirected to the home page.
+1. Login to your LIME EMR instance. After login you will be redirected to the home page.
 2. Navigate and click on the profile icon on the top right corner, there you will see an option to Change language. This will open a list of languages available for translation.
 3. Select the language you want to translate to and confirm the change. The page will reload and the language will be changed.
 
