@@ -10,6 +10,19 @@ All notable changes to the OpenFn Mosul configuration are documented here.
 
 ---
 
+## [v1.5.6] - 2026-05-21
+
+**Type:** Enhancement | **PR:** [#411](https://github.com/MSF-OCG/LIME-EMR/pull/426)
+
+- Update custom events mapping to include DHIS2 type `text` and `integer` for WF1 and WF2
+- Add `manual-sync-metadata` workflow to allow for manual syncing of metadata collections
+- Rename collections to `mosul-metadata-mappings`
+
+**Metadata:**LIME EMR - Iraq Metadata - Release 1 - v2026-02-26.xlsx
+**OMRS Forms:** v2-2025
+
+---
+
 ## [v1.5.5] - 2026-04-23
 
 **Type:** Enhancement | **PR:** [#411](https://github.com/MSF-OCG/LIME-EMR/pull/411)
