@@ -70,6 +70,21 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "consultationRank",
+              "label": "Consultation rank",
+              "type": "obs",
+              "required": false,
+              "readonly": true,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "d9454e9c-6e3c-45ab-8a9a-834a9353ae11",
+                "disallowDecimals": true,
+                "calculate": {
+                  "calculateExpression": "customGetTotalPatientEncounters(patient.id, 'c5e3a4b4-3282-485b-8af7-b8242d439324').then(value => value + 1)"
+                }
+              }
             }
           ]
         }
