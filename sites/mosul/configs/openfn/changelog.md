@@ -10,6 +10,17 @@ All notable changes to the OpenFn Mosul configuration are documented here.
 
 ---
 
+## [v1.5.6] - 2026-06-15
+
+**Type:** Enhancement | **PR:** [#435](https://github.com/MSF-OCG/LIME-EMR/pull/435)
+
+- Add default values for (F29, F31, F33, F34 forms).
+
+**Metadata:** LIME EMR - Iraq Metadata - Release 1 - v2026-05-28.xlsx
+**OMRS Forms:** v4-2025
+
+---
+
 ## [v1.5.5] - 2026-04-23
 
 **Type:** Enhancement | **PR:** [#411](https://github.com/MSF-OCG/LIME-EMR/pull/411)
