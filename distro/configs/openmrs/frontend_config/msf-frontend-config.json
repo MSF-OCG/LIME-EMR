@@ -1,7 +1,15 @@
 {
-  "@openmrs/esm-patient-home-app": {
+  "@madiro/esm-home-app": {
     "extensionSlots": {
-      "homepage-widgets-slot": {
+      "homepage-dashboard-slot": {
+        "remove": ["service-queues-dashboard-link"]
+      }
+    }
+  },
+  "@openmrs/esm-active-visits-app": {
+    "extensionSlots": {
+      "patient-lists-dashboard-slot": {
+        "add": ["active-visits-widget"],
         "configure": {
           "active-visits-widget": {
             "Display conditions": {
@@ -9,9 +17,6 @@
             }
           }
         }
-      },
-      "homepage-dashboard-slot": {
-        "remove": ["service-queues-dashboard-link"]
       }
     }
   },
@@ -381,17 +386,17 @@
     "search": {
       "searchFilterFields": {
         "gender": {
-          "enabled": "true"
+          "enabled": true
         },
         "dateOfBirth": {
-          "enabled": "true"
+          "enabled": true
         },
         "age": {
-          "enabled": "true",
-          "min": "0"
+          "enabled": true,
+          "min": 0
         },
         "postcode": {
-          "enabled": "true"
+          "enabled": true
         },
         "personAttributes": [
           {
