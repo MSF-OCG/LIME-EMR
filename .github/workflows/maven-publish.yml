@@ -92,5 +92,33 @@ jobs:
           sudo rm -rf /usr/local/graalvm
           df -h
 
+      - name: Pre-publish distro snapshot diagnostics
+        run: |
+          echo "=== Cached ozone-msf-distro snapshot metadata ==="
+          ls -la ~/.m2/repository/com/ozonemsf/ozone-msf-distro/1.0.0-SNAPSHOT || true
+          echo ""
+          echo "=== Cached ozone-msf-distro frontend assembly config ==="
+          unzip -p ~/.m2/repository/com/ozonemsf/ozone-msf-distro/1.0.0-SNAPSHOT/ozone-msf-distro-1.0.0-SNAPSHOT.zip \
+            distro/configs/openmrs/frontend_assembly/spa-assemble-config.json | sed -n '1,120p' || true
+          echo ""
+          echo "=== Source distro frontend assembly config ==="
+          sed -n '1,120p' distro/configs/openmrs/frontend_assembly/spa-assemble-config.json || true
+
       - name: Publish maven artifacts
         run: 'mvn --batch-mode --no-transfer-progress clean deploy ${{ inputs.maven-args }}'
+
+      - name: Post-publish assembled artifact diagnostics
+        run: |
+          echo "=== Distro patientdocuments module ==="
+          find distro/target -name 'patientdocuments*.omod' -o -name 'patientdocuments*.jar' | sort || true
+          echo ""
+          echo "=== Mosul assembled frontend assembly configs ==="
+          find sites/mosul/target -path '*frontend_assembly/spa-assemble-config.json' | sort || true
+          echo ""
+          for config in $(find sites/mosul/target -path '*frontend_assembly/spa-assemble-config.json' | sort); do
+            echo "--- $config ---"
+            sed -n '1,120p' "$config" || true
+            echo ""
+          done
+          echo "=== Mosul assembled patientdocuments module ==="
+          find sites/mosul/target -name 'patientdocuments*.omod' -o -name 'patientdocuments*.jar' | sort || true
