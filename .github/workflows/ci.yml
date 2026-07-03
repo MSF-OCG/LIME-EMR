@@ -58,28 +58,3 @@ jobs:
       NEXUS_PASSWORD: ${{ secrets.MAVEN_GITHUB_ACTIONS_DEPLOY_TOKEN }}
       DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_REGISTRY_USERNAME }}
       DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_REGISTRY_PASSWORD }}
-
-  deploy-to-uat:
-    needs: release
-    if: ${{ github.event_name == 'release' || github.event_name == 'workflow_dispatch' }}
-    uses: ./.github/workflows/deploy.yml
-    with:
-      instance: 'uat'
-      traefik_enabled: 'true'
-    secrets:
-      lime_github_token: ${{ secrets.LIME_EMR_TOOLING_GITHUB_TOKEN }}
-      ssh_user: ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_USER }}
-      ssh_private_key: ${{ secrets.LIME_MOSUL_AZURE_UAT_SSH_KEY }}
-
-  run-e2e-uat-tests:
-    needs: deploy-to-uat
-    if: ${{ github.event_name == 'release' || github.event_name == 'workflow_dispatch' }}
-    uses: ./.github/workflows/run-e2e-tests.yml
-    with:
-      environment: 'uat'
-      test_command: 'yarn test:login'
-    secrets:
-      openmrs_username: ${{ secrets.OPENMRS_UAT_USERNAME }}
-      openmrs_password: ${{ secrets.OPENMRS_UAT_PASSWORD }}
-      openfn_email: ${{ secrets.OPENFN_EMAIL }}
-      openfn_password: ${{ secrets.OPENFN_PASSWORD }}
