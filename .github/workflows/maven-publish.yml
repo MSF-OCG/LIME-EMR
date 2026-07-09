@@ -105,7 +105,7 @@ jobs:
           sed -n '1,120p' distro/configs/openmrs/frontend_assembly/spa-assemble-config.json || true
 
       - name: Publish maven artifacts
-        run: 'mvn --batch-mode --no-transfer-progress clean deploy ${{ inputs.maven-args }}'
+        run: 'mvn --batch-mode --no-transfer-progress -U clean deploy ${{ inputs.maven-args }}'
 
       - name: Post-publish assembled artifact diagnostics
         run: |
