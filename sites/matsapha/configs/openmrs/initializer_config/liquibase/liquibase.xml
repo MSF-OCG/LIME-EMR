@@ -63,4 +63,36 @@
         </sql>
     </changeSet>
 
+    <!--
+        Backfill tasks_task.system_task_id for databases that ran the tasks
+        module's pre-2.1.0 changelog only partway (i.e. before its own
+        "tasks-2025-12-17-add-system-task-fk-to-task" changeset ran).
+        tasks 2.1.0 squashed its migration history into fresh changeset IDs,
+        so on an upgrade (not a fresh install) its "tasks-create-task-table"
+        changeset is skipped via its own tableExists precondition, and the
+        later "tasks-task-system-task-index" changeset then fails with
+        "Key column 'system_task_id' doesn't exist in table". This restores
+        the exact column/FK that tasks 1.0.0's own changeset would have
+        added, guarded the same way, so it is a no-op wherever the column
+        already exists (e.g. on a fresh install).
+    -->
+    <changeSet id="tasks-backfill-system-task-id-20260712" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <tableExists tableName="tasks_task"/>
+                <tableExists tableName="tasks_systemtask"/>
+                <not>
+                    <columnExists tableName="tasks_task" columnName="system_task_id"/>
+                </not>
+            </and>
+        </preConditions>
+        <comment>
+            Add system_task_id foreign key to tasks_task table (backfill for tasks 2.1.0 upgrade)
+        </comment>
+        <addColumn tableName="tasks_task">
+            <column name="system_task_id" type="int"/>
+        </addColumn>
+        <addForeignKeyConstraint constraintName="tasks_task_system_task_fk" baseTableName="tasks_task" baseColumnNames="system_task_id" referencedTableName="tasks_systemtask" referencedColumnNames="tasks_systemtask_id"/>
+    </changeSet>
+
 </databaseChangeLog>
