@@ -59,8 +59,9 @@ The system is built on the [Ozone HIS](https://www.ozone-his.com/) platform and 
        - 5.2.2.2 [Credentials](#5222-credentials)
    - 5.3 [Clinical Features](#53-clinical-features)
      - 5.3.1 [Patient Flags](#531-patient-flags)
-     - 5.3.2 [Follow-up Tables](#532-follow-up-tables)
-     - 5.3.3 [Tasks](#533-tasks)
+     - 5.3.2 [Retrospective Data Entry (RDE)](#532-retrospective-data-entry-rde)
+     - 5.3.3 [Follow-up Tables](#533-follow-up-tables)
+     - 5.3.4 [Tasks](#534-tasks)
 6. [Deployment Infrastructure](#6-deployment-infrastructure)
    - 6.1 [Single-Command VPS Deployment](#61-single-command-vps-deployment)
    - 6.2 [Bundled Docker Stack](#62-bundled-docker-stack)
@@ -840,7 +841,21 @@ See [How to enable Patient Flags at a site](#how-to-enable-patient-flags-at-a-si
 
 ---
 
-#### 5.3.2 Follow-up Tables
+#### 5.3.2 Retrospective Data Entry (RDE)
+
+RDE lets clinicians record data for visits that already happened, instead of only the current active visit. It adds an **"Edit Past Visit"** button to the start-visit dialog and an **"Add Past Visit"** button to the patient header, both in the patient chart.
+
+**How it works:** RDE is a feature gate defined in the upstream `@openmrs/esm-patient-chart-app` frontend module (pinned in `distro/configs/openmrs/frontend_assembly/spa-assemble-config.json`). It requires no backend module of its own — the standard OpenMRS `Add Visits` and `Edit Visits` privileges (already granted to the General role and inherited by all sites) gate the underlying actions once the frontend flag is on.
+
+**Status:** Enabled at distro level and at all sites (Mosul, Bunia, Matsapha).
+
+**Configuration file:** `Enabled feature flags` array under `@openmrs/esm-app-shell` in `msf-frontend-config.json` (distro and/or site level) — the flag key is `"rde"`.
+
+See [How to enable Retrospective Data Entry (RDE) at a site](#how-to-enable-retrospective-data-entry-rde-at-a-site).
+
+---
+
+#### 5.3.3 Follow-up Tables
 
 The follow-up table is a horizontal observation widget that appears in the **Test Results** tab of the patient chart. It displays selected clinical observations across all visits in chronological order — enabling at-a-glance longitudinal tracking of any configured concept.
 
@@ -864,7 +879,7 @@ See [How to configure Follow-up Table columns](#how-to-configure-follow-up-table
 
 ---
 
-#### 5.3.3 Tasks
+#### 5.3.4 Tasks
 
 The Tasks feature provides structured clinical task management — healthcare workers can assign, track, and complete predefined tasks linked to clinical activities (documentation, coordination, monitoring, medication, and procedures).
 
@@ -1229,6 +1244,19 @@ Flags are enabled at the distro level (LIME Demo). To enable them at a specific 
 2. The Drools rules and flag definitions are inherited from the distro — no additional metadata files are needed
 3. Optionally adjust which tag groups appear on each dashboard slot by configuring `patient-flags-list` in the relevant `extensionSlots` entry
 4. Build and deploy: `./scripts/mvnw clean package`
+
+### How to enable Retrospective Data Entry (RDE) at a site
+
+RDE is enabled the same way as other feature flags, via the `Enabled feature flags` array:
+
+1. In the site's frontend config (`sites/<site>/configs/openmrs/frontend_config/msf-<site>-frontend-config.json`), add `"rde"` to the feature flags list:
+   ```json
+   "@openmrs/esm-app-shell": {
+     "Enabled feature flags": ["enable-embedded-form-view", "rde"]
+   }
+   ```
+2. No additional metadata (concepts, encounter types, or privileges) is required — the standard `Add Visits` / `Edit Visits` privileges already cover the gated actions
+3. Build and deploy: `./scripts/mvnw clean package`
 
 ### How to configure Follow-up Table columns
 
