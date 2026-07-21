@@ -806,8 +806,13 @@
                                   match="FROM openmrs/openmrs-core.*" replace="FROM openmrs/openmrs-core:${openmrs.version}" />
 
 					<echo level="info" message="Overriding Tomcat session-timeout (see scripts/bundled-docker/openmrs/set-session-timeout.sh)"/>
+					<!-- openmrs/openmrs-core switches to its non-root runtime user (uid 1001) before the end of its
+					     own Dockerfile, so we must become root to edit conf/web.xml, then switch back to preserve
+					     the image's non-root runtime user. -->
+					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="USER root${line.separator}"/>
 					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="COPY bundled-docker/openmrs/set-session-timeout.sh /tmp/set-session-timeout.sh${line.separator}"/>
 					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="RUN sh /tmp/set-session-timeout.sh${line.separator}"/>
+					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="USER 1001${line.separator}"/>
 
 					<echo level="info" message="Adding msf MYSQL docker image version"/>
 					<replaceregexp file="${project.build.directory}/bundled-docker-tmp/bundled-docker/mysql/Dockerfile"
