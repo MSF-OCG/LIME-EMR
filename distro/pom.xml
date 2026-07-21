@@ -336,6 +336,11 @@
 										<exclude>distro/binaries/openmrs/modules/referencedemodata*.omod</exclude>
 										<!-- Remove Ozone frontend config -->
 										<exclude>distro/configs/openmrs/frontend_config/ozone*.*</exclude>
+										<!-- Remove reference-application demo vitals reference ranges: they reference
+										     standard concept dictionary UUIDs (BP, Pulse, Resp Rate) that don't exist
+										     in the MSF concept dictionary, so every row fails to load with
+										     "Concept Numeric uuid not found" on every startup. -->
+										<exclude>distro/configs/**/conceptreferencerange/01_referenceapplication-demo/*.*</exclude>
 									</excludes>
 								</resource>
 							</resources>
