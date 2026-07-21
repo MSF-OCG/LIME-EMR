@@ -806,8 +806,8 @@
                                   match="FROM openmrs/openmrs-core.*" replace="FROM openmrs/openmrs-core:${openmrs.version}" />
 
 					<echo level="info" message="Overriding Tomcat session-timeout (see scripts/bundled-docker/openmrs/set-session-timeout.sh)"/>
-					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="COPY bundled-docker/openmrs/set-session-timeout.sh /tmp/set-session-timeout.sh"/>
-					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="RUN sh /tmp/set-session-timeout.sh"/>
+					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="COPY bundled-docker/openmrs/set-session-timeout.sh /tmp/set-session-timeout.sh${line.separator}"/>
+					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="RUN sh /tmp/set-session-timeout.sh${line.separator}"/>
 
 					<echo level="info" message="Adding msf MYSQL docker image version"/>
 					<replaceregexp file="${project.build.directory}/bundled-docker-tmp/bundled-docker/mysql/Dockerfile"
