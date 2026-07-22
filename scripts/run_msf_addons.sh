@@ -50,7 +50,7 @@ fi
 
 # this step requires internet. It downloads node modules. Should be run on the host
 echo "$INFO Pre-warming worker cache with adaptors..."
-docker exec -it $PROJECT_NAME-worker-1 sh -c "npm install -g @openfn/cli@1.11.4 && openfn repo install  -a common@latest -a collections@latest -a http@6.5.1 -a openmrs@4.1.3 -a dhis2@5.0.1"
+docker exec -it $PROJECT_NAME-worker-1 sh -c "npm install -g @openfn/cli@1.38.5 && openfn repo install  -a common@3.3.4 -a collections@0.9.3 -a http@6.5.1 -a openmrs@4.1.3 -a dhis2@5.0.1"
 
 echo ""
 echo "$INFO copying OpenFn files to $PROJECT_NAME-worker-1"

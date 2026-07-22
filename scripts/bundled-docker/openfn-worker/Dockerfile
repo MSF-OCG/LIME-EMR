@@ -1,11 +1,11 @@
 # Dockerfile.worker
-FROM openfn/ws-worker:v1.21.2
+FROM openfn/ws-worker:v1.27.2
 
 # Install OpenFn CLI and adaptors
-RUN npm install -g @openfn/cli@1.20.1 && \
+RUN npm install -g @openfn/cli@1.38.5 && \
     openfn repo install \
-    -a common@3.2.3 \
-    -a collections@0.8.3 \
+    -a common@3.3.4 \
+    -a collections@0.9.3 \
     -a http@6.5.1 \
     -a openmrs@4.1.3 \
     -a dhis2@5.0.1

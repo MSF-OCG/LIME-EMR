@@ -65,7 +65,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 5
-    image: postgres:16
+    image: postgres:16.14
     networks:
       - ozone
       - web
@@ -79,7 +79,7 @@ services:
 
   migrations:
     platform: linux/x86_64/v8
-    image: 'openfn/lightning:latest'
+    image: 'openfn/lightning:v2.17.0'
     command: ["/app/bin/lightning", "eval", "Lightning.Release.migrate"]
     env_file:
       - '${MSF_ENV_CONFIG_PATH}/concatenated.env'
@@ -94,7 +94,7 @@ services:
 
   web:
     platform: linux/x86_64/v8
-    image: 'openfn/lightning:latest'
+    image: 'openfn/lightning:v2.17.0'
     command: ["/app/bin/server"]
     deploy:
       resources:
@@ -134,7 +134,7 @@ services:
 
   worker:
     platform: linux/x86_64/v8
-    image: 'openfn/ws-worker:latest'
+    image: 'openfn/ws-worker:v1.27.2'
     deploy:
       resources:
         limits:
