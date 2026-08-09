@@ -787,6 +787,21 @@ ERL_FLAGS="+JPperf true"    # Required to avoid ArgumentError at startup
 ORIGINS="http://your-domain.com"  # Allowed CORS origins (set for Azure deployments)
 ```
 
+##### 5.2.2.3 Collections seeding (optional)
+
+After `openfn deploy`, `scripts/run_msf_addons.sh` can load metadata into an OpenFn collection from a GitHub-hosted JSON file (see issue #250). Configure in `run/docker/concatenated.env`:
+
+```sh
+# Raw GitHub URL (blob URLs are converted automatically)
+OPENFN_COLLECTIONS_JSON_URL=https://raw.githubusercontent.com/OpenFn/msf-lime-metadata/collections/metadata/wf1-collections.json
+OPENFN_COLLECTION_NAME=mosul-metadata-mappings-staging
+OPENFN_ENDPOINT=http://web:4000
+OPENFN_API_KEY=your_openfn_personal_access_token
+OPENFN_COLLECTIONS_GITHUB_TOKEN=your_github_token_if_private
+```
+
+The collection must exist in the deployed OpenFn project (`collections:` block in workflow YAML). Loading is chunked to avoid API size limits; failures are logged but do not stop deployment.
+
 ---
 
 ### 5.3 Clinical Features

@@ -74,6 +74,9 @@ if [ "$copy_openfn_files_status" = true ]; then
     docker exec $PROJECT_NAME-worker-1 sh -c "cd /app/packages/ws-worker/lime && openfn deploy -c config.json --no-confirm" || deploy_openfn_workflow_status=false
     if [ "$deploy_openfn_workflow_status" = true ]; then
         echo "$INFO OpenFn workflow deployed successfully."
+        # shellcheck source=scripts/load_openfn_collections.sh
+        . "$(dirname "${BASH_SOURCE[0]}")/load_openfn_collections.sh"
+        load_openfn_collections
     else
         echo "$ERROR Unable to deploy OpenFn workflow."
     fi
