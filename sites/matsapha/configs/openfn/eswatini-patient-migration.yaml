@@ -1,0 +1,195 @@
+workflows:
+  wf-eswatini-patient-migration:
+    name: wf-eswatini-patient-migration
+    jobs:
+      Validate-And-Prepare:
+        name: Validate and Prepare Payload
+        adaptor: '@openfn/language-common@latest'
+        credential: null
+        body: |
+          // Scaffold for #342 — replace PLACEHOLDER_* UUIDs after OMRS-01..06 confirmed.
+          fn((state) => {
+            const input = Array.isArray(state.data)
+              ? state.data
+              : state.data?.rows || state.data?.patients || [];
+
+            const genderMap = {
+              Male: "M",
+              Female: "F",
+              Nonbinary: "O",
+              Unknown: "U",
+            };
+
+            state.validPatients = [];
+            state.invalidPatients = [];
+
+            for (const row of input) {
+              const oldId = row["Old Patient ID"]?.trim();
+              const givenName = (row.Firstname || row.Name || "").trim();
+              const familyName = (row.Lastname || row.Surname || "").trim();
+              const birthDate = row["Date of birth"]?.trim();
+
+              if (!oldId || !givenName || !familyName || !birthDate) {
+                state.invalidPatients.push({
+                  oldId: oldId || null,
+                  error: "Missing required field(s)",
+                });
+                continue;
+              }
+
+              state.validPatients.push({
+                oldId,
+                givenName,
+                familyName,
+                phone: row["Cell Phone number"]?.trim(),
+                gender: genderMap[row.Gender?.trim()] || "U",
+                birthDate,
+                region: row.Region?.trim(),
+                district: row.Ludzeludze?.trim(),
+                village: row.Mbekelweni?.trim(),
+                occupation: row.Occupation?.trim(),
+                maritalStatus: row["Marital Status"]?.trim(),
+              });
+            }
+
+            state.results = {
+              total: input.length,
+              created: [],
+              updated: [],
+              failed: [...state.invalidPatients],
+            };
+
+            return state;
+          });
+
+      Lookup-Existing-Patient:
+        name: Lookup Existing Patient
+        adaptor: '@openfn/language-openmrs@4.2.0'
+        credential: michael.bontyes@geneva.msf.org-openmrs
+        body: |
+          each(
+            $.validPatients,
+            get("patient", { identifier: $.data.oldId }),
+            fn((state) => {
+              const matches = state.data?.results || [];
+              if (matches.length > 1) {
+                state.results.failed.push({
+                  oldId: state.data.oldId,
+                  error: "Multiple patients matched legacy identifier",
+                });
+                state.skipRecord = true;
+                return state;
+              }
+              state.match = matches[0];
+              state.shouldCreate = !state.match;
+              state.skipRecord = false;
+              return state;
+            }),
+            fn((state) => (state.skipRecord ? skip() : state))
+          );
+
+      Generate-Identifier:
+        name: Generate Identifier
+        adaptor: '@openfn/language-openmrs@4.2.0'
+        credential: michael.bontyes@geneva.msf.org-openmrs
+        body: |
+          each(
+            $.validPatients,
+            fn((state) => (state.shouldCreate ? state : skip())),
+            post(
+              "idgen/identifiersource/PLACEHOLDER_IDENTIFIER_SOURCE_UUID/identifier"
+            ),
+            fn((state) => {
+              state.generatedId = state.data.identifier;
+              return state;
+            })
+          );
+
+      Create-Or-Update-Patient:
+        name: Create Or Update Patient
+        adaptor: '@openfn/language-openmrs@4.2.0'
+        credential: michael.bontyes@geneva.msf.org-openmrs
+        body: |
+          each(
+            $.validPatients,
+            fn((state) => {
+              if (state.skipRecord) return skip();
+
+              const p = state.data;
+              const names = [{ givenName: p.givenName, familyName: p.familyName }];
+              const person = {
+                gender: p.gender,
+                birthdate: p.birthDate,
+                names,
+              };
+
+              if (state.shouldCreate) {
+                state.payload = {
+                  person,
+                  identifiers: [
+                    {
+                      identifier: state.generatedId,
+                      identifierType: "PLACEHOLDER_AUTO_IDENTIFIER_TYPE_UUID",
+                      location: "PLACEHOLDER_DEFAULT_LOCATION_UUID",
+                      preferred: true,
+                    },
+                    {
+                      identifier: p.oldId,
+                      identifierType: "PLACEHOLDER_LEGACY_IDENTIFIER_TYPE_UUID",
+                      location: "PLACEHOLDER_DEFAULT_LOCATION_UUID",
+                      preferred: false,
+                    },
+                  ],
+                };
+              } else {
+                state.payload = {
+                  person: {
+                    ...person,
+                    uuid: state.match.uuid,
+                  },
+                };
+              }
+              return state;
+            }),
+            fn((state) =>
+              state.shouldCreate
+                ? post("patient", state.payload)
+                : post(`patient/${state.match.uuid}`, state.payload)
+            ),
+            fn((state) => {
+              if (state.skipRecord) return state;
+              if (state.shouldCreate) {
+                state.results.created.push({
+                  oldId: state.data.oldId,
+                  uuid: state.data.uuid,
+                });
+              } else {
+                state.results.updated.push({
+                  oldId: state.data.oldId,
+                  uuid: state.match.uuid,
+                });
+              }
+              return state;
+            })
+          );
+
+      Return-Summary:
+        name: Return Summary
+        adaptor: '@openfn/language-common@latest'
+        credential: null
+        body: |
+          fn((state) => {
+            const summary = {
+              status: "COMPLETED",
+              timestamp: new Date().toISOString(),
+              summary: {
+                total: state.results.total,
+                created: state.results.created.length,
+                updated: state.results.updated.length,
+                failed: state.results.failed.length,
+              },
+              results: state.results,
+            };
+            console.log(JSON.stringify(summary, null, 2));
+            return { ...state, summary };
+          });
