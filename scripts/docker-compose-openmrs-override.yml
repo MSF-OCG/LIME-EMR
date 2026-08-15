@@ -1,9 +1,17 @@
 services:
   openmrs:
-    image: openmrs/openmrs-core:2.8.7
+    image: openmrs/openmrs-core:2.8.8
+    # Tomcat + ~40 modules + the embedded ActiveMQ broker need well over Docker's
+    # default 10s to shut down. A SIGKILL partway through leaves a torn record in
+    # the KahaDB journal, and the next boot dies in recoverProducerAudit with
+    # "Invalid location ... NegativeArraySizeException".
+    stop_grace_period: 120s
 
   mysql:
     image: mariadb:10.11.13
+    # InnoDB recovers from a hard kill, but a clean stop avoids a long redo
+    # replay on the next start and keeps the binlog tail intact for CDC.
+    stop_grace_period: 60s
 
   frontend:
     environment:
