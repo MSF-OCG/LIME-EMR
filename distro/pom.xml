@@ -812,6 +812,8 @@
 					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="USER root${line.separator}"/>
 					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="COPY bundled-docker/openmrs/set-session-timeout.sh /tmp/set-session-timeout.sh${line.separator}"/>
 					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="RUN sh /tmp/set-session-timeout.sh${line.separator}"/>
+					<echo level="info" message="Symlinking the mariadb client (openmrs-core 2.8.8 startup.sh shells out to `mariadb`, but the image ships only `mysql`, so its DB auth check fails with a misleading credentials error)"/>
+					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="RUN ln -sf /usr/bin/mysql /usr/bin/mariadb${line.separator}"/>
 					<echo file="${project.build.directory}/bundled-docker-tmp/bundled-docker/openmrs/Dockerfile" append="true" message="USER 1001${line.separator}"/>
 
 					<echo level="info" message="Adding msf MYSQL docker image version"/>
