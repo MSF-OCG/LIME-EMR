@@ -70,7 +70,11 @@ services:
       - ozone
       - web
     ports:
-      - "${OPENFN_POSTGRES_PORT:-5433}:5432"
+      # Bind to loopback by default. Docker's published ports are inserted ahead
+      # of UFW in iptables, so a bare "host:container" mapping is reachable from
+      # the internet even on a firewalled host. Set DB_BIND_ADDRESS only where
+      # the DOCKER-USER chain actually filters this port.
+      - "${DB_BIND_ADDRESS:-127.0.0.1}:${OPENFN_POSTGRES_PORT:-5433}:5432"
     restart: ${DOCKER_RESTART_POLICY:-unless-stopped}
     volumes:
       - openfn-postgres-data:/var/lib/postgresql/data
