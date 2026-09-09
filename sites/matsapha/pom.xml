@@ -199,12 +199,23 @@
               <target>
                 <mkdir
                   dir="${project.build.directory}/${project.artifactId}-${project.version}/distro/configs/openmrs/initializer_config" />
+                <!-- Initializer domains are content-package aware: nest them under an
+                     artifact-named sub-directory so several packages can coexist. -->
                 <copy
                   todir="${project.build.directory}/${project.artifactId}-${project.version}/distro/configs/openmrs/initializer_config">
-                  <fileset dir="${project.basedir}/configs/openmrs/initializer_config" />
+                  <fileset dir="${project.basedir}/configs/openmrs/initializer_config"
+                    excludes="addresshierarchy/**" />
                   <mapper type="regexp"
                     from="^([^/]+)/(.+)$"
                     to="\1/${project.artifactId}/\2" />
+                </copy>
+                <!-- addresshierarchy is loaded by the Address Hierarchy module's own
+                     AddressConfigurationLoader, which reads addressConfiguration.xml from the
+                     domain directory root only and does not scan sub-directories. Keep it flat. -->
+                <copy
+                  todir="${project.build.directory}/${project.artifactId}-${project.version}/distro/configs/openmrs/initializer_config">
+                  <fileset dir="${project.basedir}/configs/openmrs/initializer_config"
+                    includes="addresshierarchy/**" />
                 </copy>
               </target>
             </configuration>
