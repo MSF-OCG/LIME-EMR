@@ -58,6 +58,7 @@
 		<!-- Ozone alpha 13 modules -->
 		<fhirproxyVersion>1.1.0-SNAPSHOT</fhirproxyVersion>
 		<patientsummaryVersion>2.2.0</patientsummaryVersion>
+		<commonreportsVersion>1.5.0</commonreportsVersion>
 		<msf.environment>dev</msf.environment>
 		<bundled.docker.tag>${msf.environment}</bundled.docker.tag>
 	</properties>
@@ -262,6 +263,17 @@
 			<groupId>org.openmrs.module</groupId>
 			<artifactId>patientsummary-omod</artifactId>
 			<version>${patientsummaryVersion}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Provides the default report definitions (Patients, Visits, Encounters,
+		     Observations, Orders, Conditions, Concepts, Programs, Appointments, Audit,
+		     Diagnoses, Patient History). The "remove ozone modules" antrun step below
+		     deletes every Ozone-supplied omod, so this must be declared here or the
+		     reports are silently absent. patientsummary above is its dependency. -->
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>commonreports-omod</artifactId>
+			<version>${commonreportsVersion}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
