@@ -56,4 +56,30 @@
         <addForeignKeyConstraint constraintName="tasks_task_system_task_fk" baseTableName="tasks_task" baseColumnNames="system_task_id" referencedTableName="tasks_systemtask" referencedColumnNames="tasks_systemtask_id"/>
     </changeSet>
 
+    <!--
+        Start the core Auto Close Visits Task on boot. OpenMRS ships it with
+        start_on_startup = false and the scheduler only schedules tasks flagged
+        start_on_startup, so without this the task never runs and visits of the
+        types listed in each site's visits.autoCloseVisitType stay open. Starting
+        it by hand from the legacy admin UI does not survive a restart.
+        Once enabled it runs daily at 23:59:59 and closes open visits of those
+        types that started before that day.
+    -->
+    <changeSet id="enable-auto-close-visits-task-20260911" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT COUNT(*) FROM scheduler_task_config
+                WHERE schedulable_class = 'org.openmrs.scheduler.tasks.AutoCloseVisitsTask'
+                AND start_on_startup = 0;
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Start the Auto Close Visits Task on startup
+        </comment>
+        <update tableName="scheduler_task_config">
+            <column name="start_on_startup" valueBoolean="true"/>
+            <where>schedulable_class = 'org.openmrs.scheduler.tasks.AutoCloseVisitsTask'</where>
+        </update>
+    </changeSet>
+
 </databaseChangeLog>
