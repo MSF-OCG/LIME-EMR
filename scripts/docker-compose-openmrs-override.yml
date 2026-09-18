@@ -6,6 +6,32 @@ services:
     # the KahaDB journal, and the next boot dies in recoverProducerAudit with
     # "Invalid location ... NegativeArraySizeException".
     stop_grace_period: 120s
+    # The registration form reads the address hierarchy through the legacy ajax
+    # endpoints, which content-negotiate: with Accept: */* they answer JSON, but
+    # with a browser's Accept: text/html,application/xhtml+xml,... they render an
+    # OpenMRS HTML page with status 200. openmrsFetch parses the body in a
+    # try/catch and silently drops what is not JSON, so the hook behind the
+    # address section sees neither data nor error and calls .map on undefined.
+    # The whole form throws "Cannot read properties of undefined (reading 'map')"
+    # before it renders, which is how registration breaks at Matsapha.
+    #
+    # Pin Accept to application/json for those endpoints so the backend can only
+    # answer JSON, whatever the browser asks for. No response carries Vary or
+    # Cache-Control either, so an HTML copy cached under the same URL is served
+    # back to a fetch expecting JSON; Vary: Accept and no-store stop that, and
+    # explain why this looked intermittent and browser-specific.
+    #
+    # Labels merge per key with docker-compose-openmrs.yml, which defines the
+    # openmrs router and service. This one only adds a router for the ajax path.
+    labels:
+      traefik.http.routers.openmrs-addresshierarchy-ajax.rule: "Host(`${O3_HOSTNAME}`) && PathPrefix(`/openmrs/module/addresshierarchy/ajax/`)"
+      traefik.http.routers.openmrs-addresshierarchy-ajax.entrypoints: "websecure"
+      traefik.http.routers.openmrs-addresshierarchy-ajax.priority: "1000"
+      traefik.http.routers.openmrs-addresshierarchy-ajax.service: "openmrs"
+      traefik.http.routers.openmrs-addresshierarchy-ajax.middlewares: "openmrs-addresshierarchy-json"
+      traefik.http.middlewares.openmrs-addresshierarchy-json.headers.customrequestheaders.Accept: "application/json"
+      traefik.http.middlewares.openmrs-addresshierarchy-json.headers.customresponseheaders.Cache-Control: "no-store"
+      traefik.http.middlewares.openmrs-addresshierarchy-json.headers.customresponseheaders.Vary: "Accept"
 
   mysql:
     image: mariadb:10.11.13
