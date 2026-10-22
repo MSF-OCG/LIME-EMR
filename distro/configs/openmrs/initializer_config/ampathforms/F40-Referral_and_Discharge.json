@@ -85,7 +85,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "date > new Date()",
+                  "failsWhenExpression": "dateOfBirth > new Date()",
                   "message": "Date of birth cannot be in the future"
                 }
               ],
@@ -250,7 +250,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "date > new Date()",
+                  "failsWhenExpression": "admissionDate > new Date()",
                   "message": "Admission date cannot be in the future"
                 }
               ],
@@ -268,7 +268,7 @@
                 "disallowDecimals": true,
                 "step": 1,
                 "calculate": {
-                  "calculateExpression": "Current date - Admission date"
+                  "calculateExpression": "isEmpty(admissionDate) ? undefined : dayjs().diff(dayjs(admissionDate), 'day')"
                 }
               },
               "default": "Current date - Admission date"
@@ -892,7 +892,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "date > new Date()",
+                  "failsWhenExpression": "dischargeDate > new Date()",
                   "message": "Discharge date cannot be in the future"
                 }
               ],
@@ -998,7 +998,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "date > new Date()",
+                  "failsWhenExpression": "dateReferralRequestSentToReceivingSite > new Date()",
                   "message": "Date referral request sent to receiving site cannot be in the future"
                 }
               ]
@@ -1015,7 +1015,7 @@
               "validators": [
                 {
                   "type": "js_expression",
-                  "failsWhenExpression": "date > new Date()",
+                  "failsWhenExpression": "dateOfReferralOut > new Date()",
                   "message": "Date of referral out cannot be in the future"
                 }
               ],
