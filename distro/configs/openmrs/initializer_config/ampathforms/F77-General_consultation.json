@@ -1,0 +1,1279 @@
+{
+  "name": "F77-General consultation",
+  "description": "MSF Form - F77-General consultation",
+  "version": "1",
+  "published": true,
+  "uuid": "431e29ec-ff28-4283-a072-ed27599c97c6",
+  "processor": "EncounterFormProcessor",
+  "encounter": "General consultation",
+  "encounterType": "62daf2da-df9c-443e-b3f9-b7002922e158",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "General information",
+      "sections": [
+        {
+          "label": "General information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "consultationType",
+              "label": "Consultation type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4dae5b12-070f-4153-b1ca-fbec906106e1",
+                "answers": [
+                  {
+                    "label": "Admission",
+                    "concept": "871b2167-4024-4983-a881-9893b6a8460b"
+                  },
+                  {
+                    "label": "Follow up",
+                    "concept": "18c10f79-0bd7-429a-a809-3225bebf4bc7"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "referredFromAnotherHealthFacility",
+              "label": "Referred from another health facility?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "consultationType !== '871b2167-4024-4983-a881-9893b6a8460b'"
+              }
+            },
+            {
+              "id": "referredFromWhere",
+              "label": "Referred from where",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "referredFromAnotherHealthFacility !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "gender",
+              "label": "Gender",
+              "type": "obs",
+              "required": true,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7",
+                "answers": [
+                  {
+                    "label": "Man",
+                    "concept": "625baaf5-ba75-4c23-bdef-283fd47c34db"
+                  },
+                  {
+                    "label": "Woman",
+                    "concept": "2ded9cfb-c089-4e1c-b032-7aa4a17882f7"
+                  },
+                  {
+                    "label": "T. Man",
+                    "concept": "37ccc7b5-0d1d-48d3-87a6-aee614bb500f"
+                  },
+                  {
+                    "label": "T. Woman",
+                    "concept": "1226d253-376f-4e73-9ae2-36c7e9362e8b"
+                  },
+                  {
+                    "label": "Nonbinary",
+                    "concept": "b3b9ddc9-0ecc-415d-9216-83fb1c88fe5b"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "sexAtBirth",
+              "label": "Sex at birth",
+              "type": "obs",
+              "required": true,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a0b79c90-3571-4c2d-876e-7cc3e58bfa8f",
+                "answers": [
+                  {
+                    "label": "Male",
+                    "concept": "625baaf5-ba75-4c23-bdef-283fd47c34db"
+                  },
+                  {
+                    "label": "Female",
+                    "concept": "2ded9cfb-c089-4e1c-b032-7aa4a17882f7"
+                  },
+                  {
+                    "label": "Intersex",
+                    "concept": "8c35cd7a-4d4a-4a50-b7e8-3ca08118470f"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "Current illness",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "historyOfThePresentCondition",
+              "label": "History of the present condition",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "4ed7be54-3759-4a39-904b-ddefc9a22459"
+              }
+            },
+            {
+              "id": "detailOfSymptoms",
+              "label": "Detail of symptoms",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "53aa255f-db05-49fe-ba83-4d32aa0b9174"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Menstrual",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "lastMenstruationPeriodLmp",
+              "label": "Last menstruation period - LMP",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "date",
+                "concept": "e5f9e8be-5a5f-4468-b714-16cbb70c6021"
+              },
+              "hide": {
+                "hideWhenExpression": "sexAtBirth !== '2ded9cfb-c089-4e1c-b032-7aa4a17882f7' && sexAtBirth !== '8c35cd7a-4d4a-4a50-b7e8-3ca08118470f'"
+              }
+            },
+            {
+              "id": "cycleLength",
+              "label": "Cycle length (days)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "25723140-32b7-486b-8a8a-08c3cbe3c2ac",
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "sexAtBirth !== '2ded9cfb-c089-4e1c-b032-7aa4a17882f7' && sexAtBirth !== '8c35cd7a-4d4a-4a50-b7e8-3ca08118470f'"
+              }
+            },
+            {
+              "id": "durationOfFlowInDays",
+              "label": "Duration of flow in days",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "39f5815f-ad68-4e96-abfa-e69bc257f6fd",
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "sexAtBirth !== '2ded9cfb-c089-4e1c-b032-7aa4a17882f7' && sexAtBirth !== '8c35cd7a-4d4a-4a50-b7e8-3ca08118470f'"
+              }
+            },
+            {
+              "id": "flowAmount",
+              "label": "Flow amount",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a46e82cc-b2e2-4c6f-9120-c8de833cb43f",
+                "answers": [
+                  {
+                    "label": "Light",
+                    "concept": "66fa4804-25cb-4078-970c-ea0ccede88e7"
+                  },
+                  {
+                    "label": "Moderate",
+                    "concept": "a835148e-ab6a-4edb-92fa-004628b970bc"
+                  },
+                  {
+                    "label": "Heavy",
+                    "concept": "01d1453a-05e4-4d27-bfed-d94e9afed23d"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "sexAtBirth !== '2ded9cfb-c089-4e1c-b032-7aa4a17882f7' && sexAtBirth !== '8c35cd7a-4d4a-4a50-b7e8-3ca08118470f'"
+              }
+            },
+            {
+              "id": "painfulPeriod",
+              "label": "Painful period",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "3ef7b329-c145-4a18-89e5-5deca182b004",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "sexAtBirth !== '2ded9cfb-c089-4e1c-b032-7aa4a17882f7' && sexAtBirth !== '8c35cd7a-4d4a-4a50-b7e8-3ca08118470f'"
+              }
+            },
+            {
+              "id": "intermenstrualBleeding",
+              "label": "Intermenstrual bleeding",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5f65ddb3-2860-472e-bc99-e122c100c72a",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "sexAtBirth !== '2ded9cfb-c089-4e1c-b032-7aa4a17882f7' && sexAtBirth !== '8c35cd7a-4d4a-4a50-b7e8-3ca08118470f'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Sexual",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "sexuallyActiveInTheLast12Months",
+              "label": "Sexually active in the last 12 months",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "5ef6f7e0-3b17-4046-8033-c72a3942b3c4",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "sexualPartnersGender",
+              "label": "Sexual partner's gender",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "3e11bf3c-bde0-45a5-a197-2cd992c4b556",
+                "answers": [
+                  {
+                    "label": "Women",
+                    "concept": "2ded9cfb-c089-4e1c-b032-7aa4a17882f7"
+                  },
+                  {
+                    "label": "Men",
+                    "concept": "625baaf5-ba75-4c23-bdef-283fd47c34db"
+                  },
+                  {
+                    "label": "Transgender women (male to female)",
+                    "concept": "1226d253-376f-4e73-9ae2-36c7e9362e8b"
+                  },
+                  {
+                    "label": "Transgender men (female to male)",
+                    "concept": "37ccc7b5-0d1d-48d3-87a6-aee614bb500f"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "sexuallyActiveInTheLast12Months !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "numberOfSexualPartners",
+              "label": "Number of sexual partners",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "a3c6d27f-f172-4200-aa48-79c1bebe524f",
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "sexuallyActiveInTheLast12Months !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "exchangedSexForMoneyOrGoods",
+              "label": "Exchanged sex for money or goods?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9b4a2801-5012-4563-846a-d915c67565db",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "sexuallyActiveInTheLast12Months !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "postcoitalBleeding",
+              "label": "Postcoital bleeding",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9f27fdd3-c834-41ed-aa9b-b1e5f0499ac5",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "sexuallyActiveInTheLast12Months !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "previousSexuallyTransmittedInfections",
+              "label": "Previous sexually transmitted infections (STIs)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "1462280f-a1ff-4719-aa26-f00453c2df85",
+                "answers": [
+                  {
+                    "label": "Syphilis",
+                    "concept": "7a81bd29-4ee9-4102-af57-ed82d7f61c96"
+                  },
+                  {
+                    "label": "Gonorrhea",
+                    "concept": "2deb6a72-385e-4e8e-9758-04932127431a"
+                  },
+                  {
+                    "label": "Chlamydia",
+                    "concept": "3f7d4161-931e-489e-8c1f-e7aa5a11e7a4"
+                  },
+                  {
+                    "label": "Trichomoniasis",
+                    "concept": "bd21bc8f-3b08-4eab-b41b-c4c22fb2345b"
+                  },
+                  {
+                    "label": "Genital Herpes (HSV)",
+                    "concept": "b2306777-3e11-4d70-81e6-f7bacbc2c403"
+                  },
+                  {
+                    "label": "Human Papillomavirus (HPV)",
+                    "concept": "4eb5692b-4bb4-4783-a946-578e66ed0385"
+                  },
+                  {
+                    "label": "HIV / AIDS",
+                    "concept": "0d0561b7-9895-4936-95ad-4c148a2faf83"
+                  },
+                  {
+                    "label": "Hepatitis B",
+                    "concept": "e68c1c38-4feb-4436-814b-fc1ab77dddb1"
+                  },
+                  {
+                    "label": "Hepatitis C",
+                    "concept": "16c5703c-e06c-4ee0-b01f-16c33ef46532"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "consultationType !== '871b2167-4024-4983-a881-9893b6a8460b'"
+              }
+            },
+            {
+              "id": "ifOtherSpecify",
+              "label": "If other, specify",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(previousSexuallyTransmittedInfections, '790b41ce-e1e7-11e8-b02f-0242ac130002')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Family planning",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "currentlyUsingContraception",
+              "label": "Currently using contraception",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8737814b-5f2e-4101-ae1c-64c706fa7c19",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "currentContraceptiveMethod",
+              "label": "Current contraceptive method",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1cf781bb-3439-48ff-9c27-236fbbc3dbdc",
+                "answers": [
+                  {
+                    "label": "Coitus interruptus (withdrawal)",
+                    "concept": "5c104be1-c5b3-4274-88ea-25f39711c3cf"
+                  },
+                  {
+                    "label": "Condom - Female",
+                    "concept": "d0f6ffc4-5a90-433b-a866-75e040e2731f"
+                  },
+                  {
+                    "label": "Condom - Male",
+                    "concept": "6fafa6b0-9acb-4982-9532-af2b85ea2ed6"
+                  },
+                  {
+                    "label": "Diaphragm / Cervical cap",
+                    "concept": "1e1b50d8-66c5-4bf4-be54-5f30ca2fe747"
+                  },
+                  {
+                    "label": "Emergency contraceptive",
+                    "concept": "711f0159-f083-4953-be52-4862e25a11e0"
+                  },
+                  {
+                    "label": "Fertility awareness / Calendar method",
+                    "concept": "b065bcbe-1a80-4997-a9ad-9ea7558c7a6e"
+                  },
+                  {
+                    "label": "Implant",
+                    "concept": "9f837d1c-c40c-4443-8508-2fc28d2c22b5"
+                  },
+                  {
+                    "label": "Injectable contraceptive",
+                    "concept": "ff6bd60e-48fc-4922-926e-d69ae1e62f31"
+                  },
+                  {
+                    "label": "Intrauterine device (IUD) – Copper",
+                    "concept": "e47a2044-2fef-4535-9418-21108c8be2d3"
+                  },
+                  {
+                    "label": "Intrauterine device (IUD) – Hormonal",
+                    "concept": "99f02e71-cd90-4de6-a6c9-3a2f6fd94124"
+                  },
+                  {
+                    "label": "Lactational amenorrhea method (LAM)",
+                    "concept": "da5d6946-ab1d-4f17-b4c3-8d22b0f0a770"
+                  },
+                  {
+                    "label": "Oral contraceptive pills (OCPs)",
+                    "concept": "dcc05293-cda6-48ee-b934-8982712ae59c"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Tubal ligation (female sterilization)",
+                    "concept": "5939ffb8-257c-4b16-9f6c-f961289b747c"
+                  },
+                  {
+                    "label": "Vasectomy (partner sterilization)",
+                    "concept": "76e3ce78-9147-43e5-a200-82c6d7c7ddd4"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "currentlyUsingContraception !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "otherContraceptiveMethod",
+              "label": "Other contraceptive method",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+              },
+              "hide": {
+                "hideWhenExpression": "currentContraceptiveMethod !== '790b41ce-e1e7-11e8-b02f-0242ac130002'"
+              }
+            },
+            {
+              "id": "sideEffectsOfCurrentContraceptiveMethod",
+              "label": "Side effects of current contraceptive method",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "862ed631-6a50-4cef-8c05-7453255386ab",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "currentlyUsingContraception !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "notesOnContraception",
+              "label": "Notes on contraception",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "71f707eb-b57e-43af-960e-1c9d7de33424"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Obstetrics",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "gravida",
+              "label": "Gravida",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "00df1796-a090-447d-8904-3d6e0d9e5948",
+                "min": 0,
+                "max": 20,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "sexAtBirth !== '2ded9cfb-c089-4e1c-b032-7aa4a17882f7' && sexAtBirth !== '8c35cd7a-4d4a-4a50-b7e8-3ca08118470f'"
+              }
+            },
+            {
+              "id": "para",
+              "label": "Para",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "76a96d44-00f5-469f-9329-5a53409a87eb",
+                "min": 0,
+                "max": 20,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "sexAtBirth !== '2ded9cfb-c089-4e1c-b032-7aa4a17882f7' && sexAtBirth !== '8c35cd7a-4d4a-4a50-b7e8-3ca08118470f'"
+              }
+            },
+            {
+              "id": "abortion",
+              "label": "Abortion",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "aa296b81-5599-4076-8e53-e47d6e96159e",
+                "min": 0,
+                "max": 20,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "sexAtBirth !== '2ded9cfb-c089-4e1c-b032-7aa4a17882f7' && sexAtBirth !== '8c35cd7a-4d4a-4a50-b7e8-3ca08118470f'"
+              }
+            },
+            {
+              "id": "lastPregnancy",
+              "label": "Last pregnancy (year)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "number",
+                "concept": "df0c3486-b24b-4020-a129-fbbfeea73636",
+                "min": 1950,
+                "max": 2999,
+                "step": 1
+              },
+              "hide": {
+                "hideWhenExpression": "sexAtBirth !== '2ded9cfb-c089-4e1c-b032-7aa4a17882f7' && sexAtBirth !== '8c35cd7a-4d4a-4a50-b7e8-3ca08118470f'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Drugs",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "recreationalUseOfDrugsInTheLast12Months",
+              "label": "Recreational use of drugs in the last 12 months",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f2e8dc46-ef8c-4f4c-a9d0-e49c49071d78",
+                "answers": [
+                  {
+                    "label": "Yes, injecting drug use",
+                    "concept": "e75591ab-2d33-408c-9405-d1d5ec7ebbe2"
+                  },
+                  {
+                    "label": "Yes, non-injecting drug use",
+                    "concept": "ff551db4-6978-446c-99d2-1c5056761bc8"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "whichDrug",
+              "label": "Which drug(s)",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "08e67957-5c0f-45f2-aa1f-488803913d1e"
+              },
+              "hide": {
+                "hideWhenExpression": "recreationalUseOfDrugsInTheLast12Months !== 'e75591ab-2d33-408c-9405-d1d5ec7ebbe2' && recreationalUseOfDrugsInTheLast12Months !== 'ff551db4-6978-446c-99d2-1c5056761bc8'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Medical",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "otherRelevantMedicalAndSurgicalHistory",
+              "label": "Other relevant medical and surgical history",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "f8883168-4a8d-432b-8812-6dcdfbf5b13a"
+              },
+              "questionInfo": "Check in 'Conditions' and 'Medications' and update them if necessary"
+            },
+            {
+              "id": "checkInallergiesAndUpdateItIfNecessary",
+              "label": "Check in 'Allergies' and update it if necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "patient-allergy-form-workspace"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Risk category",
+      "sections": [
+        {
+          "label": "Risk category",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "stiRiskFactor",
+              "label": "STI risk factor",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "84d09470-b00f-46dc-bd81-d7f84751ea2f",
+                "answers": [
+                  {
+                    "label": "Transgender",
+                    "concept": "409a6040-e0ac-4226-9188-31753775ba4c"
+                  },
+                  {
+                    "label": "MSM / WSW",
+                    "concept": "bfdaf893-50c8-4999-8651-e8bf699c86ac"
+                  },
+                  {
+                    "label": "Condomless anal or vaginal intercourse",
+                    "concept": "e28efe56-e141-4ac3-b3fd-bb2f32b21dcc"
+                  },
+                  {
+                    "label": "Sex worker",
+                    "concept": "13b98e33-fc1e-4eec-8732-870762fa44c6"
+                  },
+                  {
+                    "label": "People who inject drugs",
+                    "concept": "e75591ab-2d33-408c-9405-d1d5ec7ebbe2"
+                  },
+                  {
+                    "label": "Mobile population",
+                    "concept": "8fcf665d-7a51-4fce-9ad1-070c3adaacf4"
+                  },
+                  {
+                    "label": "Patient on PrEP",
+                    "concept": "264dfec8-e6aa-4881-afdb-b08b38d38e68"
+                  },
+                  {
+                    "label": "Sexual aggression",
+                    "concept": "51c61fb2-017e-43d7-9195-e95cc2cb9304"
+                  },
+                  {
+                    "label": "People living with HIV or having another chronic STI (HBV/HCV/HPV)",
+                    "concept": "ae12dd45-f672-4a11-8303-12f005eae751"
+                  },
+                  {
+                    "label": "More than 1 past STI episode",
+                    "concept": "84dd925f-b3aa-4577-9b83-4d36ac5a63b2"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Physical exam",
+      "sections": [
+        {
+          "label": "Physical exam",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "pleaseCheckInvitalsBiometricsForweighttemperaturebpAndOtherParametersAndAddCurrentMeasurementsWheneverNecessary",
+              "label": "Please check in 'Vitals & Biometrics' for 'Weight', 'Temperature', 'BP', and other parameters AND add current measurements whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient vitals",
+                "workspaceName": "patient-vitals-biometrics-form-workspace"
+              }
+            },
+            {
+              "id": "generalCondition",
+              "label": "General condition",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0dd28dfa-fa10-4dbd-bf6a-4f5ad6868c64"
+              }
+            },
+            {
+              "id": "mouthExamination",
+              "label": "Mouth examination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "4ec7f19b-e823-4966-a43c-4a9c350e5230"
+              }
+            },
+            {
+              "id": "chestExamination",
+              "label": "Chest examination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "7925f3f5-3e62-4181-8534-a3e2132f1444"
+              }
+            },
+            {
+              "id": "abdominalExamination",
+              "label": "Abdominal examination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "1282939b-fed6-4bbf-b0ba-23f32651a087"
+              }
+            },
+            {
+              "id": "genitoAnalExamination",
+              "label": "Genito-anal examination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "9722f0e8-9058-4b2b-8fd6-87a2f217068b"
+              }
+            },
+            {
+              "id": "speculumExamination",
+              "label": "Speculum examination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "c0fbcd90-0d10-4d61-8d48-3f2ade332c05"
+              },
+              "hide": {
+                "hideWhenExpression": "sexAtBirth !== '2ded9cfb-c089-4e1c-b032-7aa4a17882f7' && sexAtBirth !== '8c35cd7a-4d4a-4a50-b7e8-3ca08118470f'"
+              }
+            },
+            {
+              "id": "bimanualExamination",
+              "label": "Bimanual examination",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "64e0fd54-ea02-4458-bfe3-34de0ac268a5"
+              },
+              "hide": {
+                "hideWhenExpression": "sexAtBirth !== '2ded9cfb-c089-4e1c-b032-7aa4a17882f7' && sexAtBirth !== '8c35cd7a-4d4a-4a50-b7e8-3ca08118470f'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Investigations",
+      "sections": [
+        {
+          "label": "Investigations",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "examsDone",
+              "label": "Exams done",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "ce8e76f3-28cb-492e-a66f-486d0d4a4340",
+                "answers": [
+                  {
+                    "label": "HIV screening",
+                    "concept": "47704fd2-0731-4658-ad9d-1a9845196093"
+                  },
+                  {
+                    "label": "HBV screening",
+                    "concept": "2a97ad84-7392-4d90-89f6-5dcf6bb23ff8"
+                  },
+                  {
+                    "label": "HCV screening",
+                    "concept": "86c385a4-4d3e-433c-99ca-66c5b9102ad9"
+                  },
+                  {
+                    "label": "Syphilis screening",
+                    "concept": "7a81bd29-4ee9-4102-af57-ed82d7f61c96"
+                  },
+                  {
+                    "label": "Cervical cancer screening",
+                    "concept": "4c71dea0-5db1-4b07-9def-e08044cadf8a"
+                  },
+                  {
+                    "label": "Pregnancy test",
+                    "concept": "61d473d6-ab11-458e-b841-382bc183fd13"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "questionInfo": "Check in 'Results' for relevant tests ordered"
+            },
+            {
+              "id": "commentsOnLabTestsAndInvestigations",
+              "label": "Comments on lab tests and investigations",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Diagnosis",
+      "sections": [
+        {
+          "label": "Diagnosis",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "diagnosis",
+              "label": "Diagnosis",
+              "type": "diagnosis",
+              "required": false,
+              "questionOptions": {
+                "rendering": "repeating",
+                "isSearchable": true,
+                "diagnosis": {
+                  "rank": 1,
+                  "isConfirmed": false,
+                  "conceptClasses": [
+                    "8d4918b0-c2cc-11de-8d13-0010c6dffd0f"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Management",
+      "sections": [
+        {
+          "label": "Treatment",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "managementPlan",
+              "label": "Management Plan",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "78900dd0-228c-48ec-843f-81dae00cd454"
+              }
+            },
+            {
+              "id": "prescribeMedicationAndExamsWithTheOrderBasketIfNecessary",
+              "label": "Prescribe medication and exams with the order basket if necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            },
+            {
+              "id": "actionsTaken",
+              "label": "Actions taken",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "673d29c3-206e-4043-9337-31d32e5afc90",
+                "answers": [
+                  {
+                    "label": "Condom given",
+                    "concept": "3bed3c77-0425-4177-aa8a-6db23b2c9d90"
+                  },
+                  {
+                    "label": "PrEP given",
+                    "concept": "264dfec8-e6aa-4881-afdb-b08b38d38e68"
+                  },
+                  {
+                    "label": "PEP prescribed",
+                    "concept": "7842eb3e-e0b0-476f-9100-f96bcebbc8e0"
+                  },
+                  {
+                    "label": "Pre-invasive cervical disease treatment received",
+                    "concept": "f05ca161-e81c-4e32-b293-2ab43d27673a"
+                  },
+                  {
+                    "label": "HPV vaccination received",
+                    "concept": "0f7cae06-6f89-4602-b60f-69e00adfbbb2"
+                  },
+                  {
+                    "label": "GAHT prescribed",
+                    "concept": "86d623fb-f982-4b14-adc7-b070568b9855"
+                  },
+                  {
+                    "label": "Needles–syringes given",
+                    "concept": "0d899a65-766e-4640-bbc5-bba57970b8ef"
+                  },
+                  {
+                    "label": "OAMT perscribed",
+                    "concept": "db6c424a-8745-42e1-aab1-3c029cb76b4c"
+                  },
+                  {
+                    "label": "Naloxone prescribed",
+                    "concept": "8d89ada3-260b-45f9-8306-47e9cb45b65c"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "prepStatus",
+              "label": "PrEP status",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bbe77aab-c9bb-4ce5-8df5-5c9dd8f01139",
+                "answers": [
+                  {
+                    "label": "Starting for the first time",
+                    "concept": "c3f814cc-06fd-4b8d-af92-f8ed74064d76"
+                  },
+                  {
+                    "label": "Restarting",
+                    "concept": "de81ea22-4b8b-4e15-b407-ce9439a4f5bd"
+                  },
+                  {
+                    "label": "Continuing",
+                    "concept": "01f59bf8-13f0-4fb2-900b-37d03f133a4d"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(actionsTaken, '264dfec8-e6aa-4881-afdb-b08b38d38e68')"
+              }
+            },
+            {
+              "id": "changeOfPrepProduct",
+              "label": "Change of PrEP product?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "64c2f053-0ae9-4b51-a752-00d3c6a4d1e2",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "prepStatus !== '01f59bf8-13f0-4fb2-900b-37d03f133a4d' && prepStatus !== 'de81ea22-4b8b-4e15-b407-ce9439a4f5bd'"
+              }
+            },
+            {
+              "id": "prepProductsGiven",
+              "label": "PrEP products given",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "10cc9e46-bea8-47d3-867a-d68280009bde",
+                "answers": [
+                  {
+                    "label": "oral PrEP",
+                    "concept": "3ccf4a1b-b6b8-4278-9e11-39286e811479"
+                  },
+                  {
+                    "label": "DVR",
+                    "concept": "a3be4ef8-e61d-4625-be08-17f5505ca536"
+                  },
+                  {
+                    "label": "CAB-LA",
+                    "concept": "90b0cc68-6f54-477f-9e4d-46c22763258e"
+                  },
+                  {
+                    "label": "LEN",
+                    "concept": "8e73bbb4-f008-42a1-b7b5-e2844e53ec78"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "hide": {
+                "hideWhenExpression": "!includes(actionsTaken, '264dfec8-e6aa-4881-afdb-b08b38d38e68')"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Referral",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "referredToWhichService",
+              "label": "Referred to which service",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "8fb3bb7d-c935-4b57-8444-1b953470e109",
+                "answers": [
+                  {
+                    "label": "Health promotion",
+                    "concept": "edb619d5-309f-45db-9521-70fcc22b30aa"
+                  },
+                  {
+                    "label": "Family planning",
+                    "concept": "f764332e-d56c-4978-a790-c845def5ed14"
+                  },
+                  {
+                    "label": "Mental health",
+                    "concept": "ab0d230d-65f2-406c-9f95-c1b08433267b"
+                  },
+                  {
+                    "label": "Chronic infectious diseases",
+                    "concept": "ccd320c5-7a4a-448d-84aa-915be7ebf0d7"
+                  },
+                  {
+                    "label": "External referral",
+                    "concept": "258191d9-5b22-4c90-8820-7a36e45e9fb5"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "questionInfo": "If necessary"
+            },
+            {
+              "id": "specifyWhichExternalReferralServiceAndReason",
+              "label": "Specify which external referral service and reason",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "258191d9-5b22-4c90-8820-7a36e45e9fb5"
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(referredToWhichService, '258191d9-5b22-4c90-8820-7a36e45e9fb5')"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Comments",
+      "sections": [
+        {
+          "label": "Comments",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "comments",
+              "label": "Comments",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow up visit",
+      "sections": [
+        {
+          "label": "Follow up visit",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "inappointmentsSetTheNextDateForFollowUpWheneverNecessary",
+              "label": "In 'Appointments' set the next date for follow up whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "patient-chart-appointments-form-workspace"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
