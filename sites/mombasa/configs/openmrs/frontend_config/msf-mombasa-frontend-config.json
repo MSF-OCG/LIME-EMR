@@ -177,13 +177,6 @@
     ],
     "fieldDefinitions": [
       {
-        "id": "genderIdentity",
-        "type": "person attribute",
-        "uuid": "a3afd9ce-4123-4f04-8de4-0032d49bf8f9",
-        "label": "Gender",
-        "answerConceptSetUuid": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7"
-      },
-      {
         "id": "telephoneNumber",
         "type": "person attribute",
         "uuid": "bc851ec1-9fb7-49da-acd7-1a61168002fe",
@@ -289,25 +282,6 @@
         "answerConceptSetUuid": "544ef960-3b65-4add-8795-96b2b084faa3"
       },
       {
-        "id": "occupation",
-        "type": "person attribute",
-        "uuid": "dd1f7f0f-ccea-4228-9aa8-a8c3b0ea4c3e",
-        "label": "Occupation",
-        "validation": {
-          "required": false
-        },
-        "answerConceptSetUuid": "f22eb938-f41b-4f20-b01d-238aeef64e23"
-      },
-      {
-        "id": "occupationOther",
-        "type": "person attribute",
-        "uuid": "34dfe9c6-c3f7-44ca-8951-e3806543a8a6",
-        "label": "Occupation, if other specify",
-        "validation": {
-          "required": false
-        }
-      },
-      {
         "id": "dateOfFirstVisit",
         "type": "person attribute",
         "uuid": "7ed1588d-53ff-4d56-a583-90c709ef9753",
@@ -324,17 +298,12 @@
       {
         "id": "basicInfo",
         "name": "Basic info",
-        "fields": ["name", "gender", "genderIdentity", "dob", "id"]
+        "fields": ["name", "gender", "dob", "id"]
       },
       {
         "id": "additionalInformation",
         "name": "Demographics",
-        "fields": [
-          "maritalStatus",
-          "occupation",
-          "occupationOther",
-          "dateOfFirstVisit"
-        ]
+        "fields": ["maritalStatus", "dateOfFirstVisit"]
       },
       {
         "id": "contact",
