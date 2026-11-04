@@ -1,0 +1,45 @@
+<addressConfiguration>
+  <wipe>true</wipe>
+  <addressComponents>
+    <addressComponent>
+      <field>COUNTRY</field>
+      <nameMapping>Location.country</nameMapping>
+      <sizeMapping>40</sizeMapping>
+      <elementDefault>Kenya</elementDefault>
+      <requiredInHierarchy>true</requiredInHierarchy>
+    </addressComponent>
+    <addressComponent>
+      <field>STATE_PROVINCE</field>
+      <nameMapping>County</nameMapping>
+      <sizeMapping>40</sizeMapping>
+      <elementDefault>Mombasa</elementDefault>
+      <requiredInHierarchy>true</requiredInHierarchy>
+    </addressComponent>
+    <addressComponent>
+      <field>COUNTY_DISTRICT</field>
+      <nameMapping>Sub-county</nameMapping>
+      <sizeMapping>40</sizeMapping>
+      <requiredInHierarchy>true</requiredInHierarchy>
+    </addressComponent>
+    <addressComponent>
+      <field>CITY_VILLAGE</field>
+      <nameMapping>Ward</nameMapping>
+      <sizeMapping>40</sizeMapping>
+      <requiredInHierarchy>true</requiredInHierarchy>
+    </addressComponent>
+    <addressComponent>
+      <field>ADDRESS_1</field>
+      <nameMapping>Location.address1</nameMapping>
+      <sizeMapping>80</sizeMapping>
+      <requiredInHierarchy>true</requiredInHierarchy>
+    </addressComponent>
+  </addressComponents>
+  <lineByLineFormat>
+    <string>country stateProvince countyDistrict cityVillage</string>
+    <string>address1</string>
+  </lineByLineFormat>
+  <addressHierarchyFile>
+    <filename>addresshierarchy_kenya.csv</filename>
+    <entryDelimiter>,</entryDelimiter>
+  </addressHierarchyFile>
+</addressConfiguration>
