@@ -1,0 +1,1632 @@
+{
+  "name": "F78-SV IPV Admission",
+  "description": "MSF Form - F78-SV IPV Admission",
+  "version": "1",
+  "published": true,
+  "uuid": "2ab4ce9b-ba42-4b69-bdfa-72d7a4f2f6c3",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Sexual Violence",
+  "encounterType": "dddaff3f-6ec0-48b6-b4c3-9c1b86cc02c2",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "General information",
+      "sections": [
+        {
+          "label": "General information",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "admissionType",
+              "label": "Admission type",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4dae5b12-070f-4153-b1ca-fbec906106e1",
+                "answers": [
+                  {
+                    "label": "New admission",
+                    "concept": "9f2fe30f-a8f0-49ba-82e4-71c232259130"
+                  },
+                  {
+                    "label": "Readmission",
+                    "concept": "e4e42ecd-196b-4aa8-a265-bfbed09d77cf"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "checklistReminder",
+              "label": "Checklist reminder",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "2d8a5986-5946-44a7-a4aa-5603971d3595",
+                "answers": [
+                  {
+                    "label": "Inform that they are free to share any detail they wish - they are not obliged to answer all questions",
+                    "concept": "fb2152d3-c801-4f9f-b588-f1569c610cfd"
+                  },
+                  {
+                    "label": "If accompanying person, ask if they wish for him/her to remain in the consultation",
+                    "concept": "cea746ae-786b-4f96-a715-ff657be11014"
+                  },
+                  {
+                    "label": "Explain that data recorded is confidential: MSF is committed to ensuring that survivors' information is not disclosed to third parties not involved in patient care without the patient's informed consent",
+                    "concept": "29a5a049-6d5c-40cd-bd7b-b742f1a8537d"
+                  },
+                  {
+                    "label": "Inform that they can ask not to be examined, or to explain how they prefer to be examined",
+                    "concept": "00562f56-890a-4605-875a-e76b1a2bdec0"
+                  }
+                ]
+              },
+              "questionInfo": "Proceed ONLY if all information is given"
+            },
+            {
+              "id": "gender",
+              "label": "Gender",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ec42d68d-3e23-43de-b8c5-a03bb538e7c7",
+                "answers": [
+                  {
+                    "label": "Male",
+                    "concept": "625baaf5-ba75-4c23-bdef-283fd47c34db"
+                  },
+                  {
+                    "label": "Female",
+                    "concept": "2ded9cfb-c089-4e1c-b032-7aa4a17882f7"
+                  },
+                  {
+                    "label": "Transgender male",
+                    "concept": "37ccc7b5-0d1d-48d3-87a6-aee614bb500f"
+                  },
+                  {
+                    "label": "Transgender female",
+                    "concept": "1226d253-376f-4e73-9ae2-36c7e9362e8b"
+                  },
+                  {
+                    "label": "Gender variant - Non conforming",
+                    "concept": "810ca6e9-cabf-4aa6-98d0-c3d31cfdb5f0"
+                  },
+                  {
+                    "label": "Prefer not to answer",
+                    "concept": "245151ca-691e-4d5a-a792-64cb573e2b34"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "accompanyingPersonPresent",
+              "label": "Accompanying person present?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d6195671-5087-4370-84d5-429f6891a12b",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "questionInfo": "Confirm that it's an adult AND is not implicated in the violence; if they are, or if it is unclear, consult the SV/protection referent before recording anything about them"
+            },
+            {
+              "id": "accompanyingPersonName",
+              "label": "Accompanying person - Name",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a9413065-86fb-4c04-b6ea-2f044325168b"
+              },
+              "hide": {
+                "hideWhenExpression": "accompanyingPersonPresent !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "accompanyingPersonRelationshipToSurvivor",
+              "label": "Accompanying person - Relationship to survivor",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "057e07a8-2170-4422-b257-26e401e3c151",
+                "answers": [
+                  {
+                    "label": "Parent",
+                    "concept": "47f6c64a-d718-428c-8740-349d82790c45"
+                  },
+                  {
+                    "label": "Grandparent",
+                    "concept": "06d3b3ce-a298-4ca6-b831-868ba7befd00"
+                  },
+                  {
+                    "label": "Child",
+                    "concept": "c39eaa06-6506-49f0-9c4f-c96fa957f9cd"
+                  },
+                  {
+                    "label": "Intimate partner (current or former)",
+                    "concept": "96ec81c8-6d8c-48b5-8e1d-f7532a628849"
+                  },
+                  {
+                    "label": "Other family member",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Friend",
+                    "concept": "96cd351b-a1f7-4d0f-93b3-3c2b5924f373"
+                  },
+                  {
+                    "label": "Neighbour",
+                    "concept": "ac0c6b17-2da0-4222-8f89-d8c2206c030c"
+                  },
+                  {
+                    "label": "Teacher/school staff",
+                    "concept": "8f227c4d-c260-4c89-b36a-ebcd8c4fd9f0"
+                  },
+                  {
+                    "label": "Community health care worker",
+                    "concept": "9bcbf231-c6ca-41c4-b247-bc4bced260c3"
+                  },
+                  {
+                    "label": "Employer/supervisor",
+                    "concept": "970d274e-8f65-460a-9dec-9e28b539e0ca"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "accompanyingPersonPresent !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "referredBy",
+              "label": "Referred by",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11",
+                "answers": [
+                  {
+                    "label": "Self-referral, family or friends",
+                    "concept": "2c6f2913-3d41-4a42-a836-cf1ebc26a2fe"
+                  },
+                  {
+                    "label": "Community member",
+                    "concept": "f8aa7292-7928-43ad-81ca-ada6114f6f47"
+                  },
+                  {
+                    "label": "Authorities",
+                    "concept": "80575f44-be81-4694-aba4-012999328339"
+                  },
+                  {
+                    "label": "MSF facility/program",
+                    "concept": "74c9a7c6-e64d-4f49-b8a6-f10999eb25bc"
+                  },
+                  {
+                    "label": "Community-based SV/IPV care",
+                    "concept": "bd1a2b94-eac6-4009-8b28-9ccd073ce3a8"
+                  },
+                  {
+                    "label": "Other health structure (non MSF)",
+                    "concept": "923c6b39-4094-45e4-95ab-b44f7a381980"
+                  },
+                  {
+                    "label": "Another organization (e.g., NGO, humanitarian actor, local association)",
+                    "concept": "0584a64b-8170-4940-8815-f355c2c062c2"
+                  },
+                  {
+                    "label": "Hotline",
+                    "concept": "d5ab08f5-a88b-4d6c-a3cf-1ba3c078b71e"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Not disclosed",
+                    "concept": "58099680-d0dd-4524-899d-b1f3d2a6c337"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "heardOfServicesThrough",
+              "label": "Heard of services through",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "fb359236-733b-42e0-bec3-e7bb0785985f",
+                "answers": [
+                  {
+                    "label": "HP/CHW/NGO/other organization (individual interaction, training, or larger event)",
+                    "concept": "2aa841d7-3b76-4392-a489-b8ed4bfb89ee"
+                  },
+                  {
+                    "label": "Poster/flyer/information card",
+                    "concept": "1aec5cbe-0cd0-420b-a402-42c6ebebd40b"
+                  },
+                  {
+                    "label": "Heard from another person (not HP/CHW/other organization)",
+                    "concept": "438d4d27-9cd5-4200-a239-90740d2d154f"
+                  },
+                  {
+                    "label": "Media (TV, newspaper, radio)",
+                    "concept": "c1b67a2e-be8d-489e-a1d8-5482a75f3675"
+                  },
+                  {
+                    "label": "Social media",
+                    "concept": "3c730ffa-5144-42cd-b198-d37c18bd1268"
+                  },
+                  {
+                    "label": "Hotline",
+                    "concept": "d5ab08f5-a88b-4d6c-a3cf-1ba3c078b71e"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Not disclosed",
+                    "concept": "58099680-d0dd-4524-899d-b1f3d2a6c337"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "History",
+      "sections": [
+        {
+          "label": "History",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "timeElapsedBetweenTheAssaultAndTheConsultation",
+              "label": "Time elapsed between the assault and the consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8ef009b1-396c-4dda-a816-b688ed66e450",
+                "answers": [
+                  {
+                    "label": "<72h",
+                    "concept": "7823e86d-0a26-4118-b188-ef316a431642"
+                  },
+                  {
+                    "label": "72 - 120h",
+                    "concept": "d707c32c-7c1c-4e2a-9865-01d2065cf763"
+                  },
+                  {
+                    "label": "5 days - 2 months",
+                    "concept": "bd11ca54-2454-483c-88c9-7cb1c79a2930"
+                  },
+                  {
+                    "label": "3 - 6 months",
+                    "concept": "457c31de-c61d-4edf-ace5-bf665eb9d661"
+                  },
+                  {
+                    "label": ">6 months",
+                    "concept": "aae5f5b3-0acd-422c-bef8-6e7a60f81d31"
+                  },
+                  {
+                    "label": "Unknown/Not disclosed",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "previousAssault",
+              "label": "Previous assault",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "91b7e78c-1b09-482a-b853-a4c8c71db942",
+                "answers": [
+                  {
+                    "label": "First-time assault",
+                    "concept": "c3f814cc-06fd-4b8d-af92-f8ed74064d76"
+                  },
+                  {
+                    "label": "Recurrent/Repeated assault",
+                    "concept": "d2bbc565-47a2-4e45-8e12-f562e4c9018a"
+                  },
+                  {
+                    "label": "Unknown/Not disclosed",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "typeOfViolence",
+              "label": "Type of violence",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "d8c84af2-bd9b-4bf3-a815-81652cb0b0bc",
+                "answers": [
+                  {
+                    "label": "SV without penetration",
+                    "concept": "62a35603-b3d0-4873-8e0d-cc032302670c"
+                  },
+                  {
+                    "label": "SV with penetration",
+                    "concept": "70a8d81f-5d0d-4b1c-bce1-95b1fbbf8da5"
+                  },
+                  {
+                    "label": "Physical (other than SV)",
+                    "concept": "6473ad84-53e1-4bb0-bb25-32ac424aaa97"
+                  },
+                  {
+                    "label": "Psychological",
+                    "concept": "5d595702-1991-47fa-bea1-8682e23c62bd"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "areaOfPenetration",
+              "label": "Area of penetration",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0e26d33f-d33d-4882-b6c3-b300d1b93359",
+                "answers": [
+                  {
+                    "label": "Vagina",
+                    "concept": "990489ca-5a07-4ef2-80a9-76463e303ae9"
+                  },
+                  {
+                    "label": "Anus",
+                    "concept": "26aa5399-408f-4831-9130-081fab676fa9"
+                  },
+                  {
+                    "label": "Mouth",
+                    "concept": "3b6cddd9-8cf4-47c6-bb5d-cb05b6739b34"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfViolence, '70a8d81f-5d0d-4b1c-bce1-95b1fbbf8da5')"
+              }
+            },
+            {
+              "id": "meansOfPenetration",
+              "label": "Means of penetration",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "2a417ae8-3656-4147-a3cb-187a5a007bef",
+                "answers": [
+                  {
+                    "label": "Fingers",
+                    "concept": "2bb3d0a5-1a68-4f6e-b219-402420887c13"
+                  },
+                  {
+                    "label": "Objects",
+                    "concept": "50b3db4c-d409-4c75-bd6a-853ce71aefa3"
+                  },
+                  {
+                    "label": "Penis",
+                    "concept": "736df7bb-755b-47fa-870a-609d11ef7bd0"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "!includes(typeOfViolence, '70a8d81f-5d0d-4b1c-bce1-95b1fbbf8da5')"
+              }
+            },
+            {
+              "id": "assaultDescription",
+              "label": "Description",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "a365d76f-5830-4629-9f0d-8a3d30979a16"
+              }
+            },
+            {
+              "id": "placeOrContextOfTheAssault",
+              "label": "Place/context of the assault",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "b00a0a5b-fe14-4b77-8db5-75a67033958d",
+                "answers": [
+                  {
+                    "label": "Survivor's home",
+                    "concept": "c9048315-99bb-4b20-afbd-12c5fe00f56b"
+                  },
+                  {
+                    "label": "Assailants home (if different than survivor's)",
+                    "concept": "9478f26a-6f8b-42f2-bf23-2c2823ba9420"
+                  },
+                  {
+                    "label": "In/on the way to work in fields/look for wood/firewood/water",
+                    "concept": "92c87b6c-3def-4249-8bff-83232db6642c"
+                  },
+                  {
+                    "label": "Public space (market, camp, on the road, public transportation, school)",
+                    "concept": "8adcfe0e-c150-42e4-9bf9-31ec85d4da8e"
+                  },
+                  {
+                    "label": "Workplace",
+                    "concept": "c957a6b8-94e6-4ed9-92bd-9c02bd842131"
+                  },
+                  {
+                    "label": "Food/NFI distribution",
+                    "concept": "7456a0ed-d688-45d2-8c57-358856aebec8"
+                  },
+                  {
+                    "label": "Safe house/protection site/medical facility",
+                    "concept": "3eaa0812-7b70-4498-869d-6c10311334ce"
+                  },
+                  {
+                    "label": "Prison/detention",
+                    "concept": "66492df1-6d26-498a-b6c7-b10931da1642"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Unknown/Not disclosed",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "hivStatusBeforeAssault",
+              "label": "HIV status before assault",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "fb270cba-cdcf-470d-847f-ec8ab3b20a5e",
+                "answers": [
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Unknown",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "evidenceOfPregnancyAndOrOrPregnancyTestPositive",
+              "label": "Evidence of pregnancy and/or pregnancy test positive",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8696fdfd-8933-4718-bbd9-5757fb598a39",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "N/A",
+                    "concept": "8fb2f830-52b3-4593-8e8f-5db8e2be7668"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "assailantRelation",
+              "label": "Assailant relation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "0cd23dd4-e0b6-4de3-a9b0-b7c8d0d6911d",
+                "answers": [
+                  {
+                    "label": "Intimate partner (current or former)",
+                    "concept": "96ec81c8-6d8c-48b5-8e1d-f7532a628849"
+                  },
+                  {
+                    "label": "Family or household member (not intimate partner)",
+                    "concept": "60be133e-098e-42eb-9e85-c36f3b6ea1e1"
+                  },
+                  {
+                    "label": "Teacher/School staff",
+                    "concept": "8f227c4d-c260-4c89-b36a-ebcd8c4fd9f0"
+                  },
+                  {
+                    "label": "Employer/supervisor",
+                    "concept": "970d274e-8f65-460a-9dec-9e28b539e0ca"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "No relation to survivor",
+                    "concept": "2b6ba233-5266-48c1-99d6-1eba0aa8a62c"
+                  },
+                  {
+                    "label": "Unknown/Not disclosed",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "questionInfo": "Information about the perpetrator of the assault should not be asked by the care provider; it should only be recorded if the information is shared by the survivor when they describe the assault"
+            },
+            {
+              "id": "assailantProfile",
+              "label": "Assailant profile",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "4a6b65e2-5603-46b8-810f-f87cac272065",
+                "answers": [
+                  {
+                    "label": "Non-civilian (military, police, security forces, or non-state armed group member; member of an organized criminal group)",
+                    "concept": "f0fe8bd6-a674-4026-8c3e-03758f11850d"
+                  },
+                  {
+                    "label": "MSF staff (including incentivized MoH staff, consultants, and daily workers)",
+                    "concept": "3e7d5696-f518-4168-8b90-c4d3b088e376"
+                  },
+                  {
+                    "label": "Healthcare/humanitarian staff (Not MSF)",
+                    "concept": "daf19e78-d845-4fd7-8082-36baa33aa77a"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Unknown/Not disclosed",
+                    "concept": "ccb4c50d-13e0-46a2-bd5e-51c86d042ad8"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true,
+              "questionInfo": "Information about the perpetrator of the assault should not be asked by the care provider; it should only be recorded if the information is shared by the survivor when they describe the assault"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Physical examination",
+      "sections": [
+        {
+          "label": "Physical examination",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "physicalExaminationDone",
+              "label": "Physical examination done",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8a6b18ef-db90-4e5a-b440-5a414d2b7893",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "injuriesPresentThatRequiredMedicalCare",
+              "label": "Injuries present that required medical care",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4e264234-96ee-40c0-8b25-544defbdb367",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  }
+                ]
+              },
+              "questionInfo": "Sutures, etc. - inclusing fistulas",
+              "hide": {
+                "hideWhenExpression": "physicalExaminationDone !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Observation",
+      "sections": [
+        {
+          "label": "Observation",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalRemarks",
+              "label": "Additional remarks",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Prescription",
+      "sections": [
+        {
+          "label": "Tests",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "prescribeExamsAndMedicationWithTheOrderBasketIfNecessary",
+              "label": "Prescribe exams and medication with the order basket if necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            },
+            {
+              "id": "pregnancyTestIndicated",
+              "label": "Pregnancy test indicated?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "dae8c3cb-4481-4a35-81e6-a995c2e75938",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pregnancyTestResult",
+              "label": "Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "85b90192-6080-4e80-88f9-ad87627e37dc",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "pregnancyTestIndicated !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "hivTestIndicated",
+              "label": "HIV test indicated?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f8ebd933-c186-4612-8f93-1ff4741386be",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hivTestResult",
+              "label": "Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "49b4650e-fd14-48ac-8458-c502a96152d2",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Undetermined",
+                    "concept": "a8f6df4c-dc78-4f6d-87b5-69b43a796245"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hivTestIndicated !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "hepatitisBTestIndicated",
+              "label": "Hepatitis B test indicated?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "319b3158-7cd7-4606-ba0a-128ea6a70b32",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hepatitisBTestResult",
+              "label": "Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8e7c05b0-14a1-46f3-9435-f4272fe25bb3",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hepatitisBTestIndicated !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "syphilisTestIndicated",
+              "label": "Syphilis test indicated?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bb22e095-7d6e-4632-9e83-b30940a7eeb4",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "syphilisTestResult",
+              "label": "Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e7d3a32b-88c3-45ca-91a6-c691e35497e8",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "syphilisTestIndicated !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Medication",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "hivProphylaxisIndicated",
+              "label": "HIV prophylaxis (PEP) indicated?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "32564d2b-4c7d-4866-8345-a9cb9b810397",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pepGiven",
+              "label": "Given",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "981d82f1-98c5-4ecb-a745-206433653596",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  },
+                  {
+                    "label": "Not available",
+                    "concept": "5562f7dc-59cc-43d5-9ecf-e660831e3f47"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hivProphylaxisIndicated !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "emergencyContraceptionIndicated",
+              "label": "Emergency contraception indicated?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "a1c13438-566b-4169-9369-1432b344b0c1",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "emergencyContraceptionGiven",
+              "label": "Given",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "87ad2445-cc11-4acb-b8fb-7f12003f2bdf",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  },
+                  {
+                    "label": "Not available",
+                    "concept": "5562f7dc-59cc-43d5-9ecf-e660831e3f47"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "emergencyContraceptionIndicated !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "stiPreventionOrTreatmentIndicated",
+              "label": "STI prevention / treatment indicated?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "7e7158fc-ceed-4e74-b836-e2f74e8ed0e8",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "stiPreventionOrTreatmentGiven",
+              "label": "Given",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "85592e57-aac0-49b9-8563-8874c10dff00",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  },
+                  {
+                    "label": "Not available",
+                    "concept": "5562f7dc-59cc-43d5-9ecf-e660831e3f47"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "stiPreventionOrTreatmentIndicated !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "Vaccins",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "checkimmunizationAndUpdateWithVaccinesGiven",
+              "label": "Check 'Immunization' and update with vaccines given",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Capture patient immunizations",
+                "workspaceName": "immunization-form-workspace"
+              }
+            },
+            {
+              "id": "hepatitisBVaccinationIndicated",
+              "label": "Hepatitis B vaccination indicated?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "0c76a8f2-5d7e-4fa4-85ed-a6c0d5165a2b",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hepatitisBVaccinationGiven",
+              "label": "Given",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "376eacae-2c78-4e04-8681-73841fbef43d",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hepatitisBVaccinationIndicated !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "tetanusVaccinationIndicated",
+              "label": "Tetanus vaccination indicated?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "543fa5c7-30fc-4ba0-9bc4-8ed16b670820",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "tetanusVaccinationGiven",
+              "label": "Given",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c0e8aac5-f5d3-4198-9020-c3b07a86ae40",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "tetanusVaccinationIndicated !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        },
+        {
+          "label": "TOP",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "wasTopRequested",
+              "label": "Was TOP requested?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "76a8e543-2556-400c-9af0-6148faf70cdc",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "wasSafeAbortionProvided",
+              "label": "Was safe abortion provided",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9abbe7e5-267d-4706-a4cf-c00ad1445ff2",
+                "answers": [
+                  {
+                    "label": "Yes - done by MSF",
+                    "concept": "0828eaf4-f742-4077-a808-aba17b2a70c1"
+                  },
+                  {
+                    "label": "Yes - Referred",
+                    "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11"
+                  },
+                  {
+                    "label": "No - Not by MSF or other actor",
+                    "concept": "6c7fb629-6858-4e89-b161-c2a85ba9f2f4"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "wasTopRequested !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "safeAbortionNotProvidedReason",
+              "label": "Explain why not",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0c3a1ec7-d453-4efe-becf-2975cbeb6533"
+              },
+              "hide": {
+                "hideWhenExpression": "wasSafeAbortionProvided !== '6c7fb629-6858-4e89-b161-c2a85ba9f2f4'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Prevention",
+      "sections": [
+        {
+          "label": "Risks",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "difficultiesEncounteredWhileAccessingCare",
+              "label": "Difficulties encountered while accessing care",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "multiCheckbox",
+                "concept": "be1a4478-b4bd-4e2e-ac08-f50c1a203b56",
+                "answers": [
+                  {
+                    "label": "Lack of information (about sexual violence and available services)",
+                    "concept": "2e703006-6292-4bca-ade5-8a9a8a1b71a1"
+                  },
+                  {
+                    "label": "Fear of stigma, social consequences or lack trust in confidentiality",
+                    "concept": "55e2656b-dc35-4a05-aef6-fa810afeff25"
+                  },
+                  {
+                    "label": "Fear of mandatory reporting to police/authorities",
+                    "concept": "ded5cc63-edc8-442b-8f8d-194b23fc2c0e"
+                  },
+                  {
+                    "label": "Lack of support or permission from family or community",
+                    "concept": "dcd99bf6-8356-4ecc-a935-6e64695c390f"
+                  },
+                  {
+                    "label": "Transportation barriers (cost, availability; distance, road conditions, weather conditions)",
+                    "concept": "988d1f88-1202-4a13-8ae7-02156b5ccbe2"
+                  },
+                  {
+                    "label": "Insecurity or personal safety risks (e.g. assault, checkpoints, threats)",
+                    "concept": "b87bcd34-c124-4f37-9a06-9cd1129f8373"
+                  },
+                  {
+                    "label": "Clinic not open or accessible at time of need",
+                    "concept": "10d52582-4c3b-45d7-a0fc-b3a48555c5ab"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "No difficulties experienced",
+                    "concept": "8c3e1ca4-31ab-4845-a998-0e43768c2c44"
+                  },
+                  {
+                    "label": "Not disclosed",
+                    "concept": "58099680-d0dd-4524-899d-b1f3d2a6c337"
+                  }
+                ]
+              },
+              "inlineMultiCheckbox": true
+            },
+            {
+              "id": "evaluationOfPotentialRisksToThePatientsSafetyDone",
+              "label": "Evaluation of potential risks to the patient's safety done",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "ef5cb49a-68b8-403a-8afb-74df3d58cb8e",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Declined",
+                    "concept": "ea3e1fa4-d083-4149-8f0d-bb01c41b8293"
+                  },
+                  {
+                    "label": "Not required",
+                    "concept": "8287919c-f99c-4c51-9494-857b5e63b7f5"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "label": "Mitigation",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "safetyPlanningDoneWithTheSurvivorToAddressAndMitigateTheIdentifiedRisks",
+              "label": "Safety planning done with the survivor to address and mitigate the identified risks",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6ab0469c-a60c-4a44-9cd6-7da3fca385ab",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Declined",
+                    "concept": "ea3e1fa4-d083-4149-8f0d-bb01c41b8293"
+                  },
+                  {
+                    "label": "Not required",
+                    "concept": "8287919c-f99c-4c51-9494-857b5e63b7f5"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Referral",
+      "sections": [
+        {
+          "label": "Referral",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "referredForMentalHealthConsultation",
+              "label": "Referred for Mental Health consultation",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "1b9cd679-7ba6-4f9c-93cd-83cb8a6962c5",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "mentalHealthReferralNotDoneReason",
+              "label": "Explain why not",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "8787b937-f625-4dfb-a2a7-27bd6117cdbe"
+              },
+              "hide": {
+                "hideWhenExpression": "referredForMentalHealthConsultation !== 'a5c5563e-df0e-4742-a335-b24fb63664ee'"
+              }
+            },
+            {
+              "id": "referralToOtherServices",
+              "label": "Referral to other services?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "6d3876be-0a27-466d-ad58-92edcc8c31fb",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "referralToOtherServicesWhere",
+              "label": "Where",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "516f4a75-3389-408d-901e-e4a18f094bcc",
+                "answers": [
+                  {
+                    "label": "ANC / PNC / Maternity",
+                    "concept": "7cc04e86-04c3-45ad-9bca-bad0e0ced42c"
+                  },
+                  {
+                    "label": "Police",
+                    "concept": "87ac8a8e-31ca-4ec7-a95d-dc31c7adc9f8"
+                  },
+                  {
+                    "label": "Legal Support",
+                    "concept": "8fe43e9c-dd37-4f61-8f30-e3ac2f3b9445"
+                  },
+                  {
+                    "label": "Psychiatrist",
+                    "concept": "ef57636e-ecf7-4aef-8124-34ccd9ab2bab"
+                  },
+                  {
+                    "label": "Secondary medical care (hospital)",
+                    "concept": "ae41e4e1-a933-405a-ad58-85d4ba5f2a3d"
+                  },
+                  {
+                    "label": "Shelter",
+                    "concept": "4b0d9e26-91c3-44cf-8a44-9e8457e99815"
+                  },
+                  {
+                    "label": "Other",
+                    "concept": "790b41ce-e1e7-11e8-b02f-0242ac130002"
+                  },
+                  {
+                    "label": "Authorities",
+                    "concept": "80575f44-be81-4694-aba4-012999328339"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "referralToOtherServices !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Certificate",
+      "sections": [
+        {
+          "label": "Certificate",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "medicalCertificateFilled",
+              "label": "Medical certificate filled?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "4c5ab439-9e57-4fd4-a346-913a70d56172",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pleaseAddADigitalCopyInattachment",
+              "label": "Please add a digital copy in 'Attachment'",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Open Workspace",
+                "workspaceName": "capture-photo-widget"
+              },
+              "questionInfo": "Take a photo or scan the filled certificate",
+              "hide": {
+                "hideWhenExpression": "medicalCertificateFilled !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "medicalCertificateNotFilledReason",
+              "label": "Why not",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "c3c0a453-b0e0-4ec9-9746-ada057754961"
+              },
+              "hide": {
+                "hideWhenExpression": "medicalCertificateFilled !== 'a5c5563e-df0e-4742-a335-b24fb63664ee'"
+              }
+            },
+            {
+              "id": "takenByThePatient",
+              "label": "Taken by the patient",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "50299b62-ae5b-46ee-a569-be1003f603d4",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "medicalCertificateFilled !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow up",
+      "sections": [
+        {
+          "label": "Follow up",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "inappointmentsSetTheNextDateForFollowUpWheneverNecessary",
+              "label": "In 'Appointments' set the next date for follow up whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "patient-chart-appointments-form-workspace"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
