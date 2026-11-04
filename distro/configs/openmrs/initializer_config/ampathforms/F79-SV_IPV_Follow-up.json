@@ -1,0 +1,637 @@
+{
+  "name": "F79-SV IPV Follow-up",
+  "description": "MSF Form - F79-SV IPV Follow-up",
+  "version": "1",
+  "published": true,
+  "uuid": "b18202e9-f257-4f2f-a40d-374699cea1f1",
+  "processor": "EncounterFormProcessor",
+  "encounter": "Sexual Violence",
+  "encounterType": "dddaff3f-6ec0-48b6-b4c3-9c1b86cc02c2",
+  "retired": false,
+  "referencedForms": [],
+  "pages": [
+    {
+      "label": "PEP",
+      "sections": [
+        {
+          "label": "PEP",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "checkInmedicationsForPreviouslyPrescribedDrugs",
+              "label": "Check in 'Medications' for previously prescribed drugs",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Check in 'Medications' for previously prescribed drugs"
+              ]
+            },
+            {
+              "id": "didPatientStartPepAtInitialVisit",
+              "label": "Did patient start PEP at initial visit?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "981d82f1-98c5-4ecb-a745-206433653596",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "wasPepCompleted",
+              "label": "Was PEP completed",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "cf34f0d1-08b9-4183-a24a-11b212f38548",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Too early",
+                    "concept": "5bc02514-8b61-4aed-9740-566c3573e9c3"
+                  }
+                ]
+              },
+              "questionInfo": "Consider completed if PEP taken for 28 days",
+              "hide": {
+                "hideWhenExpression": "didPatientStartPepAtInitialVisit !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Tests",
+      "sections": [
+        {
+          "label": "Tests",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "checkInresultsViewerForTestsResults",
+              "label": "Check in 'Results viewer' for tests results",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Check in 'Results viewer' for tests results"
+              ]
+            },
+            {
+              "id": "have3MonthsPassedSinceInitialVisit",
+              "label": "Have 3 months passed since initial visit?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bd9d74fa-e514-4d0f-9d90-ff18e8f4c858",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "patientTestedForHivToday",
+              "label": "Patient tested for HIV today",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "f8ebd933-c186-4612-8f93-1ff4741386be",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No - patient is known HIV+",
+                    "concept": "40454a00-d217-4c22-94d3-b193cad31e4e"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  },
+                  {
+                    "label": "Undetermined",
+                    "concept": "a8f6df4c-dc78-4f6d-87b5-69b43a796245"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "have3MonthsPassedSinceInitialVisit !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "hivTestResult",
+              "label": "Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "49b4650e-fd14-48ac-8458-c502a96152d2",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Undetermined",
+                    "concept": "a8f6df4c-dc78-4f6d-87b5-69b43a796245"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "patientTestedForHivToday !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "pregnancyTestIndicatedToday",
+              "label": "Pregnancy test indicated today?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "dae8c3cb-4481-4a35-81e6-a995c2e75938",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pregnancyTestResult",
+              "label": "Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "85b90192-6080-4e80-88f9-ad87627e37dc",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "pregnancyTestIndicatedToday !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "pregnancyTestNotDoneReason",
+              "label": "Explain why not",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "text",
+                "concept": "4b6aa27c-2326-485f-b920-860aa1839ad1"
+              },
+              "hide": {
+                "hideWhenExpression": "pregnancyTestResult !== 'a1ed13d4-10ed-4ae9-a8de-e24e53f722ab'"
+              }
+            },
+            {
+              "id": "hepatitisBTestIndicatedToday",
+              "label": "Hepatitis B test indicated today?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "319b3158-7cd7-4606-ba0a-128ea6a70b32",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hepatitisBTestResult",
+              "label": "Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "8e7c05b0-14a1-46f3-9435-f4272fe25bb3",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "hepatitisBTestIndicatedToday !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "syphilisTestIndicatedToday",
+              "label": "Syphilis test indicated today?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "bb22e095-7d6e-4632-9e83-b30940a7eeb4",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "syphilisTestResult",
+              "label": "Result",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "e7d3a32b-88c3-45ca-91a6-c691e35497e8",
+                "answers": [
+                  {
+                    "label": "Positive",
+                    "concept": "ad30cb86-fe71-4dc5-a5e3-cd6c3f6545c8"
+                  },
+                  {
+                    "label": "Negative",
+                    "concept": "a3699fc8-1781-48af-aded-2d9e8e233fde"
+                  },
+                  {
+                    "label": "Patient refused",
+                    "concept": "6a1b4365-47fa-4e0e-a79d-7e8f788c84a7"
+                  },
+                  {
+                    "label": "Not done",
+                    "concept": "a1ed13d4-10ed-4ae9-a8de-e24e53f722ab"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "syphilisTestIndicatedToday !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Vaccins",
+      "sections": [
+        {
+          "label": "Vaccins",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "checkInimmunizationsForPreviouslyPrescribedVaccines",
+              "label": "Check in 'Immunizations' for previously prescribed vaccines",
+              "type": "markdown",
+              "required": false,
+              "questionOptions": {
+                "rendering": "markdown"
+              },
+              "value": [
+                "Check in 'Immunizations' for previously prescribed vaccines"
+              ]
+            },
+            {
+              "id": "didPatientReceive1stHepatitisBVaccinationAtInitialVisit",
+              "label": "Did patient receive 1st Hepatitis B vaccination at initial visit?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "443d06ef-4923-4b94-9848-bb80825b49ff",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "didPatientReceiveADoseOfHepatitisBVaccinationToday",
+              "label": "Did patient receive a dose of Hepatitis B vaccination today",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "376eacae-2c78-4e04-8681-73841fbef43d",
+                "answers": [
+                  {
+                    "label": "Yes - Dose 1",
+                    "concept": "3117845c-23f7-42b0-a64a-b2fd2ec13965"
+                  },
+                  {
+                    "label": "Yes - Dose 2",
+                    "concept": "1682cd9c-e569-493f-95e4-3a31d2e625f9"
+                  },
+                  {
+                    "label": "Yes - Dose 3",
+                    "concept": "7f366b10-d4c8-4b5b-a503-78626e565ccb"
+                  },
+                  {
+                    "label": "No - Patient already fully vaccinated",
+                    "concept": "74c7528a-94b4-42c9-824e-bd250f1d7a83"
+                  },
+                  {
+                    "label": "No - Too early for next dose",
+                    "concept": "51189082-a8d6-4f93-97c9-177f477de84e"
+                  },
+                  {
+                    "label": "No - Patient refused",
+                    "concept": "ad2f9f82-d06c-4bcd-8a00-11dcaf4af12f"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "didPatientInitiateTetanusVaccineAtInitialVisit",
+              "label": "Did patient initiate Tetanus Vaccine (TTV) at initial visit?",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "d8743f9a-7a03-4a9c-ad99-b41764aae1cc",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "didPatientReceiveADoseOfTtvToday",
+              "label": "Did patient receive a dose of TTV today",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "c0e8aac5-f5d3-4198-9020-c3b07a86ae40",
+                "answers": [
+                  {
+                    "label": "Yes - Dose 1",
+                    "concept": "3117845c-23f7-42b0-a64a-b2fd2ec13965"
+                  },
+                  {
+                    "label": "Yes - Dose 2",
+                    "concept": "1682cd9c-e569-493f-95e4-3a31d2e625f9"
+                  },
+                  {
+                    "label": "Yes - Dose 3",
+                    "concept": "7f366b10-d4c8-4b5b-a503-78626e565ccb"
+                  },
+                  {
+                    "label": "Yes - Dose 4",
+                    "concept": "0a3295a9-33c9-4898-966f-5109b146d2d7"
+                  },
+                  {
+                    "label": "Yes - Dose 5",
+                    "concept": "95288f9e-796f-4779-82cf-c410751bc75a"
+                  },
+                  {
+                    "label": "No - Patient already fully vaccinated",
+                    "concept": "74c7528a-94b4-42c9-824e-bd250f1d7a83"
+                  },
+                  {
+                    "label": "No - Too early for next dose",
+                    "concept": "51189082-a8d6-4f93-97c9-177f477de84e"
+                  },
+                  {
+                    "label": "No - Patient refused",
+                    "concept": "ad2f9f82-d06c-4bcd-8a00-11dcaf4af12f"
+                  },
+                  {
+                    "label": "No - Other",
+                    "concept": "0e51cc88-bbdd-4569-b4e2-8e1fd06b20f5"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "TOP",
+      "sections": [
+        {
+          "label": "TOP",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "wasTopRequestedToday",
+              "label": "Was TOP requested today",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "76a8e543-2556-400c-9af0-6148faf70cdc",
+                "answers": [
+                  {
+                    "label": "Yes",
+                    "concept": "681cf0bc-5213-492a-8470-0a0b3cc324dd"
+                  },
+                  {
+                    "label": "No",
+                    "concept": "a5c5563e-df0e-4742-a335-b24fb63664ee"
+                  },
+                  {
+                    "label": "Not pregnant",
+                    "concept": "1c88efaf-a911-45ce-a1c0-3b2f87482692"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "wasSafeAbortionProvidedToday",
+              "label": "Was safe abortion provided today",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "radio",
+                "concept": "9abbe7e5-267d-4706-a4cf-c00ad1445ff2",
+                "answers": [
+                  {
+                    "label": "Yes - done by MSF",
+                    "concept": "0828eaf4-f742-4077-a808-aba17b2a70c1"
+                  },
+                  {
+                    "label": "Yes - Referred",
+                    "concept": "93eb9716-6866-4d13-9b8f-59c0a7605a11"
+                  },
+                  {
+                    "label": "No - Not by MSF or other actor",
+                    "concept": "6c7fb629-6858-4e89-b161-c2a85ba9f2f4"
+                  }
+                ]
+              },
+              "hide": {
+                "hideWhenExpression": "wasTopRequestedToday !== '681cf0bc-5213-492a-8470-0a0b3cc324dd'"
+              }
+            },
+            {
+              "id": "safeAbortionNotProvidedReason",
+              "label": "Explain why not",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "0c3a1ec7-d453-4efe-becf-2975cbeb6533"
+              },
+              "hide": {
+                "hideWhenExpression": "wasSafeAbortionProvidedToday !== '6c7fb629-6858-4e89-b161-c2a85ba9f2f4'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Prescription",
+      "sections": [
+        {
+          "label": "Prescription",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "prescribeNewExamsAndMedicationWithTheOrderBasketIfNecessary",
+              "label": "Prescribe new exams and medication with the order basket if necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Order medications",
+                "workspaceName": "order-basket"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Observation",
+      "sections": [
+        {
+          "label": "Observation",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "additionalRemarks",
+              "label": "Additional remarks",
+              "type": "obs",
+              "required": false,
+              "questionOptions": {
+                "rendering": "textarea",
+                "concept": "db316f14-259b-40ab-89c5-7d3187967f82"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Follow up",
+      "sections": [
+        {
+          "label": "Follow up",
+          "isExpanded": false,
+          "questions": [
+            {
+              "id": "inappointmentsSetTheNextDateForFollowUpWheneverNecessary",
+              "label": "In 'Appointments' set the next date for follow up whenever necessary",
+              "required": false,
+              "questionOptions": {
+                "rendering": "workspace-launcher",
+                "buttonLabel": "Set the next appointment date",
+                "workspaceName": "patient-chart-appointments-form-workspace"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
