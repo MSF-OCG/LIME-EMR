@@ -1174,4 +1174,158 @@
         </sql>
     </changeSet>
 
+    <!--
+        LIME2-951: English sessions show "Malaria sevère" instead of "Severe malaria".
+        Retired legacy Mosul concepts still held the same English names as MSF OCL concepts, so the OCL
+        import demoted the MSF English names to INDEX_TERM. OpenMRS then has no English name to display
+        and falls back to French. Suffix the retired legacy names (as rename-deprecated-msfocg-concepts
+        did for other legacy concepts), then restore the MSF English names.
+    -->
+    <changeSet id="rename-retired-legacy-concepts-clashing-with-msfocg-20261110" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept c
+                JOIN concept_name cn ON c.concept_id = cn.concept_id
+                WHERE c.uuid IN (
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0124',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0135',
+                    '6660d0b0-fcd9-4def-862c-c2bd900aa04a'
+                ) AND c.retired = 1 AND cn.name NOT LIKE '% RETIRED';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Suffix names of retired legacy concepts Severe malaria, Stroke / CVA and Individual Session with RETIRED
+        </comment>
+        <sql>
+            UPDATE concept_name
+            SET name = CONCAT(name, ' RETIRED')
+            WHERE concept_id IN (
+                SELECT concept_id FROM concept WHERE retired = 1 AND uuid IN (
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0124',
+                    'da33d74e-33b3-495a-9d7c-aa00a-aa0135',
+                    '6660d0b0-fcd9-4def-862c-c2bd900aa04a'
+                )
+            )
+            AND name NOT LIKE '% RETIRED';
+        </sql>
+    </changeSet>
+
+    <changeSet id="restore-en-name-severe-malaria-msfocg-20261110" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept_name cn
+                JOIN concept c ON c.concept_id = cn.concept_id
+                WHERE c.uuid = 'e9f02d62-a180-4a3e-813a-c210ec7364a6'
+                  AND cn.locale = 'en' AND cn.name = 'Severe malaria'
+                  AND cn.voided = 0 AND cn.concept_name_type = 'INDEX_TERM'
+                  AND NOT EXISTS (
+                      SELECT 1 FROM concept_name o
+                      WHERE o.concept_id = cn.concept_id AND o.voided = 0
+                        AND o.locale LIKE 'en%' AND o.concept_name_type = 'FULLY_SPECIFIED'
+                  )
+                  AND NOT EXISTS (
+                      SELECT 1 FROM concept_name o
+                      JOIN concept oc ON oc.concept_id = o.concept_id
+                      WHERE oc.retired = 0 AND o.voided = 0 AND o.concept_id &lt;&gt; cn.concept_id
+                        AND o.locale LIKE 'en%' AND LOWER(o.name) = LOWER(cn.name)
+                        AND (o.concept_name_type = 'FULLY_SPECIFIED' OR o.locale_preferred = 1)
+                  );
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Restore "Severe malaria" as the fully specified, preferred English name of the MSF Severe malaria concept
+        </comment>
+        <sql>
+            UPDATE concept_name
+            SET locale_preferred = 0
+            WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e9f02d62-a180-4a3e-813a-c210ec7364a6')
+              AND locale LIKE 'en%' AND voided = 0;
+            UPDATE concept_name
+            SET concept_name_type = 'FULLY_SPECIFIED', locale_preferred = 1
+            WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'e9f02d62-a180-4a3e-813a-c210ec7364a6')
+              AND locale = 'en' AND name = 'Severe malaria'
+              AND voided = 0 AND concept_name_type = 'INDEX_TERM';
+        </sql>
+    </changeSet>
+
+    <changeSet id="restore-en-name-stroke-cva-msfocg-20261110" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept_name cn
+                JOIN concept c ON c.concept_id = cn.concept_id
+                WHERE c.uuid = 'bff16ef7-3429-4cff-bda0-5cc13a77ae39'
+                  AND cn.locale = 'en' AND cn.name = 'Stroke / CVA'
+                  AND cn.voided = 0 AND cn.concept_name_type = 'INDEX_TERM'
+                  AND NOT EXISTS (
+                      SELECT 1 FROM concept_name o
+                      WHERE o.concept_id = cn.concept_id AND o.voided = 0
+                        AND o.locale LIKE 'en%' AND o.concept_name_type = 'FULLY_SPECIFIED'
+                  )
+                  AND NOT EXISTS (
+                      SELECT 1 FROM concept_name o
+                      JOIN concept oc ON oc.concept_id = o.concept_id
+                      WHERE oc.retired = 0 AND o.voided = 0 AND o.concept_id &lt;&gt; cn.concept_id
+                        AND o.locale LIKE 'en%' AND LOWER(o.name) = LOWER(cn.name)
+                        AND (o.concept_name_type = 'FULLY_SPECIFIED' OR o.locale_preferred = 1)
+                  );
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Restore "Stroke / CVA" as the fully specified, preferred English name of the MSF Stroke / CVA concept
+        </comment>
+        <sql>
+            UPDATE concept_name
+            SET locale_preferred = 0
+            WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'bff16ef7-3429-4cff-bda0-5cc13a77ae39')
+              AND locale LIKE 'en%' AND voided = 0;
+            UPDATE concept_name
+            SET concept_name_type = 'FULLY_SPECIFIED', locale_preferred = 1
+            WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = 'bff16ef7-3429-4cff-bda0-5cc13a77ae39')
+              AND locale = 'en' AND name = 'Stroke / CVA'
+              AND voided = 0 AND concept_name_type = 'INDEX_TERM';
+        </sql>
+    </changeSet>
+
+    <changeSet id="restore-en-name-individual-session-msfocg-20261110" author="pirupius">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END
+                FROM concept_name cn
+                JOIN concept c ON c.concept_id = cn.concept_id
+                WHERE c.uuid = '16146bca-c7a6-4509-a866-afa74be44488'
+                  AND cn.locale = 'en' AND cn.name = 'Individual session'
+                  AND cn.voided = 0 AND cn.concept_name_type = 'INDEX_TERM'
+                  AND NOT EXISTS (
+                      SELECT 1 FROM concept_name o
+                      WHERE o.concept_id = cn.concept_id AND o.voided = 0
+                        AND o.locale LIKE 'en%' AND o.concept_name_type = 'FULLY_SPECIFIED'
+                  )
+                  AND NOT EXISTS (
+                      SELECT 1 FROM concept_name o
+                      JOIN concept oc ON oc.concept_id = o.concept_id
+                      WHERE oc.retired = 0 AND o.voided = 0 AND o.concept_id &lt;&gt; cn.concept_id
+                        AND o.locale LIKE 'en%' AND LOWER(o.name) = LOWER(cn.name)
+                        AND (o.concept_name_type = 'FULLY_SPECIFIED' OR o.locale_preferred = 1)
+                  );
+            </sqlCheck>
+        </preConditions>
+        <comment>
+            Restore "Individual session" as the fully specified, preferred English name of the MSF Individual session concept
+        </comment>
+        <sql>
+            UPDATE concept_name
+            SET locale_preferred = 0
+            WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '16146bca-c7a6-4509-a866-afa74be44488')
+              AND locale LIKE 'en%' AND voided = 0;
+            UPDATE concept_name
+            SET concept_name_type = 'FULLY_SPECIFIED', locale_preferred = 1
+            WHERE concept_id = (SELECT concept_id FROM concept WHERE uuid = '16146bca-c7a6-4509-a866-afa74be44488')
+              AND locale = 'en' AND name = 'Individual session'
+              AND voided = 0 AND concept_name_type = 'INDEX_TERM';
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
