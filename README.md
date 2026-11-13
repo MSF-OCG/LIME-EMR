@@ -695,6 +695,27 @@ Each row follows the pattern: `COUNTRY,STATE_PROVINCE,COUNTY_DISTRICT,CITY_VILLA
 
 At the site level, the distro's address hierarchy files are excluded and replaced with site-specific ones.
 
+**3. Show the address field on the registration form** -- The two files above only load the hierarchy into the backend. The registration form shows it only if the site's frontend config (`configs/openmrs/frontend_config/msf-<site>-frontend-config.json`) adds `address` to a registration section and turns on the hierarchy widget under `@openmrs/esm-patient-registration-app`:
+
+```json
+"sectionDefinitions": [
+  {
+    "id": "contact",
+    "name": "Contact Details",
+    "fields": ["address", "telephoneNumber", "emailAddress"]
+  }
+],
+"fieldConfigurations": {
+  "address": {
+    "useAddressHierarchy": {
+      "searchAddressByLevel": true
+    }
+  }
+}
+```
+
+Without this, the hierarchy loads without errors but no address fields appear in registration.
+
 #### 5.2.2 OpenFn
 
 [OpenFn](https://www.openfn.org/) automates data exchange between OpenMRS and DHIS2 Tracker. It runs as Docker containers (Lightning web app, worker, and PostgreSQL database) defined in `scripts/docker-compose-openfn.yml`. OpenFn is live in production across all deployment sites.

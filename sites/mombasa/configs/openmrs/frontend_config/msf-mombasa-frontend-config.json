@@ -313,7 +313,7 @@
       {
         "id": "contact",
         "name": "Contact Details",
-        "fields": ["telephoneNumber", "secondTelephoneNumber", "emailAddress"]
+        "fields": ["address", "telephoneNumber", "secondTelephoneNumber", "emailAddress"]
       },
       {
         "id": "emergencyContacts",
@@ -334,6 +334,11 @@
       "name": {
         "displayCapturePhoto": false,
         "allowUnidentifiedPatients": true
+      },
+      "address": {
+        "useAddressHierarchy": {
+          "searchAddressByLevel": true
+        }
       }
     },
     "registrationObs": {
