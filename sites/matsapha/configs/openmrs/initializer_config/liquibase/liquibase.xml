@@ -42,4 +42,31 @@
         </sql>
     </changeSet>
 
+    <!-- LIME2-1364: Matsapha uses only "Appointments Report (Custom)" and
+         "Registration Details Report". Retire the default commonreports reports
+         already installed, so the Reports page lists only those two (plus the
+         printing reports that patient documents use). jsonkeyvalues/matsapha_reports.json
+         stops commonreports from setting them up again at startup. Retired, not
+         deleted: un-retire to bring one back. -->
+    <changeSet id="retire_unused_commonreports-20261124" author="pirupius">
+        <sql>
+            UPDATE serialized_object
+            SET retired = 1, retired_by = 1, date_retired = NOW(),
+                retire_reason = 'Not used at Matsapha (LIME2-1364)'
+            WHERE retired = 0 AND uuid IN (
+                'd888fa26-ae86-4496-95d3-65f747221204', -- Appointments Report
+                'b00d482d-3e66-473a-bd21-8bac5da2fa32', -- Audit Report
+                '094a9c78-9fb1-4eb2-bfc4-bc9fe8b5b4b4', -- Concepts Report
+                'e193acbb-4f12-43be-97b2-25ed70a3face', -- Conditions Report
+                'e0cf75f3-d0e8-42e8-9c4d-6d66a52d56ca', -- Diagnoses Report
+                '320d3c2a-93d2-4bba-887b-f9cb04778dde', -- Encounters Report
+                '3fc926dd-f317-426c-b96d-0e8d504eee5e', -- Observations Report
+                '69f3dc43-0ca6-423f-8b60-53e38429270d', -- Orders Report
+                'a7461fe7-f943-4d4d-b2d5-66ffefd9ca3c', -- Patients Report
+                '2ab6f727-1c17-4c3b-b7b6-6447825dc5fb', -- Programs Report
+                'ee0d4e55-9a0e-4d7c-ba85-e534102141ee' -- Visits Report
+            );
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
