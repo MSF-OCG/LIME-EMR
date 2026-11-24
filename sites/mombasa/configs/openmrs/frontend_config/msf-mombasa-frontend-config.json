@@ -285,18 +285,6 @@
         "uuid": "3884dc76-c271-4bcb-8df8-81c6fb897f53",
         "label": "Marital status",
         "answerConceptSetUuid": "544ef960-3b65-4add-8795-96b2b084faa3"
-      },
-      {
-        "id": "dateOfFirstVisit",
-        "type": "person attribute",
-        "uuid": "7ed1588d-53ff-4d56-a583-90c709ef9753",
-        "label": "Date of first visit",
-        "allowFutureDates": false,
-        "validation": {
-          "required": false,
-          "type": "date",
-          "matches": "^(0?[1-9]|[12]\\d|3[01])\/(0?[1-9]|1[0-2])\/\\d{4}$"
-        }
       }
     ],
     "sectionDefinitions": [
@@ -308,7 +296,7 @@
       {
         "id": "additionalInformation",
         "name": "Demographics",
-        "fields": ["maritalStatus", "dateOfFirstVisit"]
+        "fields": ["maritalStatus"]
       },
       {
         "id": "contact",
