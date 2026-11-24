@@ -202,6 +202,16 @@
         }
       },
       {
+        "id": "otherContactLocation",
+        "type": "person attribute",
+        "uuid": "5bca29bf-6306-4ba2-9aa6-7c3bc0870c1e",
+        "label": "Other location patient can be found or contacted",
+        "validation": {
+          "required": false,
+          "matches": "^.{0,50}$"
+        }
+      },
+      {
         "id": "emailAddress",
         "type": "person attribute",
         "uuid": "14d4f066-15f5-102d-96e4-000c29c2a5d7",
@@ -313,7 +323,7 @@
       {
         "id": "contact",
         "name": "Contact Details",
-        "fields": ["address", "telephoneNumber", "secondTelephoneNumber", "emailAddress"]
+        "fields": ["address", "telephoneNumber", "secondTelephoneNumber", "emailAddress", "otherContactLocation"]
       },
       {
         "id": "emergencyContacts",
