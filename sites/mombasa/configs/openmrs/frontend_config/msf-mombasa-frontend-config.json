@@ -182,6 +182,16 @@
     ],
     "fieldDefinitions": [
       {
+        "id": "otherPreferredName",
+        "type": "person attribute",
+        "uuid": "d1ebb2c0-ed11-4259-857c-8dbd771416eb",
+        "label": "Other preferred name",
+        "validation": {
+          "required": false,
+          "matches": "^.{0,50}$"
+        }
+      },
+      {
         "id": "telephoneNumber",
         "type": "person attribute",
         "uuid": "bc851ec1-9fb7-49da-acd7-1a61168002fe",
@@ -303,7 +313,7 @@
       {
         "id": "basicInfo",
         "name": "Basic info",
-        "fields": ["name", "gender", "dob", "id"]
+        "fields": ["name", "otherPreferredName", "gender", "dob", "id"]
       },
       {
         "id": "additionalInformation",
@@ -395,6 +405,9 @@
           "enabled": true
         },
         "personAttributes": [
+          {
+            "attributeTypeUuid": "d1ebb2c0-ed11-4259-857c-8dbd771416eb"
+          },
           {
             "attributeTypeUuid": "bc851ec1-9fb7-49da-acd7-1a61168002fe"
           },
