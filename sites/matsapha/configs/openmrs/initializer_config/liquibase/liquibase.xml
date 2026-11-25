@@ -69,4 +69,51 @@
         </sql>
     </changeSet>
 
+    <!-- LIME2-1364: also hide the 3 reports the modules add for printing, so the
+         Reports page lists only "Appointments Report (Custom)" and "Registration
+         Details Report". Printing keeps working: it loads these reports by uuid,
+         which ignores the retired flag.
+         HC1 Patient History and Patient Identifier Sticker have -SNAPSHOT versions,
+         so commonreports and patientdocuments save them again at every startup,
+         which sets retired back to 0, and neither module has a switch to skip them.
+         The triggers keep these 3 retired whenever a module saves them. Drop the
+         triggers and un-retire a report to bring it back. -->
+    <changeSet id="retire_printing_reports-20261125" author="pirupius">
+        <sql>
+            UPDATE serialized_object
+            SET retired = 1, retired_by = 1, date_retired = NOW(),
+                retire_reason = 'Not used at Matsapha (LIME2-1364)'
+            WHERE retired = 0 AND uuid IN (
+                'ae2152c1-1a91-4dc9-96d2-dfc38820648e', -- HC1 Patient History
+                '08e2d4eb-91f7-4067-a0c9-025af2122686', -- Patient Identifier Sticker
+                '0e89ec4c-10bb-11f1-a6da-0242ac1e0002' -- Generic Encounter PDF Report
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="keep_printing_reports_retired_triggers-20261125" author="pirupius">
+        <sql splitStatements="false">
+            CREATE TRIGGER keep_printing_reports_retired_on_update
+            BEFORE UPDATE ON serialized_object FOR EACH ROW
+            SET NEW.retired = IF(NEW.uuid IN ('ae2152c1-1a91-4dc9-96d2-dfc38820648e', '08e2d4eb-91f7-4067-a0c9-025af2122686', '0e89ec4c-10bb-11f1-a6da-0242ac1e0002'), 1, NEW.retired),
+                NEW.retired_by = IF(NEW.retired = 1 AND NEW.retired_by IS NULL, 1, NEW.retired_by),
+                NEW.date_retired = IF(NEW.retired = 1 AND NEW.date_retired IS NULL, NOW(), NEW.date_retired),
+                NEW.retire_reason = IF(NEW.retired = 1 AND NEW.retire_reason IS NULL, 'Not used at Matsapha (LIME2-1364)', NEW.retire_reason)
+        </sql>
+        <sql splitStatements="false">
+            CREATE TRIGGER keep_printing_reports_retired_on_insert
+            BEFORE INSERT ON serialized_object FOR EACH ROW
+            SET NEW.retired = IF(NEW.uuid IN ('ae2152c1-1a91-4dc9-96d2-dfc38820648e', '08e2d4eb-91f7-4067-a0c9-025af2122686', '0e89ec4c-10bb-11f1-a6da-0242ac1e0002'), 1, NEW.retired),
+                NEW.retired_by = IF(NEW.retired = 1 AND NEW.retired_by IS NULL, 1, NEW.retired_by),
+                NEW.date_retired = IF(NEW.retired = 1 AND NEW.date_retired IS NULL, NOW(), NEW.date_retired),
+                NEW.retire_reason = IF(NEW.retired = 1 AND NEW.retire_reason IS NULL, 'Not used at Matsapha (LIME2-1364)', NEW.retire_reason)
+        </sql>
+        <rollback>
+            <sql>
+                DROP TRIGGER IF EXISTS keep_printing_reports_retired_on_update;
+                DROP TRIGGER IF EXISTS keep_printing_reports_retired_on_insert;
+            </sql>
+        </rollback>
+    </changeSet>
+
 </databaseChangeLog>
