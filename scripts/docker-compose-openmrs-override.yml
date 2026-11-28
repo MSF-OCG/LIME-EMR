@@ -12,6 +12,23 @@ services:
     # InnoDB recovers from a hard kill, but a clean stop avoids a long redo
     # replay on the next start and keeps the binlog tail intact for CDC.
     stop_grace_period: 60s
+    # Compose replaces the whole command list, so this repeats Ozone's flags from
+    # docker-compose-common.yml and adds --log-bin-trust-function-creators. With
+    # binary logging on, MariaDB refuses CREATE TRIGGER from a user without SUPER
+    # (error 1419), so site liquibase changesets that add triggers fail (e.g.
+    # Matsapha's keep_printing_reports_retired_triggers, LIME2-1364). Keep in
+    # step with Ozone and with LIME-EMR-Tooling's docker-compose-bundled.yml.
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --skip-innodb-read-only-compressed
+      - --log-bin=mysqld-bin
+      - --binlog-format=ROW
+      - --server-id=2
+      - --sync-binlog=1
+      - --binlog-annotate-row-events=0
+      - --log-bin-trust-function-creators=1
 
   frontend:
     environment:
